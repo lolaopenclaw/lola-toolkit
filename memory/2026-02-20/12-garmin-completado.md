@@ -58,12 +58,131 @@ Con estos tokens puedo acceder a:
 - Surf edition (métricas específicas)
 - Health tracking 24/7
 
-## Próximos pasos
+## Problema detectado y RESUELTO ✅
 
-1. [ ] Crear script de lectura de datos Garmin
-2. [ ] Integrar con informes matutinos (opcional)
-3. [ ] Alertas de salud si se detecta algo anormal (opcional)
-4. [ ] Sincronización con Notion para tracking (opcional)
+### Bug en librería garminconnect
+**Error:** Endpoints de actividad diaria devuelven 403 Forbidden
+
+**Causa:** La librería no envía correctamente el `displayName` en las URLs:
+```
+/usersummary-service/usersummary/daily/None?calendarDate=...
+                                     ^^^^
+                              Debería ser: Manu_Lazarus
+```
+
+### Solución aplicada
+
+**Fix de una línea después de cargar tokens:**
+```python
+client = Garmin()
+client.garth.loads(tokens)
+client.display_name = "Manu_Lazarus"  # 🔧 FIX
+```
+
+### Resultado
+
+✅ **Ahora TODO funciona:**
+- Pasos diarios
+- Heart rate (reposo, máximo, promedio)
+- Actividad/calorías
+- Estrés
+- Distancia recorrida
+- Sueño (horas totales, profundo, ligero, REM)
+- Body Battery (nivel de energía)
+- Perfil de usuario
+
+## Reporte de datos disponibles
+
+### Análisis últimos 7 días (solo sueño):
+- **Promedio:** 7.9 horas/noche ✅
+- **Sueño profundo:** 1.3 horas promedio
+- **Mejor noche:** 14 feb (8.8h)
+- **Peor noche:** 18 feb (7.0h)
+- **Tendencia:** Consistente, buen descanso
+
+### Estado actual:
+- **Body Battery:** 44/100 (medio-bajo, normal a las 20:00)
+
+## Scripts creados
+
+### 1. `scripts/garmin-health-report.sh`
+**Reporte diario completo de salud**
+
+Uso:
+```bash
+bash garmin-health-report.sh              # Hoy
+bash garmin-health-report.sh 2026-02-19   # Fecha específica
+```
+
+Incluye:
+- 🏃 Actividad (pasos, distancia, calorías, pisos)
+- 💓 Heart rate (último, promedio, máximo, mínimo)
+- 😰 Estrés (nivel promedio con evaluación)
+- 🔋 Body Battery (nivel actual y rango del día)
+- 😴 Sueño (duración, fases, calidad)
+
+**Evaluaciones automáticas:**
+- Actividad: sedentario/ligero/activo/muy activo
+- Heart rate: forma cardiovascular
+- Estrés: bajo/normal/moderado/alto
+- Body Battery: bajo/bueno/alto
+- Sueño: insuficiente/corto/bueno/largo + calidad profundo
+
+### 2. `scripts/garmin-historical-analysis.sh`
+**Análisis de tendencias históricas**
+
+Uso:
+```bash
+bash garmin-historical-analysis.sh      # Últimos 30 días
+bash garmin-historical-analysis.sh 7    # Últimos 7 días
+```
+
+Incluye:
+- 📊 Estadísticas agregadas (totales, promedios)
+- 📈 Distribución de actividad (días activos vs sedentarios)
+- 💓 Promedios de heart rate y evaluación cardiovascular
+- 😰 Análisis de estrés (días normales vs altos)
+- 📈 Tendencias (última semana vs anterior)
+
+## Análisis de los últimos 7 días
+
+### Resumen (14-20 feb):
+- **Pasos:** 5,155/día promedio
+- **Actividad:** 57% días sedentarios, 29% activos
+- **Heart rate reposo:** 54 bpm (excelente ✅)
+- **Estrés:** 26 promedio (bajo, bien manejado ✅)
+- **Distancia:** 4.13 km/día promedio
+
+### Observaciones:
+- 🏆 Forma cardiovascular excelente (HR reposo 52-57 bpm)
+- ✅ Estrés muy bien controlado (sin picos)
+- ⚠️ Actividad física baja (mayoría días <5k pasos)
+- 💡 Oportunidad: aumentar actividad diaria para mejorar Body Battery
+
+## Recomendaciones de uso
+
+### Frecuencia sugerida:
+1. **Diaria (9:00 AM):** Incluir en informe matutino
+   - Resumen de ayer (actividad, sueño, estrés)
+   - Solo si algo notable o anormal
+   
+2. **Semanal (lunes 8:00 AM):** Análisis de tendencias
+   - Resumen últimos 7 días
+   - Comparativa con semana anterior
+   - Recomendaciones si detecta patrones
+
+3. **Alertas puntuales:**
+   - Heart rate anormal (reposo >80 o <40 bpm)
+   - Estrés alto persistente (≥60 por 3+ días)
+   - Sueño insuficiente (<6h por 3+ días)
+   - Body Battery bajo persistente (<25 por 2+ días)
+
+### Integración futura:
+- [ ] Añadir a cron matutino (9:00 AM)
+- [ ] Añadir a resumen semanal (lunes 8:00 AM)
+- [ ] Sistema de alertas inteligentes
+- [ ] Sincronización con Notion (opcional)
+- [ ] Correlación actividad vs estado de ánimo (opcional)
 
 ## Archivos actualizados
 
