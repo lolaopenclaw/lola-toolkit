@@ -1,0 +1,52 @@
+{
+  "updated": "2026-02-18",
+  "source": "https://docs.anthropic.com/en/docs/about-claude/models",
+  "anthropic": {
+    "claude-opus-4-6": {
+      "input": 5.00,
+      "output": 25.00,
+      "cache_read": 0.50,
+      "cache_write": 6.25,
+      "unit": "per_million_tokens"
+    },
+    "claude-sonnet-4-6": {
+      "input": 3.00,
+      "output": 15.00,
+      "cache_read": 0.30,
+      "cache_write": 3.75,
+      "unit": "per_million_tokens"
+    },
+    "claude-haiku-4-5": {
+      "input": 1.00,
+      "output": 5.00,
+      "cache_read": 0.10,
+      "cache_write": 1.25,
+      "unit": "per_million_tokens"
+    },
+    "claude-haiku-3.5": {
+      "input": 0.80,
+      "output": 4.00,
+      "cache_read": 0.08,
+      "cache_write": 1.00,
+      "unit": "per_million_tokens"
+    }
+  },
+  "google": {
+    "gemini-2.5-flash": {
+      "input": 0.15,
+      "output": 0.60,
+      "cache_read": 0.0375,
+      "unit": "per_million_tokens"
+    },
+    "gemini-2.5-flash-lite": {
+      "input": 0.075,
+      "output": 0.30,
+      "unit": "per_million_tokens"
+    },
+    "gemini-3-flash-preview": {
+      "input": 0.15,
+      "output": 0.60,
+      "unit": "per_million_tokens"
+    }
+  }
+}

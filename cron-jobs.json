@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Backup diario de memoria a Google Drive",
+    "schedule": { "kind": "cron", "expr": "0 4 * * *", "tz": "Europe/Madrid" },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Ejecuta el script de backup: `bash /home/mleon/.openclaw/workspace/scripts/backup-memory.sh`\n\nCon el resultado, genera un mensaje breve indicando:\n- Si el backup fue exitoso o falló\n- Fecha, número de archivos y tamaño\n- Si hubo algún error, detállalo\n\nGuarda el resultado en /home/mleon/.openclaw/workspace/memory/last-backup.json con formato:\n{\"date\": \"YYYY-MM-DD\", \"status\": \"ok|error\", \"files\": N, \"size\": \"XXK\", \"error\": null}\n\nNo envíes mensaje al usuario, solo guarda el resultado. El informe de la mañana lo recogerá."
+    },
+    "delivery": { "mode": "none" }
+  },
+  {
+    "name": "Informe matutino unificado",
+    "schedule": { "kind": "cron", "expr": "0 9 * * *", "tz": "Europe/Madrid" },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Genera un informe matutino unificado en español para Telegram. Formato limpio: sin tablas markdown, usa bullets con emojis. Un solo mensaje con cuatro secciones:\n\n**1. 🔄 Actualizaciones del sistema:**\nEjecuta:\n```\nsudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -qq && sudo apt-get autoremove -y -qq\n```\nCaptura la salida. Reporta cuántos paquetes se actualizaron, cuáles fueron (nombres y versiones si es posible), o si ya estaba todo al día. Si se eliminó algo con autoremove, menciónalo.\n\nLuego comprueba si hay nueva versión de OpenClaw disponible con `npm view openclaw version 2>/dev/null` y compárala con `openclaw --version 2>/dev/null`. Si hay versión nueva, avísalo claramente. NO actualices OpenClaw, solo informa.\n\n**2. 💾 Estado del backup:**\nLee `/home/mleon/.openclaw/workspace/memory/last-backup.json` e indica si se hizo correctamente, fecha, nº archivos y tamaño. Si falló o no existe, avisar.\n\n**3. 📊 Consumo de modelos:**\nEjecuta `bash /home/mleon/.openclaw/workspace/scripts/usage-report.sh` y muestra: coste total del mes, desglose por modelo (nombre, coste USD, nº requests), consumo de hoy y ayer. Si no hubo consumo, indicarlo.\n\n**4. 📋 Tablero Kanban:**\nEjecuta esta query a la DB de Notion (filtra tareas no archivadas):\n```\ncurl -s -X POST \"https://api.notion.com/v1/databases/30c676c3-86c8-81ac-b2bd-cd2d8a5516f7/query\" -H \"Authorization: Bearer $NOTION_API_KEY\" -H \"Notion-Version: 2022-06-28\" -H \"Content-Type: application/json\" -d '{\"filter\":{\"property\":\"Archivado\",\"checkbox\":{\"equals\":false}}}'\n```\nDel resultado JSON, extrae las tareas y muestra:\n• Cuenta de tareas por estado (Ideas, Pendiente, En progreso, Hecho, Bloqueado) - usa bullets con números\n• Lista las tareas en estado \"Pendiente\" y \"En progreso\": nombre de la tarea + prioridad (si existe)\n• Si hay tareas en estado \"Bloqueado\", lista también esas mencionando el motivo/bloqueo si está disponible\n\nFormato compacto, bullets con emojis, sin tablas.\n\nMantén el mensaje compacto y fácil de leer. Un solo mensaje con las cuatro secciones."
+    },
+    "delivery": { "mode": "announce", "to": "6884477", "channel": "telegram" }
+  },
+  {
+    "name": "Revisión semanal de precios de modelos",
+    "schedule": { "kind": "cron", "expr": "0 2 * * 1", "tz": "Europe/Madrid" },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Revisa los precios oficiales de los modelos de IA que usamos y actualiza el fichero de precios.\n\n1. Lee el fichero actual: /home/mleon/.openclaw/workspace/memory/model-prices.json\n2. Consulta los precios oficiales actuales:\n   - Anthropic: https://docs.anthropic.com/en/docs/about-claude/models\n   - Google: https://ai.google.dev/pricing\n3. Compara con los datos del fichero. Si hay cambios:\n   - Actualiza model-prices.json con los nuevos precios\n   - Actualiza el campo 'updated' con la fecha de hoy\n   - Envía un mensaje breve por Telegram (chat 6884477) informando de los cambios\n4. Si no hay cambios, no envíes mensaje. Solo actualiza el campo 'updated'."
+    },
+    "delivery": { "mode": "none" }
+  }
+]
