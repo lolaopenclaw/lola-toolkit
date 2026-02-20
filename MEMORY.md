@@ -54,6 +54,8 @@
 - **4:00 Madrid (diario)** — Backup a Google Drive (`scripts/backup-memory.sh`)
 - **7:00 Madrid (diario)** — Fail2ban daily report (IPs baneadas, intentos fallidos) (`healthcheck:fail2ban-alert-morning`)
 - **9:00 Madrid (diario)** — Informe matutino unificado (apt upgrade, estado OpenClaw, backup, consumo)
+- **9:00 Madrid (diario)** — Garmin informe matutino (actividad ayer, sueño, análisis) (`garmin:morning-report`)
+- **14:00 y 20:00 Madrid (diario)** — Garmin alertas de salud (HR anormal, estrés alto, poco sueño) (`garmin:health-alerts`)
 - **23:55 Madrid (diario)** — Informe consumo diario, alerta si >$50 (`usage:report-daily`)
 - **5:00 Madrid (lunes)** — Tareas de fondo semanales (lee Notion Fondo+Frecuencia=Semanal y one-shots)
 - **6:00 Madrid (lunes)** — Auditoría de seguridad profunda (`healthcheck:security-audit-weekly`)
@@ -61,6 +63,7 @@
 - **6:00 Madrid (lunes)** — Scan rkhunter malware (`healthcheck:rkhunter-scan-weekly`)
 - **7:00 Madrid (lunes)** — Cleanup Notion Ideas (marca como Hecho las completadas) (`notion:ideas-cleanup-weekly`)
 - **8:00 Madrid (lunes)** — Informe consumo semanal (resumen 7 días, tendencias) (`usage:report-weekly`)
+- **8:30 Madrid (lunes)** — Garmin resumen semanal (tendencias, comparativas, recomendaciones) (`garmin:weekly-summary`)
 
 ## Notion
 - **Workspace:** Lola OpenClaw's Space (lolaopenclaw@gmail.com)

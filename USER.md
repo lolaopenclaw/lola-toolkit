@@ -57,9 +57,27 @@ Manu is the person I'm helping.
 
 ## Health & Fitness
 - **Dispositivo:** Garmin Instinct 2S Solar Surf
-- **Acceso:** Pendiente - Manu puede dar acceso a Garmin Connect
-- **Datos potenciales:** Estado vital, estrés, pulsaciones, peso, actividad, sueño
-- **Características:** Solar, diseño para surf, resistente
+- **Acceso:** ✅ Configurado - OAuth tokens guardados
+- **Display name:** Manu_Lazarus
+- **Datos disponibles:** 
+  - 👣 Actividad (pasos, distancia, calorías, pisos)
+  - 💓 Heart rate (reposo, promedio, máximo)
+  - 😰 Estrés (nivel promedio diario)
+  - 🔋 Body Battery (energía estimada)
+  - 😴 Sueño (duración, fases: profundo, ligero, REM)
+- **Scripts:**
+  - `garmin-health-report.sh` - Reporte diario completo
+  - `garmin-historical-analysis.sh` - Análisis tendencias
+  - `garmin-check-alerts.sh` - Sistema de alertas
+- **Automatización:**
+  - Informe matutino (9 AM diario)
+  - Resumen semanal (lunes 8:30 AM)
+  - Alertas salud (14:00 y 20:00 diario)
+- **Perfil últimos 7 días:**
+  - HR reposo promedio: 54 bpm (excelente ✅)
+  - Estrés promedio: 26 (bajo, bien manejado)
+  - Actividad: 5,155 pasos/día (mayormente sedentario)
+  - Sueño: 7.9h/noche (buen descanso)
 
 ---
 The more you know, the better you can help. But remember — you're learning about a person, not building a dossier. Respect the difference.
