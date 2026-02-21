@@ -2,6 +2,12 @@
 
 ## Comprobaciones periódicas
 
+### 0. OpenClaw Contributions Status
+- Verificar si Manu ha forkeado el repo (git repo creation tracking)
+- Recordar post Discussion a openclaw/openclaw cuando esté listo
+- Monitorear feedback de Discussion (2-3 días típicamente)
+- Cuando Manu responda que la Discussion tiene feedback → ayudar a iterar PR
+
 ### 1. Estado de cron jobs
 Revisa si algún cron ha fallado desde la última comprobación:
 - Usa `cron list` y comprueba si hay `consecutiveErrors > 0` o `lastStatus: "error"`

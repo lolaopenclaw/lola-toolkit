@@ -26,20 +26,35 @@ CYAN='\033[0;36m'
 BOLD='\033[1m'
 NC='\033[0m'
 
+# --- Flags (global) ---
+JSON_OUTPUT=false
+STRICT_MODE=false
+SCORE_ONLY=false
+SAVE_REPORT=false
+DETAILED=false
+AUDIT_ALL=false
+
 # --- Usage ---
 usage() {
     cat <<EOF
-${BOLD}Skill Security Audit${NC}
+${BOLD}Skill Security Audit — OpenClaw${NC}
+
+Analyzes ClawHub skills for security risks before installation.
 
 Usage: $0 <SKILL_NAME|PATH> [OPTIONS]
 
+Positional Arguments:
+  SKILL_NAME|PATH  Skill name (from \$OPENCLAW_WORKSPACE/skills/) or local path
+
 Options:
-  --analyze     Full analysis (default)
-  --report      Generate markdown report to memory/audits/
-  --score       Only show risk score
-  --detailed    Deep analysis with dependency tree
-  --all         Audit all installed skills
-  -h, --help    Show this help
+  --analyze        Full analysis (default)
+  --report         Generate markdown report to memory/audits/
+  --score          Only show risk score
+  --json           Output as JSON (for automation)
+  --strict         Fail on any warnings (exit code 1)
+  --detailed       Deep analysis with dependency tree
+  --all            Audit all installed skills
+  -h, --help       Show this help
 
 Risk Scores:
   0-24   🟢 VERDE    — Install with confidence
@@ -47,6 +62,26 @@ Risk Scores:
   50-74  🟡 AMARILLO — Review before installing
   75-94  🟡 MEDIO    — Needs thorough audit
   95-100 🔴 CRÍTICO  — Do NOT install
+
+Examples:
+  # Analyze a skill interactively
+  $0 my-skill
+
+  # Get risk score only
+  $0 my-skill --score
+
+  # Output as JSON (for CI/CD)
+  $0 my-skill --json
+
+  # Fail if any warnings (for strict checks)
+  $0 my-skill --strict --json
+
+  # Audit all installed skills
+  $0 --all --report
+
+Environment:
+  OPENCLAW_WORKSPACE    Base workspace path (default: \$HOME/.openclaw/workspace)
+  STRICTNESS            Override --strict via env (1=strict, 0=lenient)
 EOF
     exit 0
 }
@@ -87,7 +122,9 @@ analyze_code() {
 
     # Dangerous eval/exec patterns
     local eval_count
-    eval_count=$(grep -rn 'eval(' "$dir" --include="*.js" --include="*.ts" --include="*.py" --include="*.sh" 2>/dev/null | grep -v node_modules | grep -v '\.min\.' | wc -l)
+    eval_count=$(grep -rn -E '\beval[[:space:]]*\(' "$dir" --include="*.js" --include="*.ts" --include="*.py" 2>/dev/null | grep -v node_modules | grep -v '\.min\.' | wc -l)
+    eval_count=$((eval_count + $(grep -rn 'eval[[:space:]]*"' "$dir" --include="*.sh" 2>/dev/null | grep -v '#' | wc -l)))
+    eval_count=$((eval_count + $(grep -rn "eval[[:space:]]*'" "$dir" --include="*.sh" 2>/dev/null | grep -v '#' | wc -l)))
     if [ "$eval_count" -gt 0 ]; then
         add_finding "HIGH" "Found $eval_count eval() calls — potential code injection" 20
     else
@@ -323,6 +360,52 @@ analyze_skill_metadata() {
     echo "$version" > /tmp/skill_version
 }
 
+# --- JSON Output ---
+generate_json() {
+    local skill_name="$1" dir="$2"
+    local author version
+    author=$(cat /tmp/skill_author 2>/dev/null || echo "Unknown")
+    version=$(cat /tmp/skill_version 2>/dev/null || echo "unknown")
+
+    [ "$SCORE" -gt 100 ] && SCORE=100
+
+    # Build findings array
+    local findings_json="["
+    local first=true
+    for f in "${FINDINGS[@]}"; do
+        local sev msg
+        sev=$(echo "$f" | cut -d'|' -f1)
+        msg=$(echo "$f" | cut -d'|' -f2-)
+        if [ "$first" = false ]; then findings_json="$findings_json,"; fi
+        findings_json="${findings_json}{\"severity\":\"$sev\",\"message\":\"$(echo "$msg" | sed 's/"/\\"/g')\"}"
+        first=false
+    done
+    findings_json="$findings_json]"
+
+    # Output JSON
+    python3 << PYJSON
+import json, sys
+data = {
+    "skill": "$skill_name",
+    "version": "$version",
+    "author": "$author",
+    "date": "$DATE",
+    "score": $SCORE,
+    "label": "$(score_label "$SCORE")",
+    "status": "$(score_status "$SCORE")",
+    "summary": {
+        "errors": $ERRORS,
+        "warnings": $WARNINGS,
+        "clean": $CLEAN
+    },
+    "findings": json.loads('$findings_json'),
+    "pass_strict": $([[ $ERRORS -eq 0 ]] && echo "true" || echo "false"),
+    "installable": $([[ $SCORE -lt 75 ]] && echo "true" || echo "false")
+}
+print(json.dumps(data, indent=2))
+PYJSON
+}
+
 # --- Report Generation ---
 generate_report() {
     local skill_name="$1" dir="$2"
@@ -454,22 +537,23 @@ audit_all() {
 
 # --- Main ---
 SKILL_INPUT=""
-SAVE_REPORT=false
-SCORE_ONLY=false
-DETAILED=false
-AUDIT_ALL=false
 
 while [ $# -gt 0 ]; do
     case "$1" in
         --analyze) shift ;;
         --report) SAVE_REPORT=true; shift ;;
         --score) SCORE_ONLY=true; shift ;;
+        --json) JSON_OUTPUT=true; shift ;;
+        --strict) STRICT_MODE=true; shift ;;
         --detailed) DETAILED=true; shift ;;
         --all) AUDIT_ALL=true; shift ;;
         -h|--help) usage ;;
         *) SKILL_INPUT="$1"; shift ;;
     esac
 done
+
+# Environment override for strict mode
+[ "${STRICTNESS:-0}" = "1" ] && STRICT_MODE=true
 
 if [ "$AUDIT_ALL" = true ]; then
     audit_all
@@ -511,4 +595,18 @@ if [ "$SCORE_ONLY" = true ]; then
     exit 0
 fi
 
-generate_report "$SKILL_NAME" "$SKILL_DIR"
+# Generate output
+if [ "$JSON_OUTPUT" = true ]; then
+    generate_json "$SKILL_NAME" "$SKILL_DIR"
+else
+    generate_report "$SKILL_NAME" "$SKILL_DIR"
+fi
+
+# Strict mode: fail if errors or warnings
+if [ "$STRICT_MODE" = true ]; then
+    if [ "$ERRORS" -gt 0 ] || [ "$WARNINGS" -gt 0 ]; then
+        exit 1
+    fi
+fi
+
+exit 0
