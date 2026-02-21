@@ -1,100 +1,152 @@
-#!/bin/bash
-
-# Health Alerts — Notificaciones de métricas críticas
-# Integra: Garmin + Weather + System
-
-set -e
+#!/usr/bin/env bash
+# ============================================================
+# Health Alerts — Check health metrics against thresholds
+# ============================================================
+set -uo pipefail
 
 WORKSPACE="${OPENCLAW_WORKSPACE:-$HOME/.openclaw/workspace}"
-ALERTS_FILE="${WORKSPACE}/.cache/health-dashboard/alerts.json"
-ALERT_COUNT=0
-ALERT_TYPES=()
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+CACHE_DIR="$WORKSPACE/.cache/health-dashboard"
+ALERTS_FILE="$CACHE_DIR/alerts.json"
 
-echo "🚨 Checking health metrics for alerts..."
+# Alert thresholds
+HR_HIGH="${HR_HIGH:-70}"
+HR_LOW="${HR_LOW:-45}"
+STRESS_HIGH="${STRESS_HIGH:-60}"
+BATTERY_LOW="${BATTERY_LOW:-20}"
+SLEEP_MIN="${SLEEP_MIN:-6}"
 
-# === GARMIN CRITICAL CHECKS ===
+# Colors
+RED='\033[0;31m'
+YELLOW='\033[1;33m'
+GREEN='\033[0;32m'
+CYAN='\033[0;36m'
+NC='\033[0m'
 
-# HR resting too high
-HR=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null | jq '.garmin.hr_resting // 58')
-if (( $(echo "$HR > 70" | bc -l) )); then
-    ALERT_TYPES+=("HR_HIGH")
-    ((ALERT_COUNT++))
-    echo "⚠️ ALERT: HR reposo ALTA ($HR bpm) — Posible estrés o enfermedad"
+mkdir -p "$CACHE_DIR"
+
+echo -e "${CYAN}🏥 Health Alerts Check${NC}\n"
+
+# Get Garmin data as JSON
+GARMIN_DATA=$(bash "$SCRIPT_DIR/garmin-json-export.sh" 2>&1)
+
+if [ -z "$GARMIN_DATA" ]; then
+    echo "Error: Failed to fetch Garmin data"
+    exit 1
 fi
 
-# Stress too high
-STRESS=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null | jq '.garmin.stress // 28')
-if (( $(echo "$STRESS > 60" | bc -l) )); then
-    ALERT_TYPES+=("STRESS_HIGH")
-    ((ALERT_COUNT++))
-    echo "⚠️ ALERT: Estrés ALTO ($STRESS) — Considera pausas"
+# Validate JSON
+if ! echo "$GARMIN_DATA" | jq empty 2>/dev/null; then
+    echo "Error: Invalid JSON from Garmin API"
+    echo "Debug: $GARMIN_DATA" | head -5
+    exit 1
 fi
 
-# Body battery critical
-BATTERY=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null | jq '.garmin.body_battery // 37')
-if (( $(echo "$BATTERY < 20" | bc -l) )); then
-    ALERT_TYPES+=("BATTERY_CRITICAL")
-    ((ALERT_COUNT++))
-    echo "🔋 ALERT: Body Battery CRÍTICA ($BATTERY%) — Descansa"
-fi
+# Parse JSON safely
+HR=$(echo "$GARMIN_DATA" | jq -r '.hr.current // .hr.resting // 0' 2>/dev/null || echo 0)
+STRESS=$(echo "$GARMIN_DATA" | jq -r '.stress.level // 0' 2>/dev/null || echo 0)
+BATTERY=$(echo "$GARMIN_DATA" | jq -r '.body_battery.level // 0' 2>/dev/null || echo 0)
+SLEEP=$(echo "$GARMIN_DATA" | jq -r '.sleep.duration_hours // 0' 2>/dev/null || echo 0)
+STEPS=$(echo "$GARMIN_DATA" | jq -r '.activity.steps // 0' 2>/dev/null || echo 0)
 
-# Sleep too low
-SLEEP=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null | jq '.garmin.sleep_hours // 6.8')
-if (( $(echo "$SLEEP < 6" | bc -l) )); then
-    ALERT_TYPES+=("SLEEP_LOW")
-    ((ALERT_COUNT++))
-    echo "😴 ALERT: Sueño BAJO ($SLEEP h) — Prioriza descanso"
-fi
+# Check system metrics
+MEMORY_USED=$(free | awk 'NR==2 {printf "%.0f", ($3/$2)*100}')
+DISK_USED=$(df /home | awk 'NR==2 {print $5}' | sed 's/%//')
+GATEWAY_UP=$(ss -tlnp 2>/dev/null | grep -q 18789 && echo "yes" || echo "no")
 
-# === SYSTEM CRITICAL CHECKS ===
+# Initialize alerts
+declare -a ALERTS=()
+declare -a WARNINGS=()
+declare -a INFO=()
 
-# Memory > 80%
-MEMORY_USED=$(free | grep Mem | awk '{printf "%.0f", ($3/$2)*100}')
-if (( MEMORY_USED > 80 )); then
-    ALERT_TYPES+=("MEMORY_HIGH")
-    ((ALERT_COUNT++))
-    echo "⚠️ ALERT: Memoria ALTA ($MEMORY_USED%) — Posible leak"
-fi
+# Health checks
+[ "$HR" -gt "$HR_HIGH" ] && ALERTS+=("❤️ High HR: $HR bpm (threshold: $HR_HIGH)")
+[ "$HR" -lt "$HR_LOW" ] && [ "$HR" -gt 0 ] && WARNINGS+=("❤️ Low HR: $HR bpm (threshold: $HR_LOW)")
+[ "$STRESS" -gt "$STRESS_HIGH" ] && ALERTS+=("😰 High stress: $STRESS (threshold: $STRESS_HIGH)")
+[ "$BATTERY" -lt "$BATTERY_LOW" ] && ALERTS+=("🔋 Low battery: $BATTERY% (threshold: $BATTERY_LOW%)")
+[ "$(echo "$SLEEP < $SLEEP_MIN" | bc)" -eq 1 ] && WARNINGS+=("😴 Low sleep: ${SLEEP%.*}h (target: $SLEEP_MIN h)")
 
-# Disk > 85%
-DISK_USED=$(df / | tail -1 | awk '{printf "%d", $5}' | sed 's/%//')
-if (( DISK_USED > 85 )); then
-    ALERT_TYPES+=("DISK_FULL")
-    ((ALERT_COUNT++))
-    echo "🔴 ALERT: Disco LLENO ($DISK_USED%) — CRITICAL"
-fi
+# System checks
+[ "$MEMORY_USED" -gt 80 ] && WARNINGS+=("💾 Memory: $MEMORY_USED% (high)")
+[ "$DISK_USED" -gt 85 ] && ALERTS+=("💿 Disk: $DISK_USED% (critical)")
+[ "$GATEWAY_UP" = "no" ] && ALERTS+=("⚡ OpenClaw gateway not responding")
 
-# Gateway down
-if ! ss -tlnp | grep -q 18789; then
-    ALERT_TYPES+=("GATEWAY_DOWN")
-    ((ALERT_COUNT++))
-    echo "🔴 ALERT: Gateway DOWN — Port 18789 no listening"
-fi
+# Activity check
+[ "$STEPS" -lt 1000 ] && INFO+=("👣 Low activity: $STEPS steps (consider moving)")
 
-# === SAVE ALERTS JSON ===
-mkdir -p "$(dirname "$ALERTS_FILE")"
+# Generate JSON output
 cat > "$ALERTS_FILE" << EOF
 {
   "timestamp": "$(date -Iseconds)",
-  "alert_count": $ALERT_COUNT,
-  "alert_types": [$(printf '"%s"' "${ALERT_TYPES[@]}" | sed 's/" "/"," "/g')],
   "metrics": {
-    "hr_resting": $HR,
-    "stress": $STRESS,
+    "heart_rate": $HR,
+    "stress_level": $STRESS,
     "body_battery": $BATTERY,
     "sleep_hours": $SLEEP,
-    "memory_percent": $MEMORY_USED,
-    "disk_percent": $DISK_USED
+    "steps": $STEPS,
+    "memory_used_percent": $MEMORY_USED,
+    "disk_used_percent": $DISK_USED
+  },
+  "alerts": {
+    "critical": [
+$(for alert in "${ALERTS[@]}"; do echo "      \"$alert\","; done | sed '$ s/,$//')
+    ],
+    "warning": [
+$(for warn in "${WARNINGS[@]}"; do echo "      \"$warn\","; done | sed '$ s/,$//')
+    ],
+    "info": [
+$(for inf in "${INFO[@]}"; do echo "      \"$inf\","; done | sed '$ s/,$//')
+    ]
+  },
+  "summary": {
+    "critical_count": ${#ALERTS[@]},
+    "warning_count": ${#WARNINGS[@]},
+    "info_count": ${#INFO[@]},
+    "status": "$([ ${#ALERTS[@]} -gt 0 ] && echo "CRITICAL" || ([ ${#WARNINGS[@]} -gt 0 ] && echo "WARNING" || echo "OK"))"
   }
 }
 EOF
 
+# Print console output
+echo -e "${CYAN}Metrics:${NC}"
+echo "  💓 HR: $HR bpm"
+echo "  😰 Stress: $STRESS"
+echo "  🔋 Battery: $BATTERY%"
+echo "  😴 Sleep: ${SLEEP%.*}h"
+echo "  👣 Steps: $STEPS"
 echo ""
-echo "✅ Alerts saved: $ALERTS_FILE"
-echo "📊 Alert count: $ALERT_COUNT"
 
-# === EXPORT FOR CRONS ===
-export ALERT_COUNT
-export ALERT_TYPES
+if [ ${#ALERTS[@]} -gt 0 ]; then
+    echo -e "${RED}🚨 CRITICAL ALERTS (${#ALERTS[@]}):${NC}"
+    for alert in "${ALERTS[@]}"; do
+        echo -e "  ${RED}✗${NC} $alert"
+    done
+    echo ""
+fi
 
-exit 0
+if [ ${#WARNINGS[@]} -gt 0 ]; then
+    echo -e "${YELLOW}⚠️  WARNINGS (${#WARNINGS[@]}):${NC}"
+    for warn in "${WARNINGS[@]}"; do
+        echo -e "  ${YELLOW}!${NC} $warn"
+    done
+    echo ""
+fi
+
+if [ ${#INFO[@]} -gt 0 ]; then
+    echo -e "${CYAN}ℹ️  INFO (${#INFO[@]}):${NC}"
+    for inf in "${INFO[@]}"; do
+        echo -e "  ${CYAN}i${NC} $inf"
+    done
+    echo ""
+fi
+
+# Summary
+total_issues=$((${#ALERTS[@]} + ${#WARNINGS[@]}))
+if [ $total_issues -eq 0 ]; then
+    echo -e "${GREEN}✅ All metrics normal${NC}"
+else
+    echo -e "${RED}Issues: $total_issues${NC}"
+fi
+
+echo ""
+echo "📄 JSON saved to: $ALERTS_FILE"
