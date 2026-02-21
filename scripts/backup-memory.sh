@@ -97,6 +97,20 @@ tar czf "$BACKUP_FILE" -C /tmp "openclaw-backup-${BACKUP_DATE}"
 BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
 FILE_COUNT=$(find "$BACKUP_DIR" -type f | wc -l)
 
+# --- Validate backup integrity -----------------------------------------------
+echo "Validando integridad del backup..."
+VALIDATOR="$WORKSPACE/scripts/backup-validator.sh"
+if [ -x "$VALIDATOR" ]; then
+    if bash "$VALIDATOR" "$BACKUP_FILE" --verify --quiet; then
+        echo "validation: PASS"
+    else
+        echo "⚠️ VALIDATION FAILED — backup may be corrupt!"
+        echo "validation: FAIL"
+    fi
+else
+    echo "validation: SKIPPED (validator not found)"
+fi
+
 # --- Upload to Drive ---------------------------------------------------------
 echo "Uploading backup (${BACKUP_SIZE})..."
 UPLOAD_RESULT=$(gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1)

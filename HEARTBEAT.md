@@ -38,7 +38,23 @@ Revisa si algún cron ha fallado desde la última comprobación:
 - Si >10 MB: avisar a Manu y sugerir `bash scripts/memory-guardian.sh --analyze`
 - Si >15 MB: ejecutar `bash scripts/memory-guardian.sh --dry-run --clean` y reportar
 
-### 7. Backup Validation Status
+### 7. Critical Changes Tracking
+- Check if `/tmp/critical-sandbox/` has pending files: `ls /tmp/critical-sandbox/ 2>/dev/null`
+- If files exist: alert Manu — "Hay cambios en sandbox sin aplicar/validar"
+- Check today's audit log: `cat memory/CHANGES/changes-$(date +%Y-%m-%d).log 2>/dev/null`
+- If any entry has "ROLLBACK-WARN" or "APPLY-FAILED": alert immediately
+
+### 8. Garmin Health Context
+- Run: `bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --current`
+- If alerts exist (ALERT_COUNT > 0), factor into communication:
+  - Estrés alto → ofrecer pausas, no proponer tareas pesadas
+  - Sueño malo → evitar tareas cognitivamente demandantes
+  - Body Battery bajo → sugerir descanso
+  - HR elevado → preguntar si está bien
+- Only check 1-2 times per day (morning + afternoon heartbeat)
+- Full protocol: `memory/PROTOCOLS/garmin-integration.md`
+
+### 9. Backup Validation Status
 - Revisa `memory/backup-validation-state.json`
 - Si `lastStatus` es "INVALID": alertar a Manu inmediatamente
 - Si no hay validaciones en >7 días: ejecutar `bash scripts/backup-validator.sh --status`

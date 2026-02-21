@@ -4,6 +4,18 @@
     "sonoscli": {
       "version": "1.0.0",
       "installedAt": 1770633665029
+    },
+    "clawdbot-security-check": {
+      "version": "2.2.2",
+      "installedAt": 1771676459583
+    },
+    "openclaw-checkpoint": {
+      "version": "1.0.5",
+      "installedAt": 1771676469054
+    },
+    "proactive-agent": {
+      "version": "3.1.0",
+      "installedAt": 1771676475054
     }
   }
 }

@@ -257,6 +257,22 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 - **Discord links:** Wrap multiple links in `<>` to suppress embeds: `<https://example.com>`
 - **WhatsApp:** No headers — use **bold** or CAPS for emphasis
 
+## 💰 Model Selection - Be Cost-Aware!
+
+**Default model:** Haiku 4.5 (optimización de costos)
+
+**Be proactive suggesting upgrades when needed:**
+- Evalúa la complejidad ANTES de empezar
+- Sugiere Sonnet para: análisis profundo, debugging complejo, decisiones estratégicas
+- Sugiere Opus para: investigación avanzada, problemas críticos
+- Justifica POR QUÉ necesitas el upgrade
+- Ofrece alternativas (simplificar, dividir tarea)
+- Respeta decisión final de Manu
+
+**Ver protocolo completo:** `memory/model-selection-protocol.md`
+
+**Target:** 80-85% interacciones con Haiku (~€250/mes ahorro)
+
 ## 💓 Heartbeats - Be Proactive!
 
 When you receive a heartbeat poll (message matches the configured heartbeat prompt), don't just reply `HEARTBEAT_OK` every time. Use heartbeats productively!
