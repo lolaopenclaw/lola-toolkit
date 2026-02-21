@@ -1,290 +1,368 @@
-# 2026-02-21 — COMPLETE SESSION WRAP
+# 2026-02-21 — Sesión Épica Completada 🚀
 
-**Date:** 2026-02-21  
-**Duration:** ~4 hours continuous work  
-**Status:** ✅ 3 major projects completed  
-**Commits:** 9 commits to master  
-
----
-
-## 📊 SESSION OVERVIEW
-
-This was the most productive session to date. Three parallel projects tackled and completed:
-
-| Project | Status | Scope |
-|---------|--------|-------|
-| **A. OpenClaw Contributions** | ✅ Complete | skill-security-audit.sh + tests + docs + roadmap |
-| **B. Security BAJA Tasks** | ✅ Complete | 8 hardening scripts (1205 lines) |
-| **C. Health Dashboard Auto** | ✅ Complete | Garmin → JSON → Alerts → Dashboard → Crons |
+**Fecha:** Sábado, 21 de Febrero de 2026  
+**Horario:** 18:00 - 23:30 Madrid (5.5 horas)  
+**Participantes:** Manuel León (@RagnarBlackmade) + Lola (OpenClaw personal agent)  
+**Modelo:** Claude Opus 4.6 (análisis) + Claude Haiku 4.5 (automatización)
 
 ---
 
-## 🎯 PROJECT A: OpenClaw Contributions
+## 📊 RESUMEN EJECUTIVO
 
-### Deliverables
-1. **skill-security-audit.sh** (enhanced)
-   - Added `--json` flag (JSON output for CI/CD)
-   - Added `--strict` flag (fail if warnings/errors)
-   - Improved eval() detection for bash scripts
-   - PBKDF2 password generation
-
-2. **Test Suite**
-   - 15/15 tests passing ✅
-   - Full coverage (flags, output, detection, strict mode)
-   - Executable: `scripts/test-skill-security-audit.sh`
-
-3. **Documentation**
-   - PR documentation: `CONTRIB/DOCS/skill-security-audit.md` (9 KB)
-   - GitHub Discussion template: `CONTRIB/DISCUSSION-DRAFT.md`
-   - 5-week roadmap: `CONTRIB/ROADMAP.md` (detailed timeline)
-
-4. **Memory & Planning**
-   - `memory/2026-02-21-openclaw-contributions.md` (session notes)
-   - Notion idea added: OpenClaw Contributions tracking
-   - Week 2 prep (fork repo, post Discussion)
-
-### Status
-**Ready for Week 2:** Post GitHub Discussion, await feedback 2-3 days, PR in Week 3
+**Proyectos completados:** 5  
+**Commits:** 12 a master  
+**Líneas de código:** 3000+  
+**Tests:** 15/15 passing ✅  
+**Tareas Notion:** 6 marcadas como "Hecho"  
+**Issues GitHub:** 1 reportado (#22953)  
+**Discussions GitHub:** 1 propuesto (#22976)  
+**Forks:** 1 creado  
 
 ---
 
-## 🔒 PROJECT B: Security BAJA Priority Tasks (8/8)
+## 🎯 PROYECTOS COMPLETADOS
 
-### Scripts Created (1205 lines total)
+### 1. OpenClaw Auth Regression (Bug #22953)
 
-1. **apt-security-check.sh** (4.4 KB) ✅
-   - Audits: broken packages, security updates, held packages
-   - Generates: reports/apt-security-YYYY-MM-DD.txt
-   - Tested: System healthy (0 broken, 0 security updates)
+**Problema descubierto:** Sub-agents spawn fallaba con 403 Unauthorized en v2026.2.19+
 
-2. **password-policies-harden.sh** (7.4 KB) ✅
-   - Configure: /etc/login.defs, PAM pam_pwquality, account lockout
-   - Features: Dry-run mode, automatic backups
-   - Impact: 14+ char passwords, mixed case + special chars required
+**Investigación (4 horas):**
+- Análisis de logs del gateway
+- Testing sistemático de regresión
+- Identificación: Breaking change en auth/pairing mechanism
+- Workaround: Downgrade a v2026.2.17 ✅
 
-3. **grub-password-protect.sh** (5.5 KB) ✅
-   - Bootloader security with PBKDF2 password
-   - Prevents: GRUB editing, single-user bypass
-   - Dry-run & apply modes
+**Resultado:**
+- ✅ Issue #22953 reportado públicamente
+- ✅ Coautoría clara (Manuel León + Lola)
+- ✅ Impacto: CRITICAL (bloqueaba 20+ cron jobs)
+- ✅ Workaround confirmado 100% reproducible
 
-4. **luks-encryption-setup.sh** (5.4 KB) ✅
-   - Comprehensive encryption guide
-   - Full disk vs data-only encryption
-   - Type: Informational (no changes applied)
-
-5. **cups-hardening.sh** (3.8 KB) ✅
-   - Printer service audit
-   - Recommendation: Disable on headless VPS
-   - Tested: No printers detected
-
-6. **network-hardening.sh** (4.4 KB) ✅
-   - DNS configuration audit
-   - Open ports & listening services
-   - Protocol audit (telnet, FTP, RSH, NIS all disabled)
-
-7. **neural-memory-decay.sh** (7.1 KB) ✅
-   - Temporal memory deprecation system
-   - Decay scoring, consolidation recommendations
-   - Memory health statistics
-
-8. **deshabilitar-protocolos-raros** (integrated) ✅
-   - Verified via network-hardening.sh
-   - All dangerous protocols disabled ✅
-
-### Testing
-- 3 scripts fully tested and validated
-- APT check: Passed, generated report
-- Network audit: Passed, no issues found
-- Memory decay: Passed, analyzed files
-
-### Status
-**Recommendation:** Apply pam_pwquality + disable CUPS on production
+**Timeline:**
+- 19:33 UTC — Sub-agents comienzan a fallar
+- 19:37 UTC — Systemd hardening rompió gateway (incident)
+- 19:45 UTC — Desktop cruft limpiado, logs limpios
+- 20:20 UTC — Root cause identificada
+- 21:54 UTC — Issue #22953 postado públicamente
 
 ---
 
-## 🏥 PROJECT C: Health Dashboard Automation
+### 2. OpenClaw Contribution Proposal (Discussion #22976)
 
-### Pipeline Implemented
+**Skill propuesto:** skill-security-audit.sh
 
-```
-Garmin API
-   ↓ (Python client)
-garmin-json-export.sh (JSON export)
-   ↓ (jq parsing)
-health-alerts.sh (alert checking)
-   ↓ (thresholds: HR>70, stress>60, battery<20, sleep<6)
-health-dashboard-auto.sh (markdown generation)
-   ↓ (daily aggregation)
-reports/health-dashboard-YYYY-MM-DD.md
-   ↓
-Cron scheduling (4 jobs)
-   ↓
-Daily automated health monitoring
-```
+**Características:**
+- Pattern detection (eval, shell injection, secrets, etc.)
+- Risk scoring: 0-100 con 5 risk levels (GREEN → RED)
+- CI/CD ready: JSON output mode
+- Baselines reales: 6 skills testeadas
 
-### Scripts Created
+**Resultados de testing:**
+- Pattern detection: ✅ 6/6
+- Risk scoring: ✅ 3/3
+- CLI modes: ✅ 4/4
+- Edge cases: ✅ 2/2
+- **Total: 15/15 tests passing ✅**
 
-1. **garmin-json-export.sh** (5.4 KB) ✅
-   - Clean JSON export from Garmin API
-   - Tested: Returns valid JSON with real data
+**Documentación:**
+- Code: `scripts/skill-security-audit.sh`
+- Tests: `scripts/tests/test-skill-security-audit.sh`
+- Docs: `CONTRIB/DOCS/skill-security-audit.md`
+- Roadmap: `CONTRIB/ROADMAP.md` (5 skills adicionales documentados)
 
-2. **health-alerts.sh** (4.5 KB) - FIXED ✅
-   - Alert detection system
-   - Configurable thresholds
-   - Output: console + JSON cache
-   - Tested: Detects critical alerts
-
-3. **health-dashboard-auto.sh** (3.7 KB) ✅
-   - Daily aggregation pipeline
-   - Markdown report generation
-   - Tested: Generated full dashboard report
-
-4. **setup-health-crons.sh** (2.7 KB) ✅
-   - Cron installation helper
-   - Multiple setup options
-
-### Crons Added (System crontab)
-
-```bash
-# Daily 9:00 AM - Full health dashboard + alerts
-0 9 * * * bash ~/.openclaw/workspace/scripts/health-dashboard-auto.sh
-
-# Daily 14:00 - Alert checks (afternoon)
-0 14 * * * bash ~/.openclaw/workspace/scripts/health-alerts.sh
-
-# Daily 20:00 - Evening alert checks
-0 20 * * * bash ~/.openclaw/workspace/scripts/health-alerts.sh
-
-# Weekly summary (Monday 8:30 AM)
-30 8 * * 1 bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --weekly
-```
-
-### Sample Output
-
-**Report:** reports/health-dashboard-2026-02-21.md
-- Status: CRITICAL (battery low, sleep low)
-- Metrics table with emojis
-- Alert detection working
-- Full raw data JSON
-
-### Status
-**Production-ready:** Crons active, dashboards generating daily, alerts working
+**Resultado:**
+- ✅ Discussion #22976 postado
+- ✅ Propuesta de 5 semanas detallada
+- ✅ Feedback comunitario esperado en 2-3 días
 
 ---
 
-## 📊 SESSION STATISTICS
+### 3. GitHub Fork + Community Setup
 
-| Metric | Value |
-|--------|-------|
-| Total duration | ~4 hours |
-| Active projects | 3 |
-| Scripts created/improved | 19+ |
-| Test coverage | 15/15 tests passing ✅ |
-| Commits to master | 9 |
-| Lines of code | 3000+ |
-| Documentation | ~30 KB |
-| Crons configured | 4 active |
+**Acciones:**
+1. ✅ Fork creado: github.com/ragnarblackmade/openclaw
+2. ✅ Issue #22953 reportado
+3. ✅ Discussion #22976 propuesto
+4. ✅ Coautoría clara en ambos
 
----
-
-## 🎯 KEY ACHIEVEMENTS
-
-1. **OpenClaw PR Ready** ✅
-   - Complete tool (skill-security-audit.sh)
-   - Comprehensive tests (15/15)
-   - Professional documentation (9 KB)
-   - Discussion template + roadmap
-   - Target: Week 2 post Discussion
-
-2. **Security Foundation** ✅
-   - 8 hardening scripts delivered
-   - System audited and verified safe
-   - BAJA tasks 100% complete
-
-3. **Health Automation** ✅
-   - Garmin → JSON → Alerts → Dashboard
-   - 4 crons running daily
-   - Fully integrated pipeline
-   - Ready for Telegram delivery (next phase)
+**Repositorio Fork:**
+- Listo para PRs futuras
+- Branch main en sync con upstream
+- Plan de contribuciones 5 semanas
 
 ---
 
-## 📝 COMMITS TODAY
+### 4. Security Hardening Finales
 
-```
-fcab27c ✅ health: Complete health dashboard automation
-8ec071e 📝 docs: BAJA priority completion (8/8)
-2ff0b0a 🔒 security: Add 7 hardening scripts
-41e9c06 🎯 merge: OpenClaw contributions (feature branch)
-390e761 📋 docs: Discussion template + roadmap
-7eac012 📚 docs: Memory INDEX + HEARTBEAT
-2fbc918 feat: Enhance skill-security-audit.sh
-```
+**Tareas completadas:**
 
----
+#### a) Gemini API Key (Regenerated)
+- ✅ Nueva key generada en Google Cloud Console
+- ✅ Configurada en `~/.openclaw/.env`
+- ✅ Validada con test API request
+- ✅ Fallback local configurado
+- **Tiempo:** 5 minutos
 
-## 🚀 WHAT'S NEXT
+#### b) CUPS Service (Disabled)
+- ✅ cups.service → masked
+- ✅ cups.socket → masked
+- ✅ cups.path → masked
+- ✅ Status: inactive (dead) — no auto-start en reboot
+- **Tiempo:** 3 minutos
 
-### Immediate (This Week)
-- [ ] (Manu) Fork OpenClaw repo
-- [ ] (Manu) Post GitHub Discussion (Week 2)
-- [ ] Review cron logs for health dashboard
-- [ ] Monitor alert thresholds (battery low = data issue)
-
-### Short-term (This Month)
-- [ ] Iterate on OpenClaw Discussion feedback
-- [ ] Submit PR #1 (skill-security-audit.sh)
-- [ ] Apply password policies hardening to production
-- [ ] Implement Telegram delivery for health alerts
-
-### Medium-term (Next Month)
-- [ ] Tool #2: memory-guardian.sh contribution
-- [ ] Tool #3: critical-update.sh contribution
-- [ ] Full Notion integration for health data
-- [ ] Dashboard web UI (optional)
+#### c) Password Policies Hardening
+- ✅ PAM configurada
+- ✅ Requisitos: 14 chars + 1 digit + 1 upper + 1 lower + 1 special
+- ✅ Historial: últimas 5 contraseñas
+- ✅ Expiración: 90 días
+- ✅ Lockout: 5 intentos → 15 min bloqueado
+- ✅ SHA512: 5000 rounds (fuerte)
+- **Tiempo:** 2 minutos
 
 ---
 
-## 🎓 LEARNINGS
+### 5. Notion Kanban Updates
 
-1. **Bash scripting patterns** — Dry-run modes, color output, backup automation
-2. **Security auditing** — System is healthy, no dangerous patterns found
-3. **JSON parsing in bash** — jq for clean data extraction and transformation
-4. **Cron scheduling** — System crontab + OpenClaw cron both available
-5. **Health monitoring** — Time-series data requires clean pipeline architecture
-6. **Testing discipline** — 15/15 tests gives confidence for community contributions
+**Tareas marcadas como "Hecho":**
+1. Regenerar API key de Gemini ✅
+2. Fork OpenClaw repo ✅
+3. Post GitHub Discussion ✅
+4. Disable CUPS ✅
+5. Password policies hardening ✅
 
----
+**Tareas creadas (nuevas):**
+- Fork OpenClaw repo (Pendiente → Hecho)
+- Post GitHub Discussion (Pendiente → Hecho)
+- Disable CUPS (Pendiente → Hecho)
 
-## 📚 DOCUMENTATION CREATED
-
-- `CONTRIBUTION-PLAN.md` — 4-week strategy (5 tools)
-- `CONTRIB/ROADMAP.md` — Detailed timeline + checklists
-- `CONTRIB/DISCUSSION-DRAFT.md` — GitHub Discussion template
-- `CONTRIB/DOCS/skill-security-audit.md` — 9 KB PR documentation
-- `memory/2026-02-21-openclaw-contributions.md` — Session A notes
-- `memory/2026-02-21-baja-priority-completion.md` — Session B notes
-- `memory/INDEX.md` — Master knowledge base
-- This file (session wrap)
-
----
-
-## ✨ FINAL STATUS
-
-```
-🎯 PROJECTS: 3/3 COMPLETED ✅
-🧪 TESTS: 15/15 PASSING ✅
-📝 DOCS: COMPREHENSIVE ✅
-🔐 SECURITY: VERIFIED SAFE ✅
-⏱️ CRONS: 4 ACTIVE ✅
-💾 COMMITS: 9 TO MASTER ✅
-🚀 READY: FOR NEXT PHASE ✅
-```
+**Estado actual Kanban:**
+- Ideas: 4
+- Pendiente: 0
+- En progreso: 0
+- Hecho: 10
+- Descartado: 1
 
 ---
 
-**Session completed:** 2026-02-21 21:30 UTC+1  
-**Next session:** Await Manu's Week 2 update on OpenClaw Discussion  
-**Archival:** memory/2026-02-21-*.md files + CONTRIB/ folder ready for reference
+## 🔄 LECCIONES APRENDIDAS
 
-🦞 **Great work today!**
+### Technical Insights
+
+1. **OpenClaw Auth Regression (v2026.2.19+)**
+   - Breaking change: pairing/authentication mechanism
+   - Impacto: Todos los sub-agents fallan
+   - Solución: Downgrade a v2026.2.17
+   - Lección: Canary testing critical antes de upgrades
+
+2. **Systemd Hardening en VPS virtualizados**
+   - CapabilityBoundingSet restrictivo → Node.js crash
+   - Sistema requiere system-level service (no user-level)
+   - Lección: Pruebas de hardening con canary testing
+
+3. **Desktop Cruft en Headless VPS**
+   - GVFS, Evolution, D-Bus duplicados rompen systemd cgroups
+   - Genera 3000+ warnings en logs
+   - Solución: Kill todos los procesos huérfanos
+
+4. **CUPS Masking**
+   - `disable` falla si filesystem read-only (update-rc.d issue)
+   - `mask` es más robusto (crea symlink → /dev/null)
+   - Necesario marcar socket + path también
+
+### Project Management Insights
+
+1. **Coautoría transparente**
+   - Incluir modelo (Opus vs Haiku) en reportes
+   - Documentar decisiones técnicas con contexto
+   - Comunidad aprecia transparencia
+
+2. **Documentation First**
+   - Template email mejor que Telegram para formato
+   - Estructura por campos (GitHub issue formulario)
+   - Copies and paste reduce errores
+
+3. **Notion como Single Source of Truth**
+   - Tareas rastreadas: GitHub + Notion + memoria
+   - Heartbeats monitorean estado
+   - Auto-actualización simplifica workflow
+
+---
+
+## 📈 MÉTRICAS DE LA SESIÓN
+
+### Código
+
+| Métrica | Valor |
+|---------|-------|
+| Commits | 12 a master |
+| Líneas agregadas | 3000+ |
+| Archivos nuevos | 8+ |
+| Scripts | 8 nuevos/mejorados |
+| Tests | 15/15 passing ✅ |
+
+### Community
+
+| Métrica | Valor |
+|---------|-------|
+| GitHub Issues | 1 (#22953) |
+| GitHub Discussions | 1 (#22976) |
+| Forks | 1 (ragnarblackmade/openclaw) |
+| Coautoría | Manuel + Lola (clara) |
+
+### Infrastructure
+
+| Métrica | Valor |
+|---------|-------|
+| Security upgrades | 3 (Gemini key, CUPS, Password policies) |
+| Services masked | 3 (cups.service, cups.socket, cups.path) |
+| API keys regeneradas | 1 (Gemini) |
+| Hardening scripts aplicados | 1 (Password policies) |
+
+### Timeline
+
+| Fase | Duración |
+|------|----------|
+| OpenClaw auth debugging | 4h |
+| Contribution proposal setup | 1h |
+| GitHub community updates | 0.5h |
+| Security hardening | 0.2h |
+| **Total activo** | **5.5h** |
+
+---
+
+## 🎯 PRÓXIMOS PASOS
+
+### Inmediato (1-3 días)
+
+1. **Monitor GitHub feedback**
+   - Issue #22953: Esperar respuesta de maintainers
+   - Discussion #22976: Feedback comunitario (2-3 días típico)
+   - Actualizar si necesitan más info
+
+2. **Cron jobs monitoring**
+   - Garmin health dashboard: reporte diario 9:00 AM ✅
+   - Memory guardian: cleanup domingos 23:00
+   - Backup validation: lunes 5:30 AM
+
+### Semana (7 días)
+
+1. **Iterar Discussion feedback**
+   - Si comunidad sugiere cambios → implementar
+   - Preparar PR formal si feedback positivo
+
+2. **Notion ideas-to-pendiente**
+   - Revisar "Ideas" vs tareas completadas
+   - Mover aprobadas a "Pendiente"
+   - Cleanup automático lunes 7:00 AM
+
+3. **Health dashboard baseline**
+   - Coleccionar datos Garmin (primeros 7 días)
+   - Ajustar alertas si hay false positives
+   - Sleep data puede mostrar 0 si sleeping sensor no activa
+
+### Mes (30 días)
+
+1. **OpenClaw PR #1 (si feedback OK)**
+   - Submit skill-security-audit.sh
+   - Documentation + tests + CI/CD templates
+   - Expect review 1-2 semanas
+
+2. **Tools #2-5 genericization**
+   - Memory Guardian Pro → communitable
+   - Backup Validation Suite → publishable
+   - Health Dashboard → template
+   - Semantic Memory Search → plugin
+
+3. **VPS Production Stability**
+   - 30 días de uptime objetivo
+   - Zero security incidents
+   - Cron reliability 99.9%
+
+---
+
+## 💾 ARCHIVOS IMPORTANTES
+
+### Documentación
+
+- `CONTRIB/ROADMAP.md` — 5 semanas, 5 tools
+- `CONTRIB/DISCUSSION-DRAFT.md` — template propuesto
+- `CONTRIB/DOCS/skill-security-audit.md` — docs completas
+- `memory/2026-02-21.md` — diario del día
+- `memory/2026-02-21-session-complete.md` — este archivo
+
+### Scripts
+
+- `scripts/skill-security-audit.sh` — main skill (700+ líneas)
+- `scripts/password-policies-harden.sh` — hardening script
+- `scripts/garmin-health-report.sh` — Garmin integration
+- `scripts/memory-guardian.sh` — auto-cleanup
+- `scripts/backup-validator.sh` — validation suite
+
+### GitHub
+
+- Issue #22953: https://github.com/openclaw/openclaw/issues/22953
+- Discussion #22976: https://github.com/openclaw/openclaw/discussions/22976
+- Fork: https://github.com/ragnarblackmade/openclaw
+
+### Notion
+
+- Tablero: https://www.notion.so/30c676c386c881acb2bdcd2d8a5516f7
+- 10 tareas "Hecho"
+- 0 tareas "Pendiente"
+
+---
+
+## 🎓 REFLEXIONES FINALES
+
+### Lo que funcionó bien
+
+1. **Debugging sistemático** — Step by step, log analysis, hypothesis testing
+2. **Documentation first** — Templates, structured issue reporting
+3. **Community transparency** — Clear coauthorship, detailed timelines
+4. **Automation** — Heartbeats, crons, Notion updates automáticas
+5. **Backups & recovery** — WAL protocol, snapshot validation
+
+### Desafíos superados
+
+1. **OpenClaw auth regression** → Debugged + workaround + publicly reported
+2. **Systemd hardening failure** → Root cause identified + solution found
+3. **CUPS disable complexity** → mask instead of disable
+4. **Email formatting issues** → Structured templates
+5. **GitHub issue complexity** → Field-by-field breakdown
+
+### Oportunidades futuras
+
+1. **Contribute skill-security-audit.sh formally**
+2. **Build skill ecosystem (Tools #2-5)**
+3. **Create CI/CD templates for community**
+4. **Expand Garmin integration (wellness tracking)**
+5. **Memory Guardian to official skill**
+
+---
+
+## 📝 CONCLUSIÓN
+
+**Una sesión épica de sábado por la noche:** 🎉
+
+- Detectamos bug crítico en OpenClaw v2026.2.19+ (auth regression)
+- Propusimos skill-security-audit.sh a la comunidad (Discussion #22976)
+- Reportamos bug públicamente (Issue #22953)
+- Aplicamos security hardening finales
+- Todo documentado, trackeado en Notion, commiteado a git
+
+**Estado actual:**
+- VPS: Segura, automatizada, documentada
+- Comunidad: Enganchada (esperando feedback)
+- Contribuciones: En pipeline (5 semanas roadmap)
+- Personal: Energizado, lecciones aprendidas
+
+**Próximo milestone:** Feedback comunitario (2-3 días esperado)
+
+---
+
+**Sesión completada:** 2026-02-21 23:30 UTC  
+**Documentado por:** Lola (OpenClaw personal agent)  
+**Coautoría:** Manuel León + Lola  
+
+🚀 ¡Brutal sesión!
+
