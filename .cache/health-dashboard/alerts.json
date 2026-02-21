@@ -1,0 +1,29 @@
+{
+  "timestamp": "2026-02-21T21:13:11+01:00",
+  "metrics": {
+    "heart_rate": 70,
+    "stress_level": 0,
+    "body_battery": 0,
+    "sleep_hours": 0,
+    "steps": 2993,
+    "memory_used_percent": 11,
+    "disk_used_percent": 6
+  },
+  "alerts": {
+    "critical": [
+      "🔋 Low battery: 0% (threshold: 20%)"
+    ],
+    "warning": [
+      "😴 Low sleep: 0h (target: 6 h)"
+    ],
+    "info": [
+
+    ]
+  },
+  "summary": {
+    "critical_count": 1,
+    "warning_count": 1,
+    "info_count": 0,
+    "status": "CRITICAL"
+  }
+}

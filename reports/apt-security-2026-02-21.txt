@@ -1,0 +1,44 @@
+APT Security Audit Report
+=========================
+Date: Sat Feb 21 21:09:31 CET 2026
+Hostname: ubuntu
+OS: Ubuntu 24.04.4 LTS
+
+[0;36m[1/6] Checking for broken packages...[0m
+BROKEN PACKAGES:
+✓ None
+
+[0;36m[2/6] Available updates...[0m
+AVAILABLE UPDATES:
+Total upgradable packages: 0
+
+[0;36m[3/6] Security updates...[0m
+SECURITY UPDATES:
+✓ No pending security updates
+
+[0;36m[4/6] Held packages...[0m
+HELD PACKAGES:
+✓ No held packages
+
+[0;36m[5/6] Obsolete/local packages...[0m
+OBSOLETE/LOCAL PACKAGES:
+⚠️  Obsolete packages: 1
+Del libssh-gcrypt-4 0.10.6-2ubuntu0.2 [224 kB]
+
+[0;36m[6/6] APT configuration...[0m
+APT CONFIGURATION:
+Unattended upgrades: enabled
+Unattended upgrades config exists ✓
+  → Automatic reboot on kernel updates: disabled (consider enabling)
+
+SUMMARY:
+========
+Broken packages: 0 ✓
+Upgradable: 0
+Security updates: 0 ✓
+Held packages: 0 ✓
+
+RECOMMENDATIONS:
+================
+✓ Consider enabling unattended automatic security updates
+✓ Check /var/log/apt/history.log for recent changes
