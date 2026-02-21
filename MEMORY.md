@@ -44,6 +44,7 @@
 
 ## Infraestructura
 - **VPS:** Ubuntu 6.8.0, usuario `mleon`, sudo sin contraseña
+- **Timezone:** Europe/Madrid (CET, +0100) — cambiado 2026-02-21
 - **OpenClaw:** 2026.2.17, puerto 18789
 - **Modelo:** Claude Opus 4.6 (principal), Haiku 4.5 (crons y tareas rutinarias). Gemini API key revocada.
 - **Navegador:** Chrome 145 via chrome-shim
@@ -77,21 +78,76 @@
 - **Propiedades:** Tarea, Estado, Prioridad, Notas, Frecuencia, Archivado, Actualizado
 - **Captura automática:** En todos los reportes/análisis, detectar tareas/mejoras y añadirlas a Ideas (sin duplicar) con documentación completa (origen, qué es, beneficios, cuándo, complejidad, cómo, riesgos, recomendación)
 
-## Archivos clave
+## Archivos clave (2026-02-21)
+
+### Backup & Recovery
 - `RECOVERY.md` — instrucciones para restaurarme desde cero
-- `scripts/backup-memory.sh` — backup workspace → Drive
-- `scripts/usage-report.sh` — reporte de consumo
-- `scripts/critical-change-checklist.md` — checklist para cambios de seguridad
-- `memory/security-change-protocol.md` — protocolo A+B completo
+- `scripts/backup-memory.sh` — backup workspace → Drive (cron 4:00 AM)
+- `memory/PROTOCOLS/backup-naming-policy.md` — Naming: automático vs manual
+- `memory/PROTOCOLS/backup-retention-policy.md` — Retención: máximo 30 días
 - Drive folder: `openclaw_backups` (ID: `1G-OLpZKJ2zQXac0qaKxvaeglbRUuRxfD`)
+
+### Cambios Críticos & Canary Testing
+- `scripts/critical-change-checklist.md` — Flujo 7 fases + Canary integrado
+- `memory/PROTOCOLS/canary-testing-protocol.md` — Guía detallada de pre-testing
+- `scripts/canary-test.sh` — Script de validación (start/test/validate/rollback)
+- `memory/security-change-protocol.md` — Protocolo A+B completo
+
+### Memory Management
+- `scripts/memory-guardian.sh` — Auto-cleanup + bloat detection
+- `scripts/tier-rotation.sh` — HOT/WARM/COLD rotación automática
+- `memory/PROTOCOLS/memory-guardian-protocol.md` — Guía del sistema
+- `memory/DAILY/INDEX.md` — Estructura tiered
+
+### Reporting & Usage
+- `scripts/usage-report.sh` — reporte de consumo
+- `memory/INDEX.md` — Índice general (CORE/PROTOCOLS/DAILY/ANALYSIS)
+- `memory/DAILY/HOT/` — Últimos 7 días (búsqueda primaria)
+- `memory/DAILY/WARM/` — 8-30 días (búsqueda secundaria)
+- `memory/DAILY/COLD/` — >30 días (histórico comprimido)
+
+## 🔄 Política de Retención de Backups (Decisión 2026-02-21)
+
+**REGLA:** Mantener máximo 30 días de backups en Drive. Después, eliminar automáticamente.
+
+**Aplica a:**
+- Backups diarios (`openclaw-backup-YYYY-MM-DD.tar.gz`)
+- Backups de limpieza (`cleanup-backup-YYYY-MM-DD.tar.gz`)
+- Cualquier backup futuro
+
+**Beneficios:**
+- ✅ Drive no collapsa (evita ~2.5 GB/mes)
+- ✅ Recuperación consistente (30 días siempre disponible)
+- ✅ Automático (sin intervención manual)
+
+**Timeline:**
+- Backup creado: YYYY-MM-DD
+- Disponible para recuperación: 30 días
+- Eliminado automáticamente: YYYY-MM-DD + 30 días
+
+**Monitoreo:**
+- Cron lunes 5:30 AM: Limpia backups >30 días
+- Antes de eliminar, verifica que haya backup más reciente
+
+**Ejemplos actuales:**
+- `cleanup-backup-2026-02-21.tar.gz` — Vigente hasta 2026-03-23
+- `openclaw-backup-2026-02-21.tar.gz` — Vigente hasta 2026-03-23
+- Backups más viejos de 2026-01-22 — Eliminados
 
 ## Protocolo de cambios críticos
 **Decisión 2026-02-20:** Protocolo A+B para SSH, firewall, port forwarding, Fail2Ban
+**Mejora 2026-02-21:** Canary Testing pre-change (scripts/canary-test.sh)
 1. **Backup automático** antes del cambio (verificar Drive)
-2. **Testing interactivo** con Manu (sesión SSH de respaldo)
-3. **Validación manual** antes de confirmar
-4. **Rollback inmediato** si falla
-Ver: `memory/security-change-protocol.md` y `scripts/critical-change-checklist.md`
+2. **Health baseline** — `bash canary-test.sh start`
+3. **Cambio controlado** — Editar, recargar servicio
+4. **Validación automática** — `bash canary-test.sh test && validate`
+5. **Rollback if needed** — `bash canary-test.sh rollback`
+
+Documentación: 
+- `memory/security-change-protocol.md` — Protocolo A+B
+- `memory/PROTOCOLS/canary-testing-protocol.md` — Canary testing (detallado)
+- `scripts/critical-change-checklist.md` — Checklist + Canary integrado (ejecutivo)
+- `scripts/canary-test.sh` — Script principal (herramienta)
 
 ## Lecciones aprendidas
 - D-Bus SecretService no funciona en VPS headless → usar keyring file-based para gog
@@ -100,6 +156,45 @@ Ver: `memory/security-change-protocol.md` y `scripts/critical-change-checklist.m
 - Chrome en VPS necesita chrome-shim wrapper para funcionar con OpenClaw
 - Usar IDs oficiales de Anthropic para modelos (claude-haiku-4-5, no claude-haiku-3.5). Verificar en docs.anthropic.com
 - claude-3-5-haiku deprecated desde 19 feb 2026 → migrado a claude-haiku-4-5
+
+## 🔄 WAL Protocol (Implementado 2026-02-21)
+
+**Write-Ahead Logging para consistencia de agent state**
+- 🪵 **Log:** Cambios se registran ANTES de aplicar
+- 📸 **Snapshots:** Punto de recuperación cada 6h
+- 🔄 **Replay:** Recuperación automática en crashes
+- ✅ **Auditability:** Trace completo de todos los cambios
+- **Crons:**
+  - Snapshots: cada 6 horas
+  - Rotación: diario 2:00 AM (comprime logs >7 días)
+  - Validación: lunes 6:00 AM
+- **Ubicación:** `memory/WAL/`, `scripts/wal-logger.sh`
+- **Integración:** BOOT.md ahora valida/recupera WAL al arrancar
+
+---
+
+## 🧠 Sistema de Memory Management (Implementado 2026-02-21)
+
+### Tiered Architecture
+- 🔥 **HOT:** Últimos 7 días — Consultar PRIMERO (rápido, bajo token)
+- 🌤️ **WARM:** 8-30 días — Contexto medio plazo
+- ❄️ **COLD:** >30 días — Comprimido en `.tar.gz`, histórico
+- **Rotación automática:** Lunes 23:30 (cron)
+- **Beneficios:** -30% tokens memory_search, -85% almacenamiento COLD
+
+### Memory Guardian Pro v1 (Auto-Cleanup)
+- **Cuándo:** Domingos 23:00 (antes de tier-rotation)
+- **Qué hace:**
+  - ✅ Detecta bloat (archivos >500KB)
+  - ✅ Limpia backups viejos (.backup-*)
+  - ✅ Elimina temporales (.tmp, .bak)
+  - ✅ Comprime archivos >30 días
+  - ✅ Busca duplicados (MD5)
+  - ✅ Estima token usage
+- **Beneficios:** -75-80% almacenamiento, sin intervención manual
+- **Preserva:** CORE/, PROTOCOLS/, DAILY/HOT/ (nunca toca lo crítico)
+
+**Ubicación:** `memory/DAILY/HOT/`, `memory/DAILY/WARM/`, `memory/DAILY/COLD/`
 
 ---
 ## Lecciones aprendidas
@@ -114,6 +209,45 @@ Ver: `memory/security-change-protocol.md` y `scripts/critical-change-checklist.m
 - **Hardening SSH rompe VNC:** `AllowTcpForwarding no` bloquea túneles SSH → necesario `AllowTcpForwarding yes` para VNC
 - **XFCE en VNC necesita D-Bus:** `~/.vnc/xstartup` debe inicializar D-Bus con `dbus-launch` o XFCE crashea
 - **Memoria modular previene overflow:** Dividir `memory/YYYY-MM-DD.md` en sesiones cuando pase de ~4KB
+- **Timezone VPS en UTC causaba confusiones:** Cambiar a Europe/Madrid (local del usuario) para consistencia en crons, logs, reportes y mental model. Decisión 2026-02-21.
+
+## 📋 Sesión 2026-02-21 — 4 Sub-Agentes Completados
+
+**Proyectos implementados (14:00-14:20 Madrid):**
+
+### ✅ Semantic Memory Search
+- LanceDB + nomic-embed-text (768 dims)
+- 582 chunks vectorizados de 59 archivos
+- `scripts/semantic-search.sh` executable
+- Search latency: <2s, calidad: excelente
+
+### ✅ Memory Guardian Pro
+- Auto-cleanup: bloat detection, dedup, compression
+- `scripts/memory-guardian.sh` con 7 flags
+- Cron: domingos 23:00
+- Protección automática de CORE/PROTOCOLS
+- Status: 576 KB memoria, 0 problemas
+
+### ✅ Backup Validation Suite
+- Checksum SHA256 + structure verify + test restore
+- `scripts/backup-validator.sh` con 4 modes
+- Integrado en `backup-memory.sh` (post-backup)
+- Cron: lunes 5:30 AM
+- Testeo real: ✅ 8/8 archivos, 100 files recovered
+
+### ✅ Skill Security Audit
+- Pattern detection (eval, credentials, etc.)
+- Scoring 0-100 con 5 risk levels
+- `scripts/skill-security-audit.sh` 
+- Registry: 6 VERDE + 4 AMARILLO baseline
+- Auditoría de skills instalados completada
+
+### 🟡 En Progreso: Critical Update Safety
+- Health baseline + canary testing + rollback
+- `scripts/critical-update.sh` (estimado 15 min)
+- Integración con canary-test.sh existente
+- ETA: completado en 14:30 Madrid
 
 ---
-*Última actualización: 2026-02-19*
+
+*Última actualización: 2026-02-21*

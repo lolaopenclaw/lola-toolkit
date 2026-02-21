@@ -33,6 +33,17 @@ Revisa si algún cron ha fallado desde la última comprobación:
 - Si un cron con delivery=announce terminó OK pero Manu no recibió el mensaje (por reinicio del gateway u otro motivo), reenvíalo manualmente con `message send`
 - Tras cada reinicio del gateway, comprueba si había crons o entregas pendientes
 
+### 6. Memory Bloat Check
+- Ejecutar: `du -sh ~/.openclaw/workspace/memory/`
+- Si >10 MB: avisar a Manu y sugerir `bash scripts/memory-guardian.sh --analyze`
+- Si >15 MB: ejecutar `bash scripts/memory-guardian.sh --dry-run --clean` y reportar
+
+### 7. Backup Validation Status
+- Revisa `memory/backup-validation-state.json`
+- Si `lastStatus` es "INVALID": alertar a Manu inmediatamente
+- Si no hay validaciones en >7 días: ejecutar `bash scripts/backup-validator.sh --status`
+- Solo alertar si hay problemas
+
 ### Reglas
 - SÉ PROACTIVA: no esperes a que Manu diga que algo falló. Verifica, detecta y avisa tú primero
 - Solo avisar si hay algo que reportar. Si todo está bien, HEARTBEAT_OK
