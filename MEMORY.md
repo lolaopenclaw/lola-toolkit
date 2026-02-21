@@ -173,6 +173,35 @@ Documentación:
 
 ---
 
+## 🪵 WAL Protocol (Write-Ahead Logging) — Implementado 2026-02-21
+
+**Status:** ✅ **Production-ready**
+
+**Componentes:**
+- `scripts/wal-logger.sh` — Validar integridad de logs
+- `scripts/wal-snapshot.sh` — Crear snapshots (punto de recuperación)
+- `scripts/wal-replay.sh` — Recuperar desde snapshot
+- `memory/WAL/` — Estructura de logs + snapshots
+
+**Cómo funciona:**
+1. **Logging:** Cada cambio importante se registra en memory/WAL/logs/
+2. **Snapshots:** Cada 6h (cron) se comprimen logs en snapshot
+3. **Validation:** BOOT.md valida integridad post-crash
+4. **Replay:** Si hay corrupción, recupera desde último snapshot limpio
+
+**Beneficios:**
+- ✅ Crash-safe: recuperación automática post-reboot
+- ✅ Audit trail: traza completa de cambios
+- ✅ Point-in-time recovery: restaurar a snapshot específico
+- ✅ Rolling backups: últimos 10 snapshots guardados
+
+**Crons:**
+- **Snapshots:** Cada 6 horas
+- **Log rotation:** Diario 2:00 AM (comprime logs >7 días)
+- **Validation:** Lunes 6:00 AM (auditoría semanal)
+
+---
+
 ## 🧠 Sistema de Memory Management (Implementado 2026-02-21)
 
 ### Tiered Architecture
