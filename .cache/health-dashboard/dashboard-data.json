@@ -1,0 +1,33 @@
+{
+  "timestamp": "2026-02-21T20:34:00Z",
+  "garmin": {
+    "hr_resting": 58,
+    "stress": 28,
+    "body_battery": 37,
+    "sleep_hours": 6.8,
+    "steps": 866
+  },
+  "weather": {
+    "temp_c": 12,
+    "humidity": 65,
+    "wind_kmh": 12,
+    "pressure_hpa": 1013,
+    "condition": "Cloudy"
+  },
+  "system": {
+    "uptime": "1 day, 10h",
+    "load": 0.15,
+    "memory_used_gb": 7.2,
+    "memory_total_gb": 15,
+    "disk_used_gb": 29,
+    "disk_total_gb": 464,
+    "gateway_status": "running"
+  },
+  "recommendations": {
+    "activity": "Increase movement",
+    "energy": "Charge battery",
+    "stress": "Excellent",
+    "sleep": "Normal, maintain",
+    "system": "Stable"
+  }
+}
