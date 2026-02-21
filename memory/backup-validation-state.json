@@ -13,13 +13,34 @@
       "status": "VALID",
       "details": "Test restore OK: 100 files",
       "checksum": ""
+    },
+    {
+      "file": "openclaw-backup-2026-02-21.tar.gz",
+      "timestamp": "2026-02-21T18:59:51Z",
+      "status": "VALID_WITH_WARNINGS",
+      "details": "0 errors, 1 warnings",
+      "checksum": "ad8f969d6b93409e10a4a7755b1dfdb503ae4466e5ad3f2fd520ec22be35f9c6"
+    },
+    {
+      "file": "openclaw-backup-2026-02-21.tar.gz",
+      "timestamp": "2026-02-21T19:07:49Z",
+      "status": "VALID_WITH_WARNINGS",
+      "details": "0 errors, 1 warnings",
+      "checksum": "932b00c98f927baaf80c281b3179bf01eef913d4ba517375361fe8e63241ec1a"
+    },
+    {
+      "file": "openclaw-backup-2026-02-21.tar.gz",
+      "timestamp": "2026-02-21T19:27:20Z",
+      "status": "VALID_WITH_WARNINGS",
+      "details": "0 errors, 1 warnings",
+      "checksum": "f23302fc16b3e8a0fd72426dd5635bb362a25c7033b60514833af30487753be8"
     }
   ],
-  "lastRun": "2026-02-21T13:17:15Z",
+  "lastRun": "2026-02-21T19:27:20Z",
   "summary": {
-    "total": 2,
+    "total": 5,
     "valid": 1,
-    "invalid": 1,
-    "lastStatus": "VALID"
+    "invalid": 4,
+    "lastStatus": "VALID_WITH_WARNINGS"
   }
 }

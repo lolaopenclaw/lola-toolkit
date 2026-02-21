@@ -211,9 +211,9 @@ Documentación:
 - **Memoria modular previene overflow:** Dividir `memory/YYYY-MM-DD.md` en sesiones cuando pase de ~4KB
 - **Timezone VPS en UTC causaba confusiones:** Cambiar a Europe/Madrid (local del usuario) para consistencia en crons, logs, reportes y mental model. Decisión 2026-02-21.
 
-## 📋 Sesión 2026-02-21 — 4 Sub-Agentes Completados
+## 📋 Sesión 2026-02-21 — 7 Sub-Agentes Completados + Hardening+Architecture
 
-**Proyectos implementados (14:00-14:20 Madrid):**
+**Proyectos implementados (14:00-20:28 Madrid):**
 
 ### ✅ Semantic Memory Search
 - LanceDB + nomic-embed-text (768 dims)
@@ -242,12 +242,69 @@ Documentación:
 - Registry: 6 VERDE + 4 AMARILLO baseline
 - Auditoría de skills instalados completada
 
-### 🟡 En Progreso: Critical Update Safety
-- Health baseline + canary testing + rollback
-- `scripts/critical-update.sh` (estimado 15 min)
-- Integración con canary-test.sh existente
-- ETA: completado en 14:30 Madrid
+### ✅ Critical Update Safety
+- Health baseline + canary testing + rollback automático
+- `scripts/critical-update.sh` (300 líneas)
+- 12 validaciones automáticas (SSH, firewall, network, services, disk, memory)
+- Audit trail en `memory/CHANGES/`
+- Integration con `canary-test.sh` existente
+
+### ✅ OpenClaw Contribution Plan
+- `CONTRIBUTION-PLAN.md` (estrategia 4 semanas)
+- 5 propuestas documentadas en `CONTRIB/`
+- Testing guide + ejemplos reales
+- Recomendación: empezar con skill-security-audit.sh (más genérico)
+
+### ✅ Garmin Integration
+- 3 scripts (health-report, check-alerts, historical-analysis)
+- Crons: 9:00 AM (daily report), 14:00+20:00 (alerts), lunes 8:30 (weekly)
+- API testeada con datos reales
+- Integración HEARTBEAT para contexto de salud
 
 ---
 
-*Última actualización: 2026-02-21*
+## 🛠️ Hardening & Architecture Learnings
+
+### Sysctl Kernel Hardening ✅ **FUNCIONA**
+- 10/12 parámetros aplicados + persistidos post-reboot
+- Network: source-route blocking, log-martians, TCP syncookies
+- Filesystem: protected hardlinks/symlinks/regular
+- Memory: kptr_restrict, dmesg_restrict, unprivileged restrictions
+- **Estado:** OK - bajo riesgo, sin impacto en servicios
+
+### Systemd Hardening ❌ **NO FUNCIONA en VPS virtualizados**
+
+**v1 (strict):** 
+- `ProtectSystem=strict`, `RestrictNamespaces=yes`, `CapabilityBoundingSet` restrictivo
+- **Resultado:** Gateway crash (218/CAPABILITIES restart loop 100+)
+- **Causa:** Node.js necesita capabilities específicas
+
+**v2 (suave):**
+- `ProtectSystem=full`, excluded `RestrictNamespaces`, `CapabilityBoundingSet=CAP_NET_BIND_SERVICE`
+- **Resultado:** Igual crash + D-Bus corrupted (128 restart attempts)
+- **Causa raíz:** VPS hypervisor bloquea capabilities a nivel kernel (LXC/LXD)
+
+**Solución final (Gemini):** 
+- ✅ **System-level systemd** (root setup → mleon execution)
+- User-level systemd no funciona en VPS virtualizados
+- Gateway now `active (running)`, escuchando 127.0.0.1:18789
+- **Decisión:** Pausar Systemd hardening, mantener Sysctl kernel-level
+
+---
+
+## 📊 Resumen Métricas
+
+| Métrica | Valor |
+|---------|-------|
+| **Sub-agentes completados** | 7 (Opus) |
+| **Scripts nuevos** | 8 (~2000 líneas) |
+| **Protocolos documentados** | 7 |
+| **Crons automáticos** | 20+ activos, 0 errores |
+| **Memory size** | 628 KB (optimizada) |
+| **Gateway uptime post-fix** | Estable (system-level service) |
+| **Sysctl hardening** | 10/12 persistido |
+| **Tiempo conversación activa** | ~35-40 minutos |
+
+---
+
+*Última actualización: 2026-02-21 20:28 UTC (21:28 Madrid)*

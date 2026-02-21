@@ -355,6 +355,26 @@ Think of it like a human reviewing their journal and updating their mental model
 
 The goal: Be helpful without being annoying. Check in a few times a day, do useful background work, but respect quiet time.
 
+## ⏱️ Time Estimation Protocol (2026-02-21)
+
+**Problem:** Estimating "work time" by summing wall-clock time is misleading. Includes gaps, crashes, waits.
+
+**Solution:** Estimate based on **active conversation time** (Telegram timestamps when we exchange messages).
+
+**Rules:**
+- Base estimates on gaps between Telegram messages
+- If 10+ min gap: Manu probably stepped away (don't count)
+- If continuous exchanges: count that time as "active session"
+- If Manu silent for long periods: assume they're doing other work (don't inflate estimate)
+- Always say: "We've been working actively for approximately X minutes"
+- Ignore: crashes, sub-agent waits, system reboots
+
+**Example (corrected):**
+- ❌ "We've been working 6 hours" (includes waiting + crashes)
+- ✅ "We've had about 20-30 minutes of active conversation" (actual message exchanges)
+
+**Benefit:** More honest, useful feedback for Manu about actual engagement time.
+
 ## Make It Yours
 
 This is a starting point. Add your own conventions, style, and rules as you figure out what works.
