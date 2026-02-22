@@ -27,67 +27,46 @@ ls ~/.openclaw/workspace/backups-by-commit/ | sort | tail -1
 
 ---
 
-## Paso 2: Restaurar el workspace
+## Paso 2-5: Setup INTEGRADO (TODO en un comando)
+
+**RECOMENDADO:** Usar el script master que hace TODO automáticamente:
 
 ```bash
-# Extrae todo: config, scripts, memory, crons, secrets
-bash ~/.openclaw/workspace/scripts/restore.sh ~/openclaw-backup-YYYY-MM-DD.tar.gz
+bash ~/.openclaw/workspace/scripts/setup-critical-restore.sh ~/openclaw-backup-YYYY-MM-DD.tar.gz
 ```
 
-**Qué se restaura:**
-- ✅ MEMORY.md y memory/ (historial, notas)
-- ✅ Scripts de backup y utilidades
-- ✅ Configuración OpenClaw
-- ✅ Secrets (rclone, GOG, API keys)
-- ✅ Cron jobs
-- ✅ Tablero Kanban (Notion settings)
-- ✅ CHANGELOG.md (historial)
+Este script hace automáticamente:
+- ✅ Restaura workspace files (restore.sh)
+- ✅ Reinstala git hooks (setup-git-hooks.sh)
+- ✅ Instala OpenClaw service (systemd)
+- ✅ Verifica dependencias del sistema
+- ✅ Instala Node.js packages globales
+- ✅ Corrige permisos
+- ✅ Reinicia servicios críticos (dbus)
+- ✅ Ejecuta verificación completa
+- ✅ Prepara para arrancar
 
 ---
 
-## ⚠️ Paso 3: CRÍTICO — Reinstalar git hooks
+## Después del setup: Reconfigurar credenciales (MANUAL)
 
-**Esto es OBLIGATORIO tras restaurar:**
+**Ver:** `SETUP-CRITICAL.md` → Paso 2
 
-```bash
-bash ~/.openclaw/workspace/scripts/setup-git-hooks.sh
-```
+El script restaura ARCHIVOS, pero NO las API keys (seguridad). Necesitas:
 
-**Qué hace:**
-- Reinstala el git hook `post-commit`
-- Reactiva el sistema automático de backup
-- Permite que futuros commits importantes generen backups automáticos
+1. **ANTHROPIC_API_KEY** → renovar en console.anthropic.com
+2. **NOTION_API_KEY** → verificar en notion.so/my-integrations
+3. **GOG credentials** → posible reauth si se perdió keyring
+4. **Google Drive OAuth** → posible reauth si expiró
 
-**Si OLVIDAS este paso:**
-- El workspace estará restaurado y funcional
-- PERO el sistema de backup automático post-commit NO funcionará
-- Los commits futuros NO crearán backups automáticos
-- Tendrás que hacerlo manualmente: `bash scripts/backup-memory.sh`
+Ver instrucciones detalladas en `SETUP-CRITICAL.md`
 
 ---
 
-## Paso 4: Verificar integridad
+## Paso final: Arrancar OpenClaw
 
 ```bash
-# Comprobar que todo está OK
-bash ~/.openclaw/workspace/scripts/verify.sh
-
-# Comprobar git hooks
-cat ~/.openclaw/workspace/.git/hooks/post-commit
-# Deberías ver el script de backup
-
-# Comprobar que el hook funciona
-cd ~/.openclaw/workspace && git log -1 --oneline
-# Último commit debe ser visible
-```
-
----
-
-## Paso 5: Arrancar OpenClaw
-
-```bash
-openclaw gateway status
-openclaw gateway start  # si está caído
+openclaw gateway start
 openclaw doctor
 ```
 
