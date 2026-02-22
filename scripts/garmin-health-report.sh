@@ -12,9 +12,12 @@ MODE="${1:---daily}"
 
 case "$MODE" in
   --daily)
-    # IMPORTANT: Daily reports show YESTERDAY's data (morning report shows what happened yesterday)
-    # Use $(date +%Y-%m-%d) for today's data, or $(date -d yesterday +%Y-%m-%d) for yesterday
-    DATE="${2:-$(date -d yesterday +%Y-%m-%d)}"
+    # IMPORTANT: Morning report (9 AM) shows:
+    # - ACTIVITY: from YESTERDAY (what you did all day yesterday)
+    # - SLEEP: from TODAY (what you slept last night, sleep data is keyed to wake-up date)
+    # - HR/STRESS: from YESTERDAY (daily accumulation)
+    DATE_ACTIVITY="${2:-$(date -d yesterday +%Y-%m-%d)}"
+    DATE_SLEEP="$(date +%Y-%m-%d)"  # Sleep from last night (keyed to today)
     ;;
   --weekly|--summary)
     DAYS=7
@@ -355,12 +358,23 @@ except Exception as e:
     sys.exit(1)
 
 if MODE == "--daily" or MODE == "--current":
-    target = "$DATE" if "$DATE" else date.today().isoformat()
-    data = get_day_data(client, target)
-    if MODE == "--current":
-        print_current(data)
-    else:
+    if MODE == "--daily":
+        # Morning report: activity from YESTERDAY, sleep from TODAY
+        data_activity = get_day_data(client, "$DATE_ACTIVITY")
+        data_sleep = get_day_data(client, "$DATE_SLEEP")
+        # Merge: take activity/HR/stress from yesterday, sleep from today
+        data = data_activity.copy()
+        data['sleep_total'] = data_sleep.get('sleep_total', 0)
+        data['sleep_deep'] = data_sleep.get('sleep_deep', 0)
+        data['sleep_light'] = data_sleep.get('sleep_light', 0)
+        data['sleep_rem'] = data_sleep.get('sleep_rem', 0)
+        data['sleep_awake'] = data_sleep.get('sleep_awake', 0)
         print_daily(data)
+    else:
+        # Current mode: all data for today (real-time)
+        target = "$DATE" if "$DATE" else date.today().isoformat()
+        data = get_day_data(client, target)
+        print_current(data)
 elif MODE in ("--weekly", "--summary"):
     print_weekly(client, 7)
 

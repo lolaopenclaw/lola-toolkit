@@ -60,3 +60,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 08:26:35** | 📚 Preparar 2 propuestas OpenClaw en paralelo: Critical Update + Memory Guardian | `0f12cdc` | [`backup-0f12cdc`](backups-by-commit/backup-0f12cdc*.tar.gz)
 
+- **2026-02-22 09:02:36** | 🧠 Corregir Garmin Health Report: mostrar datos de AYER en informe matutino | `7e072aa` | [`backup-7e072aa`](backups-by-commit/backup-7e072aa*.tar.gz)
+
