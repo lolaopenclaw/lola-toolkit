@@ -337,3 +337,28 @@ Documentación:
 ---
 
 *Última actualización: 2026-02-21 20:28 UTC (21:28 Madrid)*
+
+---
+
+## 🤐 Política de Horario Silencioso (Implementada 2026-02-22)
+
+**Incidente:** Reporte enviado a Telegram a las 4:20 AM (violación de horario acordado 00:00-07:00 Madrid).
+
+**Solución implementada:**
+- Archivo: `SILENT-HOURS-POLICY.md` (documentación completa)
+- Carpeta: `memory/pending-reports/` (almacenamiento nocturno)
+- Script: `scripts/deliver-pending-reports.sh` (agregación de reportes)
+- Cron: 8:55 AM diarios (entrega de reportes pendientes)
+- HEARTBEAT.md: actualizado con instrucciones
+
+**Regla simple:**
+- ⛔ Entre 00:00-07:00 Madrid: NUNCA enviar a Telegram
+- ✅ Excepciones críticas: Fail2Ban ≥10 IPs, seguridad comprometida, error crítico
+- 📮 Reportes normales: guardados en `pending-reports/`, entregados a las 8:55 AM
+- ✅ Después de 07:00: operación normal
+
+**Beneficios:**
+- Manu duerme sin interrupciones
+- Reportes se agregan en un resumen matutino
+- Alertas críticas de seguridad nunca se retienen
+- Sistema más limpio

@@ -1,5 +1,24 @@
 # HEARTBEAT.md
 
+## 🤐 HORARIO SILENCIOSO (00:00-07:00 Madrid)
+
+**REGLA:** Durante horario silencioso, NUNCA envíes a Telegram a menos que sea CRÍTICO.
+
+- ✅ **Ejecuta comprobaciones normalmente** (fail2ban, crons, etc.)
+- ✅ **Guarda reportes en `memory/pending-reports/YYYY-MM-DD.md`** en lugar de avisar
+- ❌ **NO envíes a Telegram** (excepto emergencias)
+- ⚠️ **EXCEPCIONES CRÍTICAS** — envía inmediatamente:
+  - Fail2Ban ≥10 IPs baneadas
+  - Rootkit/malware detectado
+  - Error crítico del sistema
+  - Acceso no autorizado detectado
+
+**Cron de entrega:** 8:55 AM — lee `memory/pending-reports/` y envía resumen a Telegram
+
+Ver: `memory/SILENT-HOURS-POLICY.md` para detalles completos
+
+---
+
 ## Comprobaciones periódicas
 
 ### 0. OpenClaw Contributions Status
