@@ -69,13 +69,20 @@
       "status": "INVALID",
       "details": "1 errors, 0 warnings",
       "checksum": "051c637815d6fc3c72c2d9e3b1eb72c2e00a523cfb8644863af59185895cf110"
+    },
+    {
+      "file": "openclaw-backup-2026-02-22.tar.gz",
+      "timestamp": "2026-02-22T07:26:37Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "88acfe88a4e5ce824932b7bca773eb1dddc1abdb5b26c8fee8ca8364e19fb665"
     }
   ],
-  "lastRun": "2026-02-22T07:18:28Z",
+  "lastRun": "2026-02-22T07:26:37Z",
   "summary": {
-    "total": 10,
+    "total": 11,
     "valid": 1,
-    "invalid": 9,
+    "invalid": 10,
     "lastStatus": "INVALID"
   }
 }

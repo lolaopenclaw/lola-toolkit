@@ -58,3 +58,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 08:18:26** | 🆘 Automatización COMPLETA de restauración post-fallo crítico | `348e024` | [`backup-348e024`](backups-by-commit/backup-348e024*.tar.gz)
 
+- **2026-02-22 08:26:35** | 📚 Preparar 2 propuestas OpenClaw en paralelo: Critical Update + Memory Guardian | `0f12cdc` | [`backup-0f12cdc`](backups-by-commit/backup-0f12cdc*.tar.gz)
+
