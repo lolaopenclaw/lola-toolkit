@@ -363,3 +363,37 @@ Documentación:
 - Reportes se agregan en un resumen matutino
 - Alertas críticas de seguridad nunca se retienen
 - Sistema más limpio
+
+---
+
+## 🔧 Deudas Técnicas (Investigar & Resolver)
+
+### GOG + Google Drive API Automation (2026-02-22)
+**Problema:** No puedo automatizar `gog` para compartir carpetas Drive con Gmail.
+
+**Síntomas:**
+- `gog auth print-access-token` falla desde script Python
+- `keyring` module no disponible en entorno
+- Tengo los tokens en `~/.local/share/keyrings/` (file-based)
+
+**Qué debería poder hacer:**
+- Usar GOG tokens para acceder a Google Drive API
+- Compartir folder con permisos de lectura
+- Automatizar vía script/cron
+
+**Investigación pendiente:**
+1. ¿Por qué falla `gog auth print-access-token` en Python?
+2. ¿Puedo acceder directamente al keyring file?
+3. ¿Instalar keyring module en entorno?
+4. ¿Usar shell script en lugar de Python?
+
+**Impacto:** Media (funciona manual, no crítico)
+**Estado:** Aplazado a favor de urgencias
+**Propietario:** Lola (investigar cuando haya tiempo)
+
+
+### 📝 Feedback de Comunicación (2026-02-22)
+**De Manu:** Cuando investigues cosas largas, sé más claro sobre QUÉ estás haciendo y cuándo terminas. No dejes trabajo sin anunciar. Evita editar/borrar sin explicar. Mejor para legibilidad cuando no está mirando el móvil todo el rato.
+
+**Acción:** Ser más explícito en investigaciones futuras.
+
