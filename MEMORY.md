@@ -2,6 +2,7 @@
 
 ## Manu (mi humano)
 - **Nombre completo:** Manuel León
+- **Email:** manuelleonmendiola@gmail.com ⭐ (RECORDAR SIEMPRE)
 - **Ubicación:** Logroño, La Rioja, España
 - **Telegram:** @RagnarBlackmade (chat ID: 6884477)
 - **Idioma:** Español siempre
