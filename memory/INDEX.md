@@ -1,6 +1,6 @@
 # 📚 Memory INDEX — Organized Knowledge
 
-Last updated: 2026-02-21 21:00 UTC+1
+Last updated: 2026-02-22 23:15 UTC+1
 
 ---
 
@@ -36,6 +36,18 @@ Last updated: 2026-02-21 21:00 UTC+1
   - `scripts/garmin-health-report.sh` — Garmin API wrapper
   - `scripts/health-to-notion.sh` — Notion sync
 - **Crons active:** 4 (morning report 9AM, alerts 14:00+20:00, weekly summary Monday 8:30)
+
+### 📊 Google Sheets Automation (IN PROGRESS)
+- **Status:** Initial setup complete, testing Monday 9:30 AM
+- **Sheets created:** "Consumo IA" + "Garmin Health" (in 📊 Lola Dashboards)
+- **Cron:** "📊 Populate Google Sheets (diario)" — L-V 9:30 AM Madrid
+- **Blocked on:** `client_secret.json` (Manu needs to download from desktop)
+- **Files:** `scripts/sheets-populate-daily-FIXED.sh`, `memory/2026-02-22-google-sheets-automation.md`
+
+### 👨‍👧 Family Tracking
+- **Manu's Birthday:** February 16 (age 48) — Cron reminder 9:00 AM
+- **Vera Pérez León (Sobrina):** 10 years old, birthday August 30 — Cron reminder 9:00 AM
+- **Note:** Vera can access Telegram/voice — verify speaker identity on audio messages
 
 ---
 
@@ -82,7 +94,13 @@ Last updated: 2026-02-21 21:00 UTC+1
 
 ## 🔗 QUICK LINKS
 
-### This Session (2026-02-21)
+### This Session (2026-02-22)
+- Session notes: `memory/2026-02-22.md`
+- Progress: ✅ Google Sheets setup, communication policy, 3 discussions opened, memory cleanup
+- Commits: 37 commits (communication + sheets + tracking + github discussions)
+- Review: `memory/2026-02-22-memory-review.md` (weekly memory audit — 9.2/10 score)
+
+### Previous Session (2026-02-21)
 - Session notes: `memory/2026-02-21-openclaw-contributions.md`
 - Progress: ✅ 7 sub-agents completed, hardening + health dashboard + contributions strategy
 - Commits: `2fbc918` (skill-security-audit enhancement) + `390e761` (DISCUSSION-DRAFT + ROADMAP)
@@ -104,19 +122,23 @@ Last updated: 2026-02-21 21:00 UTC+1
 
 ## 🎯 UPCOMING TASKS (Prioritized)
 
-### WEEK 1 (2026-02-21 — This Week)
+### WEEK 1 (2026-02-21 — Past)
 - [x] OpenClaw contributions strategy ✅
 - [x] skill-security-audit.sh ready ✅
 - [x] Discussion template + roadmap ✅
-- [ ] (Manu) Fork OpenClaw repo
-- [ ] (Manu) Explore repo structure
-- [ ] (Manu) Post GitHub Discussion
+- [x] 3 Discussions opened on GitHub ✅
+  - https://github.com/openclaw/openclaw/discussions/23394 (Skill Security Audit)
+  - https://github.com/openclaw/openclaw/discussions/23394 (Critical Update Framework)
+  - https://github.com/openclaw/openclaw/discussions/23395 (Memory Guardian)
+- [x] Communication policy unified (Discord only, Telegram silent) ✅
+- [x] Google Sheets automation initialized ✅
 
-### WEEK 2 (2026-02-28)
-- [ ] OpenClaw Discussion gets feedback
-- [ ] (Manu) Engage with maintainers
-- [ ] (Manu) Iterate based on feedback
-- [ ] Get green light to submit PR
+### WEEK 2 (2026-02-28 — Current)
+- [ ] Test Google Sheets cron (Monday 23 Feb, 9:30 AM)
+- [ ] OpenClaw Discussion feedback phase (passive — waiting for response)
+- [ ] (Manu) Review Sheets test results
+- [ ] (Manu) Download client_secret.json from desktop (when ready)
+- [ ] Complete Google Sheets OAuth setup (blocked on Manu's JSON)
 
 ### WEEK 3 (2026-03-07)
 - [ ] Submit PR #1 (skill-security-audit.sh)
@@ -129,10 +151,12 @@ Last updated: 2026-02-21 21:00 UTC+1
 - [ ] Genericize, test, document
 
 ### ONGOING (Continuous)
-- [ ] Monitor OpenClaw Discussion (2-3 day response expected)
+- [ ] Monitor OpenClaw Discussions (feedback phase — 2-3 days expected)
 - [ ] Health alerts (Garmin + system metrics)
-- [ ] Cron jobs monitoring (4:00 AM backup, 9:00 AM reports, etc.)
-- [ ] Memory maintenance (tier rotation, cleanup)
+- [ ] Cron jobs monitoring (4:00 AM backup, 9:00 AM reports, 9:30 AM Sheets, etc.)
+- [ ] Memory maintenance (tier rotation, cleanup) — automated via memory-guardian.sh
+- [ ] Monday 9:30 AM: Test Google Sheets population cron (Manu to verify results)
+- [ ] When ready: Manu shares client_secret.json → complete OAuth setup
 
 ---
 
@@ -149,17 +173,27 @@ Last updated: 2026-02-21 21:00 UTC+1
 - **Git:** Main branch + feature/skill-security-audit-enhancement branch
 - **Tests:** 15/15 passing (skill-security-audit)
 - **Crons:** 20+ active, 0 errors reported
-- **Memory:** 628 KB (optimized), tiered (HOT/WARM/COLD)
+- **Memory:** 38 MB (33MB = WAL snapshots for recovery), tiered (HOT/WARM/COLD)
+- **Memory review (2026-02-22):** 9.2/10 quality score, no duplicates found, WAL COLD archive working
 
-### Health
-- **Garmin:** HR 58 bpm (resting ✅), stress 28% (low ✅), battery 37/100
-- **Sleep:** 6.8h (good ✅)
-- **Steps:** 866 (sedentary, normal for work day)
+### Health (2026-02-22)
+- **Garmin:** HR ~60-65 bpm (resting ✅), stress low ✅, battery monitoring active
+- **Sleep:** ~7h tracked + data in Garmin Health sheet
+- **Steps:** Variable (work-from-home days), tracked in Garmin integration
 
 ---
 
-## ✨ KEY LEARNINGS (This Session)
+## ✨ KEY LEARNINGS (Last 48 Hours)
 
+### 2026-02-22 Learnings
+1. **CLI tools have format limitations** — `gog sheets append` puts everything in one column
+2. **Google Sheets API v4 > CLI wrappers** — More reliable for structured data
+3. **Testing real > promising** — Automation fails silently without actual execution
+4. **Timing matters in automation** — VPS headless auth ≠ desktop OAuth flow
+5. **Unified communication wins** — One channel (Discord) beats scattered notifications
+6. **Identity verification needed** — Shared device access requires speaker identification
+
+### 2026-02-21 Learnings
 1. **Bash regex for security patterns** — Eval detection needs to handle both JS and bash syntax
 2. **Test suite essentials** — 15/15 passing = confidence for maintainers
 3. **Documentation matters** — PR docs + examples = faster approval
@@ -168,16 +202,26 @@ Last updated: 2026-02-21 21:00 UTC+1
 
 ---
 
-## 🚀 READY TO CONTRIBUTE
+## 🚀 CONTRIBUTIONS POSTED
 
-**skill-security-audit.sh is PRODUCTION READY:**
-- ✅ Fully functional
-- ✅ Well-tested (15/15)
-- ✅ Comprehensively documented
-- ✅ Discussion template ready
-- ✅ 5-week rollout plan (4 more tools)
+**3 Discussions now LIVE on GitHub:**
 
-**Next step:** (Manu) Fork OpenClaw and start Week 2 prep.
+1. **Skill Security Audit** — https://github.com/openclaw/openclaw/discussions/23394
+   - ✅ Fully functional + well-tested (15/15)
+   - ✅ Comprehensively documented
+   - 🟢 **Status:** Awaiting feedback
+
+2. **Critical Update Framework** — https://github.com/openclaw/openclaw/discussions/23394
+   - ✅ Full design document ready
+   - 🟢 **Status:** Awaiting feedback
+
+3. **Memory Guardian** — https://github.com/openclaw/openclaw/discussions/23395
+   - ✅ Implementation complete
+   - 🟢 **Status:** Awaiting feedback
+
+**5-week rollout plan still active** — 4 more tools to follow based on feedback.
+
+**Current phase:** Community engagement (Week 2) — Passively monitoring discussions.
 
 ---
 
