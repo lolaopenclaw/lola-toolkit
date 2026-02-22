@@ -56,3 +56,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 08:15:54** | 📖 Documentar recuperación post-fallo crítico + setup-git-hooks | `717aa3c` | [`backup-717aa3c`](backups-by-commit/backup-717aa3c*.tar.gz)
 
+- **2026-02-22 08:18:26** | 🆘 Automatización COMPLETA de restauración post-fallo crítico | `348e024` | [`backup-348e024`](backups-by-commit/backup-348e024*.tar.gz)
+

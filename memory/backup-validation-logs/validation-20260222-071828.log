@@ -1,0 +1,17 @@
+
+===== BACKUP VALIDATION REPORT =====
+Backup: openclaw-backup-2026-02-22.tar.gz
+Size: 4.4M (4572187 bytes)
+Date: 2026-02-22 07:18:28 UTC
+
+❌ FAIL Checksum: MISMATCH! Expected=3a5884a50a8c3bda5cd2309f3a0abde5a0f121b2ed35330af173c0a09c468411 Got=051c637815d6fc3c72c2d9e3b1eb72c2e00a523cfb8644863af59185895cf110
+✅ PASS Size: 4.4M (reasonable)
+
+✅ PASS Archive Integrity: readable (246 entries)
+✅ PASS Structure: 8/8 expected files found
+✅ PASS Directories: 3/3 expected dirs present
+
+Status: ❌ INVALID (1 errors, 0 warnings)
+
+Validated: 2026-02-22 07:18:28 UTC
+
