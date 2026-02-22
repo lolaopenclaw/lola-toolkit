@@ -26,19 +26,25 @@ fi
 # Color opcional (default azul)
 COLOR="${2:-3447003}"
 
-# Crear el embed
-EMBED=$(cat <<EOF
-{
-  "content": "",
-  "embeds": [
-    {
-      "description": "$MESSAGE",
-      "color": $COLOR,
-      "timestamp": "$(date -u +'%Y-%m-%dT%H:%M:%SZ')"
-    }
-  ]
+# Crear el embed usando Python para JSON correcto
+EMBED=$(python3 <<PYSCRIPT
+import json
+from datetime import datetime
+
+message = """$MESSAGE"""
+color = $COLOR
+
+embed = {
+    "content": "",
+    "embeds": [{
+        "description": message,
+        "color": color,
+        "timestamp": datetime.utcnow().isoformat() + "Z"
+    }]
 }
-EOF
+
+print(json.dumps(embed))
+PYSCRIPT
 )
 
 # Enviar a Discord
