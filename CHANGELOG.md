@@ -64,3 +64,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 09:03:34** | 🧠 Refinar Garmin Health Report: actividad de AYER + sueño de HOY | `db6718f` | [`backup-db6718f`](backups-by-commit/backup-db6718f*.tar.gz)
 
+- **2026-02-22 12:02:45** | 🎯 Discord fino — informes completos con embeds | `83e5a54` | [`backup-83e5a54`](backups-by-commit/backup-83e5a54*.tar.gz)
+
