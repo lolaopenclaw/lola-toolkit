@@ -1,92 +1,62 @@
-# HEARTBEAT.md
+# HEARTBEAT.md — Comprobaciones Internas (Silencioso)
 
-## 🤐 HORARIO SILENCIOSO (00:00-07:00 Madrid)
+**Política:** Ejecutar chequeos internos diarios. Reportar a Telegram SOLO si hay problemas críticos.
 
-**REGLA:** Durante horario silencioso, NUNCA envíes a Telegram a menos que sea CRÍTICO.
+Por defecto: `HEARTBEAT_OK` (silencio). Excepto problemas → alerta directa.
 
-- ✅ **Ejecuta comprobaciones normalmente** (fail2ban, crons, etc.)
-- ✅ **Guarda reportes en `memory/pending-reports/YYYY-MM-DD.md`** en lugar de avisar
-- ❌ **NO envíes a Telegram** (excepto emergencias)
-- ⚠️ **EXCEPCIONES CRÍTICAS** — envía inmediatamente:
-  - Fail2Ban ≥10 IPs baneadas
-  - Rootkit/malware detectado
-  - Error crítico del sistema
-  - Acceso no autorizado detectado
-
-**Cron de entrega:** 8:55 AM — lee `memory/pending-reports/` y envía resumen a Telegram
-
-Ver: `memory/SILENT-HOURS-POLICY.md` para detalles completos
+Ver: `COMMUNICATION-POLICY.md` para detalles completos.
 
 ---
 
-## Comprobaciones periódicas
-
-### 0. OpenClaw Contributions Status
-- Verificar si Manu ha forkeado el repo (git repo creation tracking)
-- Recordar post Discussion a openclaw/openclaw cuando esté listo
-- Monitorear feedback de Discussion (2-3 días típicamente)
-- Cuando Manu responda que la Discussion tiene feedback → ayudar a iterar PR
+## Comprobaciones periódicas (sin reportar a menos que falle)
 
 ### 1. Estado de cron jobs
-Revisa si algún cron ha fallado desde la última comprobación:
-- Usa `cron list` y comprueba si hay `consecutiveErrors > 0` o `lastStatus: "error"`
-- Si alguno ha fallado, avisa a Manu por Telegram con: qué falló, por qué, y opciones para solucionarlo
+- Revisa si algún cron ha fallado: `cron list` → `consecutiveErrors > 0`
+- Si falló: alerta a Telegram con qué falló y opciones
+- Si OK: silencio
 
 ### 2. Estado del gateway
-- Si detectas algo inusual (errores en logs, servicio degradado), avisa a Manu
+- Si error inusual en logs: alerta a Telegram
+- Si OK: silencio
 
 ### 3. Tablero Kanban (Notion)
-- Consulta el tablero: `POST /databases/30c676c3-86c8-81ac-b2bd-cd2d8a5516f7/query` con `Notion-Version: 2022-06-28`
-- Filtra tareas en estado "Pendiente" (no archivadas)
-- Si hay tareas pendientes y tienes hueco: coge UNA, muévela a "En progreso", trabaja en ella con **Haiku** (spawn sub-agent con model haiku), y cuando termines muévela a "Hecho"
-- Añade comentario en cada cambio de estado con timestamp
-- NO toques tareas en "Ideas" — esas solo se mueven a Pendiente cuando Manu lo aprueba
-- Si completas una tarea, avisa a Manu por Telegram con un resumen breve
+- Verifica tareas en "Pendiente" internamente
+- **NO reportes estado** salvo en informe matutino
+- Si hay bloqueos críticos: alerta ahora
+- Si completas una tarea: actualiza en Notion (sin mensaje a Manu)
 
 ### 4. Email (Gmail)
 - Revisa emails nuevos: `gog gmail search "is:unread" --max 5`
-- Si hay algo relevante (comparticiones de Drive, notificaciones de Notion, mensajes importantes), avisa a Manu
-- No avisar de spam o newsletters
+- Si hay algo crítico (breach, urgencia): alerta ahora
+- Si OK: silencio
 
-### 5. Archivado automático de tareas
-- **Tareas en "Hecho":** Consulta las que tienen Archivado=false y Actualizado hace >7 días. Marca Archivado=true y añade comentario "📦 Archivada automáticamente — $(date +%d\ %b)"
-- **Tareas en "Descartado":** Consulta las que tienen Archivado=false. Márcalas Archivado=true inmediatamente (sin esperar 7 días)
-- Query para Hecho: `curl -s -X POST "https://api.notion.com/v1/databases/30c676c3-86c8-81ac-b2bd-cd2d8a5516f7/query" -H "Authorization: Bearer $NOTION_API_KEY" -H "Notion-Version: 2022-06-28" -H "Content-Type: application/json" -d '{"filter":{"and":[{"property":"Estado","select":{"equals":"Hecho"}},{"property":"Archivado","checkbox":{"equals":false}}]}}'`
-- Query para Descartado: `curl -s -X POST "https://api.notion.com/v1/databases/30c676c3-86c8-81ac-b2bd-cd2d8a5516f7/query" -H "Authorization: Bearer $NOTION_API_KEY" -H "Notion-Version: 2022-06-28" -H "Content-Type: application/json" -d '{"filter":{"and":[{"property":"Estado","select":{"equals":"Descartado"}},{"property":"Archivado","checkbox":{"equals":false}}]}}'`
-
-### 6. Entregas pendientes
-- Si un cron con delivery=announce terminó OK pero Manu no recibió el mensaje (por reinicio del gateway u otro motivo), reenvíalo manualmente con `message send`
-- Tras cada reinicio del gateway, comprueba si había crons o entregas pendientes
-
-### 6. Memory Bloat Check
+### 5. Memory size
 - Ejecutar: `du -sh ~/.openclaw/workspace/memory/`
-- Si >10 MB: avisar a Manu y sugerir `bash scripts/memory-guardian.sh --analyze`
-- Si >15 MB: ejecutar `bash scripts/memory-guardian.sh --dry-run --clean` y reportar
+- Si >15 MB: alerta a Manu + ejecutar limpieza
+- Si OK: silencio
 
-### 7. Critical Changes Tracking
-- Check if `/tmp/critical-sandbox/` has pending files: `ls /tmp/critical-sandbox/ 2>/dev/null`
-- If files exist: alert Manu — "Hay cambios en sandbox sin aplicar/validar"
-- Check today's audit log: `cat memory/CHANGES/changes-$(date +%Y-%m-%d).log 2>/dev/null`
-- If any entry has "ROLLBACK-WARN" or "APPLY-FAILED": alert immediately
+### 6. Critical sandbox
+- Check: `ls /tmp/critical-sandbox/ 2>/dev/null`
+- Si hay cambios pendientes: alerta
+- Si OK: silencio
 
-### 8. Garmin Health Context
+### 7. Garmin health context
 - Run: `bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --current`
-- If alerts exist (ALERT_COUNT > 0), factor into communication:
-  - Estrés alto → ofrecer pausas, no proponer tareas pesadas
-  - Sueño malo → evitar tareas cognitivamente demandantes
-  - Body Battery bajo → sugerir descanso
-  - HR elevado → preguntar si está bien
-- Only check 1-2 times per day (morning + afternoon heartbeat)
-- Full protocol: `memory/PROTOCOLS/garmin-integration.md`
+- **NO reportes normales** — solo factor en comunicación
+- Si alerta crítica (HR muy elevado, sueño muy malo): avisa
 
-### 9. Backup Validation Status
-- Revisa `memory/backup-validation-state.json`
-- Si `lastStatus` es "INVALID": alertar a Manu inmediatamente
-- Si no hay validaciones en >7 días: ejecutar `bash scripts/backup-validator.sh --status`
-- Solo alertar si hay problemas
+### 8. Fail2Ban status
+- Ejecuta: `sudo fail2ban-client status sshd`
+- Si <5 IPs baneadas: silencio
+- Si 5-10 IPs: guardar para informe matutino
+- Si ≥10 IPs: alerta CRÍTICA ahora
 
-### Reglas
-- SÉ PROACTIVA: no esperes a que Manu diga que algo falló. Verifica, detecta y avisa tú primero
-- Solo avisar si hay algo que reportar. Si todo está bien, HEARTBEAT_OK
-- Horario silencioso: 23:00-08:00 Madrid (no avisar salvo urgencias)
-- No repetir alertas ya enviadas (si ya avisaste de un fallo y no se ha arreglado, no vuelvas a avisar)
+---
+
+## Resumen
+
+**Regla simple:**
+- ✅ Todos los chequeos se hacen internamente
+- ❌ Ningún reporte rutinario a Telegram
+- 🚨 Problemas críticos: alerta inmediata
+- 📋 Informe completo: una vez al día por la mañana (9-10 AM)
