@@ -12,12 +12,15 @@ MODE="${1:---daily}"
 
 case "$MODE" in
   --daily)
-    DATE="${2:-$(date +%Y-%m-%d)}"
+    # IMPORTANT: Daily reports show YESTERDAY's data (morning report shows what happened yesterday)
+    # Use $(date +%Y-%m-%d) for today's data, or $(date -d yesterday +%Y-%m-%d) for yesterday
+    DATE="${2:-$(date -d yesterday +%Y-%m-%d)}"
     ;;
   --weekly|--summary)
     DAYS=7
     ;;
   --current)
+    # Current mode shows today's real-time data
     DATE="$(date +%Y-%m-%d)"
     ;;
   --alerts)
