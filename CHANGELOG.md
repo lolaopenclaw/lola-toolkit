@@ -62,3 +62,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 09:02:36** | 🧠 Corregir Garmin Health Report: mostrar datos de AYER en informe matutino | `7e072aa` | [`backup-7e072aa`](backups-by-commit/backup-7e072aa*.tar.gz)
 
+- **2026-02-22 09:03:34** | 🧠 Refinar Garmin Health Report: actividad de AYER + sueño de HOY | `db6718f` | [`backup-db6718f`](backups-by-commit/backup-db6718f*.tar.gz)
+
