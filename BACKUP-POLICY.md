@@ -51,12 +51,16 @@ Se actualiza automáticamente con cada commit importante:
 **Desde backup diario:**
 ```bash
 bash ~/.openclaw/workspace/scripts/restore.sh ~/openclaw-backup-YYYY-MM-DD.tar.gz
+bash ~/.openclaw/workspace/scripts/setup-git-hooks.sh  # IMPORTANTE: restaurar hooks
 ```
 
 **Desde backup por commit:**
 ```bash
 bash ~/.openclaw/workspace/scripts/restore.sh ~/backups-by-commit/backup-{hash}.tar.gz
+bash ~/.openclaw/workspace/scripts/setup-git-hooks.sh  # IMPORTANTE: restaurar hooks
 ```
+
+**⚠️ IMPORTANTE:** Tras restaurar, SIEMPRE ejecuta `setup-git-hooks.sh` para reactivar el sistema automático de backup post-commit. De lo contrario, los commits futuros no crearán backups automáticos.
 
 ## Beneficios
 
@@ -65,6 +69,20 @@ bash ~/.openclaw/workspace/scripts/restore.sh ~/backups-by-commit/backup-{hash}.
 ✅ **Recuperación granular** (por fecha o por cambio específico)
 ✅ **Automático** (sin intervención manual, salvo lo importante)
 ✅ **Documentado** (cada backup tiene contexto)
+
+## Setup post-restauración (IMPORTANTE)
+
+**Tras restaurar desde backup, SIEMPRE ejecutar:**
+```bash
+bash ~/.openclaw/workspace/scripts/setup-git-hooks.sh
+```
+
+Esto reinstala el git hook `post-commit` que:
+- Detecta commits importantes automáticamente
+- Ejecuta backups sin intervención manual
+- Actualiza CHANGELOG.md
+
+Si NO ejecutas este script después de restaurar, el sistema automático no funcionará hasta que lo hagas.
 
 ## Próximos pasos (opcionales)
 
