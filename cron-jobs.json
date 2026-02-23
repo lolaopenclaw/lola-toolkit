@@ -31,5 +31,18 @@
       "message": "Revisa los precios oficiales de los modelos de IA que usamos y actualiza el fichero de precios.\n\n1. Lee el fichero actual: /home/mleon/.openclaw/workspace/memory/model-prices.json\n2. Consulta los precios oficiales actuales:\n   - Anthropic: https://docs.anthropic.com/en/docs/about-claude/models\n   - Google: https://ai.google.dev/pricing\n3. Compara con los datos del fichero. Si hay cambios:\n   - Actualiza model-prices.json con los nuevos precios\n   - Actualiza el campo 'updated' con la fecha de hoy\n   - Envía un mensaje breve por Telegram (chat 6884477) informando de los cambios\n4. Si no hay cambios, no envíes mensaje. Solo actualiza el campo 'updated'."
     },
     "delivery": { "mode": "none" }
+  },
+  {
+    "name": "📊 Populate Google Sheets v2",
+    "id": "6344d609-2bfd-4295-8471-373125381779",
+    "schedule": { "kind": "cron", "expr": "30 9 * * 1-5", "tz": "Europe/Madrid" },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Run the Google Sheets population script v2:\n\n```bash\nsource ~/.openclaw/.env\nexport GOG_KEYRING_BACKEND=file\n\nTODAY=$(date +%Y-%m-%d)\nYESTERDAY=$(date -d \"yesterday\" +%Y-%m-%d)\n\necho \"=== Consumo IA for $TODAY ===\"\npython3 /home/mleon/.openclaw/workspace/scripts/sheets-populate-v2.py --consumo-only --date \"$TODAY\" 2>&1\n\necho \"\"\necho \"=== Garmin Health for $YESTERDAY ===\"\npython3 /home/mleon/.openclaw/workspace/scripts/sheets-populate-v2.py --garmin-only --date \"$YESTERDAY\" 2>&1\n```\n\nReport the results. If either sheet had data already (skipped), that is fine. If there was an error, report it clearly. Keep the response brief.",
+      "timeoutSeconds": 120
+    },
+    "delivery": { "mode": "none" }
   }
 ]

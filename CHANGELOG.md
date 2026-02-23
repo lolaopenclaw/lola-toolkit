@@ -66,3 +66,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 12:02:45** | 🎯 Discord fino — informes completos con embeds | `83e5a54` | [`backup-83e5a54`](backups-by-commit/backup-83e5a54*.tar.gz)
 
+- **2026-02-22 12:14:48** | 🎯 Resolver GOG/tokens + automatizar compartir Drive folders | `1bda599` | [`backup-1bda599`](backups-by-commit/backup-1bda599*.tar.gz)
+

@@ -1,0 +1,91 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║           ⏱️ TIMELINE DEL INCIDENTE — 2026-02-23 (El Viaje)               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+
+06:35 AM ─────────────────────────────────────────────────────────────────────
+  
+  ❌ PROBLEMA IDENTIFICADO
+  
+  Intenté cambiar archival de snapshots WAL:
+  
+  ANTES:  📦 Lunes 6:15 AM (una vez a la semana)
+  INTENTO: 📦 3:00 AM diario (todos los días)
+  
+  ⚠️ PERO: Ya eran las 6:35 AM — ¡3 AM ya había pasado hace 3.5 horas!
+     OpenClaw no ejecuta crons retrospectivamente.
+  
+  RESULTADO: Archival de 3 AM NUNCA se ejecutó. 💣
+
+  
+07:33 AM ─────────────────────────────────────────────────────────────────────
+  
+  📸 SNAPSHOT CREADO (Ciclo 12h nuevo)
+  
+  Tamaño: 98M (vs 49M con ciclo 6h)
+  Razón: 12 horas de cambios acumulados
+  
+  Estado: 49M (anterior) + 98M (nuevo) = 147M en HOT
+  
+
+08:00 AM ─────────────────────────────────────────────────────────────────────
+  
+  🚨 CRISIS DETECTADA
+  
+  Memory explotó: 86M → 184M (en solo 1.5 horas)
+  
+  Timeline:
+    07:33 - Snapshot creado (98M)
+    08:00 - Monitor alerta: HOT = 171M (>150M CRÍTICO)
+  
+  CAUSA RAÍZ: 
+    ✘ Archival no ejecutó (timing error)
+    ✘ 12h snapshots más grandes
+    ✘ Snapshots se acumularon sin limit
+  
+
+08:15 AM ─────────────────────────────────────────────────────────────────────
+  
+  🔧 DIAGNÓSTICO & ROLLBACK
+  
+  ✅ Identifiqué el error de timing
+  ✅ Rollback inmediato: 6h snapshots + lunes archival
+  ✅ Storage bajó de 184M → 146M (estable)
+  ✅ Implementé WAL Monitor (cada 6h)
+  
+
+08:30 AM ─────────────────────────────────────────────────────────────────────
+  
+  📋 DOCUMENTACIÓN & PROTOCOLO
+  
+  ✅ Creé: PROTOCOLS/cron-change-protocol.md
+  ✅ Regla: NUNCA schedule para hora que ya pasó
+  ✅ Test antes de producción
+  ✅ Documento hora + próxima ejecución
+
+  
+11:56 AM ─────────────────────────────────────────────────────────────────────
+  
+  🔄 PHASE 2 IMPLEMENTADO
+  
+  Cron automático "WAL Reactive Archive":
+    - Corre 3:00 AM diario
+    - Si HOT > 120MB → archiva automáticamente
+    - Mantiene HOT <100MB siempre
+  
+  Mañana 3 AM: 146M → ~100M (automático)
+  
+
+═════════════════════════════════════════════════════════════════════════════
+
+CONCLUSIONES DEL INCIDENTE:
+
+1. ⚠️  Cron timing race condition es REAL y PELIGROSA
+2. 📊 Cambios de snapshot size afectan exponencialmente
+3. 🚨 Monitor fue crítico para detectar rápido
+4. 🔄 Phase 2 (archival reactivo) es la solución
+5. 📚 Documentación de protocolos previene repetir
+
+TIEMPO TOTAL DESDE DETECCIÓN HASTA RESOLUCIÓN: ~3 horas ✅
+INTERVENCIÓN MANUAL REQUERIDA: Mínima (cambios automáticos post)
+RIESGO ACTUAL: BAJO (monitoreado)

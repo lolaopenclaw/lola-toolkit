@@ -97,13 +97,69 @@
       "status": "INVALID",
       "details": "1 errors, 0 warnings",
       "checksum": "085be5cf1153672514722865df8199d10f7bf272b03697bd9ade38085bbfefa1"
+    },
+    {
+      "file": "openclaw-backup-2026-02-22.tar.gz",
+      "timestamp": "2026-02-22T11:14:50Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "709b7bc0ccf5856efe0ba7408fb1cf54e73e7fa8185a4da107453afbb2348757"
+    },
+    {
+      "file": "openclaw-backup-2026-02-22.tar.gz",
+      "timestamp": "2026-02-22T21:54:48Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "dcd767d4b45a76f4c70cfc1dadba1fa3165abf87c4bb3fe99e4d9e00cffdc0d4"
+    },
+    {
+      "file": "openclaw-backup-2026-02-22.tar.gz",
+      "timestamp": "2026-02-22T22:01:58Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "202dae99cc8da1089cfe8b56455f837c5b0dec9bd72bff1c1cab7e91cef9e526"
+    },
+    {
+      "file": "openclaw-backup-2026-02-23.tar.gz",
+      "timestamp": "2026-02-23T03:00:11Z",
+      "status": "VALID_WITH_WARNINGS",
+      "details": "0 errors, 1 warnings",
+      "checksum": "0cca86685f380477b3ade21f558bc620489957840512a5740fe2fcc038e9306b"
+    },
+    {
+      "file": "openclaw-backup-2026-02-22.tar.gz",
+      "timestamp": "2026-02-23T04:30:32Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "202dae99cc8da1089cfe8b56455f837c5b0dec9bd72bff1c1cab7e91cef9e526"
+    },
+    {
+      "file": "openclaw-backup-2026-02-22.tar.gz",
+      "timestamp": "2026-02-23T04:30:33Z",
+      "status": "VALID",
+      "details": "Test restore OK: 249 files",
+      "checksum": ""
+    },
+    {
+      "file": "openclaw-backup-2026-02-23.tar.gz",
+      "timestamp": "2026-02-23T09:14:59Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "c6c10cb2ec1887038a0715b439035c0e31f10afeaf7c3218c049379733384a79"
+    },
+    {
+      "file": "openclaw-backup-2026-02-23.tar.gz",
+      "timestamp": "2026-02-23T13:31:04Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "7ecf285f27d422af5840084848ae797060a1ad1845b54381cc1f7b0c2e8046ff"
     }
   ],
-  "lastRun": "2026-02-22T11:02:48Z",
+  "lastRun": "2026-02-23T13:31:04Z",
   "summary": {
-    "total": 14,
-    "valid": 1,
-    "invalid": 13,
+    "total": 22,
+    "valid": 2,
+    "invalid": 20,
     "lastStatus": "INVALID"
   }
 }

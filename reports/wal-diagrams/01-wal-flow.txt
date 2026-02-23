@@ -1,0 +1,78 @@
+╔════════════════════════════════════════════════════════════════════════════╗
+║                 🧠 WAL (Write-Ahead Logging) — Flujo Completo              ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+┌─────────────────────────────────────────────────────────────────────────────┐
+│                        OPERACIÓN SEGURA CON WAL                             │
+└─────────────────────────────────────────────────────────────────────────────┘
+
+                              SIN CRASH ✅
+                              ──────────
+
+    ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+    │  PASO 1      │      │  PASO 2      │      │  PASO 3      │
+    │  REGISTRAR   │  →   │  APLICAR     │  →   │  COMPLETADO  │
+    └──────────────┘      └──────────────┘      └──────────────┘
+         ↓                      ↓                       ↓
+    "Cambio X"            X = Nuevo          Estado Consistente
+    SHA256: af48c          (Ejecutado)        ✅ Seguro
+
+
+                        CON CRASH EN PASO 2 ⚠️
+                        ──────────────────────
+
+    ┌──────────────┐      ┌──────────────┐
+    │  PASO 1      │      │  PASO 2      │      ❌ CRASH
+    │  REGISTRAR   │  →   │  APLICAR     │  →   ║
+    └──────────────┘      └──────────────┘      ║
+         ↓                                        ║
+    [REGISTRADO           [NO COMPLETADO]        ║
+     EN DISCO]                                    ║
+                                                  ↓
+                          BOOT / RECUPERACIÓN
+                          ────────────────────
+                               ↓
+                        ¿Hay entrada en WAL?
+                               ↓
+                        ┌──────────────┐
+                        │  SÍ → REPLAY │
+                        │  Aplicar X   │
+                        │  Again       │
+                        │  ✅ Estado   │
+                        │     OK       │
+                        └──────────────┘
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                         LOG ENTRY STRUCTURE                                ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+[2026-02-23 07:33:13] [SNAPSHOT] Created snapshot-20260223-073313.tar.gz (98M)
+SHA256: af48c70af96f6d218e4fbcebbc49bb02d933bb43abf3e6cb6b7dcba09eef13e2
+└─────────┬──────────┬────────────┬────────────────────┬────────────────────────┘
+          │          │            │                    │
+      Timestamp    Event        Object               Verification
+       (exacto)    Type         (qué)                (integridad)
+
+
+╔════════════════════════════════════════════════════════════════════════════╗
+║                      COMPONENTES EN OPENCLAW                               ║
+╚════════════════════════════════════════════════════════════════════════════╝
+
+  🧠 WAL SYSTEM
+  ├── 📝 Logs diarios          (memory/WAL/2026-02-23.log)
+  ├── 📸 Snapshots cada 6h     (memory/WAL/snapshots/)
+  │   ├── snapshot-*.tar.gz    [49M, 98M cada uno]
+  │   └── Max 2 en HOT
+  ├── ❄️ COLD Archive           (memory/WAL/COLD/)
+  │   └── snapshot-*.tar.gz.gz [Comprimido 83%]
+  └── 🔄 Recovery System
+      ├── Validation (SHA256)
+      ├── Replay on boot
+      └── Point-in-time restore
+
+═════════════════════════════════════════════════════════════════════════════
+
+Conclusión: Si la VPS explota, SIEMPRE puedes recuperar tu estado
+            del último snapshot (máximo hace 6 horas). Tus datos 
+            están SEGUROS. 🟢

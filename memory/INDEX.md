@@ -1,10 +1,23 @@
 # 📚 Memory INDEX — Organized Knowledge
 
-Last updated: 2026-02-22 23:15 UTC+1
+Last updated: 2026-02-23 09:30 UTC+1
 
 ---
 
 ## 🎯 ACTIVE PROJECTS
+
+### 🚨 WAL Snapshot Crisis & Resolution (2026-02-23 — RESOLVED)
+- **Incident:** Memory bloat (86M → 184M in 1.5h) from WAL snapshot misconfiguration
+- **Root cause:** Cron timing race condition (changed to 3 AM at 06:35 AM = already passed)
+- **Resolution:** Rollback to 6h snapshots + lunes archival (known-good state)
+- **Monitoring:** New WAL Snapshot Monitor cron (every 6h) with thresholds: 100MB warning, 150MB critical
+- **Files:**
+  - `memory/2026-02-23-wal-diagnosis-complete.md` — Timeline + root cause
+  - `memory/2026-02-23-wal-roadmap.md` — 5-phase optimization roadmap (Phase 1 active)
+  - `memory/PROTOCOLS/cron-change-protocol.md` — NEW: Rules for future cron changes
+  - `scripts/wal-snapshot-monitor.sh` — NEW: Automated monitoring script
+- **Status:** ✅ Stable, Phase 1 (Stabilize & Monitor) active
+- **Next decision point:** Week of Feb 28 (decide on Phase 2 — reactive archival)
 
 ### OpenClaw Contributions (IN PROGRESS)
 - **Status:** Week 1 — Research & Planning ✅
@@ -55,6 +68,7 @@ Last updated: 2026-02-22 23:15 UTC+1
 
 ### 📝 PROTOCOLS & PROCEDURES
 - `memory/security-change-protocol.md` — Critical change A+B workflow
+- `memory/PROTOCOLS/cron-change-protocol.md` — NEW (2026-02-23): Golden rules for cron scheduling
 - `memory/PROTOCOLS/canary-testing-protocol.md` — Pre-change validation
 - `memory/PROTOCOLS/backup-naming-policy.md` — Backup file naming
 - `memory/PROTOCOLS/backup-retention-policy.md` — 30-day retention
@@ -74,6 +88,7 @@ Last updated: 2026-02-22 23:15 UTC+1
 - `wal-logger.sh` — Write-Ahead Logging (crash recovery)
 - `wal-snapshot.sh` — WAL snapshots
 - `wal-replay.sh` — WAL recovery
+- `wal-snapshot-monitor.sh` — NEW (2026-02-23): Monitor WAL growth, alert on bloat
 
 ### 🎓 DOCUMENTATION
 - `CONTRIBUTION-PLAN.md` — 4-week strategy for 5 tools
@@ -94,7 +109,15 @@ Last updated: 2026-02-22 23:15 UTC+1
 
 ## 🔗 QUICK LINKS
 
-### This Session (2026-02-22)
+### This Session (2026-02-23)
+- **Crisis & Resolution:** WAL bloat incident → diagnosed root cause → implemented monitoring ✅
+- **Documentation:** Comprehensive diagnosis, protocols, 5-phase roadmap
+- **Reference:** `memory/TAREAS-AUTOMATICAS-LISTADO.md` — NEW: Complete list of 28 automated tasks
+- **Key file:** `memory/2026-02-23-wal-diagnosis-complete.md` — Full timeline + lessons learned
+- **Updates:** Cron timeout increased 120s → 300s for memory-organization-review (now works perfectly)
+- **Status:** System stable, all 28 crons running, monitoring active
+
+### Previous Session (2026-02-22)
 - Session notes: `memory/2026-02-22.md`
 - Progress: ✅ Google Sheets setup, communication policy, 3 discussions opened, memory cleanup
 - Commits: 37 commits (communication + sheets + tracking + github discussions)
@@ -134,11 +157,15 @@ Last updated: 2026-02-22 23:15 UTC+1
 - [x] Google Sheets automation initialized ✅
 
 ### WEEK 2 (2026-02-28 — Current)
-- [ ] Test Google Sheets cron (Monday 23 Feb, 9:30 AM)
+- [x] WAL crisis diagnosed & resolved (2026-02-23) ✅
+- [x] WAL monitoring + phases documented (2026-02-23) ✅
+- [x] Memory organization timeout fixed 120s → 300s (2026-02-23) ✅
+- [ ] Test Google Sheets cron (Monday 25 Feb, 9:30 AM) — rescheduled
 - [ ] OpenClaw Discussion feedback phase (passive — waiting for response)
-- [ ] (Manu) Review Sheets test results
+- [ ] (Manu) Review Sheets test results when ready
 - [ ] (Manu) Download client_secret.json from desktop (when ready)
 - [ ] Complete Google Sheets OAuth setup (blocked on Manu's JSON)
+- [ ] Monitor WAL thresholds (100MB warning, 150MB critical) throughout week
 
 ### WEEK 3 (2026-03-07)
 - [ ] Submit PR #1 (skill-security-audit.sh)
@@ -165,16 +192,20 @@ Last updated: 2026-02-22 23:15 UTC+1
 ### Infrastructure
 - **VPS:** Ubuntu 24.04 LTS, 16GB RAM, 8 cores, LXC/LXD
 - **OpenClaw:** v2026.2.17, Port 18789, Opus + Haiku models
-- **Uptime:** ~6 min (recent reboot), stable post-reboot
-- **Backup:** Google Drive, 30-day retention, automated cron
-- **WAL:** Active, snapshots every 6h, recovery validated
+- **Uptime:** Stable, multiple reboots tested ✅
+- **Backup:** Google Drive, 30-day retention, automated cron (4:00 AM daily) ✅
+- **WAL:** Active, snapshots every 6h, COLD archive lunes 6:15 AM, monitoring every 6h
+  - **Status (2026-02-23 08:25):** 146M HOT (2 snapshots), 37M COLD archive
+  - **Thresholds:** 100MB warning, 150MB critical (automated alerts)
+  - **Phase:** 1 (Stabilize & Monitor) — decision point Week of Feb 28
 
 ### Development
 - **Git:** Main branch + feature/skill-security-audit-enhancement branch
 - **Tests:** 15/15 passing (skill-security-audit)
-- **Crons:** 20+ active, 0 errors reported
-- **Memory:** 38 MB (33MB = WAL snapshots for recovery), tiered (HOT/WARM/COLD)
-- **Memory review (2026-02-22):** 9.2/10 quality score, no duplicates found, WAL COLD archive working
+- **Crons:** 28 active, 0 critical errors (1 timeout fixed: memory-organization-review 120s → 300s)
+- **Memory:** 184M total (183M = WAL for recovery ✅, 1M active metadata), tiered perfectly (HOT/WARM/COLD)
+- **Memory review (2026-02-23):** HOT 148K / WARM 12K / COLD 4K, zero duplicates, 100% healthy
+- **Automated tasks:** See `memory/TAREAS-AUTOMATICAS-LISTADO.md` for complete 28-task breakdown
 
 ### Health (2026-02-22)
 - **Garmin:** HR ~60-65 bpm (resting ✅), stress low ✅, battery monitoring active
@@ -183,7 +214,15 @@ Last updated: 2026-02-22 23:15 UTC+1
 
 ---
 
-## ✨ KEY LEARNINGS (Last 48 Hours)
+## ✨ KEY LEARNINGS (Last 72 Hours)
+
+### 2026-02-23 Learnings
+1. **Cron timing is tricky** — Scheduling for time already passed = silent fail (no backfill)
+2. **Test in production matters** — 120s timeout caught by actual execution, not testing
+3. **Monitoring prevents pain** — WAL monitor alerts beat emergency diagnosis
+4. **Protocols prevent repeats** — Document "how to change crons safely" for future reference
+5. **Memory system is robust** — 0 duplicates after aggressive growth + changes = tiering works perfectly
+6. **Phase-based evolution beats big-bang** — Phase 1 (monitor), Phase 2 (reactive), etc. reduces risk
 
 ### 2026-02-22 Learnings
 1. **CLI tools have format limitations** — `gog sheets append` puts everything in one column

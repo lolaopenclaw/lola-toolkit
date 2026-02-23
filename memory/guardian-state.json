@@ -1,7 +1,7 @@
 {
-  "lastRun": "2026-02-21T21:17:05+01:00",
-  "lastAction": "analyze",
-  "totalSizeBytes": 767766,
-  "fileCount": 91,
+  "lastRun": "2026-02-23T04:00:35+01:00",
+  "lastAction": "full",
+  "totalSizeBytes": 89565944,
+  "fileCount": 125,
   "dryRun": false
 }

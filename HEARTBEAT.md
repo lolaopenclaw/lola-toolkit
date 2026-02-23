@@ -1,8 +1,12 @@
 # HEARTBEAT.md — Comprobaciones Internas (Silencioso)
 
-**Política:** Ejecutar chequeos internos diarios. Reportar a Telegram SOLO si hay problemas críticos.
+**NUEVA POLÍTICA (2026-02-23 09:30):** Zero-notification-if-OK
 
-Por defecto: `HEARTBEAT_OK` (silencio). Excepto problemas → alerta directa.
+**Regla simple:**
+- ✅ TODO OK → SILENCIO total (no enviar nada a Telegram)
+- ❌ PROBLEMA → Alerta inmediata a Telegram
+
+**Por defecto:** `HEARTBEAT_OK` (silencio absoluto). Solo problemas critican rompen el silencio.
 
 Ver: `COMMUNICATION-POLICY.md` para detalles completos.
 
@@ -60,3 +64,18 @@ Ver: `COMMUNICATION-POLICY.md` para detalles completos.
 - ❌ Ningún reporte rutinario a Telegram
 - 🚨 Problemas críticos: alerta inmediata
 - 📋 Informe completo: una vez al día por la mañana (9-10 AM)
+
+## 🔄 Heartbeat Mejorado (Decisión 2026-02-22 14:13)
+
+**Cada 30 minutos (durante tareas largas):**
+- ✅ Si estoy en tarea: reportar progreso específico
+- ✅ Si no hay tareas: silencio (HEARTBEAT_OK)
+- ⛔ Horario silencioso 23:00-07:00 Madrid: NUNCA reportar
+
+**Ejemplo:**
+- 14:30: "Paso 6/8: Rellenando Garmin en Sheets..."
+- 15:00: "Paso 7/8: Creando gráficas..."
+- 15:30: "Completado: Sheets lista, compartiendo..."
+
+Beneficio: Manu sabe que estoy trabajando sin andar preguntando.
+

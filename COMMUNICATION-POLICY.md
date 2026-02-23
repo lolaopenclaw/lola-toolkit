@@ -1,57 +1,105 @@
-# 📢 Política de Comunicación - Decisión Manu 2026-02-22
+# 💬 Communication Policy (2026-02-23 — Implemented)
 
-## Principio: Silencio por defecto, reportes consolidados por la mañana
+**Decisión:** Reducir ruido a Telegram. Solo alertas críticas.
 
-**Manu quiere:**
-- ✅ Yo hago todos los chequeos internamente (diarios, sin restricción)
-- ❌ Pero NO le reporto nada a Telegram salvo que haya problemas críticos
-- 📋 **UN ÚNICO INFORME CONSOLIDADO** por la mañana (9 AM lunes-viernes, 10 AM fin de semana)
-- 🚨 Excepciones críticas: alerta inmediata (sin restricción horaria)
+---
 
-## Arquitectura de Comunicación
+## 🟢 TELEGRAM = PROBLEMAS SOLAMENTE
 
-### 1. Heartbeats (checks internos)
-- Ejecutar múltiples veces al día (comprobaciones periódicas)
-- **Respuesta NORMAL:** `HEARTBEAT_OK` — silencio total
-- **Respuesta SI HAY PROBLEMA CRÍTICO:** reportar SOLO problemas de seguridad/operación
-- Nunca enviar status summaries rutinarias
+### Enviamos a Telegram SI:
+- ❌ **Fail2Ban:** ≥10 IPs baneadas (actividad ataque)
+- ❌ **Backup:** Fallo en ejecución
+- ❌ **Consumo:** > $100 USD en un día
+- ❌ **Seguridad:** Vulnerabilidad crítica sin parchear
+- ❌ **Memory:** > 250MB
+- ❌ **Cron:** Error (≥2 fallos consecutivos)
+- ❌ **WAL:** Corrupción detectada
+- ❌ **Sistema:** Caído o inaccesible
 
-### 2. Crons automáticos (todos con delivery: none)
-- Todos los chequeos se ejecutan INTERNAMENTE sin enviar a Telegram:
-  - `garmin:morning-report` (9 AM) → integrado en informe matutino
-  - `healthcheck:fail2ban-alert` (cada 6h) → integrado en informe matutino
-  - `healthcheck:security-audit-weekly` (lunes) → integrado en informe matutino
-  - `healthcheck:lynis-scan-weekly` (lunes) → integrado en informe matutino
-  - `healthcheck:rkhunter-scan-weekly` (lunes) → integrado en informe matutino
-  - `usage:report-daily` (10 AM fin de semana) → integrado en informe matutino
-  - `usage:report-weekly` (lunes) → integrado en informe matutino
-  - `Tareas de fondo semanales` (lunes) → integrado en informe matutino
-  - `notion:ideas-cleanup-weekly` (lunes) → integrado en informe matutino
-  - `Garmin - Resumen semanal` (lunes) → integrado en informe matutino
+### NO enviamos a Telegram SI:
+- ✅ "Status OK" (heartbeat, status check)
+- ✅ "Fail2Ban: 2 IPs" (normal, bajo control)
+- ✅ "Consumo: $4.21" (dentro presupuesto)
+- ✅ "Memory: 184M" (normal, WAL es recovery)
+- ✅ "Cron jobs: 28 OK, 0 errores" (nominal)
+- ✅ Cualquier reporte positivo/nominal
 
-### 3. Informes matutinos CONSOLIDADOS (entrega única)
-- **Lunes-viernes:** 9:00 AM
-- **Sábado-domingo:** 10:00 AM
-- **UN SOLO mensaje** con todas las secciones:
-  - Sistema (actualizaciones, backup, consumo, Notion)
-  - Seguridad (Fail2Ban, auditorías, scans) - SOLO LUNES
-  - Salud (Garmin diario + semanal) - SOLO LUNES para semanal
-  - Tareas de fondo (Notion background) - SOLO LUNES
-  - Consumo semanal - SOLO LUNES
+---
 
-### 4. Excepciones críticas (alertas inmediatas)
-- Fail2Ban ≥10 IPs baneadas → alerta ahora
-- Rootkit/malware detectado → alerta ahora
-- Error crítico del sistema → alerta ahora
-- Acceso no autorizado → alerta ahora
-- Backup fallido crítico → alerta ahora
-- Gateway caído → alerta ahora
-- Garmin alertas de salud (14:00, 20:00) → SOLO si condición crítica
+## 📊 DISCORD = INFORME MATUTINO COMPLETO
 
-## Beneficios
-- 📵 **Cero notificaciones rutinarias** a Telegram
-- 📋 **Una fuente única** de información (informe matutino)
-- 🎯 **Información estructurada y útil**, no fragmentada
-- ✅ **Yo trabajo en background** sin interrupciones
-- 🚨 **Alertas críticas** entregadas al instante
-- 😴 **Manu duerme tranquilo** (00:00-07:00 Madrid = silencio total)
+**Cuándo:** Lunes-Viernes 9:00 AM, Sábado-Domingo 10:00 AM
+
+**Qué incluye:**
+- Sistema (estado, actualizaciones, backup)
+- Seguridad (Fail2Ban, auditorías, Lynis, rkhunter)
+- Salud (Garmin, actividad, sueño)
+- Consumo (diario + semanal)
+- Tareas (Notion, ideas completadas)
+- Lunes: Auditorías profundas + cleanup + semanal
+
+**Formato:**
+- Sin tablas (bullets + emojis)
+- Conciso pero completo
+- Una vez al día = contexto total
+
+---
+
+## 📱 HEARTBEATS & INTERNAL CHECKS
+
+**Ejecución:** Cada 30 minutos (4:00 AM, 10:30 AM, 3:30 PM, etc.)
+
+**Qué revisa:**
+- Estado crons (errores)
+- Fail2Ban (IPs baneadas)
+- Memory (tamaño)
+- Backup (último status)
+- WAL (integridad)
+- Critical sandbox
+
+**Notificación Telegram:**
+- ✅ TODO OK → SILENCIO (`HEARTBEAT_OK`)
+- ❌ PROBLEMA → Alerta inmediata
+
+---
+
+## 🚨 CRITICAL ALERTS (Exceptions)
+
+Incluso si es de noche/madrugada, alertar a Telegram:
+- Fail2Ban: ≥10 IPs (ataque en progreso)
+- Backup: Fallo crítico (sin recovery)
+- Security: Rootkit detectado
+- System: Caído/inaccesible
+- WAL: Corrupción irreversible
+
+---
+
+## 📈 Resultado Esperado
+
+**Antes:** Telegram ruidoso (20+ mensajes/día "status OK")
+**Después:** Telegram limpio (0-2 mensajes/día, solo alertas reales)
+
+**Discord:** Tu briefing matutino diario (contexto completo, una vez)
+
+---
+
+## 🔄 Implementación
+
+| Job | Cambio | Efecto |
+|-----|--------|--------|
+| Heartbeat 8:30 AM | Silencio si OK | -1 msg/día |
+| Heartbeat 9:00 AM | Silencio si OK | -1 msg/día |
+| Heartbeat 9:30 AM | Silencio si OK | -1 msg/día |
+| Fail2Ban diario | Consolidado en Discord | -1 msg/día |
+| Consumo diario | Consolidado en Discord | -1 msg/día |
+| Garmin daily | Consolidado en Discord | -1 msg/día |
+| **Total** | | **-6 msgs/día** |
+
+**Telegram ahora = alerta, no status.**
+
+---
+
+**Fecha:** 2026-02-23 09:30 Madrid
+**Propuesto por:** Manu
+**Aprobado:** Sí ✅
+**Estado:** ACTIVO

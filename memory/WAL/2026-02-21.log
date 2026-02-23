@@ -1,6 +1,0 @@
-[2026-02-21 12:33:59] [INFO] WAL Protocol initialized — 2026-02-21 13:25 UTC
-SHA256: 90f360eabee790f53be7bdf8a99d3965dd90aa9b35ae87931028e0c3456f5324
-[2026-02-21 12:34:04] [SNAPSHOT] SNAPSHOT: Created /home/mleon/.openclaw/workspace/memory/WAL/snapshots/snapshot-20260221-133404.tar.gz (size: 132K)
-SHA256: b8e15d92329bffb3feac961dae640761c519e7eee10d556f4363701e5d2755b0
-[2026-02-21 18:37:20] [SNAPSHOT] SNAPSHOT: Created /home/mleon/.openclaw/workspace/memory/WAL/snapshots/snapshot-20260221-193720.tar.gz (size: 300K)
-SHA256: b19e26cc94d9c3e57ff5e927fc48867e638f425fc134f8607631f2951684138e
