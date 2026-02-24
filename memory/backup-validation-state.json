@@ -160,13 +160,41 @@
       "status": "VALID_WITH_WARNINGS",
       "details": "0 errors, 1 warnings",
       "checksum": "6da7287ec8331ff19a2315e2bc7377504d767c8071edb301cddc28da952c2298"
+    },
+    {
+      "file": "openclaw-backup-2026-02-23.tar.gz",
+      "timestamp": "2026-02-23T21:27:27Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "6bc8924d8761d8a335c492015815df98b0d6b75736db007a25966e55143a1a67"
+    },
+    {
+      "file": "openclaw-backup-2026-02-23.tar.gz",
+      "timestamp": "2026-02-23T21:42:25Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "6f03a89301265994ce69c8cf72536b351e8eff5ffcf746a42e6bee43a3d63128"
+    },
+    {
+      "file": "openclaw-backup-2026-02-23.tar.gz",
+      "timestamp": "2026-02-23T21:53:51Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "77022cae16a98287c8858372699be8bd610851f012470ba4a1a954a85dde8e87"
+    },
+    {
+      "file": "openclaw-backup-2026-02-24.tar.gz",
+      "timestamp": "2026-02-24T03:00:07Z",
+      "status": "VALID_WITH_WARNINGS",
+      "details": "0 errors, 1 warnings",
+      "checksum": "15b9747d4186c1771d91dd9450330fa2c6755a29e4190de5f831c52925789bd3"
     }
   ],
-  "lastRun": "2026-02-23T19:11:10Z",
+  "lastRun": "2026-02-24T03:00:07Z",
   "summary": {
-    "total": 23,
+    "total": 27,
     "valid": 2,
-    "invalid": 21,
+    "invalid": 25,
     "lastStatus": "VALID_WITH_WARNINGS"
   }
 }

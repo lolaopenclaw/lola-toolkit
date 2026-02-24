@@ -72,6 +72,28 @@ Monitor de discussions, PRs y feedback para contribuciones.
 
 ---
 
+## Bug detectado: Cron delivery "none" igualmente intenta entregar
+
+**Status:** ⏳ Sin reportar (bug menor)
+**Detectado:** 2026-02-24
+**Descripción:** Job con `delivery.mode: "none"` reporta error `"cron announce delivery failed"` aunque el job se ejecutó correctamente. Ocurrió en "Informe matutino fin de semana" (domingo 22 feb). El sábado anterior con misma config funcionó OK → posible race condition.
+**Impacto:** Bajo. El informe se genera bien, solo el status queda como "error".
+**Acción:** Monitorear si se repite. Si es consistente, abrir issue en GitHub.
+
+---
+
+## Issue Tracking: Browser Relay Handshake (#21758)
+
+**Status:** ⏳ ABIERTO (reportado por nosotros)
+**URL:** https://github.com/openclaw/openclaw/issues/21758
+**Fecha:** 2026-02-24
+**Problema:** Extension Chrome envía CDP events antes de completar handshake WebSocket → "invalid request frame"
+**Workaround:** Usar profile `openclaw` (headless)
+**Notion:** ✅ Añadido como Pendiente
+**Próximo paso:** Monitorear hasta que upstream lo resuelva → probar extensión de nuevo
+
+---
+
 ## Notas
 
 - Mantener sincronizado con Manu
