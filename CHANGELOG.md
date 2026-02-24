@@ -70,3 +70,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-24 13:47:54** | 🔐 Security hardening: PAM modules fixed, X11Forwarding disabled | `20c4c93` | [`backup-20c4c93`](backups-by-commit/backup-20c4c93*.tar.gz)
 
+- **2026-02-24 14:14:00** | 🚀 Auto-recovery system: Crash detection + snapshot recovery + Drive fallback | `c345508` | [`backup-c345508`](backups-by-commit/backup-c345508*.tar.gz)
+

@@ -1,17 +1,12 @@
 # TECHNICAL.md — Systems & Implementation
 
-## 🔄 WAL Protocol (Write-Ahead Logging)
-- **Status:** Production-ready (implementado 2026-02-21)
-- **Componentes:** `scripts/wal-logger.sh`, `wal-snapshot.sh`, `wal-replay.sh`
-- **Cómo funciona:**
-  1. Logging: Cambios se registran ANTES de aplicar
-  2. Snapshots: Cada 6h (cron)
-  3. Validation: Lunes 6:00 AM
-  4. Replay: Recuperación automática post-crash
-- **Crons:**
-  - Snapshots: cada 6 horas
-  - Log rotation: diario 2:00 AM
-  - Validation: lunes 6:00 AM
+## 💾 Backup Strategy
+- **Método:** Backup diario a Google Drive via rclone (`backup-memory.sh`)
+- **Frecuencia:** 4:00 AM diario (cron)
+- **Retención:** 30 días en Drive
+- **Contenido:** Workspace completo (~768KB)
+- **Recuperación:** `restore.sh` desde backup descargado
+- **Nota:** WAL/snapshots se probaron (21-23 feb) pero se descartaron — overkill para ~1MB de markdown. Backups via rclone+git son suficientes.
 
 ## 🧠 Memory Management (Tiered Architecture)
 - **HOT:** Últimos 7 días (memory/DAILY/HOT/)
@@ -26,16 +21,17 @@
 
 ## 📋 Cron Jobs Activos
 - **4:00 AM** — Backup a Google Drive (`backup-memory.sh`)
-- **7:00 AM** — Fail2ban daily report
-- **9:00 AM** — Informe matutino unificado (apt, OpenClaw, backup, consumo)
-- **9:00 AM** — Garmin informe matutino
+- **9:00 AM (L-V)** — Informe matutino unificado
+- **9:10 AM (L-V)** — Informe consumo diario
+- **9:30 AM (L-V)** — Populate Google Sheets
+- **10:00 AM (S-D)** — Informe matutino fin de semana
 - **14:00 & 20:00** — Garmin alertas de salud
-- **23:55** — Informe consumo diario
-- **Lunes 5:00 AM** — Tareas Notion semanales
-- **Lunes 6:00 AM** — Auditoría seguridad + Lynis + rkhunter
-- **Lunes 7:00 AM** — Cleanup Notion Ideas
-- **Lunes 8:00 AM** — Informe consumo semanal
-- **Lunes 8:30 AM** — Garmin resumen semanal
+- **Cada 6h** — Fail2Ban check
+- **Lunes 5:30 AM** — Backup cleanup + validation
+- **Lunes 9:00 AM** — Auditorías semanales (seguridad, Lynis, rkhunter, Notion, usage, tareas fondo)
+- **Lunes 23:30** — Tier rotation
+- **Domingo 22:00** — Cleanup audit
+- **Domingo 23:00** — Memory organization + Guardian
 
 ## 🔐 Lecciones Técnicas Aprendidas
 1. D-Bus SecretService no funciona en VPS headless → usar keyring file-based
@@ -48,9 +44,4 @@
 8. XFCE en VNC necesita D-Bus: `dbus-launch` en ~/.vnc/xstartup
 9. Memoria modular previene overflow: Dividir memory/YYYY-MM-DD.md cuando pase de ~4KB
 10. Timezone VPS en UTC causaba confusiones → cambiar a Europe/Madrid
-
-## 🪵 WAL Emergency (2026-02-23)
-- Problema: WAL duplicó tamaño (86M → 184M) entre 6:35 AM y 8:00 AM
-- Causa: Snapshots 6h + archival fallida a COLD
-- Fix: Cambio a 12h snapshots (temporal), manual archival a COLD
-- Resultado: WAL 203M → 57M
+11. WAL/snapshots son overkill para workspace pequeño (~1MB markdown) → rclone+git suficiente
