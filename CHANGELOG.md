@@ -68,3 +68,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-22 12:14:48** | 🎯 Resolver GOG/tokens + automatizar compartir Drive folders | `1bda599` | [`backup-1bda599`](backups-by-commit/backup-1bda599*.tar.gz)
 
+- **2026-02-24 13:47:54** | 🔐 Security hardening: PAM modules fixed, X11Forwarding disabled | `20c4c93` | [`backup-20c4c93`](backups-by-commit/backup-20c4c93*.tar.gz)
+
