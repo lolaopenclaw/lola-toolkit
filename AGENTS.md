@@ -119,6 +119,35 @@ Ver `memory/daily-structure.md` para detalles completos.
 - `trash` > `rm` (recoverable beats gone forever)
 - When in doubt, ask.
 
+### 🔐 GitHub Publishing Safety (2026-02-25)
+
+**NUNCA publicar en GitHub (issues, discussions, PRs, comments):**
+- Gateway tokens, API keys, secrets de cualquier tipo
+- IPs internas o de Tailscale
+- Hostnames de Tailscale (*.ts.net)
+- Rutas con nombre de usuario (/home/mleon/...)
+- Contenido de .env
+- SSH keys o cualquier material criptográfico
+- Datos personales de Manu
+
+**Pre-check obligatorio:** Antes de cada `gh issue create`, `gh api` con body, o cualquier publicación en GitHub, revisar el texto completo buscando los items anteriores. Si hay duda, preguntar a Manu.
+
+**Rotación de gateway token:** Cada 3 meses o inmediatamente si se ha expuesto. Próxima rotación: mayo 2026.
+
+### 🧵 GitHub Discussions — Leer ANTES de responder
+
+**Lección aprendida: 2026-02-25**
+
+**SIEMPRE antes de comentar en un thread de GitHub:**
+1. Fetch ALL comments (`first: 50`, no `last: 1`)
+2. Leer especialmente **mis propias respuestas anteriores**
+3. Responder SOLO a lo nuevo — no repetir contexto ya dado
+4. Si hay duda, comparar el borrador contra comentarios previos
+
+**Error:** Respondí repitiendo 60% del contenido de mi propia respuesta anterior porque solo hice `last: 1` en la query GraphQL y no vi mi comentario previo.
+
+**Limitación detectada:** No tengo memoria entre sesiones de qué he publicado en GitHub. Debo siempre consultar el thread completo antes de responder.
+
 ### 📝 Correcciones y Aprendizaje
 
 **Política establecida: 2026-02-20**

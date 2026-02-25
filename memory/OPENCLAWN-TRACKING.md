@@ -19,7 +19,7 @@ Monitor de discussions, PRs y feedback para contribuciones.
 ## Discussion 2: Critical Update Framework
 
 **Status:** ✅ ABIERTA
-**URL:** https://github.com/openclaw/openclaw/discussions/23394
+**URL:** https://github.com/openclaw/openclaw/discussions/23395
 **Fecha apertura:** 2026-02-22
 **Coautores:** Manu (@RagnarBlackmade) + Lola
 **Descripción:** Sistema canary testing para actualizaciones seguras. Captura baseline, aplica cambio, valida automáticamente, rollback si falla.
@@ -31,8 +31,16 @@ Monitor de discussions, PRs y feedback para contribuciones.
 
 ## Discussion 3: Memory Guardian
 
+**Status:** ✅ ABIERTA — feedback recibido de @getmilodev (2026-02-25), respondido
+**URL:** https://github.com/openclaw/openclaw/discussions/23394
+
+## Issue 3: Control UI mobile responsive
+
 **Status:** ✅ ABIERTA
-**URL:** https://github.com/openclaw/openclaw/discussions/23395
+**URL:** https://github.com/openclaw/openclaw/issues/26426
+**Fecha apertura:** 2026-02-25
+**Descripción:** Chat input y layout no responsive en móvil Android. Screenshot adjuntada.
+**Seguimiento:** Semanal con los otros issues
 **Fecha apertura:** 2026-02-22
 **Coautores:** Manu (@RagnarBlackmade) + Lola
 **Descripción:** Limpieza automática de workspace. Detecta bloat, desduplicación, compresión, protege archivos críticos.
@@ -91,6 +99,20 @@ Monitor de discussions, PRs y feedback para contribuciones.
 **Workaround:** Usar profile `openclaw` (headless)
 **Notion:** ✅ Añadido como Pendiente
 **Próximo paso:** Monitorear hasta que upstream lo resuelva → probar extensión de nuevo
+
+---
+
+## Bug: Typing indicator stuck (v2026.2.24) — #26419
+
+**Status:** 🔴 ABIERTO — comentado confirmando en Telegram
+**URL:** https://github.com/openclaw/openclaw/issues/26419
+**Nuestro comentario:** https://github.com/openclaw/openclaw/issues/26419#issuecomment-3959054373
+**Detectado:** 2026-02-25
+**Descripción:** Keepalive timer del typing indicator (#25886) no se limpia tras enviar respuesta. Afecta Discord + Telegram.
+**Impacto:** Alto. Requiere gateway restart para limpiar. 3 ocurrencias en 30 min.
+**Workaround:** `openclaw gateway restart`
+**Relacionados:** #26416 (similar, elevated tools), #26437 (Discord long tool chains)
+**Próximo paso:** Monitorear si se arregla en próxima release. Si no, escalar.
 
 ---
 

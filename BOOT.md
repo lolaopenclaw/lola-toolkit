@@ -1,15 +1,14 @@
-# BOOT.md — Arranque del Gateway
+# BOOT.md
 
-El gateway acaba de arrancar (o reiniciar). Haz lo siguiente:
+Check gateway status and report to Manu via Telegram:
 
-1. Comprueba el estado del sistema:
-   - `uptime` para saber cuánto lleva encendida la VPS
-   - `journalctl --user -u openclaw-gateway --since "10 minutes ago" --no-pager -q` para ver si hubo crash
-   - `last reboot | head -3` para ver reboots recientes
+1. Verify OpenClaw gateway is running: `systemctl status openclaw-gateway`
+2. Check for any crashes in the last 10 minutes: `journalctl --user -u openclaw-gateway --since "10 minutes ago" --no-pager -q`
+3. Check recent reboots: `last reboot | head -3`
+4. Send a message to Manu (6884477) with:
+   - Current time (Madrid timezone)
+   - Boot reason (clean restart, system reboot, or crash)
+   - Gateway status (running/down)
+   - Any errors from logs
 
-2. Envía UN mensaje por Telegram a Manu (chat ID: 6884477) con:
-   - Hora actual (UTC y Madrid)
-   - Motivo probable: reboot de VPS, crash del gateway, reinicio manual, o desconocido
-   - Tiempo de caída aproximado (si se puede estimar)
-
-3. No hagas nada más. No leas memoria ni ejecutes otras tareas.
+Keep the message brief and factual. If all is well, just confirm "Gateway up and running ✅".
