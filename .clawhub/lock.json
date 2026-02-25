@@ -20,6 +20,14 @@
     "video-frames": {
       "version": "1.0.0",
       "installedAt": 1771850945370
+    },
+    "verification-before-completion": {
+      "version": "0.1.0",
+      "installedAt": 1772029113260
+    },
+    "truthcheck": {
+      "version": "0.4.3",
+      "installedAt": 1772029271245
     }
   }
 }

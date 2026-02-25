@@ -134,19 +134,36 @@ Ver `memory/daily-structure.md` para detalles completos.
 
 **Rotación de gateway token:** Cada 3 meses o inmediatamente si se ha expuesto. Próxima rotación: mayo 2026.
 
-### 🧵 GitHub Discussions — Leer ANTES de responder
+### 🔍 Verificación Antes de Actuar (Protocolo Universal)
 
-**Lección aprendida: 2026-02-25**
+**Establecido: 2026-02-25**
+**Skill asociado:** `verification-before-completion`
+**Principio:** Evidence before assertions, always.
 
-**SIEMPRE antes de comentar en un thread de GitHub:**
-1. Fetch ALL comments (`first: 50`, no `last: 1`)
-2. Leer especialmente **mis propias respuestas anteriores**
-3. Responder SOLO a lo nuevo — no repetir contexto ya dado
-4. Si hay duda, comparar el borrador contra comentarios previos
+**Aplica a TODA interacción con contexto externo:**
 
-**Error:** Respondí repitiendo 60% del contenido de mi propia respuesta anterior porque solo hice `last: 1` en la query GraphQL y no vi mi comentario previo.
+#### 1. GitHub Discussions / Issues / PRs
+- Fetch ALL comments (`first: 50`, no `last: 1`)
+- Leer especialmente **mis propias respuestas anteriores**
+- Responder SOLO a lo nuevo — no repetir contexto ya dado
+- Comparar borrador contra comentarios previos antes de publicar
 
-**Limitación detectada:** No tengo memoria entre sesiones de qué he publicado en GitHub. Debo siempre consultar el thread completo antes de responder.
+#### 2. Investigación / Research
+- Antes de afirmar algo, verificar la fuente
+- No asumir contexto de sesiones anteriores — consultar siempre
+- Cruzar múltiples fuentes cuando sea posible
+- Si no puedo verificar, decir explícitamente "no he podido confirmar esto"
+
+#### 3. Tareas con estado externo (emails, APIs, servicios)
+- Verificar estado actual antes de actuar (no asumir que sigue igual)
+- Confirmar resultado después de actuar (no asumir éxito)
+
+#### 4. Completar trabajo / Claims de éxito
+- No decir "hecho" sin verificar que realmente se completó
+- Ejecutar el comando de verificación, leer la salida, ENTONCES afirmar
+- Ver `skills/verification-before-completion/SKILL.md` para el protocolo completo
+
+**Origen:** Error del 25/02 — respondí en GitHub repitiendo 60% de mi propia respuesta anterior porque solo hice `last: 1` y no vi mi comentario previo. Generalizado a toda investigación/interacción externa.
 
 ### 📝 Correcciones y Aprendizaje
 
