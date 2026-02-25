@@ -1,0 +1,17 @@
+
+===== BACKUP VALIDATION REPORT =====
+Backup: test-backup.tar.gz
+Size: 256K (261249 bytes)
+Date: 2026-02-25 14:25:13 UTC
+
+⚠️  WARN Checksum: SHA256=a686be34a8f1b05b92a4d784cdecd71aa837f12f70adb8232688281046fbcdbb (no stored checksum to compare)
+✅ PASS Size: 256K (reasonable)
+
+✅ PASS Archive Integrity: readable (209 entries)
+✅ PASS Structure: 8/8 expected files found
+✅ PASS Directories: 3/3 expected dirs present
+
+Status: ⚠️  VALID with warnings (1 warnings)
+
+Validated: 2026-02-25 14:25:13 UTC
+

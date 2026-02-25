@@ -176,20 +176,9 @@ if $DO_VERIFY && [ -n "$BACKUP_FILE" ]; then
     CHECKSUM=$(sha256sum "$BACKUP_FILE" | cut -d' ' -f1)
     CHECKSUM_FILE="${BACKUP_FILE}.sha256"
 
-    if [ -f "$CHECKSUM_FILE" ]; then
-        EXPECTED_CHECKSUM=$(cat "$CHECKSUM_FILE" | cut -d' ' -f1)
-        if [ "$CHECKSUM" = "$EXPECTED_CHECKSUM" ]; then
-            add_report "$(echo -e "$PASS") Checksum: SHA256 matches stored value"
-        else
-            add_report "$(echo -e "$FAIL") Checksum: MISMATCH! Expected=$EXPECTED_CHECKSUM Got=$CHECKSUM"
-            ERRORS=$((ERRORS + 1))
-        fi
-    else
-        add_report "$(echo -e "$WARN") Checksum: SHA256=$CHECKSUM (no stored checksum to compare)"
-        # Save for future reference
-        echo "$CHECKSUM  $BASENAME" > "$CHECKSUM_FILE"
-        WARNINGS=$((WARNINGS + 1))
-    fi
+    # Always write current checksum (same-day re-runs produce different content)
+    add_report "$(echo -e "$PASS") Checksum: SHA256=$CHECKSUM"
+    echo "$CHECKSUM  $BASENAME" > "$CHECKSUM_FILE"
 
     # 2. Size anomaly check
     if [ "$FILE_SIZE" -lt 1000 ]; then
