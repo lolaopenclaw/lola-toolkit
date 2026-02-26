@@ -72,3 +72,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-24 14:14:00** | 🚀 Auto-recovery system: Crash detection + snapshot recovery + Drive fallback | `c345508` | [`backup-c345508`](backups-by-commit/backup-c345508*.tar.gz)
 
+- **2026-02-25 15:25:43** | fix: backup validator checksum mismatch on same-day re-runs | `13f76ec` | [`backup-13f76ec`](backups-by-commit/backup-13f76ec*.tar.gz)
+
