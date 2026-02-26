@@ -1,0 +1,30 @@
+[
+  {
+    "id": "e738783e-54eb-4821-9dc0-b8360fc33db4",
+    "name": "Informe matutino unificado (fin de semana)",
+    "schedule": "0 10 * * 0,6",
+    "timezone": "Europe/Madrid",
+    "payload": {
+      "message": "Eres Lola. Genera UN ÚNICO informe matutino unificado en español (sábado-domingo 10 AM). Formato: sin tablas, bullets con emojis.\n\nIncluye:\n- Sistema (actualizaciones, backup, consumo, Notion)\n- Seguridad (Fail2Ban básico)\n- Salud Garmin (actividad AYER + sueño HOY)\n\nAL FINAL:\n1. Genera el informe completo\n2. Guárdalo en variable\n3. Ejecuta: bash ~/.openclaw/workspace/scripts/send-informe-to-discord.sh \"$INFORME\"\n\nEl informe debe ir a Discord SOLO, no a Telegram.",
+      "model": "anthropic/claude-haiku-4-5",
+      "timeoutSeconds": 300
+    },
+    "delivery": {
+      "mode": "none"
+    }
+  },
+  {
+    "id": "a5a2f7b7-37e6-4109-b284-a7be7190ee8a",
+    "name": "📚 Memory organization review (domingo noche)",
+    "schedule": "0 23 * * 0",
+    "timezone": "Europe/Madrid",
+    "payload": {
+      "message": "Ejecuta revisión semanal de memoria (VERSIÓN RÁPIDA):\n\n1. Ejecuta: du -sh ~/.openclaw/workspace/memory/\n2. Cuenta archivos: find ~/.openclaw/workspace/memory/ -type f | wc -l\n3. Busca archivos >2MB: find ~/.openclaw/workspace/memory/ -type f -size +2M\n4. Revisa edad: find ~/.openclaw/workspace/memory/ -type f -mtime +30 -name '*.md'\n\nSi encuentras:\n- >50 archivos: sugerir archivo comprimido\n- Archivos >2MB: documentar para cleanup\n- Archivos >30 días: preparar para comprimir\n\nGuarda reporte en: memory/YYYY-MM-DD-memory-review.md\n\nSi todo OK: HEARTBEAT_OK",
+      "model": "anthropic/claude-haiku-4-5",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "none"
+    }
+  }
+]
