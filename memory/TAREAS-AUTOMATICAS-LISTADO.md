@@ -1,6 +1,6 @@
 # 📋 TAREAS AUTOMATIZADAS — Listado Completo
 
-**Última actualización:** 2026-02-27 17:17 | **Total:** 16 tareas (Garmin Alertas integrado en Informe Matutino)
+**Última actualización:** 2026-02-27 17:20 | **Total:** 16 tareas (desglose de tokens en consumo APIs)
 
 ---
 
@@ -29,7 +29,7 @@
 - **Qué hace:** Informe unificado sin repeticiones:
   1. **Estado del Sistema** — Uptime, CPU, RAM, disco
   2. **Seguridad (Fail2Ban)** — IPs baneadas últimas 24h
-  3. **Consumo de APIs** — Uso Anthropic, costos
+  3. **Consumo de APIs** — Tokens (prompts + completions) + costos Anthropic día anterior
   4. **Salud (Garmin)** — HR, estrés, sueño, **alertas si las hay** (una vez al día)
   5. **Tareas Pendientes** — Notion (si hay bloqueadas)
 - **Destino:** Telegram
@@ -157,4 +157,4 @@ Recuperación: restore.sh desde backup descargado
 
 ---
 
-*Última revisión: 2026-02-27 17:17 (Garmin Alertas integrado en Informe Matutino @ 10 AM)*
+*Última revisión: 2026-02-27 17:20 (añadido desglose de tokens en Consumo APIs)*
