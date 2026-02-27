@@ -1,6 +1,6 @@
 # 📋 TAREAS AUTOMATIZADAS — Listado Completo
 
-**Última actualización:** 2026-02-27 17:12 | **Total:** 18 tareas (Informe Matutino @ 10 AM + Sheets daily)
+**Última actualización:** 2026-02-27 17:15 | **Total:** 17 tareas (EXA AI News eliminado)
 
 ---
 
@@ -62,37 +62,32 @@
 - **Qué hace:** Valida integridad de backups en Drive
 - **Para qué:** Confirmar que backups son restaurables
 
-### 8. 📰 EXA: AI News (8:00 AM)
-- **Cuándo:** Lunes 8:00 AM
-- **Qué hace:** Busca noticias IA de la semana
-- **Destino:** Telegram
-
-### 9. 🔒 Security Audit Weekly (9:00 AM)
+### 8. 🔒 Security Audit Weekly (9:00 AM)
 - **Cuándo:** Lunes 9:00 AM
 - **Qué hace:** Auditoría profunda: firewall, SSH, puertos, accesos
 - **Modelo:** Haiku
 
-### 10. 📊 Lynis Scan Weekly (9:00 AM)
+### 9. 📊 Lynis Scan Weekly (9:00 AM)
 - **Cuándo:** Lunes 9:00 AM
 - **Qué hace:** Scan Lynis del sistema
 - **Para qué:** Detectar cambios en hardening index
 
-### 11. 🛡️ rkhunter Scan Weekly (9:00 AM)
+### 10. 🛡️ rkhunter Scan Weekly (9:00 AM)
 - **Cuándo:** Lunes 9:00 AM
 - **Qué hace:** Scan de malware/rootkits
 - **Para qué:** Detectar binarios modificados o rootkits
 
-### 12. 📋 Notion Ideas Cleanup (9:00 AM)
+### 11. 📋 Notion Ideas Cleanup (9:00 AM)
 - **Cuándo:** Lunes 9:00 AM
 - **Qué hace:** Revisa Ideas completadas y las mueve a Hecho
 - **Para qué:** Mantener tablero Kanban limpio
 
-### 13. 📊 Usage Report Weekly (9:00 AM)
+### 12. 📊 Usage Report Weekly (9:00 AM)
 - **Cuándo:** Lunes 9:00 AM
 - **Qué hace:** Resumen semanal de consumo con tendencias
 - **Modelo:** Haiku
 
-### 14. 🔄 Tareas de Fondo Semanales (9:00 AM)
+### 13. 🔄 Tareas de Fondo Semanales (9:00 AM)
 - **Cuándo:** Lunes 9:00 AM
 - **Qué hace:** Revisa tareas de Notion en estado "Fondo"
 - **Modelo:** Haiku
@@ -111,18 +106,18 @@
 
 ## 📅 DOMINGO NOCHE (Mantenimiento)
 
-### 15. 🧹 Cleanup Audit (22:00)
+### 14. 🧹 Cleanup Audit (22:00)
 - **Cuándo:** Domingo 22:00
 - **Qué hace:** Auditoría de archivos temporales, caché, procesos
 - **Nota:** NO borra nada, solo reporta hallazgos
 
-### 16. 📚 Memory Organization Review (23:00)
+### 15. 📚 Memory Organization Review (23:00)
 - **Cuándo:** Domingo 23:00
 - **Qué hace:** Revisa estructura de memory/, compacta si necesario
 - **Timeout:** 600s
 - **Modelo:** Haiku
 
-### 17. 🧠 Memory Guardian Pro (23:00)
+### 16. 🧠 Memory Guardian Pro (23:00)
 - **Cuándo:** Domingo 23:00
 - **Qué hace:** Limpia backups viejos, temporales, detecta duplicados
 - **Modelo:** Haiku
@@ -131,7 +126,7 @@
 
 ## 📅 LUNES NOCHE
 
-### 18. 📚 Tier Rotation (23:30)
+### 17. 📚 Tier Rotation (23:30)
 - **Cuándo:** Lunes 23:30
 - **Qué hace:** Mueve archivos HOT→WARM (>7d) y WARM→COLD (>30d)
 - **Modelo:** Haiku
@@ -144,11 +139,11 @@
 |-----------|--------|-------------|
 | **Cada 6h** | 1 | Fail2Ban monitoring |
 | **Diarias (todos)** | 4 | Backup (4 AM) + Informe (10 AM) + Sheets (9:30 AM) + Garmin alerts (14/20h) |
-| **Lunes AM** | 9 | Backup cleanup + validation + 7 auditorías semanales |
+| **Lunes AM** | 8 | Backup cleanup + validation + 6 auditorías semanales |
 | **Domingo noche** | 3 | Cleanup + memory maintenance |
 | **Lunes noche** | 1 | Tier rotation |
 
-**TOTAL:** 18 tareas recurrentes (consolidado de 21)
+**TOTAL:** 17 tareas recurrentes (EXA AI News eliminado)
 
 ---
 
@@ -168,4 +163,4 @@ Recuperación: restore.sh desde backup descargado
 
 ---
 
-*Última revisión: 2026-02-27 17:12 (cambios finales: Informe @ 10 AM, Sheets diario)*
+*Última revisión: 2026-02-27 17:15 (eliminado: EXA AI News)*
