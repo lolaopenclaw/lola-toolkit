@@ -1,6 +1,6 @@
 # 📋 TAREAS AUTOMATIZADAS — Listado Completo
 
-**Última actualización:** 2026-02-27 17:08 | **Total:** 18 tareas (Informe Matutino Consolidado)
+**Última actualización:** 2026-02-27 17:12 | **Total:** 18 tareas (Informe Matutino @ 10 AM + Sheets daily)
 
 ---
 
@@ -24,8 +24,8 @@
 - **Importancia:** ⭐⭐⭐ (Crítico)
 - **Retención:** 30 días
 
-### 3. 📋 Informe Matutino Completo (9:00 AM) ✅ CONSOLIDADO
-- **Cuándo:** TODOS LOS DÍAS 9:00 AM (antes era L-V y 10 AM fin de semana)
+### 3. 📋 Informe Matutino Completo (10:00 AM) ✅ CONSOLIDADO
+- **Cuándo:** TODOS LOS DÍAS 10:00 AM (consolidado de L-V 9 AM + S-D 10 AM)
 - **Qué hace:** Informe unificado sin repeticiones:
   1. **Estado del Sistema** — Uptime, CPU, RAM, disco
   2. **Seguridad (Fail2Ban)** — IPs baneadas últimas 24h
@@ -143,7 +143,7 @@
 | Frecuencia | Tareas | Descripción |
 |-----------|--------|-------------|
 | **Cada 6h** | 1 | Fail2Ban monitoring |
-| **Diarias (todos)** | 3 | Backup (4 AM) + Informe Consolidado (9 AM) + Garmin alerts (14/20h) |
+| **Diarias (todos)** | 3 | Backup (4 AM) + Informe Consolidado (10 AM) + Garmin alerts (14/20h) |
 | **Diarias (L-V)** | 1 | Populate Google Sheets (9:30 AM) |
 | **Lunes AM** | 9 | Backup cleanup + validation + 7 auditorías semanales |
 | **Domingo noche** | 3 | Cleanup + memory maintenance |
@@ -169,4 +169,4 @@ Recuperación: restore.sh desde backup descargado
 
 ---
 
-*Última revisión: 2026-02-27 17:08 (consolidación Informe Matutino)*
+*Última revisión: 2026-02-27 17:12 (cambios finales: Informe @ 10 AM, Sheets diario)*
