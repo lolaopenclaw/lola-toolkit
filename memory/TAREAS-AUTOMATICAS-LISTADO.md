@@ -1,6 +1,6 @@
 # 📋 TAREAS AUTOMATIZADAS — Listado Completo
 
-**Última actualización:** 2026-02-27 17:15 | **Total:** 17 tareas (EXA AI News eliminado)
+**Última actualización:** 2026-02-27 17:17 | **Total:** 16 tareas (Garmin Alertas integrado en Informe Matutino)
 
 ---
 
@@ -30,23 +30,17 @@
   1. **Estado del Sistema** — Uptime, CPU, RAM, disco
   2. **Seguridad (Fail2Ban)** — IPs baneadas últimas 24h
   3. **Consumo de APIs** — Uso Anthropic, costos
-  4. **Salud (Garmin)** — HR, estrés, sueño, alertas
+  4. **Salud (Garmin)** — HR, estrés, sueño, **alertas si las hay** (una vez al día)
   5. **Tareas Pendientes** — Notion (si hay bloqueadas)
 - **Destino:** Telegram
 - **Modelo:** Haiku
-- **Cambio:** Consolidó 3 tareas anteriores (Informe L-V, Informe S-D, Fail2Ban Report, Usage Report)
+- **Cambio:** Consolidó 4 tareas anteriores (Informe L-V, Informe S-D, Fail2Ban Report, Usage Report, **Garmin Alertas 14/20h**)
 
 ### 4. 📊 Populate Google Sheets (9:30 AM)
 - **Cuándo:** TODOS LOS DÍAS 9:30 AM (antes solo L-V)
 - **Qué hace:** Rellena Sheets con datos de consumo IA + Garmin
 - **Para qué:** Dashboard visual en Google Sheets
 - **Modelo:** Haiku
-
-### 5. 💓 Garmin Alertas de Salud (14:00 y 20:00)
-- **Cuándo:** Todos los días 14:00 y 20:00
-- **Qué hace:** Verifica alertas de salud Garmin
-- **Para qué:** Detectar HR elevado, estrés alto, sueño malo
-- **Nota:** Solo alerta si hay problema real (HEARTBEAT_OK si OK)
 
 ---
 
@@ -138,12 +132,12 @@
 | Frecuencia | Tareas | Descripción |
 |-----------|--------|-------------|
 | **Cada 6h** | 1 | Fail2Ban monitoring |
-| **Diarias (todos)** | 4 | Backup (4 AM) + Informe (10 AM) + Sheets (9:30 AM) + Garmin alerts (14/20h) |
+| **Diarias (todos)** | 3 | Backup (4 AM) + Informe Completo @ 10 AM + Sheets (9:30 AM) |
 | **Lunes AM** | 8 | Backup cleanup + validation + 6 auditorías semanales |
 | **Domingo noche** | 3 | Cleanup + memory maintenance |
 | **Lunes noche** | 1 | Tier rotation |
 
-**TOTAL:** 17 tareas recurrentes (EXA AI News eliminado)
+**TOTAL:** 16 tareas recurrentes (Garmin Alertas integrado en Informe Matutino)
 
 ---
 
@@ -163,4 +157,4 @@ Recuperación: restore.sh desde backup descargado
 
 ---
 
-*Última revisión: 2026-02-27 17:15 (eliminado: EXA AI News)*
+*Última revisión: 2026-02-27 17:17 (Garmin Alertas integrado en Informe Matutino @ 10 AM)*
