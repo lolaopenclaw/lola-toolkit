@@ -1,6 +1,6 @@
 # 📋 TAREAS AUTOMATIZADAS — Listado Completo
 
-**Última actualización:** 2026-02-24 | **Total:** 22 tareas
+**Última actualización:** 2026-02-27 | **Total:** 21 tareas (EXA Startup eliminado)
 
 ---
 
@@ -123,10 +123,11 @@
 
 ## 📅 VIERNES
 
-### 19. 🚀 EXA: Startup Trends (17:00)
-- **Cuándo:** Viernes 17:00
-- **Qué hace:** Busca tendencias de startups/funding
-- **Destino:** Telegram
+### 19. 🚀 EXA: Startup Trends (17:00) ~~ELIMINADO 27/02~~
+- **Estado:** ❌ Eliminado (27 febrero 17:00 - No interesaba)
+- ~~**Cuándo:** Viernes 17:00~~
+- ~~**Qué hace:** Busca tendencias de startups/funding~~
+- ~~**Destino:** Telegram~~
 
 ---
 
@@ -168,11 +169,11 @@
 | **Diarias (S-D)** | 2 | Informe + usage |
 | **Diarias (todos)** | 2 | Backup Drive + Garmin alerts |
 | **Lunes AM** | 7 | Auditorías semanales |
-| **Viernes** | 1 | Startup trends |
+| **Viernes** | — | ~~Startup trends~~ (eliminado) |
 | **Domingo noche** | 3 | Cleanup + memory maintenance |
 | **Lunes noche** | 1 | Tier rotation |
 
-**TOTAL:** 22 tareas recurrentes
+**TOTAL:** 21 tareas recurrentes
 
 ---
 
