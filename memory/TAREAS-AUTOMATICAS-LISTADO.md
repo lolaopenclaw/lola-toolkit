@@ -37,7 +37,7 @@
 - **Cambio:** Consolidó 3 tareas anteriores (Informe L-V, Informe S-D, Fail2Ban Report, Usage Report)
 
 ### 4. 📊 Populate Google Sheets (9:30 AM)
-- **Cuándo:** Lunes-Viernes 9:30 AM
+- **Cuándo:** TODOS LOS DÍAS 9:30 AM (antes solo L-V)
 - **Qué hace:** Rellena Sheets con datos de consumo IA + Garmin
 - **Para qué:** Dashboard visual en Google Sheets
 - **Modelo:** Haiku
@@ -143,8 +143,7 @@
 | Frecuencia | Tareas | Descripción |
 |-----------|--------|-------------|
 | **Cada 6h** | 1 | Fail2Ban monitoring |
-| **Diarias (todos)** | 3 | Backup (4 AM) + Informe Consolidado (10 AM) + Garmin alerts (14/20h) |
-| **Diarias (L-V)** | 1 | Populate Google Sheets (9:30 AM) |
+| **Diarias (todos)** | 4 | Backup (4 AM) + Informe (10 AM) + Sheets (9:30 AM) + Garmin alerts (14/20h) |
 | **Lunes AM** | 9 | Backup cleanup + validation + 7 auditorías semanales |
 | **Domingo noche** | 3 | Cleanup + memory maintenance |
 | **Lunes noche** | 1 | Tier rotation |
