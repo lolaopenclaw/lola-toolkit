@@ -1,0 +1,24 @@
+
+===== BACKUP VALIDATION REPORT =====
+Backup: openclaw-backup-2026-03-02.tar.gz
+Size: 796K (814651 bytes)
+Date: 2026-03-02 03:00:19 UTC
+
+✅ PASS Checksum: SHA256=d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75
+✅ PASS Size: 796K (reasonable)
+
+✅ PASS Archive Integrity: readable (687 entries)
+❌ FAIL Structure: Only 3/8 expected files found
+  Missing:
+  - dot-env
+  - SOUL.md
+  - AGENTS.md
+  - MEMORY.md
+  - memory/
+
+✅ PASS Directories: 1/3 expected dirs present
+
+Status: ❌ INVALID (1 errors, 0 warnings)
+
+Validated: 2026-03-02 03:00:19 UTC
+

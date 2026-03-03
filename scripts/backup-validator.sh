@@ -208,7 +208,10 @@ if $DO_VERIFY && [ -n "$BACKUP_FILE" ]; then
         FOUND=0
         MISSING=""
         for expected in "${EXPECTED_FILES[@]}"; do
-            if echo "$TAR_OUTPUT" | grep -q "$expected"; then
+            # Handle both files and directories: match "filename" or "dirname/" anywhere in path
+            # e.g., "SOUL.md" matches "openclaw-backup-2026-03-02/SOUL.md"
+            # e.g., "memory/" matches "openclaw-backup-2026-03-02/memory/" or "openclaw-backup-2026-03-02/memory/subdir"
+            if echo "$TAR_OUTPUT" | grep -E "/${expected}($|/)" > /dev/null 2>&1; then
                 FOUND=$((FOUND + 1))
             else
                 MISSING+="  - $expected"$'\n'

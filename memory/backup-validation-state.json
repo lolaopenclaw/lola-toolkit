@@ -1,153 +1,6 @@
 {
   "validations": [
     {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T07:18:28Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "051c637815d6fc3c72c2d9e3b1eb72c2e00a523cfb8644863af59185895cf110"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T07:26:37Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "88acfe88a4e5ce824932b7bca773eb1dddc1abdb5b26c8fee8ca8364e19fb665"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T08:02:39Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "18bbaa9f5a94ddf59180c357a6d890cf8b6648876fdf379e5390948fc9a33107"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T08:03:36Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "d8ccbd2847897726ab7618ddaa7b9de7942f39cc936f8f4bdb2c3e69a36aa918"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T11:02:48Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "085be5cf1153672514722865df8199d10f7bf272b03697bd9ade38085bbfefa1"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T11:14:50Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "709b7bc0ccf5856efe0ba7408fb1cf54e73e7fa8185a4da107453afbb2348757"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T21:54:48Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "dcd767d4b45a76f4c70cfc1dadba1fa3165abf87c4bb3fe99e4d9e00cffdc0d4"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-22T22:01:58Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "202dae99cc8da1089cfe8b56455f837c5b0dec9bd72bff1c1cab7e91cef9e526"
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T03:00:11Z",
-      "status": "VALID_WITH_WARNINGS",
-      "details": "0 errors, 1 warnings",
-      "checksum": "0cca86685f380477b3ade21f558bc620489957840512a5740fe2fcc038e9306b"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-23T04:30:32Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "202dae99cc8da1089cfe8b56455f837c5b0dec9bd72bff1c1cab7e91cef9e526"
-    },
-    {
-      "file": "openclaw-backup-2026-02-22.tar.gz",
-      "timestamp": "2026-02-23T04:30:33Z",
-      "status": "VALID",
-      "details": "Test restore OK: 249 files",
-      "checksum": ""
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T09:14:59Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "c6c10cb2ec1887038a0715b439035c0e31f10afeaf7c3218c049379733384a79"
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T13:31:04Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "7ecf285f27d422af5840084848ae797060a1ad1845b54381cc1f7b0c2e8046ff"
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T19:11:10Z",
-      "status": "VALID_WITH_WARNINGS",
-      "details": "0 errors, 1 warnings",
-      "checksum": "6da7287ec8331ff19a2315e2bc7377504d767c8071edb301cddc28da952c2298"
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T21:27:27Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "6bc8924d8761d8a335c492015815df98b0d6b75736db007a25966e55143a1a67"
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T21:42:25Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "6f03a89301265994ce69c8cf72536b351e8eff5ffcf746a42e6bee43a3d63128"
-    },
-    {
-      "file": "openclaw-backup-2026-02-23.tar.gz",
-      "timestamp": "2026-02-23T21:53:51Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "77022cae16a98287c8858372699be8bd610851f012470ba4a1a954a85dde8e87"
-    },
-    {
-      "file": "openclaw-backup-2026-02-24.tar.gz",
-      "timestamp": "2026-02-24T03:00:07Z",
-      "status": "VALID_WITH_WARNINGS",
-      "details": "0 errors, 1 warnings",
-      "checksum": "15b9747d4186c1771d91dd9450330fa2c6755a29e4190de5f831c52925789bd3"
-    },
-    {
-      "file": "openclaw-backup-2026-02-24.tar.gz",
-      "timestamp": "2026-02-24T12:47:57Z",
-      "status": "VALID_WITH_WARNINGS",
-      "details": "0 errors, 1 warnings",
-      "checksum": "7f3fb77e2e32f1129f00e3b029bb4650d35d972bef2a79ad10bf41647b50660b"
-    },
-    {
-      "file": "openclaw-backup-2026-02-24.tar.gz",
-      "timestamp": "2026-02-24T13:14:03Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "9638374bf79875d5e31caea5fbfb1556946b5ef5a862e62e96fb65d14c161470"
-    },
-    {
-      "file": "openclaw-backup-2026-02-25.tar.gz",
-      "timestamp": "2026-02-25T03:00:08Z",
-      "status": "VALID_WITH_WARNINGS",
-      "details": "0 errors, 1 warnings",
-      "checksum": "dcf150befb91252ac84f02dd3c4b2435f1469c8b99083dd253280d1ac8541b96"
-    },
-    {
       "file": "openclaw-backup-2026-02-25.tar.gz",
       "timestamp": "2026-02-25T09:33:19Z",
       "status": "INVALID",
@@ -209,13 +62,160 @@
       "status": "VALID",
       "details": "0 errors, 0 warnings",
       "checksum": "316bd03d2e43aba23edcb6102e4b9ed613919207e1d279d1d8e0d89317fe03f1"
+    },
+    {
+      "file": "openclaw-backup-2026-02-26.tar.gz",
+      "timestamp": "2026-02-26T10:21:24Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "04905bc43d26e7c9b39935b43929bac9bc9a784542090637e2ce63bf13e21e64"
+    },
+    {
+      "file": "openclaw-backup-2026-02-26.tar.gz",
+      "timestamp": "2026-02-26T20:56:27Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "60a4959c63a63b52211af37dfd9e8eabd08fadfdb906ddd7d82c080e480e56bd"
+    },
+    {
+      "file": "openclaw-backup-2026-02-27.tar.gz",
+      "timestamp": "2026-02-27T03:00:07Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "47c3d42b45a7119a31196f452e4f17ac528ea1819ccaefd3e98b1a33176e8050"
+    },
+    {
+      "file": "openclaw-backup-2026-02-27.tar.gz",
+      "timestamp": "2026-02-27T16:12:54Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "c2c31582d64ad1c81392154943db0a1460f774ab850c04a6fe52279a67f0a36a"
+    },
+    {
+      "file": "openclaw-backup-2026-02-28.tar.gz",
+      "timestamp": "2026-02-28T03:00:06Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "7a7ee2d8893087523716146a7c1c8589c832a85076219e6a3b0ae87566977d74"
+    },
+    {
+      "file": "openclaw-backup-2026-02-28.tar.gz",
+      "timestamp": "2026-02-28T10:35:15Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "a77fa909cca24c987eb3a29adfe9674550bae35423180e36023f362d0bd85884"
+    },
+    {
+      "file": "openclaw-backup-2026-02-28.tar.gz",
+      "timestamp": "2026-02-28T13:22:27Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "a73119f4bbd96f2e19fad6f500db9c90c1ab7ddd0d74472ec8e9aecee4466070"
+    },
+    {
+      "file": "openclaw-backup-2026-03-01.tar.gz",
+      "timestamp": "2026-03-01T03:00:08Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "45e62dbf754deaa6a99b49ce44dfdd63ff4c35d26b326d385bb4a573482c2314"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T03:00:06Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "bd2f8bdb8a58468bc681285fa02490591fd281716435d5756073f8ecbf08d4f4"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T03:00:19Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T04:32:02Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T04:32:02Z",
+      "status": "VALID",
+      "details": "Test restore OK: 609 files",
+      "checksum": ""
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:10:25Z",
+      "status": "INVALID",
+      "details": "1 errors, 0 warnings",
+      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:10:25Z",
+      "status": "VALID",
+      "details": "Test restore OK: 609 files",
+      "checksum": ""
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:13:21Z",
+      "status": "VALID_WITH_WARNINGS",
+      "details": "0 errors, 1 warnings",
+      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:13:22Z",
+      "status": "VALID",
+      "details": "Test restore OK: 609 files",
+      "checksum": ""
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:13:33Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:13:35Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
+    },
+    {
+      "file": "openclaw-backup-2026-03-02.tar.gz",
+      "timestamp": "2026-03-02T17:13:36Z",
+      "status": "VALID",
+      "details": "Test restore OK: 609 files",
+      "checksum": ""
+    },
+    {
+      "file": "openclaw-backup-2026-03-03.tar.gz",
+      "timestamp": "2026-03-03T03:00:03Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "55ee3a92e191499d0a212d6134aa1cf50aca622871eb562d7d8e34f6abd8d21d"
+    },
+    {
+      "file": "openclaw-backup-2026-03-03.tar.gz",
+      "timestamp": "2026-03-03T14:27:14Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "e28789e7191585eedef52992d28144a4f376ff8be536b3cad8022b8d351e38ad"
     }
   ],
-  "lastRun": "2026-02-26T03:00:08Z",
+  "lastRun": "2026-03-03T14:27:14Z",
   "summary": {
     "total": 30,
-    "valid": 4,
-    "invalid": 26,
+    "valid": 20,
+    "invalid": 10,
     "lastStatus": "VALID"
   }
 }

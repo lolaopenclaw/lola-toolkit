@@ -74,3 +74,7 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-25 15:25:43** | fix: backup validator checksum mismatch on same-day re-runs | `13f76ec` | [`backup-13f76ec`](backups-by-commit/backup-13f76ec*.tar.gz)
 
+- **2026-02-26 11:21:22** | Fix: Reescritura de 2 crons con error (fin de semana + memory review) - timeout y delivery issues | `983a870` | [`backup-983a870`](backups-by-commit/backup-983a870*.tar.gz)
+
+- **2026-02-27 17:12:51** | fix: informe matutino @ 10 AM daily, populate sheets daily | `bd6e037` | [`backup-bd6e037`](backups-by-commit/backup-bd6e037*.tar.gz)
+

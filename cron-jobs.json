@@ -1,41 +1,69 @@
 [
   {
+    "name": "🔍 Filesystem RO check (temporal)",
+    "schedule": {
+      "kind": "every",
+      "everyMs": 3600000,
+      "anchorMs": 1772008479216
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "haiku",
+      "message": "Chequeo periódico de filesystem read-only (temporal, 1 semana):\n\n1. Ejecuta: cat /proc/self/mountinfo | grep ' / ' | head -1\n2. Ejecuta: mount | grep ' / '\n3. Ejecuta: touch /var/lib/apt/lists/partial/.ro-check && rm -f /var/lib/apt/lists/partial/.ro-check\n\nSi el filesystem está en read-only (ro en mountinfo o falla el touch):\n- Guarda timestamp y detalles en /home/mleon/.openclaw/workspace/memory/fs-ro-incidents.json (append al array)\n- Ejecuta: sudo dmesg | tail -20 (para capturar causa)\n- NO alertes a Manu ahora — solo registra\n\nSi todo OK: responde HEARTBEAT_OK",
+      "timeoutSeconds": 30
+    },
+    "delivery": {
+      "mode": "none"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "healthcheck:fail2ban-alert",
+    "schedule": {
+      "kind": "every",
+      "everyMs": 21600000,
+      "anchorMs": 1771583086786
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Revisa el estado de fail2ban y alerta si hay actividad sospechosa:\n\n1. Ejecuta: sudo fail2ban-client status sshd\n2. Cuenta cuántas IPs están actualmente baneadas (Currently banned)\n3. Revisa el total de intentos fallidos en las últimas 6h\n\nSi encuentras:\n- ≥10 IPs actualmente baneadas → ALERTA ALTA\n- ≥50 intentos fallidos nuevos (desde última comprobación) → ALERTA MEDIA\n- ≥5 IPs baneadas → ALERTA INFO\n\nIMPORTANTE: Respeta horario silencioso (00:00-07:00 Madrid):\n- Si es antes de las 7:00 AM: guarda el reporte en memory/pending-reports/ pero NO alertes a Manu\n- Si detectas actividad CRÍTICA (≥10 IPs): sí alerta incluso de noche\n\nSi no hay actividad anormal, responde: HEARTBEAT_OK",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
     "name": "Backup diario de memoria a Google Drive",
-    "schedule": { "kind": "cron", "expr": "0 4 * * *", "tz": "Europe/Madrid" },
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 4 * * *",
+      "tz": "Europe/Madrid"
+    },
     "sessionTarget": "isolated",
     "payload": {
       "kind": "agentTurn",
       "model": "anthropic/claude-haiku-4-5",
       "message": "Ejecuta el script de backup: `bash /home/mleon/.openclaw/workspace/scripts/backup-memory.sh`\n\nCon el resultado, genera un mensaje breve indicando:\n- Si el backup fue exitoso o falló\n- Fecha, número de archivos y tamaño\n- Si hubo algún error, detállalo\n\nGuarda el resultado en /home/mleon/.openclaw/workspace/memory/last-backup.json con formato:\n{\"date\": \"YYYY-MM-DD\", \"status\": \"ok|error\", \"files\": N, \"size\": \"XXK\", \"error\": null}\n\nNo envíes mensaje al usuario, solo guarda el resultado. El informe de la mañana lo recogerá."
     },
-    "delivery": { "mode": "none" }
-  },
-  {
-    "name": "Informe matutino unificado",
-    "schedule": { "kind": "cron", "expr": "0 9 * * *", "tz": "Europe/Madrid" },
-    "sessionTarget": "isolated",
-    "payload": {
-      "kind": "agentTurn",
-      "model": "anthropic/claude-haiku-4-5",
-      "message": "Genera un informe matutino unificado en español para Telegram. Formato limpio: sin tablas markdown, usa bullets con emojis. Un solo mensaje con cuatro secciones:\n\n**1. 🔄 Actualizaciones del sistema:**\nEjecuta:\n```\nsudo apt-get update -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y -qq && sudo DEBIAN_FRONTEND=noninteractive apt-get dist-upgrade -y -qq && sudo apt-get autoremove -y -qq\n```\nCaptura la salida. Reporta cuántos paquetes se actualizaron, cuáles fueron (nombres y versiones si es posible), o si ya estaba todo al día. Si se eliminó algo con autoremove, menciónalo.\n\nLuego comprueba si hay nueva versión de OpenClaw disponible con `npm view openclaw version 2>/dev/null` y compárala con `openclaw --version 2>/dev/null`. Si hay versión nueva, avísalo claramente. NO actualices OpenClaw, solo informa.\n\n**2. 💾 Estado del backup:**\nLee `/home/mleon/.openclaw/workspace/memory/last-backup.json` e indica si se hizo correctamente, fecha, nº archivos y tamaño. Si falló o no existe, avisar.\n\n**3. 📊 Consumo de modelos:**\nEjecuta `bash /home/mleon/.openclaw/workspace/scripts/usage-report.sh` y muestra: coste total del mes, desglose por modelo (nombre, coste USD, nº requests), consumo de hoy y ayer. Si no hubo consumo, indicarlo.\n\n**4. 📋 Tablero Kanban:**\nEjecuta esta query a la DB de Notion (filtra tareas no archivadas):\n```\ncurl -s -X POST \"https://api.notion.com/v1/databases/30c676c3-86c8-81ac-b2bd-cd2d8a5516f7/query\" -H \"Authorization: Bearer $NOTION_API_KEY\" -H \"Notion-Version: 2022-06-28\" -H \"Content-Type: application/json\" -d '{\"filter\":{\"property\":\"Archivado\",\"checkbox\":{\"equals\":false}}}'\n```\nDel resultado JSON, extrae las tareas y muestra:\n• Cuenta de tareas por estado (Ideas, Pendiente, En progreso, Hecho, Bloqueado) - usa bullets con números\n• Lista las tareas en estado \"Pendiente\" y \"En progreso\": nombre de la tarea + prioridad (si existe)\n• Si hay tareas en estado \"Bloqueado\", lista también esas mencionando el motivo/bloqueo si está disponible\n\nFormato compacto, bullets con emojis, sin tablas.\n\nMantén el mensaje compacto y fácil de leer. Un solo mensaje con las cuatro secciones."
+    "delivery": {
+      "mode": "none"
     },
-    "delivery": { "mode": "announce", "to": "6884477", "channel": "telegram" }
-  },
-  {
-    "name": "Revisión semanal de precios de modelos",
-    "schedule": { "kind": "cron", "expr": "0 2 * * 1", "tz": "Europe/Madrid" },
-    "sessionTarget": "isolated",
-    "payload": {
-      "kind": "agentTurn",
-      "model": "anthropic/claude-haiku-4-5",
-      "message": "Revisa los precios oficiales de los modelos de IA que usamos y actualiza el fichero de precios.\n\n1. Lee el fichero actual: /home/mleon/.openclaw/workspace/memory/model-prices.json\n2. Consulta los precios oficiales actuales:\n   - Anthropic: https://docs.anthropic.com/en/docs/about-claude/models\n   - Google: https://ai.google.dev/pricing\n3. Compara con los datos del fichero. Si hay cambios:\n   - Actualiza model-prices.json con los nuevos precios\n   - Actualiza el campo 'updated' con la fecha de hoy\n   - Envía un mensaje breve por Telegram (chat 6884477) informando de los cambios\n4. Si no hay cambios, no envíes mensaje. Solo actualiza el campo 'updated'."
-    },
-    "delivery": { "mode": "none" }
+    "enabled": true,
+    "wakeMode": "now"
   },
   {
     "name": "📊 Populate Google Sheets v2",
-    "id": "6344d609-2bfd-4295-8471-373125381779",
-    "schedule": { "kind": "cron", "expr": "30 9 * * 1-5", "tz": "Europe/Madrid" },
+    "schedule": {
+      "kind": "cron",
+      "expr": "30 9 * * *"
+    },
     "sessionTarget": "isolated",
     "payload": {
       "kind": "agentTurn",
@@ -43,6 +71,370 @@
       "message": "Run the Google Sheets population script v2:\n\n```bash\nsource ~/.openclaw/.env\nexport GOG_KEYRING_BACKEND=file\n\nTODAY=$(date +%Y-%m-%d)\nYESTERDAY=$(date -d \"yesterday\" +%Y-%m-%d)\n\necho \"=== Consumo IA for $TODAY ===\"\npython3 /home/mleon/.openclaw/workspace/scripts/sheets-populate-v2.py --consumo-only --date \"$TODAY\" 2>&1\n\necho \"\"\necho \"=== Garmin Health for $YESTERDAY ===\"\npython3 /home/mleon/.openclaw/workspace/scripts/sheets-populate-v2.py --garmin-only --date \"$YESTERDAY\" 2>&1\n```\n\nReport the results. If either sheet had data already (skipped), that is fine. If there was an error, report it clearly. Keep the response brief.",
       "timeoutSeconds": 120
     },
-    "delivery": { "mode": "none" }
+    "delivery": {
+      "mode": "none"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "📋 Informe Matutino Completo",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 10 * * *"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Genera un informe matutino EXTENSO y consolidado para Discord. Pasos:\n\n1. EJECUTA SCRIPT DE GARMIN (para datos del día anterior):\n   ```bash\n   YESTERDAY=$(date -d \"yesterday\" +%Y-%m-%d)\n   bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --daily \"$YESTERDAY\"\n   ```\n   Extrae: HR reposo, estrés, sueño (horas), Body Battery, pasos totales\n\n2. REÚNE DATOS ADICIONALES:\n   - Sistema (uptime, CPU, RAM, disco)\n   - Fail2Ban (IPs baneadas últimas 24h, intentos fallidos)\n   - Consumo IA (ayer, mes, proyección anual)\n   - Backup status (último backup, archivos, tamaño)\n   - Estado crons (activos, errores)\n\n3. LEE ARCHIVOS DE CONTEXTO:\n   - memory/YYYY-MM-DD-usage-report.md (si existe)\n   - memory/YYYY-MM-DD-health-report.md (si existe)\n\n4. ESTRUCTURA EL INFORME CON ESTE FORMATO (en Discord):\n\n**📋 INFORME MATUTINO** • [fecha y hora]\n\n🖥️ **SISTEMA**\n• Uptime: [horas/días]\n• CPU: [%] | RAM: [GB/GB] | Disco: [GB/GB]\n• Gateway: ✅ OK | Crons: [N] activos\n\n🔐 **SEGURIDAD**\n• Fail2Ban: [X] IPs baneadas (últimas 24h)\n• Intentos fallidos: [Y] (↑/↓ vs ayer)\n• Status SSH: ✅ Activo\n\n💾 **BACKUPS**\n• Último: [fecha] ([N] archivos, [tamaño])\n• Frecuencia: 4:00 AM diario ✅\n• Drive: [espacio libre]\n\n💰 **CONSUMO IA**\n• Ayer: $[X] USD ([N] requests)\n• Mes actual: $[M] USD (promedio: $[P]/día)\n• Distribución: Haiku [%] | Opus [%] | Sonnet [%]\n• Proyección anual: ~$[A] USD\n\n❤️ **SALUD (Garmin - día anterior)**\n• HR reposo: [bpm] | Estrés: [nivel]\n• Sueño: [horas] | Body Battery: [%]\n• Pasos: [número] | Evaluación: [estado]\n\n📌 **ESTADO GENERAL**\n• Síntesis: [Verde/Amarillo/Rojo]\n• Alertas: [Ninguna / lista de alertas si las hay]\n• Próximos eventos: [tareas críticas próximas 24h si las hay]\n\nIMPORTANTE:\n- SIEMPRE ejecuta el script de Garmin primero\n- Usa números ESPECÍFICOS del día anterior (no de hoy)\n- Incluye contexto si hubo cambios vs día anterior\n- Emojis pequeños, sin líneas decorativas\n- Total: 7 secciones, máximo 2-3 bullets por sección\n- Tono: conciso, profesional, accionable",
+      "model": "haiku",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "announce",
+      "channel": "discord",
+      "to": "1475057935368458312"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "usage:report-daily (fin de semana)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "10 10 * * 0,6",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Genera informe de consumo diario:\n\n1. Ejecuta: bash ~/.openclaw/workspace/scripts/usage-report.sh\n2. Parsea el JSON y extrae de memory/YYYY-MM-DD.md el contexto de actividades\n3. Genera informe en memory/YYYY-MM-DD-usage-report.md con:\n   - Resumen financiero (hoy, ayer, mes)\n   - Análisis de consumo (cambios, tendencias)\n   - Contexto de uso (qué se hizo hoy que justifica el gasto)\n   - Proyección mensual\n   - Recomendaciones si aplicable\n\n4. Si consumo de hoy >0 USD, alerta por Telegram\n5. Si consumo normal, responde: HEARTBEAT_OK",
+      "model": "anthropic/claude-haiku-4-5",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "🧹 Cleanup audit semanal (domingo noche)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 22 * * 0",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Ejecuta auditoría de limpieza del sistema:\n\n1. Revisa archivos temporales, caché, instaladores obsoletos\n2. Identifica procesos innecesarios corriendo\n3. Genera reporte en memory/YYYY-MM-DD-cleanup-audit.md\n\nProceso:\n- find /home/mleon -maxdepth 3 -type f \\( -name '*.deb' -o -name '*.AppImage' -o -name '*installer*' \\)\n- du -sh /home/mleon/.cache/* (excluir whisper)\n- ps aux (filtrar servicios GNOME innecesarios)\n- Documentar todo: qué es, por qué es basura, tamaño\n\n4. **NO BORRES NADA** - solo reporta hallazgos\n5. Guarda el reporte para que se incluya en informe matutino del lunes\n\nFormato: bullets, emojis, claro. Resultado: /home/mleon/.openclaw/workspace/memory/YYYY-MM-DD-cleanup-audit.md",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "none"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "🧠 Memory Guardian Pro (domingo noche)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 23 * * 0",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Ejecuta Memory Guardian Pro:\n\nbash ~/.openclaw/workspace/scripts/memory-guardian.sh full\n\nEl script:\n1. Analiza memory (bloat, archivos grandes)\n2. Limpia backups viejos (.backup-*)\n3. Limpia temporales (.tmp, .temp)\n4. Comprime archivos >30 días\n5. Detecta duplicados\n6. Genera reporte en memory/YYYY-MM-DD-memory-guardian.md\n\nResponde HEARTBEAT_OK si no hay cambios significativos.\nSi hay cambios importantes, guarda reporte para que Manu lo vea si lo pide."
+    },
+    "delivery": {
+      "mode": "none"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "🗑️ Backup retention cleanup (lunes)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "30 5 * * 1",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Ejecuta limpieza de backups >30 días:\n\n1. Lista todos los .tar.gz en grive_lola:openclaw_backups/\n   ```\n   rclone ls \"grive_lola:openclaw_backups\" --human-readable -s | grep \"\\.tar\\.gz\"\n   ```\n\n2. Para cada archivo:\n   - Extrae fecha de nombre: `openclaw-backup-YYYY-MM-DD.tar.gz`\n   - Calcula edad: (HOY - fecha_creación)\n   - Si edad > 30 días:\n     a. Verifica que haya backup más reciente (no eliminar si es único)\n     b. Elimina: `rclone delete \"grive_lola:openclaw_backups/nombre.tar.gz\"`\n     c. Registra eliminado\n\n3. Genera reporte breve:\n   - Cuántos backups revisados\n   - Cuántos eliminados\n   - Espacio liberado (estimado)\n   - Guarda en: memory/YYYY-MM-DD-backup-cleanup.md\n\n4. Si NO hay nada que eliminar, responde: HEARTBEAT_OK\n\nSi hay cambios, guarda reporte (Manu lo ve si lo pide).",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "none"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "backup-validation-weekly",
+    "schedule": {
+      "kind": "cron",
+      "expr": "30 5 * * 1",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Ejecuta: bash ~/.openclaw/workspace/scripts/backup-validator.sh --status --full. Reporta resultado."
+    },
+    "delivery": {
+      "mode": "announce",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "Tareas de fondo semanales (lunes)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Eres Lola. Revisa TODAS las tareas de fondo del tablero Kanban de Notion.\n\n1. Consulta tareas en estado 'Fondo':\n```\nsource ~/.bashrc\ncurl -s -X POST \"https://api.notion.com/v1/databases/30c676c3-86c8-81ac-b2bd-cd2d8a5516f7/query\" -H \"Authorization: Bearer $NOTION_API_KEY\" -H \"Notion-Version: 2022-06-28\" -H \"Content-Type: application/json\" -d '{\"filter\":{\"property\":\"Estado\",\"select\":{\"equals\":\"Fondo\"}}}'\n```\n\n2. Para CADA tarea de fondo, mira su propiedad 'Frecuencia':\n   - Frecuencia 'Semanal': ejecuta la tarea según sus Notas\n   - Frecuencia vacía (one-shot): investiga novedades. Si el tema se resolvió definitivamente, mueve a Hecho\n\n3. Para cada tarea:\n   - Lee Notas para entender qué hacer\n   - Si es 'Revisar precios oficiales de modelos IA': lee /home/mleon/.openclaw/workspace/memory/model-prices.json, consulta precios en https://docs.anthropic.com/en/docs/about-claude/models y https://ai.google.dev/pricing. Si hay cambios: actualiza el JSON y avisa. Si no: solo actualiza campo 'Actualizado'\n   - Si es otra tarea: busca novedades en internet según Notas\n   - Añade comentario en la tarea de Notion con hallazgos y fecha\n   - Actualiza campo Actualizado con fecha de hoy\n\n4. Genera UN mensaje resumen en español. Solo si hay novedades o cambios. Si todo sigue igual, no envíes nada.\n\nFormato: bullets con emojis, sin tablas. Conciso."
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "telegram",
+      "to": "6884477"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "healthcheck:rkhunter-scan-weekly",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Ejecuta scan de malware con rkhunter:\n\n1. Ejecuta: sudo rkhunter --check --skip-keypress --report-warnings-only\n2. Revisa el log: sudo tail -100 /var/log/rkhunter.log\n3. Busca warnings o alertas en el output\n\nSi encuentras:\n- Warnings: Revisa e investiga cada uno\n- Rootkits detectados: ALERTA CRÍTICA\n- Binarios modificados: ALERTA ALTA\n- Permisos incorrectos: ALERTA MEDIA\n\nExporta resumen a memory/YYYY-MM-DD-rkhunter-scan.md\n\nFormato de alerta:\n🛡️ rkhunter Scan Weekly\n- Estado: OK / WARNINGS / CRITICAL\n- Warnings encontrados: X\n- Archivos sospechosos: Y\n- Acción requerida: Z\n\nSi todo OK, responde: HEARTBEAT_OK",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "healthcheck:fail2ban-alert-morning",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1-5",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Revisa el estado de fail2ban desde ayer y alerta si hay actividad sospechosa:\n\n1. Ejecuta: sudo fail2ban-client status sshd\n2. Cuenta cuántas IPs están actualmente baneadas (Currently banned)\n3. Revisa el total de intentos fallidos desde las últimas 24h\n\nSi encuentras:\n- ≥10 IPs actualmente baneadas → ALERTA ALTA\n- ≥100 intentos fallidos nuevos (desde ayer) → ALERTA MEDIA\n- ≥5 IPs baneadas → ALERTA INFO\n\nFormato de alerta:\n🚨 [NIVEL] Fail2Ban Daily Report\n- IPs baneadas: X\n- Intentos fallidos (24h): Y\n- Última IP baneada: Z\n\nSi no hay actividad anormal, responde: HEARTBEAT_OK",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "usage:report-weekly",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Genera informe de consumo semanal:\n\n1. Ejecuta usage-report.sh para datos actuales\n2. Lee informes diarios de los últimos 7 días (memory/*-usage-report.md)\n3. Genera memory/YYYY-MM-DD-usage-weekly.md con:\n   - Resumen semanal (últimos 7 días)\n   - Gráfico ASCII de consumo diario\n   - Top 3 días más caros + razones\n   - Distribución por modelo\n   - Tendencias y proyección fin de mes\n   - Comparativa con semana anterior\n\n4. Siempre reporta resumen por Telegram\n\nFormato:\n📊 Usage Report Weekly\n- Semana: $X USD ($Y/día promedio)\n- Cambio vs anterior: +/-Z%\n- Modelo dominante: [modelo] (A%)\n- Día más caro: [fecha] ($B) - [razón]\n- Tendencia: ↗️/↘️/→\n- Proyección mes: $M USD",
+      "model": "anthropic/claude-haiku-4-5",
+      "timeoutSeconds": 180
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "healthcheck:lynis-scan-weekly",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Ejecuta scan de seguridad con Lynis:\n\n1. Ejecuta: sudo lynis audit system --quick --quiet\n2. Extrae del reporte /var/log/lynis-report.dat:\n   - hardening_index\n   - Número de warnings y suggestions\n3. Compara con scan anterior (memory/2026-02-20-lynis-initial-scan.md)\n4. Alerta si:\n   - Hardening index bajó >5 puntos\n   - Aparecieron nuevos warnings\n   - Aumentaron significativamente las suggestions\n\nExporta resumen a memory/YYYY-MM-DD-lynis-scan.md\n\nFormato de alerta:\n📊 Lynis Scan Weekly\n- Hardening: X% (Y puntos)\n- Cambio: +/- Z puntos vs anterior\n- Warnings: W (nuevos: N)\n- Suggestions: S\n\nSi no hay cambios significativos, responde: HEARTBEAT_OK",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "notion:ideas-cleanup-weekly",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Revisa Notion Ideas y limpia las completadas:\n\n1. Lee todas las tareas en estado Ideas\n2. Revisa memory/*.md de la última semana (últimos 7 días)\n3. Busca si alguna Idea fue implementada/completada\n4. Para cada Idea completada:\n   - Muévela a estado Hecho\n   - Añade comentario con fecha de completado\n   - Documenta qué archivo memory/ lo confirma\n\n5. Genera resumen:\n📋 Ideas Cleanup Weekly\n- Ideas revisadas: X\n- Completadas esta semana: Y\n  - Nombre tarea 1 (completada YYYY-MM-DD)\n  - Nombre tarea 2 (completada YYYY-MM-DD)\n- Ideas restantes: Z\n\nSi no se completó ninguna, responde: HEARTBEAT_OK\n\nEjemplos de qué buscar en memory/:\n- 'Instalamos X'\n- 'Configuramos Y'\n- 'Aplicamos hardening Z'\n- Menciones explícitas a tareas de Ideas",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "healthcheck:security-audit-weekly",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 9 * * 1"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Ejecuta una auditoría de seguridad profunda del sistema. Lee el skill healthcheck y sigue sus instrucciones para realizar:\n1. openclaw security audit --deep\n2. Revisar estado de firewall (ufw/iptables)\n3. Revisar fail2ban status\n4. Revisar actualizaciones pendientes\n5. Revisar últimos accesos SSH\n6. Revisar puertos abiertos\n7. Generar informe resumido con hallazgos y recomendaciones\n\nExporta el informe a memory/YYYY-MM-DD-security-audit-weekly.md\n\nSi encuentras algo crítico (vulnerabilidades sin parchear, accesos sospechosos, servicios expuestos inesperadamente), marca como urgente en el informe.",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "usage:report-daily",
+    "schedule": {
+      "kind": "cron",
+      "expr": "10 9 * * 1-5",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Genera informe de consumo diario:\n\n1. Ejecuta: bash ~/.openclaw/workspace/scripts/usage-report.sh\n2. Parsea el JSON y extrae de memory/YYYY-MM-DD.md el contexto de actividades\n3. Genera informe en memory/YYYY-MM-DD-usage-report.md con:\n   - Resumen financiero (hoy, ayer, mes)\n   - Análisis de consumo (cambios, tendencias)\n   - Contexto de uso (qué se hizo hoy que justifica el gasto)\n   - Proyección mensual\n   - Recomendaciones si aplicable\n\nNOTA: Este reporte se incluirá automáticamente en el informe matutino de Discord.\nNo se envía por Telegram.",
+      "model": "anthropic/claude-haiku-4-5",
+      "timeoutSeconds": 120
+    },
+    "delivery": {
+      "mode": "none",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "🔔 OpenClaw release check",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 10 * * 1,4",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "haiku",
+      "message": "Comprueba si hay una nueva versión de OpenClaw disponible:\n\n1. Versión actual: ejecuta `openclaw --version`\n2. Última versión: ejecuta `npm show openclaw version`\n3. Compara ambas\n\nSi hay nueva versión disponible:\n- Avisa a Manu por Telegram (6884477)\n- Incluye: versión actual, versión nueva\n- Menciona que el fix del Browser Relay Chrome extension podría estar incluido\n- Enlaza changelog si es posible: https://github.com/openclaw/openclaw/releases\n\nAdemás, busca alternativas compatibles para el Browser Relay:\n- Revisa https://github.com/openclaw/openclaw/issues/21758 por actualizaciones\n- Busca en GitHub issues/discussions si alguien encontró un workaround para la versión actual\n- Si encuentras algo prometedor, inclúyelo en el aviso\n\nSi no hay nueva versión ni novedades: HEARTBEAT_OK",
+      "timeoutSeconds": 60
+    },
+    "delivery": {
+      "mode": "announce",
+      "channel": "telegram",
+      "to": "6884477"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "📚 Tier rotation (lunes noche)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "30 23 * * 1",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "anthropic/claude-haiku-4-5",
+      "message": "Ejecuta rotación de memory tiers:\n\nbash ~/.openclaw/workspace/scripts/tier-rotation.sh\n\nEl script:\n1. Mueve HOT → WARM (archivos >7 días)\n2. Mueve WARM → COLD comprimiendo (archivos >30 días)\n3. Genera reporte en memory/YYYY-MM-DD-tier-rotation.md\n\nResponde HEARTBEAT_OK si no hay cambios significativos.\nSi hay archivos comprimidos, guarda reporte para que Manu lo vea si lo pide."
+    },
+    "delivery": {
+      "mode": "none"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "📋 Informe filesystem RO (fin monitoreo)",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 11 4 3 *",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "model": "haiku",
+      "message": "Es miércoles 4 de marzo, fin de la semana de monitoreo del filesystem read-only.\n\n1. Lee /home/mleon/.openclaw/workspace/memory/fs-ro-incidents.json si existe\n2. Si hay incidentes: genera informe detallado con fechas, frecuencia y patrón\n3. Si NO hay incidentes: confirma que todo estuvo limpio durante la semana\n\nEnvía el resultado a Manu por Telegram (chat 6884477). Mensaje breve y claro.\n\nDespués: desactiva o elimina el cron 'Filesystem RO check (temporal)' ya que la semana de monitoreo terminó.",
+      "timeoutSeconds": 60
+    },
+    "delivery": {
+      "mode": "announce",
+      "channel": "telegram",
+      "to": "6884477"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "security:rotate-gateway-token",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 10 25 */3 *",
+      "staggerMs": 0
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Rotate the gateway token: 1) Generate new token with openssl rand -hex 24, 2) Update it in openclaw.json using python3, 3) Restart gateway, 4) Send Manu a Telegram message confirming rotation and reminding him to update the Chrome extension if active. Do NOT share the new token in the message.",
+      "model": "haiku"
+    },
+    "delivery": {
+      "mode": "announce",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
   }
 ]

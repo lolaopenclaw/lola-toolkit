@@ -1,0 +1,17 @@
+
+===== BACKUP VALIDATION REPORT =====
+Backup: openclaw-backup-2026-03-03.tar.gz
+Size: 464K (471485 bytes)
+Date: 2026-03-03 03:00:03 UTC
+
+✅ PASS Checksum: SHA256=55ee3a92e191499d0a212d6134aa1cf50aca622871eb562d7d8e34f6abd8d21d
+✅ PASS Size: 464K (reasonable)
+
+✅ PASS Archive Integrity: readable (375 entries)
+✅ PASS Structure: 8/8 expected files found
+✅ PASS Directories: 3/3 expected dirs present
+
+Status: ✅ VALID
+
+Validated: 2026-03-03 03:00:04 UTC
+

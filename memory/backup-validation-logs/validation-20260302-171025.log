@@ -1,0 +1,29 @@
+
+===== BACKUP VALIDATION REPORT =====
+Backup: openclaw-backup-2026-03-02.tar.gz
+Size: 796K (814651 bytes)
+Date: 2026-03-02 17:10:25 UTC
+
+✅ PASS Checksum: SHA256=d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75
+✅ PASS Size: 796K (reasonable)
+
+✅ PASS Archive Integrity: readable (687 entries)
+❌ FAIL Structure: Only 5/8 expected files found
+  Missing:
+  - SOUL.md
+  - MEMORY.md
+  - scripts/
+
+✅ PASS Directories: 0/3 expected dirs present
+
+Status: ❌ INVALID (1 errors, 0 warnings)
+
+===== TEST RESTORE =====
+✅ PASS Test Restore: extracted successfully
+  Files: 609 | Dirs: 79 | Size: 4.4M
+✅ PASS Readability: 4/4 key files readable
+✅ PASS Permissions: all files readable
+✅ PASS Cleanup: test directory removed
+
+Validated: 2026-03-02 17:10:25 UTC
+

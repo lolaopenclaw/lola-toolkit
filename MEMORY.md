@@ -18,7 +18,9 @@
 ---
 
 ## 🔧 TECHNICAL - Sistemas Internos
-→ `memory/technical.md` — WAL, Memory Management, crons, lecciones aprendidas
+→ `memory/technical.md` — WAL, Memory Management, crons, Ubuntu Pro, lecciones aprendidas
+
+**Ubuntu Pro:** ✅ Registrado (2026-02-26), ESM-Infra + ESM-Apps + Livepatch activos
 
 **Crons activos:**
 - 4:00 AM — Backup a Drive

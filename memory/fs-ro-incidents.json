@@ -1,0 +1,48 @@
+{
+  "incidents": [
+    {
+      "timestamp": "2026-02-28T02:34:00Z",
+      "timezone": "Europe/Madrid",
+      "status": "false_positive",
+      "details": {
+        "filesystem_status": "read-write",
+        "mountinfo": "/dev/vda1 on / type ext4 (rw,relatime,discard,errors=remount-ro,commit=30)",
+        "mount_output": "/dev/vda1 on / type ext4 (rw,relatime,discard,errors=remount-ro,commit=30)",
+        "touch_test_result": "failed - Permission denied",
+        "touch_test_path": "/var/lib/apt/lists/partial/.ro-check",
+        "dmesg_check": "no RO-related errors (only UFW blocks)"
+      },
+      "analysis": "Falso positivo. El filesystem está en RW. El error del touch es por permisos (usuario mleon no tiene acceso de escritura a /var/lib/apt/lists/partial/). No hay problema real de RO.",
+      "action": "ignorar"
+    },
+    {
+      "timestamp": "2026-02-28T14:34:00Z",
+      "timezone": "Europe/Madrid",
+      "status": "ok",
+      "details": {
+        "filesystem_status": "read-write",
+        "mountinfo": "/dev/vda1 on / type ext4 (rw,relatime,discard,errors=remount-ro,commit=30)",
+        "mount_output": "/dev/vda1 on / type ext4 (rw,relatime,discard,errors=remount-ro,commit=30)",
+        "touch_test_result": "ok_with_sudo",
+        "dmesg_check": "no errors - only UFW blocks"
+      },
+      "analysis": "Filesystem completamente OK. Sigue siendo read-write. Sin problemas de I/O.",
+      "action": "none"
+    },
+    {
+      "timestamp": "2026-03-01T18:34:00Z",
+      "timezone": "Europe/Madrid",
+      "status": "ok",
+      "details": {
+        "filesystem_status": "read-write",
+        "mountinfo": "/dev/vda1 on / type ext4 (rw,relatime,discard,errors=remount-ro,commit=30)",
+        "mount_output": "/dev/vda1 on / type ext4 (rw,relatime,discard,errors=remount-ro,commit=30)",
+        "touch_test_result": "failed - Permission denied",
+        "touch_test_path": "/var/lib/apt/lists/partial/.ro-check",
+        "dmesg_check": "no RO-related errors (only UFW blocks)"
+      },
+      "analysis": "Falso positivo confirmado (replicando 2026-02-28). El filesystem está en RW. El error del touch es por permisos de usuario mleon en /var/lib/apt/lists/partial/, no por RO. Patrón consistente.",
+      "action": "none - no RO issue"
+    }
+  ]
+}

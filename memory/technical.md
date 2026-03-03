@@ -33,6 +33,32 @@
 - **Domingo 22:00** — Cleanup audit
 - **Domingo 23:00** — Memory organization + Guardian
 
+## 🛡️ Ubuntu Pro (VPS Security)
+- **Registro:** 2026-02-26 (cuenta: manuelleonmendiola@gmail.com)
+- **Suscripción:** Ubuntu Pro - free personal subscription
+- **Servicios activos:**
+  - ✅ ESM-Infra — Parches de seguridad kernel/sistema hasta 2034
+  - ✅ ESM-Apps — Parches de seguridad para aplicaciones extra
+  - ✅ Livepatch — Parches críticos sin reinicio (¡gold!)
+- **Disponibles (no activados):** FIPS-updates, Landscape, USG, realtime-kernel
+- **Impacto:** Actualizaciones automáticas de seguridad + estabilidad crítica
+
+## 🔐 Security Status (Último Check: 2026-03-02)
+
+**Estado del sistema: ✅ SEGURO**
+- Vulnerabilidades críticas: 0
+- Puertos expuestos: 0 (todo localhost + Tailscale)
+- SSH hardened: ✅ (root disabled, key-only, X11 off)
+- Fail2ban: ✅ (3 jails activos, 0 intentos en 24h)
+- Unattended-upgrades: ✅ (automático)
+- OpenClaw: 2 warnings (no críticos, intencionales)
+
+**Recomendaciones pendientes (baja prioridad):**
+- Instalar UFW (confort, no necesario)
+- Actualizar OpenClaw 2026.3.1 (cuando sea convenient)
+
+**Detalles:** → `memory/2026-03-02-security-audit-weekly.md`
+
 ## 🔐 Lecciones Técnicas Aprendidas
 1. D-Bus SecretService no funciona en VPS headless → usar keyring file-based
 2. Gemini API keys pueden revocarse → tener fallback local

@@ -1,6 +1,6 @@
 # 📚 Memory INDEX — Organized Knowledge
 
-Last updated: 2026-02-24
+Last updated: 2026-03-01 (Weekly review: HOT/WARM tier reorg)
 
 ---
 
@@ -73,9 +73,14 @@ Recuperación: restore.sh
 - `usage-report.sh` — API cost tracking
 
 ## 🧠 MEMORY MANAGEMENT
-- `memory/DAILY/HOT/` — Last 7 days
-- `memory/DAILY/WARM/` — 8-30 days
-- `memory/DAILY/COLD/` — >30 days (compressed)
+- `memory/DAILY/HOT/` — Last 7 days (156K as of 2026-03-01)
+- `memory/DAILY/WARM/` — 8-30 days (80K, +8 files from 2026-02-21)
+- `memory/DAILY/COLD/` — >30 days (4K, compressed)
+
+**Backup Validation Logs** (Feb 28 cleanup)
+- Active logs (last 5d): `/backup-validation-logs/*.log` (30 files)
+- Archived logs (>5d): `/backup-validation-logs/archive-old/` (12 files)
+- Index: `backup-validation-archive-feb.md`
 
 ---
 
@@ -85,7 +90,7 @@ Recuperación: restore.sh
 - **OpenClaw:** v2026.2.22-2, Port 18789
 - **Default model:** Haiku 4.5 (changed 2026-02-24, was Opus)
 - **Backup:** Google Drive, 30 days retention, daily 4:00 AM
-- **Memory:** ~768KB (tiered HOT/WARM/COLD)
+- **Memory:** 844K (tiered HOT/WARM/COLD) — Feb 28 review: healthy, no bloat
 - **Crons:** 22 active tasks (see TAREAS-AUTOMATICAS-LISTADO.md)
 
 ---
@@ -100,4 +105,4 @@ Recuperación: restore.sh
 
 ---
 
-Last sync: 2026-02-24
+Last sync: 2026-03-01 — Tier reorganization: Moved 8 files from 2026-02-21 (HOT→WARM). Total memory: 892K (healthy). No duplicates detected. All reporting crons healthy.
