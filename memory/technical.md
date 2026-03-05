@@ -29,9 +29,34 @@
 - **Cada 6h** — Fail2Ban check
 - **Lunes 5:30 AM** — Backup cleanup + validation
 - **Lunes 9:00 AM** — Auditorías semanales (seguridad, Lynis, rkhunter, Notion, usage, tareas fondo)
-- **Lunes 23:30** — Tier rotation
+- **Lunes 23:30** — Tier rotation *(descartado 2026-03-04: overkill para workspace pequeño)*
 - **Domingo 22:00** — Cleanup audit
 - **Domingo 23:00** — Memory organization + Guardian
+
+## 📋 Reportes Matutinos — Actualizaciones (2026-03-04)
+
+**Confirmado por Manu (12:11):**
+
+**❌ Obsoleto (febrero):**
+- WAL cleanup (3:00 AM)
+- Memory tiers rotation reporting
+- "Rotación automática memory tiers" en tareas automáticas
+
+**✅ Vigente:**
+- SISTEMA (uptime, disco, RAM, carga, actualizaciones)
+- SEGURIDAD (Fail2Ban, alertas, auditoría próxima)
+- BACKUP & ALMACENAMIENTO
+- TAREAS AUTOMÁTICAS (versión actualizada)
+- HOY (qué pasa hoy específicamente)
+- PRÓXIMOS HITOS
+- RESUMEN (estado general green/red)
+
+**🆕 Posibles adiciones:**
+- Garmin health reporting (si toca)
+- Notion sync (si hay cambios)
+- Stats consumo APIs (si es relevante)
+
+*Mejoras al script matutino: hacerlas cuando Manu lo solicite*
 
 ## 🛡️ Ubuntu Pro (VPS Security)
 - **Registro:** 2026-02-26 (cuenta: manuelleonmendiola@gmail.com)

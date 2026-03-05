@@ -69,7 +69,33 @@ rclone config
 # → Nombre: grive_lola → Type: drive → Scope: drive → OAuth flow
 ```
 
-**3c. GOG (Gmail/Drive):**
+**3c. GPG + Pass (Secret Store):**
+```bash
+# Si el backup incluyó .gnupg/:
+cp -r ~/openclaw-backup-*/.gnupg ~/.gnupg
+chmod 700 ~/.gnupg
+chmod 600 ~/.gnupg/*
+
+# Verificar:
+gpg --list-keys  # Debe mostrar "Lola OpenClaw <lolaopenclaw@gmail.com>"
+pass ls           # Debe mostrar openclaw/* secrets
+
+# Si no funciona (regenerar GPG key):
+cat > /tmp/gpg-params << 'GPGEOF'
+%no-protection
+Key-Type: RSA
+Key-Length: 4096
+Name-Real: Lola OpenClaw
+Name-Email: lolaopenclaw@gmail.com
+Expire-Date: 0
+%commit
+GPGEOF
+gpg --batch --gen-key /tmp/gpg-params
+pass init "lolaopenclaw@gmail.com"
+# Re-importar secrets manualmente desde .env
+```
+
+**3d. GOG (Gmail/Drive):**
 ```bash
 # Si el backup incluyó gog-config/ y keyrings/:
 mkdir -p ~/.config/gog ~/.local/share/keyrings

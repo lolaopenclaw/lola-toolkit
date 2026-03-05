@@ -41,6 +41,18 @@ cp "$OPENCLAW_DIR/openclaw.json" "$BACKUP_DIR/openclaw.json" 2>/dev/null || true
 echo "Copiando secrets..."
 cp "$OPENCLAW_DIR/.env" "$BACKUP_DIR/dot-env" 2>/dev/null || true
 
+# --- GPG keys + Pass store (encrypted secrets) --------------------------------
+echo "Copiando GPG keys + Pass store..."
+if [ -d "$HOME/.gnupg" ]; then
+    mkdir -p "$BACKUP_DIR/gnupg"
+    cp -r "$HOME/.gnupg/pubring.kbx" "$BACKUP_DIR/gnupg/" 2>/dev/null || true
+    cp -r "$HOME/.gnupg/trustdb.gpg" "$BACKUP_DIR/gnupg/" 2>/dev/null || true
+    cp -r "$HOME/.gnupg/private-keys-v1.d" "$BACKUP_DIR/gnupg/" 2>/dev/null || true
+fi
+if [ -d "$HOME/.password-store" ]; then
+    cp -r "$HOME/.password-store" "$BACKUP_DIR/password-store" 2>/dev/null || true
+fi
+
 # --- Cron jobs database ------------------------------------------------------
 echo "Copiando cron jobs..."
 for crondir in "$OPENCLAW_DIR/cron" "$OPENCLAW_DIR/data/cron"; do

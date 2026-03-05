@@ -44,12 +44,25 @@ Ver: `COMMUNICATION-POLICY.md` para detalles completos.
 - Si hay cambios pendientes: alerta
 - Si OK: silencio
 
-### 7. Garmin health context
+### 7. Session synthesis (Signet-inspired)
+- Si hubo sesión larga (>10 mensajes) desde el último heartbeat:
+  - Extraer decisiones, cambios, y aprendizajes clave
+  - Guardar en `memory/YYYY-MM-DD-session-synthesis.md`
+  - Actualizar `memory/entities.md` si hay nuevas personas/proyectos/herramientas
+- Si no hubo sesión significativa: silencio
+
+### 8. Garmin health context
 - Run: `bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --current`
 - **NO reportes normales** — solo factor en comunicación
 - Si alerta crítica (HR muy elevado, sueño muy malo): avisa
 
-### 8. Fail2Ban status
+### 9. Google Calendar tasks
+- Ejecuta: `bash ~/.openclaw/workspace/scripts/calendar-tasks.sh check`
+- Si hay tareas para HOY: incluir en informe matutino o avisar si es urgente
+- Si hay tareas para MAÑANA: mencionar como preview
+- Si "OK: No pending tasks": silencio
+
+### 10. Fail2Ban status
 - Ejecuta: `sudo fail2ban-client status sshd`
 - Si <5 IPs baneadas: silencio
 - Si 5-10 IPs: guardar para informe matutino

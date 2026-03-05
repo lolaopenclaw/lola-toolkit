@@ -6,6 +6,9 @@ Actualizado: 2026-02-22 (volcado Facebook analizado)
 
 ## Personal
 - **Nombre completo:** Manuel León Mendiola
+- **Género:** Varón
+- **Orientación:** Heterosexual
+- **Fecha de nacimiento:** 16 de febrero de 1978 (48 años, cumpleaños hace poco)
 - **Ubicación:** Logroño, La Rioja, España
 - **Timezone:** Europe/Madrid (UTC+1/+2)
 - **Email:** manuelleonmendiola@gmail.com
