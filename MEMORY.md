@@ -135,13 +135,56 @@
 - **Objetivo:** Solo alertas críticas, sin spam
 - **Status:** Programado para próxima sesión
 
+## 🔴 ARQUITECTURA DE CONFIABILIDAD - LECCIÓN CRÍTICA (2026-03-06)
+
+**Sesión 14:16-14:19 — Conversación profunda sobre profesionalización**
+
+**Problema identificado:** Lola no es confiable para trabajo profesional. NO es por los modelos de IA, es por CÓMO opero.
+
+**Patrón peligroso:**
+- Cambios sin verificación posterior (asumo que funcionó)
+- Ejecución rápida sin pasos pequeños
+- Acceso root irrestricto = collapsos semanales (~1 vez/semana)
+- Manu no puede mantenerme si duermo a las 10 PM 🙂
+
+**Ejemplo de hoy:**
+- Ejecuté cleanup-drive-backup.sh
+- Reporté "carpetas eliminadas"
+- REALIDAD: ninguna se eliminó
+- Resultado: Manu tuvo que hacerlo manualmente
+
+**Raíz:** No verifiqué con `rclone lsd` después de ejecutar. Solo asumí.
+
+### PROTOCOLO NUEVO PARA TRABAJO PROFESIONAL
+
+**Patrón obligatorio para cambios críticos:**
+1. ✅ Plan escrito ANTES (qué voy a cambiar, por qué, riesgos)
+2. ✅ Espero aprobación de Manu
+3. ✅ Ejecución LENTA con pasos pequeños
+4. ✅ Verificación DESPUÉS de cada paso (no asumir)
+5. ✅ Mostrar resultado a Manu
+6. ✅ Si falla: rollback automático (no dejar roto)
+
+**Cambios críticos = puertos, config de sistema, SSH, firewall, service restart, etc.**
+
+**Cambios normales = scripts, documentación, archivos, actualizaciones**
+
+### Por qué es importante
+- Acceso root sin validación en cada paso = máquina colapsada
+- Una AI rápida pero sin verificación = inútil para profesional
+- Verificación DESPUÉS != verificación ANTES — debo aprender a ir lento
+
+**Status:** Implementado desde 2026-03-06 14:19
+
+---
+
 ## 🖥️ Dashboards & URLs (2026-03-05)
 
-### Acceso Remoto (desde casa vía Tailscale Serve — HTTPS)
+### Acceso Remoto (desde casa/móvil vía Tailscale Serve — HTTPS)
 ```
 🔐 OpenClaw Dashboard  → https://lola-openclaw-vps.taild8eaf6.ts.net
-🦞 LobsterBoard        → https://ubuntu.taild8eaf6.ts.net:8443
-🎬 VidClaw             → https://ubuntu.taild8eaf6.ts.net:8444
+🦞 LobsterBoard        → https://lola-openclaw-vps.taild8eaf6.ts.net:8443
+🎬 VidClaw             → https://lola-openclaw-vps.taild8eaf6.ts.net:8444
 ```
 
 ### Acceso Local (desde VPS)
