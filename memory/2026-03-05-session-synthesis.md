@@ -1,60 +1,69 @@
-# 2026-03-05 — Session Synthesis (Morning)
+# 2026-03-05 — LobsterBoard Custom Widgets (Session Synthesis)
 
-**Duration:** 08:22 - 10:48 (2h 26m active)
-**Focus:** Gateway recovery, dashboard access troubleshooting, pairing setup
+**Duración:** ~2h de trabajo activo (14:00-16:50)
 
-## ✅ Completed
+## 🎯 Logros
 
-### Gateway Issues
-- ✅ Boot check: Zombie process recovered (restart loop 08:34-08:44, 71 attempts)
-- ✅ Added Tailscale origins to CORS allowlist (portatil-curro, lola-openclaw-vps)
-- ✅ Gateway restart at 08:48:28 — stable since then
+### ✅ 3 Widgets Custom Funcionales
+- 💰 **Finanzas** — Google Sheets (ingresos, gastos, balance mes actual)
+- ❤️ **Garmin** — Script de salud (HR, pasos, sueño, battery)
+- 📅 **Calendar** — Google Calendar (próximos eventos)
 
-### Dashboard Access
-- ✅ LobsterBoard + VidClaw confirmed running (ports 8080, 3333)
-- ✅ Tailscale Serve routes confirmed active (:8443 → 8080, :8444 → 3333)
-- ✅ Device pairing approved for portatil-curro (IP 100.112.177.91)
+### ✅ API Backend
+- `api-custom.cjs` en puerto 5001 con `/api/{finanzas,garmin,calendar}`
+- systemd service (`lobsterboard-api.service`) para auto-arranque
+- Caching inteligente (1h/30min/15min según fuente)
 
-### Diagnosis: Network Firewall
-- ❌ Portátil de curro: Firewall corporativo blocks Tailscale ports (8443, 8444, 18789)
-  - Ping/connectivity OK (100.121.147.45 reachable)
-  - HTTPS ports: SEC_E_INTERNAL_ERROR (Windows schannel SSL error)
-  - HTTP ports: Connection refused
-  - **Cause:** Corporate network security policy
-- ✅ Workaround: Access from home/mobile (after hours) or via VPS browser
+### ✅ Plugin System (Perdura Actualizaciones)
+- Carpeta `plugins/` con widgets individuales
+- `server.cjs` inyecta plugins antes de `builder.js` (timing correcto)
+- Auto-inyecta sección "🎨 Custom" en sidebar
+- NO se toca en updates de LobsterBoard
 
-### Dashboard Verification
-- ✅ LobsterBoard loads correctly (http://localhost:8080)
-- ✅ VidClaw loads correctly (http://localhost:3333)
-- Both dashboards visually functional and ready for widget config
+## 🐛 Bugs Encontrados & Resueltos
 
-## 🔲 Pending
+| Bug | Causa | Fix |
+|-----|-------|-----|
+| Widgets no renderizaban | `p.properties.title` vs `p.title` | Usar `p.title` directamente |
+| API devolvía `--` en systemd | PATH no incluía `/home/linuxbrew/.linuxbrew/bin/gog` | Cargar PATH en api-custom.cjs |
+| Plugins no cargaban antes que builder.js | Inyección al final de `</body>` | Inyectar antes de `<script src="js/builder.js">` |
+| Plugins escribían `window.WIDGETS` pero builder usaba `const WIDGETS` | Namespace conflict | Plugins usan `WIDGETS` global directamente |
 
-1. **Custom widgets** (LobsterBoard):
-   - [ ] Finanzas (read JSONs from ~/finanzas/data/)
-   - [ ] Garmin health (HR, steps, sleep, Body Battery)
-   - [ ] Google Calendar (tasks/reminders)
-   - [ ] Eliminate redundant reportes
+## 📚 Lecciones Aprendidas
 
-2. **Dashboard access from portátil-curro:**
-   - [ ] Request IT whitelist of Tailscale ports (if needed)
-   - [ ] Or document "access only from home/mobile"
+1. **LobsterBoard Property Access**: `generateHtml(props)` recibe propiedades aplanadas, no `props.properties.*`
+2. **systemd + PATH**: Los servicios no heredan PATH de .bashrc; hay que especificar rutas completas
+3. **Script injection timing**: Los scripts de extensión deben cargar ANTES del código que los usa
+4. **Plugin survival**: Código custom en `plugins/` no se toca en updates (solo cambios core)
 
-## 🎯 Key Decisions
+## 🗂️ Archivos Clave
 
-- Portátil de curro: Network-limited access (corporate firewall)
-- Dashboards: Fully functional but not accessible from corp network
-- Next step: Finanzas widget config once Manu is on accessible network
+```
+/home/mleon/lobsterboard/
+├── plugins/
+│   ├── finanzas.js
+│   ├── garmin.js
+│   ├── calendar.js
+│   └── loader.js (auto-inyecta sidebar)
+├── api-custom.cjs (API backend con caching)
+├── DEVELOPMENT.md (docs para futuros widgets)
+└── .config/systemd/user/lobsterboard-api.service
+```
 
-## 📊 System Status
+## 🎨 Documentación Creada
 
-- **Gateway:** Healthy (uptime stable post-restart)
-- **Memory:** 1.2MB (well under 15MB limit)
-- **Cron:** All jobs running (no failures)
-- **Security:** 0 fail2ban blocks, SSH clean
-- **Calendar:** No pending tasks for today
+- `DEVELOPMENT.md` — Custom widget dev guide (property access + escaping patterns)
+- Comentarios en código
 
----
+## ✨ Próximas Ideas
 
-**Session Type:** Infrastructure + troubleshooting
-**Next action:** Finanzas widget config (when Manu is home/mobile)
+- [ ] Body Battery widget mejorado (gráfica mini)
+- [ ] Gastos por categoría (pie chart)
+- [ ] Alarmas inteligentes (HR elevado, poco sueño)
+- [ ] Sincronización con Notion Ideas automática
+
+## 🔗 Referencias
+
+- git commits: ee2ffc3, b19586e, dfea50e (main branch)
+- API responde en `http://127.0.0.1:5001/api/{finanzas,garmin,calendar}`
+- systemd service: `systemctl --user status lobsterboard-api.service`

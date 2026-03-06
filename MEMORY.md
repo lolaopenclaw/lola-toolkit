@@ -113,3 +113,67 @@
 - **Mantener:** healthchecks, backups, security audits, memory organization
 - **Objetivo:** Solo alertas críticas, sin spam
 - **Status:** Programado para próxima sesión
+
+## 🖥️ Dashboards & URLs (2026-03-05)
+
+### Acceso Remoto (desde casa vía Tailscale Serve — HTTPS)
+```
+🔐 OpenClaw Dashboard  → https://lola-openclaw-vps.taild8eaf6.ts.net
+🦞 LobsterBoard        → https://ubuntu.taild8eaf6.ts.net:8443
+🎬 VidClaw             → https://ubuntu.taild8eaf6.ts.net:8444
+```
+
+### Acceso Local (desde VPS)
+```
+localhost:18790 → OpenClaw Gateway (⚠️ puerto real, no 18789)
+localhost:8080  → LobsterBoard
+localhost:3333  → VidClaw
+localhost:5001  → Custom API (backend widgets)
+```
+
+### ⚠️ Lección: NO tocar gateway.bind
+OpenClaw usa `tailscale.mode=serve` + `gateway.bind=loopback`.
+Tailscale Serve hace el proxy HTTPS automáticamente.
+NUNCA cambiar bind a "tailnet" o "lan" — rompe la validación.
+
+### Detalles de cada Dashboard
+
+**LobsterBoard (8080)**
+- Descripción: Dashboard builder con widgets custom
+- Tecnología: Node.js server.cjs
+- Status: ✅ Expuesto en 0.0.0.0
+- Plugins: /home/mleon/lobsterboard/plugins/
+  - finanzas.js → Google Sheets (ingresos/gastos/balance)
+  - garmin.js → Garmin Health (HR, pasos, sueño)
+  - calendar.js → Google Calendar (próximos eventos)
+- API Backend: 5001 (api-custom.cjs, systemd service)
+
+**VidClaw (3333)**
+- Descripción: Dashboard de métricas/costes de Lola
+- Tecnología: Node.js server.js (/home/mleon/vidclaw/)
+- Status: ✅ Expuesto en 0.0.0.0
+
+**OpenClaw Gateway (18789)**
+- Descripción: Gateway central de OpenClaw (websocket, agentes)
+- Tecnología: OpenClaw CLI gateway --port 18789 --bind tailnet
+- Status: ✅ Accesible desde Tailscale (--bind tailnet aplicado 2026-03-05)
+- Systemd: /home/mleon/.config/systemd/user/openclaw-gateway.service
+- Auth: token-based
+
+### Puertos Ocupados
+- 22 → SSH
+- 53 → DNS (systemd-resolved)
+- 80, 443 → Libre (sin nginx/reverse proxy)
+- 3333 → VidClaw
+- 5001 → Custom API
+- 5901 → VNC
+- 8080 → LobsterBoard
+- 8443, 8444 → Tailscale serve (proxy)
+- 18789, 18791, 18792 → OpenClaw gateway/services
+
+### Cambios Aplicados (5 marzo 2026)
+1. LobsterBoard: 127.0.0.1 → 0.0.0.0 (Tailscale access)
+2. Custom API: 127.0.0.1 → 0.0.0.0
+3. VidClaw: 127.0.0.1 → 0.0.0.0
+4. OpenClaw Gateway: --bind tailnet (Tailscale access)
+5. Plugins: Hardcoded 127.0.0.1:5001 → window.location.hostname:5001 (dynamic)
