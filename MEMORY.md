@@ -47,6 +47,27 @@
 
 ---
 
+---
+
+## 🔑 Secretos & Seguridad (2026-03-06)
+
+### Secretos externalizados del openclaw.json
+- **Todos los secretos** están en `~/.openclaw/.env`, referenciados como `${VAR_NAME}` en el JSON
+- `openclaw.json` es ahora seguro para compartir/pegar en chats de soporte
+- Variables: `TELEGRAM_BOT_TOKEN`, `ELEVENLABS_API_KEY`, `BRAVE_SEARCH_API_KEY`, `OPENCLAW_GATEWAY_TOKEN`, `NANO_BANANA_API_KEY`, `NOTION_API_KEY`
+
+### Lecciones críticas
+1. **NUNCA cambiar `gateway.bind`** cuando `tailscale.mode=serve` — debe ser siempre `loopback`
+2. **OpenClaw reescribe su propio systemd unit** → no editar a mano, usar `openclaw doctor --repair`
+3. **IAs externas (Gemini, ChatGPT) inventan comandos de OpenClaw** → no fiarse de sus sugerencias CLI
+4. **Dashboard Control UI**: token via URL `#token=...`, device pairing con `openclaw devices approve <id>`
+5. **Browser Relay**: puerto = gateway port + 3 (ej: gateway 18790 → relay 18793)
+
+### Rotación de tokens (próxima: junio 2026)
+- Última rotación: 6 marzo 2026
+- Rotados: gateway, telegram, elevenlabs, notion, brave search
+- Pendiente: Nano Banana (Google AI) — riesgo bajo
+
 **Nota:** Usar `memory_search` para consultas. Este archivo es ahora un índice ligero (~1.5KB).
 
 ## 💰 Finanzas - Google Sheet (2026-03-04)
