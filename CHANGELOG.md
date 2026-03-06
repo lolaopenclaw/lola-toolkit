@@ -78,3 +78,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-02-27 17:12:51** | fix: informe matutino @ 10 AM daily, populate sheets daily | `bd6e037` | [`backup-bd6e037`](backups-by-commit/backup-bd6e037*.tar.gz)
 
+- **2026-03-06 21:10:55** | memory: document duplicate gateway fix + lobsterboard proxy fix (2026-03-06 evening) | `4dc53b9` | [`backup-4dc53b9`](backups-by-commit/backup-4dc53b9*.tar.gz)
+
