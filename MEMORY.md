@@ -62,6 +62,7 @@
 3. **IAs externas (Gemini, ChatGPT) inventan comandos de OpenClaw** → no fiarse de sus sugerencias CLI
 4. **Dashboard Control UI**: token via URL `#token=...`, device pairing con `openclaw devices approve <id>`
 5. **Browser Relay**: puerto = gateway port + 3 (ej: gateway 18790 → relay 18793)
+6. **Verificar servicios systemd duplicados**: `openclaw doctor` solo ve el user service. Siempre comprobar: `sudo systemctl list-units | grep openclaw`. Servicio global desactivado 2026-03-06.
 
 ### Rotación de tokens (próxima: junio 2026)
 - Última rotación: 6 marzo 2026
