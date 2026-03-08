@@ -157,4 +157,13 @@ with open(report_file, 'w') as f:
 
 print(f"✅ Reporte guardado: {report_file}")
 
+# Also sync to Google Sheets
+import subprocess
+try:
+    result = subprocess.run(["python3", "/home/mleon/.openclaw/workspace/scripts/garmin-activities-to-sheets.py"], 
+                          capture_output=True, text=True, timeout=30)
+    print(f"\n{result.stdout}")
+except Exception as e:
+    print(f"\n⚠️  No se pudo sincronizar a Google Sheets: {e}")
+
 EOF
