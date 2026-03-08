@@ -85,15 +85,11 @@
     },
     "sessionTarget": "isolated",
     "payload": {
-      "kind": "agentTurn",
-      "message": "Genera un informe matutino EXTENSO y consolidado para Discord. Pasos:\n\n1. EJECUTA SCRIPT DE GARMIN (para datos del día anterior):\n   ```bash\n   YESTERDAY=$(date -d \"yesterday\" +%Y-%m-%d)\n   bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --daily \"$YESTERDAY\"\n   ```\n   Extrae: HR reposo, estrés, sueño (horas), Body Battery, pasos totales\n\n2. REÚNE DATOS ADICIONALES:\n   - Sistema (uptime, CPU, RAM, disco)\n   - Fail2Ban (IPs baneadas últimas 24h, intentos fallidos)\n   - Consumo IA (ayer, mes, proyección anual)\n   - Backup status (último backup, archivos, tamaño)\n   - Estado crons (activos, errores)\n\n3. LEE ARCHIVOS DE CONTEXTO:\n   - memory/YYYY-MM-DD-usage-report.md (si existe)\n   - memory/YYYY-MM-DD-health-report.md (si existe)\n\n4. ESTRUCTURA EL INFORME CON ESTE FORMATO (en Discord):\n\n**📋 INFORME MATUTINO** • [fecha y hora]\n\n🖥️ **SISTEMA**\n• Uptime: [horas/días]\n• CPU: [%] | RAM: [GB/GB] | Disco: [GB/GB]\n• Gateway: ✅ OK | Crons: [N] activos\n\n🔐 **SEGURIDAD**\n• Fail2Ban: [X] IPs baneadas (últimas 24h)\n• Intentos fallidos: [Y] (↑/↓ vs ayer)\n• Status SSH: ✅ Activo\n\n💾 **BACKUPS**\n• Último: [fecha] ([N] archivos, [tamaño])\n• Frecuencia: 4:00 AM diario ✅\n• Drive: [espacio libre]\n\n💰 **CONSUMO IA**\n• Ayer: $[X] USD ([N] requests)\n• Mes actual: $[M] USD (promedio: $[P]/día)\n• Distribución: Haiku [%] | Opus [%] | Sonnet [%]\n• Proyección anual: ~$[A] USD\n\n❤️ **SALUD (Garmin - día anterior)**\n• HR reposo: [bpm] | Estrés: [nivel]\n• Sueño: [horas] | Body Battery: [%]\n• Pasos: [número] | Evaluación: [estado]\n\n📌 **ESTADO GENERAL**\n• Síntesis: [Verde/Amarillo/Rojo]\n• Alertas: [Ninguna / lista de alertas si las hay]\n• Próximos eventos: [tareas críticas próximas 24h si las hay]\n\nIMPORTANTE:\n- SIEMPRE ejecuta el script de Garmin primero\n- Usa números ESPECÍFICOS del día anterior (no de hoy)\n- Incluye contexto si hubo cambios vs día anterior\n- Emojis pequeños, sin líneas decorativas\n- Total: 7 secciones, máximo 2-3 bullets por sección\n- Tono: conciso, profesional, accionable",
-      "model": "haiku",
-      "timeoutSeconds": 120
+      "kind": "exec",
+      "command": "bash ~/.openclaw/workspace/scripts/informe-matutino-auto.sh"
     },
     "delivery": {
-      "mode": "announce",
-      "channel": "discord",
-      "to": "1475057935368458312"
+      "mode": "none"
     },
     "enabled": true,
     "wakeMode": "now"
@@ -429,6 +425,27 @@
       "kind": "agentTurn",
       "message": "Rotate the gateway token: 1) Generate new token with openssl rand -hex 24, 2) Update it in openclaw.json using python3, 3) Restart gateway, 4) Send Manu a Telegram message confirming rotation and reminding him to update the Chrome extension if active. Do NOT share the new token in the message.",
       "model": "haiku"
+    },
+    "delivery": {
+      "mode": "announce",
+      "channel": "last"
+    },
+    "enabled": true,
+    "wakeMode": "now"
+  },
+  {
+    "name": "🔍 Monitor GitHub #24586 - Discord Cron Delivery",
+    "schedule": {
+      "kind": "cron",
+      "expr": "0 8 * * 1",
+      "tz": "Europe/Madrid"
+    },
+    "sessionTarget": "isolated",
+    "payload": {
+      "kind": "agentTurn",
+      "message": "Revisa el estado del issue GitHub #24586 (OpenClaw cron delivery Discord) cada lunes:\n\n1. Ejecuta: gh issue view 24586 --repo openclaw/openclaw --json state,labels,comments --jq '.state,.labels[].name,.comments | length'\n\n2. Evalúa el estado:\n   - Si state = CLOSED: 🎉 RESUELTO → Avisa a Manu por Telegram\n   - Si labels contiene 'fixed-in-dev' o 'fixed-in-staging': ⚠️ CASI LISTO\n   - Si sigue OPEN: ℹ️ AÚN EN DESARROLLO\n\n3. Según el estado:\n   - CERRADO: Sugiere a Manu probar native cron delivery nuevamente\n   - EN DESARROLLO: Mantén workaround, actualiza memory\n   - ACTIVO: Responde HEARTBEAT_OK\n\n4. Guarda resultado en memory/github-issue-24586-status.json",
+      "model": "haiku",
+      "timeoutSeconds": 60
     },
     "delivery": {
       "mode": "announce",

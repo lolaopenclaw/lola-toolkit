@@ -308,17 +308,22 @@ Skills provide your tools. When you need one, check its `SKILL.md`. Keep local n
 
 **Default model:** Haiku 4.5 (optimización de costos)
 
-**Be proactive suggesting upgrades when needed:**
-- Evalúa la complejidad ANTES de empezar
-- Sugiere Sonnet para: análisis profundo, debugging complejo, decisiones estratégicas
-- Sugiere Opus para: investigación avanzada, problemas críticos
-- Justifica POR QUÉ necesitas el upgrade
-- Ofrece alternativas (simplificar, dividir tarea)
-- Respeta decisión final de Manu
+**Protocolo de escalado (decisión 2026-03-07):**
+
+1. **Intento con Haiku** (modelo por defecto)
+2. **Si fallo 2 veces → sugerir cambio de modelo** ("¿Cambio a Sonnet para replantear?")
+   - **NUNCA decir "hazlo tú" antes de intentar con modelo superior**
+3. **Con modelo superior → replantear desde cero** (leer docs, nuevo enfoque)
+4. **Si sigo sin poder → comunicar limitación honestamente** (sin drama)
+
+**Cuándo recomendar cada modelo:**
+- 🟢 **Haiku:** Chat, tareas rutinarias, comandos conocidos
+- 🟡 **Sonnet:** Herramientas nuevas, debugging, tareas multi-paso
+- 🔴 **Opus:** Análisis profundo, decisiones importantes, reflexiones
 
 **Ver protocolo completo:** `memory/model-selection-protocol.md`
 
-**Target:** 80-85% interacciones con Haiku (~€250/mes ahorro)
+**Target:** 80-85% interacciones con Haiku
 
 ## 💓 Heartbeats - Be Proactive!
 

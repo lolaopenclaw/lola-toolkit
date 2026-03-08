@@ -28,6 +28,14 @@
 - Lunes 6:00 AM — Auditoría seguridad
 - Lunes 8:30 AM — Resumen Garmin
 
+### 🐛 GitHub Issue #24586 - Monitor semanalmente
+- **Problema:** OpenClaw cron delivery.announce a Discord falla silenciosamente (status ok pero no llega)
+- **Versión:** Confirmado en 2026.3.2
+- **Workaround:** Script shell + curl (en producción, funciona perfecto)
+- **Monitoreo:** Cada lunes 8:00 AM (con auditoría de seguridad)
+- **Acción si se resuelve:** Eliminar script workaround, volver a usar cron delivery nativo
+- **GitHub:** Comentario añadido 2026-03-08 documenting case + solución
+
 ---
 
 ## 🔐 PROTOCOLS - Backup, Security, Cambios Críticos

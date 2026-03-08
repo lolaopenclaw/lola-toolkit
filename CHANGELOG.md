@@ -80,3 +80,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-06 21:10:55** | memory: document duplicate gateway fix + lobsterboard proxy fix (2026-03-06 evening) | `4dc53b9` | [`backup-4dc53b9`](backups-by-commit/backup-4dc53b9*.tar.gz)
 
+- **2026-03-06 22:05:54** | cleanup: remove 5 obsolete crons, fix relay token, proxy LobsterBoard APIs | `1d69d7d` | [`backup-1d69d7d`](backups-by-commit/backup-1d69d7d*.tar.gz)
+

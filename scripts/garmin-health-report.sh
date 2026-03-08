@@ -101,10 +101,19 @@ def get_day_data(client, day_str):
     try:
         battery = client.get_body_battery(day_str)
         if battery and len(battery) > 0:
-            data['battery_current'] = battery[-1].get('charged', None)
-            data['battery_max'] = max(b.get('charged', 0) for b in battery)
-            data['battery_min'] = min(b.get('charged', 100) for b in battery)
-    except:
+            # Body Battery API returns list of dicts with 'value' or 'charged' key
+            # Use 'value' if available, fall back to 'charged'
+            values = []
+            for b in battery:
+                val = b.get('value') or b.get('charged')
+                if val is not None:
+                    values.append(val)
+            
+            if values:
+                data['battery_current'] = max(values)  # Show maximum for --current mode
+                data['battery_max'] = max(values)
+                data['battery_min'] = min(values)
+    except Exception as e:
         pass
     
     try:
