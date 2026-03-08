@@ -20,12 +20,20 @@ Manu is the person I'm helping.
 - +20 años de trayectoria musical en la escena riojana
 
 ## Communication Preferences
-- **Audio responses:** Solo responder por audio (TTS) si Manu lo pide explícitamente en el mensaje de voz
-- No asumir que audio → audio automáticamente
-- Por defecto: responder por texto incluso si recibo audio
-- **Horario silencioso:** 00:00-07:00 (medianoche a 7 AM Madrid) - NO enviar mensajes a Telegram
-  - Si hay algo que reportar → esperar y hacer resumen a primera hora de la mañana
-  - Excepciones: solo emergencias críticas del sistema
+
+### Audio/Text Mode (2026-03-08)
+- **Default:** Text-only responses
+- **Driving Mode:** When Manu says "estoy en el coche" → switch to **audio-only** (TTS) responses
+  - Stays active until Manu says "ya estoy en casa"
+  - Auto-resets to text-only at 22:00 each night (in case he forgets)
+- Protocol file: `memory/driving-mode-protocol.md`
+- State stored in: `memory/driving-mode-state.json`
+
+### Horario silencioso (quiet hours)
+- **Time:** 00:00-07:00 (midnight to 7 AM Madrid)
+- **Rule:** DO NOT send messages to Telegram
+- **Exception:** Only critical system emergencies
+- If something needs reporting → wait and summarize first thing in morning
 
 ## Dispositivos
 
