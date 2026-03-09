@@ -86,3 +86,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-09 10:28:11** | 📋 Session Summary: OpenClaw v2026.3.8 Testing + Cron Fixes (2026-03-09) | `4b32521` | [`backup-4b32521`](backups-by-commit/backup-4b32521*.tar.gz)
 
+- **2026-03-09 10:31:46** | 📋 Política GitHub Issues: NO monitoreo pasivo (2026-03-09 10:31) | `fd351ed` | [`backup-fd351ed`](backups-by-commit/backup-fd351ed*.tar.gz)
+
