@@ -24,7 +24,7 @@ warn() { echo -e "  ${YELLOW}⚠️  $1${NC}"; }
 fail() { echo -e "  ${RED}❌ $1${NC}"; }
 skip() { echo -e "  ${YELLOW}⏭️  $1 (ya existe)${NC}"; }
 
-TOTAL_STEPS=12
+TOTAL_STEPS=13
 ERRORS=0
 
 # --- Pre-checks --------------------------------------------------------------
@@ -210,15 +210,14 @@ if ! grep -q 'npm-global/bin' ~/.bashrc 2>/dev/null; then
 fi
 export PATH="$HOME/.npm-global/bin:$PATH"
 
-# OpenClaw (versión fija — actualizar aquí cuando se pruebe nueva versión)
-OPENCLAW_VERSION="2026.2.17"
-CURRENT_OC=$(openclaw --version 2>/dev/null || echo "none")
-if [ "$CURRENT_OC" != "$OPENCLAW_VERSION" ]; then
-    echo "  Instalando OpenClaw@${OPENCLAW_VERSION}..."
-    npm install -g "openclaw@${OPENCLAW_VERSION}"
-    ok "OpenClaw $OPENCLAW_VERSION instalado"
+# OpenClaw (última versión estable)
+if ! command -v openclaw &>/dev/null; then
+    echo "  Instalando OpenClaw (última versión)..."
+    npm install -g openclaw
+    ok "OpenClaw $(openclaw --version 2>/dev/null || echo '?') instalado"
 else
-    skip "OpenClaw $OPENCLAW_VERSION ya instalado"
+    CURRENT_OC=$(openclaw --version 2>/dev/null || echo "unknown")
+    skip "OpenClaw ya instalado: $CURRENT_OC"
 fi
 
 # =============================================================================
@@ -338,9 +337,81 @@ mkdir -p "$HOME/.config/systemd/user"
 ok "Directorios creados"
 
 # =============================================================================
-# PASO 10: Variables de entorno en .bashrc
+# PASO 10: Auto-restore desde backup (si disponible)
 # =============================================================================
-step 10 "Configurando variables de entorno"
+step 10 "Buscando backup para restaurar"
+
+BACKUP_FOUND=false
+RESTORE_FILE=""
+
+# Opción 1: Backup pasado como argumento
+if [ -n "${1:-}" ] && [ -f "${1:-}" ]; then
+    RESTORE_FILE="$1"
+    BACKUP_FOUND=true
+    ok "Backup proporcionado como argumento: $RESTORE_FILE"
+fi
+
+# Opción 2: Buscar en /tmp o $HOME
+if [ "$BACKUP_FOUND" = false ]; then
+    RESTORE_FILE=$(ls -t /tmp/openclaw-backup-*.tar.gz $HOME/openclaw-backup-*.tar.gz 2>/dev/null | head -1)
+    if [ -n "$RESTORE_FILE" ]; then
+        BACKUP_FOUND=true
+        ok "Backup encontrado localmente: $RESTORE_FILE"
+    fi
+fi
+
+# Opción 3: Intentar descargar de Drive (si rclone configurado)
+if [ "$BACKUP_FOUND" = false ] && command -v rclone &>/dev/null; then
+    if rclone lsd grive_lola: &>/dev/null 2>&1; then
+        echo "  Descargando último backup de Google Drive..."
+        mkdir -p /tmp/openclaw-restore
+        rclone copy "grive_lola:openclaw_backups/" /tmp/openclaw-restore/ \
+            --include "openclaw-backup-*.tar.gz" \
+            --max-age 7d \
+            --max-depth 1 \
+            2>/dev/null || true
+        RESTORE_FILE=$(ls -t /tmp/openclaw-restore/openclaw-backup-*.tar.gz 2>/dev/null | head -1)
+        if [ -n "$RESTORE_FILE" ]; then
+            BACKUP_FOUND=true
+            ok "Backup descargado de Drive: $(basename $RESTORE_FILE)"
+        else
+            warn "No se encontró backup reciente en Drive"
+        fi
+    else
+        warn "rclone no configurado — no se puede descargar de Drive automáticamente"
+        echo "  Configura rclone luego: rclone config → grive_lola (Google Drive)"
+    fi
+fi
+
+# Ejecutar restore si hay backup
+if [ "$BACKUP_FOUND" = true ] && [ -f "$RESTORE_FILE" ]; then
+    RESTORE_SCRIPT="$HOME/.openclaw/workspace/scripts/restore.sh"
+    if [ -f "$RESTORE_SCRIPT" ]; then
+        echo "  Ejecutando restore.sh..."
+        bash "$RESTORE_SCRIPT" "$RESTORE_FILE" || warn "Restore tuvo errores (puede requerir config manual)"
+        ok "Restore ejecutado"
+    else
+        # Extraer restore.sh del backup
+        echo "  Extrayendo restore.sh del backup..."
+        tar xzf "$RESTORE_FILE" --wildcards "*/restore.sh" -C /tmp/ 2>/dev/null || true
+        EXTRACTED_RESTORE=$(find /tmp -name "restore.sh" -newer "$RESTORE_FILE" 2>/dev/null | head -1)
+        if [ -n "$EXTRACTED_RESTORE" ]; then
+            bash "$EXTRACTED_RESTORE" "$RESTORE_FILE" || warn "Restore tuvo errores"
+            ok "Restore ejecutado desde backup"
+        else
+            warn "No se encontró restore.sh — restaurar manualmente después"
+        fi
+    fi
+else
+    warn "Sin backup disponible — configuración manual necesaria"
+    echo "  Descarga backup de Drive manualmente o pásalo como argumento:"
+    echo "  bash bootstrap.sh /path/to/openclaw-backup-YYYY-MM-DD.tar.gz"
+fi
+
+# =============================================================================
+# PASO 11: Variables de entorno en .bashrc
+# =============================================================================
+step 11 "Configurando variables de entorno"
 
 # GOG env vars (placeholders - el restore.sh pondrá los valores reales)
 if ! grep -q 'GOG_KEYRING_BACKEND' ~/.bashrc 2>/dev/null; then
@@ -357,9 +428,9 @@ fi
 ok "Entorno configurado"
 
 # =============================================================================
-# PASO 11: Crontab del sistema (rclone sync)
+# PASO 12: Crontab del sistema (rclone sync)
 # =============================================================================
-step 11 "Configurando crontab del sistema"
+step 12 "Configurando crontab del sistema"
 
 CRON_LINE='0 3 * * * /usr/bin/rclone sync /home/mleon/.openclaw/workspace/ grive_lola:openclaw_backups --create-empty-src-dirs >> /home/mleon/.openclaw/logs/rclone_backup.log 2>&1'
 if ! crontab -l 2>/dev/null | grep -q "rclone sync"; then
@@ -370,9 +441,9 @@ else
 fi
 
 # =============================================================================
-# PASO 12: Resumen y siguientes pasos
+# PASO 13: Resumen y siguientes pasos
 # =============================================================================
-step 12 "Resumen"
+step 13 "Resumen"
 
 echo ""
 echo -e "${GREEN}╔══════════════════════════════════════════════════╗${NC}"

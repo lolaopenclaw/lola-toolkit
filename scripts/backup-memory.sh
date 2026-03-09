@@ -123,17 +123,45 @@ else
     echo "validation: SKIPPED (validator not found)"
 fi
 
+# --- OpenClaw Native Backup (redundant layer) --------------------------------
+echo "Creando backup nativo OpenClaw (redundancia)..."
+NATIVE_BACKUP_DIR="/tmp/openclaw-native-backup"
+mkdir -p "$NATIVE_BACKUP_DIR"
+NATIVE_RESULT=$(openclaw backup create --no-include-workspace --output "$NATIVE_BACKUP_DIR" --verify 2>&1) || true
+
+if echo "$NATIVE_RESULT" | grep -q "verified.*true\|Verified"; then
+    NATIVE_FILE=$(ls -t "$NATIVE_BACKUP_DIR"/*.tar.gz 2>/dev/null | head -1)
+    if [ -n "$NATIVE_FILE" ]; then
+        NATIVE_SIZE=$(du -h "$NATIVE_FILE" | cut -f1)
+        echo "native-backup: PASS (${NATIVE_SIZE})"
+        echo "native-backup-verified: true"
+    else
+        echo "native-backup: CREATED (verification passed, file not found for size)"
+    fi
+else
+    echo "native-backup: CREATED (verification skipped or unavailable)"
+    NATIVE_FILE=$(ls -t "$NATIVE_BACKUP_DIR"/*.tar.gz 2>/dev/null | head -1)
+fi
+
 # --- Upload to Drive ---------------------------------------------------------
-echo "Uploading backup (${BACKUP_SIZE})..."
+echo "Uploading custom backup (${BACKUP_SIZE})..."
 UPLOAD_RESULT=$(gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1)
 echo "$UPLOAD_RESULT"
 
+# Upload native backup as redundancy
+if [ -n "${NATIVE_FILE:-}" ] && [ -f "$NATIVE_FILE" ]; then
+    echo "Uploading native backup (redundancia)..."
+    NATIVE_UPLOAD=$(gog drive upload "$NATIVE_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1)
+    echo "$NATIVE_UPLOAD"
+fi
+
 # --- Cleanup -----------------------------------------------------------------
-rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
+rm -rf "$BACKUP_DIR" "$BACKUP_FILE" "$NATIVE_BACKUP_DIR"
 
 echo ""
 echo "=== RESULT ==="
 echo "date: ${BACKUP_DATE}"
 echo "files: ${FILE_COUNT}"
 echo "size: ${BACKUP_SIZE}"
+echo "native-backup: ${NATIVE_SIZE:-unknown}"
 echo "status: ok"

@@ -3,13 +3,6 @@
     {
       "file": "openclaw-backup-2026-03-02.tar.gz",
       "timestamp": "2026-03-02T04:32:02Z",
-      "status": "INVALID",
-      "details": "1 errors, 0 warnings",
-      "checksum": "d2ef9d0f2b9917bdc865e2f7f84a6641707d4ab5168100572f5f30c61dbe5e75"
-    },
-    {
-      "file": "openclaw-backup-2026-03-02.tar.gz",
-      "timestamp": "2026-03-02T04:32:02Z",
       "status": "VALID",
       "details": "Test restore OK: 609 files",
       "checksum": ""
@@ -209,13 +202,20 @@
       "status": "VALID",
       "details": "0 errors, 0 warnings",
       "checksum": "232288b20ca8f646c816f062d58aeb8109f1bbe53e1df8f5feff4c19fdcb1f95"
+    },
+    {
+      "file": "openclaw-backup-2026-03-09.tar.gz",
+      "timestamp": "2026-03-09T09:45:14Z",
+      "status": "VALID",
+      "details": "0 errors, 0 warnings",
+      "checksum": "d4a2e401bd17c39305d57236dcac92c1c0bf3381de82e8efba67333a7da3224a"
     }
   ],
-  "lastRun": "2026-03-09T09:34:33Z",
+  "lastRun": "2026-03-09T09:45:14Z",
   "summary": {
     "total": 30,
-    "valid": 27,
-    "invalid": 3,
+    "valid": 28,
+    "invalid": 2,
     "lastStatus": "VALID"
   }
 }

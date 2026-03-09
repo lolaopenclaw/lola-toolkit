@@ -3,30 +3,36 @@
 ## Guía rápida de recuperación (para Manu)
 
 **Tiempo total estimado: 20-30 minutos**
+**Proveedor actual:** IONOS Cloud (ionos.es)
+**DRS completo:** `docs/DRS-disaster-recovery.md`
 
 ---
 
 ### Paso 0: Prerequisitos ✋
 
-1. VPS con Ubuntu 24.04 LTS
-2. Usuario `mleon` creado
+1. VPS con Ubuntu 24.04 LTS (IONOS Cloud → VPS Linux)
+2. Usuario `mleon` creado (ver DRS para instrucciones IONOS)
 3. SSH keys copiadas: `ssh-copy-id mleon@<IP>`
 4. Backup descargado de Google Drive (carpeta `openclaw_backups`)
+   - O: bootstrap.sh intentará descargarlo si rclone está configurado
 
 ---
 
 ### Paso 1: Bootstrap automático (~10 min)
 
 ```bash
-# Subir bootstrap.sh a la VPS (desde backup o desde aquí)
+# Subir bootstrap.sh y backup a la VPS
 scp scripts/bootstrap.sh mleon@<IP>:~/
+scp openclaw-backup-YYYY-MM-DD.tar.gz mleon@<IP>:~/  # opcional
 
 # Conectar y ejecutar
 ssh mleon@<IP>
-bash bootstrap.sh
+bash bootstrap.sh ~/openclaw-backup-*.tar.gz
 ```
 
 Esto instala TODO: sistema, Chrome, Node, OpenClaw, Homebrew, seguridad.
+Si le pasas el backup como argumento, también restaura automáticamente.
+Si no, intentará descargarlo de Drive (si rclone está configurado).
 
 ---
 
