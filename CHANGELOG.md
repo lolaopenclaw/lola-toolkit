@@ -82,3 +82,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-06 22:05:54** | cleanup: remove 5 obsolete crons, fix relay token, proxy LobsterBoard APIs | `1d69d7d` | [`backup-1d69d7d`](backups-by-commit/backup-1d69d7d*.tar.gz)
 
+- **2026-03-09 10:24:26** | 🔧 Fix Failing Crons: Robust Versions Created (2026-03-09) | `c670da6` | [`backup-c670da6`](backups-by-commit/backup-c670da6*.tar.gz)
+
