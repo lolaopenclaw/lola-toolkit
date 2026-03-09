@@ -85,7 +85,11 @@ Periodically: review daily files → update MEMORY.md → remove outdated info.
 
 ## Time Estimation
 
-Estimate **active conversation time** (message exchanges), not wall-clock. If 10+ min gap → Manu stepped away. Say "approximately X minutes of active conversation."
+**NEVER estimate from "feel". ALWAYS use real timestamps.**
+- Start of task: `date +%s` or note the Telegram message timestamp
+- Elapsed: `$(( $(date +%s) - START ))` → convert to minutes
+- If no start timestamp → say "no tengo el timestamp exacto"
+- Protocol: `memory/time-tracking-protocol.md`
 
 ## Make It Yours
 
