@@ -12,7 +12,7 @@
 - **Email:** manuelleonmendiola@gmail.com ⭐
 - **Chat ID:** 6884477 (Telegram @RagnarBlackmade)
 - **Timezone:** Europe/Madrid
-- **VPS:** Ubuntu 6.8.0, OpenClaw 2026.2.22-2, puerto 18789
+- **VPS:** Ubuntu 6.8.0, OpenClaw **v2026.3.8** (actualizado 2026-03-09)
 - **Horario silencioso:** 00:00-07:00 Madrid (NO enviar a Telegram)
 
 ---
@@ -28,13 +28,24 @@
 - Lunes 6:00 AM — Auditoría seguridad
 - Lunes 8:30 AM — Resumen Garmin
 
-### 🐛 GitHub Issue #24586 - Monitor semanalmente
-- **Problema:** OpenClaw cron delivery.announce a Discord falla silenciosamente (status ok pero no llega)
-- **Versión:** Confirmado en 2026.3.2
-- **Workaround:** Script shell + curl (en producción, funciona perfecto)
-- **Monitoreo:** Cada lunes 8:00 AM (con auditoría de seguridad)
-- **Acción si se resuelve:** Eliminar script workaround, volver a usar cron delivery nativo
-- **GitHub:** Comentario añadido 2026-03-08 documenting case + solución
+### ✅ GitHub Issue #24586 - Cron Delivery (ARREGLADO en v2026.3.8)
+- **Problema:** OpenClaw cron delivery.announce reporta "delivered: true" pero mensaje no llega
+- **Confirmado:** 2026.3.2 (fallaba silenciosamente)
+- **Fix:** v2026.3.8 — "route text-only announce jobs through real outbound adapters"
+- **Verificación:** Test 2026-03-09 09:59:45 — ✅ **Llegó a Telegram correctamente**
+- **Acción próxima:** Eliminar script workaround curl, volver a cron delivery nativo
+- **Status:** RESUELTO — Hacer transición cuando tengamos tiempo
+
+### 🔌 GitHub Issue #33093 - Browser Relay Config Persistence
+- **Problema:** Chrome extension conecta al relay pero no guarda token/puerto en config persistente
+- **Versión:** Presente en v2026.3.8
+- **Workaround actual:** Puerto manual 18793 (no 18792), token manualmente pegado cada sesión
+- **Status:** Relay **funcional** pero configuración no persiste (bug UI)
+- **Próxima versión:** Esperar v2026.3.9 para fix esperado
+- **Config correcta:**
+  - Puerto: 18793 (relay)
+  - Token: `d5570e05fe0e9a86d2c3d51cb45086bbaac6295565a14adf`
+  - No añadir "Bearer" — solo el token directo
 
 ---
 

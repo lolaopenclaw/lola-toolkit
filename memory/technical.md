@@ -68,21 +68,35 @@
 - **Disponibles (no activados):** FIPS-updates, Landscape, USG, realtime-kernel
 - **Impacto:** Actualizaciones automáticas de seguridad + estabilidad crítica
 
-## 🔐 Security Status (Último Check: 2026-03-02)
+## 🔐 Security Status (Último Check: 2026-03-09)
 
 **Estado del sistema: ✅ SEGURO**
 - Vulnerabilidades críticas: 0
+- Vulnerabilidades sin parchear: 0
 - Puertos expuestos: 0 (todo localhost + Tailscale)
 - SSH hardened: ✅ (root disabled, key-only, X11 off)
-- Fail2ban: ✅ (3 jails activos, 0 intentos en 24h)
+- Firewall (UFW): ✅ Active, deny-by-default
+- Fail2Ban: ✅ (3 jails: sshd, openclaw, recidive)
+  - Currently banned: 0 IPs (1 historical: 2.57.122.208 — 36 brute-force attempts blocked)
+  - SSH clean: 0 failed attempts, 0 bans
 - Unattended-upgrades: ✅ (automático)
+- System updates: 0 pending ✅
 - OpenClaw: 2 warnings (no críticos, intencionales)
+  - `models.weak_tier` — Haiku model (cost optimization, accepted)
+  - `security.trust_model.multi_user_heuristic` — False positive (single-user setup)
+
+**Acciones completadas (2026-03-09):**
+- Auditoría profunda: `openclaw security audit --deep` → 0 critical
+- Firewall & fail2ban verification → operational
+- SSH logs clean → no intrusions
+- System patches current → up to date
+- Ports verified → all expected
 
 **Recomendaciones pendientes (baja prioridad):**
-- Instalar UFW (confort, no necesario)
-- Actualizar OpenClaw 2026.3.1 (cuando sea convenient)
+- Actualizar OpenClaw 2026.3.8 (cuando sea convenient, no-critical)
+- Monitor port 5001 (API, intentional, firewall-protected)
 
-**Detalles:** → `memory/2026-03-02-security-audit-weekly.md`
+**Detalles:** → `memory/2026-03-09-security-audit-weekly.md`
 
 ## 🔐 Lecciones Técnicas Aprendidas
 1. D-Bus SecretService no funciona en VPS headless → usar keyring file-based
