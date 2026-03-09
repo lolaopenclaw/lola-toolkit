@@ -6,18 +6,32 @@
 
 ## 🔴 NUESTROS ISSUES (Manu + Lola)
 
-### Reportados por nosotros:
+### CRÍTICOS — Bajo Investigación
 
-1. **#33103** - Gateway restart infinite loop with zombie process (CRÍTICO)
-   - Status: OPEN
-   - Created: 2026-03-03 (HOY)
-   - Impact: Gateway entra en bucle de restart infinito cuando hay cambios de config
-   - Síntomas: "port already in use" (PID viejo fantasma)
-   - Solución temporal: `pkill -9 openclaw-gateway`
+1. **#33103** - Gateway restart infinite loop with zombie process
+   - Status: OPEN (nuestro reporte 2026-03-03) — **LOCKED**
+   - Impact: MEJORADO en v2026.3.8 (was BLOQUEANTE)
+   - Síntomas en v2026.3.2: "port already in use" (infinite loop)
+   - Behavior en v2026.3.8: Clean restart (restart counter = 1, no loop)
+   - Workaround ya no necesario: `pkill -9 openclaw-gateway`
+   - Verification: 2026-03-09 10:12-10:13 test confirmado
    - Link: https://github.com/openclaw/openclaw/issues/33103
 
-   - Impact: Usabilidad en móvil
-   - Link: https://github.com/openclaw/openclaw/issues/26426
+2. **#33092** - Cron job recovery missed jobs after gateway restart
+   - Status: OPEN
+   - Impact: BLOQUEANTE — crons no se recuperan tras restart
+   - Workaround: Manual restart necesario
+   - Link: https://github.com/openclaw/openclaw/issues/33092
+
+3. **#32933** - Gateway restart loses result in exec tool
+   - Status: OPEN
+   - Impact: BLOQUEANTE — comandos ejecutados se pierden tras restart
+   - Workaround: Re-ejecutar comando
+   - Link: (pendiente confirmar número)
+
+### ✅ CERRADO — Resuelto con Workaround
+
+- **#33093** - Browser Relay tab not found → Solucionado (puerto 18793, v2026.3.8)
 
 ---
 
