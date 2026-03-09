@@ -1,0 +1,19 @@
+# HEARTBEAT — Silent
+
+Zero-notification-if-OK. Quiet hours 23:00-07:00 Madrid.
+
+## Checks (alert only on fail)
+
+1. **Cron** `cron list` →errors>0→alert
+2. **Gateway** unusual error→alert
+3. **Kanban Notion** critical block→alert
+4. **Gmail** `gog gmail search "is:unread" --max 5` →breach→alert
+5. **Memory** `du -sh workspace/memory/` →>15MB→alert+clean
+6. **Sandbox** `ls /tmp/critical-sandbox/` →pending→alert
+7. **Session synthesis** >10msgs→save `memory/YYYY-MM-DD-session-synthesis.md`
+8. **Garmin health** `scripts/garmin-health-report.sh --current` →critical only
+9. **Calendar** `scripts/calendar-tasks.sh check` →urgent today→alert
+10. **Fail2Ban** `sudo fail2ban-client status sshd` →≥10:CRITICAL,5-10:morning
+
+## Heartbeat mejorado: progreso cada 30 minutos en tareas largas
+Tarea→progreso. Sin tareas→HEARTBEAT_OK

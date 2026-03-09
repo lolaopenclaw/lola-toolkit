@@ -1,0 +1,8 @@
+experiment	score	status	description
+0	792	baseline	Original HEARTBEAT.md (3168 chars)
+1	366	kept	v1: Removed redundancy, bullet format (1465 chars)
+2	1282	discarded	v2: Table format — lost "heartbeat mejorado" keyword
+3	289	kept	v3: Combined best of v1+v2, all keywords intact (1156 chars)
+4	255	kept	v4: Further compression, maintained readability (1021 chars)
+5	216	kept-but-rejected	v5: Too cryptic, poor readability (865 chars)
+FINAL	255	selected	v4 selected: best balance of compression + readability

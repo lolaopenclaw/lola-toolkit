@@ -1,0 +1,22 @@
+# HEARTBEAT — Silent Checks
+
+Zero-notification-if-OK. Quiet hours: 23:00-07:00 Madrid.
+
+## Checks (alert only on failure)
+
+| # | Check | Command | Alert threshold |
+|---|-------|---------|-----------------|
+| 1 | Cron jobs | `cron list` | consecutiveErrors > 0 |
+| 2 | Gateway | logs | unusual errors |
+| 3 | Kanban (Notion) | internal | critical blockers only (daily summary otherwise) |
+| 4 | Email (Gmail) | `gog gmail search "is:unread" --max 5` | breach/urgency |
+| 5 | Memory size | `du -sh workspace/memory/` | >15 MB → alert + cleanup |
+| 6 | Critical sandbox | `ls /tmp/critical-sandbox/` | pending changes |
+| 7 | Session synthesis | if >10 msgs since last HB | save to `memory/YYYY-MM-DD-session-synthesis.md` |
+| 8 | Garmin health | `scripts/garmin-health-report.sh --current` | critical HR/sleep only |
+| 9 | Calendar | `scripts/calendar-tasks.sh check` | urgent today → alert; tomorrow → morning |
+| 10 | Fail2Ban | `sudo fail2ban-client status sshd` | <5: silence, 5-10: morning, ≥10: CRITICAL |
+
+## Long tasks (every 30 min)
+- Active task → progress update ("Step 6/8: ...")
+- No tasks → HEARTBEAT_OK

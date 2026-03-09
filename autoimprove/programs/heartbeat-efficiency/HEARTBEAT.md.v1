@@ -1,0 +1,27 @@
+# HEARTBEAT.md — Checks (Silent)
+
+**Policy:** Zero-notification-if-OK. Solo alertar si hay problema.
+**Quiet hours:** 23:00-07:00 Madrid — NUNCA enviar.
+
+---
+
+## Checks (silencio si OK, alerta si falla)
+
+1. **Cron jobs** — `cron list` → `consecutiveErrors > 0` → alerta qué falló
+2. **Gateway** — Error inusual en logs → alerta
+3. **Kanban (Notion)** — Tareas "Pendiente" → solo informe matutino. Bloqueos críticos → alerta ahora
+4. **Email (Gmail)** — `gog gmail search "is:unread" --max 5` → crítico (breach/urgencia) → alerta
+5. **Memory size** — `du -sh ~/.openclaw/workspace/memory/` → >15 MB → alerta + limpiar
+6. **Critical sandbox** — `ls /tmp/critical-sandbox/` → cambios pendientes → alerta
+7. **Session synthesis** — Si sesión larga (>10 msgs) desde último heartbeat → guardar en `memory/YYYY-MM-DD-session-synthesis.md` + actualizar `memory/entities.md`
+8. **Garmin health** — `bash scripts/garmin-health-report.sh --current` → solo alerta crítica (HR muy alto, sueño muy malo)
+9. **Calendar tasks** — `bash scripts/calendar-tasks.sh check` → tareas HOY urgente → alerta. Tareas MAÑANA → informe matutino
+10. **Fail2Ban** — `sudo fail2ban-client status sshd` → <5 IPs: silencio. 5-10: informe matutino. ≥10: ALERTA CRÍTICA
+
+---
+
+## Durante tareas largas (cada 30 min)
+
+- En tarea → reportar progreso ("Paso 6/8: ...")
+- Sin tareas → HEARTBEAT_OK
+- Quiet hours → NUNCA reportar
