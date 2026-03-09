@@ -28,6 +28,12 @@
 - Lunes 6:00 AM — Auditoría seguridad
 - Lunes 8:30 AM — Resumen Garmin
 
+**Política GitHub Issues (2026-03-09):**
+- ❌ NO monitorear issues pasivamente
+- ✅ SOLO responder si nos menciona el maintainer
+- ✅ Dejar comentario de verificación cuando arreglemos nuestros reportes
+- ✅ Ver de vez en cuando si hay respuesta/mención, pero sin crons dedicados
+
 ### ✅ GitHub Issue #24586 - Cron Delivery (ARREGLADO en v2026.3.8)
 - **Problema:** OpenClaw cron delivery.announce reporta "delivered: true" pero mensaje no llega
 - **Confirmado:** 2026.3.2 (fallaba silenciosamente)
