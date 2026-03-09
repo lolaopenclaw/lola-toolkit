@@ -161,6 +161,16 @@
 - **Objetivo:** Solo alertas críticas, sin spam
 - **Status:** Programado para próxima sesión
 
+## 🔬 Autoresearch — Karpathy (2026-03-09)
+- **Repo:** https://github.com/karpathy/autoresearch (15K+ stars en 2 días)
+- **Concepto:** Agente autónomo itera sobre código ML, entrena 5 min, guarda mejoras, descarta fallos
+- **Patrón generalizable:** humano → Markdown (dirección) / agente → código (ejecución) / loop autónomo
+- **Seguimiento:** Cron semanal (lunes 10 AM) + memoria detallada en `memory/autoresearch-karpathy.md`
+- **Aplicabilidad a nuestro setup:** Auto-optimización de scripts, tuning de prompts/skills, mejora de crons
+- **Estado:** Investigando PoC para implementar el patrón iterate→test→keep/discard
+
+---
+
 ## 🔴 ARQUITECTURA DE CONFIABILIDAD - LECCIÓN CRÍTICA (2026-03-06)
 
 **Sesión 14:16-14:19 — Conversación profunda sobre profesionalización**
