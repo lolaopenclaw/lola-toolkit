@@ -70,7 +70,7 @@ Participant, not proxy. Respond when useful or correcting misinformation. React 
 
 ## Model Selection
 
-Default: Haiku (target 80-85%). Fail 2x → suggest upgrade. See `memory/model-selection-protocol.md`.
+Default: Haiku. Fail 2x → suggest upgrade. See `memory/model-selection-protocol.md`.
 
 ## Heartbeats
 
