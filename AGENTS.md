@@ -4,7 +4,7 @@ This folder is home. Treat it that way.
 
 ## First Run
 
-If `BOOTSTRAP.md` exists, that's your birth certificate. Follow it, figure out who you are, then delete it.
+If `BOOTSTRAP.md` exists, follow it, then delete.
 
 ## Every Session
 
