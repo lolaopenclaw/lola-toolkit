@@ -1,6 +1,9 @@
 {
   "mode": "home",
-  "last_activated": null,
-  "last_reset": "2026-03-09T22:00:00+01:00",
-  "notes": "Protocol active. Manu can say 'estoy en el coche' to activate driving mode (audio responses). Will auto-reset to text-only at 22:00 each night."
+  "deactivated_at": "2026-03-10T19:16:00+01:00",
+  "auto_reset_time": "22:00",
+  "tts_provider": "google-tts",
+  "tts_script": "scripts/google-tts.sh",
+  "tts_speed": 1.25,
+  "notes": "Google TTS (gtts) - free, speed 1.25x. ElevenLabs out of credits."
 }

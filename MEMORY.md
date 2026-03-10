@@ -60,3 +60,9 @@
 - Verificación AFTER every step (don't assume success)
 - Slow execution, small steps, plan before changing
 - Details: `memory/protocols.md`
+
+## 📋 HEARTBEAT PREFERENCES (2026-03-10)
+- **Quiet hours:** 00:00-07:00 Madrid (SILENT unless critical)
+- **Post-quiet:** 07:00-10:00 Madrid (monitor silently, no reports)
+- **Matutino report:** 10:00+ Madrid (Discord, includes Autoimprove Nightly)
+- **Autoimprove Nightly/Resumen:** ONLY in Discord morning report, NOT in regular heartbeats
