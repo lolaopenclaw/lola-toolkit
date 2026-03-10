@@ -1,6 +1,6 @@
 {
   "mode": "home",
   "last_activated": null,
-  "last_reset": "2026-03-08T22:00:00+01:00",
+  "last_reset": "2026-03-09T22:00:00+01:00",
   "notes": "Protocol active. Manu can say 'estoy en el coche' to activate driving mode (audio responses). Will auto-reset to text-only at 22:00 each night."
 }
