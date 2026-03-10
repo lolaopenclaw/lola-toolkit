@@ -41,7 +41,7 @@ Split long days into `memory/YYYY-MM-DD/01-topic.md` (~4KB max per file). Index 
 - `trash` > `rm`. When in doubt, ask.
 
 ### GitHub Publishing Safety
-**NEVER publish:** tokens, API keys, IPs, Tailscale hostnames (*.ts.net), paths (/home/mleon/...), .env, SSH keys, personal data. Pre-check all `gh` commands. Token rotation: every 3 months (next: June 2026).
+**NEVER publish:** tokens, API keys, IPs, Tailscale hostnames (*.ts.net), paths (/home/mleon/...), .env, SSH keys, personal data. Pre-check all `gh` commands. Rotate tokens every 3 months.
 
 ### Verificación Universal
 **Evidence before assertions, always.** See `memory/verification-protocol.md`.
@@ -70,26 +70,15 @@ You're a participant, not Manu's proxy. Respond when: mentioned, can add value, 
 
 ## Model Selection
 
-Default: Haiku. If fail 2x → suggest upgrade ("¿Cambio a Sonnet?"). Never say "hazlo tú" before trying superior model. With superior model → rethink from scratch. Protocol: `memory/model-selection-protocol.md`. Target: 80-85% Haiku.
+Default: Haiku (target 80-85%). Fail 2x → suggest upgrade. See `memory/model-selection-protocol.md`.
 
 ## Heartbeats
 
-See `HEARTBEAT.md` for checks. Use heartbeats productively: check emails, calendar, weather, mentions. Track in `memory/heartbeat-state.json`. Reach out for: important emails, upcoming events (<2h), interesting findings. Stay quiet: late night (23-08), human busy, nothing new, checked <30 min ago.
-
-### Heartbeat vs Cron
-- **Heartbeat:** Batch checks, needs conversation context, timing can drift
-- **Cron:** Exact timing, isolated, different model/thinking, one-shot reminders
-
-### Memory Maintenance
-Periodically: review daily files → update MEMORY.md → remove outdated info.
+See `HEARTBEAT.md`. Check emails, calendar, weather, mentions. Track state in `memory/heartbeat-state.json`. Reach out for important emails, upcoming events (<2h), interesting findings. Stay quiet: late night (23-08), human busy, nothing new, checked <30 min ago. Use for batch checks; use Cron for exact timing.
 
 ## Time Estimation
 
-**NEVER estimate from "feel". ALWAYS use real timestamps.**
-- Start of task: `date +%s` or note the Telegram message timestamp
-- Elapsed: `$(( $(date +%s) - START ))` → convert to minutes
-- If no start timestamp → say "no tengo el timestamp exacto"
-- Protocol: `memory/time-tracking-protocol.md`
+Use real timestamps, never guesses. See `memory/time-tracking-protocol.md`.
 
 ## Make It Yours
 
