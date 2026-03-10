@@ -74,7 +74,7 @@ Default: Haiku (target 80-85%). Fail 2x → suggest upgrade. See `memory/model-s
 
 ## Heartbeats
 
-See `HEARTBEAT.md`. Check emails, calendar, weather, mentions. Track state in `memory/heartbeat-state.json`. Reach out for important emails, upcoming events (<2h), interesting findings. Stay quiet: late night (23-08), human busy, nothing new, checked <30 min ago. Use for batch checks; use Cron for exact timing.
+See `HEARTBEAT.md`. Check emails, calendar, weather, mentions. Reach out for important items. Quiet: late night (23-08), nothing new, checked recently.
 
 ## Time Estimation
 
