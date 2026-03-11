@@ -1,22 +1,12 @@
 # MEMORY.md — Index
 
-**Modular structure:** Content split by topic. Use `memory_search` for queries.
+## 🔴 CORE → `memory/core.md`
+Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 6884477 (@RagnarBlackmade) | TZ: Europe/Madrid | VPS: Ubuntu 6.8.0, OpenClaw v2026.3.8 | Quiet: 00:00-07:00
 
----
-
-## 🔴 CORE
-→ `memory/core.md`
-- **Manu:** Manuel León Mendiola, manuelleonmendiola@gmail.com
-- **Telegram:** 6884477 (@RagnarBlackmade) | **TZ:** Europe/Madrid
-- **VPS:** Ubuntu 6.8.0, OpenClaw **v2026.3.8** | **Quiet hours:** 00:00-07:00
-
-## 🔧 TECHNICAL
-→ `memory/technical.md`
-- **Ubuntu Pro:** ✅ ESM-Infra + ESM-Apps + Livepatch
-- **Crons:** 4AM backup, 9AM morning report, Mon 6AM security audit, Mon 8:30 Garmin weekly
-- **#24586** cron delivery: ✅ FIXED v2026.3.8
-- **#33093** browser relay: ✅ Workaround (port 18793, manual token)
-- **#33103** gateway restart loop: IMPROVED (locked on GitHub)
+## 🔧 TECHNICAL → `memory/technical.md`
+- Ubuntu Pro: ESM-Infra + ESM-Apps + Livepatch
+- Crons: 4AM backup, 9AM morning, Mon 6AM audit, Mon 8:30 Garmin
+- Issues: #24586 FIXED, #33093 workaround (18793), #33103 IMPROVED
 
 ## 🔐 PROTOCOLS
 → `memory/protocols.md`
@@ -38,13 +28,9 @@
 - Banks: CaixaBank (355 movs) + Bankinter (29) | Period: Dec 2025 - Mar 2026
 
 ## 🖥️ Dashboards & URLs
-→ Remote (Tailscale HTTPS):
-- OpenClaw: `https://lola-openclaw-vps.taild8eaf6.ts.net`
-- LobsterBoard: `:8443` | VidClaw: `:8444`
-
-→ Local: 18790 (gateway), 8080 (LobsterBoard), 3333 (VidClaw), 5001 (API)
-
-→ Widgets: Finanzas (Sheets, 1h), Salud/Garmin (5m), Calendar (10m)
+- Remote (Tailscale): https://lola-openclaw-vps.taild8eaf6.ts.net | LobsterBoard :8443 | VidClaw :8444
+- Local: 18790 (gateway), 8080 (LobsterBoard), 3333 (VidClaw), 5001 (API)
+- Widgets: Finanzas (1h), Garmin/Salud (5m), Calendar (10m)
 
 ## 📅 Google Calendar
 - Bidirectional: Lola creates events + Manu sees + heartbeats verify
