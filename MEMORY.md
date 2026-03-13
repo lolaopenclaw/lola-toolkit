@@ -15,6 +15,7 @@ Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 68
 - Protocol A+B: Backup → Baseline → Change → Validate → Rollback if needed
 - **HITL Protocol** → `memory/hitl-protocol.md` (2026-03-13): Explorar→Proponer→Implementar→Verificar con checkpoints de aprobación para tareas complejas
 - **Worktree Protocol** → `memory/worktree-protocol.md` (2026-03-13): Git worktrees para sub-agentes paralelos sin conflictos. Script: `scripts/worktree-manager.sh`
+- **PR Review Auto** → `memory/pr-review-protocol.md` (2026-03-13): Review automático de PRs con Sonnet. Skill: `skills/pr-review/`. Polling (no expone VPS). ~$0.05/review
 
 ## 👤 Familia
 - **Vera Pérez León** (sobrina): 10 años, cumpleaños 30 agosto (cron configurado)
