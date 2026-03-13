@@ -34,3 +34,4 @@ Manu compartió repos de Gentleman Programming (Engram, Agent Teams Lite) y apun
 - PR review: Opción C (polling, sin exponer VPS) con Sonnet default
 - Autoimprove: 10 iter/noche, circuit breaker a 5 fallos, Haiku (~$0.50/noche)
 - Auditoría semanal consolidada en un solo cron dominical
+- **Browser headless:** Siempre activo (profile=openclaw, ~80MB RAM). Para research, scraping, automación sin necesidad de sesión de Manu.
