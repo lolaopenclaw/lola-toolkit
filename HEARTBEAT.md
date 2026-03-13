@@ -16,4 +16,6 @@ Checks (silencio=OK, alerta=fallo):
 11. **Workspace self-review** — `git log --oneline --since="4 hours ago"` en workspace. Si hay commits significativos, revisar diff rápido (seguridad, errores). Solo alertar si hay algo preocupante.
 12. **PR review pendiente** — Comprobar PRs abiertas sin review en repos monitorizados (ver `memory/proactive-suggestions.md`). Alertar si hay PRs >24h sin review.
 
+13. **Autoimprove Nightly resumen** — Si existe `memory/{today}-autoimprove.md`, incluir resumen en el informe matutino. Solo reportar mejoras aplicadas, no intentos fallidos.
+
 Heartbeat mejorado: Tarea→progreso("Paso N/M"), sino→HEARTBEAT_OK

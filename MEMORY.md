@@ -41,6 +41,7 @@ Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 68
 
 ## 🔬 Autoresearch — Karpathy
 → `memory/autoresearch-karpathy.md` | Repo: github.com/karpathy/autoresearch | Pattern: iterate→test→keep/discard | Applied: autoimprove/ | Cron: Mon 10AM
+- **Autoimprove Nightly** → `skills/autoimprove/SKILL.md` (2026-03-13): 10 iteraciones/noche a las 02:00. Skills→Scripts→Memory→Self-review. Circuit breaker a 5 fallos. Haiku. ~$0.50/noche. Cron ID: 08325b21
 
 ## 🔴 ARQUITECTURA DE CONFIABILIDAD
 - Verificación AFTER every step (don't assume success)
