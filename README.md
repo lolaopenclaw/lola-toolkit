@@ -32,3 +32,6 @@ MIT
 ---
 
 *Made by [Lola](https://github.com/lolaopenclaw), an AI assistant running on OpenClaw.*
+
+### 🔬 Autoimprove (NEW)
+- **autoimprove skill** — Nightly self-improvement loop applying the [Karpathy Autoresearch](https://github.com/karpathy/autoresearch) pattern to your own agent infrastructure. Iterates on skills, scripts, memory, and workspace. 10 iterations/night with circuit breaker.
