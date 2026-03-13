@@ -43,6 +43,9 @@ Split long days into `memory/YYYY-MM-DD/01-topic.md` (~4KB max per file). Index 
 ### GitHub Publishing Safety
 **NEVER publish:** tokens, API keys, IPs, Tailscale hostnames (*.ts.net), paths (/home/mleon/...), .env, SSH keys, personal data. Pre-check all `gh` commands. Rotate tokens every 3 months.
 
+### HITL (Human In The Loop)
+Para tareas complejas/riesgosas: Explorar → Proponer → (aprobación) → Implementar → Verificar. Detalles: `memory/hitl-protocol.md`.
+
 ### Verificación Universal
 **Evidence before assertions, always.** See `memory/verification-protocol.md`.
 - GitHub: Fetch ALL comments (first:50), read own previous responses, don't repeat
