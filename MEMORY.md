@@ -14,6 +14,7 @@ Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 68
 - SIEMPRE avisar ANTES de cambios SSH/firewall/servicios
 - Protocol A+B: Backup → Baseline → Change → Validate → Rollback if needed
 - **HITL Protocol** → `memory/hitl-protocol.md` (2026-03-13): Explorar→Proponer→Implementar→Verificar con checkpoints de aprobación para tareas complejas
+- **Worktree Protocol** → `memory/worktree-protocol.md` (2026-03-13): Git worktrees para sub-agentes paralelos sin conflictos. Script: `scripts/worktree-manager.sh`
 
 ## 👤 Familia
 - **Vera Pérez León** (sobrina): 10 años, cumpleaños 30 agosto (cron configurado)
