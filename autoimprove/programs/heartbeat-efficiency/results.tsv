@@ -6,3 +6,9 @@ experiment	score	status	description
 4	255	kept	v4: Further compression, maintained readability (1021 chars)
 5	216	kept-but-rejected	v5: Too cryptic, poor readability (865 chars)
 FINAL	255	selected	v4 selected: best balance of compression + readability
+6	162	kept	v6: Description compression, all checks intact (650 chars)
+7	1110	discarded	v7: Too aggressive, lost keyword "mejorado"
+8	144	kept	v8: Format without markdown headers (578 chars)
+9	138	kept	v9: Abbrev 'health'→'', 'sin tareas'→'sino' (553 chars)
+10	136	kept	v10: Streamline checks, remove redundant 'Notion' (547 chars)
+FINAL	136	selected	v10: 47% reduction from previous baseline. All checks, zero-notification, quiet hours, heartbeat mejorado maintained.

@@ -7,6 +7,7 @@ Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 68
 - Ubuntu Pro: ESM-Infra + ESM-Apps + Livepatch
 - Crons: 4AM backup, 9AM morning, Mon 6AM audit, Mon 8:30 Garmin
 - Issues: #24586 FIXED, #33093 workaround (18793), #33103 IMPROVED
+- **TTS:** Google TTS + 1.25x speed (2026-03-13 10:44) | Driving Mode ✅ READY
 
 ## 🔐 PROTOCOLS
 → `memory/protocols.md`

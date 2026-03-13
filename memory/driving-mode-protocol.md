@@ -71,7 +71,29 @@ Action: Reset driving_mode_state.json to "home" mode
 
 ---
 
+## TTS Status (2026-03-13 10:44) ✅ PRODUCTION READY
+
+### Configuración Final
+- **Proveedor:** Google TTS (online, gratis, natural)
+- **Velocidad:** 1.25x (25% más rápido)
+- **Idioma:** Spanish (es)
+- **Formato:** MP3 (24 kHz, mono)
+- **Fallback:** eSpeak-ng (offline, robótico)
+
+### Instalación
+- Google TTS: `~/.openclaw/venv/gtts/bin/activate` (gTTS)
+- eSpeak-ng: `brew install espeak-ng`
+- ffmpeg: para aceleración de audio
+
+### Uso en Modo Conducción
+Cuando Manu dice "estoy en el coche":
+1. Lola detecta phrase y activa driving mode
+2. Genera respuesta con Google TTS + ffmpeg (atempo=1.25)
+3. Envía audio vía Telegram
+4. Espera comando "ya estoy en casa" o reset automático a las 22:00
+
 ## Notes
-- Protocol active as of 2026-03-08 19:23 (Manu driving at this time)
+- Protocol active as of 2026-03-08 19:23
+- TTS enabled as of 2026-03-13 10:31
 - User prefers responsiveness over complexity
 - Safety-first: auto-reset prevents audio spam late at night
