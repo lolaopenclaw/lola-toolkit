@@ -1,20 +1,17 @@
 # HEARTBEAT — Silent Checks
 
-Zero-notification-if-OK. Quiet hours 23:00-07:00 Madrid.
+Zero-notification-if-OK. Quiet 23:00-07:00 Madrid.
 
-## Checks (silencio=OK, alerta=fallo)
+Checks (silencio=OK, alerta=fallo):
+1. **Cron** errors>0 → alerta
+2. **Gateway** unusual → alerta
+3. **Kanban** critical → alerta
+4. **Gmail** breach → alerta
+5. **Memory** >15MB → alerta+limpiar
+6. **Sandbox** pending → alerta
+7. **Session synthesis** >10msgs
+8. **Garmin health** critical only
+9. **Calendar** urgent → alerta
+10. **Fail2ban SSH** ≥10:crítica, 5-10:matutino
 
-1. **Cron** — `cron list` → consecutiveErrors>0 → alerta
-2. **Gateway** — error inusual → alerta
-3. **Kanban Notion** — bloqueo crítico → alerta. Resto → matutino
-4. **Gmail** — `gog gmail search "is:unread" --max 5` → breach → alerta
-5. **Memory** — `du -sh workspace/memory/` → >15MB → alerta+limpiar
-6. **Sandbox** — `ls /tmp/critical-sandbox/` → pendientes → alerta
-7. **Session synthesis** — >10msgs → `memory/YYYY-MM-DD-session-synthesis.md`
-8. **Garmin health** — `scripts/garmin-health-report.sh --current` → solo crítica
-9. **Calendar** — `scripts/calendar-tasks.sh check` → HOY urgente→alerta
-10. **Fail2Ban** — `sudo fail2ban-client status sshd` → <5:ok, 5-10:matutino, ≥10:CRÍTICA
-
-## Heartbeat mejorado (progreso cada 30 minutos en tareas largas)
-- Tarea activa → progreso ("Paso 6/8: ...")
-- Sin tareas → HEARTBEAT_OK
+Heartbeat mejorado: Tarea→progreso("Paso N/M"), sino→HEARTBEAT_OK
