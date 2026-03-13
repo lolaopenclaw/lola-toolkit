@@ -13,5 +13,7 @@ Checks (silencio=OK, alerta=fallo):
 8. **Garmin health** critical only
 9. **Calendar** urgent → alerta
 10. **Fail2ban SSH** ≥10:crítica, 5-10:matutino
+11. **Workspace self-review** — `git log --oneline --since="4 hours ago"` en workspace. Si hay commits significativos, revisar diff rápido (seguridad, errores). Solo alertar si hay algo preocupante.
+12. **PR review pendiente** — Comprobar PRs abiertas sin review en repos monitorizados (ver `memory/proactive-suggestions.md`). Alertar si hay PRs >24h sin review.
 
 Heartbeat mejorado: Tarea→progreso("Paso N/M"), sino→HEARTBEAT_OK
