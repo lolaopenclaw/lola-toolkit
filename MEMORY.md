@@ -32,6 +32,13 @@ Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 68
 ## 📅 Google Calendar
 → `memory/calendar.md` | Tool: gog CLI | Bidirectional: Lola ↔ Manu | Status: in development
 
+## 🐙 GitHub — lolaopenclaw
+- **Account:** lolaopenclaw (email: lolaopenclaw@gmail.com)
+- **Auth:** `gh` CLI authenticated, scopes: gist, read:org, repo, workflow
+- **Repos:**
+  - `lola-toolkit` — Scripts, skills, protocols para gestión de agentes IA (public)
+- **Policy:** Publicar todo lo útil que creemos. NUNCA tokens/keys/IPs/paths personales.
+
 ## 🔬 Autoresearch — Karpathy
 → `memory/autoresearch-karpathy.md` | Repo: github.com/karpathy/autoresearch | Pattern: iterate→test→keep/discard | Applied: autoimprove/ | Cron: Mon 10AM
 

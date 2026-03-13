@@ -1,0 +1,135 @@
+#!/bin/bash
+# weekly-audit.sh — Consolidated Weekly Audit
+# Replaces: memory-guardian.sh + memory-maintenance.sh + manual cleanup-audits
+# Runs: Sunday 03:00 Madrid via cron
+# Results: saved to memory/ for Monday morning report
+
+set -euo pipefail
+
+WORKSPACE="$HOME/.openclaw/workspace"
+MEMORY="$WORKSPACE/memory"
+REPORT="$MEMORY/$(date +%Y-%m-%d)-weekly-audit.md"
+TODAY=$(date +%Y-%m-%d)
+CUTOFF_30D=$(date -d "30 days ago" +%Y-%m-%d 2>/dev/null || date -v-30d +%Y-%m-%d)
+
+echo "# 🔍 Weekly Audit — $TODAY" > "$REPORT"
+echo "" >> "$REPORT"
+echo "**Generated:** $(date '+%A %d %B %Y — %H:%M') Madrid" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# === 1. DISK USAGE ===
+echo "## 💾 Disk Usage" >> "$REPORT"
+echo "" >> "$REPORT"
+echo "| Area | Size |" >> "$REPORT"
+echo "|------|------|" >> "$REPORT"
+echo "| Workspace total | $(du -sh "$WORKSPACE" 2>/dev/null | cut -f1) |" >> "$REPORT"
+echo "| Memory | $(du -sh "$MEMORY" 2>/dev/null | cut -f1) |" >> "$REPORT"
+echo "| Scripts | $(du -sh "$WORKSPACE/scripts" 2>/dev/null | cut -f1) |" >> "$REPORT"
+echo "| Git repo (.git) | $(du -sh "$WORKSPACE/.git" 2>/dev/null | cut -f1) |" >> "$REPORT"
+echo "| Skills (local) | $(du -sh "$WORKSPACE/skills" 2>/dev/null | cut -f1) |" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# === 2. LARGE FILES (>50KB in memory) ===
+echo "## 📦 Large Files in Memory (>50KB)" >> "$REPORT"
+echo "" >> "$REPORT"
+LARGE=$(find "$MEMORY" -maxdepth 2 -type f -size +50k ! -path "*/archive/*" 2>/dev/null)
+if [ -n "$LARGE" ]; then
+    echo "$LARGE" | while read f; do
+        echo "- $(du -sh "$f" | cut -f1) — $(basename "$f")" >> "$REPORT"
+    done
+else
+    echo "✅ None" >> "$REPORT"
+fi
+echo "" >> "$REPORT"
+
+# === 3. MEMORY FILE COUNT ===
+echo "## 📊 Memory Stats" >> "$REPORT"
+echo "" >> "$REPORT"
+TOTAL_FILES=$(find "$MEMORY" -maxdepth 1 -type f -name "*.md" | wc -l)
+OLD_FILES=$(find "$MEMORY" -maxdepth 1 -type f -name "2026-*" ! -newermt "$CUTOFF_30D" 2>/dev/null | wc -l)
+echo "- Total memory files (root): $TOTAL_FILES" >> "$REPORT"
+echo "- Files older than 30 days: $OLD_FILES" >> "$REPORT"
+echo "- Archive size: $(du -sh "$MEMORY/archive" 2>/dev/null | cut -f1 || echo 'N/A')" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# === 4. CRON HEALTH ===
+echo "## ⏰ Cron Health" >> "$REPORT"
+echo "" >> "$REPORT"
+CRON_COUNT=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | wc -l)
+CRON_DUPES=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | sort | uniq -d | wc -l)
+echo "- Active crons: $CRON_COUNT" >> "$REPORT"
+echo "- Duplicates: $CRON_DUPES" >> "$REPORT"
+if [ "$CRON_DUPES" -gt 0 ]; then
+    echo "⚠️ **Duplicate crons detected!** Run: \`crontab -l | awk '!seen[\$0]++' | crontab -\`" >> "$REPORT"
+fi
+echo "" >> "$REPORT"
+
+# === 5. RECENT ERRORS IN CRON LOGS ===
+echo "## 🚨 Recent Cron Errors" >> "$REPORT"
+echo "" >> "$REPORT"
+ERROR_COUNT=0
+for logfile in /tmp/memory-maintenance.log /tmp/gateway-health.log; do
+    if [ -f "$logfile" ]; then
+        ERRORS=$(tail -50 "$logfile" 2>/dev/null | grep -ci "error\|fail\|fatal" || true)
+        if [ "$ERRORS" -gt 0 ]; then
+            echo "- ⚠️ $logfile: $ERRORS errors in last 50 lines" >> "$REPORT"
+            ERROR_COUNT=$((ERROR_COUNT + ERRORS))
+        fi
+    fi
+done
+if [ "$ERROR_COUNT" -eq 0 ]; then
+    echo "✅ No errors found" >> "$REPORT"
+fi
+echo "" >> "$REPORT"
+
+# === 6. GIT STATUS ===
+echo "## 🔀 Git Status" >> "$REPORT"
+echo "" >> "$REPORT"
+cd "$WORKSPACE"
+UNCOMMITTED=$(git status --porcelain 2>/dev/null | wc -l)
+COMMITS_WEEK=$(git log --oneline --since="7 days ago" 2>/dev/null | wc -l)
+echo "- Uncommitted changes: $UNCOMMITTED" >> "$REPORT"
+echo "- Commits this week: $COMMITS_WEEK" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# === 7. RESOURCE CHECK ===
+echo "## 🖥️ VPS Resources" >> "$REPORT"
+echo "" >> "$REPORT"
+echo "- Disk: $(df -h / | awk 'NR==2 {print $3 "/" $2 " (" $5 " used)"}')" >> "$REPORT"
+echo "- RAM: $(free -h | awk '/Mem:/ {print $3 "/" $2 " (" int($3/$2*100) "% used)"}')" >> "$REPORT"
+echo "- Load: $(uptime | awk -F'load average:' '{print $2}')" >> "$REPORT"
+echo "" >> "$REPORT"
+
+# === 8. RECOMMENDATIONS ===
+echo "## 💡 Recommendations" >> "$REPORT"
+echo "" >> "$REPORT"
+
+RECS=0
+if [ "$OLD_FILES" -gt 10 ]; then
+    echo "- 📁 $OLD_FILES files older than 30 days — consider archiving" >> "$REPORT"
+    RECS=$((RECS + 1))
+fi
+if [ "$CRON_DUPES" -gt 0 ]; then
+    echo "- ⏰ Duplicate crons found — clean up" >> "$REPORT"
+    RECS=$((RECS + 1))
+fi
+if [ "$UNCOMMITTED" -gt 5 ]; then
+    echo "- 🔀 $UNCOMMITTED uncommitted files — review and commit or discard" >> "$REPORT"
+    RECS=$((RECS + 1))
+fi
+
+# Check for node_modules creep
+if [ -d "$WORKSPACE/node_modules" ]; then
+    echo "- ⚠️ node_modules/ found in workspace — should be removed" >> "$REPORT"
+    RECS=$((RECS + 1))
+fi
+
+if [ "$RECS" -eq 0 ]; then
+    echo "✅ Everything looks good!" >> "$REPORT"
+fi
+
+echo "" >> "$REPORT"
+echo "---" >> "$REPORT"
+echo "*Generated by weekly-audit.sh — included in Monday morning report*" >> "$REPORT"
+
+echo "✅ Audit saved to $REPORT"
