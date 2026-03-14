@@ -36,6 +36,15 @@
 - **Sequence:** 01:30 apt → 02:00 autoimprove → 04:00 backup → 10:00 informe matutino
 - **Log:** `memory/system-updates-last.json`
 
+## Browser
+
+- **Chrome CDP:** Activo en VPS (puerto 9222, loopback only)
+- **Service:** `chrome-cdp.service` (systemd user, auto-start)
+- **User data dir:** `/home/mleon/.config/chrome-cdp` (separado del Chrome normal)
+- **Requiere:** VNC server corriendo (display :1)
+- **Config OpenClaw:** `browser.cdpUrl = http://127.0.0.1:9222`, `attachOnly = true`
+- **Set:** 2026-03-14 10:54
+
 ---
 
-*Last updated: 2026-03-14 10:18*
+*Last updated: 2026-03-14 10:54*
