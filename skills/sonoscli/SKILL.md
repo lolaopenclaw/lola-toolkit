@@ -9,18 +9,31 @@ metadata: {"clawdbot":{"emoji":"🔊","requires":{"bins":["sonos"]},"install":[{
 
 Use `sonos` to control Sonos speakers on the local network.
 
-Quick start
-- `sonos discover`
-- `sonos status --name "Kitchen"`
+## Quick Start
+
+- `sonos discover` — Find all speakers
+- `sonos status --name "Kitchen"` — Get speaker state
 - `sonos play|pause|stop --name "Kitchen"`
 - `sonos volume set 15 --name "Kitchen"`
 
-Common tasks
-- Grouping: `sonos group status|join|unjoin|party|solo`
-- Favorites: `sonos favorites list|open`
-- Queue: `sonos queue list|play|clear`
-- Spotify search (via SMAPI): `sonos smapi search --service "Spotify" --category tracks "query"`
+## Common Tasks
 
-Notes
-- If SSDP fails, specify `--ip <speaker-ip>`.
-- Spotify Web API search is optional and requires `SPOTIFY_CLIENT_ID/SECRET`.
+- **Grouping:** `sonos group status|join|unjoin|party|solo`
+- **Favorites:** `sonos favorites list|open`
+- **Queue:** `sonos queue list|play|clear`
+- **Spotify:** `sonos smapi search --service "Spotify" --category tracks "query"`
+
+## Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| `sonos discover` returns nothing | Check: speakers on same network, WiFi enabled. Try `--ip 192.168.x.x` if known. |
+| Spotify search fails | Requires `SPOTIFY_CLIENT_ID` + `SPOTIFY_SECRET` env vars set. Optional if not needed. |
+| SSDP timeout | Network isolation? Try `--ip <speaker-ip>` directly instead of discovery. |
+| Volume/play commands hang | Speaker might be busy. Wait 2s and retry. |
+
+## Tips
+
+- Use `--name "Kitchen"` to target specific speaker; omit to apply to first found.
+- Grouping: `party` = all speakers, `solo` = ungrou all.
+- Requires mDNS/SSDP on local network (no remote control).
