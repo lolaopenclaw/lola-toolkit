@@ -17,8 +17,16 @@
 
 set -euo pipefail
 
+trap 'log_error "Script interrupted"; exit 1' INT TERM
+
 WORKSPACE="/home/mleon/.openclaw/workspace"
 MEMORY_DIR="$WORKSPACE/memory"
+
+# Verify directories exist before proceeding
+if [[ ! -d "$MEMORY_DIR" ]]; then
+    echo "ERROR: Memory directory not found: $MEMORY_DIR"
+    exit 1
+fi
 STATE_FILE="$MEMORY_DIR/guardian-state.json"
 REPORT_FILE="$MEMORY_DIR/$(date +%Y-%m-%d)-memory-guardian.md"
 DRY_RUN=false
