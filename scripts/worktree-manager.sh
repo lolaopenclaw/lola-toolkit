@@ -14,6 +14,12 @@ REPO_PATH="${2:-}"
 ISSUE_NUM="${3:-}"
 BASE_BRANCH="${4:-main}"
 
+# Validate repo path early
+if [[ -n "$REPO_PATH" && ! -d "$REPO_PATH" ]]; then
+    echo "ERROR: Repository path not found: $REPO_PATH" >&2
+    exit 1
+fi
+
 WORKTREE_DIR="${REPO_PATH}/.worktrees"
 
 usage() {
