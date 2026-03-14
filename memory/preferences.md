@@ -41,9 +41,10 @@
 - **Chrome CDP:** Activo en VPS (puerto 9222, loopback only)
 - **Service:** `chrome-cdp.service` (systemd user, auto-start)
 - **User data dir:** `/home/mleon/.config/chrome-cdp` (separado del Chrome normal)
-- **Requiere:** VNC server corriendo (display :1)
+- **Display:** :2 (Lola) — Display :1 es para Manu via VNC
+- **VNC :1** → Manu (puerto 5901) | **VNC :2** → Lola/Chrome CDP (puerto 5902)
 - **Config OpenClaw:** `browser.cdpUrl = http://127.0.0.1:9222`, `attachOnly = true`
-- **Set:** 2026-03-14 10:54
+- **Set:** 2026-03-14 10:58
 
 ---
 
