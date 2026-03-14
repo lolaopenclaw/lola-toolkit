@@ -44,7 +44,7 @@ Use these commands to run security audits:
 - `clawdbot security audit --deep` — Comprehensive audit with all checks
 - `clawdbot security audit --fix` — Apply guardrail remediations
 
-## The 12 Security Domains
+## The 11 Security Domains
 
 When auditing Clawdbot, systematically evaluate these domains:
 
@@ -167,22 +167,19 @@ chmod 600 ~/.clawdbot/clawdbot.json
 
 ---
 
-### 5. Browser Control Exposure 🟠 High
+### 5. Browser Control & Network Exposure 🟠 High
 
 **What to check:**
-- Is browser control enabled?
-- Are authentication tokens set for remote control?
-- Is HTTPS required for Control UI?
-- Is a dedicated browser profile configured?
+- Browser: Remote URL, auth tokens, dedicated profile?
+- Gateway: Where is it binding? (`bind`, `trustedProxies`, Tailscale?)
+- Is HTTPS required? Authentication enabled?
 
 **How to detect:**
 ```bash
-cat ~/.clawdbot/clawdbot.json | grep -A5 '"browser"'
-cat ~/.clawdbot/clawdbot.json | grep -i "controlUi|insecureAuth"
-ls -la ~/.clawdbot/browser/
+cat ~/.clawdbot/clawdbot.json | grep -E '"browser"|"gateway"|"bind"|tailscale'
 ```
 
-**Vulnerability:** Exposed browser control without auth allows remote UI takeover. Browser access allows the model to use logged-in sessions.
+**Vulnerability:** Exposed browser control or public gateway binding allows remote takeover.
 
 **Remediation:**
 ```json
@@ -190,53 +187,21 @@ ls -la ~/.clawdbot/browser/
   "browser": {
     "remoteControlUrl": "https://...",
     "remoteControlToken": "...",
-    "dedicatedProfile": true,
-    "disableHostControl": true
+    "dedicatedProfile": true
   },
   "gateway": {
-    "controlUi": {
-      "allowInsecureAuth": false
-    }
-  }
-}
-```
-
-**Security Note:** Treat browser control URLs as admin APIs.
-
----
-
-### 6. Gateway Bind & Network Exposure 🟠 High
-
-**What to check:**
-- What is `gateway.bind` set to?
-- Are trusted proxies configured?
-- Is Tailscale enabled?
-
-**How to detect:**
-```bash
-cat ~/.clawdbot/clawdbot.json | grep -A10 '"gateway"'
-cat ~/.clawdbot/clawdbot.json | grep '"tailscale"'
-```
-
-**Vulnerability:** Public binding without auth allows internet access to gateway.
-
-**Remediation:**
-```json
-{
-  "gateway": {
     "bind": "127.0.0.1",
-    "mode": "local",
     "trustedProxies": ["127.0.0.1", "10.0.0.0/8"],
-    "tailscale": {
-      "mode": "off"
-    }
+    "controlUi": { "allowInsecureAuth": false }
   }
 }
 ```
 
+**Security Note:** Treat browser and gateway URLs as admin APIs — never expose publicly without strong auth.
+
 ---
 
-### 7. Tool Access & Sandboxing 🟡 Medium
+### 6. Tool Access & Sandboxing 🟡 Medium
 
 **What to check:**
 - Are elevated tools allowlisted?
@@ -277,7 +242,7 @@ cat ~/.clawdbot/clawdbot.json | grep -i "openRoom"
 
 ---
 
-### 8. File Permissions & Local Disk Hygiene 🟡 Medium
+### 7. File Permissions & Local Disk Hygiene 🟡 Medium
 
 **What to check:**
 - Directory permissions (should be 700)
@@ -301,7 +266,7 @@ chmod 600 ~/.clawdbot/credentials/*
 
 ---
 
-### 9. Plugin Trust & Model Hygiene 🟡 Medium
+### 8. Plugin Trust & Model Hygiene 🟡 Medium
 
 **What to check:**
 - Are plugins explicitly allowlisted?
@@ -333,7 +298,7 @@ cat ~/.clawdbot/clawdbot.json | grep -i "model|anthropic"
 
 ---
 
-### 10. Logging & Redaction 🟡 Medium
+### 9. Logging & Redaction 🟡 Medium
 
 **What is logging.redactSensitive set to?**
 - Should be `tools` to redact sensitive tool output
@@ -357,7 +322,7 @@ ls -la ~/.clawdbot/logs/
 
 ---
 
-### 11. Prompt Injection Protection 🟡 Medium
+### 10. Prompt Injection Protection 🟡 Medium
 
 **What to check:**
 - Is `wrap_untrusted_content` or `untrusted_content_wrapper` enabled?
@@ -390,7 +355,7 @@ cat ~/.clawdbot/clawdbot.json | grep -i "untrusted|wrap"
 
 ---
 
-### 12. Dangerous Command Blocking 🟡 Medium
+### 11. Dangerous Command Blocking 🟡 Medium
 
 **What to check:**
 - What commands are in `blocked_commands`?
@@ -418,7 +383,7 @@ cat ~/.clawdbot/clawdbot.json | grep -A10 '"blocked_commands"'
 
 ---
 
-### 13. Secret Scanning Readiness 🟡 Medium
+### 12. Secret Scanning Readiness 🟡 Medium
 
 **What to check:**
 - Is detect-secrets configured?
