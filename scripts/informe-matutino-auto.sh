@@ -1,6 +1,6 @@
 #!/bin/bash
 # informe-matutino-auto.sh
-# Genera y envía informe matutino automático a Discord
+# Genera y envía informe matutino automático a Discord (NUNCA Telegram)
 
 set -e
 source ~/.openclaw/.env
@@ -8,6 +8,7 @@ source ~/.openclaw/.env
 YESTERDAY=$(date -d "yesterday" +%Y-%m-%d)
 TODAY=$(date +%Y-%m-%d)
 HOUR=$(date +%H:%M)
+MEMORY_DIR="/home/mleon/.openclaw/workspace/memory"
 
 echo "🔄 Generando informe matutino..."
 
@@ -32,109 +33,103 @@ FAIL2BAN=$(sudo fail2ban-client status sshd 2>/dev/null | grep "Currently banned
 
 # 4. Get backup info
 echo "💾 Verificando backups..."
-LAST_BACKUP=$(ls -t ~/.openclaw/workspace/memory/*informe.md 2>/dev/null | head -1 | xargs basename 2>/dev/null || echo "unknown")
-LAST_BACKUP_DATE=$(echo $LAST_BACKUP | sed 's/-informe.md//')
+LAST_BACKUP_JSON="$MEMORY_DIR/last-backup.json"
+if [ -f "$LAST_BACKUP_JSON" ]; then
+    BACKUP_DATE=$(python3 -c "import json; d=json.load(open('$LAST_BACKUP_JSON')); print(d.get('date','?'))" 2>/dev/null || echo "?")
+    BACKUP_STATUS=$(python3 -c "import json; d=json.load(open('$LAST_BACKUP_JSON')); print(d.get('status','?'))" 2>/dev/null || echo "?")
+else
+    BACKUP_DATE="?"
+    BACKUP_STATUS="?"
+fi
 
-# Get backup file count
-BACKUP_FILES=$(rclone lsd "grive_lola:" 2>/dev/null | grep "backup" | head -1 | awk '{print $1}' || echo "?")
+# 5. Autoimprove Nightly summary
+echo "🔬 Leyendo resumen de Autoimprove..."
+AUTOIMPROVE_FILE="$MEMORY_DIR/$TODAY-autoimprove.md"
+AUTOIMPROVE_SECTION=""
+if [ -f "$AUTOIMPROVE_FILE" ]; then
+    # Extract key stats: improvements kept, reverted, iterations
+    KEPT=$(grep -c "^[0-9]\+\.\|^\*\*" "$AUTOIMPROVE_FILE" 2>/dev/null | head -1 || echo "?")
+    # Get a concise summary: look for "Improvements Kept" and "Stats" sections
+    IMPROVEMENTS=$(sed -n '/## Improvements Kept/,/## Attempted/p' "$AUTOIMPROVE_FILE" | grep "^\*\*\|^[0-9]" | head -10 || true)
+    REVERTED=$(sed -n '/## Attempted but Reverted/,/## Stats/p' "$AUTOIMPROVE_FILE" | grep "^\*\*" | head -5 || true)
+    STATS_LINE=$(grep -E "Total commits|Token reduction" "$AUTOIMPROVE_FILE" | head -2 || true)
 
-# 5. Build the report
+    AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
+$IMPROVEMENTS"
+    [ -n "$REVERTED" ] && AUTOIMPROVE_SECTION="$AUTOIMPROVE_SECTION
+• Revertido: $REVERTED"
+    [ -n "$STATS_LINE" ] && AUTOIMPROVE_SECTION="$AUTOIMPROVE_SECTION
+$STATS_LINE"
+else
+    AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
+• No se ejecutó anoche (sin archivo $TODAY-autoimprove.md)"
+fi
+
+# 6. System updates status
+echo "🔄 Leyendo estado de actualizaciones..."
+UPDATES_JSON="$MEMORY_DIR/system-updates-last.json"
+UPDATES_SECTION=""
+if [ -f "$UPDATES_JSON" ]; then
+    UPD_DATE=$(python3 -c "import json; d=json.load(open('$UPDATES_JSON')); print(d.get('date','?'))" 2>/dev/null || echo "?")
+    UPD_UPDATED=$(python3 -c "import json; d=json.load(open('$UPDATES_JSON')); print(d.get('packages_updated',0))" 2>/dev/null || echo "0")
+    UPD_AVAILABLE=$(python3 -c "import json; d=json.load(open('$UPDATES_JSON')); print(d.get('packages_available',0))" 2>/dev/null || echo "0")
+    UPD_SECURITY=$(python3 -c "import json; d=json.load(open('$UPDATES_JSON')); print(d.get('security_count',0))" 2>/dev/null || echo "0")
+    UPD_REBOOT=$(python3 -c "import json; d=json.load(open('$UPDATES_JSON')); print(d.get('reboot_required',False))" 2>/dev/null || echo "False")
+    UPD_REMAINING=$(python3 -c "import json; d=json.load(open('$UPDATES_JSON')); print(d.get('remaining',0))" 2>/dev/null || echo "0")
+    UPD_PKGS=$(python3 -c "
+import json
+d=json.load(open('$UPDATES_JSON'))
+for p in d.get('packages',[])[:10]:
+    icon = '🔴' if p.get('type')=='security' else '📦'
+    print(f\"  {icon} {p['name']}\")
+" 2>/dev/null || echo "  (sin detalle)")
+
+    UPDATES_SECTION="🔄 ACTUALIZACIONES SISTEMA ($UPD_DATE)
+• Disponibles: $UPD_AVAILABLE ($UPD_SECURITY seguridad)
+• Aplicadas: $UPD_UPDATED
+• Pendientes: $UPD_REMAINING
+$UPD_PKGS"
+    [ "$UPD_REBOOT" = "True" ] && UPDATES_SECTION="$UPDATES_SECTION
+• ⚠️ REBOOT NECESARIO (kernel update)"
+else
+    # No log exists yet, check live
+    UPGRADABLE=$(apt list --upgradable 2>/dev/null | grep -v "^Listing" || true)
+    UPD_COUNT=$(echo "$UPGRADABLE" | grep -c . 2>/dev/null || echo "0")
+    UPDATES_SECTION="🔄 ACTUALIZACIONES SISTEMA
+• $UPD_COUNT paquetes disponibles (auto-update nocturno pendiente de primera ejecución)"
+fi
+
+# 7. Build the report
 INFORME="📋 INFORME MATUTINO • $TODAY $HOUR
 
 🖥️ SISTEMA
 • Uptime: $UPTIME
 • RAM: $RAM | Disco: $DISK
 • Gateway: $GATEWAY_STATUS
-• Crons: $CRONS_ACTIVE activos
 
 🔐 SEGURIDAD
 • Fail2Ban SSH: $FAIL2BAN IPs baneadas
-• Status SSH: ✅ Activo
 
 💾 BACKUPS
-• Último: $LAST_BACKUP_DATE
-• Drive: ✅ Sincronizado
+• Último: $BACKUP_DATE ($BACKUP_STATUS)
+
+$AUTOIMPROVE_SECTION
+
+$UPDATES_SECTION
 
 ❤️ SALUD (Garmin - $YESTERDAY)
 $GARMIN_DATA
 
 📌 ESTADO GENERAL
-• Síntesis: 🟢 Todos los sistemas operacionales
-• Alertas: Ninguna"
+• Síntesis: 🟢 Todos los sistemas operacionales"
 
 echo "$INFORME"
 
-# 6. Send to Discord
-echo ""
-echo "📤 Enviando a Discord..."
+# NOTE: This script outputs the report. Delivery to Discord is handled
+# by the OpenClaw cron job delivery config (mode=announce, channel=discord).
+# The cron agent session reads the output and delivers it.
 
-python3 << PYSCRIPT
-import json
-import sys
-import os
-from datetime import datetime
-import subprocess
-
-informe = """$INFORME"""
-token = os.environ.get('DISCORD_BOT_TOKEN')
-channel_id = os.environ.get('DISCORD_CHANNEL_ID')
-
-if not token or not channel_id:
-    print("❌ Error: Faltan credenciales Discord")
-    sys.exit(1)
-
-# Build embeds (Discord max 2000 chars per embed)
-lines = informe.split('\n')
-blocks = []
-current = []
-length = 0
-
-for line in lines:
-    new_len = length + len(line) + 1
-    if new_len > 1900 and current:
-        blocks.append('\n'.join(current))
-        current = [line]
-        length = len(line) + 1
-    else:
-        current.append(line)
-        length = new_len
-
-if current:
-    blocks.append('\n'.join(current))
-
-embeds = []
-for i, block in enumerate(blocks):
-    embed = {
-        "title": f"📊 Informe Matutino{'- Parte ' + str(i+1) if len(blocks) > 1 else ''}",
-        "description": block,
-        "color": 3447003,
-        "timestamp": datetime.utcnow().isoformat() + "Z"
-    }
-    embeds.append(embed)
-
-payload = {"content": "", "embeds": embeds}
-
-# Send via curl
-cmd = [
-    "curl", "-s", "-X", "POST",
-    f"https://discord.com/api/v10/channels/{channel_id}/messages",
-    "-H", f"Authorization: Bot {token}",
-    "-H", "Content-Type: application/json",
-    "-d", json.dumps(payload)
-]
-
-result = subprocess.run(cmd, capture_output=True, text=True)
-response = json.loads(result.stdout) if result.stdout else {}
-
-if 'id' in response:
-    print(f"✅ Mensaje enviado a Discord (ID: {response['id']})")
-else:
-    print(f"⚠️  Respuesta: {result.stdout}")
-    if 'message' in response:
-        print(f"Error: {response['message']}")
-PYSCRIPT
-
-# 7. Save report
+# 8. Save report
 echo "📝 Guardando informe..."
 echo "$INFORME" > ~/.openclaw/workspace/memory/$TODAY-informe.md
 echo "✅ Informe guardado en memory/$TODAY-informe.md"
