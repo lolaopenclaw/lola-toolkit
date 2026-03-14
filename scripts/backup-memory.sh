@@ -82,16 +82,10 @@ if [ -f "$HOME/.config/rclone/rclone.conf" ]; then
     cp "$HOME/.config/rclone/rclone.conf" "$BACKUP_DIR/rclone.conf" 2>/dev/null || true
 fi
 
-# --- System config snapshot (para referencia, no secrets) --------------------
+# --- System config snapshot (essentials only) --------------------------------
 echo "Copiando snapshot de sistema..."
 mkdir -p "$BACKUP_DIR/system-snapshot"
 {
-    grep -v '^#' /etc/ssh/sshd_config 2>/dev/null | grep -v '^$' > "$BACKUP_DIR/system-snapshot/sshd_config.txt" || true &
-    sudo ufw status verbose > "$BACKUP_DIR/system-snapshot/ufw-status.txt" 2>/dev/null || true &
-    [ -f /etc/fail2ban/jail.local ] && head -50 /etc/fail2ban/jail.local > "$BACKUP_DIR/system-snapshot/jail-local-head.txt" 2>/dev/null || true &
-    grep -v '^#' /etc/security/limits.conf 2>/dev/null | grep -v '^$' > "$BACKUP_DIR/system-snapshot/limits.conf.txt" || true &
-    dpkg -l | grep -E '(fail2ban|rkhunter|lynis|libpam-tmpdir|ufw|unattended)' > "$BACKUP_DIR/system-snapshot/security-packages.txt" 2>/dev/null || true &
-    crontab -l > "$BACKUP_DIR/system-snapshot/crontab.txt" 2>/dev/null || true &
     openclaw --version > "$BACKUP_DIR/system-snapshot/openclaw-version.txt" 2>/dev/null || true &
     node --version > "$BACKUP_DIR/system-snapshot/node-version.txt" 2>/dev/null || true &
     wait
