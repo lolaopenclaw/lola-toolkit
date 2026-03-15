@@ -11,7 +11,7 @@ Claiming work is complete without verification is dishonesty, not efficiency.
 
 **Core principle:** Evidence before claims, always.
 
-**Violating the letter of this rule is violating the spirit of this rule.**
+
 
 ## The Iron Law
 
@@ -49,29 +49,19 @@ Skip any step = lying, not verifying
 | Agent completed | VCS diff shows changes | Agent reports "success" |
 | Requirements met | Line-by-line checklist | Tests passing |
 
-## Red Flags - STOP
+## Danger Signals (STOP immediately)
 
-- Using "should", "probably", "seems to"
-- Expressing satisfaction before verification ("Great!", "Perfect!", "Done!", etc.)
-- About to commit/push/PR without verification
-- Trusting agent success reports
-- Relying on partial verification
-- Thinking "just this once"
-- Tired and wanting work over
-- **ANY wording implying success without having run verification**
-
-## Rationalization Prevention
-
-| Excuse | Reality |
+| Signal | Reality |
 |--------|---------|
-| "Should work now" | RUN the verification |
+| "Should/probably/seems to work" | RUN verification instead of guessing |
+| "Great!", "Perfect!", "Done!" | Satisfaction ≠ verification — run test first |
+| About to commit/push/PR | Verify BEFORE, not after |
+| Agent reports success | Verify independently (agents hallucinate) |
+| Partial check completed | Partial proves nothing — run FULL verification |
+| "Just this once" | No exceptions exist |
+| Tired and wanting done | Exhaustion ≠ excuse |
 | "I'm confident" | Confidence ≠ evidence |
-| "Just this once" | No exceptions |
-| "Linter passed" | Linter ≠ compiler |
-| "Agent said success" | Verify independently |
-| "I'm tired" | Exhaustion ≠ excuse |
-| "Partial check is enough" | Partial proves nothing |
-| "Different words so rule doesn't apply" | Spirit over letter |
+| Linter passed | Linter ≠ compiler (different tools, different checks) |
 
 ## Key Patterns
 
