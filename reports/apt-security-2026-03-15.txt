@@ -1,0 +1,13 @@
+APT Security Audit — 2026-03-15
+System: ubuntu | OS: Ubuntu 24.04.4 LTS
+
+[0;36m→ Broken Packages[0m
+✓ None
+[0;36m→ Available Updates[0m
+Total: 0
+[0;36m→ Security Updates[0m
+✓ None
+[0;36m→ Held Packages[0m
+✓ None
+
+SUMMARY: broken=✓ upgradable=0 security=✓

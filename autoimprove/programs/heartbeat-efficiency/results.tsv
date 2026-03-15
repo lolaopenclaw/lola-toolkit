@@ -12,3 +12,4 @@ FINAL	255	selected	v4 selected: best balance of compression + readability
 9	138	kept	v9: Abbrev 'health'→'', 'sin tareas'→'sino' (553 chars)
 10	136	kept	v10: Streamline checks, remove redundant 'Notion' (547 chars)
 FINAL	136	selected	v10: 47% reduction from previous baseline. All checks, zero-notification, quiet hours, heartbeat mejorado maintained.
+2026-03-15	273	204	-69	-25%	4/5	heartbeat-efficiency

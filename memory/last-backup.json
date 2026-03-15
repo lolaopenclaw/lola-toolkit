@@ -1,1 +1,1 @@
-{"date": "2026-03-14", "status": "error", "files": 8, "size": "11M", "error": "Upload a Google Drive falló - verificar credenciales GOG"}
+{"date": "2026-03-15", "status": "error", "files": 1, "size": "11M", "error": "Google Drive upload failed (rclone upload step exited with code 1). Tarball created successfully at /tmp/openclaw-backup-2026-03-15.tar.gz"}

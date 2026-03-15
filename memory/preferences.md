@@ -4,10 +4,13 @@
 
 ### Morning Reports (Matutino)
 - **Destination:** Discord ONLY ❌ NUNCA Telegram
+- **Discord Channel:** `📊-reportes-matutino` (ID: `1475057935368458312`) ⚠️ NO al general
+- **Guild ID:** `1475053097230270585`
 - **Time:** 10:00 Madrid (cron `cb5d3743`)
 - **Content:** Sistema, Seguridad, Backups, Autoimprove Nightly, System Updates, Garmin, Estado General
 - **Script:** `scripts/informe-matutino-auto.sh`
 - **Set:** 2026-03-14 10:10 (Manu's request)
+- **Fix:** 2026-03-15 — Se enviaba al general en vez de reportes-matutino (corregido)
 
 ### Quiet Hours
 - **00:00–07:00 Madrid:** Zero notifications (unless critical)
