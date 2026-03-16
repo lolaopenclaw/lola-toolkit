@@ -38,7 +38,7 @@ fi
 
 Run the scanner script:
 ```bash
-bash ~/. openclaw/workspace/scripts/pr-reviewer.sh {owner/repo} --max {max}
+bash ~/.openclaw/workspace/scripts/pr-reviewer.sh {owner/repo} --max {max}
 ```
 
 Parse the output. If no PRs pending, report "No PRs pending review" and stop.
@@ -93,34 +93,12 @@ Description: {pr_description}
 {diff_content}
 </diff>
 
-<review_checklist>
-## Security (CRITICAL — always check)
-- [ ] Hardcoded secrets, API keys, tokens, passwords
-- [ ] SQL injection, XSS, CSRF vulnerabilities
-- [ ] Insecure deserialization or eval() usage
-- [ ] Sensitive data in logs or error messages
-- [ ] Missing input validation/sanitization
-- [ ] Insecure dependencies (known CVEs)
-
-## Correctness
-- [ ] Logic errors or off-by-one mistakes
-- [ ] Null/undefined handling
-- [ ] Edge cases not covered
-- [ ] Race conditions or concurrency issues
-- [ ] Error handling (are errors caught and handled properly?)
-
-## Quality
-- [ ] Dead code or unused imports
-- [ ] Code duplication that should be extracted
-- [ ] Missing or insufficient tests for the changes
-- [ ] Naming clarity (variables, functions)
-- [ ] Overly complex code that could be simplified
-
-## Style (low priority)
-- [ ] Consistent with project conventions
-- [ ] console.log/print statements left in
-- [ ] TODO/FIXME without issue reference
-</review_checklist>
+| Category | Check | Priority |
+|----------|-------|----------|
+| **Security** | Hardcoded secrets, SQL/XSS/CSRF, eval(), sensitive logs, input validation, known CVEs | 🔴 CRITICAL |
+| **Correctness** | Logic errors, null handling, edge cases, race conditions, error handling | 🔴 CRITICAL |
+| **Quality** | Dead code, duplication, test coverage, naming, complexity | 🟡 IMPORTANT |
+| **Style** | Conventions, stray logs, TODO refs | 🔵 NICE-TO-HAVE |
 
 <instructions>
 1. Read the diff carefully, file by file.
