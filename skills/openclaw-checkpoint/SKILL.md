@@ -306,91 +306,48 @@ checkpoint-stop
 
 ## Setup
 
-### Easy Setup (Recommended)
-
-Just run the interactive wizard:
+### First Time (Interactive)
 
 ```bash
 checkpoint-setup
 ```
 
-This handles everything: git init, SSH keys, GitHub setup, and first backup.
+This is the recommended entry point — it handles git init, SSH keys, GitHub setup, and first backup automatically.
 
-### First Time Setup (Manual)
+### First Time (Manual)
+
+If you prefer manual control:
 
 ```bash
-# 1. Initialize checkpoint system
-checkpoint-init
-
-# 2. Create PRIVATE GitHub repository
-# Go to https://github.com/new
-# Name: openclaw-state
-# ⚠️  Visibility: PRIVATE (important - contains your personal data!)
-
-# 3. Add remote (use SSH, not HTTPS)
+checkpoint-init                              # Initialize git
+# Then create PRIVATE GitHub repo at https://github.com/new (name: openclaw-state)
 cd ~/.openclaw/workspace
 git remote add origin git@github.com:YOURUSER/openclaw-state.git
 checkpoint-backup
 ```
 
-### Setup on Second Machine
-
-**Option 1: Interactive Restore (Recommended)**
+### Second Machine
 
 ```bash
-# Install the checkpoint skill first
-curl -fsSL https://raw.githubusercontent.com/AnthonyFrancis/openclaw-checkpoint/main/scripts/install-openclaw-checkpoint.sh | bash
-
-# Run checkpoint-restore - it will guide you through the entire process
 checkpoint-restore
 ```
 
-This will:
-- Help you authenticate with GitHub (if not already)
-- Ask for your backup repository details
-- Clone/restore your checkpoint automatically
+This interactive restore guides you through authentication, repo selection, and full checkpoint restoration (including secrets recovery from 1Password, cron jobs, and agents).
 
-**Option 2: Manual Clone**
-
+For manual restore:
 ```bash
-# 1. Clone repository (use SSH)
 git clone git@github.com:YOURUSER/openclaw-state.git ~/.openclaw/workspace
-
-# 2. Restore secrets from 1Password/password manager
-# Create ~/.openclaw/workspace/.env.thisweek
-# Create ~/.openclaw/workspace/.env.stripe
-# (Copy from secure storage)
-
-# 3. Start OpenClaw
+# Restore secrets (.env files) from password manager
 openclaw gateway start
 ```
 
 ## Automated Backups
 
-### Easy Setup (Recommended)
-
 ```bash
-# Enable hourly backups
-checkpoint-schedule hourly
-
-# Or choose your frequency:
-checkpoint-schedule 15min   # Every 15 minutes - high activity
-checkpoint-schedule 30min   # Every 30 minutes - medium activity  
-checkpoint-schedule 2hours  # Every 2 hours - low activity
-checkpoint-schedule daily   # Once per day - minimal activity
+checkpoint-schedule hourly      # Default (or: 15min, 30min, 2hours, daily)
+checkpoint-schedule disable     # Turn off
+checkpoint-status              # Check health and last backup time
 ```
-
-### Check Status
-
-```bash
-checkpoint-status
-```
-
-Shows:
-- Last backup time
-- Whether synced with remote
-- Auto-backup schedule
-- Recent activity log
 
 ## Multi-Agent Backup
 
