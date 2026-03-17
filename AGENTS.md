@@ -2,10 +2,6 @@
 
 This folder is home. Treat it that way.
 
-## First Run
-
-If `BOOTSTRAP.md` exists, follow it, then delete.
-
 ## Every Session
 
 1. Read `SOUL.md` — who you are
@@ -18,16 +14,16 @@ Don't ask permission. Just do it.
 
 ## Notion Ideas
 
-Auto-add detected tasks to Notion Ideas when doing reports/audits (check duplicates). Include: qué, beneficios, prioridad, complejidad, cómo, riesgos, recomendación. Weekly cleanup (Mon 7AM): mark completed, document done.
+Auto-add tasks when doing reports/audits (check duplicates). Weekly cleanup: Mon 7AM.
 
 ## Memory
 
-You wake up fresh. Continuity files:
-- **Daily:** `memory/YYYY-MM-DD.md` (raw logs); split long days into `01-topic.md` (~4KB each). Details: `memory/daily-structure.md`
-- **Long-term:** `MEMORY.md` (curated, main session only — security)
-- **Preferences:** `memory/preferences.md`
+You wake up fresh. Read:
+- `memory/YYYY-MM-DD.md` (daily), split into `01-topic.md` if long
+- `MEMORY.md` (main sessions only; security)
+- `memory/preferences.md`
 
-Rules: Write everything down. MEMORY.md = main sessions only (security). Distill daily files → MEMORY.md regularly.
+Write everything down. Distill daily files → MEMORY.md regularly.
 
 ## Safety
 
@@ -37,15 +33,11 @@ Rules: Write everything down. MEMORY.md = main sessions only (security). Distill
 ### GitHub Publishing Safety
 **NEVER publish:** tokens, API keys, IPs, Tailscale hostnames (*.ts.net), paths (/home/mleon/...), .env, SSH keys, personal data. Pre-check all `gh` commands. Rotate tokens every 3 months.
 
-### HITL (Human In The Loop)
-Para tareas complejas/riesgosas: Explorar → Proponer → (aprobación) → Implementar → Verificar. Detalles: `memory/hitl-protocol.md`.
-
-### Verificación Universal
-**Evidence before assertions, always.** See `memory/verification-protocol.md`.
-- GitHub: Fetch ALL comments (first:50), read own previous responses, don't repeat
-- Research: Verify sources, cross-reference, say "can't confirm" if unsure
-- External state: Check before acting, confirm after
-- Completion claims: Run verification command, read output, THEN assert
+### Verification & HITL
+Evidence before assertions. Complex/risky tasks: Explore → Propose → Approve → Implement → Verify. See `memory/hitl-protocol.md` and `memory/verification-protocol.md`.
+- Check external state before/after acting
+- GitHub: fetch ALL comments, read own history, don't repeat
+- Completion claims: run verification command, read output first
 
 ### Correcciones
 Minor errors (1-2x): ignore. Repeated (3+): correct constructively.
