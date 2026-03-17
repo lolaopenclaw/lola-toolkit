@@ -80,9 +80,27 @@ truthcheck verify "some claim" --llm ollama    # local models, fully offline
 
 No keys needed for `--llm ollama` (runs locally) or default DuckDuckGo search.
 
+## Skill Triggers (Auto-Invocation)
+
+The truthcheck skill activates when you mention:
+- **Fact-check / verify a claim:** "Is this true?", "Can you verify...", "I read that..."
+- **Check source credibility:** "Is this website trustworthy?", "Where did this come from?"
+- **Trace misinformation:** "Where did this rumor start?", "How did this spread?"
+
+## Troubleshooting
+
+| Error | Cause | Solution |
+|-------|-------|----------|
+| `API key not found` | Missing GEMINI_API_KEY / OPENAI_API_KEY | Set env var or use default DuckDuckGo (no key needed) |
+| `Network timeout` | Slow internet / service overload | Retry with `--quick` flag (faster but less thorough) |
+| `No corroboration found` | Claim is too niche or recent | Use `--deep` to search longer; manual verification may be needed |
+| `Publisher not in database` | Unknown source | Run `truthcheck sync` to update database |
+| `Hallucinated URL` | URL doesn't exist / malformed | Verify link spelling or use a different claim |
+
 ## Tips
 - Verify commands can take 15-60 seconds depending on search results
 - Without `--llm`: basic scoring using publisher reputation, corroboration, and fact-checks
 - With `--llm`: adds AI content analysis for better accuracy
 - `--search brave` gives better search results than default DuckDuckGo
 - For batch verification, loop through claims individually
+- Use `--quick` for speed, `--deep` for thoroughness; balanced (default) is recommended
