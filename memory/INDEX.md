@@ -1,6 +1,6 @@
 # 📚 Memory INDEX — Organized Knowledge
 
-Last updated: 2026-03-01 (Weekly review: HOT/WARM tier reorg)
+Last updated: 2026-03-17 (Active: Skills, Scripts, Daily logs)
 
 ---
 
@@ -56,11 +56,11 @@ Recuperación: restore.sh
 ---
 
 ## 📝 PROTOCOLS & PROCEDURES
-- `memory/security-change-protocol.md` — Critical change A+B workflow
-- `memory/PROTOCOLS/cron-change-protocol.md` — Cron scheduling rules
-- `memory/PROTOCOLS/canary-testing-protocol.md` — Pre-change validation
-- `memory/PROTOCOLS/backup-retention-policy.md` — 30-day retention
-- `memory/PROTOCOLS/memory-guardian-protocol.md` — Auto-cleanup system
+- `memory/protocols.md` — Backup, Security, Notion automation rules
+- `memory/hitl-protocol.md` — Human-in-the-loop for complex/risky tasks
+- `memory/verification-protocol.md` — Evidence-before-assertions discipline
+- `memory/driving-mode-state.json` — TTS audio mode state tracking
+- `memory/time-tracking-protocol.md` — Real timestamps, no guesses
 
 ## 🔧 SCRIPTS (in /scripts)
 - `skill-security-audit.sh` — Security audit for ClawHub skills ⭐
@@ -73,14 +73,10 @@ Recuperación: restore.sh
 - `usage-report.sh` — API cost tracking
 
 ## 🧠 MEMORY MANAGEMENT
-- `memory/DAILY/HOT/` — Last 7 days (156K as of 2026-03-01)
-- `memory/DAILY/WARM/` — 8-30 days (80K, +8 files from 2026-02-21)
-- `memory/DAILY/COLD/` — >30 days (4K, compressed)
-
-**Backup Validation Logs** (Feb 28 cleanup)
-- Active logs (last 5d): `/backup-validation-logs/*.log` (30 files)
-- Archived logs (>5d): `/backup-validation-logs/archive-old/` (12 files)
-- Index: `backup-validation-archive-feb.md`
+- **Daily logs:** `memory/2026-03-*.md` (raw session notes)
+- **Consolidated:** `memory/MEMORY.md` (curated long-term wisdom, main session only)
+- **Permanent:** `memory/*-protocol.md`, `memory/manu-profile.md`, `memory/preferences.md`
+- **Archive:** Old daily logs >30 days → `memory/archive/` (auto-cleanup by scripts)
 
 ---
 
@@ -105,4 +101,4 @@ Recuperación: restore.sh
 
 ---
 
-Last sync: 2026-03-01 — Tier reorganization: Moved 8 files from 2026-02-21 (HOT→WARM). Total memory: 892K (healthy). No duplicates detected. All reporting crons healthy.
+**Last Review:** 2026-03-17 — Cron-driven autoimprove cycle. Skills/scripts improved with robustness (error handling, validation). Memory consolidated. Workspace healthy: ~1MB markdown + skills + scripts. All critical crons active (morning report 9AM, alerts 14:00/20:00, weekly audit Mon 8:30).
