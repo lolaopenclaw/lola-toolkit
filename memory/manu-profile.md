@@ -1,6 +1,6 @@
 # Manu Profile — Perfil Detallado
 
-Actualizado: 2026-02-22 (volcado Facebook analizado)
+Actualizado: 2026-03-17 (operacional, crons activos)
 
 ---
 
@@ -44,27 +44,30 @@ Actualizado: 2026-02-22 (volcado Facebook analizado)
 - **Alertas críticas:** 14:00, 20:00 si es necesario
 - **Gráficas:** Dashboard Sheet actualizado diariamente (11 PM)
 
-### Perfil Reciente (Última semana)
-- HR reposo: ~54 bpm (excelente)
-- Estrés: ~26-34 (bajo)
-- Pasos: ~4,800-5,000/día (sedentario fin de semana)
-- Sueño: ~7.2-7.9h (bueno)
+### Health Goals
+- **Resting HR:** Target <55 bpm (goal: aerobic fitness)
+- **Stress management:** Keep <40 avg (meditation/exercise when >50)
+- **Sleep:** 7-8 hours nightly (current: 7.2-7.9h ✅)
+- **Activity:** 8,000+ steps daily (monitored via Garmin cron)
+- **Body Battery:** Maintain >50% (track recovery)
 
 ---
 
 ## Comunicación
-- **Discord:** Canal #📊-reportes-matutino (informes consolidados)
-- **Telegram:** Contacto directo (@RagnarBlackmade)
-- **Horario silencioso:** 00:00-07:00 Madrid
-- **Estilo:** UN informe matutino, sin tablas, con bullets
+- **Primary:** Telegram (@RagnarBlackmade) — preferred for direct messages
+- **Secondary:** Discord (#📊-reportes-matutino) — consolidated morning reports
+- **Quiet hours:** 00:00-07:00 Madrid — NO messages except critical emergencies
+- **Report style:** Single unified morning brief, bullets over tables, actionable insights
+- **Driving mode:** Enabled with TTS (triggers: "estoy en el coche" / "ya estoy en casa")
 
 ---
 
 ## Tecnología
-- **VPS:** Ubuntu 24.04
-- **OpenClaw:** v2026.2.17
-- **Modelo:** Opus 4.6 (principal), Haiku 4.5 (crons)
-- **Integraciones:** Google Workspace, Notion, Garmin, Discord, Rclone
+- **VPS:** Ubuntu 24.04 LTS, 16GB RAM, 8 cores
+- **OpenClaw:** v2026.2.22 (current)
+- **Default model:** Haiku 4.5 (changed 2026-02-24 to optimize costs; Opus used when specifically requested)
+- **Integraciones activas:** Google Workspace (Gmail/Calendar/Sheets), Notion Ideas, Garmin Connect, Telegram, Discord
+- **Backup:** Google Drive (daily 4:00 AM, 30-day retention)
 
 ---
 
