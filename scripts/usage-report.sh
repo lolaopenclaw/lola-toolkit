@@ -2,7 +2,18 @@
 # Usage report: aggregates model costs from session JSONL files
 # Outputs JSON with monthly totals by model, yesterday's delta, and today's usage
 
+set -euo pipefail
+
 SESSIONS_DIR="$HOME/.openclaw/agents/main/sessions"
+
+# Validate dependencies
+for cmd in jq date; do
+  command -v "$cmd" >/dev/null 2>&1 || { echo "❌ Required: $cmd"; exit 1; }
+done
+
+# Validate directory exists
+[ -d "$SESSIONS_DIR" ] || { echo "❌ SESSIONS_DIR not found: $SESSIONS_DIR"; exit 1; }
+
 CURRENT_MONTH=$(date -u +%Y-%m)
 YESTERDAY=$(date -u -d "yesterday" +%Y-%m-%d)
 TODAY=$(date -u +%Y-%m-%d)
