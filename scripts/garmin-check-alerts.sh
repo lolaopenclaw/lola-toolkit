@@ -7,7 +7,20 @@
 #   --battery-critical Body battery <20%
 #   (no args)          Check all
 
+set -euo pipefail
+
 FILTER="${1:-all}"
+ENV_FILE="$HOME/.openclaw/.env"
+
+# Validate environment
+[ -f "$ENV_FILE" ] || { echo "❌ .env not found: $ENV_FILE"; exit 1; }
+command -v python3 >/dev/null 2>&1 || { echo "❌ python3 not found"; exit 1; }
+
+# Check for garminconnect module
+python3 -c "import garminconnect" 2>/dev/null || { 
+  echo "❌ garminconnect module not found. Install: pip install garminconnect"
+  exit 1
+}
 
 python3 << PYEOF
 from garminconnect import Garmin
