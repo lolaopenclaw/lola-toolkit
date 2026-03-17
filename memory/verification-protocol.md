@@ -45,6 +45,19 @@ En TODAS las sesiones, para CUALQUIER pregunta donde:
 3. ¿No estoy seguro? → exec/memory_search/verify primero
 4. **Responder SOLO si he verificado**
 
+## 🔧 Quick Verification Commands
+
+| Question | Command | Example |
+|----------|---------|---------|
+| Calculate age | `date +%Y; echo "1978"` → math | 2026 - 1978 = 48 |
+| Today's date | `date "+%A %d-%m-%Y %H:%M"` | Tue 17-03-2026 02:02 |
+| File exists | `[ -f /path/file ] && echo OK` | Verify config loaded |
+| Git last commit | `git log -1 --oneline` | Check most recent change |
+| Timestamp to age | `date -d "2026-02-24" +%s` → subtract → /86400 | Days since |
+| Search memory | Read file or `grep -r "query" memory/` | Find past reference |
+
+**Pattern:** Execute → Parse → Answer with confidence.
+
 ---
 
 ## 📝 Referencias
