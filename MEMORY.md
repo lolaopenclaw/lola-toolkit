@@ -34,6 +34,12 @@ Vera Pérez León (sobrina, 10a, bd 30 ago)
   - `lola-toolkit` — Scripts, skills, protocols para gestión de agentes IA (public)
 - **Policy:** Publicar todo lo útil que creemos. NUNCA tokens/keys/IPs/paths personales.
 
+## 🧠 Knowledge Graph → `memory/entities/`
+- **Schema:** PARA (Projects/Areas/Resources/Archives) + atomic JSON facts
+- **Decay:** Weekly synthesis (Hot/Warm/Cold). Script: `scripts/memory-decay.sh`
+- **⚠️ Autoimprove must SKIP `memory/entities/`** — auto-generated from JSON, not editable
+- **Search:** memory_search (OpenAI embeddings, provider: openai)
+
 ## 🔬 Autoresearch — Karpathy
 → `memory/autoresearch-karpathy.md` | Repo: github.com/karpathy/autoresearch | Pattern: iterate→test→keep/discard | Applied: autoimprove/
 - **Autoimprove Nightly:** iterate→test→keep/discard. Circuit breaker 5 fallos. ~$0.50/noche. Cron ID: 08325b21

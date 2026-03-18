@@ -1,82 +1,27 @@
-# 🔬 Autoimprove Nightly — 2026-03-18
+# Autoimprove Nightly — 2026-03-18 (Day 3/Wed)
 
-**Timestamp:** 2026-03-18 02:00 UTC (03:00 Madrid)
-**Target:** Skills optimization + scripts robustness + self-review
-**Iterations:** 10/10
-**Improvements kept:** 5
-**Reverts:** 0
-**Streak:** 5 consecutive nights ✅
+## Target
+MEMORY.md (memory-index program)
 
----
+## Results
+- **Baseline:** 657 tokens
+- **Final:** 590 tokens
+- **Saved:** 67 tokens (10.2% reduction)
+- **Penalty:** 0
+- **Status:** ✅ 5/5 experiments kept
 
-## Changes Kept
+## Experiments
 
-### Skills (Iterations 1-3)
+| # | Change | Result |
+|---|--------|--------|
+| 1 | Compress core intro line | 657→646 (+11t) |
+| 2 | Merge technical bullets | 646→640 (+6t) |
+| 3 | Collapse security header | 640→603 (+37t) |
+| 4 | Compress family section | 603→598 (+5t) |
+| 5 | Hide Sheet URL reference | 598→590 (+8t) |
 
-1. **sonoscli/SKILL.md**
-   - Added: Advanced grouping table (party, solo, join, unjoin commands)
-   - Added: Environment variables section (SPOTIFY_CLIENT_ID, etc)
-   - Added: Error recovery tips (command hang handling)
-   - Improvement: Better structure for agents to follow
-
-2. **openclaw-checkpoint/SKILL.md**
-   - Consolidated: 4 subsections (First Time Interactive/Manual, Second Machine) → 1 "Setup Flows" table
-   - Benefit: More scannable, 28 lines removed, same information
-   - Why: Reduces redundancy without losing clarity
-
-3. **pr-review/SKILL.md**
-   - Simplified: Verbose task prompt (65 lines) → concise format (30 lines)
-   - Changed: Structured checklist table for review categories
-   - Benefit: Clearer instructions for sub-agent, easier to follow
-
-### Scripts (Iterations 4-6)
-
-4. **garmin-historical-analysis.sh**
-   - Added: `set -euo pipefail` for bash safety
-   - Added: Dependency checks (python3, ~/.openclaw/.env)
-   - Added: Input validation (days parameter must be positive integer)
-   - Removed: Silent failures on config missing
-   - Safety improvement: Now fails fast and clearly
-
-### Iterations 7-10
-
-- **Memory:** No consolidation needed (daily files recent, MEMORY.md updated 16/03)
-- **Scripts:** No additional improvements (key scripts robust)
-- **Self-Review:** Git history clean, no sensitive data, commits well-documented
+## Commit
+`c0254a9` — 🔬 Autoimprove nightly: compress MEMORY.md index (657→590 tokens)
 
 ---
-
-## Metrics
-
-| Category | Count |
-|----------|-------|
-| Skills improved | 3 |
-| Scripts improved | 1 |
-| Memory operations | 0 |
-| Total improvements | 5 |
-| Circuit breaker triggered | No |
-
----
-
-## Cumulative Stats (4 nights)
-
-- **Total improvements:** 24
-- **Total reverts:** 1 (3% failure rate)
-- **Total iterations:** 42
-- **Streak:** 5 consecutive successful nights
-
----
-
-## Next Session
-
-Monitor:
-- sonoscli grouping commands in production
-- pr-review sub-agent with new task format
-- checkpoint-setup for clarity improvements
-- garmin error handling edge cases
-
-Consider in next run:
-- MEMORY.md consolidation from 2026-03-17 notes
-- Review if any skills >20KB should be split
-- Check for deprecated protocols in memory/
-
+**Next target (Thu):** USER.md

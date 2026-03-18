@@ -33,19 +33,30 @@
   },
   "google": {
     "gemini-2.5-flash": {
-      "input": 0.15,
-      "output": 0.60,
-      "cache_read": 0.0375,
+      "input": 0.30,
+      "output": 2.50,
+      "note": "UPDATED 2026-03-16: input doubled (0.15→0.30), output quadrupled (0.60→2.50)",
       "unit": "per_million_tokens"
     },
     "gemini-2.5-flash-lite": {
-      "input": 0.075,
-      "output": 0.30,
+      "input": 0.10,
+      "output": 0.40,
+      "note": "UPDATED 2026-03-16: input increased (0.075→0.10), output increased (0.30→0.40)",
       "unit": "per_million_tokens"
     },
     "gemini-3-flash-preview": {
       "input": 0.15,
       "output": 0.60,
+      "unit": "per_million_tokens"
+    },
+    "gemini-3-pro-preview": {
+      "status": "DEPRECATED 2026-03-09",
+      "note": "Retired March 9, 2026. Migrate to gemini-3.1-pro-preview",
+      "unit": "N/A"
+    },
+    "gemini-3.1-pro-preview": {
+      "status": "NEW - recommended migration from 3-pro-preview",
+      "pricing": "Check official docs",
       "unit": "per_million_tokens"
     }
   }

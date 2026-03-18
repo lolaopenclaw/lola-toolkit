@@ -1,10 +1,8 @@
 {
-  "date": "2026-03-15",
-  "time": "01:30",
-  "status": "ok",
-  "packages_available": 0,
-  "packages_updated": 0,
-  "packages": [],
-  "reboot_required": false,
-  "note": "No updates available"
+  "timestamp": "2026-03-18T01:30:00Z",
+  "status": "success",
+  "updates_available": false,
+  "updates_applied": 0,
+  "message": "No hay actualizaciones pendientes",
+  "notes": "Script ejecutado correctamente. Minor warning en sintaxis pero funcionamiento normal."
 }

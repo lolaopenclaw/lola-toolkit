@@ -49,6 +49,13 @@
 - **Config OpenClaw:** `browser.cdpUrl = http://127.0.0.1:9222`, `attachOnly = true`
 - **Set:** 2026-03-14 10:58
 
+## GitHub
+
+- **Default visibility:** Private (always)
+- **Auto-share with:** RagnarBlackmade (write access)
+- **Never publish:** tokens, API keys, IPs, Tailscale hostnames, paths, .env, SSH keys, personal data
+- **Token rotation:** Q2 2026
+
 ---
 
-*Last updated: 2026-03-14 10:54*
+*Last updated: 2026-03-18 10:53*

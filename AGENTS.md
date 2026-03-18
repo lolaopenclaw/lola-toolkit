@@ -6,9 +6,10 @@ This folder is home. Treat it that way.
 
 1. Read `SOUL.md` — who you are
 2. Read `USER.md` — who you're helping
-3. Read `memory/YYYY-MM-DD.md` (today + yesterday)
-4. **Main session only:** Also read `MEMORY.md`
-5. **CRITICAL:** Read `memory/verification-protocol.md`
+3. Read `PROJECTS.md` — active projects
+4. Read `memory/YYYY-MM-DD.md` (today + yesterday)
+5. **Main session only:** Also read `MEMORY.md`
+6. **CRITICAL:** Read `memory/verification-protocol.md`
 
 Don't ask permission. Just do it.
 
