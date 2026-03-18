@@ -79,65 +79,30 @@ For each pending PR, spawn a sub-agent using `sessions_spawn` with:
 
 ### Sub-agent Task Prompt:
 
+**You are an expert code reviewer. For PR #{number} ({title}), evaluate the diff against the checklist below:**
+
+| Category | Checks | Mark |
+|----------|--------|------|
+| **🔴 Security** | Hardcoded secrets, SQL/XSS/CSRF, eval(), input validation, known CVEs, sensitive logs | CRITICAL |
+| **🔴 Correctness** | Logic errors, null handling, edge cases, race conditions, error handling | CRITICAL |
+| **🟡 Quality** | Dead code, duplication, test coverage, naming, complexity | IMPORTANT |
+| **🔵 Style** | Conventions, TODO refs (skip trivial lint unless critical) | NICE-TO-HAVE |
+
+**Output format (EXACT):**
 ```
-You are an expert code reviewer. Review this Pull Request and provide constructive, actionable feedback.
-
-<pr>
-Repository: {owner/repo}
-PR #{number}: {title}
-URL: {html_url}
-Description: {pr_description}
-</pr>
-
-<diff>
-{diff_content}
-</diff>
-
-| Category | Check | Priority |
-|----------|-------|----------|
-| **Security** | Hardcoded secrets, SQL/XSS/CSRF, eval(), sensitive logs, input validation, known CVEs | 🔴 CRITICAL |
-| **Correctness** | Logic errors, null handling, edge cases, race conditions, error handling | 🔴 CRITICAL |
-| **Quality** | Dead code, duplication, test coverage, naming, complexity | 🟡 IMPORTANT |
-| **Style** | Conventions, stray logs, TODO refs | 🔵 NICE-TO-HAVE |
-
-<instructions>
-1. Read the diff carefully, file by file.
-2. For each issue found, note:
-   - **File and line** (from the diff)
-   - **Severity:** 🔴 critical | 🟡 warning | 🔵 suggestion
-   - **What:** Clear description of the issue
-   - **Fix:** Specific suggestion for how to fix it
-3. At the end, provide:
-   - **Overall assessment:** APPROVE / REQUEST_CHANGES / COMMENT
-   - **Summary:** 2-3 sentences about the PR quality
-   - **Score:** X/10
-
-Format your response EXACTLY as:
-
 REVIEW_START
 ASSESSMENT: [APPROVE|REQUEST_CHANGES|COMMENT]
 SCORE: [1-10]
-SUMMARY: [2-3 sentence summary]
-
-ISSUES:
-- FILE: [path] | LINE: [number] | SEVERITY: [🔴|🟡|🔵] | ISSUE: [description] | FIX: [suggestion]
-- FILE: [path] | LINE: [number] | SEVERITY: [🔴|🟡|🔵] | ISSUE: [description] | FIX: [suggestion]
-...
-
-If no issues found:
-ISSUES: none
-
+SUMMARY: [2-3 sentences]
+ISSUES: [FILE: path | LINE: number | SEVERITY: 🔴|🟡|🔵 | ISSUE: description | FIX: suggestion] (or "none")
 REVIEW_END
-</instructions>
-
-<constraints>
-- Be constructive, not pedantic
-- Focus on real issues, not style nitpicks (unless they impact readability significantly)
-- Security issues are ALWAYS flagged, even minor ones
-- If the diff is too large or unclear, say so honestly
-- Do not hallucinate line numbers — only reference lines visible in the diff
-</constraints>
 ```
+
+**Constraints:**
+- Be constructive, not pedantic
+- Security issues are ALWAYS flagged
+- Do NOT hallucinate line numbers (only reference visible lines)
+- If diff >50KB, note truncation; if unclear, say so
 
 ---
 
