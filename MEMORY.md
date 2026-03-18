@@ -1,28 +1,25 @@
 # MEMORY.md — Index
 
 ## 🔴 CORE → `memory/core.md`
-Manu: Manuel León Mendiola | Email: manuelleonmendiola@gmail.com | Telegram: 6884477 (@RagnarBlackmade) | TZ: Europe/Madrid | VPS: Ubuntu 6.8.0, OpenClaw v2026.3.8 | Quiet: 00:00-07:00
+Manuel León Mendiola | lolaopenclaw@gmail.com | Telegram: @RagnarBlackmade | Europe/Madrid | Ubuntu 6.8.0, OpenClaw v2026.3.8 | Quiet 00-07
 
 ## 🔧 TECHNICAL → `memory/technical.md`
-- Ubuntu Pro: ESM-Infra + ESM-Apps + Livepatch
-- Crons: 4AM backup, 9AM morning, Mon 6AM audit, Mon 8:30 Garmin
-- Issues: #24586 FIXED, #33093 workaround (18793), #33103 IMPROVED
-- **TTS:** Google 1.25x speed | Driving Mode ✅
+- Ubuntu Pro: ESM-Infra + ESM-Apps + Livepatch | Crons: 4AM backup, 9AM morning, Mon 6AM audit, Mon 8:30 Garmin
+- Issues: #24586 FIXED, #33093 (18793), #33103 IMPROVED
+- TTS: Google 1.25x | Driving Mode ✅
 
-## 🔐 SECURITY & AUDITS
-→ `memory/security.md` | Audit: `memory/2026-03-16-security-audit-weekly.md`
-- **Last Audit:** ✅ 0 CRITICAL | ⚠️ 4 warnings | HARDENED (DROP/SSH-key/AppArmor)
-- **Alert:** ANTES de cambios SSH/firewall/servicios → Protocol A+B
-- **Protocols:** HITL (`memory/hitl-protocol.md`) | Worktree (`memory/worktree-protocol.md` + script) | PR-Review (`memory/pr-review-protocol.md`, ~$0.05)
+## 🔐 SECURITY & AUDITS → `memory/security.md` | `memory/2026-03-16-security-audit-weekly.md`
+- Last: ✅ 0 CRITICAL | ⚠️ 4 warnings | HARDENED (DROP/SSH-key/AppArmor)
+- Protocol A+B before SSH/firewall/servicios changes
+- HITL | Worktree | PR-Review (~$0.05)
 
-## 👤 Familia
-- **Vera Pérez León** (sobrina): 10 años, cumpleaños 30 agosto (cron configurado)
+## 👤 Familia → `memory/family.md`
+Vera Pérez León (sobrina, 10a, bd 30 ago)
 
 ## 🔑 Secretos & Seguridad
 → `memory/security.md` | Rotation: Q2 2026 | Key: gateway.bind=loopback when tailscale.mode=serve
 
-## 💰 Finanzas
-→ `memory/finanzas.md` | Sheet: `1otxo5V79XaY4GKCubCTrq19SaXdngcW59dGzZSUo8VA`
+## 💰 Finanzas → `memory/finanzas.md` | Sheet: [link in file]
 
 ## 🖥️ Dashboards & URLs
 → `memory/dashboards.md` | Remote: lola-openclaw-vps.taild8eaf6.ts.net | Local: 18790/8080/3333/5001
