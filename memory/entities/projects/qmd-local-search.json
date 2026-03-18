@@ -1,0 +1,59 @@
+{
+  "entity_id": "projects/qmd-local-search",
+  "entity_name": "QMD Local Search",
+  "entity_type": "project",
+  "created": "2026-03-18T21:17:00Z",
+  "status": "planned",
+  "deadline": null,
+  "owner": "people/manu",
+  "facts": [
+    {
+      "id": "qmd-001",
+      "fact": "Goal: Install QMD (github.com/tobi/qmd) as local search engine for memory files. SQLite + BM25 + vector similarity. Zero-cost, no API dependency.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["projects/memory-architecture", "people/lola"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "qmd-002",
+      "fact": "Why: Backup/replacement for memory_search (OpenAI embeddings). Local = faster, free, works offline. Scales better with 200+ files.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "qmd-003",
+      "fact": "Manu's priority: Wants to do this. Not urgent but important. 'Me parece una idea brillante. Daño no nos hace ninguno.'",
+      "category": "preference",
+      "timestamp": "2026-03-18",
+      "source": "conversation 2026-03-18",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "qmd-004",
+      "fact": "Collections planned: 1) memory/ (daily notes, entities, protocols), 2) workspace/ (SOUL.md, MEMORY.md, PROJECTS.md), 3) scripts/ (documentation).",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}
