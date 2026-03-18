@@ -6,7 +6,7 @@
 
 ## 🔥 Hot (recent / frequent)
 
-- **[context]** VPS: Ubuntu 24.04 LTS, 16GB RAM, 8 cores. Provider: IONOS Cloud. Hostname: lola-openclaw-vps.taild8eaf6.ts.net (Tailscale).
+- **[context]** VPS: Ubuntu 24.04 LTS, 16GB RAM, 8 cores. Provider: IONOS Cloud. Hostname: [redacted].ts.net (Tailscale).
 - **[status]** OpenClaw v2026.3.13. Default model: claude-haiku-4-5. Fallbacks: claude-sonnet-4-5, gemini-3-flash-preview.
 - **[context]** Security: Hardened (DROP default policy, SSH key-only, AppArmor). Ubuntu Pro: ESM-Infra + ESM-Apps + Livepatch. Protocol A+B before any SSH/firewall changes.
 - **[context]** Crons: 4AM daily backup (Google Drive, 30-day retention), 9AM morning report, Mon 6AM security audit, Mon 8:30 Garmin weekly, Sun 23:00 memory decay.

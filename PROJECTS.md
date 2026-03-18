@@ -32,6 +32,30 @@
   - Objetivo: feedback técnico automatizado (pop-ups, turns, compresión/extensión)
   - Stack: Python, MediaPipe, OpenCV, optical flow
 
+### Memory Architecture
+- **Local:** ~/.openclaw/workspace/memory/entities/
+- **Descripción:** Knowledge graph estructurado con PARA + atomic facts + memory decay
+- **Estado:** ✅ Pasos 1-3 completados (2026-03-18)
+- **Entities:** memory/entities/ — `areas/people/`, `areas/companies/`, `projects/`, `resources/`
+- **Decay:** `scripts/memory-decay.sh` — Cron semanal dom 23:00 (Hot/Warm/Cold tiering)
+- **Notas:**
+  - 13 entities, 62 atomic facts
+  - memory_search → provider: openai (funcional)
+  - `.autoimprove-skip` protege entities/ de autoimprove
+  - Fuente de verdad: JSON (.json) → auto-genera summaries (.md)
+
+### QMD Local Search
+- **Repo:** github.com/tobi/qmd
+- **Estado:** 📋 Planificado (no instalado)
+- **Descripción:** Motor de búsqueda local (SQLite + BM25 + vector) para archivos de memoria
+- **Prioridad:** Media — instalar cuando tengamos tiempo (Manu quiere hacerlo)
+- **Por qué:** Backup de memory_search, zero-cost, offline, escala mejor con 200+ archivos
+
+### Lola Toolkit
+- **Repo:** github.com/lolaopenclaw/lola-toolkit (público)
+- **Descripción:** Scripts, skills y protocolos para gestión de agentes IA
+- **Estado:** ✅ Activo (publicar todo lo útil, NUNCA tokens/keys/IPs)
+
 ---
 
 ## 🟡 En pausa / Mantenimiento
@@ -67,4 +91,4 @@ _(Añadir aquí proyectos completados o cancelados)_
 
 ---
 
-**Última actualización:** 2026-03-18 10:52 CET
+**Última actualización:** 2026-03-18 21:22 CET

@@ -6,7 +6,7 @@
   "facts": [
     {
       "id": "infra-001",
-      "fact": "VPS: Ubuntu 24.04 LTS, 16GB RAM, 8 cores. Provider: IONOS Cloud. Hostname: lola-openclaw-vps.taild8eaf6.ts.net (Tailscale).",
+      "fact": "VPS: Ubuntu 24.04 LTS, 16GB RAM, 8 cores. Provider: IONOS Cloud. Hostname: [redacted].ts.net (Tailscale).",
       "category": "context",
       "timestamp": "2026-01-01",
       "source": "memory/MEMORY.md",
