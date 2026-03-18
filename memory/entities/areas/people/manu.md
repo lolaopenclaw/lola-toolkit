@@ -1,34 +1,22 @@
-# Manu — Summary
+# Manuel León Mendiola — Summary
 
-**Full name:** Manuel León Mendiola  
-**Role:** Músico, creador de contenido, emprendedor, jefe de Lola  
-**Location:** Logroño, La Rioja, España (Europe/Madrid timezone)  
-**Contact:** @RagnarBlackmade (Telegram)  
-**Last updated:** 2026-03-18
+**Type:** person  
+**Last synthesized:** 2026-03-18  
+**Tiers:** 10 hot, 0 warm, 0 cold
 
-## Quick Facts
+## 🔥 Hot (recent / frequent)
 
-- **Music:** Bass in a Voice (bajo, voz, percusión) — 20+ años en escena riojana
-- **Active Projects:** Surf Coach AI, Finanzas Personal
-- **Communication:** Telegram (prefer concise, no filler)
-- **Availability:** Portátil L/V 8:30-13:30, M-J 8:30-15:30; móvil anytime
-- **Preferences:** Direct answers, evidence before claims, no corporate speak
-- **Health tracking:** Garmin Instinct 2S Solar Surf (OAuth integrated)
-
-## Working Style
-
-- Pragmatic: "hazlo ya" (do it now)
-- Iterative: prefers incremental progress over perfect plans
-- Low-ceremony: skips formality, asks questions directly
-- Values consistency in AI agent behavior
-- Wants to see concrete progress, not theory
-
-## Projects (Active)
-
-1. **Finanzas Personal** — Track expenses, auto-categorize, dashboards
-2. **Surf Coach AI** — Video analysis pipeline for surf technique
-3. **Memory Architecture** — Building structured, decaying knowledge graph (ongoing)
+- **[preference]** Communication preference: Text (default). Driving mode: TTS audio via Telegram (trigger: 'estoy en el coche' / 'ya estoy en casa'). Auto-reset 22:00 Madrid time.
+- **[preference]** Quiet hours (no notifications): 00:00-07:00 Madrid. Post-quiet (silent monitoring): 07:00-10:00. Morning (reports/Discord): 10:00+.
+- **[preference]** Work availability (laptop): Mon/Fri 8:30-13:30, Tue-Thu 8:30-15:30. Outside: mobile only (no SSH).
+- **[preference]** Working style: pragmatic, iterative, low-ceremony. Values: direct answers, evidence before claims, concrete progress over theory.
+- **[milestone]** Music project: Bass in a Voice (bajo, voz, percusión). 20+ years performing in La Rioja scene. YouTube: @bassinavoice
+- **[context]** GitHub: RagnarBlackmade. Active repos: lola-toolkit (public), surf-coach-ai (private), finanzas-personal (private). Policy: publish useful code, never leak tokens/IPs/paths.
+- **[context]** Health device: Garmin Instinct 2S Solar Surf. OAuth configured (account: Manu_Lazarus). Data: activity, HR, stress, Body Battery, sleep. Crons: 9AM report, Mon 8:30 weekly, alerts 14:00/20:00.
+- **[context]** Device: OnePlus 13 (Android). No SSH on mobile. Audios sent usually = mobile user.
+- **[preference]** Model preference: Default Haiku (cost). Fail 2x → suggest upgrade. Complex: Sonnet/Opus via /model flag.
+- **[context]** Full name: Manuel León Mendiola. Telegram: @RagnarBlackmade. Location: Logroño, La Rioja, Spain. Timezone: Europe/Madrid.
 
 ---
 
-See `manu.json` for detailed facts and history.
+See `manu.json` for all 10 facts.

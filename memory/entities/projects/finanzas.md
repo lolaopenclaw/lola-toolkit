@@ -1,48 +1,22 @@
 # Finanzas Personal — Summary
 
-**Status:** Active  
-**Goal:** Track personal expenses, auto-categorize, visualize spending patterns  
-**Owner:** Manu  
-**Started:** 2026-01-15  
-**Deadline:** Ongoing  
-**Last updated:** 2026-03-18
+**Type:** project  
+**Last synthesized:** 2026-03-18  
+**Tiers:** 10 hot, 0 warm, 0 cold
 
-## Current State
+## 🔥 Hot (recent / frequent)
 
-- **Data:** 418 movements tracked (CaixaBank: 64, Bankinter: 6)
-- **Bank coverage:** CaixaBank through 2026-03-17, Bankinter through 2026-03-03
-- **Categories:** 15+ (Supermercado, Transporte, Bares, Ocio, etc.)
-- **Bizum contacts:** 16 tracked
-- **March 2026:** +415.02€ ingresos, -2391.20€ gastos, -1976.18€ balance
-
-## Recent Work
-
-1. **OAuth2 setup** (2026-03-18) — Google Sheets API configured, token persistence via pickle
-2. **Data import** — CSV parser + deduplication by (fecha, importe, cuenta)
-3. **Google Sheets** — Movimientos sheet (70 rows, marzo), Comparativa Mensual working
-4. **Dashboard attempt** — Failed due to date format mismatch (active/resolved)
-
-## Blocking Issues
-
-- **Interactive dashboard** — Google Sheets date formula bugs (FILTER+REGEXMATCH). Workaround: use "Comparativa Mensual" sheet
-- **Bankinter extract** — Only through 2026-03-03 (waiting for Manu to provide recent extract)
-- **PayPal correlations** — Patreon (-9.08$ USD) and AliExpress (-11.28€) not yet matched in CaixaBank
-
-## Tech Stack
-
-- **Repo:** github.com/lolaopenclaw/finanzas-personal (private)
-- **Local:** ~/finanzas/
-- **Data:** movimientos_detallado.json, bizum_contacts.json
-- **Scripts:** parser_csv_detallado.py, update_sheet.py, telegram_report.py
-- **Updates:** Every 15 days (when Manu provides bank extracts)
-
-## Next Steps
-
-1. Finish Bankinter + PayPal correlation
-2. Add Revolut/Wise tracking (if used)
-3. Monthly reports (automated)
-4. Visualization dashboard (when time permits)
+- **[context]** Goal: Track personal expenses, auto-categorize, create visualizations. Repo: github.com/lolaopenclaw/finanzas-personal (private). Local: ~/finanzas/
+- **[context]** Categories tracked: 15+ including Supermercado, Transporte, Bares y restaurantes, Ocio y cultura, Mantenimiento hogar, Ropa, etc.
+- **[context]** Update cycle: Every 15 days (when Manu provides bank extracts from CaixaBank/Bankinter). Last major update: 2026-03-18 (63 new movements + 29 deduplicated)
+- **[status]** Data as of 2026-03-18: 418 total movements. CaixaBank: 64 movements through 2026-03-17. Bankinter: 6 movements through 2026-03-03.
+- **[status]** March 2026 summary: +415.02€ ingresos, -2391.20€ gastos, -1976.18€ balance (70 movements). Current balances: CaixaBank ~0.00€, Bankinter ~0.00€
+- **[status]** Bizum contacts: 16 tracked (friends/family for money transfers). Updated 2026-03-18.
+- **[context]** Tech stack: Google Sheets API (OAuth2 + refresh token). Local parsing: pandas, CSV reader. Data format: JSON (movimientos_detallado.json, bizum_contacts.json)
+- **[status]** Blocking issue: Interactive dashboard in Google Sheets. Problem: date format mismatch (Movimientos uses serial numbers, dropdown needs YYYY-MM text). Status: Abandoned for now, using 'Comparativa Mensual' sheet instead.
+- **[status]** Bankinter extract outdated. Only through 2026-03-03 (15+ days old). Waiting for Manu to provide recent extract covering 2026-03-04 onwards.
+- **[status]** PayPal correlations pending: Patreon subscription (-9.08$ USD) and AliExpress purchase (-11.28€) appear in PayPal but not yet found in CaixaBank movements. Needs manual investigation or PayPal statement integration.
 
 ---
 
-See `finanzas.json` for detailed tracking.
+See `finanzas.json` for all 10 facts.
