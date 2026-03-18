@@ -304,42 +304,14 @@ checkpoint-stop
 
 **To restart:** `checkpoint-schedule hourly` (or any frequency)
 
-## Setup
+## Setup Flows
 
-### First Time (Interactive)
-
-```bash
-checkpoint-setup
-```
-
-This is the recommended entry point — it handles git init, SSH keys, GitHub setup, and first backup automatically.
-
-### First Time (Manual)
-
-If you prefer manual control:
-
-```bash
-checkpoint-init                              # Initialize git
-# Then create PRIVATE GitHub repo at https://github.com/new (name: openclaw-state)
-cd ~/.openclaw/workspace
-git remote add origin git@github.com:YOURUSER/openclaw-state.git
-checkpoint-backup
-```
-
-### Second Machine
-
-```bash
-checkpoint-restore
-```
-
-This interactive restore guides you through authentication, repo selection, and full checkpoint restoration (including secrets recovery from 1Password, cron jobs, and agents).
-
-For manual restore:
-```bash
-git clone git@github.com:YOURUSER/openclaw-state.git ~/.openclaw/workspace
-# Restore secrets (.env files) from password manager
-openclaw gateway start
-```
+| Scenario | Recommended Command | Manual Alternative |
+|----------|------------------|-------------------|
+| **First Time (Easy)** | `checkpoint-setup` | N/A — handles all steps |
+| **First Time (Manual)** | — | `checkpoint-init` → create repo → `checkpoint-backup` |
+| **New Machine (Easy)** | `checkpoint-restore` | N/A — interactive restore with auth |
+| **New Machine (Manual)** | — | `git clone` + restore .env files + `openclaw gateway start` |
 
 ## Automated Backups
 
