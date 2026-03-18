@@ -1,0 +1,128 @@
+{
+  "entity_id": "people/manu",
+  "entity_name": "Manuel León Mendiola",
+  "entity_type": "person",
+  "created": "2026-03-18T20:59:00Z",
+  "facts": [
+    {
+      "id": "manu-001",
+      "fact": "Full name: Manuel León Mendiola. Telegram: @RagnarBlackmade. Location: Logroño, La Rioja, Spain. Timezone: Europe/Madrid.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/USER.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "manu-002",
+      "fact": "Music project: Bass in a Voice (bajo, voz, percusión). 20+ years performing in La Rioja scene. YouTube: @bassinavoice",
+      "category": "milestone",
+      "timestamp": "2026-01-01",
+      "source": "memory/USER.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 3
+    },
+    {
+      "id": "manu-003",
+      "fact": "Work availability (laptop): Mon/Fri 8:30-13:30, Tue-Thu 8:30-15:30. Outside: mobile only (no SSH).",
+      "category": "preference",
+      "timestamp": "2026-03-01",
+      "source": "memory/USER.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 5
+    },
+    {
+      "id": "manu-004",
+      "fact": "Communication preference: Text (default). Driving mode: TTS audio via Telegram (trigger: 'estoy en el coche' / 'ya estoy en casa'). Auto-reset 22:00 Madrid time.",
+      "category": "preference",
+      "timestamp": "2026-03-01",
+      "source": "memory/USER.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 8
+    },
+    {
+      "id": "manu-005",
+      "fact": "Health device: Garmin Instinct 2S Solar Surf. OAuth configured (account: Manu_Lazarus). Data: activity, HR, stress, Body Battery, sleep. Crons: 9AM report, Mon 8:30 weekly, alerts 14:00/20:00.",
+      "category": "context",
+      "timestamp": "2026-02-15",
+      "source": "memory/USER.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["projects/finanzas", "projects/health-tracking"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "manu-006",
+      "fact": "Working style: pragmatic, iterative, low-ceremony. Values: direct answers, evidence before claims, concrete progress over theory.",
+      "category": "preference",
+      "timestamp": "2026-03-01",
+      "source": "memory/SOUL.md + observations",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 4
+    },
+    {
+      "id": "manu-007",
+      "fact": "Quiet hours (no notifications): 00:00-07:00 Madrid. Post-quiet (silent monitoring): 07:00-10:00. Morning (reports/Discord): 10:00+.",
+      "category": "preference",
+      "timestamp": "2026-02-01",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 6
+    },
+    {
+      "id": "manu-008",
+      "fact": "Device: OnePlus 13 (Android). No SSH on mobile. Audios sent usually = mobile user.",
+      "category": "context",
+      "timestamp": "2026-03-01",
+      "source": "memory/USER.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "manu-009",
+      "fact": "GitHub: RagnarBlackmade. Active repos: lola-toolkit (public), surf-coach-ai (private), finanzas-personal (private). Policy: publish useful code, never leak tokens/IPs/paths.",
+      "category": "context",
+      "timestamp": "2026-03-15",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["projects/lola-toolkit", "projects/surf-coach", "projects/finanzas"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 3
+    },
+    {
+      "id": "manu-010",
+      "fact": "Model preference: Default Haiku (cost). Fail 2x → suggest upgrade. Complex: Sonnet/Opus via /model flag.",
+      "category": "preference",
+      "timestamp": "2026-03-01",
+      "source": "memory/model-selection-protocol.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    }
+  ]
+}

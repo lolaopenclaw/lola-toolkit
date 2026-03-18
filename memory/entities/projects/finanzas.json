@@ -1,0 +1,131 @@
+{
+  "entity_id": "projects/finanzas",
+  "entity_name": "Finanzas Personal",
+  "entity_type": "project",
+  "created": "2026-01-15T00:00:00Z",
+  "status": "active",
+  "deadline": null,
+  "owner": "people/manu",
+  "facts": [
+    {
+      "id": "finanzas-001",
+      "fact": "Goal: Track personal expenses, auto-categorize, create visualizations. Repo: github.com/lolaopenclaw/finanzas-personal (private). Local: ~/finanzas/",
+      "category": "context",
+      "timestamp": "2026-01-15",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "areas/companies/caixabank", "areas/companies/bankinter"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 3
+    },
+    {
+      "id": "finanzas-002",
+      "fact": "Data as of 2026-03-18: 418 total movements. CaixaBank: 64 movements through 2026-03-17. Bankinter: 6 movements through 2026-03-03.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "finanzas-003",
+      "fact": "March 2026 summary: +415.02€ ingresos, -2391.20€ gastos, -1976.18€ balance (70 movements). Current balances: CaixaBank ~0.00€, Bankinter ~0.00€",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "finanzas-004",
+      "fact": "Categories tracked: 15+ including Supermercado, Transporte, Bares y restaurantes, Ocio y cultura, Mantenimiento hogar, Ropa, etc.",
+      "category": "context",
+      "timestamp": "2026-01-15",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "finanzas-005",
+      "fact": "Bizum contacts: 16 tracked (friends/family for money transfers). Updated 2026-03-18.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "finanzas-006",
+      "fact": "Tech stack: Google Sheets API (OAuth2 + refresh token). Local parsing: pandas, CSV reader. Data format: JSON (movimientos_detallado.json, bizum_contacts.json)",
+      "category": "context",
+      "timestamp": "2026-03-15",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "finanzas-007",
+      "fact": "Update cycle: Every 15 days (when Manu provides bank extracts from CaixaBank/Bankinter). Last major update: 2026-03-18 (63 new movements + 29 deduplicated)",
+      "category": "context",
+      "timestamp": "2026-03-01",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "finanzas-008",
+      "fact": "Blocking issue: Interactive dashboard in Google Sheets. Problem: date format mismatch (Movimientos uses serial numbers, dropdown needs YYYY-MM text). Status: Abandoned for now, using 'Comparativa Mensual' sheet instead.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "finanzas-009",
+      "fact": "Bankinter extract outdated. Only through 2026-03-03 (15+ days old). Waiting for Manu to provide recent extract covering 2026-03-04 onwards.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["areas/companies/bankinter"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "finanzas-010",
+      "fact": "PayPal correlations pending: Patreon subscription (-9.08$ USD) and AliExpress purchase (-11.28€) appear in PayPal but not yet found in CaixaBank movements. Needs manual investigation or PayPal statement integration.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}
