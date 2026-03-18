@@ -1,0 +1,44 @@
+{
+  "entity_id": "resources/bass-in-a-voice",
+  "entity_name": "Bass in a Voice",
+  "entity_type": "music_project",
+  "created": "2026-03-18T21:10:00Z",
+  "facts": [
+    {
+      "id": "biav-001",
+      "fact": "Manu's music project. Trio format: voice (Manu), bass (Quique Alcalde), percussion (Javi Alcalde since 2023). Active since 2014.",
+      "category": "context",
+      "timestamp": "2014-01-01",
+      "source": "memory/manu-profile.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "people/quique-alcalde", "people/javi-alcalde"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "biav-002",
+      "fact": "YouTube: https://www.youtube.com/@bassinavoice. Style: original arrangements and covers.",
+      "category": "context",
+      "timestamp": "2026-01-01",
+      "source": "memory/manu-profile.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "biav-003",
+      "fact": "Manu's musical history: Hijos del Exceso (2004-2008), Miedo Azul (2004-2008), Boncacántica (transition), Motel Lazarus (2008-2017), Kaiah (2018), Bass in a Voice (2014-present). Over 20 years in La Rioja music scene.",
+      "category": "milestone",
+      "timestamp": "2004-01-01",
+      "source": "memory/manu-profile.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

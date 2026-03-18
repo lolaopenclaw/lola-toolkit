@@ -1,0 +1,32 @@
+{
+  "entity_id": "companies/caixabank",
+  "entity_name": "CaixaBank",
+  "entity_type": "company",
+  "created": "2026-03-18T21:10:00Z",
+  "facts": [
+    {
+      "id": "caixa-001",
+      "fact": "Manu's primary bank account. Movements tracked in finanzas-personal. Export format: Norma 43 (CSV).",
+      "category": "context",
+      "timestamp": "2026-01-15",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "projects/finanzas"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 3
+    },
+    {
+      "id": "caixa-002",
+      "fact": "Data coverage: Through 2026-03-17. 64 movements tracked. Balance: ~0.00€.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["projects/finanzas"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

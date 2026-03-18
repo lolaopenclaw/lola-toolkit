@@ -1,0 +1,83 @@
+{
+  "entity_id": "projects/surf-coach",
+  "entity_name": "Surf Coach AI",
+  "entity_type": "project",
+  "created": "2026-03-17T00:00:00Z",
+  "status": "active",
+  "deadline": null,
+  "owner": "people/manu",
+  "facts": [
+    {
+      "id": "surf-001",
+      "fact": "Goal: AI coach for surf technique analysis using video + pose estimation. Provide automated feedback on pop-ups, turns, compression/extension.",
+      "category": "context",
+      "timestamp": "2026-03-17",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 3
+    },
+    {
+      "id": "surf-002",
+      "fact": "Repo: github.com/lolaopenclaw/surf-coach-ai (private, shared with RagnarBlackmade). Local: ~/projects/surf-coach/",
+      "category": "context",
+      "timestamp": "2026-03-17",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "surf-003",
+      "fact": "Tech stack: Python, MediaPipe (pose estimation), OpenCV (video processing), optical flow analysis. Runs with cpulimit to protect VPS.",
+      "category": "context",
+      "timestamp": "2026-03-17",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "surf-004",
+      "fact": "Video corpus: 5 corrected videos (Jorge, Surf Labs) as ground truth + 4 raw comparison videos. 9 MP4s analyzed total.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "surf-005",
+      "fact": "Analysis pipeline: frame extraction → MediaPipe pose → optical flow → metrics (angle, speed, balance) → annotated MP4 + JSON report.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "surf-006",
+      "fact": "Status as of 2026-03-18: 2 full analyses complete (12550 + 14328 frames). analyze_remaining.py relaunched after VPS reboot with venv-coach.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

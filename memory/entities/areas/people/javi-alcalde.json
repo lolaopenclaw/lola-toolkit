@@ -1,0 +1,20 @@
+{
+  "entity_id": "people/javi-alcalde",
+  "entity_name": "Javi Alcalde",
+  "entity_type": "person",
+  "created": "2026-03-18T21:08:00Z",
+  "facts": [
+    {
+      "id": "javi-001",
+      "fact": "Percusión (percussion) in Bass in a Voice since 2023. Bandmate of Manu.",
+      "category": "relationship",
+      "timestamp": "2023-01-01",
+      "source": "memory/manu-profile.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "people/quique-alcalde"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

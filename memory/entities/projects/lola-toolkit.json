@@ -1,0 +1,23 @@
+{
+  "entity_id": "projects/lola-toolkit",
+  "entity_name": "Lola Toolkit",
+  "entity_type": "project",
+  "created": "2026-02-01T00:00:00Z",
+  "status": "active",
+  "deadline": null,
+  "owner": "people/lola",
+  "facts": [
+    {
+      "id": "toolkit-001",
+      "fact": "Public repo: github.com/lolaopenclaw/lola-toolkit. Scripts, skills, and protocols for AI agent management. Policy: publish everything useful, NEVER tokens/keys/IPs/paths.",
+      "category": "context",
+      "timestamp": "2026-02-01",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/lola", "people/manu"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    }
+  ]
+}

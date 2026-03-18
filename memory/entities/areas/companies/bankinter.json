@@ -1,0 +1,32 @@
+{
+  "entity_id": "companies/bankinter",
+  "entity_name": "Bankinter",
+  "entity_type": "company",
+  "created": "2026-03-18T21:10:00Z",
+  "facts": [
+    {
+      "id": "bankinter-001",
+      "fact": "Manu's secondary bank account. Export format: XLSX. Movements tracked in finanzas-personal.",
+      "category": "context",
+      "timestamp": "2026-01-15",
+      "source": "memory/PROJECTS.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "projects/finanzas"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "bankinter-002",
+      "fact": "Data coverage: Through 2026-03-03 only (15+ days outdated). 6 movements tracked. Balance: ~0.00€. Waiting for Manu to provide recent extract.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["projects/finanzas"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

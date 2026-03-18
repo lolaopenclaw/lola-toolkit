@@ -1,0 +1,92 @@
+{
+  "entity_id": "resources/openclaw-infra",
+  "entity_name": "OpenClaw Infrastructure",
+  "entity_type": "resource",
+  "created": "2026-03-18T21:10:00Z",
+  "facts": [
+    {
+      "id": "infra-001",
+      "fact": "VPS: Ubuntu 24.04 LTS, 16GB RAM, 8 cores. Provider: IONOS Cloud. Hostname: lola-openclaw-vps.taild8eaf6.ts.net (Tailscale).",
+      "category": "context",
+      "timestamp": "2026-01-01",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/lola"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 3
+    },
+    {
+      "id": "infra-002",
+      "fact": "OpenClaw v2026.3.13. Default model: claude-haiku-4-5. Fallbacks: claude-sonnet-4-5, gemini-3-flash-preview.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "infra-003",
+      "fact": "Security: Hardened (DROP default policy, SSH key-only, AppArmor). Ubuntu Pro: ESM-Infra + ESM-Apps + Livepatch. Protocol A+B before any SSH/firewall changes.",
+      "category": "context",
+      "timestamp": "2026-03-16",
+      "source": "memory/security.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "infra-004",
+      "fact": "Crons: 4AM daily backup (Google Drive, 30-day retention), 9AM morning report, Mon 6AM security audit, Mon 8:30 Garmin weekly, Sun 23:00 memory decay.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "infra-005",
+      "fact": "Integrations: Google Workspace (gog CLI, lolaopenclaw@gmail.com), GitHub (gh CLI, lolaopenclaw account), Garmin Connect (OAuth), Telegram (primary channel), Discord (morning reports).",
+      "category": "context",
+      "timestamp": "2026-03-01",
+      "source": "memory/MEMORY.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/lola"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 2
+    },
+    {
+      "id": "infra-006",
+      "fact": "Local ports: 18790 (gateway), 8080 (web), 3333 (dev), 5001 (misc). Memory search: OpenAI embeddings provider (changed 2026-03-18 from local).",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/dashboards.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "infra-007",
+      "fact": "Kernel 6.8.0-106 pending reboot (deferred 2026-03-18, running 6.8.0-101). Tailscale 1.96.2 updated. Chrome 146 updated.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

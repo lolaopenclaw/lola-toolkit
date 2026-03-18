@@ -1,0 +1,20 @@
+{
+  "entity_id": "people/quique-alcalde",
+  "entity_name": "Quique Alcalde",
+  "entity_type": "person",
+  "created": "2026-03-18T21:08:00Z",
+  "facts": [
+    {
+      "id": "quique-001",
+      "fact": "Bajo (bass player) in Bass in a Voice. Bandmate of Manu.",
+      "category": "relationship",
+      "timestamp": "2026-01-01",
+      "source": "memory/manu-profile.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "people/javi-alcalde"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}

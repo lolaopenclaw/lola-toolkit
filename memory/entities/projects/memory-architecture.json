@@ -1,0 +1,83 @@
+{
+  "entity_id": "projects/memory-architecture",
+  "entity_name": "Memory Architecture",
+  "entity_type": "project",
+  "created": "2026-03-18T21:00:00Z",
+  "status": "active",
+  "deadline": null,
+  "owner": "people/manu",
+  "facts": [
+    {
+      "id": "memarch-001",
+      "fact": "Goal: Build structured, decaying knowledge graph for Lola's memory. Inspired by Nate Eliason article on PARA + QMD + atomic facts.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": ["people/manu", "people/lola"],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "memarch-002",
+      "fact": "Paso 1 DONE: memory_search switched from local to openai provider (anthropic embeddings).",
+      "category": "milestone",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "memarch-003",
+      "fact": "Paso 2 DONE: Structured entities with PARA schema. Directory: memory/entities/. JSON atomic facts with schema (id, fact, category, timestamp, source, status, supersededBy, relatedEntities, lastAccessed, accessCount).",
+      "category": "milestone",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "memarch-004",
+      "fact": "Paso 3 DONE: Memory decay script (scripts/memory-decay.sh). Hot (7 days)/Warm (8-30 days)/Cold (30+ days) tiering. Frequency resistance for high-access facts. Weekly cron: Sundays 23:00.",
+      "category": "milestone",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "memarch-005",
+      "fact": "Paso 4 PENDING: QMD or equivalent search layer. Only if memory_search (openai provider) proves insufficient.",
+      "category": "status",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    },
+    {
+      "id": "memarch-006",
+      "fact": "Key constraint: autoimprove must SKIP memory/entities/ (.autoimprove-skip marker in place). Entities are auto-generated from JSON by memory-decay.sh.",
+      "category": "context",
+      "timestamp": "2026-03-18",
+      "source": "memory/2026-03-18.md",
+      "status": "active",
+      "supersededBy": null,
+      "relatedEntities": [],
+      "lastAccessed": "2026-03-18",
+      "accessCount": 1
+    }
+  ]
+}
