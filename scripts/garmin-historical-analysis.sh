@@ -1,14 +1,39 @@
 #!/bin/bash
 # Análisis histórico de datos de Garmin Connect
 # Uso: garmin-historical-analysis.sh [días] (default: 30)
+# Requisitos: Python 3, módulo garminconnect, ~/.openclaw/.env con GARMIN_TOKENS
+
+set -euo pipefail
+
+# Validación de dependencias
+if ! command -v python3 &> /dev/null; then
+  echo "❌ Error: python3 no está instalado"
+  exit 1
+fi
+
+ENV_FILE="${HOME}/.openclaw/.env"
+if [ ! -f "$ENV_FILE" ]; then
+  echo "❌ Error: No encontrado $ENV_FILE (requerido para GARMIN_TOKENS)"
+  exit 1
+fi
+
+if ! grep -q "GARMIN_TOKENS=" "$ENV_FILE"; then
+  echo "❌ Error: GARMIN_TOKENS no configurado en $ENV_FILE"
+  exit 1
+fi
 
 DAYS="${1:-30}"
+if ! [[ "$DAYS" =~ ^[0-9]+$ ]] || [ "$DAYS" -lt 1 ]; then
+  echo "❌ Error: días debe ser un número positivo (pasó: $DAYS)"
+  exit 1
+fi
 
 python3 << PYEOF
 from garminconnect import Garmin
 import os
 from datetime import datetime, date, timedelta
 import sys
+import traceback
 
 def load_garmin_client():
     """Carga cliente Garmin con tokens OAuth y aplica fix del displayName"""
@@ -16,14 +41,18 @@ def load_garmin_client():
     
     # Cargar tokens
     tokens = None
-    with open(env_file, 'r') as f:
-        for line in f:
-            if line.startswith('GARMIN_TOKENS='):
-                tokens = line.split('=', 1)[1].strip()
-                break
+    try:
+        with open(env_file, 'r') as f:
+            for line in f:
+                if line.startswith('GARMIN_TOKENS='):
+                    tokens = line.split('=', 1)[1].strip()
+                    break
+    except IOError as e:
+        print(f"❌ Error leyendo {env_file}: {e}")
+        sys.exit(1)
     
     if not tokens:
-        print("❌ Error: No se encontraron tokens de Garmin en ~/.openclaw/.env")
+        print("❌ Error: GARMIN_TOKENS no encontrado en ~/.openclaw/.env")
         sys.exit(1)
     
     # Crear cliente
