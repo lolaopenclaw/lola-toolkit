@@ -32,8 +32,26 @@ Use `sonos` to control Sonos speakers on the local network.
 | SSDP timeout | Network isolation? Try `--ip <speaker-ip>` directly instead of discovery. |
 | Volume/play commands hang | Speaker might be busy. Wait 2s and retry. |
 
+## Advanced Grouping
+
+| Command | Effect |
+|---------|--------|
+| `sonos group party` | Add all speakers to group |
+| `sonos group solo` | Remove all speakers from groups |
+| `sonos group join <leader>` | Join <leader> speaker's group |
+| `sonos group unjoin` | Leave current group |
+| `sonos group list` | Show current grouping |
+
 ## Tips
 
-- Use `--name "Kitchen"` to target specific speaker; omit to apply to first found.
-- Grouping: `party` = all speakers, `solo` = ungrou all.
-- Requires mDNS/SSDP on local network (no remote control).
+- **Target:** Use `--name "Kitchen"` for specific speaker; omit to apply to first found.
+- **Discovery:** Requires mDNS/SSDP on local network (no remote control).
+- **Error recovery:** If commands hang, kill (Ctrl+C) and retry after 2-3 seconds.
+- **Favorites:** `favorites open <name>` requires exact name match; use `list` first.
+- **Spotify:** Optional — omit if Spotify not configured or not needed.
+
+## Environment
+
+- `SPOTIFY_CLIENT_ID` — (optional) Spotify track search
+- `SPOTIFY_SECRET` — (optional) Spotify track search
+- No credentials stored — safe to export env vars
