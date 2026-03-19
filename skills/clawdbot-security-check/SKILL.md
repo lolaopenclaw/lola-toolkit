@@ -48,6 +48,23 @@ Use these commands to run security audits:
 
 When auditing Clawdbot, systematically evaluate these domains:
 
+### Domain Quick Scan
+
+| # | Domain | Risk | Quick Check Command |
+|---|--------|------|---------------------|
+| 1 | Gateway Exposure | 🔴 Critical | `cat ~/.clawdbot/clawdbot.json \| grep -A5 '"gateway"'` |
+| 2 | DM Policy | 🟠 High | `cat ~/.clawdbot/clawdbot.json \| grep '"dmPolicy"'` |
+| 3 | Group Access | 🟠 High | `cat ~/.clawdbot/clawdbot.json \| grep -E '"groupPolicy"\|"groups"'` |
+| 4 | Credentials Security | 🔴 Critical | `ls -la ~/.clawdbot/credentials/ && stat -c "%a" ~/.clawdbot/credentials/oauth.json 2>/dev/null` |
+| 5 | Browser & Network | 🟠 High | `cat ~/.clawdbot/clawdbot.json \| grep -E '"browser"\|"bind"'` |
+| 6 | Tool Access | 🟡 Medium | `cat ~/.clawdbot/clawdbot.json \| grep -A10 '"tools"'` |
+| 7 | File Permissions | 🟡 Medium | `find ~/.clawdbot -type f -perm /077 2>/dev/null` |
+| 8 | Plugin Trust | 🟡 Medium | `cat ~/.clawdbot/clawdbot.json \| grep '"plugins"'` |
+| 9 | Logging & Redaction | 🟡 Medium | `cat ~/.clawdbot/clawdbot.json \| grep -E '"log"\|"redact"'` |
+| 10 | Prompt Injection | 🟡 Medium | `cat ~/.clawdbot/clawdbot.json \| grep '"systemPrompt"'` |
+| 11 | Command Blocking | 🟡 Medium | `cat ~/.clawdbot/clawdbot.json \| grep -A5 '"blocklist"'` |
+| 12 | Secret Scanning | 🟡 Medium | `grep -r "CLAWDBOT_\|SECRET_" ~/.clawdbot/clawdbot.json` |
+
 ### 1. Gateway Exposure 🔴 Critical
 
 **What to check:**
