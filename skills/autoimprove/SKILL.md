@@ -10,7 +10,9 @@ Applies the Karpathy Autoresearch pattern (iterate → test → keep/discard) to
 
 ---
 
-## Phase 1 — Parse Arguments
+## Phase 1 — Parse Arguments & Initialize
+
+### CLI Flags
 
 | Flag | Default | Description |
 |------|---------|-------------|
@@ -19,32 +21,21 @@ Applies the Karpathy Autoresearch pattern (iterate → test → keep/discard) to
 | --dry-run | false | Analyze and propose only, don't apply |
 | --circuit-breaker | 5 | Stop after N consecutive failures to improve |
 
-## Phase 2 — Initialize
+### Improvement Log
 
-Create/read the improvement log:
-```bash
-LOG_FILE="$HOME/.openclaw/workspace/memory/autoimprove-log.json"
-```
+Create/read: `$HOME/.openclaw/workspace/memory/autoimprove-log.json`
 
-Structure:
 ```json
 {
   "runs": [
-    {
-      "date": "2026-03-14",
-      "iterations": 10,
-      "improvements": 3,
-      "reverts": 6,
-      "circuit_break": false,
-      "details": [...]
-    }
+    {"date": "2026-03-14", "iterations": 10, "improvements": 3, "reverts": 6, "circuit_break": false, "details": [...]}
   ],
   "total_improvements": 0,
   "streak": 0
 }
 ```
 
-Read the log to understand past improvements and avoid re-trying failed experiments.
+Use log to avoid re-trying failed experiments from past 7 days.
 
 ## Phase 3 — Iteration Loop
 
