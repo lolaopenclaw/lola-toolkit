@@ -31,10 +31,10 @@ Write everything. Distill daily → MEMORY.md.
 **NEVER:** tokens, keys, IPs, *.ts.net, /paths, .env, SSH keys, personal data. Pre-check `gh`. Rotate tokens q3m.
 
 ### Verification & HITL
-Evidence before assertions. Complex/risky tasks: Explore → Propose → Approve → Implement → Verify. See `memory/hitl-protocol.md` and `memory/verification-protocol.md`.
-- Check external state before/after acting
-- GitHub: fetch ALL comments, read own history, don't repeat
-- Completion claims: run verification command, read output first
+Evidence > assertions. Complex/risky: Explore → Propose → Approve → Implement → Verify.
+- Check state before/after
+- GitHub: fetch ALL, read history, don't repeat
+- Verify completion: run command, read output first
 
 ### Correcciones
 Minor errors (1-2x): ignore. Repeated (3+): correct constructively.
