@@ -49,8 +49,15 @@ echo "Tamaño: $(du -h "$BACKUP_FILE" | cut -f1)"
 echo "Fecha: $(date -u '+%Y-%m-%d %H:%M UTC')"
 echo ""
 
+# --- Validación del tarball --------------------------------------------------
+echo -e "${BLUE}━━━ [0/8] Validando integridad del backup${NC}"
+if ! tar tzf "$BACKUP_FILE" &>/dev/null; then
+    fail "Tarball corrupto o inválido. Verificar con: tar tzf '$BACKUP_FILE'"
+fi
+ok "Tarball válido"
+
 # --- Extracción --------------------------------------------------------------
-echo -e "${BLUE}━━━ [1/7] Extrayendo backup${NC}"
+echo -e "${BLUE}━━━ [1/8] Extrayendo backup${NC}"
 TMPDIR=$(mktemp -d)
 tar xzf "$BACKUP_FILE" -C "$TMPDIR"
 
@@ -64,7 +71,7 @@ FILE_COUNT=$(find "$EXTRACTED" -type f | wc -l)
 ok "Extraídos $FILE_COUNT archivos"
 
 # --- Backup de seguridad del estado actual -----------------------------------
-echo -e "${BLUE}━━━ [2/7] Backup de seguridad del estado actual${NC}"
+echo -e "${BLUE}━━━ [2/8] Backup de seguridad del estado actual${NC}"
 if [ -d "$WORKSPACE" ] && [ "$(ls -A $WORKSPACE 2>/dev/null)" ]; then
     SAFETY_BACKUP="/tmp/openclaw-pre-restore-$(date +%Y%m%d%H%M%S).tar.gz"
     tar czf "$SAFETY_BACKUP" -C "$HOME" .openclaw/workspace/ 2>/dev/null || true
@@ -74,7 +81,7 @@ else
 fi
 
 # --- Restaurar openclaw.json ------------------------------------------------
-echo -e "${BLUE}━━━ [3/7] Restaurando configuración OpenClaw${NC}"
+echo -e "${BLUE}━━━ [3/8] Restaurando configuración OpenClaw${NC}"
 mkdir -p "$OPENCLAW_DIR"
 
 if [ -f "$EXTRACTED/openclaw.json" ]; then
@@ -86,7 +93,7 @@ else
 fi
 
 # --- Restaurar .env ----------------------------------------------------------
-echo -e "${BLUE}━━━ [4/7] Restaurando secrets (.env)${NC}"
+echo -e "${BLUE}━━━ [4/8] Restaurando secrets (.env)${NC}"
 
 if [ -f "$EXTRACTED/dot-env" ]; then
     cp "$EXTRACTED/dot-env" "$OPENCLAW_DIR/.env"
@@ -113,7 +120,7 @@ else
 fi
 
 # --- Restaurar cron database -------------------------------------------------
-echo -e "${BLUE}━━━ [5/7] Restaurando cron jobs${NC}"
+echo -e "${BLUE}━━━ [5/8] Restaurando cron jobs${NC}"
 
 if [ -d "$EXTRACTED/cron-db" ]; then
     mkdir -p "$OPENCLAW_DIR/cron"
@@ -131,7 +138,7 @@ else
 fi
 
 # --- Restaurar workspace ----------------------------------------------------
-echo -e "${BLUE}━━━ [6/7] Restaurando workspace${NC}"
+echo -e "${BLUE}━━━ [6/8] Restaurando workspace${NC}"
 mkdir -p "$WORKSPACE"
 mkdir -p "$WORKSPACE/memory"
 mkdir -p "$WORKSPACE/scripts"
@@ -163,7 +170,7 @@ for f in SOUL.md USER.md AGENTS.md IDENTITY.md MEMORY.md RECOVERY.md TOOLS.md HE
 done
 
 # --- Limpieza ----------------------------------------------------------------
-echo -e "${BLUE}━━━ [7/7] Limpieza${NC}"
+echo -e "${BLUE}━━━ [7/8] Limpieza${NC}"
 rm -rf "$TMPDIR"
 ok "Archivos temporales limpiados"
 
