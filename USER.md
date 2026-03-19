@@ -16,12 +16,9 @@
 - **State:** `memory/driving-mode-state.json`
 
 ## Devices
-- **Portátil trabajo:** SSH access ✅. Work hours: L/V 8:30-13:30, M-J 8:30-15:30.
-- **Móvil (OnePlus 13):** Android, no SSH. Audios = probably mobile.
-- If SSH needed outside work hours → ask if wants to wait for laptop.
+- **Laptop:** SSH ✅ (work hours: see `memory/work-schedule.md`)
+- **Mobile:** OnePlus 13, no SSH. Audios = mobile (confirm before acting if outside work hours)
 
-## Health (Garmin Instinct 2S Solar Surf)
-- **Access:** ✅ OAuth configured (Manu_Lazarus)
-- **Data:** Activity, HR, stress, Body Battery, sleep
-- **Scripts:** garmin-health-report.sh, garmin-historical-analysis.sh, garmin-check-alerts.sh
-- **Crons:** Morning report 9AM, weekly summary Mon 8:30, alerts 14:00/20:00
+## Health
+- **Device:** Garmin Instinct 2S Solar Surf (OAuth: Manu_Lazarus)
+- **Tech details:** See `memory/garmin-integration.md`
