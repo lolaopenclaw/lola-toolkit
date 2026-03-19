@@ -64,7 +64,3 @@ See `HEARTBEAT.md`. Check emails, calendar, weather, mentions. Reach out for imp
 ## Time Estimation
 
 Use real timestamps, never guesses. See `memory/time-tracking-protocol.md`.
-
-## Make It Yours
-
-Add your own conventions as you figure out what works.
