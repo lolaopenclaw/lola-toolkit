@@ -3,7 +3,7 @@
   "entity_name": "QMD Local Search",
   "entity_type": "project",
   "created": "2026-03-18T21:17:00Z",
-  "status": "planned",
+  "status": "completed",
   "deadline": null,
   "owner": "people/manu",
   "facts": [
@@ -15,7 +15,10 @@
       "source": "memory/2026-03-18.md",
       "status": "active",
       "supersededBy": null,
-      "relatedEntities": ["projects/memory-architecture", "people/lola"],
+      "relatedEntities": [
+        "projects/memory-architecture",
+        "people/lola"
+      ],
       "lastAccessed": "2026-03-18",
       "accessCount": 1
     },
@@ -33,13 +36,15 @@
     },
     {
       "id": "qmd-003",
-      "fact": "Manu's priority: Wants to do this. Not urgent but important. 'Me parece una idea brillante. Daño no nos hace ninguno.'",
+      "fact": "Manu's priority: Wants to do this. Not urgent but important. 'Me parece una idea brillante. Da\u00f1o no nos hace ninguno.'",
       "category": "preference",
       "timestamp": "2026-03-18",
       "source": "conversation 2026-03-18",
       "status": "active",
       "supersededBy": null,
-      "relatedEntities": ["people/manu"],
+      "relatedEntities": [
+        "people/manu"
+      ],
       "lastAccessed": "2026-03-18",
       "accessCount": 1
     },
@@ -55,5 +60,7 @@
       "lastAccessed": "2026-03-18",
       "accessCount": 1
     }
-  ]
+  ],
+  "completedDate": "2026-03-19",
+  "completedNote": "Resolved via OpenClaw native memory_search with Ollama/nomic-embed-text. 221 files, 685 chunks indexed. Daily cron reindex at 4:30AM."
 }

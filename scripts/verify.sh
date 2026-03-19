@@ -22,6 +22,12 @@ check_pass() { echo -e "  ${GREEN}✅ $1${NC}"; ((PASS++)); }
 check_fail() { echo -e "  ${RED}❌ $1${NC}"; ((FAIL++)); }
 check_warn() { echo -e "  ${YELLOW}⚠️  $1${NC}"; ((WARN++)); }
 
+# DRY helpers
+check_cmd()    { command -v "$1" &>/dev/null && check_pass "$2 instalado" || check_fail "$2 NO instalado"; }
+check_file()   { [ -f "$1" ] && check_pass "$2 existe" || check_fail "$2 NO existe"; }
+check_dir()    { [ -d "$1" ] && check_pass "$2 existe" || check_fail "$2 NO existe"; }
+check_service() { systemctl is-active "$1" &>/dev/null && check_pass "$2 activo" || check_fail "$2 NO activo"; }
+
 echo -e "${BLUE}╔══════════════════════════════════════════════════╗${NC}"
 echo -e "${BLUE}║  🔍 Verificación Post-Recovery                   ║${NC}"
 echo -e "${BLUE}╚══════════════════════════════════════════════════╝${NC}"
@@ -84,44 +90,25 @@ systemctl is-active unattended-upgrades &>/dev/null && check_pass "Unattended-up
 echo -e "${BLUE}━━━ Software${NC}"
 # =============================================================================
 
-# Node.js
+# Versioned software
 command -v node &>/dev/null && check_pass "Node.js: $(node --version)" || check_fail "Node.js NO instalado"
-
-# npm
 command -v npm &>/dev/null && check_pass "npm: $(npm --version)" || check_fail "npm NO instalado"
-
-# OpenClaw
 if command -v openclaw &>/dev/null; then
-    OC_VER=$(openclaw --version 2>/dev/null || echo "error")
-    check_pass "OpenClaw: $OC_VER"
+    check_pass "OpenClaw: $(openclaw --version 2>/dev/null || echo 'ok')"
 else
     check_fail "OpenClaw NO instalado"
 fi
+command -v google-chrome &>/dev/null && check_pass "Chrome: $(google-chrome --version 2>/dev/null | head -1)" || check_fail "Chrome NO instalado"
 
-# Chrome
-if command -v google-chrome &>/dev/null; then
-    check_pass "Chrome: $(google-chrome --version 2>/dev/null | head -1)"
-else
-    check_fail "Chrome NO instalado"
-fi
+# Critical tools
+[ -x /usr/local/bin/chrome-shim ] && check_pass "chrome-shim" || check_fail "chrome-shim NO encontrado"
 
-# chrome-shim
-[ -x /usr/local/bin/chrome-shim ] && check_pass "chrome-shim: /usr/local/bin/chrome-shim" || check_fail "chrome-shim NO encontrado"
-
-# Homebrew
-command -v brew &>/dev/null && check_pass "Homebrew instalado" || check_warn "Homebrew no instalado"
-
-# GOG
-command -v gog &>/dev/null && check_pass "GOG CLI instalado" || check_warn "GOG CLI no instalado"
-
-# rclone
-command -v rclone &>/dev/null && check_pass "rclone instalado" || check_warn "rclone no instalado"
-
-# ripgrep
-command -v rg &>/dev/null && check_pass "ripgrep instalado" || check_warn "ripgrep no instalado"
-
-# yt-dlp
-command -v yt-dlp &>/dev/null && check_pass "yt-dlp instalado" || check_warn "yt-dlp no instalado"
+# Optional tools
+check_cmd brew "Homebrew"
+check_cmd gog "GOG CLI"
+check_cmd rclone "rclone"
+check_cmd rg "ripgrep"
+check_cmd yt-dlp "yt-dlp"
 
 # =============================================================================
 echo -e "${BLUE}━━━ OpenClaw Config${NC}"
@@ -159,12 +146,11 @@ echo -e "${BLUE}━━━ Workspace${NC}"
 
 WS="$HOME/.openclaw/workspace"
 for f in SOUL.md USER.md AGENTS.md IDENTITY.md MEMORY.md RECOVERY.md TOOLS.md HEARTBEAT.md BOOT.md; do
-    [ -f "$WS/$f" ] && check_pass "Workspace: $f" || check_fail "Workspace: $f NO existe"
+    check_file "$WS/$f" "Workspace: $f"
 done
-
-[ -d "$WS/memory" ] && check_pass "Workspace: memory/" || check_fail "Workspace: memory/ NO existe"
-[ -d "$WS/scripts" ] && check_pass "Workspace: scripts/" || check_fail "Workspace: scripts/ NO existe"
-[ -d "$WS/skills" ] && check_pass "Workspace: skills/" || check_fail "Workspace: skills/ NO existe"
+for d in memory scripts skills; do
+    check_dir "$WS/$d" "Workspace: $d/"
+done
 
 # =============================================================================
 echo -e "${BLUE}━━━ Cron Jobs${NC}"

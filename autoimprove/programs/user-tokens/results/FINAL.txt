@@ -1,0 +1,15 @@
+=== Autoimprove Thursday 2026-03-19 — USER.md ===
+
+BASELINE: 296 tokens (100%)
+FINAL:    233 tokens (78.7%)
+SAVINGS:  63 tokens (-21.3%)
+
+EXPERIMENTS:
+✅ Exp 1: Condense Garmin → -47 tokens (-15.9%) — moved tech to memory/garmin-integration.md
+✅ Exp 2: Compress Devices → -16 tokens (-6.4%) — simplified work hours ref
+❌ Exp 3: Communication triggers → DISCARD (lost critical trigger phrases)
+
+IMPROVEMENTS KEPT: 2/3
+FINAL STATUS: COMMITTED
+
+Next actions: Create memory/garmin-integration.md & memory/work-schedule.md if not present

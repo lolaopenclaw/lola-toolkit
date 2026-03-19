@@ -71,14 +71,21 @@ Action: Reset driving_mode_state.json to "home" mode
 
 ---
 
-## TTS Status (2026-03-13 10:44) ✅ PRODUCTION READY
+## TTS Status (2026-03-19 23:34) ✅ PRODUCTION READY
+
+### TTS Strategy (updated 2026-03-19)
+- **PRIMARY:** Google TTS script (`scripts/google-tts.sh`) — always try first
+- **FALLBACK:** OpenClaw native `tts` tool — only if Google TTS fails
+- **Reason:** Native tts has unreliable providers (Edge timeout, no OpenAI key, ElevenLabs out of credits). Google TTS is free and reliable.
+- **Override:** Manu will say when to switch back to native-first
 
 ### Configuración Final
-- **Proveedor:** Google TTS (online, gratis, natural)
+- **Proveedor principal:** Google TTS (online, gratis, natural)
 - **Velocidad:** 1.25x (25% más rápido)
 - **Idioma:** Spanish (es)
 - **Formato:** MP3 (24 kHz, mono)
-- **Fallback:** eSpeak-ng (offline, robótico)
+- **Fallback 1:** OpenClaw native tts tool
+- **Fallback 2:** eSpeak-ng (offline, robótico)
 
 ### Instalación
 - Google TTS: `~/.openclaw/venv/gtts/bin/activate` (gTTS)

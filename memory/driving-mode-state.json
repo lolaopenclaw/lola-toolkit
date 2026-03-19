@@ -1,10 +1,11 @@
 {
   "mode": "home",
-  "deactivated_at": "2026-03-10T19:16:00+01:00",
-  "last_reset": "2026-03-18T22:00:00+01:00",
+  "deactivated_at": "2026-03-19T23:34:00+01:00",
+  "last_reset": "2026-03-19T22:00:00+01:00",
   "auto_reset_time": "22:00",
   "tts_provider": "google-tts",
   "tts_script": "scripts/google-tts.sh",
   "tts_speed": 1.25,
-  "notes": "Google TTS (gtts) - free, speed 1.25x. ElevenLabs out of credits."
+  "tts_strategy": "google-tts-first",
+  "notes": "Google TTS (gtts) is PRIMARY. OpenClaw native tts tool is FALLBACK only. Changed 2026-03-19 per Manu request."
 }

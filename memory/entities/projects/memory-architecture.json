@@ -15,15 +15,18 @@
       "source": "memory/2026-03-18.md",
       "status": "active",
       "supersededBy": null,
-      "relatedEntities": ["people/manu", "people/lola"],
+      "relatedEntities": [
+        "people/manu",
+        "people/lola"
+      ],
       "lastAccessed": "2026-03-18",
       "accessCount": 1
     },
     {
       "id": "memarch-002",
-      "fact": "Paso 1 DONE: memory_search switched from local to openai provider (anthropic embeddings).",
+      "fact": "Paso 1 DONE: memory_search working with Ollama/nomic-embed-text (local, free). Previously tried openai (no key), gemini (key invalid). 221 files, 685 chunks indexed. Daily reindex cron at 4:30AM.",
       "category": "milestone",
-      "timestamp": "2026-03-18",
+      "timestamp": "2026-03-19",
       "source": "memory/2026-03-18.md",
       "status": "active",
       "supersededBy": null,
@@ -57,9 +60,9 @@
     },
     {
       "id": "memarch-005",
-      "fact": "Paso 4 PENDING: QMD or equivalent search layer. Only if memory_search (openai provider) proves insufficient.",
+      "fact": "Paso 4 DONE: Search layer resolved via OpenClaw native memory_search + Ollama embeddings (hybrid: vector 70% + FTS 30%). QMD project closed as redundant.",
       "category": "status",
-      "timestamp": "2026-03-18",
+      "timestamp": "2026-03-19",
       "source": "memory/2026-03-18.md",
       "status": "active",
       "supersededBy": null,
