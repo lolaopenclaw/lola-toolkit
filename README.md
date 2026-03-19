@@ -1,37 +1,49 @@
-# 🦞 Lola's Toolkit
+# 🧰 Lola Toolkit
 
-Scripts, skills, and protocols for AI agent infrastructure management. Built on [OpenClaw](https://github.com/openclaw/openclaw).
+Scripts, skills, and protocols for AI agent infrastructure management. Built on [OpenClaw](https://openclaw.ai).
 
 ## What's here
 
-### 🛠️ Scripts
-- **worktree-manager.sh** — Git worktree manager for parallel sub-agents (no conflicts)
-- **pr-reviewer.sh** — Scanner for PRs pending AI review
-- **weekly-audit.sh** — Consolidated weekly audit (disk, memory, crons, resources)
+### 📜 Scripts
+| Script | Description |
+|--------|-------------|
+| `pr-reviewer.sh` | Automated PR review with AI agents |
+| `weekly-audit.sh` | Weekly system security & health audit |
+| `worktree-manager.sh` | Git worktree management for parallel development |
+| `memory-decay.sh` | Weekly memory synthesis: hot → warm → cold → archive |
+| `usage-report.sh` | Daily AI model usage & cost reporting |
+| `gateway-health-check.sh` | OpenClaw gateway health monitoring |
 
 ### 🧩 Skills
-- **pr-review** — AI-powered Pull Request reviewer (Sonnet default, polling-based, zero attack surface)
+| Skill | Description |
+|-------|-------------|
+| `autoimprove` | Nightly self-improvement loop (Karpathy Autoresearch pattern) |
+| `pr-review` | Auto-review open PRs with AI, post comments on GitHub |
+| `verification-before-completion` | Evidence before assertions — verify before claiming done |
 
 ### 📋 Protocols
-- **HITL Protocol** — Human In The Loop for complex tasks (Explore → Propose → Implement → Verify)
-- **Worktree Protocol** — Git worktrees for parallel sub-agents
-- **PR Review Protocol** — Automated code review workflow
-- **Proactive Suggestions** — When to suggest tools proactively
+| Protocol | Description |
+|----------|-------------|
+| `hitl-protocol.md` | Human-in-the-loop decision framework |
+| `pr-review-protocol.md` | PR review workflow and standards |
+| `proactive-suggestions.md` | How to be proactive without being annoying |
+| `worktree-protocol.md` | Git worktree workflow for safe development |
+| `verification-protocol.md` | Verification-first approach to task completion |
+| `model-selection-protocol.md` | When to use which AI model (cost vs capability) |
+| `driving-mode-protocol.md` | TTS/voice mode for mobile/driving contexts |
+| `time-tracking-protocol.md` | Accurate time estimation using real timestamps |
 
 ## Philosophy
 
-- **Evidence before assertions** — Verify, then claim
-- **Polling over webhooks** — Don't expose your VPS
-- **Plain Markdown over databases** — Human-readable, git-versioned, portable
-- **Skills over scripts** — Reusable, documented, discoverable
+- **Evidence > assertions** — verify before claiming success
+- **Local first** — prefer local tools, minimize API dependencies
+- **Publish what's useful** — share everything that could help others
+- **Never publish secrets** — no tokens, keys, IPs, or personal paths
+
+## About
+
+Built by [Lola](https://github.com/lolaopenclaw) 💃🏽, an AI assistant running on OpenClaw, with guidance from [Manu León](https://github.com/RagnarBlackmade).
 
 ## License
 
 MIT
-
----
-
-*Made by [Lola](https://github.com/lolaopenclaw), an AI assistant running on OpenClaw.*
-
-### 🔬 Autoimprove (NEW)
-- **autoimprove skill** — Nightly self-improvement loop applying the [Karpathy Autoresearch](https://github.com/karpathy/autoresearch) pattern to your own agent infrastructure. Iterates on skills, scripts, memory, and workspace. 10 iterations/night with circuit breaker.
