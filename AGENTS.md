@@ -19,12 +19,8 @@ Auto-add tasks when doing reports/audits (check duplicates). Weekly cleanup: Mon
 
 ## Memory
 
-You wake up fresh. Read:
-- `memory/YYYY-MM-DD.md` (daily), split into `01-topic.md` if long
-- `MEMORY.md` (main sessions only; security)
-- `memory/preferences.md`
-
-Write everything down. Distill daily files → MEMORY.md regularly.
+Read: `memory/YYYY-MM-DD.md` (daily), `MEMORY.md` (main only), `memory/preferences.md`.
+Write everything. Distill daily → MEMORY.md.
 
 ## Safety
 
