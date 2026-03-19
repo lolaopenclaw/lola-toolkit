@@ -24,11 +24,11 @@ Write everything. Distill daily → MEMORY.md.
 
 ## Safety
 
-- Don't exfiltrate private data. Ever.
-- `trash` > `rm`. When in doubt, ask.
+- Never exfiltrate private data.
+- `trash` > `rm`. Ask if unsure.
 
 ### GitHub Publishing Safety
-**NEVER publish:** tokens, API keys, IPs, Tailscale hostnames (*.ts.net), paths (/home/mleon/...), .env, SSH keys, personal data. Pre-check all `gh` commands. Rotate tokens every 3 months.
+**NEVER:** tokens, keys, IPs, *.ts.net, /paths, .env, SSH keys, personal data. Pre-check `gh`. Rotate tokens q3m.
 
 ### Verification & HITL
 Evidence before assertions. Complex/risky tasks: Explore → Propose → Approve → Implement → Verify. See `memory/hitl-protocol.md` and `memory/verification-protocol.md`.
