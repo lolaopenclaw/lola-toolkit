@@ -3,7 +3,15 @@
 # Health Dashboard — Unified view of Manu's health + weather
 # Integra: Garmin Connect + Weather + System Stats
 
-set -e
+set -euo pipefail
+
+# === DEPENDENCY CHECK ===
+for cmd in jq curl bash; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Error: '$cmd' is required but not installed." >&2
+        exit 1
+    fi
+done
 
 WORKSPACE="${OPENCLAW_WORKSPACE:-$HOME/.openclaw/workspace}"
 CACHE_DIR="${WORKSPACE}/.cache/health-dashboard"
