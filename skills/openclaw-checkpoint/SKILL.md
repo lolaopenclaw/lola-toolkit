@@ -22,6 +22,17 @@ This skill provides disaster recovery for OpenClaw by syncing your workspace and
 
 **Not synced** (security): API keys (.env.*), credentials, OAuth tokens
 
+## Quick Start (3 Steps)
+
+**First time?** Just do this:
+1. Run `checkpoint-setup` — interactive wizard handles everything
+2. Create a PRIVATE GitHub repo (or checkpoint-setup will prompt you)
+3. Done — backups are now automatic
+
+**Restoring to a new machine?** Just run `checkpoint-restore` — same interactive setup.
+
+**Just want the checkpoint commands?** Skip ahead to [Commands](#commands).
+
 ## Installation
 
 ### Option 1: Git Clone (Recommended)
