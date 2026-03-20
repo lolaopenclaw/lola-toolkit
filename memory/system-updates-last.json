@@ -1,14 +1,14 @@
 {
-  "date": "2026-03-19",
+  "date": "2026-03-20",
   "time": "01:30",
   "status": "ok",
-  "packages_available": 8,
+  "packages_available": 13,
   "packages_updated": 0,
   "security_count": 0
 0,
-  "regular_count": 8,
-  "packages": [{"name":"binutils-common","type":"regular"},{"name":"binutils-x86-64-linux-gnu","type":"regular"},{"name":"binutils","type":"regular"},{"name":"libbinutils","type":"regular"},{"name":"libctf-nobfd0","type":"regular"},{"name":"libctf0","type":"regular"},{"name":"libgprofng0","type":"regular"},{"name":"libsframe1","type":"regular"}],
+  "regular_count": 13,
+  "packages": [{"name":"binutils-common","type":"regular"},{"name":"binutils-x86-64-linux-gnu","type":"regular"},{"name":"binutils","type":"regular"},{"name":"gnome-keyring-pkcs11","type":"regular"},{"name":"gnome-keyring","type":"regular"},{"name":"libbinutils","type":"regular"},{"name":"libctf-nobfd0","type":"regular"},{"name":"libctf0","type":"regular"},{"name":"libgprofng0","type":"regular"},{"name":"libinput-bin","type":"regular"},{"name":"libinput10","type":"regular"},{"name":"libpam-gnome-keyring","type":"regular"},{"name":"libsframe1","type":"regular"}],
   "reboot_required": false,
-  "remaining": 8,
+  "remaining": 13,
   "note": "Auto-applied. OpenClaw excluded (always manual)."
 }
