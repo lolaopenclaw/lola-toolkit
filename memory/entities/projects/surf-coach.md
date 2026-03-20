@@ -9,7 +9,8 @@
 - **[context]** Goal: AI coach for surf technique analysis using video + pose estimation. Provide automated feedback on pop-ups, turns, compression/extension.
 - **[context]** Repo: github.com/lolaopenclaw/surf-coach-ai (private, shared with RagnarBlackmade). Local: ~/projects/surf-coach/
 - **[context]** Tech stack: Python, MediaPipe (pose estimation), OpenCV (video processing), optical flow analysis. Runs with cpulimit to protect VPS.
-- **[status]** Video corpus: 5 corrected videos (Jorge, Surf Labs) as ground truth + 4 raw comparison videos. 9 MP4s analyzed total.
+- **[status]** Video corpus: 5 corrected videos (Rafa, Surf Labs — técnica) as ground truth + 4 raw comparison videos. 9 MP
+- **[context]** Coaches: Rafa (Surf Labs) = técnica surf; Jorge = físico/fuerza funcional4s analyzed total.
 - **[context]** Analysis pipeline: frame extraction → MediaPipe pose → optical flow → metrics (angle, speed, balance) → annotated MP4 + JSON report.
 - **[status]** Status as of 2026-03-18: 2 full analyses complete (12550 + 14328 frames). analyze_remaining.py relaunched after VPS reboot with venv-coach.
 

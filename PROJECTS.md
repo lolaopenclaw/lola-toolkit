@@ -27,7 +27,8 @@
 - **Última actividad:** 2026-03-18 (análisis de 9 vídeos completos en curso)
 - **Sub-agente activo:** surf-coach-full-analysis-v2 (Haiku, timeout 1h)
 - **Notas:**
-  - 5 vídeos corregidos (Jorge, Surf Labs) como ground truth
+  - 5 vídeos corregidos (Rafa, Surf Labs — técnica) como ground truth
+  - Coach técnica: Rafa (Surf Labs) | Coach físico: Jorge
   - 4 vídeos brutos para comparación
   - Objetivo: feedback técnico automatizado (pop-ups, turns, compresión/extensión)
   - Stack: Python, MediaPipe, OpenCV, optical flow

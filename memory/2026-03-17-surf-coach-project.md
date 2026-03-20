@@ -8,7 +8,8 @@ AI tool for analyzing surfer movements during dryland training, surfskate sessio
 
 ## Key Info
 - **User:** Manu (Manuel León)
-- **Coach reference:** Jorge (Surf Labs) — provides video corrections that will be ground truth
+- **Coach técnica:** Rafa (Surf Labs) — correcciones de técnica de surf (pop-ups, giros, etc.)
+- **Coach físico:** Jorge — entrenos funcionales de fuerza
 - **Training types to analyze:**
   - Dry land simulations (pop-ups, turns, compression/extension)
   - Surfskate sessions
