@@ -92,3 +92,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-20 02:02:24** | autoimprove: improve post-commit-backup.sh error handling + dependency checks | `de1ada3` | [`backup-de1ada3`](backups-by-commit/backup-de1ada3*.tar.gz)
 
+- **2026-03-20 10:53:28** | fix: memory reindex cron delivery channel (telegram explicit + best-effort) | `a1a451a` | [`backup-a1a451a`](backups-by-commit/backup-a1a451a*.tar.gz)
+

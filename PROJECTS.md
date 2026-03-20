@@ -45,11 +45,9 @@
   - Fuente de verdad: JSON (.json) → auto-genera summaries (.md)
 
 ### QMD Local Search
-- **Repo:** github.com/tobi/qmd
-- **Estado:** 📋 Planificado (no instalado)
-- **Descripción:** Motor de búsqueda local (SQLite + BM25 + vector) para archivos de memoria
-- **Prioridad:** Media — instalar cuando tengamos tiempo (Manu quiere hacerlo)
-- **Por qué:** Backup de memory_search, zero-cost, offline, escala mejor con 200+ archivos
+- **Estado:** 🗑️ Archivado (2026-03-20)
+- **Motivo:** Resuelto por stack actual — Ollama/nomic-embed-text + SQLite + sqlite-vec + FTS5 cubre exactamente lo que QMD ofrecía (búsqueda híbrida local, gratis, offline)
+- **Mejora futura:** Subir calidad embeddings con Gemini API (gratis) si nomic se queda corto
 
 ### Lola Toolkit
 - **Repo:** github.com/lolaopenclaw/lola-toolkit (público)
@@ -78,7 +76,8 @@
 
 ## 📋 Pendientes
 
-- [ ] Investigar errores de cron (autoimprove + security audits)
+- [x] ~~Investigar errores de cron (autoimprove + security audits)~~ — Arreglado 2026-03-20 (delivery channel)
+- [x] ~~QMD Local Search~~ — Archivado 2026-03-20 (resuelto por stack actual)
 - [ ] Completar análisis completo de vídeos (Surf Coach)
 - [ ] Añadir alertas de presupuesto a finanzas (cron/heartbeat)
 - [ ] Automatizar detección de CSVs nuevos en finanzas
@@ -87,8 +86,8 @@
 
 ## 🗑️ Archivados
 
-_(Añadir aquí proyectos completados o cancelados)_
+- **QMD Local Search** (2026-03-20) — Resuelto por Ollama + SQLite-vec + FTS5 nativo
 
 ---
 
-**Última actualización:** 2026-03-18 21:22 CET
+**Última actualización:** 2026-03-20 11:30 CET
