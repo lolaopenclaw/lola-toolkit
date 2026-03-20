@@ -2,12 +2,26 @@
 # ============================================================
 # Health Alerts — Check health metrics against thresholds
 # ============================================================
-set -uo pipefail
+set -euo pipefail
+
+# === DEPENDENCY CHECK ===
+for cmd in jq bc free df ss; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Error: '$cmd' is required but not installed." >&2
+        exit 1
+    fi
+done
 
 WORKSPACE="${OPENCLAW_WORKSPACE:-$HOME/.openclaw/workspace}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 CACHE_DIR="$WORKSPACE/.cache/health-dashboard"
 ALERTS_FILE="$CACHE_DIR/alerts.json"
+
+# Verify garmin export script exists
+if [ ! -f "$SCRIPT_DIR/garmin-json-export.sh" ]; then
+    echo "❌ Error: garmin-json-export.sh not found in $SCRIPT_DIR" >&2
+    exit 1
+fi
 
 # Alert thresholds
 HR_HIGH="${HR_HIGH:-70}"
