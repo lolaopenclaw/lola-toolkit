@@ -35,3 +35,26 @@ echo "Tiempo real: ${MINUTES} minutos"
 - Si una tarea similar tardó 13 min → estimar 15-20 min (margen)
 - Registrar tiempos reales de tareas completadas para mejorar estimaciones
 - Patrón autoimprove: medir → comparar con estimación → ajustar
+
+## 📊 Benchmark de Procesamiento Local (VPS CPU-only, 2026-03-20)
+
+### Ratios medidos (usar estos para estimar):
+| Tarea | Ratio vs duración input | Ejemplo |
+|-------|------------------------|---------|
+| Whisper turbo (audio→texto) | 3x realtime | 86 min audio → ~4h |
+| MediaPipe pose (vídeo→landmarks) | 0.5x realtime | 56 min vídeo → ~1h 50min |
+| ffmpeg clip extraction | ~3s por clip | 76 clips → ~4 min |
+| Sub-agente Sonnet (código) | 3-10 min típico | Script completo ~5 min |
+| Sub-agente Sonnet (código complejo) | 10-15 min | Pipeline multi-script ~12 min |
+
+### Fórmula de estimación:
+```
+Estimación = (duración_input × ratio) + 20% buffer
+```
+
+### Reglas:
+1. **Consultar esta tabla** antes de dar estimaciones
+2. **Vídeos >5 min:** añadir watchdog (riesgo de cuelgue en CPU)
+3. **Batch >10 items:** riesgo de proceso muerto, monitorizar
+4. **NUNCA usar 5x para Whisper turbo** — es 3x en esta VPS
+5. **Actualizar ratios** cuando haya nuevos datos reales
