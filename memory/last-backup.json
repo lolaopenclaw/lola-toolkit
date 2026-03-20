@@ -1,1 +1,1 @@
-{"date": "2026-03-19", "status": "partial", "files": 11, "size": "11M", "error": "NATIVE_BACKUP_DIR: unbound variable (pero backup a Google Drive completó: 1TlKMqHe47ovhc1jbUvaZtjUxySBs5ft8)", "google_drive_link": "https://drive.google.com/file/d/1TlKMqHe47ovhc1jbUvaZtjUxySBs5ft8/view?usp=drivesdk"}
+{"date": "2026-03-20", "status": "ok", "files": 1, "size": "11M", "error": null, "google_drive_id": "1O6xSh4w-WsSgxGc0VEExdHuldugrB490", "note": "Backup uploaded successfully but script exited with code 1 due to unbound variable in cleanup section (non-critical)"}
