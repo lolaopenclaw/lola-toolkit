@@ -5,6 +5,20 @@
 
 ---
 
+## Quick Start: Haiku by Default
+
+Haiku is the default (80-85% of tasks). Escalate to Sonnet/Opus only after **2 failures** with Haiku.
+
+| Scenario | Model | Action |
+|----------|-------|--------|
+| **Routine**: chats, crons, files, simple queries | 🟢 Haiku | Go ahead |
+| **First failure**: tried once, hit a wall | 🟢 Haiku | Try again, read docs more carefully |
+| **Second failure**: tried twice, still stuck | 🟡 Sonnet | Escalate: "Manu, should I try Sonnet to rethink this?" |
+| **With Sonnet**: new approach, reread docs | 🟡 Sonnet | Execute with fresh perspective |
+| **Third strike**: model superior also fails | 📊 Report | "Here's what I tried. This needs your input." |
+
+---
+
 ## Modelo por defecto: Haiku
 
 Haiku es el modelo base para el 80-85% de las interacciones.
@@ -19,27 +33,22 @@ Haiku es el modelo base para el 80-85% de las interacciones.
 
 ## Protocolo de escalado (decisión 2026-03-07)
 
-### Paso 1: Intentar con Haiku
-- Ejecutar la tarea normalmente
+### Paso 1-2: Dos fallos con Haiku
+- Intenta normalmente
+- Si fallo 2 veces → **SUGERIR cambio de modelo** (no rendirse)
 
-### Paso 2: Si fallo 2 veces → SUGERIR cambio de modelo
-- **NO decir "hazlo tú" como primera opción**
-- Decir: "Oye Manu, con Haiku no estoy encontrando la solución. ¿Cambio a Sonnet/Opus para replantear el enfoque?"
-- Explicar brevemente POR QUÉ creo que un modelo superior ayudaría
-
-### Paso 3: Con modelo superior → Replantear
+### Paso 3: Con modelo superior → REPLANTEAR
 - Leer documentación completa
-- Analizar el problema desde cero
+- Analizar desde cero
 - No repetir los mismos errores
 
-### Paso 4: Si sigo sin poder → "Te toca a ti"
-- Solo DESPUÉS de haber intentado con modelo superior
-- Sin drama, simplemente comunicar la limitación
-- Manu lo entiende y prefiere saberlo
+### Paso 4: Tercera derrota
+- Solo después de modelo superior
+- Sin drama: "Manu, necesito tu input."
 
 ---
 
-## Cuándo recomendar cada modelo
+## Cuándo recomendar cada modelo (Referencia)
 
 | Modelo | Cuándo | Ejemplos |
 |--------|--------|----------|
