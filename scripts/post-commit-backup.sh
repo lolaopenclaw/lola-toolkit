@@ -3,12 +3,25 @@
 # Hook ejecutado tras cada commit
 # Si el commit es "importante", ejecuta backup automáticamente + registra en CHANGELOG.md
 
-set -e
+set -euo pipefail
+
+# === DEPENDENCY CHECK ===
+if [ ! -f "$HOME/.openclaw/workspace/scripts/backup-memory.sh" ]; then
+    echo "⚠️  backup-memory.sh not found. Post-commit backup skipped." >&2
+    exit 0
+fi
+
+for cmd in git date tar; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "⚠️  '$cmd' not found. Post-commit backup skipped." >&2
+        exit 0
+    fi
+done
 
 WORKSPACE="$HOME/.openclaw/workspace"
-GIT_LOG=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%s")
-GIT_HASH=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%h")
-GIT_AUTHOR=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%an")
+GIT_LOG=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%s" 2>/dev/null || echo "unknown")
+GIT_HASH=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%h" 2>/dev/null || echo "????")
+GIT_AUTHOR=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%an" 2>/dev/null || echo "unknown")
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 BACKUP_DIR="$WORKSPACE/backups-by-commit"
 
@@ -44,16 +57,19 @@ if is_important "$GIT_LOG"; then
     echo "🔄 Commit importante detectado: $GIT_LOG"
     echo "📦 Ejecutando backup automático..."
     
-    BACKUP_FILE="$WORKSPACE/memory/openclaw-backup-${GIT_HASH}.tar.gz"
-    bash "$WORKSPACE/scripts/backup-memory.sh" > /dev/null 2>&1
-    
-    # Obtener el backup más reciente
-    LATEST_BACKUP=$(ls -t "$WORKSPACE"/memory/openclaw-backup-*.tar.gz 2>/dev/null | head -1)
-    
-    if [ -n "$LATEST_BACKUP" ]; then
-        # Copiar a carpeta de backups por commit con nombre estructurado
-        cp "$LATEST_BACKUP" "$BACKUP_DIR/backup-${GIT_HASH}-$(date '+%Y%m%d-%H%M%S').tar.gz"
-        echo "✅ Backup creado: $LATEST_BACKUP"
+    if bash "$WORKSPACE/scripts/backup-memory.sh" > /tmp/backup.log 2>&1; then
+        # Obtener el backup más reciente
+        LATEST_BACKUP=$(ls -t "$WORKSPACE"/memory/openclaw-backup-*.tar.gz 2>/dev/null | head -1)
+        
+        if [ -n "$LATEST_BACKUP" ]; then
+            # Copiar a carpeta de backups por commit con nombre estructurado
+            cp "$LATEST_BACKUP" "$BACKUP_DIR/backup-${GIT_HASH}-$(date '+%Y%m%d-%H%M%S').tar.gz"
+            echo "✅ Backup creado: $LATEST_BACKUP"
+        else
+            echo "⚠️  Backup created but archive not found in expected location"
+        fi
+    else
+        echo "⚠️  Backup failed (see /tmp/backup.log for details)"
     fi
     
     # Registrar en CHANGELOG.md
