@@ -1,6 +1,11 @@
 # 📋 Preferences — Lola & Manu
 
-## Communication Channels
+## Communication
+
+### Telegram Reactions
+- **reactionNotifications: all** — SIEMPRE activo (Manu lo quiere así)
+- Manu usa emojis para dar feedback rápido sin escribir
+- Config: `channels.telegram.reactionNotifications: all` Channels
 
 ### Morning Reports (Matutino)
 - **Destination:** Discord ONLY ❌ NUNCA Telegram

@@ -94,3 +94,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-20 10:53:28** | fix: memory reindex cron delivery channel (telegram explicit + best-effort) | `a1a451a` | [`backup-a1a451a`](backups-by-commit/backup-a1a451a*.tar.gz)
 
+- **2026-03-20 11:43:52** | fix: correct coach names (Rafa=técnica, Jorge=físico) | `3298cf5` | [`backup-3298cf5`](backups-by-commit/backup-3298cf5*.tar.gz)
+
