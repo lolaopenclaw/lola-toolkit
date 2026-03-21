@@ -2,7 +2,18 @@
 # ============================================================
 # Garmin JSON Export — JSON output for health metrics
 # ============================================================
-set -uo pipefail
+set -euo pipefail
+
+# Dependency check
+if ! command -v python3 &>/dev/null; then
+  echo '{"error": "python3 not found"}' >&2
+  exit 1
+fi
+
+if ! python3 -c "import garminconnect" 2>/dev/null; then
+  echo '{"error": "garminconnect module not installed. Install: pip install garminconnect"}' >&2
+  exit 1
+fi
 
 python3 << 'PYEOF'
 import json
