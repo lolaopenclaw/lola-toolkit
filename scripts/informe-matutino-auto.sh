@@ -99,7 +99,35 @@ else
 • $UPD_COUNT paquetes disponibles (auto-update nocturno pendiente de primera ejecución)"
 fi
 
-# 7. Build the report
+# 7. Token usage report
+echo "💰 Calculando consumo de tokens..."
+USAGE_JSON=$(bash ~/.openclaw/workspace/scripts/usage-report.sh 2>/dev/null || echo "{}")
+if [ -n "$USAGE_JSON" ] && [ "$USAGE_JSON" != "{}" ]; then
+    MONTH_COST=$(echo "$USAGE_JSON" | jq -r '.monthly_total_cost // 0')
+    YESTERDAY_COST=$(echo "$USAGE_JSON" | jq -r '.yesterday_total_cost // 0')
+    TODAY_COST=$(echo "$USAGE_JSON" | jq -r '.today_total_cost // 0')
+    MONTH_NAME=$(echo "$USAGE_JSON" | jq -r '.month // "?"')
+
+    # Top models this month
+    TOP_MODELS=$(echo "$USAGE_JSON" | jq -r '.by_model_monthly[:3][] | "  • \(.model): $\(.total_cost) (\(.requests) requests)"' 2>/dev/null || echo "  (sin datos)")
+
+    # Yesterday breakdown
+    YESTERDAY_MODELS=$(echo "$USAGE_JSON" | jq -r '.by_model_yesterday[:3][] | "  • \(.model): $\(.cost) (\(.requests) req)"' 2>/dev/null || echo "  (sin actividad)")
+
+    TOKEN_SECTION="💰 CONSUMO TOKENS ($MONTH_NAME)
+• Mes actual: \$$MONTH_COST
+• Ayer: \$$YESTERDAY_COST
+• Hoy (parcial): \$$TODAY_COST
+• Por modelo (mes):
+$TOP_MODELS
+• Ayer detalle:
+$YESTERDAY_MODELS"
+else
+    TOKEN_SECTION="💰 CONSUMO TOKENS
+• (sin datos disponibles)"
+fi
+
+# 8. Build the report
 INFORME="📋 INFORME MATUTINO • $TODAY $HOUR
 
 🖥️ SISTEMA
@@ -120,6 +148,8 @@ $UPDATES_SECTION
 ❤️ SALUD (Garmin - $YESTERDAY)
 $GARMIN_DATA
 
+$TOKEN_SECTION
+
 📌 ESTADO GENERAL
 • Síntesis: 🟢 Todos los sistemas operacionales"
 
@@ -129,7 +159,7 @@ echo "$INFORME"
 # by the OpenClaw cron job delivery config (mode=announce, channel=discord).
 # The cron agent session reads the output and delivers it.
 
-# 8. Save report
+# 9. Save report
 echo "📝 Guardando informe..."
 echo "$INFORME" > ~/.openclaw/workspace/memory/$TODAY-informe.md
 echo "✅ Informe guardado en memory/$TODAY-informe.md"

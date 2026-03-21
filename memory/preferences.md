@@ -2,6 +2,12 @@
 
 ## Communication
 
+### Proactive Completion Notifications
+- **SIEMPRE avisar a Manu cuando una acción/tarea se complete** — no esperar a que pregunte
+- Si Manu preguntó por algo y se resuelve luego (heartbeat, cron, proceso background): enviar aviso inmediato
+- Aplica a: reparaciones, crons, procesos largos, cualquier cosa que esté pendiente
+- **Set:** 2026-03-21 (Manu's explicit request)
+
 ### Telegram Reactions
 - **reactionNotifications: all** — SIEMPRE activo (Manu lo quiere así)
 - Manu usa emojis para dar feedback rápido sin escribir
