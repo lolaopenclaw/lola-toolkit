@@ -1,6 +1,6 @@
 # 📚 Memory INDEX — Organized Knowledge
 
-Last updated: 2026-03-17 (Active: Skills, Scripts, Daily logs)
+Last updated: 2026-03-21 (Active: Skills, Scripts, Daily logs, Autoimprove nightly)
 
 ---
 
@@ -101,4 +101,8 @@ Recuperación: restore.sh
 
 ---
 
-**Last Review:** 2026-03-17 — Cron-driven autoimprove cycle. Skills/scripts improved with robustness (error handling, validation). Memory consolidated. Workspace healthy: ~1MB markdown + skills + scripts. All critical crons active (morning report 9AM, alerts 14:00/20:00, weekly audit Mon 8:30).
+**Last Review:** 2026-03-21 — Nightly autoimprove cycle (iteration 6 consecutive). Active improvements:
+- Skills: HITL + PR-review + worktree protocols (decision tables, quick-start, troubleshooting)
+- Scripts: Garmin-json-export, health-dashboard-auto, deliver-pending-reports (robustness, deps checks)
+- Memory: Clean and healthy, no archiving needed
+- Workspace: 6+ streak, 29+ total improvements, ~1MB markdown + skills. All critical crons active.
