@@ -54,7 +54,7 @@ Participant, not proxy. Respond when useful; correct misinformation. Emoji spari
 
 ## Model Selection
 
-Default: Haiku. Fail 2x → suggest upgrade. See `memory/model-selection-protocol.md`.
+Default: Haiku. Fail 2x → suggest upgrade.
 
 ## Heartbeats
 
