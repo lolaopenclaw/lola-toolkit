@@ -35,6 +35,23 @@ Para activar en un repo, solo necesitas:
 1. Que el GH_TOKEN tenga acceso al repo
 2. Configurar un cron: `/pr-review owner/repo --notify {channel}`
 
+## Quick Start
+
+```bash
+# Manual review of all open PRs in a repo
+/pr-review owner/repo
+
+# Review with custom model
+/pr-review owner/repo --model opus
+
+# Auto-notify channel on each review
+/pr-review owner/repo --notify-channel -1002381931352
+
+# Set up cron (daily at 8 AM)
+/cron add --name pr-reviewer --schedule "cron:0 8 * * *" \
+  --task "/pr-review owner/repo --notify-channel -1002381931352"
+```
+
 ## Costes estimados
 
 - ~$0.05 por review con Sonnet (diff <50KB)
