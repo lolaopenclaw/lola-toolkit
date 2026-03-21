@@ -3,6 +3,17 @@
 **Created:** 2026-03-13
 **Status:** Active
 
+## Decisión rápida
+
+| Activar HITL | NO Activar | Dudas → |
+|---|---|---|
+| Código en producción (active services) | Simple & direct (read, search, query) | NO — errar ágil |
+| >20 min estimado | Minor edits/fixes | |
+| Multi-file/cross-system | Análisis/opinión | |
+| Hard to revert (migrations, deletes) | Manu: "hazlo directo" | |
+| Design choices (>1 path) | | |
+| Parallel sub-agents | | |
+
 ## Cuándo se activa
 
 El protocolo HITL se activa cuando una tarea cumple **cualquiera** de estas condiciones:
@@ -13,13 +24,6 @@ El protocolo HITL se activa cuando una tarea cumple **cualquiera** de estas cond
 4. **Tiene consecuencias difíciles de revertir** (migraciones, deploys, borrados)
 5. **Involucra decisiones de diseño/arquitectura** (hay más de un camino razonable)
 6. **Sub-agentes en paralelo** (antes de lanzar múltiples agentes)
-
-## Cuándo NO se activa
-
-- Tareas simples y directas ("pon una cron", "lee este archivo", "busca X")
-- Correcciones menores o ediciones puntuales
-- Consultas/análisis/opiniones (como las de hoy sobre repos)
-- Cuando Manu dice explícitamente "hazlo directamente" o "sin paradas"
 
 ## Fases
 
