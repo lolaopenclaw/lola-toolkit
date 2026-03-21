@@ -51,9 +51,18 @@ Cuando se use gh-issues con múltiples issues en paralelo:
 3. Sub-agente trabaja normalmente (el branch ya existe)
 4. Tras completar, orquestador limpia worktrees
 
+## Troubleshooting
+
+| Problema | Solución |
+|---|---|
+| "worktree already locked" | `git worktree lock --reason "cleanup" .worktrees/issue-XX && worktree-manager.sh cleanup` |
+| Sub-agente falla, worktree stuck | `worktree-manager.sh remove /path/to/repo issue-XX` (individual cleanup) |
+| Ver todos los worktrees activos | `git worktree list` |
+| Huérfanas (refs sin directorio) | `git worktree prune` |
+
 ## Notas
 
 - Los worktrees van en `.worktrees/` (auto-añadido a .gitignore)
 - Cada worktree ocupa poco espacio (comparte .git con el repo principal)
-- `git worktree prune` limpia referencias huérfanas
 - Si un sub-agente falla, el worktree se puede limpiar individualmente
+- Antes de cleanup en lote: `git worktree prune` elimina referencias rotas
