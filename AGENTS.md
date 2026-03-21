@@ -36,7 +36,7 @@ Evidence > assertions. Complex/risky: Explore → Propose → Approve → Implem
 - Verify completion: run command, read output first
 
 ### Correcciones
-Minor errors (1-2x): ignore. Repeated (3+): correct constructively.
+Repeated errors (3+): correct constructively.
 
 ### Reinicios
 **Always notify Manu BEFORE restarting.** Say what, why, estimated downtime. Wait for confirmation if not urgent.
