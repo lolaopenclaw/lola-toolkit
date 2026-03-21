@@ -3,7 +3,15 @@
 # Health Dashboard Auto — Daily health metrics aggregation
 # Runs: 9:00 AM every day
 # ============================================================
-set -uo pipefail
+set -euo pipefail
+
+# Dependency checks
+for cmd in jq bc; do
+  if ! command -v "$cmd" &>/dev/null; then
+    echo "❌ Error: $cmd not found. Install and retry." >&2
+    exit 1
+  fi
+done
 
 WORKSPACE="${OPENCLAW_WORKSPACE:-$HOME/.openclaw/workspace}"
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
@@ -11,7 +19,15 @@ REPORTS_DIR="$WORKSPACE/reports"
 CACHE_DIR="$WORKSPACE/.cache/health-dashboard"
 DASHBOARD_FILE="$REPORTS_DIR/health-dashboard-$(date +%Y-%m-%d).md"
 
-mkdir -p "$REPORTS_DIR" "$CACHE_DIR"
+# Verify script dependencies exist
+for dep in garmin-json-export.sh health-alerts.sh; do
+  if [ ! -f "$SCRIPT_DIR/$dep" ]; then
+    echo "❌ Error: $SCRIPT_DIR/$dep not found" >&2
+    exit 1
+  fi
+done
+
+mkdir -p "$REPORTS_DIR" "$CACHE_DIR" || { echo "❌ Error: Cannot create required directories" >&2; exit 1; }
 
 echo "🏥 Daily Health Dashboard — $(date +%Y-%m-%d\ %H:%M)"
 
