@@ -1,6 +1,6 @@
 # Gemini Embeddings Migration Plan
 
-**Status:** ⏳ Bloqueado — API key no cargada por OpenClaw
+**Status:** ✅ Resuelto — key vieja en auth-profiles.json
 **Created:** 2026-03-21
 **Priority:** Media (Ollama funciona como workaround)
 
