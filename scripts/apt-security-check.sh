@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -e
 # APT Security Check — Ubuntu/Debian package health audit
 set -uo pipefail
 

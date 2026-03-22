@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # Resumen Semanal de Actividades Garmin — Robust Version (v2)
 # Genera resumen sin fallar si archivos están faltando
 

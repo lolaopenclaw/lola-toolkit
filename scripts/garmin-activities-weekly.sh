@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # garmin-activities-weekly.sh
 # Generate weekly activity report from Garmin
 

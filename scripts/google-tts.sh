@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # Google TTS wrapper - generates audio from text and sends as voice note
 # Usage: google-tts.sh "texto"
 # Uses gtts (Google Translate TTS) - free, no API key needed

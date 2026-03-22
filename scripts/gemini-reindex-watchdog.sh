@@ -1,4 +1,5 @@
 #!/bin/bash
+set -e
 # Watchdog for gemini-slow-reindex.py
 STATUS_FILE="/tmp/gemini-reindex-status.json"
 if [ ! -f "$STATUS_FILE" ]; then echo "No reindex in progress"; exit 0; fi
