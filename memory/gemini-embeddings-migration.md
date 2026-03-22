@@ -1,45 +1,37 @@
-# Gemini Embeddings Migration Plan
+# Gemini Embeddings Migration
 
-**Status:** ✅ Resuelto — key vieja en auth-profiles.json
-**Created:** 2026-03-21
-**Priority:** Media (Ollama funciona como workaround)
+**Status:** ✅ Completada — 2026-03-22
+**Model:** gemini-embedding-001 (3072 dims)
+**Provider:** gemini (fallback: ollama)
+**DB:** 714 chunks, 238 files
 
-## Contexto
-- Gemini free tier: 1,500 req/día — sobra para nuestro uso (708 chunks + ~50-100 búsquedas/día)
-- La API key funciona con curl directo (probado con `x-goog-api-key` header y `?key=` param)
-- OpenClaw NO la carga al arrancar: error "API Key not found" (400)
+## Qué se hizo
+1. Script custom `scripts/gemini-slow-reindex.py` — embeds chunks 1 a 1 con 3s delay
+2. Respeta rate limits del free tier (~20 RPM)
+3. Tiempo total: ~36 min para 714 chunks
+4. 0 errores
 
-## Investigación realizada (2026-03-21)
-1. ✅ Key en `~/.openclaw/.env` como `GEMINI_API_KEY` — código busca prefix `GEMINI` para provider `google`
-2. ✅ Añadido `GOOGLE_API_KEY` también — mismo resultado
-3. ✅ Añadido `EnvironmentFile` en systemd drop-in — mismo resultado
-4. ✅ Pasado como env var explícita en CLI — mismo resultado
-5. ✅ Auth profile `google:default` existe con `mode: api_key`
-6. ❌ `process.env` del gateway NO contiene ni GEMINI_API_KEY ni GOOGLE_API_KEY
-7. Conclusión: `loadDotEnv()` no está cargando las vars, o el provider de embeddings las busca por otra vía
+## Rate limits Gemini free tier
+- Embedding: ~5-15 RPM según modelo
+- Daily quota: se agota tras ~700+ requests en ventana corta
+- Se renueva: medianoche Pacific Time (9 AM Madrid hora verano)
+- **Búsquedas individuales** no deberían tener problema (1 req por búsqueda)
 
-## Issue GitHub
-- **Repo:** openclaw/openclaw
-- **Issue:** https://github.com/openclaw/openclaw/issues/51541
-- **Label:** bug
+## Cómo funciona ahora
+- DB tiene embeddings de Gemini (3072 dims)
+- Búsquedas: Gemini para query embedding → vector search en DB
+- Si Gemini rate-limited: fallback a FTS (full-text search) → resultados por keywords
+- Ollama fallback NO funciona para vector search (768 dims ≠ 3072 dims)
 
-## Siguiente paso
-1. Abrir issue con reproducción mínima
-2. Monitorizar respuesta de la comunidad
-3. Cuando haya fix, migrar (reindex ~8 min)
+## Si hay que reindexar
+```bash
+# 1. Asegurar backup del DB actual
+cp ~/.openclaw/memory/main.sqlite ~/.openclaw/memory/main.sqlite.gemini-backup
 
-## Config actual (workaround)
-```json
-{
-  "agents.defaults.memorySearch.provider": "ollama",
-  "agents.defaults.memorySearch.fallback": "ollama"
-}
+# 2. Ejecutar reindex lento
+source ~/.openclaw/.env
+python3 ~/.openclaw/workspace/scripts/gemini-slow-reindex.py
 ```
 
-## Config objetivo
-```json
-{
-  "agents.defaults.memorySearch.provider": "gemini",
-  "agents.defaults.memorySearch.fallback": "ollama"
-}
-```
+## Issue original
+- GitHub: openclaw/openclaw#51541 (root cause: stale key in auth-profiles.json)

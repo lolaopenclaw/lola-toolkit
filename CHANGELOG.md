@@ -100,3 +100,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-22 02:01:17** | autoimprove: harden generate-morning-report.sh — set -euo pipefail, dep checks, fix encoding | `7e1ffe7` | [`backup-7e1ffe7`](backups-by-commit/backup-7e1ffe7*.tar.gz)
 
+- **2026-03-22 09:15:20** | fix: cron delivery + autoimprove reporting instructions | `d7dd7ab` | [`backup-d7dd7ab`](backups-by-commit/backup-d7dd7ab*.tar.gz)
+
