@@ -2,6 +2,16 @@
 # Gateway Health Watchdog
 # Checks if gateway is responsive and reports issues
 
+set -euo pipefail
+
+# Check dependencies
+for cmd in systemctl nc date ps awk; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
 STATUS=$(systemctl --user is-active openclaw-gateway.service)
 if [ "$STATUS" != "active" ]; then
   echo "⚠️ Gateway is DOWN (status: $STATUS)"
