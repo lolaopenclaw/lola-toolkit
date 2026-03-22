@@ -132,7 +132,7 @@ fi
 # --- Need backup file for other commands ---
 if [ -z "$BACKUP_FILE" ] && ($DO_VERIFY || $DO_TEST || $DO_FULL || $DO_REPAIR); then
     # Try to find latest local backup
-    BACKUP_FILE=$(ls -t /tmp/openclaw-backup-*.tar.gz 2>/dev/null | head -1)
+    BACKUP_FILE=$(find /tmp -maxdepth 1 -name "openclaw-backup-*.tar.gz" -type f -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2)
     if [ -z "$BACKUP_FILE" ]; then
         echo "ERROR: No backup file specified and none found in /tmp"
         echo "Usage: bash backup-validator.sh <backup-file> [--verify|--test|--full]"
