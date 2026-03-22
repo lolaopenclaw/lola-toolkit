@@ -76,8 +76,9 @@ log() { $QUIET || echo -e "$@"; }
 
 update_state() {
     local file="$1" status="$2" details="$3" checksum="${4:-}"
-    local ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-    local basename=$(basename "$file")
+    local ts basename
+    ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+    basename=$(basename "$file")
 
     # Initialize state file if needed
     [ -f "$STATE_FILE" ] || echo '{"validations":[],"lastRun":"","summary":{}}' > "$STATE_FILE"
