@@ -25,9 +25,6 @@ DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2}')
 GATEWAY_PID=$(pgrep -f "openclaw-gateway" | head -1)
 GATEWAY_STATUS="✅ Activo" && [ -z "$GATEWAY_PID" ] && GATEWAY_STATUS="❌ Inactivo"
 
-# Count active crons
-CRONS_ACTIVE=$(openclaw cron list 2>/dev/null | grep -c "enabled" || echo "?")
-
 # 3. Get Fail2Ban status
 echo "🔐 Verificando Fail2Ban..."
 FAIL2BAN=$(sudo fail2ban-client status sshd 2>/dev/null | grep "Currently banned" | awk '{print $NF}' || echo "?")
