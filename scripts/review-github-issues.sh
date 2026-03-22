@@ -2,6 +2,14 @@
 # Weekly GitHub Issues & Discussions Review
 # Checks openclaw repo for open issues related to our work
 
+set -euo pipefail
+
+# Check dependencies
+if ! command -v gh &>/dev/null; then
+    echo "❌ Missing required dependency: gh (GitHub CLI)" >&2
+    exit 1
+fi
+
 echo "=== OpenClaw Issues Review - $(date) ==="
 echo
 
