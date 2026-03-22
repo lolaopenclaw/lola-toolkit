@@ -7,15 +7,21 @@ You are the nightly auto-optimization agent. Your job is to improve OpenClaw's c
 1. Read this file and the current state of `autoimprove/programs/`
 2. Pick ONE target to optimize (rotate through them)
 3. Run the evaluation baseline: `bash <program>/eval.sh`
-4. If baseline is already very low (< 200 tokens for small files, < 500 for large), skip and try next
+   - **New:** Eval now returns composite score (tokens + time + error_penalty)
+4. If baseline is already very low (< 200 for small files, < 500 for large), skip and try next
 5. Propose 3-5 small changes, testing each one:
    - Apply change
-   - Run eval.sh
+   - Run eval.sh to get new score
    - If score improved → KEEP (git commit with description)
    - If score worse or penalty → DISCARD (restore from backup)
+   - **New:** Log EVERY experiment: `bash autoimprove/log-experiment.sh <target> "<change>" <before> <after> <kept|discarded>`
 6. After experiments, run final eval and record results
 7. If any changes were kept → git commit all changes
-8. Report summary (only if improvements found)
+8. Report summary:
+   - Total experiments run
+   - Number kept vs discarded (ratio)
+   - Best improvement (delta)
+   - Link to experiment-log.jsonl for details
 
 ## Targets (rotate weekly)
 
@@ -49,6 +55,15 @@ You are the nightly auto-optimization agent. Your job is to improve OpenClaw's c
 
 ## Reporting
 
-- If improvements found → brief summary in daily memory file
+- If improvements found → brief summary in daily memory file including:
+  - Experiment count (e.g., "5 experiments: 3 kept, 2 discarded")
+  - Best delta (improvement in score)
+  - Current streak (nights with improvements)
 - If no improvements possible → silence (HEARTBEAT_OK pattern)
-- Sunday → save weekly review to `memory/YYYY-MM-DD-autoimprove-review.md` (do NOT send messages or create cron jobs — the morning report will pick it up)
+- Sunday → save weekly review to `memory/YYYY-MM-DD-autoimprove-review.md`:
+  - Total experiments for the week
+  - % kept ratio
+  - Top 3 improvements
+  - Trends (getting better/worse/stable)
+  - Use `autoimprove/dashboard.sh` to generate stats
+  - (do NOT send messages or create cron jobs — the morning report will pick it up)
