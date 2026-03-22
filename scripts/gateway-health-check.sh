@@ -19,7 +19,7 @@ fi
 # Check port responsiveness
 if ! nc -zv 127.0.0.1 18789 >/dev/null 2>&1; then
   echo "⚠️ Gateway port 18789 not responding"
-  ps aux | grep openclaw-gateway | grep -v grep | awk '{print $2}' | xargs -r kill -9
+  pgrep -f openclaw-gateway | xargs -r kill -9
   sleep 2
   systemctl --user restart openclaw-gateway.service
   exit 1
