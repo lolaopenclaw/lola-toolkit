@@ -44,17 +44,14 @@ SECURITY_COUNT=$(echo "$SECURITY_PKGS" | grep -c . 2>/dev/null || echo "0")
 REGULAR_PKGS=$(echo "$UPGRADABLE_BEFORE" | grep -iv "security" || true)
 REGULAR_COUNT=$(echo "$REGULAR_PKGS" | grep -c . 2>/dev/null || echo "0")
 
-# 4. Filter out OpenClaw packages (never auto-update)
-OPENCLAW_FILTER="openclaw"
-
-# 5. Apply updates (excluding openclaw)
+# 4. Apply updates
 echo "📦 Aplicando $COUNT_BEFORE actualizaciones..."
-UPGRADE_OUTPUT=$(sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
+sudo DEBIAN_FRONTEND=noninteractive apt-get upgrade -y \
     -o Dpkg::Options::="--force-confdef" \
     -o Dpkg::Options::="--force-confold" \
-    2>&1 || true)
+    >/dev/null 2>&1 || true
 
-# 6. Check what was actually upgraded
+# 5. Check what was actually upgraded
 UPGRADABLE_AFTER=$(apt list --upgradable 2>/dev/null | grep -v "^Listing" || true)
 COUNT_AFTER=$(echo "$UPGRADABLE_AFTER" | grep -c . 2>/dev/null || echo "0")
 UPDATED=$((COUNT_BEFORE - COUNT_AFTER))
