@@ -25,7 +25,7 @@ fi
 
 # Resolve GH_TOKEN
 if [ -z "${GH_TOKEN:-}" ]; then
-    GH_TOKEN=$(cat ~/.openclaw/openclaw.json 2>/dev/null | jq -r '.skills.entries["gh-issues"].apiKey // empty') || true
+    GH_TOKEN=$(jq -r '.skills.entries["gh-issues"].apiKey // empty' ~/.openclaw/openclaw.json 2>/dev/null) || true
 fi
 
 if [ -z "${GH_TOKEN:-}" ]; then
