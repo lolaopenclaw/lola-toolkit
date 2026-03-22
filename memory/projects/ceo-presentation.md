@@ -59,6 +59,15 @@
 
 ---
 
+## Perfil del presentador
+- **Nombre:** Manuel León Mendiola
+- **LinkedIn:** https://www.linkedin.com/in/manuelleonmendiola/
+- **Rol:** Product Owner, Virtual Desktop — Arsys/IONOS (área Cloud)
+- **Certificaciones:** SAFe (Scaled Agile Framework)
+- **Background:** IT veteran ("I've been in IT so long I remember green phosphorus monitors")
+- **Contexto:** Dentro de IONOS Group vía Arsys (filial española), trabaja en productos Cloud
+- **Relevancia:** Interesado en Sovereign European Cloud (IONOS + Aruba + Dynamo)
+
 ## Contexto de la presentación
 - **Audiencia:** C-Level, CEO Achim Weiss + otros
 - **CEO:** Achim Weiss — 25+ años experiencia internet, CEO de IONOS
