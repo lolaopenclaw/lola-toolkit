@@ -53,7 +53,8 @@ echo ""
 # 2. Check for exposed secrets in common files
 echo "🔍 Scanning for exposed secrets..."
 SECRET_PATTERNS="(api[_-]?key|apikey|secret|password|token|auth).*[=:].{10,}"
-for f in $(ls *.md *.json *.yaml *.yml .env* 2>/dev/null || true); do
+shopt -s nullglob
+for f in ./*.md ./*.json ./*.yaml ./*.yml .env*; do
     if [ -f "$f" ]; then
         matches=$(grep -iE "$SECRET_PATTERNS" "$f" 2>/dev/null | grep -v "example\|template\|placeholder\|your-\|<\|TODO" || true)
         if [ -n "$matches" ]; then
@@ -61,6 +62,7 @@ for f in $(ls *.md *.json *.yaml *.yml .env* 2>/dev/null || true); do
         fi
     fi
 done
+shopt -u nullglob
 pass "Secret scan complete"
 echo ""
 
