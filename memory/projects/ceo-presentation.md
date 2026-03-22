@@ -59,12 +59,21 @@
 
 ---
 
+## Contexto de la presentación
+- **Audiencia:** C-Level, CEO Achim Weiss + otros
+- **CEO:** Achim Weiss — 25+ años experiencia internet, CEO de IONOS
+- **Su narrativa pública:** "European digital sovereignty", "AI + sovereign cloud = growth engine", "Europe cannot afford to be left behind"
+- **Empresa:** IONOS, área Cloud. Cotizada. Record FY2025 (EBITDA margins 37-38%, targeting 40% midterm)
+- **Productos IA IONOS:** ionosGPT (abril 2025), IONOS Momentum (ecosistema IA para SMBs), AI Model Hub, partnership con Nextcloud
+- **Artículo clave de Achim:** "To Europe's cloud providers: The time to act is now" (LinkedIn, mayo 2025)
+- **Idioma:** Presentación en INGLÉS. Documentos de trabajo pueden ser en español, materiales finales en inglés.
+- **Scope geográfico:** Europeo/Global/Alemán. NO temas nacionales españoles.
+- **Formato:** Presentación breve + backup detallado por si hay que profundizar
+
 ## Preguntas abiertas (para definir hilo)
 - ¿Qué decisión quieres que tome el CEO?
-- ¿Dónde está la empresa ahora con IA? ¿Qué POs hay? ¿Qué stack?
 - ¿Quieres posicionar a los PO como líderes de la transformación o como pieza necesaria que no se debe eliminar?
 - ¿Hay presión para reducir POs porque "la IA ya lo hace todo"?
-- ¿El público es solo el CEO o hay más stakeholders?
 
 ---
 
