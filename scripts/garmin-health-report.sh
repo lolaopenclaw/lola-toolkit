@@ -20,7 +20,7 @@ case "$MODE" in
     DATE_SLEEP="$(date +%Y-%m-%d)"  # Sleep from last night (keyed to today)
     ;;
   --weekly|--summary)
-    DAYS=7
+    # Weekly summary mode
     ;;
   --current)
     # Current mode shows today's real-time data
