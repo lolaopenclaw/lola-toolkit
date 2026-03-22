@@ -2,6 +2,14 @@
 
 ## Communication
 
+### Paralelización con Subagentes
+- **SIEMPRE paralelizar tareas cuando sea posible** — usar subagentes para trabajo concurrente
+- Si hay múltiples tareas independientes → lanzar en paralelo, no secuencial
+- Pruebas, evaluaciones, búsquedas, procesamiento de datos → candidatos naturales para paralelismo
+- **Límite:** no tumbar la VPS (monitorizar carga). Empezar con 2-3 agentes, escalar si va bien
+- **Aplica a:** autoimprove, investigación, procesamiento de datos, audits, cualquier tarea divisible
+- **Set:** 2026-03-22 (Manu's explicit instruction — "grabarlo a fuego")
+
 ### Proactive Completion Notifications
 - **SIEMPRE avisar a Manu cuando una acción/tarea se complete** — no esperar a que pregunte
 - Si Manu preguntó por algo y se resuelve luego (heartbeat, cron, proceso background): enviar aviso inmediato
