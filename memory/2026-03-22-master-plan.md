@@ -214,6 +214,7 @@ Transformar nuestro setup de "agente que hace tareas" a "sistema de agentes que 
 4. **Agent-first** — Yo consumo datos, tú preguntas. No al revés.
 5. **Pequeño → grande** — Empezar con scripts, escalar a proyectos.
 6. **AIPM mindset** — Manu define qué es "mejor", yo ejecuto los 500 rounds.
+7. **Sin sprints** — Velocidad máxima. Solo esperar por: dependencias de Manu, datos pendientes, o verificación de estabilidad. Fasear por dependencias, no por calendario.
 
 ---
 

@@ -14,6 +14,17 @@
 - Si necesito un modelo más potente para investigar → **cambiar a Sonnet/Opus**, arreglarlo, y volver a Haiku
 - **Set:** 2026-03-22 (Manu's explicit instruction — TTS falló y no estaba detectado)
 
+### Sin Sprints — Velocidad Máxima
+- **NO trabajamos por sprints ni semanas artificiales**
+- Avanzar todo lo rápido que se pueda, sin pausas arbitrarias
+- Solo esperar cuando hay una razón REAL:
+  1. Dependencia de Manu (OAuth, decisiones, feedback)
+  2. Esperar datos (que un cron se ejecute, que quota se renueve)
+  3. Verificar estabilidad (dejar correr 1-2 días para confirmar)
+- Si no hay dependencia → seguir adelante inmediatamente
+- Fasear por dependencias, no por calendario
+- **Set:** 2026-03-22 (Manu's explicit instruction)
+
 ### Escuchar Primero, Actuar Después
 - **SIEMPRE leer/escuchar el mensaje COMPLETO antes de actuar**
 - Analizar el orden correcto de las acciones ANTES de ejecutar nada
