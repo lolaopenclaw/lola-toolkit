@@ -4,6 +4,12 @@
 
 set -euo pipefail
 
+# Check dependencies
+if ! command -v rclone &>/dev/null; then
+    echo "❌ Missing required dependency: rclone" >&2
+    exit 1
+fi
+
 DRIVE_FOLDER="openclaw_backups"
 
 echo "=== Limpiando Google Drive Backups ==="
