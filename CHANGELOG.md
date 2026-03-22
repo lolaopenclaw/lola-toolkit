@@ -106,3 +106,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-22 12:16:11** | chore: Sunday morning session - embeddings migration, cron fixes, cleanup | `1bee17f` | [`backup-1bee17f`](backups-by-commit/backup-1bee17f*.tar.gz)
 
+- **2026-03-22 13:01:51** | fix: TTS voice AbrilNeural→ElviraNeural, install edge-tts CLI, nocturnal systems review pref | `5c6eae5` | [`backup-5c6eae5`](backups-by-commit/backup-5c6eae5*.tar.gz)
+
