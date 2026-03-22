@@ -1,14 +1,12 @@
 {
-  "date": "2026-03-20",
-  "time": "01:30",
-  "status": "ok",
-  "packages_available": 13,
-  "packages_updated": 0,
-  "security_count": 0
-0,
-  "regular_count": 13,
-  "packages": [{"name":"binutils-common","type":"regular"},{"name":"binutils-x86-64-linux-gnu","type":"regular"},{"name":"binutils","type":"regular"},{"name":"gnome-keyring-pkcs11","type":"regular"},{"name":"gnome-keyring","type":"regular"},{"name":"libbinutils","type":"regular"},{"name":"libctf-nobfd0","type":"regular"},{"name":"libctf0","type":"regular"},{"name":"libgprofng0","type":"regular"},{"name":"libinput-bin","type":"regular"},{"name":"libinput10","type":"regular"},{"name":"libpam-gnome-keyring","type":"regular"},{"name":"libsframe1","type":"regular"}],
-  "reboot_required": false,
-  "remaining": 13,
-  "note": "Auto-applied. OpenClaw excluded (always manual)."
+  "timestamp": "2026-03-22T01:30:00Z",
+  "status": "error",
+  "script": "system-updates-nightly.sh",
+  "errors": [
+    "line 59: 0 0: syntax error in expression (error token is \"0\")",
+    "line 85: UPDATED: unbound variable"
+  ],
+  "output": "🔄 [2026-03-22 01:30] Iniciando actualizaciones de sistema...\n📦 Aplicando 11 actualizaciones...",
+  "exit_code": 1,
+  "note": "Script tiene errores de sintaxis. Requiere review y corrección."
 }
