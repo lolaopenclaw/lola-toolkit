@@ -283,7 +283,8 @@ if $DO_TEST && [ -n "$BACKUP_FILE" ]; then
         add_report "  Files: $EXTRACTED_FILES | Dirs: $EXTRACTED_DIRS | Size: $EXTRACTED_SIZE"
 
         # Check key files are readable
-        BACKUP_ROOT=$(ls "$TEST_DIR" | head -1)
+        BACKUP_ROOT=$(find "$TEST_DIR" -maxdepth 1 -mindepth 1 -type d -print -quit)
+        BACKUP_ROOT=$(basename "$BACKUP_ROOT")
         KEY_FILES_OK=0
         KEY_FILES_TOTAL=0
         for kf in openclaw.json dot-env SOUL.md AGENTS.md; do
