@@ -55,7 +55,7 @@ echo "" >> "$REPORT"
 # === 4. CRON HEALTH ===
 echo "## ⏰ Cron Health" >> "$REPORT"
 echo "" >> "$REPORT"
-CRON_COUNT=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | wc -l)
+CRON_COUNT=$(crontab -l 2>/dev/null | grep -cv "^#\|^$")
 CRON_DUPES=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | sort | uniq -d | wc -l)
 echo "- Active crons: $CRON_COUNT" >> "$REPORT"
 echo "- Duplicates: $CRON_DUPES" >> "$REPORT"
