@@ -34,7 +34,7 @@ echo "## 📦 Large Files in Memory (>50KB)" >> "$REPORT"
 echo "" >> "$REPORT"
 LARGE=$(find "$MEMORY" -maxdepth 2 -type f -size +50k ! -path "*/archive/*" 2>/dev/null)
 if [ -n "$LARGE" ]; then
-    echo "$LARGE" | while read f; do
+    echo "$LARGE" | while read -r f; do
         echo "- $(du -sh "$f" | cut -f1) — $(basename "$f")" >> "$REPORT"
     done
 else
