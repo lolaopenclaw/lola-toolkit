@@ -101,7 +101,8 @@ cleanup_all() {
     if [ -d "$WORKTREE_DIR" ]; then
         for wt in "$WORKTREE_DIR"/issue-*; do
             [ -d "$wt" ] || continue
-            local num=$(basename "$wt" | sed 's/issue-//')
+            local num
+            num=$(basename "$wt" | sed 's/issue-//')
             git worktree remove --force "$wt" 2>/dev/null || rm -rf "$wt"
             git branch -D "fix/issue-${num}" 2>/dev/null || true
             echo "Cleaned up worktree for issue-${num}"
