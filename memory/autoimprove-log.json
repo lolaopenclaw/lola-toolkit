@@ -23,7 +23,7 @@
       "reverts": 0,
       "circuit_break": false,
       "summary": "Consolidate duplicate setup sections (checkpoint), fix typo + checklist table (pr-review). Descending returns."
-    }
+    },
     {
       "date": "2026-03-17",
       "iterations": 9,
@@ -47,85 +47,7 @@
       "reverts": 0,
       "circuit_break": false,
       "summary": "Skills clarity (quick-start guides), script robustness (deps checks), memory consolidation (archive Mar14/16 logs). Workspace clean."
-    }
-  ],
-  "total_improvements": 29,
-  "total_reverts": 1,
-  "total_iterations": 52,
-  "streak": 6,
-  "last_run": "2026-03-20T01:00:00Z",
-  "files_improved": {
-    "skills/proactive-agent/SKILL.md": {
-      "dates": ["2026-03-15"],
-      "type": "consolidation",
-      "change": "Six Pillars + Best Practices → Quick Reference table"
     },
-    "skills/verification-before-completion/SKILL.md": {
-      "dates": ["2026-03-15"],
-      "type": "consolidation",
-      "change": "Red Flags + Rationalization → Danger Signals table"
-    },
-    "skills/sonoscli/SKILL.md": {
-      "dates": ["2026-03-14"],
-      "type": "enhancement",
-      "change": "troubleshooting table"
-    },
-    "skills/clawdbot-security-check/SKILL.md": {
-      "dates": ["2026-03-14"],
-      "type": "consolidation",
-      "change": "merged domains"
-    },
-    "scripts/apt-security-check.sh": {
-      "dates": ["2026-03-15"],
-      "type": "refactoring",
-      "change": "log_section() helper, -60% lines"
-    },
-    "scripts/memory-guardian.sh": {
-      "dates": ["2026-03-14"],
-      "type": "robustness",
-      "change": "signal handling"
-    },
-    "scripts/worktree-manager.sh": {
-      "dates": ["2026-03-14"],
-      "type": "validation",
-      "change": "input validation"
-    },
-    "skills/truthcheck/SKILL.md": {
-      "dates": ["2026-03-17"],
-      "type": "completeness",
-      "change": "Skill Triggers + Troubleshooting table"
-    },
-    "skills/video-frames/SKILL.md": {
-      "dates": ["2026-03-17"],
-      "type": "completeness",
-      "change": "Complete Command Reference, Usage Tips, Troubleshooting"
-    },
-    "scripts/usage-report.sh": {
-      "dates": ["2026-03-17"],
-      "type": "robustness",
-      "change": "Error handling, dependency checks, directory validation"
-    },
-    "scripts/garmin-check-alerts.sh": {
-      "dates": ["2026-03-17"],
-      "type": "robustness",
-      "change": "Env validation, module check, error messages"
-    },
-    "memory/INDEX.md": {
-      "dates": ["2026-03-17"],
-      "type": "clarity",
-      "change": "Update timestamps, fix stale references, reflect current structure"
-    },
-    "memory/manu-profile.md": {
-      "dates": ["2026-03-17"],
-      "type": "completeness",
-      "change": "Tech stack update, health goals, communication preferences"
-    },
-    "memory/verification-protocol.md": {
-      "dates": ["2026-03-17"],
-      "type": "completeness",
-      "change": "Quick Verification Commands table"
-    }
-  },
     {
       "date": "2026-03-21",
       "iterations": 10,
@@ -133,50 +55,19 @@
       "reverts": 0,
       "circuit_break": false,
       "summary": "Protocol decision tables (HITL, PR-review, worktree), script robustness (Garmin, health-dashboard, deliver-reports). Memory INDEX updated."
+    },
+    {
+      "date": "2026-03-22",
+      "iterations": 10,
+      "improvements": 9,
+      "reverts": 0,
+      "circuit_break": false,
+      "summary": "Script robustness: 8 files hardened (set -euo pipefail, deps, validation). Memory consolidation (25 files archived). Cleanup (51 test files)."
     }
   ],
-  "total_improvements": 36,
+  "total_improvements": 45,
   "total_reverts": 1,
   "total_iterations": 62,
-  "streak": 7,
-  "last_run": "2026-03-21T01:00:00Z",
-  "files_improved": {
-    "memory/hitl-protocol.md": {
-      "dates": ["2026-03-21"],
-      "type": "clarity",
-      "change": "Quick Decision Table"
-    },
-    "memory/pr-review-protocol.md": {
-      "dates": ["2026-03-21"],
-      "type": "completeness",
-      "change": "Quick Start commands"
-    },
-    "memory/worktree-protocol.md": {
-      "dates": ["2026-03-21"],
-      "type": "robustness",
-      "change": "Troubleshooting table"
-    },
-    "scripts/garmin-json-export.sh": {
-      "dates": ["2026-03-21"],
-      "type": "robustness",
-      "change": "Dep checks (python3, garminconnect)"
-    },
-    "scripts/health-dashboard-auto.sh": {
-      "dates": ["2026-03-21"],
-      "type": "robustness",
-      "change": "Dep checks (jq, bc, script files)"
-    },
-    "scripts/deliver-pending-reports.sh": {
-      "dates": ["2026-03-21"],
-      "type": "robustness",
-      "change": "set -euo pipefail, temp file safety"
-    },
-    "memory/INDEX.md": {
-      "dates": ["2026-03-21"],
-      "type": "maintenance",
-      "change": "Snapshot of 7-streak improvements"
-    }
-  },
-  "bytes_added": 5504,
-  "notes": "Seven consecutive nightly cycles. Pattern: Decision tables (faster reference) + Robustness (fail-fast deps). Workspace healthy, ~1MB total. 36 improvements, 1 revert, 0 circuit breaks."
+  "streak": 8,
+  "last_run": "2026-03-22T02:00:00Z"
 }
