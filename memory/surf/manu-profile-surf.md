@@ -9,7 +9,9 @@
 **Actual:** Intermedio (progresando)
 
 **Experiencia:** ~1-2 años de surf activo  
-**Tabla:** Shortboard (ideal para maniobras, requiere más técnica)
+**Tabla:** Softboard 8'3" (foamie — estabilidad y flotabilidad para su peso)
+**Peso:** 109 kg
+**Altura:** 1.80m
 
 ---
 
@@ -54,11 +56,16 @@
 **Costa más cercana:** Cantabria / País Vasco  
 **Distancia:** ~1.5-2h en coche
 
-**Spots probables:**
-- **Cantabria:** Somo, Loredo, Liencres, Langre (beach breaks principalmente)
-- **País Vasco:** Zarautz, Mundaka (avanzado), Zurriola (San Sebastián)
+**Spot principal:** 🇫🇷 **Playa de Hendaya (Hendaye)** — País Vasco francés, justo en la frontera
+- Beach break, arena fina, olas suaves y consistentes
+- Ideal para su nivel (intermedio, softboard grande)
+- Coordenadas: 43.37, -1.77
 
-**Implicación:** Surf = excursión de medio día o día completo. Decisión de ir debe valer la pena.
+**Otros spots:**
+- **Cantabria:** Somo, Loredo, Liencres, Langre (beach breaks)
+- **País Vasco:** Zarautz, Zurriola (San Sebastián)
+
+**Implicación:** Surf = excursión de medio día o día completo (~2h a Hendaya). Decisión de ir debe valer la pena.
 
 ---
 

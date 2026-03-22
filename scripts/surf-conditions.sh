@@ -11,10 +11,12 @@ OUTPUT_DIR="$WORKSPACE/memory/surf"
 DATE=$(date +%Y-%m-%d)
 OUTPUT_FILE="$OUTPUT_DIR/conditions-$DATE.md"
 
-# Surf spot coordinates (Cantabria/País Vasco coast)
+# Surf spot coordinates
+# Hendaya (spot principal de Manu): 43.37, -1.77
 # Santander area: 43.4, -3.8
 # San Sebastián area: 43.3, -2.0
-# Using Santander as primary, San Sebastián as secondary
+LAT_HENDAYA=43.37
+LON_HENDAYA=-1.77
 LAT_SANTANDER=43.4
 LON_SANTANDER=-3.8
 LAT_SANSEB=43.3
@@ -66,6 +68,12 @@ fetch_conditions() {
     echo ""
     echo "**Generado:** $(date '+%Y-%m-%d %H:%M:%S %Z')"
     echo "**Fuente:** Open-Meteo Marine API"
+    echo ""
+    echo "---"
+    echo ""
+    
+    # Hendaya (spot principal de Manu)
+    fetch_conditions "$LAT_HENDAYA" "$LON_HENDAYA" "🇫🇷 Hendaya (País Vasco francés) ⭐ SPOT PRINCIPAL"
     echo ""
     echo "---"
     echo ""

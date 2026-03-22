@@ -1,7 +1,64 @@
 # 🏄 Condiciones de Surf — 2026-03-22
 
-**Generado:** 2026-03-22 14:56:22 CET
+**Generado:** 2026-03-22 15:02:26 CET
 **Fuente:** Open-Meteo Marine API
+
+---
+
+## 🇫🇷 Hendaya (País Vasco francés) ⭐ SPOT PRINCIPAL
+
+**Ahora mismo** (estimado para 00:00):
+
+- 🌊 Altura de ola: 0.78m
+- 📐 Dirección ola: 314°
+- ⏱️ Período: 11.75s
+- 💨 Altura ola viento: 0.04m
+- 🧭 Dirección ola viento: 244°
+
+**Previsión 7 días:**
+
+### 2026-03-22
+- 🌊 Altura máxima: 1.94m
+- 📐 Dirección dominante: 315°
+- ⏱️ Período máximo: 13.20s
+- 💨 Altura máx ola viento: 0.62m
+
+### 2026-03-23
+- 🌊 Altura máxima: 1.94m
+- 📐 Dirección dominante: 317°
+- ⏱️ Período máximo: 12.85s
+- 💨 Altura máx ola viento: 0.22m
+
+### 2026-03-24
+- 🌊 Altura máxima: 1.58m
+- 📐 Dirección dominante: 318°
+- ⏱️ Período máximo: 11.80s
+- 💨 Altura máx ola viento: 0.04m
+
+### 2026-03-25
+- 🌊 Altura máxima: 2.96m
+- 📐 Dirección dominante: 317°
+- ⏱️ Período máximo: 12.20s
+- 💨 Altura máx ola viento: 1.06m
+
+### 2026-03-26
+- 🌊 Altura máxima: 3.30m
+- 📐 Dirección dominante: 323°
+- ⏱️ Período máximo: 10.25s
+- 💨 Altura máx ola viento: 1.34m
+
+### 2026-03-27
+- 🌊 Altura máxima: 3.06m
+- 📐 Dirección dominante: 323°
+- ⏱️ Período máximo: 10.25s
+- 💨 Altura máx ola viento: 0.86m
+
+### 2026-03-28
+- 🌊 Altura máxima: 3.80m
+- 📐 Dirección dominante: 329°
+- ⏱️ Período máximo: 11.40s
+- 💨 Altura máx ola viento: 1.98m
+
 
 ---
 
