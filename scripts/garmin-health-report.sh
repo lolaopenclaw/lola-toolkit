@@ -8,6 +8,22 @@
 #   --summary   Last 7 days summary
 # Default (no args): --daily
 
+set -euo pipefail
+
+# Check dependencies
+for cmd in python3 date; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
+# Verify .env file exists
+if [ ! -f "$HOME/.openclaw/.env" ]; then
+    echo "❌ Missing .env file: $HOME/.openclaw/.env" >&2
+    exit 1
+fi
+
 MODE="${1:---daily}"
 
 case "$MODE" in
