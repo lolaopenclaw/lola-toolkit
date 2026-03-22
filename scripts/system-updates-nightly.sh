@@ -1,6 +1,5 @@
-# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
-
 #!/bin/bash
+# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
 # system-updates-nightly.sh
 # Aplica actualizaciones de sistema automáticamente por la noche
 # NUNCA actualiza OpenClaw (eso es siempre manual)
