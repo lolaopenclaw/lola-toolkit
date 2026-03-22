@@ -2,7 +2,21 @@
 # Memory Maintenance Script (inspired by Signet pipeline)
 # Runs weekly: deduplication, retention decay, stats
 
-MEMORY_DIR="$HOME/.openclaw/workspace/memory"
+set -euo pipefail
+
+# Check dependencies
+for cmd in find date awk wc du; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
+MEMORY_DIR="${HOME:?}/.openclaw/workspace/memory"
+if [ ! -d "$MEMORY_DIR" ]; then
+    echo "❌ Memory directory not found: $MEMORY_DIR" >&2
+    exit 1
+fi
 ARCHIVE_DIR="$MEMORY_DIR/archive"
 ENTITIES="$MEMORY_DIR/entities.md"
 TODAY=$(date +%Y-%m-%d)
