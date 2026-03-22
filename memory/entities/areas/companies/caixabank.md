@@ -1,7 +1,7 @@
 # CaixaBank — Summary
 
 **Type:** company  
-**Last synthesized:** 2026-03-18  
+**Last synthesized:** 2026-03-22  
 **Tiers:** 2 hot, 0 warm, 0 cold
 
 ## 🔥 Hot (recent / frequent)
