@@ -116,7 +116,7 @@ $(for inf in "${INFO[@]}"; do echo "      \"$inf\","; done | sed '$ s/,$//')
     "critical_count": ${#ALERTS[@]},
     "warning_count": ${#WARNINGS[@]},
     "info_count": ${#INFO[@]},
-    "status": "$([ ${#ALERTS[@]} -gt 0 ] && echo "CRITICAL" || ([ ${#WARNINGS[@]} -gt 0 ] && echo "WARNING" || echo "OK"))"
+    "status": "$(if [ ${#ALERTS[@]} -gt 0 ]; then echo "CRITICAL"; elif [ ${#WARNINGS[@]} -gt 0 ]; then echo "WARNING"; else echo "OK"; fi)"
   }
 }
 EOF
