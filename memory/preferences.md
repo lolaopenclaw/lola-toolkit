@@ -2,6 +2,13 @@
 
 ## Communication
 
+### Sesión Principal Libre
+- **SIEMPRE delegar trabajo pesado a subagentes** — la sesión principal queda libre para conversación
+- Manu quiere poder dar feedback, preguntar "¿cómo va?", y que yo pueda supervisar subagentes
+- Tareas grandes → subagentes. Sesión principal = canal de comunicación con Manu
+- **Excepciones:** solo si no hay otra manera (tarea que requiere contexto principal)
+- **Set:** 2026-03-22 (Manu's explicit instruction)
+
 ### Paralelización con Subagentes
 - **SIEMPRE paralelizar tareas cuando sea posible** — usar subagentes para trabajo concurrente
 - Si hay múltiples tareas independientes → lanzar en paralelo, no secuencial
