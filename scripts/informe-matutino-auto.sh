@@ -1,6 +1,5 @@
-# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
-
 #!/bin/bash
+# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
 # informe-matutino-auto.sh
 # Genera y envía informe matutino automático a Discord (NUNCA Telegram)
 
