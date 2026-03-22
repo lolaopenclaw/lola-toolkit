@@ -62,11 +62,19 @@
 ## Perfil del presentador
 - **Nombre:** Manuel León Mendiola
 - **LinkedIn:** https://www.linkedin.com/in/manuelleonmendiola/
-- **Rol:** Product Owner, Virtual Desktop — Arsys/IONOS (área Cloud)
+- **Rol actual:** Product Owner, Cloud Platforms & Tooling — IONOS (desde dic 2024)
+  - Lidera estrategia de producto para tooling interno y automatización en ecosistema IONOS Cloud
+  - Entornos API-driven, OpenAPI, Kubernetes, CI/CD
+  - ITZBund private cloud (entorno altamente seguro)
+  - **Pivot activo a AI Product Management:** enfocado en Agentic AI para cloud tooling
+- **Rol anterior:** PO Virtual Desktop — Arsys (nov 2019 – mar 2026), DaaS/VDI/EUC enterprise
+- **Trayectoria IONOS/Arsys:** 24+ años (sept 2001 – presente)
+  - Soporte técnico → Business Dev → Marketing → PM/PO → PO Server → PO VDI → PO Cloud/AI
+  - Managed Cloud Hosting, Managed K8s, Cloud Panel UX, proyectos EU H2020 "Decide"
+  - Containerización (Docker, K8s, OpenShift), equipos internacionales
+- **Pre-Arsys:** 9 meses como técnico de sistemas en Grupo Pancorbo (2001)
 - **Certificaciones:** SAFe (Scaled Agile Framework)
-- **Background:** IT veteran ("I've been in IT so long I remember green phosphorus monitors")
-- **Contexto:** Dentro de IONOS Group vía Arsys (filial española), trabaja en productos Cloud
-- **Relevancia:** Interesado en Sovereign European Cloud (IONOS + Aruba + Dynamo)
+- **Fortaleza para la presentación:** 24 años dentro de la empresa, conoce el negocio desde soporte técnico hasta producto cloud. Credibilidad total ante C-Level.
 
 ## Contexto de la presentación
 - **Audiencia:** C-Level, CEO Achim Weiss + otros
