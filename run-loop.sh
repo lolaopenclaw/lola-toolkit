@@ -108,16 +108,17 @@ Output ONLY the improved script content, nothing else. No explanations, no markd
     
     # Use claude CLI if available, otherwise fall back to openclaw
     if command -v claude &>/dev/null; then
-        timeout "$TIMEOUT_SECONDS" claude --print <<EOF > "$TEMP_SCRIPT" 2>/dev/null || {
-            echo "⚠️  Agent timeout or error, skipping this iteration" >&2
-            continue
-        }
+        timeout "$TIMEOUT_SECONDS" claude --print > "$TEMP_SCRIPT" 2>/dev/null <<EOF
 $(cat program.md)
 
 ---
 
 $PROMPT
 EOF
+        if [[ $? -ne 0 ]]; then
+            echo "⚠️  Agent timeout or error, skipping this iteration" >&2
+            continue
+        fi
     else
         # Fallback: use openclaw sessions spawn
         echo "⚠️  claude CLI not found, using openclaw subagent" >&2
