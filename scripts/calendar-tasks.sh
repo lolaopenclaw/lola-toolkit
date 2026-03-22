@@ -11,6 +11,14 @@
 
 set -euo pipefail
 
+# Check dependencies
+for cmd in gog python3 date; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
 CALENDAR_ID="lolaopenclaw@gmail.com"
 TZ="Europe/Madrid"
 
