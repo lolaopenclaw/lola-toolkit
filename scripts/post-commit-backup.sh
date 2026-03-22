@@ -21,7 +21,6 @@ done
 WORKSPACE="$HOME/.openclaw/workspace"
 GIT_LOG=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%s" 2>/dev/null || echo "unknown")
 GIT_HASH=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%h" 2>/dev/null || echo "????")
-GIT_AUTHOR=$(cd "$WORKSPACE" && git log -1 --pretty=format:"%an" 2>/dev/null || echo "unknown")
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 BACKUP_DIR="$WORKSPACE/backups-by-commit"
 
