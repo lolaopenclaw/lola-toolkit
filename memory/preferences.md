@@ -2,6 +2,13 @@
 
 ## Communication
 
+### Escuchar Primero, Actuar Después
+- **SIEMPRE leer/escuchar el mensaje COMPLETO antes de actuar**
+- Analizar el orden correcto de las acciones ANTES de ejecutar nada
+- Si el mensaje pide modo coche al final → activar TTS PRIMERO, luego hacer las tareas
+- No lanzar herramientas hasta haber procesado todo el mensaje
+- **Set:** 2026-03-22 (Manu's explicit feedback — respondí por texto cuando pidió audio)
+
 ### Sesión Principal Libre
 - **SIEMPRE delegar trabajo pesado a subagentes** — la sesión principal queda libre para conversación
 - Manu quiere poder dar feedback, preguntar "¿cómo va?", y que yo pueda supervisar subagentes
