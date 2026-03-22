@@ -14,9 +14,23 @@
 
 set -euo pipefail
 
+# Check dependencies
+for cmd in python3 tar find date; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
 WORKSPACE="/home/mleon/.openclaw/workspace"
 STATE_FILE="$WORKSPACE/memory/backup-validation-state.json"
 LOG_DIR="$WORKSPACE/memory/backup-validation-logs"
+
+# Validate workspace directory
+if [ ! -d "$WORKSPACE" ]; then
+    echo "❌ Workspace directory not found: $WORKSPACE" >&2
+    exit 1
+fi
 
 # Expected files/dirs in backup
 EXPECTED_FILES=(
