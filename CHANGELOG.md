@@ -102,3 +102,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-22 09:15:20** | fix: cron delivery + autoimprove reporting instructions | `d7dd7ab` | [`backup-d7dd7ab`](backups-by-commit/backup-d7dd7ab*.tar.gz)
 
+- **2026-03-22 11:27:20** | feat: Gemini embeddings migration complete (714 chunks, 0 errors) | `46dfc96` | [`backup-46dfc96`](backups-by-commit/backup-46dfc96*.tar.gz)
+
