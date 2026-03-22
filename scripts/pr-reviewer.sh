@@ -1,12 +1,11 @@
 #!/bin/bash
 # pr-reviewer.sh — Find PRs pending review and trigger AI review
-# Usage: pr-reviewer.sh <owner/repo> [--label auto-review] [--max 5]
+# Usage: pr-reviewer.sh <owner/repo> [--max 5]
 # Requires: GH_TOKEN env var, jq, curl
 
 set -euo pipefail
 
 REPO="${1:-}"
-LABEL="auto-review"
 MAX_PRS=5
 REVIEWED_FILE="$HOME/.openclaw/workspace/.pr-reviews-done.json"
 
@@ -14,7 +13,6 @@ REVIEWED_FILE="$HOME/.openclaw/workspace/.pr-reviews-done.json"
 shift || true
 while [[ $# -gt 0 ]]; do
     case "$1" in
-        --label) LABEL="$2"; shift 2 ;;
         --max) MAX_PRS="$2"; shift 2 ;;
         *) shift ;;
     esac
