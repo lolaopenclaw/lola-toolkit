@@ -21,15 +21,6 @@ mkdir -p "$CACHE_DIR" "${WORKSPACE}/reports"
 
 echo "📊 Building Health Dashboard..."
 
-# === FETCH WEATHER ===
-WEATHER=$(curl -s "https://wttr.in/Logroño,Spain?format=j1" | jq '.current_condition[0] // {}' 2>/dev/null || echo "{}")
-
-# === SYSTEM STATS ===
-UPTIME=$(uptime | awk -F'up' '{print $2}' | cut -d',' -f1 | xargs)
-LOAD=$(uptime | awk -F'load average:' '{print $2}')
-MEMORY=$(free -h | grep Mem | awk '{print $3 " / " $2}')
-DISK=$(df -h / | tail -1 | awk '{print $3 " / " $2 " (" $5 ")"}')
-
 # === BUILD HTML DASHBOARD ===
 cat > "$REPORT_FILE" << 'EOF'
 <!DOCTYPE html>
