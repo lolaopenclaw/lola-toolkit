@@ -2,6 +2,18 @@
 
 ## Communication
 
+### Revisión Nocturna de Sistemas
+- **TODAS las noches revisar que TODOS los sistemas funcionen:**
+  - TTS (probar que genera audio real)
+  - Crons (0 errores)
+  - Healthchecks (todos verdes)
+  - Gmail/gog auth
+  - Memory search (provider correcto, no fallback)
+  - Gateway (sin warnings críticos)
+- Si algo falla → **arreglarlo yo sola**. No esperar a que Manu lo descubra.
+- Si necesito un modelo más potente para investigar → **cambiar a Sonnet/Opus**, arreglarlo, y volver a Haiku
+- **Set:** 2026-03-22 (Manu's explicit instruction — TTS falló y no estaba detectado)
+
 ### Escuchar Primero, Actuar Después
 - **SIEMPRE leer/escuchar el mensaje COMPLETO antes de actuar**
 - Analizar el orden correcto de las acciones ANTES de ejecutar nada
