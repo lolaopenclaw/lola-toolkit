@@ -45,8 +45,6 @@ echo "🔬 Leyendo resumen de Autoimprove..."
 AUTOIMPROVE_FILE="$MEMORY_DIR/$TODAY-autoimprove.md"
 AUTOIMPROVE_SECTION=""
 if [ -f "$AUTOIMPROVE_FILE" ]; then
-    # Extract key stats: improvements kept, reverted, iterations
-    KEPT=$(grep -c "^[0-9]\+\.\|^\*\*" "$AUTOIMPROVE_FILE" 2>/dev/null | head -1 || echo "?")
     # Get a concise summary: look for "Improvements Kept" and "Stats" sections
     IMPROVEMENTS=$(sed -n '/## Improvements Kept/,/## Attempted/p' "$AUTOIMPROVE_FILE" | grep "^\*\*\|^[0-9]" | head -10 || true)
     REVERTED=$(sed -n '/## Attempted but Reverted/,/## Stats/p' "$AUTOIMPROVE_FILE" | grep "^\*\*" | head -5 || true)
