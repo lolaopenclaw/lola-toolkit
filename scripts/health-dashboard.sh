@@ -21,9 +21,6 @@ mkdir -p "$CACHE_DIR" "${WORKSPACE}/reports"
 
 echo "📊 Building Health Dashboard..."
 
-# === FETCH GARMIN DATA ===
-GARMIN_DATA=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null || echo "{}")
-
 # === FETCH WEATHER ===
 WEATHER=$(curl -s "https://wttr.in/Logroño,Spain?format=j1" | jq '.current_condition[0] // {}' 2>/dev/null || echo "{}")
 
