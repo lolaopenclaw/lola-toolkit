@@ -96,3 +96,7 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-20 11:43:52** | fix: correct coach names (Rafa=técnica, Jorge=físico) | `3298cf5` | [`backup-3298cf5`](backups-by-commit/backup-3298cf5*.tar.gz)
 
+- **2026-03-21 10:13:41** | fix: add token usage to morning report + proactive notifications preference | `0b85007` | [`backup-0b85007`](backups-by-commit/backup-0b85007*.tar.gz)
+
+- **2026-03-22 02:01:17** | autoimprove: harden generate-morning-report.sh — set -euo pipefail, dep checks, fix encoding | `7e1ffe7` | [`backup-7e1ffe7`](backups-by-commit/backup-7e1ffe7*.tar.gz)
+

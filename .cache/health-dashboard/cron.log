@@ -502,3 +502,5 @@ jq: parse error: Invalid numeric literal at line 1, column 10
 ✅ Alerts JSON: /home/mleon/.openclaw/workspace/.cache/health-dashboard/alerts.json
 
 Dashboard complete at 2026-03-20T09:00:02+01:00
+🏥 Daily Health Dashboard — 2026-03-21 09:00
+  [1/3] Fetching Garmin metrics...
