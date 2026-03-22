@@ -1,3 +1,7 @@
 {"ts":"2026-03-22T12:30:25Z","target":"HEARTBEAT.md","change":"removed redundant section","before":10447,"after":9850,"kept":true,"delta":597}
 {"ts":"2026-03-22T12:30:28Z","target":"AGENTS.md","change":"tried to compress examples","before":2053,"after":2100,"kept":false,"delta":-47}
 {"ts":"2026-03-22T12:30:30Z","target":"backup-memory.sh","change":"parallelized tar operations","before":980,"after":750,"kept":true,"delta":230}
+{"ts":"2026-03-22T12:31:55Z","target":"memory-index","change":"consolidated duplicate entries","before":2920,"after":2650,"kept":true,"delta":270}
+{"ts":"2026-03-22T12:31:55Z","target":"memory-index","change":"removed stale 2024 references","before":2650,"after":2580,"kept":true,"delta":70}
+{"ts":"2026-03-22T12:31:55Z","target":"agents-tokens","change":"tried to merge sections","before":2053,"after":2180,"kept":false,"delta":-127}
+{"ts":"2026-03-22T12:31:55Z","target":"backup-speed","change":"added functions for repeated logic","before":980,"after":850,"kept":true,"delta":130}
