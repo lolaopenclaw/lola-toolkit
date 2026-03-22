@@ -1,6 +1,5 @@
-# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
-
 #!/bin/bash
+# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
 # Google TTS wrapper - generates audio from text and sends as voice note
 # Usage: google-tts.sh "texto"
 # Uses gtts (Google Translate TTS) - free, no API key needed
@@ -17,7 +16,7 @@ if [ -z "$TEXT" ]; then
     exit 1
 fi
 
-mkdir -p $HOME/.openclaw/media/outbound
+mkdir -p "$HOME/.openclaw/media/outbound"
 
 source "$VENV_DIR/bin/activate"
 python3 << PYEOF
