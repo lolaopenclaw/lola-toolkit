@@ -116,7 +116,7 @@ UPLOAD_RESULT=$(gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --accou
 echo "$UPLOAD_RESULT"
 
 # --- Cleanup -----------------------------------------------------------------
-rm -rf "$BACKUP_DIR" "$BACKUP_FILE" "$NATIVE_BACKUP_DIR"
+rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
 
 echo ""
 echo "=== RESULT ==="

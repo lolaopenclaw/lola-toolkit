@@ -382,24 +382,23 @@ except Exception as e:
     print(f"❌ Error: {e}")
     sys.exit(1)
 
-if MODE == "--daily" or MODE == "--current":
-    if MODE == "--daily":
-        # Morning report: activity from YESTERDAY, sleep from TODAY
-        data_activity = get_day_data(client, "$DATE_ACTIVITY")
-        data_sleep = get_day_data(client, "$DATE_SLEEP")
-        # Merge: take activity/HR/stress from yesterday, sleep from today
-        data = data_activity.copy()
-        data['sleep_total'] = data_sleep.get('sleep_total', 0)
-        data['sleep_deep'] = data_sleep.get('sleep_deep', 0)
-        data['sleep_light'] = data_sleep.get('sleep_light', 0)
-        data['sleep_rem'] = data_sleep.get('sleep_rem', 0)
-        data['sleep_awake'] = data_sleep.get('sleep_awake', 0)
-        print_daily(data)
-    else:
-        # Current mode: all data for today (real-time)
-        target = "$DATE" if "$DATE" else date.today().isoformat()
-        data = get_day_data(client, target)
-        print_current(data)
+if MODE == "--daily":
+    # Morning report: activity from YESTERDAY, sleep from TODAY
+    data_activity = get_day_data(client, "$DATE_ACTIVITY")
+    data_sleep = get_day_data(client, "$DATE_SLEEP")
+    # Merge: take activity/HR/stress from yesterday, sleep from today
+    data = data_activity.copy()
+    data['sleep_total'] = data_sleep.get('sleep_total', 0)
+    data['sleep_deep'] = data_sleep.get('sleep_deep', 0)
+    data['sleep_light'] = data_sleep.get('sleep_light', 0)
+    data['sleep_rem'] = data_sleep.get('sleep_rem', 0)
+    data['sleep_awake'] = data_sleep.get('sleep_awake', 0)
+    print_daily(data)
+elif MODE == "--current":
+    # Current mode: all data for today (real-time)
+    target = "$DATE" if "$DATE" else date.today().isoformat()
+    data = get_day_data(client, target)
+    print_current(data)
 elif MODE in ("--weekly", "--summary"):
     print_weekly(client, 7)
 
