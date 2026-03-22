@@ -221,9 +221,9 @@ if $DO_VERIFY && [ -n "$BACKUP_FILE" ]; then
         done
 
         TOTAL_EXPECTED=${#EXPECTED_FILES[@]}
-        if [ $FOUND -eq $TOTAL_EXPECTED ]; then
+        if [ "$FOUND" -eq "$TOTAL_EXPECTED" ]; then
             add_report "$(echo -e "$PASS") Structure: ${FOUND}/${TOTAL_EXPECTED} expected files found"
-        elif [ $FOUND -ge $((TOTAL_EXPECTED - 2)) ]; then
+        elif [ "$FOUND" -ge $((TOTAL_EXPECTED - 2)) ]; then
             add_report "$(echo -e "$WARN") Structure: ${FOUND}/${TOTAL_EXPECTED} expected files found"
             add_report "  Missing:"; add_report "$MISSING"
             WARNINGS=$((WARNINGS + 1))
