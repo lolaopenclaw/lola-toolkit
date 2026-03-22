@@ -104,3 +104,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-22 11:27:20** | feat: Gemini embeddings migration complete (714 chunks, 0 errors) | `46dfc96` | [`backup-46dfc96`](backups-by-commit/backup-46dfc96*.tar.gz)
 
+- **2026-03-22 12:16:11** | chore: Sunday morning session - embeddings migration, cron fixes, cleanup | `1bee17f` | [`backup-1bee17f`](backups-by-commit/backup-1bee17f*.tar.gz)
+
