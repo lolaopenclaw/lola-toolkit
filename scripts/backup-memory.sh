@@ -1,6 +1,5 @@
-# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
-
 #!/bin/bash
+# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
 # =============================================================================
 # backup-memory.sh — Backup completo del workspace a Google Drive
 # =============================================================================
