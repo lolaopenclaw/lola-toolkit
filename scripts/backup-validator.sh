@@ -1,5 +1,4 @@
 #!/bin/bash
-# NOTE: Replace placeholder values (YOUR_*, $USER, etc.) with your actual configuration
 # =============================================================================
 # backup-validator.sh — Backup Integrity Validation Suite
 # =============================================================================
@@ -15,9 +14,23 @@
 
 set -euo pipefail
 
+# Check dependencies
+for cmd in python3 tar find date; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
 WORKSPACE="$HOME/.openclaw/workspace"
 STATE_FILE="$WORKSPACE/memory/backup-validation-state.json"
 LOG_DIR="$WORKSPACE/memory/backup-validation-logs"
+
+# Validate workspace directory
+if [ ! -d "$WORKSPACE" ]; then
+    echo "❌ Workspace directory not found: $WORKSPACE" >&2
+    exit 1
+fi
 
 # Expected files/dirs in backup
 EXPECTED_FILES=(
@@ -76,9 +89,8 @@ log() { $QUIET || echo -e "$@"; }
 
 update_state() {
     local file="$1" status="$2" details="$3" checksum="${4:-}"
-    local ts basename
-    ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
-    basename=$(basename "$file")
+    local ts=$(date -u +%Y-%m-%dT%H:%M:%SZ)
+    local basename=$(basename "$file")
 
     # Initialize state file if needed
     [ -f "$STATE_FILE" ] || echo '{"validations":[],"lastRun":"","summary":{}}' > "$STATE_FILE"
@@ -132,7 +144,7 @@ fi
 # --- Need backup file for other commands ---
 if [ -z "$BACKUP_FILE" ] && ($DO_VERIFY || $DO_TEST || $DO_FULL || $DO_REPAIR); then
     # Try to find latest local backup
-    BACKUP_FILE=$(find /tmp -maxdepth 1 -name "openclaw-backup-*.tar.gz" -type f -printf '%T@ %p\n' 2>/dev/null | sort -rn | head -1 | cut -d' ' -f2)
+    BACKUP_FILE=$(ls -t /tmp/openclaw-backup-*.tar.gz 2>/dev/null | head -1)
     if [ -z "$BACKUP_FILE" ]; then
         echo "ERROR: No backup file specified and none found in /tmp"
         echo "Usage: bash backup-validator.sh <backup-file> [--verify|--test|--full]"
@@ -221,9 +233,9 @@ if $DO_VERIFY && [ -n "$BACKUP_FILE" ]; then
         done
 
         TOTAL_EXPECTED=${#EXPECTED_FILES[@]}
-        if [ "$FOUND" -eq "$TOTAL_EXPECTED" ]; then
+        if [ $FOUND -eq $TOTAL_EXPECTED ]; then
             add_report "$(echo -e "$PASS") Structure: ${FOUND}/${TOTAL_EXPECTED} expected files found"
-        elif [ "$FOUND" -ge $((TOTAL_EXPECTED - 2)) ]; then
+        elif [ $FOUND -ge $((TOTAL_EXPECTED - 2)) ]; then
             add_report "$(echo -e "$WARN") Structure: ${FOUND}/${TOTAL_EXPECTED} expected files found"
             add_report "  Missing:"; add_report "$MISSING"
             WARNINGS=$((WARNINGS + 1))
@@ -283,8 +295,7 @@ if $DO_TEST && [ -n "$BACKUP_FILE" ]; then
         add_report "  Files: $EXTRACTED_FILES | Dirs: $EXTRACTED_DIRS | Size: $EXTRACTED_SIZE"
 
         # Check key files are readable
-        BACKUP_ROOT=$(find "$TEST_DIR" -maxdepth 1 -mindepth 1 -type d -print -quit)
-        BACKUP_ROOT=$(basename "$BACKUP_ROOT")
+        BACKUP_ROOT=$(ls "$TEST_DIR" | head -1)
         KEY_FILES_OK=0
         KEY_FILES_TOTAL=0
         for kf in openclaw.json dot-env SOUL.md AGENTS.md; do

@@ -1,7 +1,6 @@
 #!/bin/bash
 # weekly-audit.sh — Consolidated Weekly Audit
-# Replaces: memory-guardian.sh + memory-maintenance.sh + manual cleanup-audits
-# Runs: Sunday 03:00 Madrid via cron
+# Runs: Weekly (e.g., Sunday 03:00) via cron
 # Results: saved to memory/ for Monday morning report
 
 set -euo pipefail
@@ -14,7 +13,7 @@ CUTOFF_30D=$(date -d "30 days ago" +%Y-%m-%d 2>/dev/null || date -v-30d +%Y-%m-%
 
 echo "# 🔍 Weekly Audit — $TODAY" > "$REPORT"
 echo "" >> "$REPORT"
-echo "**Generated:** $(date '+%A %d %B %Y — %H:%M') Madrid" >> "$REPORT"
+echo "**Generated:** $(date '+%A %d %B %Y — %H:%M')" >> "$REPORT"
 echo "" >> "$REPORT"
 
 # === 1. DISK USAGE ===
@@ -55,7 +54,7 @@ echo "" >> "$REPORT"
 # === 4. CRON HEALTH ===
 echo "## ⏰ Cron Health" >> "$REPORT"
 echo "" >> "$REPORT"
-CRON_COUNT=$(crontab -l 2>/dev/null | grep -cv "^#\|^$")
+CRON_COUNT=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | wc -l)
 CRON_DUPES=$(crontab -l 2>/dev/null | grep -v "^#" | grep -v "^$" | sort | uniq -d | wc -l)
 echo "- Active crons: $CRON_COUNT" >> "$REPORT"
 echo "- Duplicates: $CRON_DUPES" >> "$REPORT"
@@ -93,7 +92,7 @@ echo "- Commits this week: $COMMITS_WEEK" >> "$REPORT"
 echo "" >> "$REPORT"
 
 # === 7. RESOURCE CHECK ===
-echo "## 🖥️ VPS Resources" >> "$REPORT"
+echo "## 🖥️ System Resources" >> "$REPORT"
 echo "" >> "$REPORT"
 echo "- Disk: $(df -h / | awk 'NR==2 {print $3 "/" $2 " (" $5 " used)"}')" >> "$REPORT"
 echo "- RAM: $(free -h | awk '/Mem:/ {print $3 "/" $2 " (" int($3/$2*100) "% used)"}')" >> "$REPORT"

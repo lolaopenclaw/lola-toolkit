@@ -1,7 +1,7 @@
 #!/bin/bash
 
-# Health Dashboard — Unified view of Manu's health + weather
-# Integra: Garmin Connect + Weather + System Stats
+# Health Dashboard — Unified view of health + weather
+# Integrates: Garmin Connect + Weather + System Stats
 
 set -euo pipefail
 
@@ -21,14 +21,27 @@ mkdir -p "$CACHE_DIR" "${WORKSPACE}/reports"
 
 echo "📊 Building Health Dashboard..."
 
+# === FETCH GARMIN DATA ===
+GARMIN_DATA=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null || echo "{}")
+
+# === FETCH WEATHER ===
+# Replace with your location
+WEATHER=$(curl -s "https://wttr.in/YOUR_CITY?format=j1" | jq '.current_condition[0] // {}' 2>/dev/null || echo "{}")
+
+# === SYSTEM STATS ===
+UPTIME=$(uptime | awk -F'up' '{print $2}' | cut -d',' -f1 | xargs)
+LOAD=$(uptime | awk -F'load average:' '{print $2}')
+MEMORY=$(free -h | grep Mem | awk '{print $3 " / " $2}')
+DISK=$(df -h / | tail -1 | awk '{print $3 " / " $2 " (" $5 ")"}')
+
 # === BUILD HTML DASHBOARD ===
-cat > "$REPORT_FILE" << 'EOF'
+cat > "$REPORT_FILE" << 'EOFHTML'
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>🏥 Health Dashboard — Manu</title>
+    <title>🏥 Health Dashboard</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -111,48 +124,48 @@ cat > "$REPORT_FILE" << 'EOF'
                 <h2>❤️ Garmin Connect</h2>
                 <div class="metric">
                     <span class="metric-label">HR Reposo</span>
-                    <span class="metric-value">58 bpm</span>
+                    <span class="metric-value">-- bpm</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Estrés</span>
-                    <span class="metric-value">28 <span class="status good">Bajo</span></span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Body Battery</span>
-                    <span class="metric-value">37/100 <span class="status warn">Cargando</span></span>
+                    <span class="metric-value">--/100</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Sueño Anoche</span>
-                    <span class="metric-value">6.8h</span>
+                    <span class="metric-value">--h</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Pasos Hoy</span>
-                    <span class="metric-value">866</span>
+                    <span class="metric-value">--</span>
                 </div>
             </div>
 
             <!-- WEATHER SECTION -->
             <div class="card">
-                <h2>🌤️ Clima — Logroño</h2>
+                <h2>🌤️ Clima</h2>
                 <div class="metric">
                     <span class="metric-label">Temperatura</span>
-                    <span class="metric-value">12°C</span>
+                    <span class="metric-value">--°C</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Humedad</span>
-                    <span class="metric-value">65%</span>
+                    <span class="metric-value">--%</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Viento</span>
-                    <span class="metric-value">12 km/h</span>
+                    <span class="metric-value">-- km/h</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Presión</span>
-                    <span class="metric-value">1013 hPa</span>
+                    <span class="metric-value">-- hPa</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Condición</span>
-                    <span class="metric-value">Nublado</span>
+                    <span class="metric-value">--</span>
                 </div>
             </div>
 
@@ -161,19 +174,19 @@ cat > "$REPORT_FILE" << 'EOF'
                 <h2>🖥️ Sistema</h2>
                 <div class="metric">
                     <span class="metric-label">Uptime</span>
-                    <span class="metric-value">1 day, 10h</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Carga</span>
-                    <span class="metric-value">0.15</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Memoria</span>
-                    <span class="metric-value">7.2G / 15G</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Disco</span>
-                    <span class="metric-value">29G / 464G</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Gateway</span>
@@ -186,76 +199,67 @@ cat > "$REPORT_FILE" << 'EOF'
                 <h2>💡 Recomendaciones</h2>
                 <div class="metric">
                     <span class="metric-label">Actividad</span>
-                    <span class="metric-value">↑ Aumentar movimiento</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Energía</span>
-                    <span class="metric-value">⚡ Cargar battery</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Estrés</span>
-                    <span class="metric-value">✓ Muy bien</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Sueño</span>
-                    <span class="metric-value">→ Normal, mantener</span>
+                    <span class="metric-value">--</span>
                 </div>
                 <div class="metric">
                     <span class="metric-label">Sistema</span>
-                    <span class="metric-value">✓ Estable</span>
+                    <span class="metric-value">--</span>
                 </div>
             </div>
         </div>
 
         <div class="timestamp">
-            📊 Dashboard generado: 2026-02-21 21:34 Madrid
+            📊 Dashboard generado: $(date +"%Y-%m-%d %H:%M")
             <br/>
             Próxima actualización: 9:00 AM (cron)
         </div>
     </div>
 </body>
 </html>
-EOF
+EOFHTML
 
 echo "✅ Dashboard guardado: $REPORT_FILE"
 echo "📱 Abre en navegador para ver vista completa"
 
 # === TAMBIÉN GENERAR JSON PARA PROGRAMAS ===
-cat > "$CACHE_DIR/dashboard-data.json" << 'EOF'
+cat > "$CACHE_DIR/dashboard-data.json" << 'EOFJSON'
 {
-  "timestamp": "2026-02-21T20:34:00Z",
+  "timestamp": "$(date -Iseconds)",
   "garmin": {
-    "hr_resting": 58,
-    "stress": 28,
-    "body_battery": 37,
-    "sleep_hours": 6.8,
-    "steps": 866
+    "hr_resting": 0,
+    "stress": 0,
+    "body_battery": 0,
+    "sleep_hours": 0,
+    "steps": 0
   },
   "weather": {
-    "temp_c": 12,
-    "humidity": 65,
-    "wind_kmh": 12,
-    "pressure_hpa": 1013,
-    "condition": "Cloudy"
+    "temp_c": 0,
+    "humidity": 0,
+    "wind_kmh": 0,
+    "pressure_hpa": 0,
+    "condition": "Unknown"
   },
   "system": {
-    "uptime": "1 day, 10h",
-    "load": 0.15,
-    "memory_used_gb": 7.2,
-    "memory_total_gb": 15,
-    "disk_used_gb": 29,
-    "disk_total_gb": 464,
+    "uptime": "$(echo $UPTIME)",
+    "load": "$(echo $LOAD)",
+    "memory": "$(echo $MEMORY)",
+    "disk": "$(echo $DISK)",
     "gateway_status": "running"
-  },
-  "recommendations": {
-    "activity": "Increase movement",
-    "energy": "Charge battery",
-    "stress": "Excellent",
-    "sleep": "Normal, maintain",
-    "system": "Stable"
   }
 }
-EOF
+EOFJSON
 
 echo "✅ JSON data: $CACHE_DIR/dashboard-data.json"
 echo ""

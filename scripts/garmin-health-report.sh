@@ -8,6 +8,22 @@
 #   --summary   Last 7 days summary
 # Default (no args): --daily
 
+set -euo pipefail
+
+# Check dependencies
+for cmd in python3 date; do
+    if ! command -v "$cmd" &>/dev/null; then
+        echo "❌ Missing required dependency: $cmd" >&2
+        exit 1
+    fi
+done
+
+# Verify .env file exists
+if [ ! -f "$HOME/.openclaw/.env" ]; then
+    echo "❌ Missing .env file: $HOME/.openclaw/.env" >&2
+    exit 1
+fi
+
 MODE="${1:---daily}"
 
 case "$MODE" in
@@ -20,7 +36,7 @@ case "$MODE" in
     DATE_SLEEP="$(date +%Y-%m-%d)"  # Sleep from last night (keyed to today)
     ;;
   --weekly|--summary)
-    # Weekly summary mode
+    DAYS=7
     ;;
   --current)
     # Current mode shows today's real-time data
@@ -56,7 +72,7 @@ def load_garmin_client():
         sys.exit(1)
     client = Garmin()
     client.garth.loads(tokens)
-    client.display_name = "Manu_Lazarus"
+    client.display_name = "YOUR_GARMIN_USERNAME"
     return client
 
 def format_date(date_str):
@@ -366,24 +382,23 @@ except Exception as e:
     print(f"❌ Error: {e}")
     sys.exit(1)
 
-if MODE == "--daily" or MODE == "--current":
-    if MODE == "--daily":
-        # Morning report: activity from YESTERDAY, sleep from TODAY
-        data_activity = get_day_data(client, "$DATE_ACTIVITY")
-        data_sleep = get_day_data(client, "$DATE_SLEEP")
-        # Merge: take activity/HR/stress from yesterday, sleep from today
-        data = data_activity.copy()
-        data['sleep_total'] = data_sleep.get('sleep_total', 0)
-        data['sleep_deep'] = data_sleep.get('sleep_deep', 0)
-        data['sleep_light'] = data_sleep.get('sleep_light', 0)
-        data['sleep_rem'] = data_sleep.get('sleep_rem', 0)
-        data['sleep_awake'] = data_sleep.get('sleep_awake', 0)
-        print_daily(data)
-    else:
-        # Current mode: all data for today (real-time)
-        target = "$DATE" if "$DATE" else date.today().isoformat()
-        data = get_day_data(client, target)
-        print_current(data)
+if MODE == "--daily":
+    # Morning report: activity from YESTERDAY, sleep from TODAY
+    data_activity = get_day_data(client, "$DATE_ACTIVITY")
+    data_sleep = get_day_data(client, "$DATE_SLEEP")
+    # Merge: take activity/HR/stress from yesterday, sleep from today
+    data = data_activity.copy()
+    data['sleep_total'] = data_sleep.get('sleep_total', 0)
+    data['sleep_deep'] = data_sleep.get('sleep_deep', 0)
+    data['sleep_light'] = data_sleep.get('sleep_light', 0)
+    data['sleep_rem'] = data_sleep.get('sleep_rem', 0)
+    data['sleep_awake'] = data_sleep.get('sleep_awake', 0)
+    print_daily(data)
+elif MODE == "--current":
+    # Current mode: all data for today (real-time)
+    target = "$DATE" if "$DATE" else date.today().isoformat()
+    data = get_day_data(client, target)
+    print_current(data)
 elif MODE in ("--weekly", "--summary"):
     print_weekly(client, 7)
 

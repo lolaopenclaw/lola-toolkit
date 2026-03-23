@@ -14,6 +14,12 @@ REPO_PATH="${2:-}"
 ISSUE_NUM="${3:-}"
 BASE_BRANCH="${4:-main}"
 
+# Validate repo path early
+if [[ -n "$REPO_PATH" && ! -d "$REPO_PATH" ]]; then
+    echo "ERROR: Repository path not found: $REPO_PATH" >&2
+    exit 1
+fi
+
 WORKTREE_DIR="${REPO_PATH}/.worktrees"
 
 usage() {
@@ -101,8 +107,7 @@ cleanup_all() {
     if [ -d "$WORKTREE_DIR" ]; then
         for wt in "$WORKTREE_DIR"/issue-*; do
             [ -d "$wt" ] || continue
-            local num
-            num=$(basename "$wt" | sed 's/issue-//')
+            local num=$(basename "$wt" | sed 's/issue-//')
             git worktree remove --force "$wt" 2>/dev/null || rm -rf "$wt"
             git branch -D "fix/issue-${num}" 2>/dev/null || true
             echo "Cleaned up worktree for issue-${num}"
