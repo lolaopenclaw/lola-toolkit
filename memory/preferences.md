@@ -32,6 +32,15 @@
 - No lanzar herramientas hasta haber procesado todo el mensaje
 - **Set:** 2026-03-22 (Manu's explicit feedback — respondí por texto cuando pidió audio)
 
+### YouTube / Vídeos Compartidos
+- **Cuando Manu comparta un enlace de YouTube, SIEMPRE:**
+  1. Intentar descargar subtítulos: `yt-dlp --write-auto-sub --sub-lang es,en --skip-download`
+  2. Si no hay subtítulos: descargar audio con `yt-dlp -x` y transcribir con Whisper
+  3. Leer la transcripción ANTES de responder sobre el contenido del vídeo
+- **NUNCA responder sobre un vídeo basándose solo en el título o metadatos**
+- Herramientas: yt-dlp (instalado), openai-whisper (skill disponible)
+- **Set:** 2026-03-23 (Manu's explicit feedback — respondí sin leer la transcripción)
+
 ### Sesión Principal Libre
 - **SIEMPRE delegar trabajo pesado a subagentes** — la sesión principal queda libre para conversación
 - Manu quiere poder dar feedback, preguntar "¿cómo va?", y que yo pueda supervisar subagentes
