@@ -10,7 +10,9 @@ Resolution: mark done with date, archive monthly.
 - [ ] 🔔 Verificar entrega del Informe Matutino mañana 10:00 AM — El Morning Report (cb5d3743) ahora envía por Discord en lugar de Telegram. Confirmar que llega correctamente al canal Discord de Manu mañana.
 - [ ] 👁️ AVISO 1/3: Dashboards no se usan — Manu no está utilizando los dashboards. Si llega a 3 avisos, desmontar. (source: feedback Manu 2026-03-23)
 - [ ] 💡 Evaluar migrar Google Sheets → memoria interna (Agent First) — Manu prefiere preguntar directamente en vez de consultar Sheets. Valorar si los datos de finanzas/Garmin pueden vivir solo en memory/ como JSON consultable. (source: feedback Manu 2026-03-23)
-- [ ] 💡 Investigar: CLI wrappers para apps open source como skills — Concepto: generar skills/CLIs que expongan capacidades de software open source (GIMP, ImageMagick, etc.) para uso por agentes. Manu enviará vídeo de referencia. (source: idea Manu 2026-03-23)
+- [ ] 💡 Investigar: CLI wrappers para apps open source como skills — Proyecto: CLI-Anything (github.com/HKUDS/CLI-Anything, 21K stars, MIT). Genera CLIs automáticamente desde código fuente. Evaluar integración con skills de OpenClaw. (source: idea Manu 2026-03-23)
+- [ ] 🔬 INVESTIGACIÓN: Mejor integración con YouTube — El workaround actual (yt-dlp + whisper) funciona pero es manual. Buscar: soluciones nativas de OpenClaw, skills de la comunidad, o plugins que hagan esto más fluido. Ref: github.com/ZeroPointRepo/youtube-skills existe como skill. (source: feedback Manu 2026-03-23)
+- [ ] 🔬 INVESTIGACIÓN: Comunicación por voz bidireccional — Objetivo: que Manu pueda hablar y Lola responda por audio sin tener que pulsar play. Tipo asistente de voz (OK Google/Alexa). Buscar: modos de voice call en OpenClaw, integración con apps companion (Android), STT+TTS en tiempo real, o soluciones de la comunidad. El flujo actual de Telegram está bien pero se puede mejorar. (source: feedback Manu 2026-03-23)
 
 
 
