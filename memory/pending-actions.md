@@ -9,10 +9,11 @@ Resolution: mark done with date, archive monthly.
 - [ ] ⏳ Limpieza de backups en Drive POSPUESTA — Actualmente hay 20 .tar.gz duplicados (7× 21/03, 11× 22/03, 2× 23/03). **NO SE PUEDE PROCEDER TODAVÍA** porque solo hay 3 días de backups y la política requiere mantener mínimo 7 backups diarios (uno por día). **Acción requerida:** Esperar hasta tener al menos 8-10 días diferentes de backups, luego ejecutar `rclone dedupe --dedupe-mode newest grive_lola:openclaw_backups/` para mantener solo el más reciente de cada día. (source: backup cleanup análisis 2026-03-23) — **Revisitar después del 2026-03-28**
 
 
-- [ ] 💡 Configurar allowlists Telegram/Discord en gateway (source: security audit 2026-03-23)
+
 
 ## Done
 
+- [x] 🛡️ Allowlists configurados para Telegram y Discord — DONE 2026-03-23 11:22 — Telegram: dmPolicy cambiado a "allowlist", allowFrom configurado a ["6884477"] (Manu), groupPolicy ya era "allowlist". Discord: ya tenía allowlist configurado con ID 587650706593284096. Backup creado en ~/.openclaw/openclaw.json.bak. Gateway necesita restart para aplicar cambios.
 - [x] ✅ Script sheets-populate-v2.py restaurado y funcionando — DONE 2026-03-23 11:10 — Script copiado de archive/ a scripts/. Actualizado parser para buscar archivos en memory/archive/ y manejar formato EUR (€). Garmin Health: funcionando perfectamente, backfill de 60 días exitoso, datos completos desde 2026-02-21. Consumo IA: todos los datos históricos ya existen en Sheet. Cron job `6344d609-2bfd-4295-8471-373125381779` re-habilitado, próxima ejecución 2026-03-24 09:30 Madrid.
 - [x] 🗑️ Integración Notion eliminada — DONE 2026-03-23 11:01 — Deshabilitados y eliminados cron jobs: `notion:ideas-cleanup-weekly` (f1e3103b) y `Tareas de fondo semanales` (496f6271). Eliminada NOTION_API_KEY de ~/.openclaw/.env. Archivos relacionados movidos a memory/archive/notion-removal-2026-03-23/. Skill de Notion permanece instalado pero desconectado.
 - [x] 🛡️ rkhunter scan ejecutado — DONE 2026-03-23 10:22 — Sistema limpio: 0 rootkits, 65 warnings benignos (actualizaciones de sistema), reporte completo en memory/2026-03-23-rkhunter-scan.md. Recomendado: ejecutar `sudo rkhunter --propupd` para actualizar hashes
