@@ -7,3 +7,4 @@ ModuleNotFoundError: No module named 'garminconnect'
 Traceback (most recent call last):
   File "<stdin>", line 1, in <module>
 ModuleNotFoundError: No module named 'garminconnect'
+/home/mleon/.openclaw/workspace/scripts/garmin-health-report.sh: line 54: DATE_ACTIVITY: unbound variable

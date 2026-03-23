@@ -6,7 +6,8 @@ Home. Treat it that way.
 
 1. Read `SOUL.md`, `USER.md`, `PROJECTS.md`
 2. Read `memory/YYYY-MM-DD.md` (today + yesterday)
-3. **Main session:** Also read `MEMORY.md` + `memory/verification-protocol.md` — Just do it.
+3. Read `memory/pending-actions.md` — present unresolved items to Manu proactively
+4. **Main session:** Also read `MEMORY.md` + `memory/verification-protocol.md` — Just do it.
 
 ## Memory
 
