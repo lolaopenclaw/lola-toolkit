@@ -22,6 +22,7 @@ When removing an integration:
 1. Check gateway status: `systemctl --user status openclaw-gateway`
 2. Check for errors: `journalctl --user -u openclaw-gateway --since "1 minute ago" --no-pager -q | grep -i error`
 3. If crash-looping → **immediately notify Manu** with diagnosis and proposed fix
+4. **ALWAYS inform Manu of the restart result** — don't rely on boot check alone
 
 ## Subagent Config Changes
 
