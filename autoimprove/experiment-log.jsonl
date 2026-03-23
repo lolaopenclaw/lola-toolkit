@@ -5,3 +5,45 @@
 {"ts":"2026-03-22T12:31:55Z","target":"memory-index","change":"removed stale 2024 references","before":2650,"after":2580,"kept":true,"delta":70}
 {"ts":"2026-03-22T12:31:55Z","target":"agents-tokens","change":"tried to merge sections","before":2053,"after":2180,"kept":false,"delta":-127}
 {"ts":"2026-03-22T12:31:55Z","target":"backup-speed","change":"added functions for repeated logic","before":980,"after":850,"kept":true,"delta":130}
+{"ts":"2026-03-23T02:00:24Z","target":"scripts/backup-memory.sh","change":"extract safe_copy helpers to reduce code penalties","before":984,"after":459,"kept":true,"delta":525}
+{"ts":"2026-03-23T02:01:04Z","target":"scripts/backup-memory.sh","change":"refactor with safe_copy/safe_sync helpers + consolidate parallel ops","before":984,"after":342,"kept":true,"delta":642}
+{"ts":"2026-03-23T02:01:13Z","target":"scripts/backup-memory.sh","change":"add pigz fallback for compression","before":342,"after":352,"kept":false,"delta":-10}
+{"ts":"2026-03-23T02:01:25Z","target":"scripts/backup-memory.sh","change":"consolidate mkdir commands and group cron/gog/rclone into single parallel block","before":342,"after":328,"kept":true,"delta":14}
+{"ts":"2026-03-23T02:01:33Z","target":"scripts/backup-memory.sh","change":"inline validation check with &&/||","before":328,"after":330,"kept":false,"delta":-2}
+{"ts":"2026-03-23T02:01:44Z","target":"scripts/backup-memory.sh","change":"add cleanup_backup helper function","before":328,"after":328,"kept":false,"delta":0}
+{"ts":"2026-03-23T02:01:52Z","target":"scripts/backup-memory.sh","change":"optimize version command stderr handling","before":328,"after":328,"kept":false,"delta":0}
+{"ts":"2026-03-23T02:02:02Z","target":"scripts/backup-memory.sh","change":"merge GPG/Pass store section into OpenClaw config block","before":328,"after":327,"kept":true,"delta":1}
+{"ts":"2026-03-23T02:02:16Z","target":"scripts/backup-memory.sh","change":"reduce line count by removing empty lines and comment separators","before":327,"after":326,"kept":true,"delta":1}
+{"ts":"2026-03-23T02:02:34Z","target":"scripts/backup-memory.sh","change":"inline all if statements in cron/gog/rclone block","before":326,"after":326,"kept":false,"delta":0}
+{"ts":"2026-03-23T02:02:42Z","target":"scripts/backup-memory.sh","change":"consolidate final echo lines and remove UPLOAD_RESULT variable","before":326,"after":325,"kept":true,"delta":1}
+{"ts":"2026-03-23T02:02:55Z","target":"scripts/backup-memory.sh","change":"move mkdir into parallel block for system-snapshot","before":325,"after":326,"kept":false,"delta":-1}
+{"ts":"2026-03-23T02:03:11Z","target":"scripts/backup-memory.sh","change":"consolidate all mkdir commands into early batch","before":325,"after":325,"kept":false,"delta":0}
+{"ts":"2026-03-23T02:03:21Z","target":"scripts/backup-memory.sh","change":"replace du with stat for size calculation","before":325,"after":325,"kept":false,"delta":0}
+{"ts":"2026-03-23T02:05:43Z","target":"AGENTS.md","change":"remove Notion Ideas section (covered in PROJECTS context)","before":2053,"after":1949,"kept":true,"delta":104}
+{"ts":"2026-03-23T02:05:49Z","target":"AGENTS.md","change":"merge External vs Internal + Group Chats into single rule","before":1949,"after":1917,"kept":true,"delta":32}
+{"ts":"2026-03-23T02:05:55Z","target":"AGENTS.md","change":"compress Heartbeats section (remove redundancy)","before":1917,"after":1873,"kept":true,"delta":44}
+{"ts":"2026-03-23T02:06:00Z","target":"AGENTS.md","change":"compress Time Estimation header","before":1873,"after":1870,"kept":true,"delta":3}
+{"ts":"2026-03-23T02:06:07Z","target":"AGENTS.md","change":"consolidate Every Session checklist (remove descriptors)","before":1870,"after":1772,"kept":true,"delta":98}
+{"ts":"2026-03-23T02:06:12Z","target":"AGENTS.md","change":"merge Correcciones + Reinicios into Communication section","before":1772,"after":1722,"kept":true,"delta":50}
+{"ts":"2026-03-23T02:06:19Z","target":"AGENTS.md","change":"compress Cambios Críticos to Essential flow only","before":1722,"after":1609,"kept":true,"delta":113}
+{"ts":"2026-03-23T02:06:25Z","target":"AGENTS.md","change":"condense Verification section (remove redundant bullet points)","before":1609,"after":1506,"kept":true,"delta":103}
+{"ts":"2026-03-23T02:06:30Z","target":"AGENTS.md","change":"remove Model Selection section (covered in runtime config)","before":1506,"after":1440,"kept":true,"delta":66}
+{"ts":"2026-03-23T02:06:35Z","target":"AGENTS.md","change":"condense GitHub Publishing section (remove redundant details)","before":1440,"after":1405,"kept":true,"delta":35}
+{"ts":"2026-03-23T02:06:40Z","target":"AGENTS.md","change":"merge Safety intro with bullets","before":1405,"after":1405,"kept":false,"delta":0}
+{"ts":"2026-03-23T02:06:46Z","target":"AGENTS.md","change":"compress Memory section intro","before":1405,"after":1394,"kept":true,"delta":11}
+{"ts":"2026-03-23T02:06:51Z","target":"AGENTS.md","change":"simplify title and intro","before":1394,"after":1374,"kept":true,"delta":20}
+{"ts":"2026-03-23T02:06:56Z","target":"AGENTS.md","change":"inline 'just do it' into checklist","before":1374,"after":1355,"kept":true,"delta":19}
+{"ts":"2026-03-23T02:07:05Z","target":"AGENTS.md","change":"try renaming 'Every Session' to 'Startup' + consolidate","before":1355,"after":11332,"kept":false,"delta":-9977}
+{"ts":"2026-03-23T02:10:38Z","target":"MEMORY.md","change":"consolidate Secretos & Familia into SECURITY section","before":2920,"after":2807,"kept":true,"delta":113}
+{"ts":"2026-03-23T02:10:45Z","target":"MEMORY.md","change":"simplify DASHBOARDS line (move URLs to memory/dashboards.md)","before":2807,"after":2731,"kept":true,"delta":76}
+{"ts":"2026-03-23T02:10:56Z","target":"MEMORY.md","change":"simplify CALENDAR line (move status to memory/calendar.md)","before":2731,"after":2685,"kept":true,"delta":46}
+{"ts":"2026-03-23T02:11:03Z","target":"MEMORY.md","change":"condense GitHub section (remove policy details)","before":2685,"after":2563,"kept":true,"delta":122}
+{"ts":"2026-03-23T02:11:14Z","target":"MEMORY.md","change":"condense Autoresearch section (remove cost/cron details)","before":2563,"after":2438,"kept":true,"delta":125}
+{"ts":"2026-03-23T02:11:23Z","target":"MEMORY.md","change":"condense TECHNICAL section (remove comma details)","before":2438,"after":2325,"kept":true,"delta":113}
+{"ts":"2026-03-23T02:11:33Z","target":"MEMORY.md","change":"condense Knowledge Graph section (remove verbose schema details)","before":2325,"after":2148,"kept":true,"delta":177}
+{"ts":"2026-03-23T02:11:47Z","target":"MEMORY.md","change":"consolidate reliability and preferences sections into PROTOCOLS","before":2148,"after":2002,"kept":true,"delta":146}
+{"ts":"2026-03-23T02:11:58Z","target":"MEMORY.md","change":"remove family reference from SECURITY (belongs in family.md only)","before":2002,"after":1896,"kept":true,"delta":106}
+{"ts":"2026-03-23T02:12:05Z","target":"MEMORY.md","change":"abbreviate CORE line (remove Ubuntu version, full name)","before":1896,"after":1833,"kept":true,"delta":63}
+{"ts":"2026-03-23T02:12:15Z","target":"MEMORY.md","change":"remove placeholder from Finanzas line","before":1833,"after":1809,"kept":true,"delta":24}
+{"ts":"2026-03-23T02:12:22Z","target":"MEMORY.md","change":"simplify Autoresearch line (move details to file)","before":1809,"after":1744,"kept":true,"delta":65}
+{"ts":"2026-03-23T02:12:31Z","target":"MEMORY.md","change":"final: condense Knowledge Graph to single line","before":1744,"after":1686,"kept":true,"delta":58}

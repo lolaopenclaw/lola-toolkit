@@ -1,7 +1,7 @@
 # MEMORY.md — Index
 
 ## 🔴 CORE → `memory/core.md`
-Manu | lolaopenclaw@gmail.com | @RagnarBlackmade | Europe/Madrid | Quiet 00-07
+Manuel León Mendiola | lolaopenclaw@gmail.com | Telegram: @RagnarBlackmade | Europe/Madrid | Ubuntu 6.8.0, OpenClaw v2026.3.13 | Quiet 00-07
 
 ## 🔧 TECHNICAL → `memory/technical.md`
 - Ubuntu Pro (ESM/Livepatch), Crons (backup 4AM, reindex 4:30AM, morning 9AM, audits)
@@ -13,7 +13,7 @@ Manu | lolaopenclaw@gmail.com | @RagnarBlackmade | Europe/Madrid | Quiet 00-07
 - Protocol A+B before SSH/firewall changes | HITL | Worktree | PR-Review
 - Key rotation: Q2 2026 | gateway.bind config in security.md
 
-## 💰 Finanzas → `memory/finanzas.md`
+## 💰 Finanzas → `memory/finanzas.md` | Sheet: [link in file]
 
 ## 🖥️ Dashboards & URLs → `memory/dashboards.md`
 
@@ -24,10 +24,12 @@ Manu | lolaopenclaw@gmail.com | @RagnarBlackmade | Europe/Madrid | Quiet 00-07
 - Repos: `lola-toolkit` (scripts, skills, protocols, public)
 - Policy: Publish useful code; NEVER tokens/keys/IPs/paths
 
-## 🧠 Knowledge Graph → `memory/entities/` (auto-generated JSON, SKIP in autoimprove)
-Schema: PARA facts | Decay: weekly | Search: hybrid vector+FTS via Ollama (reindex 4:30AM daily)
+## 🧠 Knowledge Graph → `memory/entities/` (auto-generated, SKIP in autoimprove)
+- Schema: PARA + atomic JSON facts | Decay: weekly (Hot/Warm/Cold)
+- Search: hybrid vector+FTS (Ollama/nomic-embed-text, 221 files, 685 chunks, reindex 4:30AM)
 
-## 🔬 Autoresearch — Karpathy → `memory/autoresearch-karpathy.md` (iterate→test→keep/discard)
+## 🔬 Autoresearch — Karpathy → `memory/autoresearch-karpathy.md`
+Pattern: iterate→test→keep/discard (applied: autoimprove/ nightly, circuit breaker 5 fallos)
 
 ## 🔴 PROTOCOLS & PREFERENCES → `memory/protocols.md` | `memory/preferences.md`
 - **Reliability:** Verify after each step, slow execution, small steps

@@ -1,12 +1,8 @@
 {
-  "timestamp": "2026-03-22T01:30:00Z",
-  "status": "error",
-  "script": "system-updates-nightly.sh",
-  "errors": [
-    "line 59: 0 0: syntax error in expression (error token is \"0\")",
-    "line 85: UPDATED: unbound variable"
-  ],
-  "output": "🔄 [2026-03-22 01:30] Iniciando actualizaciones de sistema...\n📦 Aplicando 11 actualizaciones...",
-  "exit_code": 1,
-  "note": "Script tiene errores de sintaxis. Requiere review y corrección."
+  "timestamp": "2026-03-23T01:30:00+01:00",
+  "status": "success",
+  "message": "No hay actualizaciones pendientes",
+  "command": "sudo bash /home/mleon/.openclaw/workspace/scripts/system-updates-nightly.sh",
+  "notes": "Sistema actualizado. Sin cambios requeridos.",
+  "openclaw_affected": false
 }
