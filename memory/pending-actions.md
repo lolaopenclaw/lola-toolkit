@@ -7,6 +7,7 @@ Resolution: mark done with date, archive monthly.
 ## Open
 
 - [ ] ⏳ Limpieza de backups en Drive POSPUESTA — Actualmente hay 20 .tar.gz duplicados (7× 21/03, 11× 22/03, 2× 23/03). **NO SE PUEDE PROCEDER TODAVÍA** porque solo hay 3 días de backups y la política requiere mantener mínimo 7 backups diarios (uno por día). **Acción requerida:** Esperar hasta tener al menos 8-10 días diferentes de backups, luego ejecutar `rclone dedupe --dedupe-mode newest grive_lola:openclaw_backups/` para mantener solo el más reciente de cada día. (source: backup cleanup análisis 2026-03-23) — **Revisitar después del 2026-03-28**
+- [ ] 🔔 Verificar entrega del Informe Matutino mañana 10:00 AM — El Morning Report (cb5d3743) ahora envía por Discord en lugar de Telegram. Confirmar que llega correctamente al canal Discord de Manu mañana.
 
 
 

@@ -10,8 +10,11 @@ Actualizado: 2026-03-17 (operacional, crons activos)
 - **Orientación:** Heterosexual
 - **Fecha de nacimiento:** 16 de febrero de 1978 (48 años, cumpleaños hace poco)
 - **Ubicación:** Logroño, La Rioja, España
+- **Dirección:** Avenida Manuel de Falla nº 55, 7º L01, 26007 Logroño
+- **DNI:** 16593355-M
 - **Timezone:** Europe/Madrid (UTC+1/+2)
 - **Email:** manuelleonmendiola@gmail.com
+- **Telegram:** @RagnarBlackmade
 - **Idioma:** Español
 
 ---
@@ -43,6 +46,13 @@ Actualizado: 2026-03-17 (operacional, crons activos)
 - **Informe matutino:** 9 AM (L-V) / 10 AM (S-D)
 - **Alertas críticas:** 14:00, 20:00 si es necesario
 - **Gráficas:** Dashboard Sheet actualizado diariamente (11 PM)
+
+### Condiciones & Tratamiento
+- **Prediabetes:** HbA1c ~6,0% (en descenso con tratamiento, marzo 2026)
+- **Resistencia a la insulina:** sí, subclínica — dificulta pérdida de peso
+- **Medicación:** Mounjaro (tirzepatida) — agonista dual GIP/GLP-1
+- **Dieta:** estricta desde hace muchos años, supervisada por nutricionista
+- **Objetivo HbA1c:** mantener por debajo de 5,7%
 
 ### Health Goals
 - **Resting HR:** Target <55 bpm (goal: aerobic fitness)
