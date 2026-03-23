@@ -31,5 +31,5 @@ Schema: PARA facts | Decay: weekly | Search: hybrid vector+FTS via Ollama (reind
 
 ## 🔴 PROTOCOLS & PREFERENCES → `memory/protocols.md` | `memory/preferences.md`
 - **Reliability:** Verify after each step, slow execution, small steps
-- **Quiet:** 00:00-07:00 Madrid (SILENT) | Post-quiet: 07:00-10:00 (silent monitoring)
+- **Notifications:** 00:00-10:00 Madrid → no messages unless CRITICAL. Work runs 24/7.
 - **Morning:** 10:00+ Madrid (Discord, Autoimprove Nightly only)

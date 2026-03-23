@@ -68,10 +68,9 @@
 - **Set:** 2026-03-14 10:10 (Manu's request)
 - **Fix:** 2026-03-15 — Se enviaba al general en vez de reportes-matutino (corregido)
 
-### Quiet Hours
-- **00:00–07:00 Madrid:** Zero notifications (unless critical)
-- **07:00–10:00 Madrid:** Monitor silently, no reports
-- **10:00+ Madrid:** Morning report via Discord
+### Notification Schedule
+- **00:00–10:00 Madrid:** No messages to Manu unless CRITICAL (system down, security breach). All crons, backups, autoimprove, and background work run normally 24/7.
+- **10:00+ Madrid:** Normal communication. Morning report delivery.
 
 ### Driving Mode
 - **Trigger in:** "estoy en el coche" (I'm in the car)
