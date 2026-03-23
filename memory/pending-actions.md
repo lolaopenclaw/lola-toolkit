@@ -12,6 +12,8 @@ Resolution: mark done with date, archive monthly.
 - [ ] 💡 Evaluar migrar Google Sheets → memoria interna (Agent First) — Manu prefiere preguntar directamente en vez de consultar Sheets. Valorar si los datos de finanzas/Garmin pueden vivir solo en memory/ como JSON consultable. (source: feedback Manu 2026-03-23)
 - [ ] 💡 Investigar: CLI wrappers para apps open source como skills — Proyecto: CLI-Anything (github.com/HKUDS/CLI-Anything, 21K stars, MIT). Genera CLIs automáticamente desde código fuente. Evaluar integración con skills de OpenClaw. (source: idea Manu 2026-03-23)
 - [ ] 🔬 INVESTIGACIÓN: Mejor integración con YouTube — El workaround actual (yt-dlp + whisper) funciona pero es manual. Buscar: soluciones nativas de OpenClaw, skills de la comunidad, o plugins que hagan esto más fluido. Ref: github.com/ZeroPointRepo/youtube-skills existe como skill. (source: feedback Manu 2026-03-23)
+- [ ] 🔧 Implementar validador pre-restart (harness mínimo) — Script que verifica env vars, JSON syntax y doctor antes de cualquier restart. Primer paso de harness engineering. (source: decisión Manu+Lola 2026-03-23)
+- [ ] 📋 SEMANAL: Revisar mejoras de harness engineering — Evaluar qué más podemos implementar de validación IA-sobre-IA en nuestra arquitectura. Incluir en tareas semanales. (source: feedback Manu 2026-03-23)
 - [ ] 🔬 INVESTIGACIÓN: Comunicación por voz bidireccional — Objetivo: que Manu pueda hablar y Lola responda por audio sin tener que pulsar play. Tipo asistente de voz (OK Google/Alexa). Buscar: modos de voice call en OpenClaw, integración con apps companion (Android), STT+TTS en tiempo real, o soluciones de la comunidad. El flujo actual de Telegram está bien pero se puede mejorar. (source: feedback Manu 2026-03-23)
 
 
