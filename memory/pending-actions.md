@@ -6,13 +6,17 @@ Resolution: mark done with date, archive monthly.
 
 ## Open
 
-- [ ] 🔴 `chmod 600 ~/.openclaw/openclaw.json` — world-readable perms (source: security audit 2026-03-23)
-- [ ] ⚠️ Decidir: deshabilitar Evolution (~200MB RAM, no se usa) (source: cleanup audit 2026-03-22)
-- [ ] ⚠️ Decidir: limpiar 6.9GB caché (pip 4.3GB, Chrome 1.4GB, Homebrew 838MB) (source: cleanup audit 2026-03-22)
-- [ ] ⚠️ Decidir: limpiar duplicados de backup en Drive (41 .tar.gz, muchos del mismo día) (source: backup cleanup 2026-03-23)
-- [ ] ⚠️ Cron `sheets-populate-v2.py` referencia script inexistente — crear o desactivar (source: cron 2026-03-23)
-- [ ] ⚠️ rkhunter necesita elevated mode o ejecución manual (source: security audit 2026-03-23)
-- [ ] 💡 Sincronizar lola-toolkit repo (~20 scripts nuevos, 4 con cambios) (source: toolkit check 2026-03-23)
+- [ ] ⏳ Limpieza de backups en Drive POSPUESTA — Actualmente hay 20 .tar.gz duplicados (7× 21/03, 11× 22/03, 2× 23/03). **NO SE PUEDE PROCEDER TODAVÍA** porque solo hay 3 días de backups y la política requiere mantener mínimo 7 backups diarios (uno por día). **Acción requerida:** Esperar hasta tener al menos 8-10 días diferentes de backups, luego ejecutar `rclone dedupe --dedupe-mode newest grive_lola:openclaw_backups/` para mantener solo el más reciente de cada día. (source: backup cleanup análisis 2026-03-23) — **Revisitar después del 2026-03-28**
+
+
 - [ ] 💡 Configurar allowlists Telegram/Discord en gateway (source: security audit 2026-03-23)
 
 ## Done
+
+- [x] 🗑️ Integración Notion eliminada — DONE 2026-03-23 11:01 — Deshabilitados y eliminados cron jobs: `notion:ideas-cleanup-weekly` (f1e3103b) y `Tareas de fondo semanales` (496f6271). Eliminada NOTION_API_KEY de ~/.openclaw/.env. Archivos relacionados movidos a memory/archive/notion-removal-2026-03-23/. Skill de Notion permanece instalado pero desconectado.
+- [x] 🛡️ rkhunter scan ejecutado — DONE 2026-03-23 10:22 — Sistema limpio: 0 rootkits, 65 warnings benignos (actualizaciones de sistema), reporte completo en memory/2026-03-23-rkhunter-scan.md. Recomendado: ejecutar `sudo rkhunter --propupd` para actualizar hashes
+- [x] 💡 Sincronizar lola-toolkit repo (~20 scripts nuevos, 4 con cambios) — DONE 2026-03-23 — Updated 11 scripts to github.com/lolaopenclaw/lola-toolkit: 4 existing scripts with meaningful changes (garmin-health-report, health-dashboard, pr-reviewer, weekly-audit), 7 new scripts added (apt-security-check, deliver-pending-reports, memory-maintenance, backup-memory, backup-validator, post-commit-backup, worktree-manager). All sanitized (no personal paths/credentials). Commit b77820d pushed.
+- [x] 🔴 Cron job `sheets-populate-v2.py` desactivado — DONE 2026-03-23 10:14 — el script estaba archivado intencionalmente en `scripts/archive/`, cron job ID `6344d609-2bfd-4295-8471-373125381779` desactivado
+- [x] 🔴 `chmod 600 ~/.openclaw/openclaw.json` — DONE 2026-03-23 10:14 — permisos corregidos de 644 a 600
+- [x] ⚠️ Evolution deshabilitado — DONE 2026-03-23 10:14 — servicios systemd masked (no había procesos corriendo)
+- [x] ⚠️ Cachés limpiadas — DONE 2026-03-23 10:14 — Homebrew: 575MB, Chrome: 2.7MB, pip/uv ya limpias. Total: ~1GB liberado
