@@ -69,8 +69,11 @@
 - **Fix:** 2026-03-15 — Se enviaba al general en vez de reportes-matutino (corregido)
 
 ### Notification Schedule
-- **00:00–10:00 Madrid:** No messages to Manu unless CRITICAL (system down, security breach). All crons, backups, autoimprove, and background work run normally 24/7.
-- **10:00+ Madrid:** Normal communication. Morning report delivery.
+- **00:00–10:00 Madrid:** No messages to Manu unless CRITICAL (system down, security breach). All crons, backups, autoimprove, and background work run normally 24/7. Results go to memory + pending-actions.md, never to Telegram/Discord.
+- **10:00 Madrid:** Morning report via **Discord only** (consolidates all overnight work, pending actions, decisions needed).
+- **10:00+ Madrid:** Normal communication via Telegram/Discord.
+- **Crons NEVER send messages directly** — they write to memory. Only the morning report summarizes and delivers.
+- Manu can message anytime via Telegram regardless of schedule.
 
 ### Driving Mode
 - **Trigger in:** "estoy en el coche" (I'm in the car)

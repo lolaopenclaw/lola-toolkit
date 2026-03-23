@@ -31,5 +31,5 @@ Schema: PARA facts | Decay: weekly | Search: hybrid vector+FTS via Ollama (reind
 
 ## 🔴 PROTOCOLS & PREFERENCES → `memory/protocols.md` | `memory/preferences.md`
 - **Reliability:** Verify after each step, slow execution, small steps
-- **Notifications:** 00:00-10:00 Madrid → no messages unless CRITICAL. Work runs 24/7.
+- **Notifications:** 00:00-10:00 → no messages unless CRITICAL. Morning report 10:00 via **Discord only**. Crons never send messages directly.
 - **Morning:** 10:00+ Madrid (Discord, Autoimprove Nightly only)
