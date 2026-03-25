@@ -94,6 +94,22 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 ### OpenSpec
 - **openspec-helpers.sh** — CLI para validar/listar/crear specs TypeScript
 
+### Knowledge Base
+- **knowledge-base-ingest.sh** — Ingest content (articles, YouTube, PDFs) into SQLite knowledge base
+- **knowledge-base-search.sh** — Full-text search with FTS5 (supports --list and --tag filters)
+- **Docs:** `memory/knowledge-base.md`
+- **Database:** `data/knowledge-base.db`
+
+### API Cost Tracking
+- **usage-report.sh** — Aggregate API costs from session logs
+- **cost-alert.sh** — Alert on high daily spend (>$10 warn, >$25 critical)
+- **Docs:** `memory/api-cost-tracking.md`
+- **Usage:**
+  - `bash scripts/usage-report.sh --today --by-model` → Today's costs by model
+  - `bash scripts/usage-report.sh --week` → Last 7 days
+  - `bash scripts/cost-alert.sh` → Check thresholds, exit 1 if critical
+- **Session logs:** `~/.openclaw/agents/main/sessions/*.jsonl`
+
 **Ver lista completa:** `ls -1 scripts/` (30+ scripts)
 
 ---

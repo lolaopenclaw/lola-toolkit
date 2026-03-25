@@ -1,6 +1,6 @@
 # Model-Specific Prompts - OpenClaw
 
-**Última actualización:** 2026-03-24  
+**Última actualización:** 2026-03-25  
 **Experiencia real** de Lola con Claude Opus, Sonnet, Haiku y Gemini Flash
 
 ---
@@ -10,9 +10,9 @@
 Las best practices de prompting de cada provider se descargan automáticamente cada 2 meses:
 
 - **Archivos más recientes:** `memory/best-practices/`
-  - `anthropic-YYYY-MM-DD.md` (Anthropic Claude)
-  - `google-YYYY-MM-DD.md` (Google Gemini)
-  - `openai-YYYY-MM-DD.md` (OpenAI GPT)
+  - `anthropic-2026-03-24.md` (Anthropic Claude)
+  - `google-2026-03-24.md` (Google Gemini)
+  - `openai-2026-03-24.md` (OpenAI GPT)
 - **Historial de cambios:** `memory/best-practices/changelog.md`
 - **Última descarga:** 2026-03-24
 
@@ -22,6 +22,13 @@ Las best practices de prompting de cada provider se descargan automáticamente c
 3. Cada 2 meses (cron: día 1 de cada 2 meses, 3 AM Madrid)
 
 **Documentación completa:** `memory/best-practices-implementation.md`
+
+---
+
+## 📖 Guías Prácticas
+
+- **Prompt Writing Guide:** `memory/prompt-writing-guide.md` — Reglas prácticas, templates, anti-patterns
+- **Cron Prompt Audit:** `memory/prompt-audit-2026-03-25.md` — Análisis de todos los crons existentes
 
 ---
 
@@ -377,18 +384,103 @@ Antes de elegir modelo, pregúntate:
 
 ---
 
+## 🆕 Modelos Disponibles (2026-03-25)
+
+### Anthropic Claude
+
+| Modelo | Alias | Estado | Uso Recomendado |
+|--------|-------|--------|-----------------|
+| `anthropic/claude-opus-4-6` | opus | ✅ Disponible | Decisiones críticas, reasoning profundo |
+| `anthropic/claude-opus-4` | - | ⚠️ Legacy | Usar Opus 4.6 en su lugar |
+| `anthropic/claude-sonnet-4-5` | sonnet | ✅ Default Main | Coding, analysis, conversación |
+| `anthropic/claude-haiku-4-5` | haiku | ✅ Crons | Tareas mecánicas, formateo |
+| `anthropic/claude-haiku-4` | - | ⚠️ Legacy | Usar Haiku 4-5 |
+
+**Notas:**
+- **Opus 4.6** es la versión más reciente (2026), mejora sobre Opus 4 en reasoning
+- **Sonnet 4-5** es el modelo default del agente main (configurado en `.openclaw/config/default.json`)
+- **Haiku 4-5** es preferido sobre Haiku 4 para crons (mejor adherencia a instrucciones)
+
+### Google Gemini
+
+| Modelo | Alias | Estado | Uso Recomendado |
+|--------|-------|--------|-----------------|
+| `google/gemini-3-flash-preview` | flash | ✅ Disponible | Bulk validation, tareas simples |
+| `google/gemini-3` | - | ✅ Disponible | Agentic workflows, reasoning |
+| `google/gemini-2-flash` | - | ⚠️ Legacy | Usar Gemini 3 Flash |
+
+**Notas:**
+- **Gemini 3 Flash** es ultra-rápido y barato, ideal para verificaciones masivas
+- **Gemini 3** tiene capacidades de thinking y agentic workflows (ver best practices)
+- **Temperature:** NO cambiar de default (1.0) en Gemini 3 — puede causar loops
+
+### OpenAI GPT
+
+| Modelo | Alias | Estado | Uso Recomendado |
+|--------|-------|--------|-----------------|
+| `openai/gpt-5.4` | - | ✅ Latest | Advanced reasoning, multimodal |
+| `openai/gpt-4` | - | ✅ Disponible | Fallback si GPT-5 no disponible |
+
+**Notas:**
+- **GPT-5.4** es el modelo más reciente de OpenAI (ver `memory/best-practices/openai-2026-03-24.md`)
+- Actualmente NO usamos modelos OpenAI en producción (Anthropic es primary)
+
+---
+
+## 🔄 Model Aliases (Shortcuts)
+
+Puedes usar aliases cortos en vez de nombres completos:
+
+```bash
+# En lugar de:
+--model anthropic/claude-sonnet-4-5
+
+# Puedes usar:
+--model sonnet
+
+# Aliases disponibles:
+opus    → anthropic/claude-opus-4-6
+sonnet  → anthropic/claude-sonnet-4-5
+haiku   → anthropic/claude-haiku-4-5
+flash   → google/gemini-3-flash-preview
+```
+
+**Uso en crons:**
+```json
+{
+  "payload": {
+    "kind": "agentTurn",
+    "model": "haiku",  // ← alias
+    "message": "..."
+  }
+}
+```
+
+---
+
 ## ✍️ Notas de Evolución
+
+**2026-03-25:**
+- ✅ Añadida sección de modelos disponibles con Opus 4.6, Gemini 3, GPT-5.4
+- ✅ Creada guía práctica de prompting (`memory/prompt-writing-guide.md`)
+- ✅ Auditados todos los crons (29 prompts) — ver `memory/prompt-audit-2026-03-25.md`
+- ✅ Documentados aliases de modelos
+- ✅ Cross-referencias a best practices oficiales
 
 **2026-03-24:**
 - Creado basado en experiencia real de Lola
 - Documentado upgrade de informe matutino (Haiku → Sonnet)
 - Anti-patterns de errores cometidos (Haiku coding, Flash sin formato)
 
-**Siguiente revisión:** Después de 1 mes de uso (2026-04-24)
-- Validar costes reales acumulados
-- Añadir más ejemplos de uso de Opus (si lo incorporamos)
+**Siguiente revisión:** 2026-04-25 (1 mes)
+- Validar costes reales acumulados tras auditoría de crons
+- Añadir ejemplos de uso de Opus 4.6 (si lo incorporamos)
 - Actualizar comparativa con datos de producción
+- Revisar si Gemini 3 es viable para algún cron actual
 
 ---
 
-**¿Dudas sobre qué modelo usar?** Consulta este doc ANTES de spawn de subagents o configuración de crons.
+**¿Dudas sobre qué modelo usar?** 
+1. Consulta este doc para decisión rápida
+2. Lee `memory/prompt-writing-guide.md` para tips prácticos
+3. Revisa `memory/prompt-audit-2026-03-25.md` para ejemplos reales
