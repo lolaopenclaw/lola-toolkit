@@ -172,3 +172,9 @@
 {"timestamp": "2026-03-25T07:00:02.294068+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
 {"timestamp": "2026-03-25T07:00:02.294068+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
 {"timestamp": "2026-03-25T07:00:02.294068+00:00", "api": "anthropic", "used": 134, "limit": 10, "pct": 1340.0, "unit": "429s"}
+{"timestamp": "2026-03-25T08:00:01.927254+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-25T08:00:01.927254+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-25T08:00:01.927254+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-25T08:00:01.927254+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-25T08:00:01.927254+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-25T08:00:01.927254+00:00", "api": "anthropic", "used": 112, "limit": 10, "pct": 1120.0, "unit": "429s"}

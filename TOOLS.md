@@ -91,6 +91,9 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **google-tts.sh** — TTS con Google
 - **tts-venv/** — Venv de Python para TTS (edge-tts, gtts-cli)
 
+### OpenSpec
+- **openspec-helpers.sh** — CLI para validar/listar/crear specs TypeScript
+
 **Ver lista completa:** `ls -1 scripts/` (30+ scripts)
 
 ---
@@ -125,6 +128,16 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **pr-review** — Auto-review de PRs
 
 **Skills globales npm:** `openclaw skills list` (38+ más: 1password, blogwatcher, blucli, camsnap, clawhub, coding-agent, eightctl, gemini, gh-issues, gifgrep, github, gog, healthcheck, himalaya, mcporter, nano-pdf, node-connect, obsidian, openai-whisper, openhue, oracle, ordercli, sag, session-logs, skill-creator, songsee, spotify-player, tmux, wacli, weather)
+
+---
+
+## 📐 OpenSpec
+
+- **Config:** `openspec.config.ts`
+- **Specs:** `specs/` (TypeScript)
+- **Helper:** `bash scripts/openspec-helpers.sh [validate|list|add]`
+- **Docs:** `memory/openspec-integration.md`
+- **Purpose:** Spec-Driven Development para scripts/skills (práctica para el curro)
 
 ---
 
