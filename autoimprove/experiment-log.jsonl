@@ -104,3 +104,12 @@
 {"ts":"2026-03-25T02:06:32Z","target":"AGENTS.md","change":"compress Communication line","before":1034,"after":1009,"kept":true,"delta":25}
 {"ts":"2026-03-25T02:06:36Z","target":"AGENTS.md","change":"abbreviate GitHub line (slash-separated list)","before":1009,"after":1000,"kept":true,"delta":9}
 {"ts":"2026-03-25T02:06:41Z","target":"AGENTS.md","change":"combine Privacy and GitHub bullets","before":1000,"after":963,"kept":true,"delta":37}
+{"ts":"2026-03-25T02:10:29Z","target":"MEMORY.md","change":"fix orphan harness-weekly-review reference to 2026-03-24","before":2285,"after":2285,"kept":true,"delta":0}
+{"ts":"2026-03-25T02:12:00Z","target":"MEMORY.md","change":"consolidate YouTube entries (3 refs → 1 compact summary)","before":2285,"after":2194,"kept":true,"delta":91}
+{"ts":"2026-03-25T02:12:07Z","target":"MEMORY.md","change":"remove finanzas markdown subdir listing (keep top-level ref)","before":2194,"after":2079,"kept":true,"delta":115}
+{"ts":"2026-03-25T02:12:11Z","target":"MEMORY.md","change":"compress Garmin/Health subdirs (detailed listing → compact ref)","before":2079,"after":1909,"kept":true,"delta":170}
+{"ts":"2026-03-25T02:12:24Z","target":"MEMORY.md","change":"streamline technical section (remove issue refs, simplify cron times)","before":1909,"after":1839,"kept":true,"delta":70}
+{"ts":"2026-03-25T02:12:30Z","target":"MEMORY.md","change":"compress security status (remove detailed implementation refs)","before":1839,"after":1767,"kept":true,"delta":72}
+{"ts":"2026-03-25T02:12:36Z","target":"MEMORY.md","change":"consolidate harness section (remove arneses list, simplify title)","before":1767,"after":1634,"kept":true,"delta":133}
+{"ts":"2026-03-25T02:12:41Z","target":"MEMORY.md","change":"simplify driving mode refs (remove .json state file ref)","before":1634,"after":1578,"kept":true,"delta":56}
+{"ts":"2026-03-25T02:12:46Z","target":"MEMORY.md","change":"streamline protocols section (condense preferences summary)","before":1578,"after":1512,"kept":true,"delta":66}

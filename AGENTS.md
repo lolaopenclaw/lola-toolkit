@@ -16,6 +16,7 @@ Home. Treat it that way.
 - **Verification:** Evidence > assertions. Check before/after.
 - **Comms:** 3+ errors → correct constructively. Restarts → notify BEFORE.
 - **Changes:** Backup → notify → verify (see `memory/security-change-protocol.md`).
+- **Night notifications:** Quiet hours 00:00-07:00 Madrid. Use topic routing. CRITICAL only during quiet hours (see `memory/night-notification-protocol.md`).
 
 ## External Actions
 

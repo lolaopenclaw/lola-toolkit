@@ -211,3 +211,47 @@
 [2026-03-24 21:28:55] Findings: 3
 [2026-03-24 21:28:55] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
 [2026-03-24 21:28:55] ==========================================
+[2026-03-25 04:00:23] ==========================================
+[2026-03-25 04:00:23] Nightly Security Review — START
+[2026-03-25 04:00:23] ==========================================
+[2026-03-25 04:00:23] [1/7] Checking file permissions...
+[2026-03-25 04:00:23] [2/7] Checking for secrets in version control...
+[2026-03-25 04:00:23] FINDING [CRITICAL]: Secrets detected in tracked files: 42 occurrences
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → SECURITY-HARDENING-DELIVERY.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → config/subagent-validator-config.json
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → docs/SDD.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/advanced-harness-research.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/api-health-implementation.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/logging-implementation.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/openclaw-backup.json
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/security-hardening-plan.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/security-scanner-v2-implementation.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/subagent-validator-implementation.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → memory/subscription-vs-api-analysis.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/api-health-checker.py
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/config-drift-detector.py
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/nightly-security-review.sh
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/security-scanner.py
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/subagent-validator.py
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → scripts/test-security-scanner.sh
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → skills/api-health/SKILL.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → skills/security-scanner/SKILL.md
+[2026-03-25 04:00:23] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-25 04:00:23] [3/7] Verifying security module integrity...
+[2026-03-25 04:00:23] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/workspace/scripts/security-scanner.py (hash mismatch)
+[2026-03-25 04:00:23] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/openclaw.json (hash mismatch)
+[2026-03-25 04:00:23] [4/7] Scanning logs for suspicious patterns...
+[2026-03-25 04:00:23] [5/7] Checking exec approvals...
+[2026-03-25 04:00:23] [6/7] Running security scanner self-test...
+[2026-03-25 04:00:25] [7/7] Cross-referencing permissions matrix...
+[2026-03-25 04:00:25] ==========================================
+[2026-03-25 04:00:25] Nightly Security Review — END
+[2026-03-25 04:00:25] Findings: 3
+[2026-03-25 04:00:25] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260325.md
+[2026-03-25 04:00:25] ==========================================

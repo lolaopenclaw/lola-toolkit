@@ -4,25 +4,6 @@
 
 set -euo pipefail
 
-# Check quiet hours (00:00-07:00 Madrid)
-check_quiet_hours() {
-    local SEVERITY=${1:-"MEDIUM"}
-    local HOUR=$(TZ=Europe/Madrid date +%H)
-    
-    if [ "$HOUR" -ge 0 ] && [ "$HOUR" -lt 7 ]; then
-        # During quiet hours
-        if [ "$SEVERITY" = "CRITICAL" ]; then
-            return 0  # Allow
-        else
-            echo "Quiet hours: suppressing $SEVERITY notification" >&2
-            return 1  # Suppress
-        fi
-    fi
-    
-    return 0  # Outside quiet hours: allow
-}
-
-
 # Paths
 WORKSPACE="/home/mleon/.openclaw/workspace"
 MEMORY_DIR="$WORKSPACE/memory"

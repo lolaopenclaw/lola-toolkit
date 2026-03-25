@@ -4,25 +4,6 @@
 
 set -euo pipefail
 
-# Check quiet hours (00:00-07:00 Madrid)
-check_quiet_hours() {
-    local SEVERITY=${1:-"MEDIUM"}
-    local HOUR=$(TZ=Europe/Madrid date +%H)
-    
-    if [ "$HOUR" -ge 0 ] && [ "$HOUR" -lt 7 ]; then
-        # During quiet hours
-        if [ "$SEVERITY" = "CRITICAL" ]; then
-            return 0  # Allow
-        else
-            echo "Quiet hours: suppressing $SEVERITY notification" >&2
-            return 1  # Suppress
-        fi
-    fi
-    
-    return 0  # Outside quiet hours: allow
-}
-
-
 WORKSPACE="$HOME/.openclaw/workspace"
 ALERT_FILE="$WORKSPACE/memory/rate-limit-alert-pending.json"
 SENT_FILE="$WORKSPACE/memory/rate-limit-alerts-sent.jsonl"
@@ -50,7 +31,7 @@ ALERT_FILE="$HOME/.openclaw/workspace/memory/rate-limit-alert-pending.json"
 MESSAGE=$(cat "$ALERT_FILE" | jq -r '.message')
 
 # Send message via openclaw
-openclaw message send --channel telegram --target "-1003768820594" --topic 25 --message "$MESSAGE"
+openclaw message send "$MESSAGE"
 EOF
 
 chmod +x "$TEMP_SCRIPT"

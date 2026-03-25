@@ -6,6 +6,45 @@ Resolution: mark done with date, archive monthly.
 
 ## Open
 
+### 🔧 Gateway Service Config — 2026-03-25
+
+**Contexto:** `openclaw gateway status` reporta que el servicio tiene token embebido y debería reinstalarse.
+
+**Acción:** Ejecutar `openclaw gateway install --force` para eliminar token embebido del service file.
+
+**Impacto:** Seguridad (tokens no deben vivir en archivos systemd).
+
+**Tiempo:** 2 min
+
+---
+
+### ⚠️ TypeError Recurrente en Cron List — 2026-03-25
+
+**Contexto:** Logs del gateway muestran múltiples `TypeError: Cannot read properties of undefined (reading 'padEnd')` en `subsystem-DISldKSB.js:281:68` al listar cron jobs.
+
+**Severidad:** No crítico (sistema sigue operativo), pero recurrente.
+
+**Acción:** Reportar bug a OpenClaw devs o evaluar si es issue conocido en versión actual.
+
+**Tiempo:** 15 min investigación
+
+---
+
+### 💾 Backup Race Condition — 2026-03-25
+
+**Contexto:** Backup nocturno falla en intento 1 porque archivos cambian durante sync (api-health logs, experiment-log.jsonl, memory status). Intento 2 siempre tiene éxito, pero no es ideal.
+
+**Opciones:**
+- **A) Retrasar backup:** Mover cron de 03:00 a 04:00 (después de autoimprove y system updates)
+- **B) Stop-sync-start:** Pausar crons que escriben logs antes de backup (complejo)
+- **C) No hacer nada:** Actual funcionamiento es funcional (retry automático exitoso)
+
+**Acción requerida:** Manu decide A/B/C
+
+**Impacto:** Cosmético (no hay pérdida de datos, solo logs limpios)
+
+---
+
 ### 🤖 Multi-Model Strategy — Aprobar e Implementar — 2026-03-24
 
 **Contexto:** Tras analizar 29 crons, se identificaron 6 que necesitan upgrade (Haiku → Sonnet) y 3 con timeouts insuficientes.

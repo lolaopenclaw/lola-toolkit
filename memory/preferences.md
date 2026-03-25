@@ -68,21 +68,21 @@
 - Config: `channels.telegram.reactionNotifications: all` Channels
 
 ### Morning Reports (Matutino)
-- **Destination:** Discord ONLY ❌ NUNCA Telegram
-- **Discord Channel:** `📊-reportes-matutino` (ID: `1475057935368458312`) ⚠️ NO al general
-- **Guild ID:** `1475053097230270585`
+- **Destination:** Telegram topic 24 (📊 Reportes Diarios) en grupo "Lola y Manu" (-1003768820594)
 - **Time:** 10:00 Madrid (cron `cb5d3743`)
 - **Content:** Sistema, Seguridad, Backups, Autoimprove Nightly, System Updates, Garmin, Estado General
 - **Script:** `scripts/informe-matutino-auto.sh`
 - **Set:** 2026-03-14 10:10 (Manu's request)
-- **Fix:** 2026-03-15 — Se enviaba al general en vez de reportes-matutino (corregido)
+- **Migrated:** 2026-03-25 — Discord → Telegram topics (Manu's decision)
 
 ### Notification Schedule
-- **00:00–10:00 Madrid:** No messages to Manu unless CRITICAL (system down, security breach). All crons, backups, autoimprove, and background work run normally 24/7. Results go to memory + pending-actions.md, never to Telegram/Discord.
-- **10:00 Madrid:** Morning report via **Discord only** (consolidates all overnight work, pending actions, decisions needed).
-- **10:00+ Madrid:** Normal communication via Telegram/Discord.
-- **Crons NEVER send messages directly** — they write to memory. Only the morning report summarizes and delivers.
+- **00:00–07:00 Madrid (Quiet Hours):** NO messages to Manu unless CRITICAL (security breach, gateway down, data loss). Background work runs normally, results go to memory + pending-actions.md.
+- **07:00–10:00 Madrid:** HIGH priority allowed (cron failures, security findings). LOW/MEDIUM → morning report.
+- **10:00 Madrid:** Morning report via Telegram topic 24 (Reportes Diarios). Consolidates overnight work.
+- **10:00+ Madrid:** Normal communication.
+- **Crons deliver via topic routing** (see `memory/night-notification-protocol.md` for topic table).
 - Manu can message anytime via Telegram regardless of schedule.
+- **Updated:** 2026-03-25 (aligned with night-notification-protocol.md, migrated from Discord to Telegram topics)
 
 ### Driving Mode
 - **Trigger in:** "estoy en el coche" (I'm in the car)
@@ -95,9 +95,23 @@
 
 | Channel | Purpose | Note |
 |---------|---------|------|
-| **Telegram** | Direct messages, quick replies | ✅ OK |
-| **Discord** | Morning reports, summaries, alerts | ✅ OK (primary for reports) |
+| **Telegram** | ALL communication + reports (via topics) | ✅ PRIMARY |
+| **Discord** | Legacy (no longer used for reports) | ⚠️ Deprecated for reports |
 | **Email** | Administrative, formal | (via gog) |
+
+### Telegram Topics (Group: Lola y Manu, -1003768820594)
+
+| Topic ID | Name | Use |
+|----------|------|-----|
+| 1 | General | Conversación y temas sueltos |
+| 24 | 📊 Reportes Diarios | Informe matutino |
+| 25 | 🔧 Sistema & Logs | Crons, errores, system updates |
+| 26 | 💰 Finanzas | Sheets, movimientos |
+| 27 | 🐙 GitHub & PRs | Repos, issues, PRs |
+| 28 | 🏃 Salud & Garmin | Datos de actividad |
+| 29 | 🛡️ Seguridad & Audits | Auditorías, fail2ban |
+| 30 | 📅 Calendario & Tareas | Eventos, pending actions |
+| 76 | 🏄 Surf Coach | Proyecto surf |
 
 ## System Updates
 

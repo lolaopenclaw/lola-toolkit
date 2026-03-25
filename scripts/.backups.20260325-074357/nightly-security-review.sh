@@ -338,21 +338,11 @@ log "Findings: $FINDINGS"
 log "Report: $REPORT_FILE"
 log "=========================================="
 
-# Check quiet hours (00:00-07:00 Madrid)
-HOUR=$(TZ=Europe/Madrid date +%H)
-CRITICAL_FINDINGS=$(grep -c "\[CRITICAL\]" "$REPORT_FILE" 2>/dev/null || echo "0")
-
-if [ "$HOUR" -ge 0 ] && [ "$HOUR" -lt 7 ] && [ "$CRITICAL_FINDINGS" -eq 0 ]; then
-    # During quiet hours: only alert if CRITICAL findings
-    echo "Quiet hours: non-critical findings logged, no notification" >> "$LOG_FILE"
-    exit 0
-fi
-
 # Alert if findings and channel specified
 if [ "$FINDINGS" -gt 0 ] && [ -n "$ALERT_CHANNEL" ]; then
     # Send alert via message tool (if available)
     if command -v openclaw &>/dev/null; then
-        openclaw message send --channel telegram --target "-1003768820594" --topic 29 \
+        openclaw message send --channel telegram --target "$ALERT_CHANNEL" \
             --message "🚨 Nightly Security Review: $FINDINGS findings detected. Review: $REPORT_FILE" \
             2>/dev/null || log "Alert send failed (openclaw not available)"
     fi
