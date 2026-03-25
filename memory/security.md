@@ -12,7 +12,14 @@
 - Fail2ban: active
 
 ## Secret Rotation
-- Schedule: Quarterly (next: Q2 2026)
+- Schedule: Quarterly
+- **Last rotation: 2026-03-25 (Q1 2026)**
+  - ✅ Telegram Bot Token — rotated
+  - ✅ Discord Bot Token — rotated
+  - ✅ Brave Search API Key — rotated
+  - ⏸️ Anthropic API Key — POSTPONED (enterprise account, no console access)
+  - ⏭️ GitHub — SKIP (OAuth via `gh`, auto-renewable)
+- Next rotation: Q2 2026 (June)
 - Gateway token rotation cron: 25th every 3 months
 
 ## Protocols
