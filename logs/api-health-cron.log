@@ -2493,3 +2493,115 @@ Estado: down → <b>up...
     "api": "brave"
   }
 }
+[2026-03-25T10:00:01.567725+00:00] [INFO] Checking anthropic...
+[2026-03-25T10:00:01.839965+00:00] [INFO] anthropic: up (latency: 270ms)
+[2026-03-25T10:00:01.840727+00:00] [INFO] Checking google...
+[2026-03-25T10:00:02.042396+00:00] [INFO] google: up (latency: 189ms)
+[2026-03-25T10:00:02.043420+00:00] [INFO] Checking telegram...
+[2026-03-25T10:00:02.442551+00:00] [INFO] telegram: up (latency: 396ms)
+[2026-03-25T10:00:02.443332+00:00] [INFO] Checking github...
+[2026-03-25T10:00:02.679025+00:00] [INFO] github: up (latency: 233ms)
+[2026-03-25T10:00:02.680010+00:00] [INFO] Checking garmin...
+[2026-03-25T10:00:02.949958+00:00] [INFO] garmin: up (latency: 267ms)
+[2026-03-25T10:00:02.950568+00:00] [INFO] Checking brave...
+[2026-03-25T10:00:03.690722+00:00] [INFO] brave: up (latency: 738ms)
+{
+  "anthropic": {
+    "status": "up",
+    "latency": 270,
+    "error": null,
+    "timestamp": "2026-03-25T10:00:01.839937+00:00",
+    "api": "anthropic"
+  },
+  "google": {
+    "status": "up",
+    "latency": 189,
+    "error": null,
+    "timestamp": "2026-03-25T10:00:02.042363+00:00",
+    "api": "google"
+  },
+  "telegram": {
+    "status": "up",
+    "latency": 396,
+    "error": null,
+    "timestamp": "2026-03-25T10:00:02.442522+00:00",
+    "api": "telegram"
+  },
+  "github": {
+    "status": "up",
+    "latency": 233,
+    "error": null,
+    "timestamp": "2026-03-25T10:00:02.678991+00:00",
+    "api": "github"
+  },
+  "garmin": {
+    "status": "up",
+    "latency": 267,
+    "error": null,
+    "timestamp": "2026-03-25T10:00:02.949933+00:00",
+    "api": "garmin"
+  },
+  "brave": {
+    "status": "up",
+    "latency": 738,
+    "error": null,
+    "timestamp": "2026-03-25T10:00:03.690696+00:00",
+    "api": "brave"
+  }
+}
+[2026-03-25T10:30:02.076986+00:00] [INFO] Checking anthropic...
+[2026-03-25T10:30:02.257056+00:00] [INFO] anthropic: up (latency: 178ms)
+[2026-03-25T10:30:02.257593+00:00] [INFO] Checking google...
+[2026-03-25T10:30:02.398918+00:00] [INFO] google: up (latency: 139ms)
+[2026-03-25T10:30:02.399343+00:00] [INFO] Checking telegram...
+[2026-03-25T10:30:02.629168+00:00] [INFO] telegram: up (latency: 228ms)
+[2026-03-25T10:30:02.629708+00:00] [INFO] Checking github...
+[2026-03-25T10:30:02.779707+00:00] [INFO] github: up (latency: 148ms)
+[2026-03-25T10:30:02.780199+00:00] [INFO] Checking garmin...
+[2026-03-25T10:30:03.013308+00:00] [INFO] garmin: up (latency: 231ms)
+[2026-03-25T10:30:03.013849+00:00] [INFO] Checking brave...
+[2026-03-25T10:30:03.691550+00:00] [INFO] brave: up (latency: 676ms)
+{
+  "anthropic": {
+    "status": "up",
+    "latency": 178,
+    "error": null,
+    "timestamp": "2026-03-25T10:30:02.257031+00:00",
+    "api": "anthropic"
+  },
+  "google": {
+    "status": "up",
+    "latency": 139,
+    "error": null,
+    "timestamp": "2026-03-25T10:30:02.398898+00:00",
+    "api": "google"
+  },
+  "telegram": {
+    "status": "up",
+    "latency": 228,
+    "error": null,
+    "timestamp": "2026-03-25T10:30:02.629144+00:00",
+    "api": "telegram"
+  },
+  "github": {
+    "status": "up",
+    "latency": 148,
+    "error": null,
+    "timestamp": "2026-03-25T10:30:02.779685+00:00",
+    "api": "github"
+  },
+  "garmin": {
+    "status": "up",
+    "latency": 231,
+    "error": null,
+    "timestamp": "2026-03-25T10:30:03.013291+00:00",
+    "api": "garmin"
+  },
+  "brave": {
+    "status": "up",
+    "latency": 676,
+    "error": null,
+    "timestamp": "2026-03-25T10:30:03.691529+00:00",
+    "api": "brave"
+  }
+}

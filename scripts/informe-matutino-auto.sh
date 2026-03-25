@@ -120,25 +120,61 @@ fi
 
 # 10. Autoimprove Nightly summary
 echo "🔬 Leyendo resumen de Autoimprove..."
+EXPERIMENT_LOG="$WORKSPACE/autoimprove/experiment-log.jsonl"
 AUTOIMPROVE_FILE="$MEMORY_DIR/$TODAY-autoimprove.md"
 AUTOIMPROVE_SECTION=""
-if [ -f "$AUTOIMPROVE_FILE" ]; then
-    # Extract key stats: improvements kept, reverted, iterations
-    KEPT=$(grep -c "^[0-9]\+\.\|^\*\*" "$AUTOIMPROVE_FILE" 2>/dev/null | head -1 || echo "?")
-    # Get a concise summary: look for "Improvements Kept" and "Stats" sections
-    IMPROVEMENTS=$(sed -n '/## Improvements Kept/,/## Attempted/p' "$AUTOIMPROVE_FILE" | grep "^\*\*\|^[0-9]" | head -10 || true)
-    REVERTED=$(sed -n '/## Attempted but Reverted/,/## Stats/p' "$AUTOIMPROVE_FILE" | grep "^\*\*" | head -5 || true)
-    STATS_LINE=$(grep -E "Total commits|Token reduction" "$AUTOIMPROVE_FILE" | head -2 || true)
 
+# First check experiment-log.jsonl (new format: 3 separate agents)
+if [ -f "$EXPERIMENT_LOG" ]; then
+    # Get today's entries (UTC date in ts field)
+    TODAY_UTC=$(date -u +%Y-%m-%d)
+    TODAY_ENTRIES=$(grep "$TODAY_UTC" "$EXPERIMENT_LOG" 2>/dev/null || true)
+    
+    if [ -n "$TODAY_ENTRIES" ]; then
+        TOTAL_CHANGES=$(echo "$TODAY_ENTRIES" | wc -l)
+        KEPT_COUNT=$(echo "$TODAY_ENTRIES" | grep '"kept":true' | wc -l)
+        REVERTED_COUNT=$(echo "$TODAY_ENTRIES" | grep '"kept":false' | wc -l)
+        
+        # Get targets modified
+        TARGETS=$(echo "$TODAY_ENTRIES" | python3 -c "
+import sys, json
+targets = set()
+for line in sys.stdin:
+    try:
+        d = json.loads(line.strip())
+        targets.add(d.get('target','?'))
+    except: pass
+print(', '.join(sorted(targets)[:5]))
+" 2>/dev/null || echo "?")
+        
+        # Total bytes saved
+        BYTES_SAVED=$(echo "$TODAY_ENTRIES" | python3 -c "
+import sys, json
+total = 0
+for line in sys.stdin:
+    try:
+        d = json.loads(line.strip())
+        if d.get('kept'): total += d.get('delta', 0)
+    except: pass
+print(total)
+" 2>/dev/null || echo "0")
+        
+        AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
+• $TOTAL_CHANGES cambios ($KEPT_COUNT aplicados, $REVERTED_COUNT revertidos)
+• Archivos: $TARGETS
+• Bytes optimizados: $BYTES_SAVED"
+    else
+        AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
+• No hubo cambios anoche"
+    fi
+# Fallback: check old format (single agent markdown)
+elif [ -f "$AUTOIMPROVE_FILE" ]; then
+    IMPROVEMENTS=$(sed -n '/## Improvements Kept/,/## Attempted/p' "$AUTOIMPROVE_FILE" | grep "^\*\*\|^[0-9]" | head -5 || true)
     AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
 $IMPROVEMENTS"
-    [ -n "$REVERTED" ] && AUTOIMPROVE_SECTION="$AUTOIMPROVE_SECTION
-• Revertido: $REVERTED"
-    [ -n "$STATS_LINE" ] && AUTOIMPROVE_SECTION="$AUTOIMPROVE_SECTION
-$STATS_LINE"
 else
     AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
-• No se ejecutó anoche (sin archivo $TODAY-autoimprove.md)"
+• No se ejecutó anoche"
 fi
 
 # 11. System updates status

@@ -1,9 +1,9 @@
 {
-  "timestamp": "2026-03-25T09:00:01.839161+00:00",
+  "timestamp": "2026-03-25T10:00:01.413482+00:00",
   "api": "anthropic",
   "level": "CRITICAL",
-  "message": "\ud83d\udea8 **CRITICAL: Rate Limit Alert - Anthropic**\n\n**Usage:** 80/10 429s (800.0%)\n**Status:** CRITICAL threshold exceeded (>80%)\n**Reset:** daily\n\n**Actions:**\n\u2022 Too many 429 responses detected\n\u2022 Implement exponential backoff\n\u2022 Consider tier upgrade",
-  "current": 80,
+  "message": "\ud83d\udea8 **CRITICAL: Rate Limit Alert - Anthropic**\n\n**Usage:** 82/10 429s (820.0%)\n**Status:** CRITICAL threshold exceeded (>80%)\n**Reset:** daily\n\n**Actions:**\n\u2022 Too many 429 responses detected\n\u2022 Implement exponential backoff\n\u2022 Consider tier upgrade",
+  "current": 82,
   "limit": 10,
-  "percentage": 800.0
+  "percentage": 819.9999999999999
 }
