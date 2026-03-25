@@ -5,11 +5,20 @@
 ## Rules
 
 ### Manual Activation (Manu tells me)
-- **Trigger phrase:** "estoy en el coche" / "estoy conduciendo" / "en el coche"
+- **Trigger phrase:** "estoy en el coche" / "estoy conduciendo" / "en el coche" / "me monto en el coche"
   - **Action:** Activate DRIVING MODE → respond ONLY via audio (TTS) until deactivated
   
 - **Trigger phrase:** "ya estoy en casa" / "he llegado" / "ya no estoy en el coche"
   - **Action:** Deactivate DRIVING MODE → back to text-only responses
+
+### ⚠️ SCOPE: GLOBAL (All Topics/Sessions)
+- **Driving mode is a GLOBAL state** — applies to ALL Telegram topics simultaneously
+- When activated in ANY topic → ALL topics respond via audio
+- When deactivated in ANY topic → ALL topics respond via text
+- **State file is the single source of truth:** `memory/driving-mode-state.json`
+- **Every session/topic MUST check state file before every response** (as per SOUL.md mandatory check)
+- **Reports, security alerts, cron outputs** → still delivered as TEXT (written notifications)
+- **Conversational replies to Manu** → delivered as AUDIO when driving mode is active
 
 ### Auto-Reset (Nightly)
 - **Time:** 22:00 Madrid time (every day)

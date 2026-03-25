@@ -1,1 +1,1 @@
-{"mode": "home", "since": "2026-03-24T22:00:00+01:00", "trigger": "auto-reset (nightly cron)", "last_reset": "2026-03-24T22:00:00+01:00"}
+{"mode": "driving", "since": "2026-03-25T08:20:00+01:00", "trigger": "manual (me monto en el coche)", "last_reset": "2026-03-24T22:00:00+01:00"}
