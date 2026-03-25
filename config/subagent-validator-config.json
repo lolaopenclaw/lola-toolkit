@@ -1,0 +1,212 @@
+{
+  "version": "1.0.0",
+  "description": "Configuration for Subagent Output Validator - 3-phase validation pipeline",
+  
+  "phase1": {
+    "enabled": true,
+    "description": "Structural validation (deterministic, no AI)",
+    "checks": {
+      "secrets": {
+        "enabled": true,
+        "description": "Detect hardcoded API keys, tokens, emails, private IPs",
+        "patterns": {
+          "openai_key": "sk-[a-zA-Z0-9_-]{20,}",
+          "anthropic_key": "sk-ant-[a-zA-Z0-9_-]{20,}",
+          "github_token": "ghp_[a-zA-Z0-9]{36}",
+          "slack_token": "xoxb-[a-zA-Z0-9-]+",
+          "google_api_key": "AIza[0-9A-Za-z_-]{35}",
+          "aws_access_key": "AKIA[0-9A-Z]{16}",
+          "google_oauth": "ya29\\.[0-9A-Za-z_-]+",
+          "email": "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}",
+          "personal_path": "/home/mleon(?:/[^\\s]+)?",
+          "private_ip": "\\b(?:192\\.168|10\\.|172\\.(?:1[6-9]|2[0-9]|3[01])\\.)\\d{1,3}\\.\\d{1,3}\\b"
+        }
+      },
+      "destructive_commands": {
+        "enabled": true,
+        "description": "Detect dangerous system commands",
+        "patterns": {
+          "rm_root": "rm\\s+-rf\\s+/",
+          "dd_zero": "dd\\s+if=/dev/zero",
+          "chmod_777": "sudo\\s+chmod\\s+777",
+          "disk_write": ">\\s*/dev/sd[a-z]",
+          "mkfs": "mkfs\\s+",
+          "format": "format\\s+[A-Z]:",
+          "curl_bash": "curl[^|]*\\|\\s*bash",
+          "wget_sh": "wget[^|]*\\|\\s*sh",
+          "rm_home": "rm\\s+-rf\\s+(?:\\$HOME|~)"
+        }
+      },
+      "syntax": {
+        "enabled": true,
+        "description": "Validate syntax for common languages",
+        "languages": {
+          "bash": true,
+          "python": true,
+          "json": true
+        }
+      },
+      "error_handling": {
+        "enabled": true,
+        "description": "Detect missing error handling",
+        "checks": {
+          "bash_set_e": true,
+          "python_try_except": true
+        }
+      },
+      "critical_dirs": {
+        "enabled": true,
+        "description": "Detect modifications to critical system directories",
+        "directories": [
+          "/etc/",
+          "/boot/",
+          "/sys/",
+          "/proc/"
+        ]
+      }
+    }
+  },
+  
+  "phase2": {
+    "enabled": true,
+    "description": "Semantic validation with AI reviewer",
+    "model": "haiku",
+    "model_options": {
+      "haiku": "anthropic/claude-haiku-4-4",
+      "sonnet": "anthropic/claude-sonnet-4-5",
+      "opus": "anthropic/claude-opus-4-6"
+    },
+    "timeout_seconds": 30,
+    "fallback_on_error": "WARN",
+    "skip_conditions": {
+      "if_structural_critical": true,
+      "description": "Skip semantic validation if structural validation found critical issues"
+    },
+    "evaluation_criteria": {
+      "correctness": {
+        "weight": 1.0,
+        "description": "Does the output accomplish the stated goal?"
+      },
+      "safety": {
+        "weight": 1.5,
+        "description": "Are there dangerous operations or side effects?"
+      },
+      "quality": {
+        "weight": 0.8,
+        "description": "Does it follow best practices?"
+      },
+      "completeness": {
+        "weight": 1.0,
+        "description": "Are edge cases or error handling missing?"
+      }
+    }
+  },
+  
+  "phase3": {
+    "enabled": true,
+    "description": "Human threshold decision logic",
+    "thresholds": {
+      "critical_max": 0,
+      "critical_action": "BLOCK",
+      "high_max": 2,
+      "high_action": "BLOCK",
+      "medium_max": 4,
+      "medium_action": "WARN",
+      "description": "If counts exceed thresholds, take corresponding action"
+    },
+    "decision_matrix": {
+      "BLOCK": {
+        "conditions": [
+          "critical_count >= 1",
+          "high_count >= 3"
+        ],
+        "exit_code": 1,
+        "notify": true
+      },
+      "WARN": {
+        "conditions": [
+          "medium_count >= 5",
+          "semantic_verdict == 'WARN'"
+        ],
+        "exit_code": 2,
+        "notify": false
+      },
+      "ALLOW": {
+        "conditions": [
+          "default"
+        ],
+        "exit_code": 0,
+        "notify": false
+      }
+    }
+  },
+  
+  "logging": {
+    "enabled": true,
+    "log_dir": "~/.openclaw/workspace/logs/subagent-validator",
+    "format": "jsonl",
+    "retention_days": 30,
+    "fields": {
+      "timestamp": true,
+      "latency": true,
+      "task": true,
+      "action_type": true,
+      "structural_result": true,
+      "semantic_result": true,
+      "decision": true
+    }
+  },
+  
+  "notifications": {
+    "enabled": false,
+    "description": "Future: Send notifications on BLOCK/WARN via Telegram",
+    "telegram": {
+      "enabled": false,
+      "chat_id": null,
+      "on_block": true,
+      "on_warn": false
+    }
+  },
+  
+  "action_types": {
+    "config_edit": {
+      "description": "Modifying configuration files",
+      "examples": ["cron jobs", "env vars", "systemd units"]
+    },
+    "file_creation": {
+      "description": "Creating new files",
+      "examples": ["scripts", "configs", "documentation"]
+    },
+    "file_modification": {
+      "description": "Editing existing files",
+      "examples": ["patches", "refactoring", "bug fixes"]
+    },
+    "script_execution": {
+      "description": "Running commands/scripts",
+      "examples": ["cleanup", "deployment", "maintenance"]
+    },
+    "data_migration": {
+      "description": "Moving/transforming data",
+      "examples": ["database migrations", "file reorganization"]
+    },
+    "api_call": {
+      "description": "External API interactions",
+      "examples": ["GitHub", "Telegram", "email"]
+    },
+    "security_change": {
+      "description": "Security-sensitive operations",
+      "examples": ["SSH keys", "firewall rules", "permissions"]
+    }
+  },
+  
+  "future_enhancements": {
+    "planned": [
+      "Config file support (currently hardcoded)",
+      "Diff-based validation (validate only changes)",
+      "Integration with OpenClaw session lifecycle",
+      "Web dashboard for validation history",
+      "Custom rule definitions",
+      "Support for more languages (Go, Rust, TypeScript)"
+    ]
+  }
+}

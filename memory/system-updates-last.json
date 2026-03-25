@@ -1,8 +1,14 @@
 {
-  "timestamp": "2026-03-23T01:30:00+01:00",
-  "status": "success",
-  "message": "No hay actualizaciones pendientes",
-  "command": "sudo bash /home/mleon/.openclaw/workspace/scripts/system-updates-nightly.sh",
-  "notes": "Sistema actualizado. Sin cambios requeridos.",
-  "openclaw_affected": false
+  "date": "2026-03-25",
+  "time": "01:30",
+  "status": "ok",
+  "packages_available": 2,
+  "packages_updated": 0,
+  "security_count": 0
+0,
+  "regular_count": 2,
+  "packages": [{"name":"intel-media-va-driver","type":"regular"},{"name":"libigdgmm12","type":"regular"}],
+  "reboot_required": false,
+  "remaining": 2,
+  "note": "Auto-applied. OpenClaw excluded (always manual)."
 }

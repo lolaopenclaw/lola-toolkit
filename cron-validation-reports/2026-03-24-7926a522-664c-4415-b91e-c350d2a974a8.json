@@ -1,0 +1,39 @@
+{
+  "job_id": "7926a522-664c-4415-b91e-c350d2a974a8",
+  "job_name": "\ud83c\udf0a Surf Conditions Daily",
+  "timestamp": "2026-03-24T12:48:24.599108",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: surf-conditions.sh",
+    "Missing script: .sh"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        "surf-conditions.sh",
+        ".sh"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

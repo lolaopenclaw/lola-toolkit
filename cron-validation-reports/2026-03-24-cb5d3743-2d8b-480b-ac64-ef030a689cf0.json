@@ -1,0 +1,43 @@
+{
+  "job_id": "cb5d3743-2d8b-480b-ac64-ef030a689cf0",
+  "job_name": "\ud83d\udccb Informe Matutino",
+  "timestamp": "2026-03-24T12:48:24.599992",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: informe-matutino-auto.sh",
+    "Missing script: .sh"
+  ],
+  "warnings": [
+    "Dry-run: Message contains TODO marker"
+  ],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        "informe-matutino-auto.sh",
+        ".sh"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": [
+        "Message contains TODO marker"
+      ]
+    }
+  }
+}

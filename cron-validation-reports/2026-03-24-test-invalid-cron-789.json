@@ -1,0 +1,35 @@
+{
+  "job_id": "test-invalid-cron-789",
+  "job_name": "Invalid Cron Schedule",
+  "timestamp": "2026-03-24T14:35:18.843978",
+  "overall_valid": false,
+  "errors": [
+    "Schedule: Invalid cron expression \"0 10 * *\": Exactly 5, 6 or 7 columns has to be specified for iterator expression."
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": false,
+      "error": "Invalid cron expression \"0 10 * *\": Exactly 5, 6 or 7 columns has to be specified for iterator expression."
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

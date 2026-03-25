@@ -1,0 +1,45 @@
+{
+  "job_id": "6344d609-2bfd-4295-8471-373125381779",
+  "job_name": "\ud83d\udcca Populate Google Sheets v2",
+  "timestamp": "2026-03-24T12:48:24.599504",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: .py",
+    "Missing script: sheets-populate-v2.py"
+  ],
+  "warnings": [
+    "Missing env var: YESTERDAY",
+    "Missing env var: TODAY"
+  ],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        ".py",
+        "sheets-populate-v2.py"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": false,
+      "missing": [
+        "YESTERDAY",
+        "TODAY"
+      ],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

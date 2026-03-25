@@ -1,0 +1,33 @@
+{
+  "job_id": "cc029b5b-32a3-4747-b8ae-9ae47219d9ff",
+  "job_name": "Seguimiento reclamaci\u00f3n bus Logro\u00f1o (3 meses)",
+  "timestamp": "2026-03-24T12:48:24.609705",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

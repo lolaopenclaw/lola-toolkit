@@ -10,6 +10,11 @@
 
 set -euo pipefail
 
+# Defaults (overridden by mode flags)
+DATE="${DATE:-$(date +%Y-%m-%d)}"
+DATE_ACTIVITY="${DATE_ACTIVITY:-$(date -d yesterday +%Y-%m-%d)}"
+DATE_SLEEP="${DATE_SLEEP:-$(date +%Y-%m-%d)}"
+
 # Check dependencies
 for cmd in python3 date; do
     if ! command -v "$cmd" &>/dev/null; then

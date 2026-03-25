@@ -1,0 +1,131 @@
+{
+  "calls": [
+    {
+      "timestamp": "2026-03-24T21:36:01.304691",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:01.415806",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:01.526651",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:01.636996",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:01.747093",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:01.894833",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:02.024515",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:02.148009",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:02.251786",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:02.373675",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:04.366513",
+      "caller": "test_volume",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:04.463580",
+      "caller": "test_volume",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:04.561289",
+      "caller": "test_volume",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:04.654045",
+      "caller": "test_volume",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:04.748741",
+      "caller": "test_volume",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:05.732072",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:05.925835",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:06.017881",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:06.132261",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:06.246615",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    },
+    {
+      "timestamp": "2026-03-24T21:36:06.351514",
+      "caller": "cli",
+      "tool": "scan_inbound",
+      "cost": 0.0
+    }
+  ],
+  "hashes": {}
+}

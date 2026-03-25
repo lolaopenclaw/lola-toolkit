@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# OpenClaw Subagents Dashboard - Wrapper script
+# Usage: subagents-dashboard
+
+DASHBOARD_DIR="$HOME/.openclaw/workspace/scripts/openclaw-subagents-tui-blessed"
+
+if [ ! -d "$DASHBOARD_DIR" ]; then
+  echo "Error: Dashboard directory not found at $DASHBOARD_DIR"
+  exit 1
+fi
+
+cd "$DASHBOARD_DIR" && node index.js "$@"

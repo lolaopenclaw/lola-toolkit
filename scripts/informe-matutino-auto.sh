@@ -4,6 +4,7 @@
 
 set -e
 source ~/.openclaw/.env
+source ~/.bashrc  # Necesario para gog CLI
 
 YESTERDAY=$(date -d "yesterday" +%Y-%m-%d)
 TODAY=$(date +%Y-%m-%d)
@@ -12,11 +13,86 @@ MEMORY_DIR="/home/mleon/.openclaw/workspace/memory"
 
 echo "🔄 Generando informe matutino..."
 
-# 1. Get Garmin data for yesterday
+# 1. Get Weather for Logroño
+echo "🌤️ Obteniendo clima..."
+WEATHER=$(curl -s "wttr.in/Logroño?format=3" 2>/dev/null || echo "❓ No disponible")
+
+# 2. Get Calendar events for today
+echo "📅 Obteniendo eventos del día..."
+CALENDAR_EVENTS=$(gog calendar list --from today --to tomorrow 2>/dev/null | grep -v "^$" || echo "")
+if [ -z "$CALENDAR_EVENTS" ] || [ "$CALENDAR_EVENTS" = "No events found" ]; then
+    CALENDAR_SECTION="📅 CALENDARIO
+• Sin eventos programados para hoy"
+else
+    # Format events nicely - extract summary and time if available
+    CALENDAR_FORMATTED=$(echo "$CALENDAR_EVENTS" | head -10)
+    CALENDAR_SECTION="📅 CALENDARIO
+$CALENDAR_FORMATTED"
+fi
+
+# 3. Get Pending Actions
+echo "📌 Verificando pending actions..."
+PENDING_FILE="$MEMORY_DIR/pending-actions.md"
+PENDING_ACTIONS=""
+if [ -f "$PENDING_FILE" ]; then
+    # Extract unchecked items (- [ ]) and get first 5
+    PENDING_ACTIONS=$(grep "^- \[ \]" "$PENDING_FILE" | head -5 || echo "")
+    if [ -n "$PENDING_ACTIONS" ]; then
+        PENDING_COUNT=$(echo "$PENDING_ACTIONS" | wc -l)
+        PENDING_SECTION="📌 PENDING ACTIONS ($PENDING_COUNT abiertas)
+$PENDING_ACTIONS"
+    else
+        PENDING_SECTION="📌 PENDING ACTIONS
+• Sin acciones pendientes"
+    fi
+else
+    PENDING_SECTION="📌 PENDING ACTIONS
+• (archivo no encontrado)"
+fi
+
+# 4. Log Review Nocturno
+echo "📋 Verificando log review nocturno..."
+LOG_REVIEW_FILE="$MEMORY_DIR/log-review-$TODAY.md"
+LOG_REVIEW_YESTERDAY="$MEMORY_DIR/log-review-$YESTERDAY.md"
+LOG_REVIEW_SECTION=""
+
+if [ -f "$LOG_REVIEW_FILE" ]; then
+    # Today's review exists - extract summary
+    LOG_SUMMARY=$(head -20 "$LOG_REVIEW_FILE" | grep -E "^\*\*|^###|^- " || echo "Ver archivo completo")
+    LOG_REVIEW_SECTION="📋 LOG REVIEW NOCTURNO ($TODAY)
+$LOG_SUMMARY"
+elif [ -f "$LOG_REVIEW_YESTERDAY" ]; then
+    # Yesterday's review
+    LOG_SUMMARY=$(head -20 "$LOG_REVIEW_YESTERDAY" | grep -E "^\*\*|^###|^- " || echo "Ver archivo completo")
+    LOG_REVIEW_SECTION="📋 LOG REVIEW NOCTURNO ($YESTERDAY)
+$LOG_SUMMARY"
+else
+    LOG_REVIEW_SECTION="📋 LOG REVIEW NOCTURNO
+• Sin incidentes nocturnos registrados"
+fi
+
+# 5. Nightly Security Review
+echo "🔐 Verificando security review nocturno..."
+SECURITY_REVIEW_FILES=$(ls -t "$MEMORY_DIR"/*security*review*.md "$MEMORY_DIR"/*nightly*security*.md 2>/dev/null | head -1)
+SECURITY_REVIEW_SECTION=""
+
+if [ -n "$SECURITY_REVIEW_FILES" ]; then
+    LATEST_SECURITY=$(echo "$SECURITY_REVIEW_FILES" | head -1)
+    SEC_DATE=$(basename "$LATEST_SECURITY" | grep -oE "[0-9]{4}-[0-9]{2}-[0-9]{2}" || echo "fecha desconocida")
+    SEC_SUMMARY=$(head -30 "$LATEST_SECURITY" | grep -E "^###|^\*\*|^- |^✅|^❌|^⚠️" | head -10 || echo "Ver archivo completo")
+    
+    SECURITY_REVIEW_SECTION="🔐 SECURITY REVIEW NOCTURNO ($SEC_DATE)
+$SEC_SUMMARY"
+else
+    SECURITY_REVIEW_SECTION="🔐 SECURITY REVIEW NOCTURNO
+• Sin review de seguridad reciente"
+fi
+
+# 6. Get Garmin data for yesterday
 echo "📊 Obteniendo datos de Garmin..."
 GARMIN_DATA=$(bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --daily "$YESTERDAY" 2>&1 || echo "Error en Garmin")
 
-# 2. Get system stats
+# 7. Get system stats
 echo "💻 Obteniendo estadísticas del sistema..."
 UPTIME=$(uptime -p 2>/dev/null | sed 's/up //')
 RAM=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
@@ -27,11 +103,11 @@ GATEWAY_STATUS="✅ Activo" && [ -z "$GATEWAY_PID" ] && GATEWAY_STATUS="❌ Inac
 # Count active crons
 CRONS_ACTIVE=$(openclaw cron list 2>/dev/null | grep -c "enabled" || echo "?")
 
-# 3. Get Fail2Ban status
-echo "🔐 Verificando Fail2Ban..."
+# 8. Get Fail2Ban status
+echo "🛡️ Verificando Fail2Ban..."
 FAIL2BAN=$(sudo fail2ban-client status sshd 2>/dev/null | grep "Currently banned" | awk '{print $NF}' || echo "?")
 
-# 4. Get backup info
+# 9. Get backup info
 echo "💾 Verificando backups..."
 LAST_BACKUP_JSON="$MEMORY_DIR/last-backup.json"
 if [ -f "$LAST_BACKUP_JSON" ]; then
@@ -42,7 +118,7 @@ else
     BACKUP_STATUS="?"
 fi
 
-# 5. Autoimprove Nightly summary
+# 10. Autoimprove Nightly summary
 echo "🔬 Leyendo resumen de Autoimprove..."
 AUTOIMPROVE_FILE="$MEMORY_DIR/$TODAY-autoimprove.md"
 AUTOIMPROVE_SECTION=""
@@ -65,7 +141,7 @@ else
 • No se ejecutó anoche (sin archivo $TODAY-autoimprove.md)"
 fi
 
-# 6. System updates status
+# 11. System updates status
 echo "🔄 Leyendo estado de actualizaciones..."
 UPDATES_JSON="$MEMORY_DIR/system-updates-last.json"
 UPDATES_SECTION=""
@@ -99,7 +175,7 @@ else
 • $UPD_COUNT paquetes disponibles (auto-update nocturno pendiente de primera ejecución)"
 fi
 
-# 7. Token usage report
+# 12. Token usage report
 echo "💰 Calculando consumo de tokens..."
 USAGE_JSON=$(bash ~/.openclaw/workspace/scripts/usage-report.sh 2>/dev/null || echo "{}")
 if [ -n "$USAGE_JSON" ] && [ "$USAGE_JSON" != "{}" ]; then
@@ -127,15 +203,27 @@ else
 • (sin datos disponibles)"
 fi
 
-# 8. Build the report
+# 13. Build the report
 INFORME="📋 INFORME MATUTINO • $TODAY $HOUR
+
+🌤️ CLIMA LOGROÑO
+$WEATHER
+
+$CALENDAR_SECTION
+
+$PENDING_SECTION
+
+$LOG_REVIEW_SECTION
+
+$SECURITY_REVIEW_SECTION
 
 🖥️ SISTEMA
 • Uptime: $UPTIME
 • RAM: $RAM | Disco: $DISK
 • Gateway: $GATEWAY_STATUS
+• Crons activos: $CRONS_ACTIVE
 
-🔐 SEGURIDAD
+🛡️ SEGURIDAD
 • Fail2Ban SSH: $FAIL2BAN IPs baneadas
 
 💾 BACKUPS
@@ -159,7 +247,7 @@ echo "$INFORME"
 # by the OpenClaw cron job delivery config (mode=announce, channel=discord).
 # The cron agent session reads the output and delivers it.
 
-# 9. Save report
+# 14. Save report
 echo "📝 Guardando informe..."
 echo "$INFORME" > ~/.openclaw/workspace/memory/$TODAY-informe.md
 echo "✅ Informe guardado en memory/$TODAY-informe.md"

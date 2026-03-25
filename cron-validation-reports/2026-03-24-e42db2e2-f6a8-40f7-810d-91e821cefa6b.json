@@ -1,0 +1,33 @@
+{
+  "job_id": "e42db2e2-f6a8-40f7-810d-91e821cefa6b",
+  "job_name": "\ud83d\udd04 Model Reset Nightly",
+  "timestamp": "2026-03-24T12:48:24.588377",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

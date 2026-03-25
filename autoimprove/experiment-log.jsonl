@@ -60,3 +60,35 @@
 {"ts":"2026-03-23T03:13:46Z","target":"MEMORY.md","change":"remove placeholder from Finanzas","before":1833,"after":1809,"kept":true,"delta":24}
 {"ts":"2026-03-23T03:14:04Z","target":"MEMORY.md","change":"simplify Autoresearch line","before":1809,"after":1744,"kept":true,"delta":65}
 {"ts":"2026-03-23T03:14:21Z","target":"MEMORY.md","change":"condense Knowledge Graph to single line","before":1744,"after":1686,"kept":true,"delta":58}
+{"ts":"2026-03-24T02:01:34Z","target":"backup-memory.sh","change":"consolidate wait calls outside braces","before":326,"after":324,"kept":true,"delta":2}
+{"ts":"2026-03-24T02:04:51Z","target":"backup-memory.sh","change":"move BACKUP_FILE variable inline to reduce line count","before":324,"after":323,"kept":true,"delta":1}
+{"ts":"2026-03-24T02:06:55Z","target":"HEARTBEAT.md","change":"compress silent checks list to single-line format","before":10447,"after":10427,"kept":true,"delta":20}
+{"ts":"2026-03-24T02:08:00Z","target":"HEARTBEAT.md","change":"compress checks to inline pipe-separated format","before":10447,"after":10375,"kept":true,"delta":72}
+{"ts":"2026-03-24T02:08:28Z","target":"HEARTBEAT.md","change":"simplify output/progress note","before":10375,"after":10365,"kept":true,"delta":10}
+{"ts":"2026-03-24T02:09:21Z","target":"AGENTS.md","change":"consolidate GitHub Publishing into Safety section","before":1440,"after":1431,"kept":true,"delta":9}
+{"ts":"2026-03-24T02:09:39Z","target":"AGENTS.md","change":"abbreviate Heartbeats section","before":1431,"after":1363,"kept":true,"delta":68}
+{"ts":"2026-03-24T02:09:59Z","target":"AGENTS.md","change":"abbreviate Verification section (detail in file)","before":1363,"after":1279,"kept":true,"delta":84}
+{"ts":"2026-03-24T02:11:24Z","target":"MEMORY.md","change":"condense finanzas/dashboards/calendar into single line","before":1744,"after":1685,"kept":true,"delta":59}
+{"ts":"2026-03-24T02:11:37Z","target":"MEMORY.md","change":"tighten GitHub section (reduce verbose bullets)","before":1685,"after":1581,"kept":true,"delta":104}
+{"ts":"2026-03-24T02:12:02Z","target":"MEMORY.md","change":"condense protocols/preferences bullets to inline format","before":1581,"after":1411,"kept":true,"delta":170}
+{"ts":"2026-03-24T02:12:26Z","target":"MEMORY.md","change":"tighten TECHNICAL section (condensed bullets to inline)","before":1411,"after":1318,"kept":true,"delta":93}
+{"ts":"2026-03-24T02:12:42Z","target":"MEMORY.md","change":"condense SECURITY section (inline format)","before":1318,"after":1221,"kept":true,"delta":97}
+{"ts":"2026-03-24T02:13:16Z","target":"MEMORY.md","change":"condense Knowledge Graph description","before":1221,"after":1168,"kept":true,"delta":53}
+{"ts":"2026-03-24T02:13:38Z","target":"MEMORY.md","change":"condense Autoresearch arrow notation","before":1168,"after":1168,"kept":false,"delta":0}
+{"ts":"2026-03-24T02:14:15Z","target":"MEMORY.md","change":"move CORE description inline with heading","before":1168,"after":1154,"kept":true,"delta":14}
+{"ts":"2026-03-24T02:15:03Z","target":"MEMORY.md","change":"shorten title MEMORY.md → MEMORY","before":1154,"after":1151,"kept":true,"delta":3}
+{"ts":"2026-03-25T02:00:36Z","target":"backup-memory.sh","change":"use pigz for parallel compression (fallback to gzip)","before":325,"after":324,"kept":true,"delta":1}
+{"ts":"2026-03-25T02:00:44Z","target":"backup-memory.sh","change":"combine 3 gnupg safe_copy calls into single rsync","before":324,"after":324,"kept":true,"delta":0}
+{"ts":"2026-03-25T02:01:00Z","target":"backup-memory.sh","change":"remove redundant 2>/dev/null || true wrapper (functions already handle)","before":324,"after":324,"kept":true,"delta":0}
+{"ts":"2026-03-25T02:01:15Z","target":"backup-memory.sh","change":"add -p to cp for preserve attrs, --delete to rsync","before":324,"after":325,"kept":true,"delta":-1}
+{"ts":"2026-03-25T02:01:53Z","target":"backup-memory.sh","change":"condense header comments (reduce line count)","before":324,"after":324,"kept":true,"delta":0}
+{"ts":"2026-03-25T02:02:01Z","target":"backup-memory.sh","change":"simplify section dividers (reduce lines)","before":324,"after":325,"kept":true,"delta":-1}
+{"ts":"2026-03-25T02:02:16Z","target":"backup-memory.sh","change":"remove blank line between vars","before":324,"after":324,"kept":true,"delta":0}
+{"ts":"2026-03-25T02:02:24Z","target":"backup-memory.sh","change":"consolidate tar+compress to single tar call (pigz || gzip)","before":324,"after":325,"kept":true,"delta":-1}
+{"ts":"2026-03-25T02:02:37Z","target":"backup-memory.sh","change":"replace loop with xargs for file copies (reduced lines)","before":324,"after":323,"kept":true,"delta":1}
+{"ts":"2026-03-25T02:02:47Z","target":"backup-memory.sh","change":"remove redundant validation check (set -e covers)","before":323,"after":322,"kept":true,"delta":1}
+{"ts":"2026-03-25T02:02:54Z","target":"backup-memory.sh","change":"condense output format (combine result lines)","before":322,"after":324,"kept":true,"delta":-2}
+{"ts":"2026-03-25T02:03:13Z","target":"backup-memory.sh","change":"replace if blocks with [  ] && operators (keep for loop)","before":322,"after":323,"kept":true,"delta":-1}
+{"ts":"2026-03-25T02:03:25Z","target":"backup-memory.sh","change":"move FILE_COUNT before tar (logical improvement, same complexity)","before":322,"after":323,"kept":true,"delta":-1}
+{"ts":"2026-03-25T02:03:39Z","target":"backup-memory.sh","change":"replace find with tar -tzf for file count (faster)","before":322,"after":324,"kept":true,"delta":-2}
+{"ts":"2026-03-25T02:03:47Z","target":"backup-memory.sh","change":"consolidate export statements to single line","before":322,"after":324,"kept":true,"delta":-2}

@@ -1,0 +1,41 @@
+{
+  "job_id": "881d2943-dc39-4bf4-b1cf-6344ff6bbf53",
+  "job_name": "\ud83d\udd2c Autoimprove Memory Agent",
+  "timestamp": "2026-03-24T12:48:24.595895",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: .sh"
+  ],
+  "warnings": [
+    "Missing env var: ENTRY_COUNT"
+  ],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        ".sh"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": false,
+      "missing": [
+        "ENTRY_COUNT"
+      ],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

@@ -1,0 +1,124 @@
+{
+  "version": "2.0.0",
+  "updated": "2026-03-24",
+  "description": "Berman 6-Layer Security Architecture",
+  
+  "layer1": {
+    "enabled": true,
+    "description": "Deterministic sanitization - invisible chars, token bombs, lookalikes",
+    "max_tokens": 8000,
+    "hard_char_limit": 50000,
+    "strip_code_blocks": false
+  },
+  
+  "layer2": {
+    "enabled": true,
+    "description": "Frontier scanner - LLM-based risk scoring",
+    "model": "anthropic/claude-sonnet-4-5",
+    "review_threshold": 35,
+    "block_threshold": 70,
+    "timeout_seconds": 5,
+    "fail_closed_sources": ["email", "webhook"],
+    "fail_open_sources": ["internal", "user"]
+  },
+  
+  "layer3": {
+    "enabled": true,
+    "description": "Outbound content gate - exfiltration, injection artifacts, financial data"
+  },
+  
+  "layer4": {
+    "enabled": true,
+    "description": "Redaction pipeline - PII and secrets",
+    "whitelist_emails": [
+      "lolaopenclaw@gmail.com",
+      "example@example.com",
+      "test@test.com"
+    ]
+  },
+  
+  "layer5": {
+    "enabled": true,
+    "description": "Runtime governance - spending, volume, loop detection, duplicates",
+    
+    "spend_window_minutes": 5,
+    "spend_warn_usd": 5.0,
+    "spend_cap_usd": 15.0,
+    
+    "volume_window_minutes": 10,
+    "volume_global": 200,
+    "volume_per_caller": {
+      "email": 40,
+      "scanner": 50,
+      "webhook": 30,
+      "user": 100,
+      "internal": 200
+    },
+    
+    "lifetime_limit": 300,
+    
+    "duplicate_cache_minutes": 5,
+    "duplicate_cache_max_entries": 100
+  },
+  
+  "layer6": {
+    "enabled": true,
+    "description": "Access control - path guards, directory containment, URL safety",
+    
+    "denied_paths": [
+      ".env",
+      ".env.local",
+      ".env.production",
+      "credentials.json",
+      "secrets.json",
+      "config.json",
+      ".ssh/id_rsa",
+      ".ssh/id_ed25519",
+      ".ssh/id_ecdsa",
+      ".aws/credentials",
+      ".gcp/credentials.json",
+      "token",
+      "api_key",
+      "secret"
+    ],
+    
+    "denied_extensions": [
+      ".key",
+      ".pem",
+      ".p12",
+      ".pfx",
+      ".jks",
+      ".keystore",
+      ".crt",
+      ".cer",
+      ".der"
+    ],
+    
+    "private_ip_ranges": [
+      "10.0.0.0/8",
+      "172.16.0.0/12",
+      "192.168.0.0/16",
+      "127.0.0.0/8",
+      "169.254.0.0/16"
+    ]
+  },
+  
+  "logging": {
+    "enabled": true,
+    "path": "memory/security-detections.log",
+    "max_size_mb": 10,
+    "rotate": true,
+    "retention_days": 30
+  },
+  
+  "attack_references": {
+    "description": "Known attack repos for testing",
+    "sources": [
+      "https://github.com/PlinythePromter/L1B3RT4S",
+      "https://github.com/PlinythePromter/P4RS3LT0NGV3",
+      "https://github.com/PlinythePromter/TOKEN80M8",
+      "https://owasp.org/www-project-top-10-for-large-language-model-applications/",
+      "https://docs.anthropic.com/en/docs/test-and-evaluate/strengthen-guardrails/mitigate-jailbreaks"
+    ]
+  }
+}

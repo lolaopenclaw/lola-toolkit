@@ -1,0 +1,33 @@
+{
+  "job_id": "522ae7ca-2942-44f1-a263-741a92f51dfd",
+  "job_name": "\ud83c\udfc3 Resumen Semanal de Actividades Garmin",
+  "timestamp": "2026-03-24T12:48:24.603276",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

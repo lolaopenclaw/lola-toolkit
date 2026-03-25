@@ -97,8 +97,25 @@ else
     WARNINGS=$((WARNINGS + 1))
 fi
 
-# --- Check 5: Gateway Service Status ---
-echo -n "[5/5] Gateway currently running... "
+# --- Check 5: Config Drift Detection ---
+echo -n "[5/6] Config drift... "
+if [ -x "$(command -v python3)" ] && [ -f "$HOME/.openclaw/workspace/scripts/config-drift-detector.py" ]; then
+    DRIFT_OUTPUT=$(cd "$HOME/.openclaw/workspace" && python3 scripts/config-drift-detector.py check 2>&1 || true)
+    DRIFT_CHANGES=$(echo "$DRIFT_OUTPUT" | grep -c "CHANGED\|CRITICAL\|WARNING" 2>/dev/null || echo 0)
+    if [ "$DRIFT_CHANGES" -eq 0 ]; then
+        echo "✅ No drift detected"
+    else
+        echo "⚠️  Config drift detected ($DRIFT_CHANGES changes)"
+        echo "   Run: config-drift check (for details)"
+        WARNINGS=$((WARNINGS + 1))
+    fi
+else
+    echo "⚠️  Config drift detector not available (skipped)"
+    WARNINGS=$((WARNINGS + 1))
+fi
+
+# --- Check 6: Gateway Service Status ---
+echo -n "[6/6] Gateway currently running... "
 if systemctl --user is-active openclaw-gateway &>/dev/null; then
     echo "✅ Active"
 else

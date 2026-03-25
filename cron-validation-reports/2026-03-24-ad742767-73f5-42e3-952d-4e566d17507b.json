@@ -1,0 +1,39 @@
+{
+  "job_id": "ad742767-73f5-42e3-952d-4e566d17507b",
+  "job_name": "Backup diario de memoria a Google Drive",
+  "timestamp": "2026-03-24T12:48:24.598395",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: backup-memory.sh",
+    "Missing script: .sh"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        "backup-memory.sh",
+        ".sh"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

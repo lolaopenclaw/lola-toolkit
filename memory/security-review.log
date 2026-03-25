@@ -1,0 +1,213 @@
+[2026-03-24 21:24:20] ==========================================
+[2026-03-24 21:24:20] Nightly Security Review — START
+[2026-03-24 21:24:20] ==========================================
+[2026-03-24 21:24:20] [1/7] Checking file permissions...
+[2026-03-24 21:24:20] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:24:20] [2/7] Checking for secrets in version control...
+[2026-03-24 21:24:28] ==========================================
+[2026-03-24 21:24:28] Nightly Security Review — START
+[2026-03-24 21:24:28] ==========================================
+[2026-03-24 21:24:28] [1/7] Checking file permissions...
+[2026-03-24 21:24:28] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:24:28] [2/7] Checking for secrets in version control...
+[2026-03-24 21:24:43] ==========================================
+[2026-03-24 21:24:43] Nightly Security Review — START
+[2026-03-24 21:24:43] ==========================================
+[2026-03-24 21:24:43] [1/7] Checking file permissions...
+[2026-03-24 21:24:43] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:24:43] [2/7] Checking for secrets in version control...
+[2026-03-24 21:25:05] ==========================================
+[2026-03-24 21:25:05] Nightly Security Review — START
+[2026-03-24 21:25:05] ==========================================
+[2026-03-24 21:25:05] [1/7] Checking file permissions...
+[2026-03-24 21:25:05] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:25:05] [2/7] Checking for secrets in version control...
+[2026-03-24 21:25:05] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:25:05] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:25:05] [3/7] Verifying security module integrity...
+[2026-03-24 21:25:05] Baseline checksums created: /home/mleon/.openclaw/workspace/memory/security-checksums.json
+[2026-03-24 21:25:05] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:25:23] ==========================================
+[2026-03-24 21:25:23] Nightly Security Review — START
+[2026-03-24 21:25:23] ==========================================
+[2026-03-24 21:25:23] [1/7] Checking file permissions...
+[2026-03-24 21:25:23] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:25:23] [2/7] Checking for secrets in version control...
+[2026-03-24 21:25:23] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:25:23] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:25:23] [3/7] Verifying security module integrity...
+[2026-03-24 21:25:23] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/workspace/scripts/security-scanner.py (hash mismatch)
+[2026-03-24 21:25:23] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:25:37] ==========================================
+[2026-03-24 21:25:37] Nightly Security Review — START
+[2026-03-24 21:25:37] ==========================================
+[2026-03-24 21:25:37] [1/7] Checking file permissions...
+[2026-03-24 21:25:37] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:25:37] [2/7] Checking for secrets in version control...
+[2026-03-24 21:25:37] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:25:37] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:25:37] [3/7] Verifying security module integrity...
+[2026-03-24 21:25:37] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/workspace/config/security-config.json (hash mismatch)
+[2026-03-24 21:25:37] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/workspace/scripts/security-scanner.py (hash mismatch)
+[2026-03-24 21:25:37] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:25:37] [5/7] Checking exec approvals...
+[2026-03-24 21:25:37] [6/7] Running security scanner self-test...
+[2026-03-24 21:25:37] FINDING [CRITICAL]: Security scanner failed self-test
+[2026-03-24 21:25:37] [7/7] Cross-referencing permissions matrix...
+[2026-03-24 21:25:37] FINDING [WARNING]: Protected directory has weak permissions: /home/mleon/.openclaw/identity (755)
+[2026-03-24 21:25:37] ==========================================
+[2026-03-24 21:25:37] Nightly Security Review — END
+[2026-03-24 21:25:37] Findings: 6
+[2026-03-24 21:25:37] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
+[2026-03-24 21:25:37] ==========================================
+[2026-03-24 21:27:52] ==========================================
+[2026-03-24 21:27:52] Nightly Security Review — START
+[2026-03-24 21:27:52] ==========================================
+[2026-03-24 21:27:52] [1/7] Checking file permissions...
+[2026-03-24 21:27:52] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:27:52] [2/7] Checking for secrets in version control...
+[2026-03-24 21:27:52] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:27:52] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:27:52] [3/7] Verifying security module integrity...
+[2026-03-24 21:27:52] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/workspace/config/security-config.json (hash mismatch)
+[2026-03-24 21:27:52] FINDING [CRITICAL]: Security module tampered: /home/mleon/.openclaw/workspace/scripts/security-scanner.py (hash mismatch)
+[2026-03-24 21:27:52] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:27:52] [5/7] Checking exec approvals...
+[2026-03-24 21:27:52] [6/7] Running security scanner self-test...
+[2026-03-24 21:27:52] FINDING [CRITICAL]: Security scanner failed self-test
+[2026-03-24 21:27:52] [7/7] Cross-referencing permissions matrix...
+[2026-03-24 21:27:52] FINDING [WARNING]: Protected directory has weak permissions: /home/mleon/.openclaw/identity (755)
+[2026-03-24 21:27:52] ==========================================
+[2026-03-24 21:27:52] Nightly Security Review — END
+[2026-03-24 21:27:52] Findings: 6
+[2026-03-24 21:27:52] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
+[2026-03-24 21:27:52] ==========================================
+[2026-03-24 21:27:57] ==========================================
+[2026-03-24 21:27:57] Nightly Security Review — START
+[2026-03-24 21:27:57] ==========================================
+[2026-03-24 21:27:57] [1/7] Checking file permissions...
+[2026-03-24 21:27:57] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:27:57] [2/7] Checking for secrets in version control...
+[2026-03-24 21:27:57] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:27:57] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:27:57] [3/7] Verifying security module integrity...
+[2026-03-24 21:27:57] Baseline checksums created: /home/mleon/.openclaw/workspace/memory/security-checksums.json
+[2026-03-24 21:27:57] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:27:57] [5/7] Checking exec approvals...
+[2026-03-24 21:27:57] [6/7] Running security scanner self-test...
+[2026-03-24 21:27:57] FINDING [CRITICAL]: Security scanner failed self-test
+[2026-03-24 21:27:57] [7/7] Cross-referencing permissions matrix...
+[2026-03-24 21:27:57] FINDING [WARNING]: Protected directory has weak permissions: /home/mleon/.openclaw/identity (755)
+[2026-03-24 21:27:57] ==========================================
+[2026-03-24 21:27:57] Nightly Security Review — END
+[2026-03-24 21:27:57] Findings: 4
+[2026-03-24 21:27:57] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
+[2026-03-24 21:27:57] ==========================================
+[2026-03-24 21:28:00] ==========================================
+[2026-03-24 21:28:00] Nightly Security Review — START
+[2026-03-24 21:28:00] ==========================================
+[2026-03-24 21:28:00] [1/7] Checking file permissions...
+[2026-03-24 21:28:00] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:28:00] [2/7] Checking for secrets in version control...
+[2026-03-24 21:28:00] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:28:00] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:28:00] [3/7] Verifying security module integrity...
+[2026-03-24 21:28:00] Baseline checksums created: /home/mleon/.openclaw/workspace/memory/security-checksums.json
+[2026-03-24 21:28:00] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:28:00] [5/7] Checking exec approvals...
+[2026-03-24 21:28:00] [6/7] Running security scanner self-test...
+[2026-03-24 21:28:00] FINDING [CRITICAL]: Security scanner failed self-test
+[2026-03-24 21:28:00] [7/7] Cross-referencing permissions matrix...
+[2026-03-24 21:28:00] FINDING [WARNING]: Protected directory has weak permissions: /home/mleon/.openclaw/identity (755)
+[2026-03-24 21:28:00] ==========================================
+[2026-03-24 21:28:00] Nightly Security Review — END
+[2026-03-24 21:28:00] Findings: 4
+[2026-03-24 21:28:00] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
+[2026-03-24 21:28:00] ==========================================
+[2026-03-24 21:28:29] ==========================================
+[2026-03-24 21:28:29] Nightly Security Review — START
+[2026-03-24 21:28:29] ==========================================
+[2026-03-24 21:28:29] [1/7] Checking file permissions...
+[2026-03-24 21:28:29] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:28:29] [2/7] Checking for secrets in version control...
+[2026-03-24 21:28:29] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:28:29] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:28:29] [3/7] Verifying security module integrity...
+[2026-03-24 21:28:29] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:28:29] [5/7] Checking exec approvals...
+[2026-03-24 21:28:29] [6/7] Running security scanner self-test...
+[2026-03-24 21:28:30] FINDING [WARNING]: Security scanner may be degraded (score: 0, verdict: allow)
+[2026-03-24 21:28:30] [7/7] Cross-referencing permissions matrix...
+[2026-03-24 21:28:31] FINDING [WARNING]: Protected directory has weak permissions: /home/mleon/.openclaw/identity (755)
+[2026-03-24 21:28:31] ==========================================
+[2026-03-24 21:28:31] Nightly Security Review — END
+[2026-03-24 21:28:31] Findings: 4
+[2026-03-24 21:28:31] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
+[2026-03-24 21:28:31] ==========================================
+[2026-03-24 21:28:54] ==========================================
+[2026-03-24 21:28:54] Nightly Security Review — START
+[2026-03-24 21:28:54] ==========================================
+[2026-03-24 21:28:54] [1/7] Checking file permissions...
+[2026-03-24 21:28:54] FINDING [CRITICAL]: Incorrect permissions on /home/mleon/.openclaw/.env: 660 (should be 600)
+[2026-03-24 21:28:54] [2/7] Checking for secrets in version control...
+[2026-03-24 21:28:54] FINDING [CRITICAL]: Secrets detected in tracked files: 12 occurrences
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → CRITICAL-RESTORE-AUDIT.md
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → RECOVERY.md
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → SETUP-CRITICAL.md
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → docs/DRS-disaster-recovery.md
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → scripts/archive/setup/setup-critical-restore.sh
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → scripts/archive/sheets-populate-proper.sh
+[2026-03-24 21:28:54] FINDING [CRITICAL]:   → skills/truthcheck/SKILL.md
+[2026-03-24 21:28:54] [3/7] Verifying security module integrity...
+[2026-03-24 21:28:54] [4/7] Scanning logs for suspicious patterns...
+[2026-03-24 21:28:54] [5/7] Checking exec approvals...
+[2026-03-24 21:28:54] [6/7] Running security scanner self-test...
+[2026-03-24 21:28:55] [7/7] Cross-referencing permissions matrix...
+[2026-03-24 21:28:55] FINDING [WARNING]: Protected directory has weak permissions: /home/mleon/.openclaw/identity (755)
+[2026-03-24 21:28:55] ==========================================
+[2026-03-24 21:28:55] Nightly Security Review — END
+[2026-03-24 21:28:55] Findings: 3
+[2026-03-24 21:28:55] Report: /home/mleon/.openclaw/workspace/memory/security-review-20260324.md
+[2026-03-24 21:28:55] ==========================================

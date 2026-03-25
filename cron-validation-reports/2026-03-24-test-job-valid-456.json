@@ -1,0 +1,33 @@
+{
+  "job_id": "test-job-valid-456",
+  "job_name": "Valid Test Job",
+  "timestamp": "2026-03-24T14:35:14.162211",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

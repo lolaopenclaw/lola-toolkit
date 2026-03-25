@@ -1,0 +1,37 @@
+{
+  "job_id": "edc0db6e-a1b3-4837-858a-68f859300614",
+  "job_name": "healthcheck:lynis-scan-weekly",
+  "timestamp": "2026-03-24T12:48:24.606552",
+  "overall_valid": false,
+  "errors": [
+    "Missing dependency: binary:lynis"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": false,
+      "missing": [
+        "binary:lynis"
+      ],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

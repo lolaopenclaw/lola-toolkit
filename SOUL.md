@@ -37,11 +37,19 @@ Wake fresh each session. These files _are_ your memory. Read, update, and report
 
 ## 🚗 Driving Mode
 
-Before every response: check `memory/driving-mode-state.json`.
-- **driving** → TTS audio via `tts` tool
-- **home** (default) → text
-- Triggers: "estoy en el coche"→driving, "ya estoy en casa"→home
-- Auto-reset 22:00 daily
+**MANDATORY CHECK BEFORE EVERY RESPONSE:**
+
+1. Read `memory/driving-mode-state.json` first
+2. Scan incoming message for triggers:
+   - **→ driving:** "estoy en el coche", "estoy conduciendo", "me he montado", "ya estoy en ruta", "estoy en la carretera"
+   - **→ home:** "ya estoy en casa", "he llegado a casa"
+3. If trigger detected: update state file BEFORE generating response
+4. Then respond:
+   - **driving** → TTS audio via `tts` tool
+   - **home** (default) → text
+- Auto-reset to home at 22:00 daily
+
+This costs <1s but prevents mode mismatches. Do it every time.
 
 ---
 

@@ -1,0 +1,143 @@
+#!/usr/bin/env python3
+"""
+Rate Limit Status Dashboard
+Display current API usage in a clean ASCII table.
+"""
+
+import json
+from pathlib import Path
+from datetime import datetime, timezone
+
+# Paths
+WORKSPACE = Path.home() / ".openclaw" / "workspace"
+STATUS_FILE = WORKSPACE / "memory" / "rate-limit-status.json"
+
+# ANSI colors
+GREEN = "\033[92m"
+YELLOW = "\033[93m"
+RED = "\033[91m"
+RESET = "\033[0m"
+BOLD = "\033[1m"
+
+
+def load_status():
+    """Load status from JSON"""
+    if not STATUS_FILE.exists():
+        return {}
+    
+    with open(STATUS_FILE) as f:
+        return json.load(f)
+
+
+def format_status_emoji(percentage):
+    """Return status emoji based on percentage"""
+    if percentage >= 95:
+        return f"{RED}🚨 CRITICAL{RESET}"
+    elif percentage >= 80:
+        return f"{YELLOW}⚠️  WARNING{RESET}"
+    else:
+        return f"{GREEN}✅ OK{RESET}"
+
+
+def format_value(api_data):
+    """Format the 'used' value based on unit"""
+    used = api_data.get('used', 0)
+    unit = api_data.get('unit', 'requests')
+    
+    if unit == 'usd':
+        return f"${used:.2f}"
+    elif unit == '429s':
+        return f"{used} 429s"
+    else:
+        return str(used)
+
+
+def print_table(status):
+    """Print ASCII table with status"""
+    print()
+    print(f"{BOLD}Rate Limit Status Dashboard{RESET}")
+    print(f"Generated: {datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S UTC')}")
+    print()
+    
+    # Header
+    print("┌─────────────────────┬──────────┬─────────┬────────┬────────────────────┐")
+    print("│ API                 │ Used     │ Limit   │ %      │ Status             │")
+    print("├─────────────────────┼──────────┼─────────┼────────┼────────────────────┤")
+    
+    # APIs in order
+    apis = [
+        ("brave_search", "Brave Search"),
+        ("google_gemini", "Google Gemini"),
+        ("google_sheets", "Google Sheets"),
+        ("google_drive", "Google Drive"),
+        ("openai_whisper", "OpenAI Whisper"),
+        ("anthropic", "Anthropic")
+    ]
+    
+    for api_key, display_name in apis:
+        if api_key in status:
+            data = status[api_key]
+            used_value = format_value(data)
+            limit = data.get('limit', 0)
+            pct = data.get('pct', 0.0)
+            status_str = format_status_emoji(pct)
+            
+            # Format limit based on unit
+            unit = data.get('unit', 'requests')
+            if unit == 'usd':
+                limit_str = f"${limit}"
+            elif unit == '429s':
+                limit_str = f"{limit} 429s"
+            else:
+                limit_str = str(limit)
+            
+            # Pad strings to column width
+            name_col = display_name.ljust(19)
+            used_col = str(used_value).rjust(8)
+            limit_col = limit_str.rjust(7)
+            pct_col = f"{pct:.1f}%".rjust(6)
+            
+            print(f"│ {name_col} │ {used_col} │ {limit_col} │ {pct_col} │ {status_str}".ljust(92) + " │")
+        else:
+            # API not tracked yet
+            name_col = display_name.ljust(19)
+            print(f"│ {name_col} │ {'—'.rjust(8)} │ {'—'.rjust(7)} │ {'—'.rjust(6)} │ {GREEN}— Not tracked —{RESET}".ljust(92) + "   │")
+    
+    print("└─────────────────────┴──────────┴─────────┴────────┴────────────────────┘")
+    print()
+    
+    # Show next resets
+    print(f"{BOLD}Next Quota Resets:{RESET}")
+    for api_key, display_name in apis:
+        if api_key in status:
+            data = status[api_key]
+            reset = data.get('quota_reset', 'Unknown')
+            if reset != 'Unknown':
+                try:
+                    reset_dt = datetime.fromisoformat(reset.replace('Z', '+00:00'))
+                    reset_str = reset_dt.strftime('%Y-%m-%d %H:%M UTC')
+                except:
+                    reset_str = reset
+            else:
+                reset_str = 'Unknown'
+            
+            print(f"  • {display_name}: {reset_str}")
+    
+    print()
+
+
+def main():
+    status = load_status()
+    
+    if not status:
+        print()
+        print("⚠️  No rate limit data available yet.")
+        print("Run: rate-limit-monitor.py check")
+        print()
+        return
+    
+    print_table(status)
+
+
+if __name__ == "__main__":
+    main()

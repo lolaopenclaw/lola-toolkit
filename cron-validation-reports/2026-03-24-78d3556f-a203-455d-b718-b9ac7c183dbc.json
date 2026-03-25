@@ -1,0 +1,37 @@
+{
+  "job_id": "78d3556f-a203-455d-b718-b9ac7c183dbc",
+  "job_name": "healthcheck:rkhunter-scan-weekly",
+  "timestamp": "2026-03-24T12:48:24.603660",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [
+    "Dry-run: Message contains TODO marker"
+  ],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": [
+        "Message contains TODO marker"
+      ]
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "job_id": "7a7086e5-5a3c-41ad-880b-64a25a927aae",
+  "job_name": "\ud83c\udfe0 Driving Mode Auto-Reset (nightly)",
+  "timestamp": "2026-03-24T12:48:24.587735",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

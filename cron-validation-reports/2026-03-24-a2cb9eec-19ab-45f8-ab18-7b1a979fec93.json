@@ -1,0 +1,39 @@
+{
+  "job_id": "a2cb9eec-19ab-45f8-ab18-7b1a979fec93",
+  "job_name": "\ud83e\udde0 Memory Guardian Pro (domingo noche)",
+  "timestamp": "2026-03-24T12:48:24.601858",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: .sh",
+    "Missing script: memory-guardian.sh"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        ".sh",
+        "memory-guardian.sh"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

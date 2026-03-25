@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+# Config Drift CLI wrapper
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DETECTOR="$SCRIPT_DIR/config-drift-detector.py"
+
+if [[ ! -f "$DETECTOR" ]]; then
+    echo "Error: config-drift-detector.py not found at $DETECTOR"
+    exit 1
+fi
+
+exec python3 "$DETECTOR" "$@"

@@ -1,0 +1,286 @@
+{
+  "meta": {
+    "lastTouchedVersion": "2026.3.22",
+    "lastTouchedAt": "2026-03-23T12:39:38.360Z"
+  },
+  "wizard": {
+    "lastRunAt": "2026-03-23T12:32:45.291Z",
+    "lastRunVersion": "2026.3.22",
+    "lastRunCommand": "doctor",
+    "lastRunMode": "local"
+  },
+  "browser": {
+    "enabled": true,
+    "cdpUrl": "http://127.0.0.1:9222",
+    "executablePath": "/usr/local/bin/chrome-shim",
+    "headless": true,
+    "noSandbox": true,
+    "attachOnly": true,
+    "defaultProfile": "openclaw",
+    "profiles": {
+      "chrome-cdp": {
+        "cdpUrl": "http://127.0.0.1:9222",
+        "attachOnly": true,
+        "color": "#4CAF50"
+      }
+    }
+  },
+  "auth": {
+    "profiles": {
+      "google:default": {
+        "provider": "google",
+        "mode": "api_key"
+      },
+      "anthropic:default": {
+        "provider": "anthropic",
+        "mode": "token"
+      }
+    }
+  },
+  "models": {
+    "providers": {
+      "ollama": {
+        "baseUrl": "http://127.0.0.1:11434",
+        "api": "ollama",
+        "models": []
+      },
+      "google": {
+        "baseUrl": "https://generativelanguage.googleapis.com",
+        "apiKey": "${GOOGLE_API_KEY}",
+        "models": []
+      }
+    }
+  },
+  "agents": {
+    "defaults": {
+      "model": {
+        "primary": "google/gemini-3-flash-preview",
+        "fallbacks": [
+          "anthropic/claude-sonnet-4-5",
+          "google/gemini-3-flash-preview"
+        ]
+      },
+      "imageGenerationModel": {
+        "primary": "google/gemini-3-pro-image-preview"
+      },
+      "models": {
+        "anthropic/claude-opus-4-6": {
+          "alias": "opus"
+        },
+        "anthropic/claude-sonnet-4-5": {
+          "alias": "sonnet"
+        },
+        "anthropic/claude-haiku-4-5": {
+          "alias": "haiku"
+        },
+        "google/gemini-3-flash-preview": {
+          "alias": "gemini-flash"
+        },
+        "google/gemini-3-pro-preview": {
+          "alias": "gemini-pro"
+        },
+        "google/gemini-2.5-flash": {
+          "alias": "gemini-2.5-flash"
+        },
+        "google/gemini-2.5-pro": {
+          "alias": "gemini-2.5-pro"
+        },
+        "google/gemini-2.5-flash-lite": {
+          "alias": "gemini-lite"
+        }
+      },
+      "workspace": "/home/mleon/.openclaw/workspace",
+      "memorySearch": {
+        "provider": "gemini",
+        "remote": {},
+        "fallback": "ollama",
+        "model": "gemini-embedding-001"
+      },
+      "contextPruning": {
+        "mode": "cache-ttl",
+        "ttl": "1h"
+      },
+      "compaction": {
+        "mode": "safeguard",
+        "reserveTokensFloor": 4000
+      },
+      "heartbeat": {
+        "every": "1h"
+      },
+      "maxConcurrent": 4,
+      "subagents": {
+        "maxConcurrent": 8
+      }
+    }
+  },
+  "tools": {
+    "web": {
+      "search": {
+        "enabled": true
+      },
+      "fetch": {
+        "enabled": true
+      }
+    },
+    "media": {
+      "audio": {
+        "enabled": true,
+        "models": [
+          {
+            "provider": "groq",
+            "model": "whisper-large-v3"
+          },
+          {
+            "type": "cli",
+            "command": "whisper",
+            "args": [
+              "--model",
+              "turbo",
+              "--language",
+              "es",
+              "{{MediaPath}}"
+            ],
+            "timeoutSeconds": 120
+          }
+        ]
+      }
+    }
+  },
+  "messages": {
+    "ackReactionScope": "group-mentions",
+    "tts": {
+      "auto": "off",
+      "provider": "edge",
+      "elevenlabs": {
+        "apiKey": "${ELEVENLABS_API_KEY}",
+        "voiceId": "EXAVITQu4vr4xnSDxMaL",
+        "modelId": "eleven_multilingual_v2",
+        "languageCode": "es"
+      },
+      "openai": {
+        "apiKey": ""
+      },
+      "edge": {
+        "enabled": true,
+        "voice": "es-ES-ElviraNeural",
+        "lang": "es-ES",
+        "outputFormat": "audio-24khz-48kbitrate-mono-mp3",
+        "timeoutMs": 60000
+      },
+      "timeoutMs": 60000
+    }
+  },
+  "commands": {
+    "native": "auto",
+    "nativeSkills": "auto",
+    "restart": true,
+    "ownerDisplay": "raw"
+  },
+  "hooks": {
+    "internal": {
+      "enabled": true,
+      "entries": {
+        "boot-md": {
+          "enabled": true
+        },
+        "bootstrap-extra-files": {
+          "enabled": true
+        },
+        "command-logger": {
+          "enabled": true
+        },
+        "session-memory": {
+          "enabled": true
+        }
+      }
+    }
+  },
+  "channels": {
+    "telegram": {
+      "enabled": true,
+      "dmPolicy": "allowlist",
+      "botToken": "${TELEGRAM_BOT_TOKEN}",
+      "allowFrom": [
+        "6884477"
+      ],
+      "groupPolicy": "allowlist",
+      "streaming": "partial",
+      "reactionNotifications": "all"
+    },
+    "discord": {
+      "enabled": true,
+      "groupPolicy": "allowlist",
+      "streaming": "off",
+      "allowFrom": [
+        "587650706593284096"
+      ],
+      "guilds": {
+        "1475053097230270585": {
+          "requireMention": false,
+          "channels": {
+            "1475053098610458678": {
+              "allow": true
+            }
+          }
+        }
+      }
+    }
+  },
+  "gateway": {
+    "port": 18790,
+    "mode": "local",
+    "bind": "loopback",
+    "controlUi": {
+      "allowedOrigins": [
+        "https://ubuntu.taild8eaf6.ts.net",
+        "http://127.0.0.1:18790",
+        "http://localhost:18790",
+        "https://lola-openclaw-vps.taild8eaf6.ts.net",
+        "https://portatil-curro.taild8eaf6.ts.net",
+        "http://test-temp:9999"
+      ]
+    },
+    "auth": {
+      "mode": "token",
+      "token": "d5570e05fe0e9a86d2c3d51cb45086bbaac6295565a14adf",
+      "allowTailscale": true
+    },
+    "trustedProxies": [
+      "127.0.0.1/32",
+      "::1/128"
+    ],
+    "tailscale": {
+      "mode": "serve",
+      "resetOnExit": false
+    },
+    "remote": {
+      "token": "d5570e05fe0e9a86d2c3d51cb45086bbaac6295565a14adf"
+    }
+  },
+  "skills": {
+    "install": {
+      "nodeManager": "npm"
+    }
+  },
+  "plugins": {
+    "entries": {
+      "telegram": {
+        "enabled": true
+      },
+      "discord": {
+        "enabled": true
+      },
+      "brave": {
+        "enabled": true,
+        "config": {
+          "webSearch": {
+            "apiKey": "BSARnlmWnax8vrKvekENvTLGmNPRQNA"
+          }
+        }
+      },
+      "exa": {
+        "enabled": true
+      }
+    }
+  }
+}

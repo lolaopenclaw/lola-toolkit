@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+# CLI wrapper for subagent-validator.py
+# Usage: validate-subagent-output --output <text|@file> --task <task>
+
+exec python3 ~/.openclaw/workspace/scripts/subagent-validator.py "$@"

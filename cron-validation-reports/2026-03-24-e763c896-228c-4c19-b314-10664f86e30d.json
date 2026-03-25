@@ -1,0 +1,39 @@
+{
+  "job_id": "e763c896-228c-4c19-b314-10664f86e30d",
+  "job_name": "\ud83d\udccb Backup validation (weekly)",
+  "timestamp": "2026-03-24T12:48:24.602813",
+  "overall_valid": false,
+  "errors": [
+    "Missing script: .sh",
+    "Missing script: backup-validator.sh"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": false,
+      "missing": [
+        ".sh",
+        "backup-validator.sh"
+      ],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

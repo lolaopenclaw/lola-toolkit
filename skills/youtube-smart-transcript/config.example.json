@@ -1,0 +1,30 @@
+{
+  "cache_dir": "~/.openclaw/workspace/youtube-transcripts",
+  "default_languages": ["es", "en"],
+  "default_format": "text",
+  
+  "proxy": {
+    "enabled": false,
+    "type": "socks5",
+    "host": "localhost",
+    "port": 1080,
+    "comment": "Configura aquí tu proxy Tailscale o SOCKS5 si YouTube bloquea tu VPS"
+  },
+  
+  "whisper_api": {
+    "model": "whisper-1",
+    "cost_per_minute": 0.006,
+    "comment": "OpenAI Whisper API. API key se lee de OPENAI_API_KEY env var"
+  },
+  
+  "cache": {
+    "enabled": true,
+    "max_age_days": null,
+    "comment": "null = sin expiración, o número de días para auto-limpiar caché antiguo"
+  },
+  
+  "retry": {
+    "max_attempts": 3,
+    "delay_seconds": 2
+  }
+}

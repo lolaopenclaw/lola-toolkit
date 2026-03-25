@@ -1,0 +1,35 @@
+{
+  "job_id": "test-job-12345",
+  "job_name": "Test Valid",
+  "timestamp": "2026-03-24T12:49:24.455883",
+  "overall_valid": false,
+  "errors": [
+    "Schedule: Unknown schedule kind: None"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": false,
+      "error": "Unknown schedule kind: None"
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

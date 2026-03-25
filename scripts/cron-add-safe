@@ -1,0 +1,194 @@
+#!/bin/bash
+# cron-add-safe: Wrapper for openclaw cron add with pre-validation
+# Usage: cron-add-safe [openclaw cron add options...] --force to bypass validation
+
+set -euo pipefail
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+VALIDATOR="$SCRIPT_DIR/cron-validator.py"
+FORCE=0
+ARGS=()
+
+# Show help if requested
+if [[ $# -eq 0 ]] || [[ "$1" == "--help" ]] || [[ "$1" == "-h" ]]; then
+    cat <<'EOF'
+Usage: cron-add-safe [OPTIONS]
+
+Wrapper for 'openclaw cron add' with pre-validation.
+
+Options:
+  --name NAME           Job name (required)
+  --schedule SCHEDULE   Schedule (required): "cron MIN HOUR DAY MONTH WEEKDAY" or "at ISO_TIME" or "every 6h"
+  --message MESSAGE     Message to send (required)
+  --payload JSON        Alternative to --message
+  --force               Bypass validation and add anyway
+  --help, -h            Show this help
+
+Examples:
+  cron-add-safe --name "Daily Backup" --schedule "cron 0 4 * * *" --message "Run backup"
+  cron-add-safe --name "Test Job" --schedule "invalid" --force
+
+After adding, runs full validation with cron-validator.py.
+EOF
+    exit 0
+fi
+
+# Parse arguments
+for arg in "$@"; do
+    if [[ "$arg" == "--force" ]]; then
+        FORCE=1
+    else
+        ARGS+=("$arg")
+    fi
+done
+
+# Check if validator exists
+if [[ ! -x "$VALIDATOR" ]]; then
+    echo "❌ Error: Cron validator not found at $VALIDATOR" >&2
+    exit 1
+fi
+
+# Build the job from arguments (this is tricky without knowing the exact structure)
+# Instead, we'll validate AFTER adding but BEFORE enabling
+# For now, show a pre-flight check message
+
+echo "🔍 Pre-flight validation..."
+
+# Check for common issues in arguments
+JOB_NAME=""
+SCHEDULE=""
+MESSAGE=""
+HAS_NAME=0
+HAS_SCHEDULE=0
+HAS_MESSAGE=0
+
+i=0
+while [[ $i -lt ${#ARGS[@]} ]]; do
+    arg="${ARGS[$i]}"
+    
+    if [[ "$arg" == "--name" ]] && [[ $((i+1)) -lt ${#ARGS[@]} ]]; then
+        JOB_NAME="${ARGS[$((i+1))]}"
+        HAS_NAME=1
+    elif [[ "$arg" == "--schedule" ]] && [[ $((i+1)) -lt ${#ARGS[@]} ]]; then
+        SCHEDULE="${ARGS[$((i+1))]}"
+        HAS_SCHEDULE=1
+    elif [[ "$arg" == "--message" ]] && [[ $((i+1)) -lt ${#ARGS[@]} ]]; then
+        MESSAGE="${ARGS[$((i+1))]}"
+        HAS_MESSAGE=1
+    fi
+    
+    ((i++))
+done
+
+# Basic sanity checks
+VALIDATION_FAILED=0
+
+if [[ $HAS_NAME -eq 0 ]]; then
+    echo "⚠️  Warning: No --name specified"
+fi
+
+if [[ $HAS_SCHEDULE -eq 0 ]]; then
+    echo "❌ Error: No --schedule specified" >&2
+    VALIDATION_FAILED=1
+fi
+
+if [[ $HAS_MESSAGE -eq 0 ]]; then
+    echo "⚠️  Warning: No --message specified (might be using --payload)"
+fi
+
+# Validate schedule syntax if provided
+if [[ -n "$SCHEDULE" ]]; then
+    # Check for cron expression
+    if [[ "$SCHEDULE" =~ ^cron\ .+ ]]; then
+        CRON_EXPR="${SCHEDULE#cron }"
+        
+        # Basic cron validation (5 or 6 fields)
+        FIELD_COUNT=$(echo "$CRON_EXPR" | awk '{print NF}')
+        if [[ $FIELD_COUNT -lt 5 ]] || [[ $FIELD_COUNT -gt 6 ]]; then
+            echo "❌ Error: Invalid cron expression format: $CRON_EXPR" >&2
+            echo "   Expected 5 or 6 fields (minute hour day month weekday [second])" >&2
+            VALIDATION_FAILED=1
+        fi
+        
+        # Check for invalid characters
+        if [[ "$CRON_EXPR" =~ [^0-9\ \*\/\-\,] ]]; then
+            echo "⚠️  Warning: Cron expression contains unusual characters"
+        fi
+    elif [[ "$SCHEDULE" =~ ^at\ .+ ]]; then
+        # ISO timestamp validation (basic)
+        echo "✅ ISO timestamp schedule detected"
+    elif [[ "$SCHEDULE" =~ ^every\ .+ ]]; then
+        # Relative time validation
+        echo "✅ Relative schedule detected"
+    else
+        echo "⚠️  Warning: Unrecognized schedule format: $SCHEDULE"
+    fi
+fi
+
+# Check for missing scripts/files in message
+if [[ -n "$MESSAGE" ]]; then
+    # Look for script references
+    SCRIPTS=$(echo "$MESSAGE" | grep -oE 'scripts/[a-zA-Z0-9_\-\.]+' || true)
+    for script in $SCRIPTS; do
+        SCRIPT_PATH="$HOME/.openclaw/workspace/$script"
+        if [[ ! -f "$SCRIPT_PATH" ]]; then
+            echo "❌ Error: Referenced script not found: $script" >&2
+            VALIDATION_FAILED=1
+        elif [[ ! -x "$SCRIPT_PATH" ]]; then
+            echo "⚠️  Warning: Script not executable: $script"
+        fi
+    done
+    
+    # Check for missing env vars (basic check)
+    ENV_VARS=$(echo "$MESSAGE" | grep -oE '\$[A-Z_][A-Z0-9_]*' | sort -u || true)
+    for var in $ENV_VARS; do
+        VAR_NAME="${var#\$}"
+        if ! grep -q "^$VAR_NAME=" "$HOME/.openclaw/.env" 2>/dev/null; then
+            if [[ ! -v "$VAR_NAME" ]]; then
+                echo "⚠️  Warning: Environment variable not found: $VAR_NAME"
+            fi
+        fi
+    done
+fi
+
+# If validation failed and not forced, exit
+if [[ $VALIDATION_FAILED -eq 1 ]] && [[ $FORCE -eq 0 ]]; then
+    echo ""
+    echo "❌ Validation failed. Fix errors above or use --force to bypass."
+    exit 1
+fi
+
+if [[ $FORCE -eq 1 ]]; then
+    echo "⚠️  FORCE mode: Bypassing validation"
+fi
+
+# Run openclaw cron add
+echo ""
+echo "📝 Adding cron job..."
+if openclaw cron add "${ARGS[@]}"; then
+    echo "✅ Cron job added successfully"
+    
+    # Get the job ID (last added job)
+    LAST_JOB_ID=$(openclaw cron list --json | jq -r '.jobs | sort_by(.createdAtMs) | .[-1].id' 2>/dev/null || true)
+    
+    if [[ -n "$LAST_JOB_ID" ]]; then
+        echo ""
+        echo "🔍 Running full validation on job: $LAST_JOB_ID"
+        
+        # Run full validation
+        if "$VALIDATOR" --job-id "$LAST_JOB_ID" --no-notify; then
+            echo "✅ Validation passed"
+        else
+            echo ""
+            echo "⚠️  Validation warnings detected. Check report in:"
+            echo "   ~/.openclaw/workspace/cron-validation-reports/"
+            echo ""
+            echo "Job was added but may have issues. Review the validation report."
+        fi
+    fi
+    
+    exit 0
+else
+    echo "❌ Failed to add cron job"
+    exit 1
+fi

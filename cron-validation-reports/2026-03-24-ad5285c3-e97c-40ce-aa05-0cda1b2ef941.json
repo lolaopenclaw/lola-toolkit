@@ -1,0 +1,33 @@
+{
+  "job_id": "ad5285c3-e97c-40ce-aa05-0cda1b2ef941",
+  "job_name": "\ud83d\udd27 Lola Toolkit Sync Check",
+  "timestamp": "2026-03-24T12:48:24.608315",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "job_id": "b491ec4a-e1c3-4be8-b0a5-2ff291d99389",
+  "job_name": "\ud83d\udd14 OpenClaw release check",
+  "timestamp": "2026-03-24T12:48:24.600522",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

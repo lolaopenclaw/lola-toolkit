@@ -1,0 +1,791 @@
+{
+  "transcript": [
+    {
+      "text": "Hi. If you're anything like me, you've",
+      "start": 0.32,
+      "duration": 4.16
+    },
+    {
+      "text": "been bombarded with how amazing Cloud",
+      "start": 2.32,
+      "duration": 3.68
+    },
+    {
+      "text": "Code is. Cloud Code can do everything.",
+      "start": 4.48,
+      "duration": 4.88
+    },
+    {
+      "text": "Cloud Code can walk on water, but you've",
+      "start": 6.0,
+      "duration": 5.92
+    },
+    {
+      "text": "been reluctant to install Cloud Code in",
+      "start": 9.36,
+      "duration": 4.88
+    },
+    {
+      "text": "your terminal because you don't want it",
+      "start": 11.92,
+      "duration": 3.679
+    },
+    {
+      "text": "having access to everything your",
+      "start": 14.24,
+      "duration": 2.48
+    },
+    {
+      "text": "terminal does. You don't want it",
+      "start": 15.599,
+      "duration": 2.881
+    },
+    {
+      "text": "deleting all your files. You don't want",
+      "start": 16.72,
+      "duration": 3.76
+    },
+    {
+      "text": "it making mess. You don't want it doing",
+      "start": 18.48,
+      "duration": 3.92
+    },
+    {
+      "text": "who knows what. So, even though they",
+      "start": 20.48,
+      "duration": 4.4
+    },
+    {
+      "text": "make it sound so easy on their page to",
+      "start": 22.4,
+      "duration": 4.56
+    },
+    {
+      "text": "unleash Claude, I'd rather keep Claude",
+      "start": 24.88,
+      "duration": 5.12
+    },
+    {
+      "text": "on a leash. Um, so I do not want to just",
+      "start": 26.96,
+      "duration": 6.24
+    },
+    {
+      "text": "go into my terminal and install as they",
+      "start": 30.0,
+      "duration": 5.76
+    },
+    {
+      "text": "say there. I wanted some protection. So",
+      "start": 33.2,
+      "duration": 5.44
+    },
+    {
+      "text": "I wanted to use quad code through a",
+      "start": 35.76,
+      "duration": 4.56
+    },
+    {
+      "text": "Docker container. I thought this would",
+      "start": 38.64,
+      "duration": 4.56
+    },
+    {
+      "text": "be a major headache, but luckily it's",
+      "start": 40.32,
+      "duration": 4.96
+    },
+    {
+      "text": "actually very easy. I'm going to walk",
+      "start": 43.2,
+      "duration": 3.6
+    },
+    {
+      "text": "you through how to do that. First thing",
+      "start": 45.28,
+      "duration": 2.959
+    },
+    {
+      "text": "you want to do is if you don't have",
+      "start": 46.8,
+      "duration": 4.079
+    },
+    {
+      "text": "Docker Desktop installed, go to",
+      "start": 48.239,
+      "duration": 5.041
+    },
+    {
+      "text": "docker.com and install it. And it is",
+      "start": 50.879,
+      "duration": 5.281
+    },
+    {
+      "text": "free. You can download it for whatever",
+      "start": 53.28,
+      "duration": 5.599
+    },
+    {
+      "text": "you are operating your system on and",
+      "start": 56.16,
+      "duration": 4.16
+    },
+    {
+      "text": "follow the instructions, download it,",
+      "start": 58.879,
+      "duration": 3.36
+    },
+    {
+      "text": "and make sure it's running. So, it has",
+      "start": 60.32,
+      "duration": 4.96
+    },
+    {
+      "text": "to be actually on. Then, you're going to",
+      "start": 62.239,
+      "duration": 6.801
+    },
+    {
+      "text": "want to go to the Enthropic docs for",
+      "start": 65.28,
+      "duration": 5.839
+    },
+    {
+      "text": "running clog code in a dev container.",
+      "start": 69.04,
+      "duration": 3.759
+    },
+    {
+      "text": "I'll put a link to that in the video",
+      "start": 71.119,
+      "duration": 3.281
+    },
+    {
+      "text": "description. What you're going to want",
+      "start": 72.799,
+      "duration": 5.841
+    },
+    {
+      "text": "to do is go into your VS Code and we're",
+      "start": 74.4,
+      "duration": 7.52
+    },
+    {
+      "text": "going to install the remote containers",
+      "start": 78.64,
+      "duration": 5.839
+    },
+    {
+      "text": "extension. Okay, so we're in an empty",
+      "start": 81.92,
+      "duration": 4.72
+    },
+    {
+      "text": "directory right now and you want to go",
+      "start": 84.479,
+      "duration": 6.241
+    },
+    {
+      "text": "over to the extensions and search for",
+      "start": 86.64,
+      "duration": 7.439
+    },
+    {
+      "text": "dev container should come up. It should",
+      "start": 90.72,
+      "duration": 4.96
+    },
+    {
+      "text": "have millions and millions of",
+      "start": 94.079,
+      "duration": 3.441
+    },
+    {
+      "text": "installations and you're going to click",
+      "start": 95.68,
+      "duration": 3.52
+    },
+    {
+      "text": "install.",
+      "start": 97.52,
+      "duration": 4.239
+    },
+    {
+      "text": "We can see here there's uh documentation",
+      "start": 99.2,
+      "duration": 4.4
+    },
+    {
+      "text": "for the dev container as well. On there",
+      "start": 101.759,
+      "duration": 3.441
+    },
+    {
+      "text": "there's a little diagram of what is",
+      "start": 103.6,
+      "duration": 5.44
+    },
+    {
+      "text": "going on on your local machine. uh you",
+      "start": 105.2,
+      "duration": 5.84
+    },
+    {
+      "text": "have your VS code, you have your own",
+      "start": 109.04,
+      "duration": 3.439
+    },
+    {
+      "text": "source code from your many different",
+      "start": 111.04,
+      "duration": 4.0
+    },
+    {
+      "text": "repos you're working on and then in the",
+      "start": 112.479,
+      "duration": 5.28
+    },
+    {
+      "text": "container you have your VS code server",
+      "start": 115.04,
+      "duration": 5.439
+    },
+    {
+      "text": "and you can access source code from",
+      "start": 117.759,
+      "duration": 5.921
+    },
+    {
+      "text": "outside through that volume mount.",
+      "start": 120.479,
+      "duration": 4.881
+    },
+    {
+      "text": "So, we're going to be doing this so that",
+      "start": 123.68,
+      "duration": 4.24
+    },
+    {
+      "text": "we can code with cloud code on certain",
+      "start": 125.36,
+      "duration": 4.959
+    },
+    {
+      "text": "repos inside the dev container and know",
+      "start": 127.92,
+      "duration": 4.24
+    },
+    {
+      "text": "exactly which ones they are and without",
+      "start": 130.319,
+      "duration": 5.121
+    },
+    {
+      "text": "having to get clone them in the actual",
+      "start": 132.16,
+      "duration": 5.76
+    },
+    {
+      "text": "uh dev container or messing around with",
+      "start": 135.44,
+      "duration": 3.84
+    },
+    {
+      "text": "anything more complicated than just",
+      "start": 137.92,
+      "duration": 3.36
+    },
+    {
+      "text": "adding a line in the JSON file and we're",
+      "start": 139.28,
+      "duration": 4.959
+    },
+    {
+      "text": "able to uh mount the volume.",
+      "start": 141.28,
+      "duration": 5.2
+    },
+    {
+      "text": "Okay, so we have our remote containers",
+      "start": 144.239,
+      "duration": 4.321
+    },
+    {
+      "text": "extension installed. Was very easy to do",
+      "start": 146.48,
+      "duration": 6.16
+    },
+    {
+      "text": "that. Then we're going to clone Nifty",
+      "start": 148.56,
+      "duration": 6.72
+    },
+    {
+      "text": "repository that the Enthropic people",
+      "start": 152.64,
+      "duration": 6.239
+    },
+    {
+      "text": "have put together for us. You go",
+      "start": 155.28,
+      "duration": 7.76
+    },
+    {
+      "text": "to the main part of the repo. Copy this",
+      "start": 158.879,
+      "duration": 8.961
+    },
+    {
+      "text": "and then clone it in your terminal.",
+      "start": 163.04,
+      "duration": 7.52
+    },
+    {
+      "text": "Okay. You're going to want to clone that",
+      "start": 167.84,
+      "duration": 4.88
+    },
+    {
+      "text": "repository and then cd into that",
+      "start": 170.56,
+      "duration": 4.48
+    },
+    {
+      "text": "directory. And then you're going to open",
+      "start": 172.72,
+      "duration": 5.799
+    },
+    {
+      "text": "VS Code.",
+      "start": 175.04,
+      "duration": 3.479
+    },
+    {
+      "text": "And the amazing thing is we're going to",
+      "start": 179.84,
+      "duration": 3.039
+    },
+    {
+      "text": "get this popup. And all I have to do is",
+      "start": 181.44,
+      "duration": 5.4
+    },
+    {
+      "text": "click reopen in container.",
+      "start": 182.879,
+      "duration": 3.961
+    },
+    {
+      "text": "Going to build your actual container for",
+      "start": 190.08,
+      "duration": 3.439
+    },
+    {
+      "text": "you. All you have to do is click that",
+      "start": 192.08,
+      "duration": 4.879
+    },
+    {
+      "text": "button. Super easy. When it's done, you",
+      "start": 193.519,
+      "duration": 6.161
+    },
+    {
+      "text": "press any keep close terminal. Then we",
+      "start": 196.959,
+      "duration": 4.721
+    },
+    {
+      "text": "can take a look at what was actually in",
+      "start": 199.68,
+      "duration": 5.199
+    },
+    {
+      "text": "the files that came from the entropic",
+      "start": 201.68,
+      "duration": 5.279
+    },
+    {
+      "text": "repo. We see that there's a dev",
+      "start": 204.879,
+      "duration": 5.44
+    },
+    {
+      "text": "container JSON which sets out what",
+      "start": 206.959,
+      "duration": 5.92
+    },
+    {
+      "text": "actually is being built some features",
+      "start": 210.319,
+      "duration": 5.041
+    },
+    {
+      "text": "here. And this mounts is really",
+      "start": 212.879,
+      "duration": 3.92
+    },
+    {
+      "text": "important. This is how we're going to",
+      "start": 215.36,
+      "duration": 4.4
+    },
+    {
+      "text": "work with actual projects that are on",
+      "start": 216.799,
+      "duration": 5.681
+    },
+    {
+      "text": "our local machine. First, let's get",
+      "start": 219.76,
+      "duration": 6.24
+    },
+    {
+      "text": "clawed code going. Just open the",
+      "start": 222.48,
+      "duration": 5.2
+    },
+    {
+      "text": "terminal. And you see that we don't see",
+      "start": 226.0,
+      "duration": 3.84
+    },
+    {
+      "text": "our local machine. We're actually in the",
+      "start": 227.68,
+      "duration": 5.119
+    },
+    {
+      "text": "docker. And all you have to do is call",
+      "start": 229.84,
+      "duration": 4.24
+    },
+    {
+      "text": "Claude because Claude's already",
+      "start": 232.799,
+      "duration": 3.681
+    },
+    {
+      "text": "installed. We just get a welcome to",
+      "start": 234.08,
+      "duration": 4.64
+    },
+    {
+      "text": "Claude message. We get to set whether we",
+      "start": 236.48,
+      "duration": 6.399
+    },
+    {
+      "text": "want dark mode or light mode.",
+      "start": 238.72,
+      "duration": 6.719
+    },
+    {
+      "text": "And then I am using an account",
+      "start": 242.879,
+      "duration": 6.321
+    },
+    {
+      "text": "subscription. So you select that.",
+      "start": 245.439,
+      "duration": 6.961
+    },
+    {
+      "text": "Sign in. You authorize. Then you're",
+      "start": 249.2,
+      "duration": 5.52
+    },
+    {
+      "text": "going to want to go back to your VS Code",
+      "start": 252.4,
+      "duration": 4.799
+    },
+    {
+      "text": "and you'll see that your login was",
+      "start": 254.72,
+      "duration": 4.639
+    },
+    {
+      "text": "successful. You just press enter to",
+      "start": 257.199,
+      "duration": 4.081
+    },
+    {
+      "text": "continue.",
+      "start": 259.359,
+      "duration": 3.441
+    },
+    {
+      "text": "There's a warning that Claude can make",
+      "start": 261.28,
+      "duration": 4.0
+    },
+    {
+      "text": "mistakes. That's why we are running it",
+      "start": 262.8,
+      "duration": 5.36
+    },
+    {
+      "text": "in a container.",
+      "start": 265.28,
+      "duration": 5.04
+    },
+    {
+      "text": "And for now, we're going to use",
+      "start": 268.16,
+      "duration": 4.64
+    },
+    {
+      "text": "recommended settings.",
+      "start": 270.32,
+      "duration": 4.879
+    },
+    {
+      "text": "Do I trust the files in this folder? I'm",
+      "start": 272.8,
+      "duration": 4.08
+    },
+    {
+      "text": "going to allow claw to read everything",
+      "start": 275.199,
+      "duration": 4.56
+    },
+    {
+      "text": "in this docker. Don't care.",
+      "start": 276.88,
+      "duration": 8.08
+    },
+    {
+      "text": "And then we have odd code set up.",
+      "start": 279.759,
+      "duration": 6.88
+    },
+    {
+      "text": "And from here you could actually just",
+      "start": 284.96,
+      "duration": 4.64
+    },
+    {
+      "text": "have Claude start creating files,",
+      "start": 286.639,
+      "duration": 6.081
+    },
+    {
+      "text": "directories. But what is actually more",
+      "start": 289.6,
+      "duration": 6.72
+    },
+    {
+      "text": "useful is to be able to work with repos",
+      "start": 292.72,
+      "duration": 6.0
+    },
+    {
+      "text": "you've cloned on your machine and can",
+      "start": 296.32,
+      "duration": 4.0
+    },
+    {
+      "text": "keep working on projects you already",
+      "start": 298.72,
+      "duration": 3.919
+    },
+    {
+      "text": "have. So to do that, you're going to",
+      "start": 300.32,
+      "duration": 6.56
+    },
+    {
+      "text": "want to use this mounts feature.",
+      "start": 302.639,
+      "duration": 8.161
+    },
+    {
+      "text": "So, I have a repo I am working on. So,",
+      "start": 306.88,
+      "duration": 6.879
+    },
+    {
+      "text": "I'm going to",
+      "start": 310.8,
+      "duration": 6.72
+    },
+    {
+      "text": "add that to my mounts.",
+      "start": 313.759,
+      "duration": 4.88
+    },
+    {
+      "text": "And then it's going to ask me if I want",
+      "start": 317.52,
+      "duration": 4.92
+    },
+    {
+      "text": "to rebuild. I do.",
+      "start": 318.639,
+      "duration": 3.801
+    },
+    {
+      "text": "And it's rebuilding because we changed",
+      "start": 323.28,
+      "duration": 5.24
+    },
+    {
+      "text": "the devcontainer.json",
+      "start": 325.28,
+      "duration": 3.24
+    },
+    {
+      "text": "any key.",
+      "start": 330.08,
+      "duration": 5.52
+    },
+    {
+      "text": "And now we see in our terminal in our",
+      "start": 332.72,
+      "duration": 5.84
+    },
+    {
+      "text": "container we have access to our mount",
+      "start": 335.6,
+      "duration": 5.76
+    },
+    {
+      "text": "which for I see right here is modal",
+      "start": 338.56,
+      "duration": 5.28
+    },
+    {
+      "text": "multi-tox. It's working on deployment of",
+      "start": 341.36,
+      "duration": 5.36
+    },
+    {
+      "text": "multi-alk on modal",
+      "start": 343.84,
+      "duration": 7.04
+    },
+    {
+      "text": "and we can cd right into that.",
+      "start": 346.72,
+      "duration": 6.479
+    },
+    {
+      "text": "We'd also see it over here on our",
+      "start": 350.88,
+      "duration": 5.599
+    },
+    {
+      "text": "explorer. And then if we",
+      "start": 353.199,
+      "duration": 6.72
+    },
+    {
+      "text": "call claude again, we can app claude to",
+      "start": 356.479,
+      "duration": 5.761
+    },
+    {
+      "text": "make changes on that repo or fix things",
+      "start": 359.919,
+      "duration": 5.361
+    },
+    {
+      "text": "and it has access and it make changes.",
+      "start": 362.24,
+      "duration": 7.04
+    },
+    {
+      "text": "So for instance, I could say add a joke",
+      "start": 365.28,
+      "duration": 7.12
+    },
+    {
+      "text": "to the beginning",
+      "start": 369.28,
+      "duration": 6.8
+    },
+    {
+      "text": "of the modal multi-talk",
+      "start": 372.4,
+      "duration": 8.519
+    },
+    {
+      "text": "read me. See what it does.",
+      "start": 376.08,
+      "duration": 4.839
+    },
+    {
+      "text": "And there it did. Why did the AA go to",
+      "start": 389.6,
+      "duration": 4.879
+    },
+    {
+      "text": "therapy? Because it had too many talking",
+      "start": 392.319,
+      "duration": 3.681
+    },
+    {
+      "text": "heads.",
+      "start": 394.479,
+      "duration": 4.56
+    },
+    {
+      "text": "Okay. So if you want to add that, you",
+      "start": 396.0,
+      "duration": 5.68
+    },
+    {
+      "text": "can collect yes. If not, you can say no",
+      "start": 399.039,
+      "duration": 3.761
+    },
+    {
+      "text": "and tell what you want to do",
+      "start": 401.68,
+      "duration": 3.2
+    },
+    {
+      "text": "differently. So that's how you get",
+      "start": 402.8,
+      "duration": 4.56
+    },
+    {
+      "text": "Claude running in a protected dev",
+      "start": 404.88,
+      "duration": 4.08
+    },
+    {
+      "text": "container environment. Pretty",
+      "start": 407.36,
+      "duration": 3.2
+    },
+    {
+      "text": "straightforward. Let me know if you have",
+      "start": 408.96,
+      "duration": 4.799
+    },
+    {
+      "text": "any questions in the comments and happy",
+      "start": 410.56,
+      "duration": 6.24
+    },
+    {
+      "text": "clotting in safety.",
+      "start": 413.759,
+      "duration": 3.041
+    }
+  ],
+  "metadata": {
+    "video_id": "7fkh1Up7O-c",
+    "method": "native_captions",
+    "detected_language": "en",
+    "available_languages": [
+      "en"
+    ],
+    "is_generated": true,
+    "timestamp": "2026-03-24T09:31:54.568565",
+    "cost": 0.0,
+    "duration_seconds": 788.717
+  }
+}

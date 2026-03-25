@@ -1,0 +1,25 @@
+[
+{
+  "file": "/home/mleon/.openclaw/workspace/config/security-config.json",
+  "sha256": "0d1e12abffb64da0183d780c21213f923d783edc8112a0b2983353d8406ab41a",
+  "created": "2026-03-24 20:28:00"
+}
+,
+{
+  "file": "/home/mleon/.openclaw/workspace/scripts/pre-restart-validator.sh",
+  "sha256": "ac1e9354b81691ee3a83e12805946a2e205765d1615c8e4c7125d84de176f07a",
+  "created": "2026-03-24 20:28:00"
+}
+,
+{
+  "file": "/home/mleon/.openclaw/workspace/scripts/security-scanner.py",
+  "sha256": "d68a7651eebf4abf7e3e60a06cc9710d9354f150ce85cc034f83fe4df86b0ae7",
+  "created": "2026-03-24 20:28:00"
+}
+,
+{
+  "file": "/home/mleon/.openclaw/openclaw.json",
+  "sha256": "6b3d13223503abe04d780f85b4aa510dd3ab0d07f3f6f0cd6e2252b8c85bcaaa",
+  "created": "2026-03-24 20:28:00"
+}
+]

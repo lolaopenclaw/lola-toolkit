@@ -1,0 +1,37 @@
+{
+  "job_id": "c8522805-6bc4-451e-887b-69866ddf5b95",
+  "job_name": "healthcheck:fail2ban-alert",
+  "timestamp": "2026-03-24T12:48:24.584141",
+  "overall_valid": false,
+  "errors": [
+    "Missing dependency: binary:fail"
+  ],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": false,
+      "missing": [
+        "binary:fail"
+      ],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

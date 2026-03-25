@@ -1,0 +1,91 @@
+{
+  "apis": {
+    "anthropic": {
+      "priority": "critical",
+      "check_interval_minutes": 30,
+      "endpoint": "https://api.anthropic.com/v1/messages",
+      "method": "ping",
+      "timeout_seconds": 5,
+      "failover_to": "google",
+      "test_payload": {
+        "model": "claude-3-5-haiku-20241022",
+        "max_tokens": 10,
+        "messages": [
+          {
+            "role": "user",
+            "content": "Hi"
+          }
+        ]
+      },
+      "accept_codes": [
+        200,
+        401,
+        405
+      ]
+    },
+    "google": {
+      "priority": "high",
+      "check_interval_minutes": 120,
+      "endpoint": "https://generativelanguage.googleapis.com/v1beta/models",
+      "method": "list_models",
+      "timeout_seconds": 5
+    },
+    "telegram": {
+      "priority": "high",
+      "check_interval_minutes": 120,
+      "endpoint": "https://api.telegram.org",
+      "method": "getMe",
+      "timeout_seconds": 5
+    },
+    "github": {
+      "priority": "medium",
+      "check_interval_minutes": 1440,
+      "endpoint": "https://api.github.com",
+      "method": "rate_limit",
+      "timeout_seconds": 5
+    },
+    "garmin": {
+      "priority": "medium",
+      "check_interval_minutes": 1440,
+      "endpoint": "https://apis.garmin.com",
+      "method": "ping",
+      "timeout_seconds": 10
+    },
+    "brave": {
+      "priority": "medium",
+      "check_interval_minutes": 1440,
+      "endpoint": "https://api.search.brave.com/res/v1/web/search",
+      "method": "test_search",
+      "timeout_seconds": 5
+    }
+  },
+  "alerting": {
+    "telegram_enabled": true,
+    "telegram_chat_id": "6884477",
+    "only_on_state_change": true,
+    "quiet_hours": {
+      "enabled": true,
+      "start": "00:00",
+      "end": "07:00",
+      "timezone": "Europe/Madrid"
+    }
+  },
+  "failover": {
+    "enabled": true,
+    "openclaw_config_path": "~/.openclaw/openclaw.json",
+    "backup_path": "~/.openclaw/workspace/memory/openclaw-backup.json",
+    "auto_restore": true,
+    "restore_after_minutes": 60
+  },
+  "logging": {
+    "enabled": true,
+    "log_file": "~/.openclaw/workspace/logs/api-health.log",
+    "max_size_mb": 10,
+    "rotation": true
+  },
+  "status": {
+    "file": "~/.openclaw/workspace/memory/api-health-status.json",
+    "history_file": "~/.openclaw/workspace/memory/api-health-history.json",
+    "keep_history_days": 7
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "job_id": "e5ebcbf4-4c08-4a4a-b277-209899164a06",
+  "job_name": "\ud83d\uddd1\ufe0f Backup retention cleanup (lunes)",
+  "timestamp": "2026-03-24T12:48:24.602508",
+  "overall_valid": true,
+  "errors": [],
+  "warnings": [],
+  "checks": {
+    "schedule": {
+      "valid": true,
+      "error": null
+    },
+    "scripts": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dependencies": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "env_vars": {
+      "valid": true,
+      "missing": [],
+      "warnings": []
+    },
+    "dry_run": {
+      "valid": true,
+      "warnings": []
+    }
+  }
+}

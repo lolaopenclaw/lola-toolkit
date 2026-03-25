@@ -95,18 +95,9 @@ Con el fin de garantizar la coordinación institucional necesaria para la resolu
 
 **En Logroño, a [fecha] de marzo de 2026**
 
-**Firma:**
-
 ---
 
 **Manuel León Mendiola**
-
----
-
-## DOCUMENTACIÓN ADJUNTA
-
-- Reglamento del Transporte Urbano de Viajeros de la Ciudad de Logroño (disponible en URL citada)
-- [Cualquier fotografía o documento adicional que se considere oportuno]
 
 ---
 

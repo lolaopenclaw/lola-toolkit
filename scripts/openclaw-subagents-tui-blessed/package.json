@@ -1,0 +1,16 @@
+{
+  "name": "openclaw-subagents-tui",
+  "version": "1.0.0",
+  "description": "TUI dashboard for OpenClaw subagents monitoring (blessed version)",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["openclaw", "tui", "dashboard", "subagents"],
+  "author": "Lola OpenClaw",
+  "license": "MIT",
+  "dependencies": {
+    "blessed": "^0.1.81"
+  }
+}
