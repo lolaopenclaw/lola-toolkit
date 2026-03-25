@@ -55,13 +55,13 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ### Garmin & Health
 - **garmin-health-report.sh** — Reporte diario de salud
-- **garmin-activities-to-sheets.py** — Sync Garmin → Google Sheets
+- **garmin-activities-to-sheets.py** — Sync Garmin → Google Sheets ⚠️ DEPRECADO (migrado a Markdown)
 - **garmin-activities-historical.py** — Exportación histórica
 - **garmin-json-export.sh** — Exportación a JSON
 - **health-alerts.sh** — Alertas de métricas de salud
 
 ### Finanzas
-- **sheets-populate-v2.py** — Actualización de finanzas en Sheets
+- **sheets-populate-v2.py** — Actualización de finanzas en Sheets ⚠️ DEPRECADO (migrado a Markdown)
 
 ### GitHub
 - **pr-reviewer.sh** — Auto-review de PRs
@@ -148,8 +148,9 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ### Finanzas
 - **Repo:** github.com/lolaopenclaw/finanzas-personal (privado)
-- **Sheet ID:** 1otxo5V79XaY4GKCubCTrq19SaXdngcW59dGzZSUo8VA
+- **Formato:** Markdown (migrado desde Google Sheets 2026-03-24)
 - **Cadencia:** Cada 15 días (Manu pasa extractos bancarios)
+- **Google Sheets:** ❌ DEPRECADO (cron deshabilitado 2026-03-25)
 
 ---
 
