@@ -8,116 +8,49 @@ Resolution: mark done with date, archive monthly.
 
 ### 🔧 Gateway Service Config — 2026-03-25
 
-**Contexto:** `openclaw gateway status` reporta que el servicio tiene token embebido y debería reinstalarse.
-
 **Acción:** Ejecutar `openclaw gateway install --force` para eliminar token embebido del service file.
-
-**Impacto:** Seguridad (tokens no deben vivir en archivos systemd).
-
 **Tiempo:** 2 min
 
 ---
 
-### ⚠️ TypeError Recurrente en Cron List — 2026-03-25
+### 🔐 Security Hardening (multi-capa) — 2026-03-24
 
-**Contexto:** Logs del gateway muestran múltiples `TypeError: Cannot read properties of undefined (reading 'padEnd')` en `subsystem-DISldKSB.js:281:68` al listar cron jobs.
-
-**Severidad:** No crítico (sistema sigue operativo), pero recurrente.
-
-**Acción:** Reportar bug a OpenClaw devs o evaluar si es issue conocido en versión actual.
-
-**Tiempo:** 15 min investigación
-
----
-
-### 💾 Backup Race Condition — 2026-03-25
-
-**Contexto:** Backup nocturno falla en intento 1 porque archivos cambian durante sync (api-health logs, experiment-log.jsonl, memory status). Intento 2 siempre tiene éxito, pero no es ideal.
-
-**Opciones:**
-- **A) Retrasar backup:** Mover cron de 03:00 a 04:00 (después de autoimprove y system updates)
-- **B) Stop-sync-start:** Pausar crons que escriben logs antes de backup (complejo)
-- **C) No hacer nada:** Actual funcionamiento es funcional (retry automático exitoso)
-
-**Acción requerida:** Manu decide A/B/C
-
-**Impacto:** Cosmético (no hay pérdida de datos, solo logs limpios)
+**Acción:** Implementar defense layers: text sanitation, PII/secrets scanner, scoped permissions, approval system, runtime governance. Crear `memory/security-hardening-plan.md` primero.
+**Tiempo:** 3-4h | **Impacto:** Crítico
 
 ---
 
 ### 🤖 Multi-Model Strategy — Aprobar e Implementar — 2026-03-24
 
-**Contexto:** Tras analizar 29 crons, se identificaron 6 que necesitan upgrade (Haiku → Sonnet) y 3 con timeouts insuficientes.
-
-**Documentación completa:**
-- 📄 **Executive Summary:** `memory/model-strategy-executive-summary.md` (5 min lectura) ← **LEE ESTO PRIMERO**
-- 📚 Índice completo: `memory/model-strategy-README.md`
-
-**Impacto:**
-- ✅ Arregla 3 crons con timeout (autoimprove agents)
-- ✅ Mejora análisis de seguridad (fail2ban, rkhunter, lynis, security-audit)
-- ✅ Reduce errores Google Sheets
-- ✅ Mejor calidad Garmin weekly
-- 💰 Coste: +$7-11/mes (+15%)
-
-**Opciones:**
-- **A) APROBAR TODO:** Aplicar 3 fases (prioritario + optimización + cleanup)
-- **B) SOLO PRIORITARIO:** Aplicar solo timeouts + seguridad (+$4.20/mes)
-- **C) RECHAZAR:** No aplicar cambios (continúan problemas actuales)
-
-**Acción requerida:** Manu debe elegir opción A/B/C
-
-**Script listo:** `bash scripts/apply-model-strategy.sh --dry-run` para ver qué haría
-
-**Tiempo:** 30 min implementación + 20 min/semana tracking × 4 semanas
+**Acción:** Manu elige opción A/B/C. Executive summary en `memory/model-strategy-executive-summary.md`.
+**Coste:** +$4-11/mes según opción | **Tiempo:** 30 min implementación
 
 ---
 
-### 🎯 Top 3 del Análisis YouTube (14 Use Cases) — 2026-03-24
+### 🔧 Arnés P2: Validador de output de subagentes — 2026-03-24
 
-#### Prioridad ALTA
-- [ ] 🔐 **Security Hardening (multi-capa)** — Implementar defense layers: (1) text sanitation (prompt injection), (2) frontier scanner para contenido entrante, (3) PII/secrets scanner outbound, (4) scoped permissions granulares, (5) approval system para acciones destructivas, (6) runtime governance (spending caps, loop detection). Crear `memory/security-hardening-plan.md` primero. (source: YouTube análisis Caso 10, 2026-03-24) — **Tiempo: 3-4h, Impacto: Crítico**
-- [ ] 📱 **Telegram Threads por Tema** — Crear grupo "OpenClaw Topics" con threads: General, Finanzas & Tracking, Salud & Garmin, Música & Bass in a Voice, Crons & Monitoring, Desarrollo & Skills. Migrar conversaciones activas. Actualizar `AGENTS.md` con guidelines. (source: YouTube análisis Caso 1, 2026-03-24) — **Tiempo: 1h, Impacto: Alto (mejor UX + memoria)**
-- [ ] 🔄 **Auto-update OpenClaw + Log Review Matutino** — (A) Cron 21:30: check updates OpenClaw, download changelog, summarize, auto-update. (B) Cron 7:30: review logs últimas 24h, identificar errores, proponer fixes. Integrar en informe matutino. (source: YouTube análisis Casos 11+12, 2026-03-24) — **Tiempo: 2h, Impacto: Alto (reliability + security)**
-
-#### Prioridad MEDIA (Siguiente Fase)
-- [ ] 🤖 **Multi-model Strategy & Thread-specific Models** — Asignar modelos específicos por thread (General→Sonnet, Desarrollo→Opus, Finanzas/Música→Flash). Configurar fallbacks robustos. Evaluar Gemini Deep Research para análisis profundos. (source: YouTube análisis Casos 4+5, 2026-03-24) — **Beneficio: Cost/speed optimization**
-- [ ] 🚀 **Delegate Aggressively to Subagents** — Actualizar `memory/subagent-policy.md` con regla de 10 segundos. Entrenar main agent a delegar más rápido. Considerar cursor agent CLI para coding. (source: YouTube análisis Caso 7, 2026-03-24) — **Beneficio: Main agent más responsive**
-- [ ] 📝 **Model-specific Prompts** — Crear estructura: prompts root (Claude-optimized) + `gpt/` directory (GPT-optimized). Cron diario 3:30 AM para sync + optimization según best practices. (source: YouTube análisis Caso 8, 2026-03-24) — **Beneficio: Calidad por modelo**
-- [ ] 📚 **Documentation Pillars (PRD + learnings.md + testing)** — Crear PRD.md, `memory/use-cases-workflows.md`, `memory/workspace-organization.md`, `memory/learnings.md`. Cron diario 2:30 AM para detectar documentation gaps. Evaluar testing framework para skills/harnesses/crons. (source: YouTube análisis Caso 14, 2026-03-24) — **Beneficio: Foundation para reliability**
-
-#### Prioridad BAJA / Evaluar
-- [ ] 🌐 **Evaluar here.now para publicar artifacts** — Casos de uso: informes finanzas temporales, dashboards salud/Garmin, prototipos Bass in a Voice. (source: YouTube análisis Caso 3, 2026-03-24) — **No urgente, evaluar si surge necesidad**
+**Acción:** IA que revisa output de subagents antes de aplicar. No urgente.
+**Tiempo:** 3-5 días
 
 ---
 
-- [ ] ⏳ Limpieza de backups en Drive POSPUESTA — Actualmente hay 20 .tar.gz duplicados (7× 21/03, 11× 22/03, 2× 23/03). **NO SE PUEDE PROCEDER TODAVÍA** porque solo hay 3 días de backups y la política requiere mantener mínimo 7 backups diarios (uno por día). **Acción requerida:** Esperar hasta tener al menos 8-10 días diferentes de backups, luego ejecutar `rclone dedupe --dedupe-mode newest grive_lola:openclaw_backups/` para mantener solo el más reciente de cada día. (source: backup cleanup análisis 2026-03-23) — **Revisitar después del 2026-03-28**
-- [x] 🔔 Verificar entrega del Informe Matutino — DONE 2026-03-24 — Fix: `to` apuntaba a Telegram ID (6884477) en vez de Discord channel ID (1475057935368458312). Corregido y testeado. Entrega confirmada.
-- [ ] 👁️ AVISO 1/3: Dashboards no se usan — Manu no está utilizando los dashboards. Si llega a 3 avisos, desmontar. (source: feedback Manu 2026-03-23)
-- [ ] 💡 Evaluar migrar Google Sheets → memoria interna (Agent First) — Manu prefiere preguntar directamente en vez de consultar Sheets. Valorar si los datos de finanzas/Garmin pueden vivir solo en memory/ como JSON consultable. (source: feedback Manu 2026-03-23)
+### 👁️ Dashboards no se usan (aviso 1/3) — 2026-03-23
 
+Si llega a 3 avisos, desmontar.
 
-- [ ] 🔧 Arnés P2: Validador de output de subagentes — Los 4 arneses P0-P1 están DONE. Queda el P2: IA que revisa output de subagents antes de aplicar (3-5 días estimados). No urgente. (source: decisión Manu 2026-03-24)
-- [ ] 📋 SEMANAL: Revisar mejoras de harness engineering — Evaluar qué más podemos implementar de validación IA-sobre-IA en nuestra arquitectura. Incluir en tareas semanales. (source: feedback Manu 2026-03-23)
+---
 
+## Done (2026-03-25)
 
-
-
-
-## Done
-
-- [x] 💸 **Subscription vs API Cost Analysis — COMPLETADO** — DONE 2026-03-24 20:55 — Análisis exhaustivo de 4 providers (Anthropic, Google, Whisper, Brave). **Conclusión: NINGÚN CAMBIO NECESARIO** — Ya estamos en configuración óptima. Anthropic API directa es 17× más barata que suscripción ($122/mes vs $2,040/mes). Google Gemini dentro de free tier ($0). Whisper local + API fallback híbrido ($0-3/mes). Brave Search free tier suficiente (~$0/mes). Ahorro potencial: $0 (ya optimizado). Documentación completa: `memory/subscription-vs-api-analysis.md` (source: YouTube análisis Caso 13, 2026-03-24)
-- [x] 🔬 Understand-Anything evaluado — DONE 2026-03-24 10:07 — Plugin para analizar codebases y generar knowledge graphs. Conclusión: Interesante para proyectos complejos, pero no urgente. Guardado en radar para futuros proyectos open source grandes. Repo: github.com/Lum1104/Understand-Anything
-- [x] 💡 CLI-Anything investigado — DONE 2026-03-24 10:07 — Meta-framework para generar CLIs desde código fuente. Conclusión: NO compatible con OpenClaw (requiere Claude Code), no aplicable a nuestro setup actual. Repo compartido con compis. Research completo en `memory/cli-anything-research.md`. Tarea cerrada.
-- [x] 🔬 Voz bidireccional investigado — DONE 2026-03-24 10:07 — Talk Mode existe pero solo iOS/macOS. Manu usa Win/Lin/Android → ON HOLD hasta que Android Talk Mode madure. Research completo en `memory/voice-bidirectional-research.md` + `voice-bidirectional-summary.md`. Monitorear cuando Android esté disponible.
-- [x] 🔬 YouTube integración inteligente — DONE 2026-03-24 09:28 — Skill `youtube-smart-transcript` implementado. Extrae transcripciones con 3 capas: (1) caché local, (2) subtítulos nativos YouTube (gratis), (3) Whisper API fallback ($0.006/min). Testing: 5/5 ✅. Probado con vídeos reales. Coste estimado: $0-3/mes (vs $50+ método anterior). Documentación completa en `skills/youtube-smart-transcript/SKILL.md`.
-- [x] 🔧 Validador pre-restart (harness mínimo) implementado — DONE 2026-03-24 08:29 — Script `pre-restart-validator.sh` funcionando (valida JSON syntax, permisos 600, env vars, cron refs, gateway status). Protocolo documentado en `memory/security-change-protocol.md`. Probado en producción, evitó crash loops. Ampliación a arneses avanzados movida a nueva entrada.
-- [x] 🛡️ Allowlists configurados para Telegram y Discord — DONE 2026-03-23 11:22 — Telegram: dmPolicy cambiado a "allowlist", allowFrom configurado a ["6884477"] (Manu), groupPolicy ya era "allowlist". Discord: ya tenía allowlist configurado con ID 587650706593284096. Backup creado en ~/.openclaw/openclaw.json.bak. Gateway necesita restart para aplicar cambios.
-- [x] ✅ Script sheets-populate-v2.py restaurado y funcionando — DONE 2026-03-23 11:10 — Script copiado de archive/ a scripts/. Actualizado parser para buscar archivos en memory/archive/ y manejar formato EUR (€). Garmin Health: funcionando perfectamente, backfill de 60 días exitoso, datos completos desde 2026-02-21. Consumo IA: todos los datos históricos ya existen en Sheet. Cron job `6344d609-2bfd-4295-8471-373125381779` re-habilitado, próxima ejecución 2026-03-24 09:30 Madrid.
-- [x] 🗑️ Integración Notion eliminada — DONE 2026-03-23 11:01 — Deshabilitados y eliminados cron jobs: `notion:ideas-cleanup-weekly` (f1e3103b) y `Tareas de fondo semanales` (496f6271). Eliminada NOTION_API_KEY de ~/.openclaw/.env. Archivos relacionados movidos a memory/archive/notion-removal-2026-03-23/. Skill de Notion permanece instalado pero desconectado.
-- [x] 🛡️ rkhunter scan ejecutado — DONE 2026-03-23 10:22 — Sistema limpio: 0 rootkits, 65 warnings benignos (actualizaciones de sistema), reporte completo en memory/2026-03-23-rkhunter-scan.md. Recomendado: ejecutar `sudo rkhunter --propupd` para actualizar hashes
-- [x] 💡 Sincronizar lola-toolkit repo (~20 scripts nuevos, 4 con cambios) — DONE 2026-03-23 — Updated 11 scripts to github.com/lolaopenclaw/lola-toolkit: 4 existing scripts with meaningful changes (garmin-health-report, health-dashboard, pr-reviewer, weekly-audit), 7 new scripts added (apt-security-check, deliver-pending-reports, memory-maintenance, backup-memory, backup-validator, post-commit-backup, worktree-manager). All sanitized (no personal paths/credentials). Commit b77820d pushed.
-- [x] 🔴 Cron job `sheets-populate-v2.py` desactivado — DONE 2026-03-23 10:14 — el script estaba archivado intencionalmente en `scripts/archive/`, cron job ID `6344d609-2bfd-4295-8471-373125381779` desactivado
-- [x] 🔴 `chmod 600 ~/.openclaw/openclaw.json` — DONE 2026-03-23 10:14 — permisos corregidos de 644 a 600
-- [x] ⚠️ Evolution deshabilitado — DONE 2026-03-23 10:14 — servicios systemd masked (no había procesos corriendo)
-- [x] ⚠️ Cachés limpiadas — DONE 2026-03-23 10:14 — Homebrew: 575MB, Chrome: 2.7MB, pip/uv ya limpias. Total: ~1GB liberado
+- [x] 📱 Telegram Threads por Tema — DONE 2026-03-24 — Grupo creado, 8 topics configurados, allowlist OK
+- [x] 🔄 Auto-update OpenClaw + Log Review Matutino — DONE 2026-03-24 — Crons 21:30 + 07:30 activos
+- [x] 🚀 Delegate Aggressively to Subagents — DONE 2026-03-24 — Policy implementada
+- [x] 📝 Model-specific Prompts — DONE 2026-03-24 — Guide created
+- [x] 📚 Documentation Pillars — DONE 2026-03-24 — PRD, learnings, decisions logs created
+- [x] 💡 Migrar Google Sheets → Markdown — DONE 2026-03-24/25 — Finanzas + Garmin migrados, cron eliminado, scripts archivados
+- [x] 🔔 Notificaciones nocturnas corregidas — DONE 2026-03-25 — 23 crons fixed, 5 scripts fixed, protocol creado
+- [x] 💾 Backups duplicados en Drive — DONE 2026-03-25 — Deduplicados (6→1), script arreglado para prevenir
+- [x] ⏳ Limpieza backups Drive — DONE 2026-03-25 — rclone dedupe aplicado
+- [x] 💸 Subscription vs API Cost Analysis — DONE 2026-03-24
+- [x] 🔬 YouTube integración inteligente — DONE 2026-03-24
+- [x] 🛡️ Allowlists Telegram/Discord — DONE 2026-03-23
