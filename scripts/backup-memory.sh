@@ -71,6 +71,15 @@ BACKUP_FILE="/tmp/openclaw-backup-${BACKUP_DATE}.tar.gz"
 tar c -C /tmp "openclaw-backup-${BACKUP_DATE}" | pigz -1 > "$BACKUP_FILE" 2>/dev/null || tar c -C /tmp "openclaw-backup-${BACKUP_DATE}" | gzip -1 > "$BACKUP_FILE"
 BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
 FILE_COUNT=$(find "$BACKUP_DIR" -type f | wc -l)
+# Delete previous backups for same date (prevent duplicates)
+echo "Limpiando backups anteriores del mismo día..."
+EXISTING_IDS=$(gog drive list --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>/dev/null | grep "openclaw-backup-${BACKUP_DATE}" | awk '{print $1}' || true)
+for fid in $EXISTING_IDS; do
+    gog drive delete "$fid" --account "$GOG_ACCOUNT" --no-input 2>/dev/null || true
+    echo "  Borrado duplicado: $fid"
+done
+
+# Upload new backup
 gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1
 rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
 echo ""
