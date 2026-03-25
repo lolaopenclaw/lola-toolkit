@@ -52,6 +52,8 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **gateway-health-check.sh** — Health check del gateway
 - **pre-restart-validator.sh** — Pre-flight antes de restart
 - **security-scanner.py** — Scanner de seguridad
+- **runtime-governance.sh** — Sistema de gobernanza (loop detection, spending caps, rate limits)
+- **emergency-cost-stop.sh** — Botón de pánico para detener gasto runaway
 
 ### Garmin & Health
 - **garmin-health-report.sh** — Reporte diario de salud
@@ -109,6 +111,16 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
   - `bash scripts/usage-report.sh --week` → Last 7 days
   - `bash scripts/cost-alert.sh` → Check thresholds, exit 1 if critical
 - **Session logs:** `~/.openclaw/agents/main/sessions/*.jsonl`
+
+### Notification Batching
+- **notification-batcher.sh** — Batch notifications by priority to reduce Telegram noise
+- **Queue:** `data/notification-queue.jsonl` (JSONL format, flock-protected)
+- **Docs:** `memory/notification-batching.md`
+- **Priorities:** critical (instant) | high (1h) | medium (3h) | low (morning)
+- **Usage:**
+  - `bash scripts/notification-batcher.sh add <priority> <source> <message>` → Add to queue
+  - `bash scripts/notification-batcher.sh flush <priority>` → Send digest for priority level and below
+- **Status:** ✅ Script ready, ⏳ Cron integration pending
 
 **Ver lista completa:** `ls -1 scripts/` (30+ scripts)
 
