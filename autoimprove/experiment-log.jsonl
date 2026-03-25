@@ -92,3 +92,15 @@
 {"ts":"2026-03-25T02:03:25Z","target":"backup-memory.sh","change":"move FILE_COUNT before tar (logical improvement, same complexity)","before":322,"after":323,"kept":true,"delta":-1}
 {"ts":"2026-03-25T02:03:39Z","target":"backup-memory.sh","change":"replace find with tar -tzf for file count (faster)","before":322,"after":324,"kept":true,"delta":-2}
 {"ts":"2026-03-25T02:03:47Z","target":"backup-memory.sh","change":"consolidate export statements to single line","before":322,"after":324,"kept":true,"delta":-2}
+{"ts":"2026-03-25T02:05:39Z","target":"AGENTS.md","change":"remove redundant 'Just do it' comment","before":1241,"after":1225,"kept":true,"delta":16}
+{"ts":"2026-03-25T02:05:48Z","target":"AGENTS.md","change":"consolidate Safety section headers to bullet points","before":1225,"after":1233,"kept":true,"delta":-8}
+{"ts":"2026-03-25T02:05:59Z","target":"AGENTS.md","change":"remove redundant 'Heartbeats' section (info in HEARTBEAT.md)","before":1225,"after":1169,"kept":true,"delta":56}
+{"ts":"2026-03-25T02:06:02Z","target":"AGENTS.md","change":"simplify External Actions language","before":1169,"after":1080,"kept":true,"delta":89}
+{"ts":"2026-03-25T02:06:10Z","target":"AGENTS.md","change":"consolidate Memory & Safety sections","before":1080,"after":1072,"kept":true,"delta":8}
+{"ts":"2026-03-25T02:06:15Z","target":"AGENTS.md","change":"simplify Time Estimation section","before":1072,"after":1071,"kept":true,"delta":1}
+{"ts":"2026-03-25T02:06:19Z","target":"AGENTS.md","change":"shorten title (remove '- Workspace')","before":1071,"after":1059,"kept":true,"delta":12}
+{"ts":"2026-03-25T02:06:23Z","target":"AGENTS.md","change":"compress item 3 (remove redundant 'to Manu')","before":1059,"after":1053,"kept":true,"delta":6}
+{"ts":"2026-03-25T02:06:29Z","target":"AGENTS.md","change":"compress External Actions line","before":1053,"after":1034,"kept":true,"delta":19}
+{"ts":"2026-03-25T02:06:32Z","target":"AGENTS.md","change":"compress Communication line","before":1034,"after":1009,"kept":true,"delta":25}
+{"ts":"2026-03-25T02:06:36Z","target":"AGENTS.md","change":"abbreviate GitHub line (slash-separated list)","before":1009,"after":1000,"kept":true,"delta":9}
+{"ts":"2026-03-25T02:06:41Z","target":"AGENTS.md","change":"combine Privacy and GitHub bullets","before":1000,"after":963,"kept":true,"delta":37}
