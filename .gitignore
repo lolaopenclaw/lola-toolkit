@@ -3,3 +3,9 @@ node_modules/
 *.log
 .env
 package-lock.json
+.vectordb/
+config-baselines/
+temp/
+*client_secret*
+*-SECRETS-*
+memory/WAL/snapshots/
