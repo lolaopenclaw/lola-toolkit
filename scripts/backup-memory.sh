@@ -33,9 +33,7 @@ FILE_COUNT=$(find "$BACKUP_DIR" -type f | wc -l)
 BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
 
 # Delete duplicates and upload
-gog drive list --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>/dev/null | \
-    grep "openclaw-backup-${BACKUP_DATE}" | awk '{print $1}' | \
-    xargs -r -I {} gog drive delete {} --account "$GOG_ACCOUNT" --no-input 2>/dev/null || true
+gog drive list --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>/dev/null | grep "openclaw-backup-${BACKUP_DATE}" | awk '{print $1}' | xargs -r -I {} gog drive delete {} --account "$GOG_ACCOUNT" --no-input 2>/dev/null || true
 
 gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1
 rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
