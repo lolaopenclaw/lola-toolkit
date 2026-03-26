@@ -19,7 +19,7 @@
 ## 🧠 Knowledge Graph → `memory/entities/` (auto | SKIP autoimprove)
 PARA | weekly decay | vector+FTS via Ollama (reindex 4:30AM)
 
-## 🔬 Autoresearch — Karpathy → `memory/autoresearch-karpathy.md` (iterate→test→keep/discard)
+## 🔬 Autoresearch — Karpathy → `memory/autoresearch-karpathy.md`
 
 ## 🚗 Driving Mode → `memory/driving-mode-{protocol,improvements}.md`
 
