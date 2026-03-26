@@ -97,10 +97,12 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **openspec-helpers.sh** — CLI para validar/listar/crear specs TypeScript
 
 ### Knowledge Base
-- **knowledge-base-ingest.sh** — Ingest content (articles, YouTube, PDFs) into SQLite knowledge base
-- **knowledge-base-search.sh** — Full-text search with FTS5 (supports --list and --tag filters)
+- **knowledge-base/ingest.sh** — Ingest content (articles, YouTube, PDFs) + auto-generate embeddings
+- **knowledge-base/search.sh** — Search with `--semantic` (embeddings), `--hybrid` (both), or FTS5 (default)
+- **knowledge-base/embed.py** — Generate/backfill vector embeddings (Gemini API)
+- **knowledge-base/semantic-search.py** — Core semantic search engine (cosine similarity)
 - **Docs:** `memory/knowledge-base.md`
-- **Database:** `data/knowledge-base.db`
+- **Database:** `data/knowledge-base.db` (132 chunks, all embedded)
 
 ### API Cost Tracking
 - **usage-report.sh** — Aggregate API costs from session logs

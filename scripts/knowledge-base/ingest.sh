@@ -261,4 +261,10 @@ print(f"   ID: {entry_id}")
 
 PYTHON_SCRIPT
 
+# Generate embeddings for newly ingested chunks
+info "Generating embeddings for new chunks..."
+python3 "${SCRIPT_DIR}/embed.py" 2>&1 | grep -E "(Embedding chunk|✅|❌|🎉)" || true
+
 deactivate
+
+info "✨ Ingestion complete!"

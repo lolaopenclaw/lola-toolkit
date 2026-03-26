@@ -1,6 +1,6 @@
 #!/bin/bash
 # knowledge-base-search.sh - Search the knowledge base
-# Usage: ./search.sh <query> [--list] [--tag TAG]
+# Usage: ./search.sh <query> [--list] [--tag TAG] [--semantic] [--hybrid]
 
 set -euo pipefail
 
@@ -22,6 +22,8 @@ meta() { echo -e "${GRAY}$1${NC}"; }
 QUERY=""
 LIST_MODE=false
 TAG_FILTER=""
+SEARCH_MODE="fts"  # fts (default), semantic, or hybrid
+LIMIT=5
 
 while [[ $# -gt 0 ]]; do
     case $1 in
@@ -31,6 +33,18 @@ while [[ $# -gt 0 ]]; do
             ;;
         --tag)
             TAG_FILTER="$2"
+            shift 2
+            ;;
+        --semantic)
+            SEARCH_MODE="semantic"
+            shift
+            ;;
+        --hybrid)
+            SEARCH_MODE="hybrid"
+            shift
+            ;;
+        --limit)
+            LIMIT="$2"
             shift 2
             ;;
         *)
@@ -59,15 +73,24 @@ fi
 
 # Check if query provided
 if [ -z "$QUERY" ]; then
-    echo "Usage: $0 <query> [--list] [--tag TAG]"
+    echo "Usage: $0 <query> [--list] [--tag TAG] [--semantic] [--hybrid] [--limit N]"
     echo ""
     echo "Options:"
     echo "  --list       List all entries"
     echo "  --tag TAG    Filter by tag"
+    echo "  --semantic   Use semantic vector search"
+    echo "  --hybrid     Combine FTS5 and semantic search"
+    echo "  --limit N    Number of results (default: 5)"
     exit 1
 fi
 
-# Search using FTS5
+# Use semantic search if requested
+if [ "$SEARCH_MODE" = "semantic" ] || [ "$SEARCH_MODE" = "hybrid" ]; then
+    python3 "${SCRIPT_DIR}/semantic-search.py" --mode "$SEARCH_MODE" --limit "$LIMIT" "$QUERY"
+    exit 0
+fi
+
+# Otherwise use FTS5 (default)
 python3 - << PYTHON_SCRIPT
 import sqlite3
 import json

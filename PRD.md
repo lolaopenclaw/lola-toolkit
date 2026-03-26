@@ -23,7 +23,7 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 ## Architecture
 
 ### Infrastructure
-- **Ubuntu 24.04 LTS VPS** — DigitalOcean + Ubuntu Pro (security patches until 2034)
+- **Ubuntu 24.04 LTS VPS** — IONOS Cloud (VPS Linux QB series) + Ubuntu Pro (security patches until 2034)
 - **Tailscale** — Private virtual network (WireGuard) for secure access without exposed ports
 - **OpenClaw** — AI agent framework with parallel sub-agent support
 - **Gateway** — HTTP API on localhost:18790 (accessible only via Tailscale)
@@ -93,12 +93,12 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 - **Frequency:** Daily (10:00 Madrid)
 - **Value:** Complete system status visibility in 1 message. Detects issues before they escalate.
 
-### 5. Knowledge Base with RAG
-- **What it does:** Ingests content (articles, YouTube, PDFs) and enables full-text search. **Phase 1 (current): FTS5 full-text search only.** Embedding field exists in schema but is not active.
-- **How it works:** Scripts `knowledge-base-ingest.sh` and `knowledge-base-search.sh`. SQLite with FTS5. Chunking ~500 words. **Phase 2 (roadmap): Vector embeddings for semantic search.**
-- **Model used:** N/A (text extraction), Gemini for summaries
+### 5. Knowledge Base with RAG + Semantic Search ✨
+- **What it does:** Ingests content (articles, YouTube, PDFs) with **semantic search using vector embeddings** + traditional full-text search (FTS5). **Phase 2 COMPLETE (March 26, 2026).**
+- **How it works:** Scripts `knowledge-base/ingest.sh` (auto-generates embeddings on ingest), `knowledge-base/search.sh` (supports `--semantic`, `--hybrid`, or FTS5). SQLite with FTS5 + 3072-dim Gemini embeddings. Chunking ~500 words. Cosine similarity for semantic matching.
+- **Model used:** Gemini `gemini-embedding-001` (embeddings), Sonnet (analysis)
 - **Frequency:** On-demand (manual)
-- **Value:** Persistent external memory. Lola can "remember" technical articles you read weeks ago.
+- **Value:** **Meaning-based search** — finds relevant content even without exact keyword matches. 132 chunks embedded. Example: search "prompt injection defense" finds Berman video chunks with 0.75 similarity score.
 
 ### 6. Garmin Health Integration
 - **What it does:** Syncs daily data from Garmin Instinct 2S Solar Surf (steps, HR, sleep, stress, Body Battery).
@@ -322,7 +322,7 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 ### Real Breakdown (March 2026)
 | Item | Monthly Cost |
 |------|--------------|
-| **DigitalOcean VPS** | $18/month (4GB RAM, 80GB SSD, 4TB transfer) |
+| **IONOS Cloud VPS (QB series)** | ~€18/month |
 | **AI APIs (total)** | $93.39 |
 | → Claude Sonnet 4-5 | $45.28 (48.5%) |
 | → Claude Opus 4-6 | $44.52 (47.7%) |
@@ -382,10 +382,11 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 
 ### Q2 2026 (April - June)
 
-#### Knowledge Base Phase 2 (Vector Embeddings)
-- **Vector embeddings:** Activate `chunks.embedding` field in SQLite.
-- **Semantic search:** Similarity-based searches (not just keywords).
-- **Auto-ingestion:** Weekly cron to ingest content from RSS/bookmarks.
+#### ✅ Knowledge Base Phase 2 (COMPLETE — March 26, 2026)
+- **Vector embeddings:** ✅ Activated with Gemini `gemini-embedding-001` (3072 dims)
+- **Semantic search:** ✅ Cosine similarity search working (`--semantic` flag)
+- **Hybrid mode:** ✅ Weighted combination of semantic + FTS5 (`--hybrid` flag)
+- **Auto-ingestion:** Weekly cron to ingest content from RSS/bookmarks (pending).
 
 #### Visual Dashboard (Real Implementation)
 - **Canvas integration:** Web UI on localhost:3333 to visualize system status.
