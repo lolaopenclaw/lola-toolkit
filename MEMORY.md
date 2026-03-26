@@ -28,4 +28,4 @@ PARA | weekly decay | vector+FTS via Ollama (reindex 4:30AM)
 
 ## 🔧 CLI Tools → `memory/cli-anything-research.md`
 
-## 🔴 PROTOCOLS & PREFERENCES → `memory/protocols.md` | `memory/preferences.md` | Quiet 00-10 | Report 10:00+ | Crons silent
+## 🔴 PROTOCOLS & PREFERENCES → `memory/protocols.md` | `memory/preferences.md`
