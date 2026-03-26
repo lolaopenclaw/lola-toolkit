@@ -21,8 +21,7 @@ safe_sync() { rsync -a "$1" "$2" 2>/dev/null || true; }
 echo "=== OpenClaw Memory Backup - ${BACKUP_DATE} ==="
 mkdir -p "$BACKUP_DIR"/{gnupg,keyrings,gog-config,system-snapshot} 2>/dev/null || true
 
-echo "Copiando workspace..."
-# Parallelize all workspace copies
+# Parallelize all copy operations
 safe_sync "$WORKSPACE/memory/" "$BACKUP_DIR/memory/" &
 safe_sync "$WORKSPACE/scripts/" "$BACKUP_DIR/scripts/" &
 safe_sync "$WORKSPACE/skills/" "$BACKUP_DIR/skills/" &
@@ -31,54 +30,37 @@ safe_sync "$WORKSPACE/skills/" "$BACKUP_DIR/skills/" &
         [ -f "$WORKSPACE/$f" ] && safe_copy "$WORKSPACE/$f" "$BACKUP_DIR/$f"
     done
 } &
-wait
-
-# --- OpenClaw config + Secrets + GPG + Pass store ----
-echo "Copiando config, secrets y credenciales..."
 {
     safe_copy "$OPENCLAW_DIR/openclaw.json" "$BACKUP_DIR/openclaw.json"
     safe_copy "$OPENCLAW_DIR/.env" "$BACKUP_DIR/dot-env"
     [ -d "$HOME/.gnupg" ] && safe_sync "$HOME/.gnupg/" "$BACKUP_DIR/gnupg/"
     [ -d "$HOME/.password-store" ] && safe_sync "$HOME/.password-store/" "$BACKUP_DIR/password-store/"
 } &
-
-# --- Cron jobs + GOG + Rclone -----------------------------------------------
-echo "Copiando configuraciones..."
 {
     for crondir in "$OPENCLAW_DIR/cron" "$OPENCLAW_DIR/data/cron"; do
-        if [ -d "$crondir" ]; then
-            safe_copy "$crondir" "$BACKUP_DIR/cron-db"
-            break
-        fi
+        [ -d "$crondir" ] && safe_copy "$crondir" "$BACKUP_DIR/cron-db" && break
     done
     [ -d "$HOME/.config/gog" ] && safe_copy "$HOME/.config/gog/"* "$BACKUP_DIR/gog-config/"
     [ -d "$HOME/.local/share/keyrings" ] && safe_copy "$HOME/.local/share/keyrings/"* "$BACKUP_DIR/keyrings/"
     [ -f "$HOME/.config/rclone/rclone.conf" ] && safe_copy "$HOME/.config/rclone/rclone.conf" "$BACKUP_DIR/rclone.conf"
 } &
-wait
-
-# --- System config snapshot (essentials only) --------------------------------
-echo "Copiando snapshot de sistema..."
 {
     openclaw --version > "$BACKUP_DIR/system-snapshot/openclaw-version.txt" 2>/dev/null || true
     node --version > "$BACKUP_DIR/system-snapshot/node-version.txt" 2>/dev/null || true
     safe_copy "$WORKSPACE/scripts/restore.sh" "$BACKUP_DIR/restore.sh"
 } &
 wait
-echo "Creando tarball..."
+# Create archive and upload
 BACKUP_FILE="/tmp/openclaw-backup-${BACKUP_DATE}.tar.gz"
 tar c -C /tmp "openclaw-backup-${BACKUP_DATE}" | pigz -1 > "$BACKUP_FILE"
-BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
 FILE_COUNT=$(find "$BACKUP_DIR" -type f | wc -l)
-# Delete previous backups for same date (prevent duplicates)
-echo "Limpiando backups anteriores del mismo día..."
+BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
+
+# Delete duplicates and upload
 gog drive list --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>/dev/null | \
     grep "openclaw-backup-${BACKUP_DATE}" | awk '{print $1}' | \
-    xargs -r -I {} sh -c 'gog drive delete {} --account "$GOG_ACCOUNT" --no-input 2>/dev/null && echo "  Borrado duplicado: {}"' || true
+    xargs -r -I {} gog drive delete {} --account "$GOG_ACCOUNT" --no-input 2>/dev/null || true
 
-# Upload new backup
 gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1
 rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
-echo ""
-echo "=== RESULT ==="
-echo "date: ${BACKUP_DATE} | files: ${FILE_COUNT} | size: ${BACKUP_SIZE} | status: ok"
+echo "=== RESULT === date: ${BACKUP_DATE} | files: ${FILE_COUNT} | size: ${BACKUP_SIZE} | status: ok"
