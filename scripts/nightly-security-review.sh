@@ -106,18 +106,24 @@ if [ -d .git ]; then
     # Full history scan is too slow for nightly cron
     SECRET_PATTERNS="sk-ant-|sk-proj-|ANTHROPIC_API_KEY|GOOGLE_API_KEY|Bearer [a-zA-Z0-9]|-----BEGIN.*PRIVATE KEY"
     
+    # Known/accepted risk exceptions (secrets that cannot be rotated)
+    # Format: one pattern per line, grep -vE compatible
+    # - sk-ant-oat01: Anthropic OAuth token, cannot be rotated (accepted risk 2026-03-26)
+    SECRETS_ALLOWLIST="sk-ant-oat01|ANTHROPIC_API_KEY=sk-ant"
+    
     SECRETS_FOUND=0
     # Check only tracked files (fast)
     tracked_files=$(git ls-files 2>/dev/null)
     
     if [ -n "$tracked_files" ]; then
-        matches=$(echo "$tracked_files" | xargs grep -iE "$SECRET_PATTERNS" 2>/dev/null | wc -l)
+        # Count matches excluding allowlisted patterns
+        matches=$(echo "$tracked_files" | xargs grep -iE "$SECRET_PATTERNS" 2>/dev/null | grep -vE "$SECRETS_ALLOWLIST" | wc -l)
         SECRETS_FOUND=$matches
         
         if [ "$SECRETS_FOUND" -gt 0 ]; then
             log_finding "CRITICAL" "Secrets detected in tracked files: $SECRETS_FOUND occurrences"
-            # Log which files (but not the actual secrets)
-            echo "$tracked_files" | xargs grep -ilE "$SECRET_PATTERNS" 2>/dev/null | while read -r file; do
+            # Log which files (but not the actual secrets), excluding allowlisted
+            echo "$tracked_files" | xargs grep -iE "$SECRET_PATTERNS" 2>/dev/null | grep -vE "$SECRETS_ALLOWLIST" | cut -d: -f1 | sort -u | while read -r file; do
                 log_finding "CRITICAL" "  → $file"
             done
         fi
