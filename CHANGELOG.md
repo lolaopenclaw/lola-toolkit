@@ -112,3 +112,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-26 13:46:49** | fix: token usage in morning report now shows real costs | `b258592` | [`backup-b258592`](backups-by-commit/backup-b258592*.tar.gz)
 
+- **2026-03-26 15:50:26** | fix: session-log-rotation subshell variable bug | `b3207c3` | [`backup-b3207c3`](backups-by-commit/backup-b3207c3*.tar.gz)
+

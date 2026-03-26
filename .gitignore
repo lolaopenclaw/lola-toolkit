@@ -14,6 +14,9 @@ memory/WAL/snapshots/
 data/notification-queue.jsonl
 data/notification-queue.lock
 
+# Knowledge base (backed up by custom script, not git)
+data/knowledge-base.db
+
 # Cache & ephemeral state
 .cache/
 logs/

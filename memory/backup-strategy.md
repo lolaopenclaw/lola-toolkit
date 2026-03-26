@@ -157,6 +157,34 @@ openclaw backup verify ~/YYYY-MM-DD*-openclaw-backup.tar.gz
 
 ---
 
+## Known Redundancy
+
+**Honest assessment:** Git and Custom backup are **redundant by design for safety** on ~80% of content.
+
+**Overlap (both back up):**
+- `memory/*.md` (daily logs, protocols, entities)
+- `scripts/*.sh` (all scripts)
+- `skills/` (custom skills)
+- Core workspace files (SOUL.md, USER.md, AGENTS.md, IDENTITY.md, TOOLS.md, MEMORY.md)
+
+**Unique value of Custom backup (~20% of content):**
+- `.env` (API keys, credentials)
+- Cron database (`~/.openclaw/cron/`)
+- GPG keys (`~/.gnupg/`)
+- GOG credentials (`~/.local/share/keyrings/`)
+- Rclone config (`~/.config/rclone/rclone.conf`)
+- OpenClaw config (`~/.openclaw/openclaw.json`)
+
+**Why keep redundancy:**
+- Git versioning ≠ point-in-time restore (Custom backup does full snapshots)
+- Git requires auth to restore; Custom backup is self-contained tarball
+- Different failure modes (GitHub outage vs. Drive outage)
+- Cost is negligible (~25M/day on free tier)
+
+**Decision:** Keep both. Redundancy is intentional insurance, not inefficiency.
+
+---
+
 ## Recovery Procedures
 
 ### Scenario 1: Workspace corruption (code/docs)
@@ -184,7 +212,9 @@ bash ~/.openclaw/workspace/scripts/restore.sh /tmp/openclaw-backup-YYYY-MM-DD.ta
 ```
 
 ### Scenario 3: Complete system loss (new machine)
-**RTO:** ~30-45 minutes
+**RTO:** 1-2 hours (untested estimate)
+
+⚠️ **Important:** This RTO has NOT been verified with a real restore test.
 
 ```bash
 # 1. Install OpenClaw
@@ -319,9 +349,9 @@ Remaining: ~14.6GB
 - Native backup → disaster recovery (manual)
 
 ### Future Improvements (optional)
-1. **Offsite backup:** Second copy to AWS S3 or Backblaze B2 (for true 3-2-1 backup)
-2. **Encrypted backups:** Add GPG encryption to Drive backups (currently unencrypted)
-3. **Backup testing:** Quarterly restore drill to verify RTO
+1. **Quarterly restore drill:** Verify RTO with real restore test (currently untested)
+2. **Offsite backup:** Second copy to AWS S3 or Backblaze B2 (for true 3-2-1 backup)
+3. **Encrypted backups:** Add GPG encryption to Drive backups (currently unencrypted)
 4. **Monitoring:** Alert if backup fails 2+ days in a row
 
 ### NOT Recommended ❌
