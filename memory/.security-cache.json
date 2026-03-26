@@ -1,7 +1,7 @@
 {
   "calls": [
     {
-      "timestamp": "2026-03-25T04:00:23.902048",
+      "timestamp": "2026-03-26T04:54:20.384264",
       "caller": "cli",
       "tool": "scan_inbound",
       "cost": 0.0

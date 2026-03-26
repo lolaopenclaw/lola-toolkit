@@ -1,14 +1,12 @@
 {
-  "date": "2026-03-25",
-  "time": "01:30",
-  "status": "ok",
-  "packages_available": 2,
-  "packages_updated": 0,
-  "security_count": 0
-0,
-  "regular_count": 2,
-  "packages": [{"name":"intel-media-va-driver","type":"regular"},{"name":"libigdgmm12","type":"regular"}],
-  "reboot_required": false,
-  "remaining": 2,
-  "note": "Auto-applied. OpenClaw excluded (always manual)."
+  "timestamp": "2026-03-26T01:30:00Z",
+  "status": "error",
+  "cron_id": "ed1d9b11-5ba1-44ed-8f8b-0b359ddcd45e",
+  "error_type": "syntax_error",
+  "error_details": [
+    "line 59: syntax error in expression (error token is \"0\")",
+    "line 85: UPDATED: unbound variable"
+  ],
+  "message": "El script tiene errores de sintaxis en bash. Revisar líneas 59 y 85.",
+  "action_required": true
 }
