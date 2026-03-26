@@ -14,7 +14,7 @@
 
 ## 🎬 YouTube → `memory/youtube-analysis-executive-summary.md` (14 use cases, transcript analysis)
 
-## 🐙 GitHub — lolaopenclaw | `lola-toolkit` (public scripts/skills/protocols) | Policy: code ✅ | secrets/keys/IPs/paths ❌
+## 🐙 GitHub — lolaopenclaw | `lola-toolkit` public | Policy: code ✅ secrets/keys/IPs ❌
 
 ## 🧠 Knowledge Graph → `memory/entities/` (auto | SKIP autoimprove)
 PARA | weekly decay | vector+FTS via Ollama (reindex 4:30AM)
