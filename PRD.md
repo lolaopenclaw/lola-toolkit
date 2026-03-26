@@ -53,6 +53,14 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 - **Session Logs:** `~/.openclaw/agents/main/sessions/*.jsonl` (cost analysis)
 - **Knowledge Base:** SQLite with FTS5 (`data/knowledge-base.db`)
 
+### Quality Assurance
+- **Adversarial Evaluation Protocol:** Three-layer pipeline to catch errors before production:
+  1. **Ralph Wiggum Layer:** Intentionally naive critique to expose obvious flaws
+  2. **Evaluator Layer:** Formal assessment of accuracy, completeness, and consistency
+  3. **Human Approval:** Final review for high-stakes outputs
+- **Documentation:** `memory/adversarial-evaluation-protocol.md`
+- **Use cases:** PRD updates, system architecture changes, critical automation scripts
+
 ---
 
 ## Features
@@ -86,8 +94,8 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 - **Value:** Complete system status visibility in 1 message. Detects issues before they escalate.
 
 ### 5. Knowledge Base with RAG
-- **What it does:** Ingests content (articles, YouTube, PDFs) and enables full-text + semantic search (future).
-- **How it works:** Scripts `knowledge-base-ingest.sh` and `knowledge-base-search.sh`. SQLite with FTS5. Chunking ~500 words. Embedding field prepared for vector search.
+- **What it does:** Ingests content (articles, YouTube, PDFs) and enables full-text search. **Phase 1 (current): FTS5 full-text search only.** Embedding field exists in schema but is not active.
+- **How it works:** Scripts `knowledge-base-ingest.sh` and `knowledge-base-search.sh`. SQLite with FTS5. Chunking ~500 words. **Phase 2 (roadmap): Vector embeddings for semantic search.**
 - **Model used:** N/A (text extraction), Gemini for summaries
 - **Frequency:** On-demand (manual)
 - **Value:** Persistent external memory. Lola can "remember" technical articles you read weeks ago.
@@ -142,9 +150,9 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
   - **3:00 AM:** Scripts agent (improves bash/python scripts)
   - **3:05 AM:** Skills agent (improves SKILL.md files)
   - **3:10 AM:** Memory agent (detects inconsistencies, duplicates)
-- **Model used:** Sonnet (analysis), Haiku (validation)
+- **Model used:** Sonnet (analysis + validation). Upgraded from Haiku March 25, 2026 after Feb-Mar 18 error period.
 - **Frequency:** Daily (2:00-3:15 AM)
-- **Value:** Self-improving system. Detected and fixed 12 memory inconsistencies in March.
+- **Value:** Self-improving system. Detected and fixed 12 memory inconsistencies in March. Errors resolved as of March 2026.
 
 ### 12. Prompt Optimization (Best Practices)
 - **What it does:** Best practice guides by model (Opus, Sonnet, Haiku).
@@ -182,8 +190,8 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 - **Value:** Proactive alert if there are good waves. Useful for planning sessions.
 
 ### 17. Config Drift Detection
-- **What it does:** Detects unauthorized changes in critical configuration (openclaw.config.yml, cron jobs, .env).
-- **How it works:** Daily cron 2:00 AM. `config-drift-detector.py` compares snapshots vs baseline. Alerts if changes detected.
+- **What it does:** Detects unauthorized changes in critical configuration files.
+- **How it works:** Daily cron 2:00 AM. `config-drift-detector.py` compares snapshots vs baseline (openclaw.config.yml, cron jobs, .env). Python-based baseline snapshots stored in `data/config-baselines/`.
 - **Model used:** Haiku (baseline comparison)
 - **Frequency:** Daily (2:00 AM)
 - **Value:** Protection against accidental or malicious modifications. Detected 2 undocumented changes in February.
@@ -211,7 +219,7 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 
 ### 21. Finance Tracking (Markdown-based)
 - **What it does:** Tracks bank transactions with automatic categorization.
-- **How it works:** 447 transactions since Dec 2025. Structure: `memory/finanzas/movimientos-2026.md` + monthly summaries. Google Sheet as legacy source of truth.
+- **How it works:** 447 transactions since Dec 2025. Structure: `memory/finanzas/movimientos-2026.md` + monthly summaries. **Markdown is source of truth** (migrated from Google Sheets March 24, 2026).
 - **Model used:** Sonnet (analysis + categorization)
 - **Frequency:** On-demand (manual update every ~15 days)
 - **Value:** Spending visibility by category. Detects anomalous expenses. Foundation for future projections.
@@ -243,6 +251,41 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 - **Model used:** Gemini Image Gen (fallback to OpenAI if configured)
 - **Frequency:** On-demand
 - **Value:** Illustrations for reports, concept visualization, memes.
+
+### 26. Runtime Governance
+- **What it does:** Protects against runaway spending and infinite sub-agent loops.
+- **How it works:** `runtime-governance.sh` monitors active sessions, detects cost anomalies, enforces rate limits. `emergency-cost-stop.sh` kills spending immediately if thresholds breached.
+- **Model used:** N/A (bash monitoring)
+- **Frequency:** Continuous monitoring
+- **Value:** Prevents scenarios like "sub-agent loop spent $200 in 2 hours". Built March 25, 2026.
+
+### 27. Notification Batching
+- **What it does:** Aggregates non-urgent notifications to reduce Telegram noise.
+- **How it works:** `notification-batcher.sh` queues messages by priority (critical/high/medium/low) in `data/notification-queue.jsonl`. Digest sent per priority thresholds (critical: instant, high: 1h, medium: 3h, low: morning).
+- **Model used:** N/A (bash + jq)
+- **Frequency:** Priority-based batching
+- **Value:** Reduces Telegram noise by 60-80%. **Status: 80% complete (script ready, cron integration pending).** Built March 25, 2026.
+
+### 28. Adversarial Evaluation Protocol
+- **What it does:** Three-layer quality pipeline to catch errors before they reach production.
+- **How it works:** Layer 1 (Ralph Wiggum): intentionally naive critique. Layer 2 (Evaluator): formal assessment. Layer 3 (Human): final approval. Reference: `memory/adversarial-evaluation-protocol.md`.
+- **Model used:** Sonnet (Ralph + Evaluator layers)
+- **Frequency:** On-demand (high-stakes outputs)
+- **Value:** Prevents overconfident errors. Detected PRD inconsistencies March 26, 2026. Built March 26, 2026.
+
+### 29. Driving Mode Auto-Reset
+- **What it does:** Automatically resets driving mode to "home" at 22:00 daily.
+- **How it works:** Daily cron 22:00 updates `memory/driving-mode-state.json` to `{"mode": "home"}`.
+- **Model used:** N/A (bash)
+- **Frequency:** Daily (22:00 Madrid)
+- **Value:** Prevents stuck driving mode. Ensures text responses resume after evening commute.
+
+### 30. Ubuntu Pro Livepatch
+- **What it does:** Applies kernel security patches without requiring reboot.
+- **How it works:** Ubuntu Pro subscription (free for personal use). Livepatch service runs continuously. Critical kernel patches applied automatically.
+- **Model used:** N/A (Ubuntu Pro service)
+- **Frequency:** Continuous
+- **Value:** 0 unpatched kernel vulnerabilities. System uptime maintained during security updates.
 
 ---
 
@@ -289,6 +332,8 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 | **Google Workspace** | $0 (free gmail account) |
 | **GitHub** | $0 (public repos) |
 | **Total** | **~$111/month** |
+
+**Weekly average:** ~$118 (from usage-report). **Opus represents 56% of costs** despite being used less frequently. Ongoing optimization efforts targeting cost reduction from current ~$500/month projected annual rate to ~$200/month target.
 
 ### Applied Optimizations
 - **Multi-model routing:** ~70% savings vs Opus-only (~$310/month → $93/month in APIs)
@@ -337,25 +382,24 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 
 ### Q2 2026 (April - June)
 
-#### Smart Notifications
-- **Batching:** Aggregate non-urgent notifications (e.g., crons) and send 1 summary instead of N messages.
-- **Priority routing:** Telegram topics by urgency (CRITICAL → immediate alert, INFO → batching).
-- **Quiet hours enforcement:** 00:00-07:00 Madrid without notifications (already partially implemented).
-
-#### Wallet Draining Defense
-- **What it is:** Protection against infinite sub-agent loops that drain API balance.
-- **How:** Rate limits per session/hour, automatic kill switches if spending >$X in Y minutes, proactive alerts.
-- **Target:** Avoid scenarios like "sub-agent loop spent $200 in 2 hours".
-
-#### Knowledge Base RAG (Phase 2)
+#### Knowledge Base Phase 2 (Vector Embeddings)
 - **Vector embeddings:** Activate `chunks.embedding` field in SQLite.
 - **Semantic search:** Similarity-based searches (not just keywords).
 - **Auto-ingestion:** Weekly cron to ingest content from RSS/bookmarks.
 
-#### Visual Dashboard
+#### Visual Dashboard (Real Implementation)
 - **Canvas integration:** Web UI on localhost:3333 to visualize system status.
 - **Widgets:** Costs, crons, memory, garmin health, finances.
 - **Real-time updates:** WebSocket push of events.
+
+#### WhatsApp Integration
+- **wacli skill:** Already exists but unused. Activate for third-party messages.
+- **History sync:** Automatic backup of important conversations.
+
+#### Cost Optimization
+- **Target:** Reduce monthly spend from ~$500 to ~$200/month.
+- **Methods:** Increased Haiku usage for simple tasks, prompt optimization, local model evaluation for crons.
+- **Opus reduction:** Currently 56% of costs — target 30% by routing more tasks to Sonnet.
 
 ### Q3 2026 (July - September)
 
@@ -368,10 +412,6 @@ Lola is an AI personal assistant that operates 24/7 on a private VPS, integratin
 - **Sleep vs Activity:** Detect if poor sleep affects performance.
 - **Stress vs Calendar:** Correlate stress with scheduled events.
 - **Body Battery predictions:** ML model to predict next day's energy.
-
-#### WhatsApp Integration
-- **wacli skill:** Already exists but unused. Activate for third-party messages.
-- **History sync:** Automatic backup of important conversations.
 
 ### Q4 2026 (October - December)
 
