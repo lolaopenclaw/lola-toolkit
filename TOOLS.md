@@ -122,6 +122,18 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
   - `bash scripts/notification-batcher.sh flush <priority>` → Send digest for priority level and below
 - **Status:** ✅ Script ready, ⏳ Cron integration pending
 
+### Performance Tracking
+- **performance-tracker.sh** — Analyze response latency, model usage, and degradation from session logs
+- **performance-alert.sh** — Quick health check for cron (exit codes: 0=OK, 1=WARNING, 2=CRITICAL)
+- **Docs:** `memory/performance-tracking.md`
+- **Data source:** `~/.openclaw/agents/main/sessions/*.jsonl`
+- **Usage:**
+  - `bash scripts/performance-tracker.sh --today --summary` → Today's performance report
+  - `bash scripts/performance-tracker.sh --week --degradation` → Degradation analysis
+  - `bash scripts/performance-tracker.sh --slow 60` → Messages taking >60s
+  - `bash scripts/performance-alert.sh` → Quick health check (for cron)
+- **Metrics:** latency (avg/p50/p90/p99), by model, by hour, context size correlation, slow messages
+
 **Ver lista completa:** `ls -1 scripts/` (30+ scripts)
 
 ---

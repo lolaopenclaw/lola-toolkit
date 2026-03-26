@@ -279,11 +279,16 @@ $TOKEN_SECTION
 
 echo "$INFORME"
 
-# NOTE: This script outputs the report. Delivery to Discord is handled
-# by the OpenClaw cron job delivery config (mode=announce, channel=discord).
-# The cron agent session reads the output and delivers it.
-
 # 14. Save report
 echo "📝 Guardando informe..."
 echo "$INFORME" > ~/.openclaw/workspace/memory/$TODAY-informe.md
-echo "✅ Informe guardado en memory/$TODAY-informe.md"
+
+# 15. Send to Telegram topic 24 (Reportes Diarios)
+echo "📤 Enviando a Telegram..."
+openclaw message send \
+    --channel telegram \
+    --target "-1003768820594" \
+    --thread-id "24" \
+    -m "$INFORME" 2>&1 || echo "⚠️ Error enviando a Telegram"
+
+echo "✅ Informe completado"
