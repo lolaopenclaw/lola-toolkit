@@ -23,8 +23,7 @@ PARA | weekly decay | vector+FTS via Ollama (reindex 4:30AM)
 
 ## 🚗 Driving Mode → `memory/driving-mode-protocol.md` | `memory/driving-mode-improvements.md`
 
-## 🤖 Multi-Agent → `memory/multi-agent-architecture.md`
-**HITL:** `memory/hitl-protocol.md`
+## 🤖 Multi-Agent → `memory/multi-agent-architecture.md` | HITL: `memory/hitl-protocol.md`
 
 ## 🔧 CLI Tools → `memory/cli-anything-research.md`
 
