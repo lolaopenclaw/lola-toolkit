@@ -22,11 +22,14 @@ echo "=== OpenClaw Memory Backup - ${BACKUP_DATE} ==="
 mkdir -p "$BACKUP_DIR"/{gnupg,keyrings,gog-config,system-snapshot} 2>/dev/null || true
 
 echo "Copiando workspace..."
+# Parallelize all workspace copies
+safe_sync "$WORKSPACE/memory/" "$BACKUP_DIR/memory/" &
+safe_sync "$WORKSPACE/scripts/" "$BACKUP_DIR/scripts/" &
+safe_sync "$WORKSPACE/skills/" "$BACKUP_DIR/skills/" &
 {
-    cd "$WORKSPACE" && tar cf - SOUL.md USER.md AGENTS.md IDENTITY.md TOOLS.md HEARTBEAT.md MEMORY.md RECOVERY.md BOOT.md cron-jobs.json 2>/dev/null | tar xf - -C "$BACKUP_DIR/" 2>/dev/null || true
-    safe_sync "$WORKSPACE/memory/" "$BACKUP_DIR/memory/"
-    safe_sync "$WORKSPACE/scripts/" "$BACKUP_DIR/scripts/"
-    safe_sync "$WORKSPACE/skills/" "$BACKUP_DIR/skills/"
+    for f in SOUL.md USER.md AGENTS.md IDENTITY.md TOOLS.md HEARTBEAT.md MEMORY.md RECOVERY.md BOOT.md cron-jobs.json; do
+        [ -f "$WORKSPACE/$f" ] && safe_copy "$WORKSPACE/$f" "$BACKUP_DIR/$f"
+    done
 } &
 wait
 
@@ -64,7 +67,7 @@ echo "Copiando snapshot de sistema..."
 wait
 echo "Creando tarball..."
 BACKUP_FILE="/tmp/openclaw-backup-${BACKUP_DATE}.tar.gz"
-tar c -C /tmp "openclaw-backup-${BACKUP_DATE}" | pigz -1 > "$BACKUP_FILE" 2>/dev/null || tar c -C /tmp "openclaw-backup-${BACKUP_DATE}" | gzip -1 > "$BACKUP_FILE"
+tar c -C /tmp "openclaw-backup-${BACKUP_DATE}" | pigz -1 > "$BACKUP_FILE"
 BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
 FILE_COUNT=$(find "$BACKUP_DIR" -type f | wc -l)
 # Delete previous backups for same date (prevent duplicates)

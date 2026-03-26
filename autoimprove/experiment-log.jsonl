@@ -163,3 +163,4 @@
 {"ts":"2026-03-26T03:03:10Z","target":"scripts/backup-memory.sh","change":"use printf instead of date command","before":325,"after":326,"kept":false,"delta":-1}
 {"ts":"2026-03-26T03:03:23Z","target":"scripts/backup-memory.sh","change":"move mkdir into workspace block","before":325,"after":326,"kept":false,"delta":-1}
 {"ts":"2026-03-26T03:03:47Z","target":"scripts/backup-memory.sh","change":"remove || true from tar pipe","before":325,"after":325,"kept":false,"delta":0}
+{"ts":"2026-03-26T14:20:56Z","target":"backup-speed","change":"Reduced tar calls from 4 to 1 by replacing tar pipe with direct rsync/cp","before":326,"after":324,"kept":true,"delta":2}
