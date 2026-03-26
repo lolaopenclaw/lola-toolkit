@@ -4,7 +4,7 @@
 
 ## 🔧 TECHNICAL → `memory/technical.md` | Crons: 4AM/4:30AM/9AM | TTS: Google 1.25x | Driving ✅
 
-## 🔐 SECURITY & AUDITS → `memory/security.md` | 0 CRITICAL | HARDENED | Q2 2026 rotation
+## 🔐 SECURITY & AUDITS → `memory/security.md` | HARDENED | Q2 2026 rotation
 
 ## 💰 Finanzas & 🖥️ Dashboards → `memory/{finanzas,dashboards,calendar}.md`
 
