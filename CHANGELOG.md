@@ -114,3 +114,9 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-26 15:50:26** | fix: session-log-rotation subshell variable bug | `b3207c3` | [`backup-b3207c3`](backups-by-commit/backup-b3207c3*.tar.gz)
 
+- **2026-03-26 15:55:04** | fix: session-log-rotation counters + archive garmin duplicate | `7947b52` | [`backup-7947b52`](backups-by-commit/backup-7947b52*.tar.gz)
+
+- **2026-03-26 15:56:53** | fix: backup strategy — honest RTOs, OAuth alert, remove DB from git | `4d61fed` | [`backup-4d61fed`](backups-by-commit/backup-4d61fed*.tar.gz)
+
+- **2026-03-26 16:10:25** | fix: healthcheck — counter bugs, visible failures | `6b676ca` | [`backup-6b676ca`](backups-by-commit/backup-6b676ca*.tar.gz)
+
