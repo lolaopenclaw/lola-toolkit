@@ -14,41 +14,17 @@ DRIVE_FOLDER="1G-OLpZKJ2zQXac0qaKxvaeglbRUuRxfD"
 BACKUP_DATE=$(date -u +%Y-%m-%d)
 BACKUP_DIR="/tmp/openclaw-backup-${BACKUP_DATE}"
 
-# Helper functions for safe file operations
-safe_copy() { cp "$1" "$2" 2>/dev/null || true; }
-safe_sync() { rsync -a "$1" "$2" 2>/dev/null || true; }
-
 echo "=== OpenClaw Memory Backup - ${BACKUP_DATE} ==="
 mkdir -p "$BACKUP_DIR"/{gnupg,keyrings,gog-config,system-snapshot} 2>/dev/null || true
 
 # Parallelize all copy operations
-safe_sync "$WORKSPACE/memory/" "$BACKUP_DIR/memory/" &
-safe_sync "$WORKSPACE/scripts/" "$BACKUP_DIR/scripts/" &
-safe_sync "$WORKSPACE/skills/" "$BACKUP_DIR/skills/" &
-{
-    for f in SOUL.md USER.md AGENTS.md IDENTITY.md TOOLS.md HEARTBEAT.md MEMORY.md RECOVERY.md BOOT.md cron-jobs.json; do
-        [ -f "$WORKSPACE/$f" ] && safe_copy "$WORKSPACE/$f" "$BACKUP_DIR/$f"
-    done
-} &
-{
-    safe_copy "$OPENCLAW_DIR/openclaw.json" "$BACKUP_DIR/openclaw.json"
-    safe_copy "$OPENCLAW_DIR/.env" "$BACKUP_DIR/dot-env"
-    [ -d "$HOME/.gnupg" ] && safe_sync "$HOME/.gnupg/" "$BACKUP_DIR/gnupg/"
-    [ -d "$HOME/.password-store" ] && safe_sync "$HOME/.password-store/" "$BACKUP_DIR/password-store/"
-} &
-{
-    for crondir in "$OPENCLAW_DIR/cron" "$OPENCLAW_DIR/data/cron"; do
-        [ -d "$crondir" ] && safe_copy "$crondir" "$BACKUP_DIR/cron-db" && break
-    done
-    [ -d "$HOME/.config/gog" ] && safe_copy "$HOME/.config/gog/"* "$BACKUP_DIR/gog-config/"
-    [ -d "$HOME/.local/share/keyrings" ] && safe_copy "$HOME/.local/share/keyrings/"* "$BACKUP_DIR/keyrings/"
-    [ -f "$HOME/.config/rclone/rclone.conf" ] && safe_copy "$HOME/.config/rclone/rclone.conf" "$BACKUP_DIR/rclone.conf"
-} &
-{
-    openclaw --version > "$BACKUP_DIR/system-snapshot/openclaw-version.txt" 2>/dev/null || true
-    node --version > "$BACKUP_DIR/system-snapshot/node-version.txt" 2>/dev/null || true
-    safe_copy "$WORKSPACE/scripts/restore.sh" "$BACKUP_DIR/restore.sh"
-} &
+{ rsync -a "$WORKSPACE/memory/" "$BACKUP_DIR/memory/" 2>/dev/null || true; } &
+{ rsync -a "$WORKSPACE/scripts/" "$BACKUP_DIR/scripts/" 2>/dev/null || true; } &
+{ rsync -a "$WORKSPACE/skills/" "$BACKUP_DIR/skills/" 2>/dev/null || true; } &
+{ for f in SOUL.md USER.md AGENTS.md IDENTITY.md TOOLS.md HEARTBEAT.md MEMORY.md RECOVERY.md BOOT.md cron-jobs.json; do [ -f "$WORKSPACE/$f" ] && cp "$WORKSPACE/$f" "$BACKUP_DIR/$f" 2>/dev/null; done; } &
+{ cp "$OPENCLAW_DIR/openclaw.json" "$BACKUP_DIR/openclaw.json" 2>/dev/null || true; cp "$OPENCLAW_DIR/.env" "$BACKUP_DIR/dot-env" 2>/dev/null || true; [ -d "$HOME/.gnupg" ] && rsync -a "$HOME/.gnupg/" "$BACKUP_DIR/gnupg/" 2>/dev/null || true; [ -d "$HOME/.password-store" ] && rsync -a "$HOME/.password-store/" "$BACKUP_DIR/password-store/" 2>/dev/null || true; } &
+{ for d in "$OPENCLAW_DIR/cron" "$OPENCLAW_DIR/data/cron"; do [ -d "$d" ] && cp -r "$d" "$BACKUP_DIR/cron-db" 2>/dev/null && break; done || true; [ -d "$HOME/.config/gog" ] && cp "$HOME/.config/gog/"* "$BACKUP_DIR/gog-config/" 2>/dev/null || true; [ -d "$HOME/.local/share/keyrings" ] && cp "$HOME/.local/share/keyrings/"* "$BACKUP_DIR/keyrings/" 2>/dev/null || true; [ -f "$HOME/.config/rclone/rclone.conf" ] && cp "$HOME/.config/rclone/rclone.conf" "$BACKUP_DIR/rclone.conf" 2>/dev/null || true; } &
+{ openclaw --version > "$BACKUP_DIR/system-snapshot/openclaw-version.txt" 2>/dev/null || true; node --version > "$BACKUP_DIR/system-snapshot/node-version.txt" 2>/dev/null || true; cp "$WORKSPACE/scripts/restore.sh" "$BACKUP_DIR/restore.sh" 2>/dev/null || true; } &
 wait
 # Create archive and upload
 BACKUP_FILE="/tmp/openclaw-backup-${BACKUP_DATE}.tar.gz"

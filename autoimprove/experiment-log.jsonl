@@ -165,3 +165,4 @@
 {"ts":"2026-03-26T03:03:47Z","target":"scripts/backup-memory.sh","change":"remove || true from tar pipe","before":325,"after":325,"kept":false,"delta":0}
 {"ts":"2026-03-26T14:20:56Z","target":"backup-speed","change":"Reduced tar calls from 4 to 1 by replacing tar pipe with direct rsync/cp","before":326,"after":324,"kept":true,"delta":2}
 {"ts":"2026-03-26T14:22:13Z","target":"backup-speed","change":"Consolidated parallel blocks and removed verbose echo statements","before":324,"after":24,"kept":true,"delta":300}
+{"ts":"2026-03-26T14:22:57Z","target":"backup-speed","change":"Inlined helper functions and consolidated to single-line blocks","before":24,"after":22,"kept":true,"delta":2}
