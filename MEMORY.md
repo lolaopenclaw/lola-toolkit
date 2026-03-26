@@ -10,7 +10,7 @@
 
 ## 🏃 Garmin & Health → `memory/garmin-integration.md` + `memory/{garmin,health}/`
 
-## 🛡️ Harness → `memory/harness-weekly-review-2026-03-24.md` | `memory/advanced-harness-research.md`
+## 🛡️ Harness → `memory/{harness-weekly-review-2026-03-24,advanced-harness-research}.md`
 
 ## 🎬 YouTube → `memory/youtube-analysis-executive-summary.md`
 
