@@ -9,3 +9,13 @@ temp/
 *client_secret*
 *-SECRETS-*
 memory/WAL/snapshots/
+
+# Notification queue (transient)
+data/notification-queue.jsonl
+data/notification-queue.lock
+
+# Cache & ephemeral state
+.cache/
+logs/
+*.pyc
+__pycache__/

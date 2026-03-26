@@ -254,28 +254,157 @@ bash scripts/notification-batcher.sh add critical "test" "This should send immed
 ✅ TOOLS.md actualizado
 ✅ Suite de tests creada (`scripts/test-notification-batcher.sh`)
 ✅ Todos los tests pasan
-⏳ Cron jobs de flush pendientes (se crearán después)
+✅ **Cron jobs de flush ACTIVOS** (2026-03-26)
 ⏳ Migración de cron jobs existentes pendiente
+
+---
+
+## Cron Jobs de Flush (ACTIVOS)
+
+### High Priority Flush (Hourly)
+- **ID:** `81e5e438-48f5-4642-95f0-480655422664`
+- **Name:** 📬 Notification Flush (hourly/high)
+- **Schedule:** `50 * * * *` (every hour at :50)
+- **Model:** haiku
+- **Target:** Telegram -1003768820594:25
+- **Next run:** Every hour at :50
+
+### Medium Priority Flush (3-Hourly)
+- **ID:** `529c7e09-940c-4b95-ae75-f0de2e84e41b`
+- **Name:** 📬 Notification Flush (3h/medium)
+- **Schedule:** `55 */3 * * *` (every 3 hours at :55)
+- **Model:** haiku
+- **Target:** Telegram -1003768820594:25
+- **Next run:** Every 3 hours at :55
+
+### Low Priority Flush (Morning)
+- **ID:** `5d16bb07-0f7b-4d2d-a1dd-db9d0e92e2a3`
+- **Name:** 📬 Notification Flush (morning/low)
+- **Schedule:** `45 9 * * *` @ Europe/Madrid (9:45 AM daily)
+- **Model:** haiku
+- **Target:** Telegram -1003768820594:25
+- **Next run:** Daily at 9:45 AM Madrid time
+
+---
+
+## Cron Jobs Candidatos para Migración
+
+Estos cron jobs actualmente envían notificaciones directamente a Telegram y deberían migrarse al sistema de batching:
+
+### High Priority (hourly flush)
+- **`fdf38b8f-6d68-4798-84ea-1e2a24c61e75`** — healthcheck:security-audit (Lun 9:30)
+- **`51d7437f-d216-4d03-bd37-6f00ce17967c`** — 💰 Daily Cost Alert (8 PM daily)
+- Rate limit monitors (si existen)
+
+### Medium Priority (3-hourly flush)
+- **`c8522805-6bc4-451e-887b-69866ddf5b95`** — healthcheck:fail2ban-check (every 6h)
+- **`78d3556f-a203-455d-b718-b9ac7c183dbc`** — healthcheck:rkhunter-check (Lun 9:10)
+- **`edc0db6e-a1b3-4837-858a-68f859300614`** — healthcheck:lynis-scan (Lun 9:20)
+- **`08325b21-b11d-4b15-b065-cbbc8d6b4bdb`** — 🔬 Autoresearch (si reporta)
+- Backup validators/status checks
+
+### Low Priority (morning flush)
+- **`07256dbe-2161-4eb2-af22-059834407d54`** — 🧹 Cleanup audit semaphore (Domingo 10 PM)
+- **`6982dc7e-1aa8-428c-9d5a-ac3a0c2cb411`** — memory-decay-weekly (Domingo 11 PM)
+- **`a2cb9eec-19ab-45f8-ab18-7b1a979fec93`** — 🧠 Memory Guardian Pruner (Domingo 11 PM)
+- **`f5d72c76-301e-47df-a25d-9062e4d1d019`** — 📋 Markdown Drift Checker (Lunes 5 AM)
+- Surf conditions reports
+- Weekly/monthly summaries
+
+### Do NOT Migrate
+- **`cb5d3743-2d8b-480b-ac64-ef030a689cf0`** — 📋 Informe Matutino (stay as-is, master digest)
+- **`7a7086e5-5a3c-41ad-880b-64a25a927aae`** — 🏠 Driving Mode Auto-reset (system state, not notification)
+- **`3a82af7d-4acf-4a0f-9772-46efc2895e46`** — 🔄 Auto-update OpenClaw (interactive, not reportable)
+- **`ed1d9b11-5ba1-44ed-8f8b-0b359ddcd45e`** — 🔄 System Updates Nightly (system maintenance)
+- Emergency/critical alerts that must arrive instantly
+
+---
+
+## Cómo Migrar un Cron Job
+
+### Paso 1: Identificar el payload actual
+
+```bash
+# Ver configuración del cron
+openclaw cron list | grep <cron-name-or-id>
+```
+
+### Paso 2: Determinar prioridad
+
+- **critical** → Necesita respuesta inmediata (alertas de seguridad, fallas de gateway)
+- **high** → Requiere atención en 1 hora (cost alerts, security findings)
+- **medium** → Informativo, puede esperar 3h (backup status, health checks)
+- **low** → FYI, puede esperar hasta la mañana (cleanup results, weekly summaries)
+
+### Paso 3: Modificar el payload del cron
+
+**Antes:**
+```
+Run security audit and report findings to Telegram.
+```
+
+**Después:**
+```
+Run security audit. If findings are critical, use priority 'critical'. Otherwise write to queue:
+bash /home/mleon/.openclaw/workspace/scripts/notification-batcher.sh add high "security-audit" "<summary>"
+Respond HEARTBEAT_OK if no critical issues.
+```
+
+### Paso 4: Actualizar el cron
+
+```bash
+openclaw cron edit <cron-id> --message "<new-payload>"
+```
+
+### Paso 5: Verificar en próxima ejecución
+
+- Comprobar que el mensaje se añade a la cola (`cat data/notification-queue.jsonl`)
+- Confirmar que aparece en el próximo digest flush
+- Validar que el formato es correcto
+
+---
+
+## Ejemplo de Migración: Security Audit
+
+**Antes (enviaba directamente):**
+```
+Payload: Run weekly security audit (lynis, rkhunter, fail2ban). 
+Report findings to Telegram channel.
+Delivery: announce to telegram -1003768820594
+```
+
+**Después (escribe a cola):**
+```
+Payload: Run weekly security audit (lynis, rkhunter, fail2ban). 
+Write results to queue:
+bash scripts/notification-batcher.sh add high "security-audit" "<findings-summary>"
+Respond HEARTBEAT_OK.
+Delivery: no-deliver (se enviará con hourly flush)
+```
+
+**Comando de actualización:**
+```bash
+openclaw cron edit fdf38b8f-6d68-4798-84ea-1e2a24c61e75 \
+  --message "Run weekly security audit. Write results: bash scripts/notification-batcher.sh add high 'security-audit' '<summary>'. Respond HEARTBEAT_OK." \
+  --no-deliver
+```
 
 ---
 
 ## Próximos Pasos
 
-1. **Crear cron jobs de flush:**
-   - Hourly flush (high)
-   - 3-hourly flush (medium)
-   - Morning report (low, 8:00 AM)
-
-2. **Migrar cron jobs existentes:**
-   - Identificar todos los crons que envían a Telegram directamente
-   - Reemplazar `telegram-send` / `openclaw message send` con `notification-batcher.sh add`
-   - Asignar prioridades adecuadas
-
-3. **Monitoreo:**
+1. ✅ **Cron jobs de flush creados** (2026-03-26)
+2. ⏳ **Migrar cron jobs uno por uno:**
+   - Empezar con los de baja prioridad (low)
+   - Continuar con medium
+   - Finalizar con high
+   - Nunca migrar critical (deben enviar instantáneamente)
+3. ⏳ **Monitoreo (1-2 semanas):**
    - Verificar que los digests se envían correctamente
    - Ajustar frecuencias si hay demasiado/poco ruido
+   - Verificar que no se pierden notificaciones importantes
 
 ---
 
 *Creado: 2026-03-25*
-*Última actualización: 2026-03-25*
+*Última actualización: 2026-03-26 — Crons de flush activados, guía de migración añadida*

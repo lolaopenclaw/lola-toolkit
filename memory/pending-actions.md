@@ -41,11 +41,14 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - **Why:** Less cron sprawl, less notification noise, 1 report to read
 - **Effort:** 3-4h
 
-### 3. Clean Up Duplicate Scripts
-- **Morning report:** `generate-morning-report.sh` vs `informe-matutino-auto.sh` — pick one
-- **Garmin:** `garmin-health-report.sh` vs `health-dashboard.sh` vs `health-alerts.sh` — clarify roles or merge
-- **Cron delivery fix:** `fix-cron-delivery.sh` vs `fix-cron-delivery.py` — delete one
-- **Effort:** 1-2h
+### ✅ 3. Clean Up Duplicate Scripts (DONE 2026-03-26)
+- ✅ **Morning report:** No duplicate (`generate-morning-report.sh` never existed)
+- ✅ **Garmin:** All 3 scripts serve distinct purposes (documented in `scripts/archive/CONSOLIDATION-DECISIONS.md`)
+  - `garmin-health-report.sh` → Core data fetcher (used by cron + morning report)
+  - `health-dashboard.sh` → HTML dashboard generator
+  - `health-alerts.sh` → Threshold monitoring / JSON alerts
+- ✅ **Cron delivery fix:** Both archived to `scripts/archive/` (one-time fixes, completed 2026-03-25)
+- ✅ **Commit:** `7078ed1` — "consolidate: archive one-time cron-delivery fix scripts, document Garmin script roles"
 
 ### 4. Session Log Rotation
 - **Current:** 148 logs, 60MB, no cleanup

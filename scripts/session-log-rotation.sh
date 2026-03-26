@@ -125,12 +125,19 @@ if [[ ${#TO_DELETE[@]} -gt 0 ]]; then
   done
 fi
 
-# Calculate space freed
+# Calculate space freed (with better precision for small values)
 if ! $DRY_RUN && [[ $COMPRESSED_COUNT -gt 0 ]]; then
   SPACE_FREED=$((SPACE_BEFORE - SPACE_AFTER))
-  SPACE_FREED_MB=$((SPACE_FREED / 1024 / 1024))
+  # Use KB for values <10MB to show meaningful numbers
+  if [[ $SPACE_FREED -lt 10485760 ]]; then
+    SPACE_FREED_KB=$((SPACE_FREED / 1024))
+    SPACE_FREED_DISPLAY="${SPACE_FREED_KB}KB"
+  else
+    SPACE_FREED_MB=$((SPACE_FREED / 1024 / 1024))
+    SPACE_FREED_DISPLAY="${SPACE_FREED_MB}MB"
+  fi
 else
-  SPACE_FREED_MB=0
+  SPACE_FREED_DISPLAY="0KB"
 fi
 
 # Report
@@ -146,7 +153,7 @@ else
     echo "✅ Session Log Rotation Complete"
     echo "  - Compressed: $COMPRESSED_COUNT files"
     echo "  - Deleted: $DELETED_COUNT files"
-    echo "  - Space freed: ${SPACE_FREED_MB}MB"
+    echo "  - Space freed: ${SPACE_FREED_DISPLAY}"
   fi
 fi
 
