@@ -1,56 +1,109 @@
-# Pending Actions
+# Pending Actions — Master Plan
 
-## 🔴 Ready to Implement
-
-### 1. Knowledge Base con RAG
-- **Status:** Plan aprobado — LISTO PARA IMPLEMENTAR
-- **Date:** 2026-03-25
-- **Priority:** Alta
-- **Esfuerzo:** 6-8h
-- **Plan:** Topic Telegram "📚 Knowledge Base" → dejar links → ingesta automática (web, YouTube, tweets, PDFs) → búsqueda semántica (SQLite + vector embeddings)
-
-### 2. Prompt Optimization Guide (completar)
-- **Status:** Plan aprobado — LISTO PARA IMPLEMENTAR
-- **Date:** 2026-03-25
-- **Priority:** Media-alta
-- **Esfuerzo:** 4h
-- **Base existente:** memory/best-practices/, memory/model-specific-prompts.md
-- **Plan:** Referencia automática al modificar prompts + audit de prompts existentes + auto-update mejorado
-
-## 🟡 Backlog (aprobadas pero no urgentes)
-
-### 3. Markdown Drift Checker
-- **Esfuerzo:** 2-3h
-- **Qué:** Audit diario de todos los .md — buscar duplicados, conflictos, info obsoleta
-- **Nota:** Complementa autoimprove pero enfocado en coherencia, no tokens
-
-### 4. API Cost Tracker
-- **Esfuerzo:** 2h
-- **Qué:** Logear todas las llamadas API, poder preguntar "¿cuánto he gastado esta semana?"
-- **Nota:** Más relevante ahora con Opus permanente
-
-## ❌ Descartadas
-
-- CRM Personal — No interesa a Manu
-- Meeting Prep matutino — Sin CRM no aporta suficiente
-- Sesiones sin expiración — Peor rendimiento, no necesario con nuestro sistema de memoria
-- Food Journal — No aplica
-- Video/Content Pipeline — No aplica
-- X/Twitter management — No aplica
-
-## 📺 Fuente: Vídeos Matthew Berman
-- "21 INSANE Use Cases" (8kNv3rjQaVA)
-- "Use Cases that are actually helpful" (Q7r--i9lLck)
-- "I figured out the best way to run OpenClaw" (3GrG-dOmrLU)
-- "I Played with Clawdbot all Weekend" (MUDvwqJWWIw)
-- "The Clawdbot situation is..." (WNXbRyA1JC4)
+**Last updated:** 2026-03-26  
+**Review:** Every morning, Lola presents what's next.
 
 ---
 
-## ✅ Completed Today (2026-03-25)
-- OpenSpec integration (specs/, scripts/openspec-helpers.sh)
-- GitHub push (lola-toolkit repo + historial limpio + .gitignore)
-- Modelo por defecto → Opus (permanente, cron reset eliminado)
-- Secrets rotation (Groq, Discord, Google OAuth)
-- SSH key subida a GitHub
-- Análisis 5 vídeos Berman → priorización de ideas
+## ✅ Completed (2026-03-25 / 2026-03-26)
+
+- ✅ Knowledge Base con RAG (scripts, SQLite, FTS5, tested)
+- ✅ Prompt Optimization (audit 31 crons, guide, model assignments)
+- ✅ Markdown Drift Checker (script + cron weekly)
+- ✅ API Cost Tracker (usage-report enhanced + cost-alert + cron daily)
+- ✅ Notification Batching (script ready, pending cron integration)
+- ✅ Wallet Draining Defense (runtime-governance + emergency-stop)
+- ✅ PRD.md (English, 30 features, synced with reality)
+- ✅ Adversarial Evaluation Protocol (formalized, 3-layer pipeline)
+- ✅ First adversarial audit (4 auditors, all fixes applied)
+- ✅ OpenSpec integration (specs/, TypeScript)
+- ✅ GitHub push (lola-toolkit, clean history)
+- ✅ Opus permanent (cron reset deleted)
+- ✅ Security: secrets scrubbed from 19 files, perms fixed
+- ✅ Scripts: error handling added to 12 scripts, hardcoded paths fixed
+- ✅ Crons: race condition fixed, schedules staggered, delivery errors fixed
+
+---
+
+## 🔴 Phase: Consolidation (This week / next week)
+
+Goal: Simplify, deduplicate, and harden what we have. No new features.
+
+### 1. Consolidate Autoimprove (3 crons → 1)
+- **Current:** 3 separate crons (scripts/skills/memory) at 3:00, 3:05, 3:10 AM
+- **Target:** 1 script with `--target scripts|skills|memory|all`
+- **Why:** Simpler, easier to maintain, one log to check
+- **Effort:** 2-3h
+
+### 2. Consolidate Healthcheck Crons (6 → 1 dashboard)
+- **Current:** fail2ban, rkhunter, lynis, security-audit, nightly-security-review, config-drift — all separate
+- **Target:** 1 unified healthcheck script that runs all checks and produces 1 report
+- **Why:** Less cron sprawl, less notification noise, 1 report to read
+- **Effort:** 3-4h
+
+### 3. Clean Up Duplicate Scripts
+- **Morning report:** `generate-morning-report.sh` vs `informe-matutino-auto.sh` — pick one
+- **Garmin:** `garmin-health-report.sh` vs `health-dashboard.sh` vs `health-alerts.sh` — clarify roles or merge
+- **Cron delivery fix:** `fix-cron-delivery.sh` vs `fix-cron-delivery.py` — delete one
+- **Effort:** 1-2h
+
+### 4. Session Log Rotation
+- **Current:** 148 logs, 60MB, no cleanup
+- **Target:** Weekly cron: compress logs >7 days, delete >30 days
+- **Effort:** 30min
+
+### 5. Notification Batching — Activate Crons
+- **Current:** Script ready, no cron integration
+- **Target:** Create flush crons (hourly for high, 3-hourly for medium, morning for low)
+- **Migrate:** Key crons to use batcher instead of direct Telegram
+- **Effort:** 1-2h
+
+### 6. Simplify Backup Strategy
+- **Current:** Custom backup + OpenClaw native + Git (triple)
+- **Target:** Pick 1 backup method + Git. Eliminate redundancy.
+- **Effort:** 1-2h
+
+---
+
+## 🟡 Backlog (After consolidation)
+
+### Knowledge Base Phase 2
+- Activate vector embeddings in chunks table
+- Semantic search (not just FTS5 keyword)
+- Estimated: Q2 2026
+
+### OpenSpec — Revisit for Work
+- Manu will revisit when clearer on how team uses it
+- Reference: Gentleman AI SDD pipeline (video in KB)
+
+### Disaster Recovery Test
+- Spin up test VPS, run restore.sh, measure real RTO
+- Update DRS with actual numbers (currently claims 20min, reality ~2-4h)
+
+### Cost Optimization Deep Dive
+- Target: reduce from ~$500/month to ~$200/month
+- A/B test Haiku vs Sonnet for routine cron tasks
+- Implement daily budget hard cap ($20/day)
+
+### Visual Dashboard
+- Real implementation of localhost:3333 dashboard
+- Widgets: costs, crons, memory, health
+
+---
+
+## 🔄 Scheduled Reviews
+
+### Re-Audit Adversarial — April 14, 2026
+- Full system audit with adversarial evaluators (same 4 areas)
+- Compare scores vs today's baseline (2.35/5)
+- Cron reminder set for this date
+
+---
+
+## ❌ Descartadas
+- CRM Personal
+- Meeting Prep matutino
+- Sesiones sin expiración
+- Food Journal
+- Video/Content Pipeline
+- X/Twitter management
