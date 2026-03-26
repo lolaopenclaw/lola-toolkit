@@ -2,7 +2,7 @@
 
 ## 🔴 CORE → `memory/core.md` | Manu | lolaopenclaw@gmail.com | @RagnarBlackmade | Quiet 00-07
 
-## 🔧 TECHNICAL → `memory/technical.md` | Crons: 4AM/4:30AM/9AM audits | TTS: Google 1.25x | Driving ✅
+## 🔧 TECHNICAL → `memory/technical.md` | Crons: 4AM/4:30AM/9AM | TTS: Google 1.25x | Driving ✅
 
 ## 🔐 SECURITY & AUDITS → `memory/security.md` | 0 CRITICAL | HARDENED | Q2 2026 rotation
 
