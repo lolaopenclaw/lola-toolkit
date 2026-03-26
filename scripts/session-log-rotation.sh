@@ -10,17 +10,17 @@ deleted=0
 freed=0
 
 # Compress JSONL files older than 7 days
-find "$SESSIONS_DIR" -name "*.jsonl" -mtime +7 -type f | while read -r f; do
+while read -r f; do
   if $DRY_RUN; then
     echo "[DRY-RUN] Would compress: $(basename "$f")"
   else
     gzip "$f"
     ((compressed++))
   fi
-done
+done < <(find "$SESSIONS_DIR" -name "*.jsonl" -mtime +7 -type f)
 
 # Delete gzipped files older than 30 days
-find "$SESSIONS_DIR" -name "*.jsonl.gz" -mtime +30 -type f | while read -r f; do
+while read -r f; do
   size=$(stat -c%s "$f" 2>/dev/null || echo 0)
   if $DRY_RUN; then
     echo "[DRY-RUN] Would delete: $(basename "$f") ($(numfmt --to=iec "$size"))"
@@ -29,7 +29,7 @@ find "$SESSIONS_DIR" -name "*.jsonl.gz" -mtime +30 -type f | while read -r f; do
     ((deleted++))
     freed=$((freed + size))
   fi
-done
+done < <(find "$SESSIONS_DIR" -name "*.jsonl.gz" -mtime +30 -type f)
 
 echo "Compressed: $compressed files"
 echo "Deleted: $deleted files" 
