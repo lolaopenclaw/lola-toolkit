@@ -213,27 +213,28 @@ fi
 
 # 12. Token usage report
 echo "💰 Calculando consumo de tokens..."
-USAGE_JSON=$(bash ~/.openclaw/workspace/scripts/usage-report.sh 2>/dev/null || echo "{}")
-if [ -n "$USAGE_JSON" ] && [ "$USAGE_JSON" != "{}" ]; then
-    MONTH_COST=$(echo "$USAGE_JSON" | jq -r '.monthly_total_cost // 0')
-    YESTERDAY_COST=$(echo "$USAGE_JSON" | jq -r '.yesterday_total_cost // 0')
-    TODAY_COST=$(echo "$USAGE_JSON" | jq -r '.today_total_cost // 0')
-    MONTH_NAME=$(echo "$USAGE_JSON" | jq -r '.month // "?"')
+SCRIPTS_DIR="$WORKSPACE/scripts"
 
-    # Top models this month
-    TOP_MODELS=$(echo "$USAGE_JSON" | jq -r '.by_model_monthly[:3][] | "  • \(.model): $\(.total_cost) (\(.requests) requests)"' 2>/dev/null || echo "  (sin datos)")
+MONTH_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --month 2>/dev/null || echo "{}")
+YESTERDAY_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --yesterday 2>/dev/null || echo "{}")
+TODAY_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --today 2>/dev/null || echo "{}")
+MONTH_MODELS_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --month --by-model 2>/dev/null || echo "{}")
 
-    # Yesterday breakdown
-    YESTERDAY_MODELS=$(echo "$USAGE_JSON" | jq -r '.by_model_yesterday[:3][] | "  • \(.model): $\(.cost) (\(.requests) req)"' 2>/dev/null || echo "  (sin actividad)")
+MONTH_COST=$(echo "$MONTH_JSON" | jq -r '.total_cost // 0' 2>/dev/null || echo "0")
+MONTH_PERIOD=$(echo "$MONTH_JSON" | jq -r '.period // "?"' 2>/dev/null || echo "?")
+YESTERDAY_COST=$(echo "$YESTERDAY_JSON" | jq -r '.total_cost // 0' 2>/dev/null || echo "0")
+TODAY_COST=$(echo "$TODAY_JSON" | jq -r '.total_cost // 0' 2>/dev/null || echo "0")
 
-    TOKEN_SECTION="💰 CONSUMO TOKENS ($MONTH_NAME)
+# Top models this month
+TOP_MODELS=$(echo "$MONTH_MODELS_JSON" | jq -r '.by_model[:3][] | "  • \(.model): $\(.cost) (\(.requests) req)"' 2>/dev/null || echo "  (sin datos)")
+
+if [ "$MONTH_COST" != "0" ] && [ -n "$MONTH_COST" ]; then
+    TOKEN_SECTION="💰 CONSUMO TOKENS ($MONTH_PERIOD)
 • Mes actual: \$$MONTH_COST
 • Ayer: \$$YESTERDAY_COST
 • Hoy (parcial): \$$TODAY_COST
-• Por modelo (mes):
-$TOP_MODELS
-• Ayer detalle:
-$YESTERDAY_MODELS"
+• Top modelos:
+$TOP_MODELS"
 else
     TOKEN_SECTION="💰 CONSUMO TOKENS
 • (sin datos disponibles)"
