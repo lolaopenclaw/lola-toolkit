@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # proactive-suggestions.sh - Genera sugerencias proactivas para heartbeat
 # Created: 2026-03-24
 # Purpose: Context-aware suggestions basadas en weather, calendar, health, finance, pending actions

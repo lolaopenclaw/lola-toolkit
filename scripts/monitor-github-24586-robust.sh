@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Monitor GitHub #24586 — Robust Version (v2)
 # Revisa el estado del issue #24586 con error handling
 

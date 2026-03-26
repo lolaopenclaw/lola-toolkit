@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+set -euo pipefail
 # calendar-tasks.sh — Google Calendar integration for task management
 # Uses gog CLI with lolaopenclaw@gmail.com calendar
 #

@@ -5,7 +5,7 @@ set -uo pipefail
 # Markdown Drift Checker
 # Audits workspace markdown files for inconsistencies, orphans, and staleness
 
-WORKSPACE_ROOT="/home/mleon/.openclaw/workspace"
+WORKSPACE_ROOT="${WORKSPACE:-$HOME/.openclaw/workspace}"
 REPORT_FILE="$WORKSPACE_ROOT/memory/drift-check-latest.md"
 EXIT_CODE=0
 

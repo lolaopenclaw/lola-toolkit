@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Helper script to check and update driving mode state
 
 STATE_FILE="$HOME/.openclaw/workspace/memory/driving-mode-state.json"

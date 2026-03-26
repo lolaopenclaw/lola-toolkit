@@ -5,7 +5,7 @@
 set -euo pipefail
 
 # Paths
-WORKSPACE="/home/mleon/.openclaw/workspace"
+WORKSPACE="${WORKSPACE:-$HOME/.openclaw/workspace}"
 MEMORY_FILE="$WORKSPACE/memory/openclaw-updates.md"
 TELEGRAM_CHAT_ID="-1002381931352"  # Manu's default Telegram channel
 
@@ -22,7 +22,7 @@ log() {
 # Check if there are running subagents (safety check)
 check_subagents() {
     local subagents
-    subagents=$(/home/mleon/.npm-global/bin/openclaw sessions list --format json 2>/dev/null | jq -r '.[] | select(.type == "subagent") | .id' | wc -l)
+    subagents=$(openclaw sessions list --format json 2>/dev/null | jq -r '.[] | select(.type == "subagent") | .id' | wc -l)
     if [ "$subagents" -gt 0 ]; then
         log "${YELLOW}⚠️  Hay $subagents subagents activos. Cancelando update por seguridad.${NC}"
         return 1

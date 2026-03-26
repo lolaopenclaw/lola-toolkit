@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Garmin Health Report - Multi-mode health reporting
 # Usage: garmin-health-report.sh [OPTIONS]
 #   --daily     Daily report (HR, steps, sleep, stress)

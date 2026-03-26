@@ -39,13 +39,16 @@ check_spending() {
   # Get today's spend
   local today_result
   today_result=$(bash "$SCRIPT_DIR/usage-report.sh" --today 2>/dev/null || echo '{"total_cost": 0}')
-  local today_cost=$(echo "$today_result" | jq -r '.total_cost // 0')
+  local today_cost
+  today_cost=$(echo "$today_result" | jq -r '.total_cost // 0')
   
   # Get week average
   local week_result
   week_result=$(bash "$SCRIPT_DIR/usage-report.sh" --week 2>/dev/null || echo '{"total_cost": 0}')
-  local week_cost=$(echo "$week_result" | jq -r '.total_cost // 0')
-  local avg_daily=$(echo "scale=2; $week_cost / 7" | bc -l 2>/dev/null || echo "0")
+  local week_cost
+  week_cost=$(echo "$week_result" | jq -r '.total_cost // 0')
+  local avg_daily
+  avg_daily=$(echo "scale=2; $week_cost / 7" | bc -l 2>/dev/null || echo "0")
   
   # Check thresholds
   if (( $(echo "$today_cost >= $DAILY_CRITICAL" | bc -l 2>/dev/null || echo 0) )); then
@@ -100,7 +103,8 @@ check_loops() {
   if [[ -n "$error_counts" ]]; then
     while read -r count error_line; do
       if [[ "$count" -gt "$LOOP_ERROR_THRESHOLD" ]]; then
-        local error_preview=$(echo "$error_line" | head -c 80)
+        local error_preview
+        error_preview=$(echo "$error_line" | head -c 80)
         add_alert "🔄 LOOP: Error repeated $count times: ${error_preview}..." "HIGH"
         loops_detected=true
       fi
@@ -116,7 +120,8 @@ check_loops() {
 
 # 3. Session Rate Limiting Check
 check_session_volume() {
-  local today=$(date +%Y-%m-%d)
+  local today
+  today=$(date +%Y-%m-%d)
   local total_calls=0
   local max_session_msgs=0
   local max_session_name=""
@@ -126,7 +131,8 @@ check_session_volume() {
   for file in "$SESSIONS_DIR"/*.jsonl; do
     [ -f "$file" ] || continue
     
-    local session_name=$(basename "$file" .jsonl)
+    local session_name
+    session_name=$(basename "$file" .jsonl)
     
     # Count messages from today
     local msg_count
@@ -166,7 +172,8 @@ check_session_volume() {
 
 # Main execution
 main() {
-  local timestamp=$(date '+%Y-%m-%d %H:%M')
+  local timestamp
+  timestamp=$(date '+%Y-%m-%d %H:%M')
   
   echo "🛡️ Runtime Governance Check — $timestamp"
   echo ""

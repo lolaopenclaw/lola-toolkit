@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Get a secret from the encrypted store
 # Usage: secret-get.sh <KEY_NAME>
 # Example: secret-get.sh ELEVENLABS_API_KEY

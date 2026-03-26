@@ -8,7 +8,7 @@ set -e
 VENV_DIR="$(dirname "$0")/tts-venv"
 TEXT="$1"
 TIMESTAMP=$(date +%s)
-OUTPUT="/home/mleon/.openclaw/media/outbound/tts-${TIMESTAMP}.mp3"
+OUTPUT="$HOME/.openclaw/media/outbound/tts-${TIMESTAMP}.mp3"
 SPEED="${2:-1.25}"
 
 if [ -z "$TEXT" ]; then
@@ -16,7 +16,7 @@ if [ -z "$TEXT" ]; then
     exit 1
 fi
 
-mkdir -p /home/mleon/.openclaw/media/outbound
+mkdir -p "$HOME/.openclaw/media/outbound"
 
 source "$VENV_DIR/bin/activate"
 python3 << PYEOF
