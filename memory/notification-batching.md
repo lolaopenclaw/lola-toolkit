@@ -394,11 +394,10 @@ openclaw cron edit fdf38b8f-6d68-4798-84ea-1e2a24c61e75 \
 ## Próximos Pasos
 
 1. ✅ **Cron jobs de flush creados** (2026-03-26)
-2. ⏳ **Migrar cron jobs uno por uno:**
-   - Empezar con los de baja prioridad (low)
-   - Continuar con medium
-   - Finalizar con high
-   - Nunca migrar critical (deben enviar instantáneamente)
+2. ✅ **Migrar cron jobs uno por uno** (2026-03-26 — COMPLETADO)
+   - ✅ Baja prioridad (low) — 5 crons migrados
+   - ✅ Media prioridad (medium) — 7 crons migrados
+   - ✅ Alta prioridad (high) — 2 crons migrados
 3. ⏳ **Monitoreo (1-2 semanas):**
    - Verificar que los digests se envían correctamente
    - Ajustar frecuencias si hay demasiado/poco ruido
@@ -406,5 +405,48 @@ openclaw cron edit fdf38b8f-6d68-4798-84ea-1e2a24c61e75 \
 
 ---
 
+## Migración Completada (2026-03-26)
+
+### ✅ LOW Priority (morning flush — 9:45 AM)
+1. **c780fe5d** — 🗑️ Session Log Rotation (weekly)
+2. **7926a522** — 🌊 Surf Conditions Daily
+3. **f5d72c76** — 📋 Markdown Drift Check (weekly)
+4. **a2cb9eec** — 🧠 Memory Guardian Pro (domingo noche)
+5. **07256dbe** — 🧹 Cleanup audit semanal (domingo noche)
+
+### ✅ MEDIUM Priority (3-hourly flush — XX:55)
+6. **e763c896** — 📋 Backup validation (weekly)
+7. **e5ebcbf4** — 🗑️ Backup retention cleanup (lunes)
+8. **ae60d161** — 🔬 Autoimprove Scripts Agent
+9. **f22e5eaf** — 🔬 Autoimprove Skills Agent
+10. **5645185b** — 🔬 Autoimprove Memory Agent
+11. **ad5285c3** — 🔧 Lola Toolkit Sync Check
+12. **4de42cb2** — 🔬 Seguimiento Autoresearch Karpathy
+
+### ✅ HIGH Priority (hourly flush — XX:50)
+13. **51d7437f** — 💰 Daily Cost Alert
+14. **c8522805** — healthcheck:fail2ban-alert (currently disabled)
+
+### ⚠️ NOT MIGRATED (by design)
+- **cb5d3743** — 📋 Informe Matutino (main morning report — stays direct)
+- **7a7086e5** — 🏠 Driving Mode Auto-reset (system state, no notification)
+- **3a82af7d** — 🔄 Auto-update OpenClaw (interactive)
+- **ed1d9b11** — 🔄 System Updates Nightly (silent)
+- **ad742767** — Backup diario (silent, writes to last-backup.json)
+- **53577b95** — 🧠 Memory Search Reindex (silent)
+- **376288ed** — 🛡️ Healthcheck Daily (unified cron — keep direct for now)
+- **bf115ea1** — 🛡️ Healthcheck Weekly (unified cron — keep direct for now)
+
+### 📊 Migration Stats
+- **Total migrated:** 14 crons
+- **Low priority:** 5 crons
+- **Medium priority:** 7 crons
+- **High priority:** 2 crons
+- **Intentionally skipped:** 8 crons (system/silent/master reports)
+
+All migrated crons now write to the notification queue instead of announcing directly. They will be included in the next scheduled digest flush for their priority level.
+
+---
+
 *Creado: 2026-03-25*
-*Última actualización: 2026-03-26 — Crons de flush activados, guía de migración añadida*
+*Última actualización: 2026-03-26 — Migration COMPLETED: 14 crons migrated to batching system*
