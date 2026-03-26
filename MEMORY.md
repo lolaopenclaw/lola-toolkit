@@ -8,7 +8,7 @@
 
 ## 💰 Finanzas & 🖥️ Dashboards → `memory/{finanzas,dashboards,calendar}.md`
 
-## 🏃 Garmin & Health → `memory/garmin-integration.md` | `memory/garmin/` + `memory/health/` subdirs
+## 🏃 Garmin & Health → `memory/garmin-integration.md` + `memory/{garmin,health}/`
 
 ## 🛡️ Harness → `memory/harness-weekly-review-2026-03-24.md` | `memory/advanced-harness-research.md`
 
