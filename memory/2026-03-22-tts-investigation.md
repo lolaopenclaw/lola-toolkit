@@ -32,7 +32,7 @@ However, the Python `edge-tts` CLI worked perfectly from the command line.
      * `elevenlabs` → fails with 401 Unauthorized
    
 4. **ElevenLabs API Key Status**
-   - API key exists: `sk_f83d8ab6ead7da6f4d27c9cf5c3befd5899e51e127f71a1a`
+   - API key exists: `sk_***REDACTED***` (stored in .env)
    - Key is valid (tested with curl)
    - Account: **FREE tier, 9997/10000 characters used** (only 3 chars remaining!)
    - This explains the 401 errors when fallback tries to use it
