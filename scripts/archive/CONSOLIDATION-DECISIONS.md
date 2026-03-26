@@ -112,12 +112,94 @@ All three Garmin/health scripts serve **distinct purposes**:
 
 ---
 
+---
+
+## 6️⃣ `garmin-check-alerts.sh` vs `health-alerts.sh`
+
+### Investigation (2026-03-26 14:36)
+
+**Similarities:**
+- Both check HR, stress, sleep, body battery with thresholds
+- Both output alerts/warnings
+- Similar threshold values (HR >60, stress >50, sleep <6.5h, battery <20%)
+
+**Key Differences:**
+
+| Feature | `garmin-check-alerts.sh` | `health-alerts.sh` |
+|---------|--------------------------|-------------------|
+| **Scope** | Garmin-only health alerts | Health + system metrics (memory, disk, gateway) |
+| **Invocation** | Called by `garmin-health-report.sh --alerts` | Standalone alert script |
+| **Output** | Text console (last 3 days) | JSON file (`.cache/health-dashboard/alerts.json`) + console |
+| **Filtering** | Supports `--hr-abnormal`, `--stress-high`, etc. | Always checks all |
+| **Data source** | Direct Garmin API | Via `garmin-json-export.sh` |
+| **Dependencies** | `garminconnect` Python module | `jq`, `bc`, `garmin-json-export.sh` |
+| **Lines** | 164 | 166 |
+
+### Usage Check:
+```bash
+# Referenced in:
+- scripts/garmin-health-report.sh (line 51: --alerts mode)
+- memory/archive/feb-2026/PROTOCOLS/garmin-integration.md (docs)
+- memory/2026-03-17-autoimprove.md (autoimprove history)
+- memory/2026-03-22-health-setup.md (setup guide)
+
+# NOT referenced in:
+- No active cron jobs
+- No other scripts besides garmin-health-report.sh
+```
+
+### Decision: ✅ KEEP `health-alerts.sh` ONLY, ARCHIVE `garmin-check-alerts.sh`
+
+**Reasoning:**
+1. **`health-alerts.sh` is MORE comprehensive:**
+   - Includes system metrics (memory, disk, gateway health)
+   - Generates structured JSON output for automation
+   - Better integration with dashboard ecosystem
+
+2. **`garmin-check-alerts.sh` is LESS used:**
+   - Only invoked via `garmin-health-report.sh --alerts` mode
+   - That mode itself is NOT used in any cron
+   - No standalone usage found
+
+3. **Overlap is 90%+:**
+   - Same Garmin metrics (HR, stress, sleep, battery)
+   - Similar thresholds
+   - Similar alert logic
+
+**Migration:**
+- `garmin-health-report.sh --alerts` → Can be replaced with `health-alerts.sh` (or removed if unused)
+- Documentation in `garmin-integration.md` → Update to reference `health-alerts.sh`
+
+**Action:**
+```bash
+mv scripts/garmin-check-alerts.sh scripts/archive/
+```
+
+**Note added to archive:**
+```
+# garmin-check-alerts.sh
+Archived: 2026-03-26
+Reason: Duplicate of health-alerts.sh (which is more comprehensive)
+Replaced by: health-alerts.sh
+Usage: Was only called via garmin-health-report.sh --alerts (unused mode)
+```
+
+---
+
 ## Summary
 
-**Archived:** 2 files (`fix-cron-delivery.sh`, `fix-cron-delivery.py`)  
-**Kept:** 4 health/Garmin scripts (all serve distinct purposes)  
+**Archived:** 3 files 
+  - `fix-cron-delivery.sh` (one-time fix)
+  - `fix-cron-delivery.py` (one-time fix)
+  - `garmin-check-alerts.sh` (duplicate of health-alerts.sh)
+
+**Kept:** 3 health/Garmin scripts (all serve distinct purposes)
+  - `garmin-health-report.sh` (daily/weekly reports)
+  - `health-dashboard.sh` (HTML visualization)
+  - `health-alerts.sh` (threshold monitoring + JSON)
+
 **Deleted:** 0 files (no duplicates found for `generate-morning-report.sh` — it never existed)
 
 ---
 
-**Commit message:** `consolidate: archive one-time cron-delivery fix scripts, document Garmin script roles`
+**Commit message:** `consolidate: archive garmin-check-alerts.sh (duplicate of health-alerts.sh)`

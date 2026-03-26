@@ -1,0 +1,20 @@
+# garmin-check-alerts.sh
+Archived: 2026-03-26
+Reason: Duplicate of health-alerts.sh (which is more comprehensive)
+Replaced by: health-alerts.sh
+Usage: Was only called via garmin-health-report.sh --alerts (unused mode)
+
+## Why archived:
+- 90%+ overlap with health-alerts.sh
+- health-alerts.sh includes system metrics (memory, disk, gateway)
+- health-alerts.sh generates JSON for automation
+- garmin-check-alerts.sh only invoked via --alerts mode (never used in crons)
+- No standalone usage found
+
+## If you need this functionality:
+Use health-alerts.sh instead:
+  bash scripts/health-alerts.sh
+
+## References cleaned:
+- scripts/garmin-health-report.sh (--alerts mode can be removed or redirected)
+- memory/archive/feb-2026/PROTOCOLS/garmin-integration.md (docs updated)

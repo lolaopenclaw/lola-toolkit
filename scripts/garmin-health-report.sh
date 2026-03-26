@@ -49,7 +49,8 @@ case "$MODE" in
     DATE="$(date +%Y-%m-%d)"
     ;;
   --alerts)
-    exec bash "$(dirname "$0")/garmin-check-alerts.sh"
+    # Redirected to health-alerts.sh (more comprehensive, includes system metrics)
+    exec bash "$(dirname "$0")/health-alerts.sh"
     ;;
   *)
     echo "Usage: garmin-health-report.sh [--daily|--weekly|--current|--alerts|--summary] [date]"
