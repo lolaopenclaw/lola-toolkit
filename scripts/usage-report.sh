@@ -145,7 +145,9 @@ fi
 
 # Extract and aggregate
 # Process each file to capture session ID from filename
+# Support both .jsonl and .jsonl.gz files
 RESULT=$(
+  # Process uncompressed .jsonl files
   for file in "$SESSIONS_DIR"/*.jsonl; do
     [ -f "$file" ] || continue
     session_id=$(basename "$file" .jsonl)
@@ -158,10 +160,26 @@ RESULT=$(
         input: .message.usage.input,
         output: .message.usage.output
       }' "$file" 2>/dev/null
-  done | \
-  jq -s --arg date_filter "$DATE_FILTER" \
-    "map(select($DATE_FILTER)) | $JQ_SCRIPT" 2>/dev/null
-)
+  done
+  
+  # Process compressed .jsonl.gz files
+  for file in "$SESSIONS_DIR"/*.jsonl.gz; do
+    [ -f "$file" ] || continue
+    session_id=$(basename "$file" .jsonl.gz)
+    zcat "$file" 2>/dev/null | jq -c --arg session_id "$session_id" \
+      'select(.message.usage.cost.total != null) | {
+        date: (.timestamp | split("T")[0]),
+        model: .message.model,
+        session: $session_id,
+        cost: .message.usage.cost.total,
+        input: .message.usage.input,
+        output: .message.usage.output
+      }' 2>/dev/null
+  done
+) | \
+jq -s --arg date_filter "$DATE_FILTER" \
+  "map(select($DATE_FILTER)) | $JQ_SCRIPT" 2>/dev/null
+
 
 # Output result
 echo "$RESULT" | jq .

@@ -56,12 +56,13 @@ else
   END_TS=$(date -d "$END_DATE 23:59:59" +%s)
   
   FILES=()
+  # Include both .jsonl and .jsonl.gz files
   while IFS= read -r file; do
-    FILE_TS=$(stat -c %Y "$file")
+    FILE_TS=$(stat -c %Y "$file" 2>/dev/null || stat -f %m "$file" 2>/dev/null || echo 0)
     if [[ $FILE_TS -ge $START_TS && $FILE_TS -le $END_TS ]]; then
       FILES+=("$file")
     fi
-  done < <(find "$SESSIONS_DIR" -name "*.jsonl" -type f)
+  done < <(find "$SESSIONS_DIR" \( -name "*.jsonl" -o -name "*.jsonl.gz" \) -type f)
 fi
 
 if [[ ${#FILES[@]} -eq 0 ]]; then
@@ -75,7 +76,14 @@ trap 'rm -rf "$TMPDIR"' EXIT
 
 extract_metrics() {
   local file="$1"
-  local session_id=$(basename "$file" .jsonl)
+  local session_id=$(basename "$file" .jsonl.gz)
+  session_id=$(basename "$session_id" .jsonl)
+  
+  # Determine if file is compressed
+  local cat_cmd="cat"
+  if [[ "$file" == *.gz ]]; then
+    cat_cmd="zcat"
+  fi
   
   # Process line by line to avoid control char issues
   local prev_ts=""
@@ -112,7 +120,7 @@ extract_metrics() {
       prev_ts=""
       prev_role=""
     fi
-  done < "$file"
+  done < <($cat_cmd "$file" 2>/dev/null)
 }
 
 # Process all files

@@ -110,3 +110,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-22 13:13:49** | fix: 25 cron jobs remediados - best-effort-deliver + telegram channel + to 6884477 | `8994a1e` | [`backup-8994a1e`](backups-by-commit/backup-8994a1e*.tar.gz)
 
+- **2026-03-26 13:46:49** | fix: token usage in morning report now shows real costs | `b258592` | [`backup-b258592`](backups-by-commit/backup-b258592*.tar.gz)
+

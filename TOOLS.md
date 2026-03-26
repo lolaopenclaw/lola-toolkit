@@ -126,13 +126,23 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 - **performance-tracker.sh** — Analyze response latency, model usage, and degradation from session logs
 - **performance-alert.sh** — Quick health check for cron (exit codes: 0=OK, 1=WARNING, 2=CRITICAL)
 - **Docs:** `memory/performance-tracking.md`
-- **Data source:** `~/.openclaw/agents/main/sessions/*.jsonl`
+- **Data source:** `~/.openclaw/agents/main/sessions/*.jsonl` + `*.jsonl.gz`
 - **Usage:**
   - `bash scripts/performance-tracker.sh --today --summary` → Today's performance report
   - `bash scripts/performance-tracker.sh --week --degradation` → Degradation analysis
   - `bash scripts/performance-tracker.sh --slow 60` → Messages taking >60s
   - `bash scripts/performance-alert.sh` → Quick health check (for cron)
 - **Metrics:** latency (avg/p50/p90/p99), by model, by hour, context size correlation, slow messages
+
+### Session Log Rotation
+- **session-log-rotation.sh** — Compress logs >7 days, delete >30 days to save disk space
+- **Docs:** `memory/session-log-rotation.md`
+- **Behavior:** Compress .jsonl → .jsonl.gz (gzip -9), delete old .jsonl.gz, skip today/yesterday
+- **Usage:**
+  - `bash scripts/session-log-rotation.sh --dry-run` → Preview what would be done
+  - `bash scripts/session-log-rotation.sh` → Execute rotation
+- **Integration:** usage-report.sh and performance-tracker.sh support reading .jsonl.gz files
+- **Status:** ✅ Ready for cron (recommended: daily 04:00)
 
 **Ver lista completa:** `ls -1 scripts/` (30+ scripts)
 

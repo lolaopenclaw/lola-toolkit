@@ -107,3 +107,21 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - Food Journal
 - Video/Content Pipeline
 - X/Twitter management
+
+---
+
+### 🔴 Mensajes perdidos durante procesamiento — 2026-03-26
+
+**Problema:** Cuando Lola está procesando (ejecutando scripts, pensando), los audios/mensajes de Manu se pierden. Manu tiene que reenviar.
+
+**Impacto:** ALTO — fricción en canal principal de comunicación, especialmente en driving mode.
+
+**Causas posibles:**
+- Gateway restarts durante procesamiento
+- Compactación de contexto descarta mensajes queued
+- Timeout en cola de mensajes entrantes
+
+**Acción:** Investigar y resolver. Relacionado con sesión de rendimiento programada en General.
+
+**Set:** 2026-03-26 (Manu's explicit feedback)
+

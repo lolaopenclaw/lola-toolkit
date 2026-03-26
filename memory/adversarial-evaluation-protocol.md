@@ -41,7 +41,9 @@ Three-layer quality pipeline for subagent work:
 | Info search / analysis | ❌ | ❌ | No "output" to evaluate |
 | Quick fixes (< 5 min tasks) | ❌ | ❌ | Overhead not worth it |
 
-**Rule of thumb:** If the task takes a subagent > 5 minutes, it qualifies.
+**REGLA ABSOLUTA (Manu, 2026-03-26):** TODAS las tareas de subagentes se evalúan. Sin excepciones. Siempre Generator + Evaluator. El protocolo no es opcional — es obligatorio para cada subagente que produzca output.
+
+**Gestión de slots:** Con 8 subagentes máximo = 4 tareas en paralelo (4 generators + 4 evaluators). Si hay más tareas, se lanzan por oleadas: cuando termina un par generator+evaluator, se lanza el siguiente.
 
 ---
 
