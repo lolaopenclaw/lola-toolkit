@@ -12,7 +12,7 @@
 
 ## 🛡️ Harness → `memory/harness-weekly-review-2026-03-24.md` | `memory/advanced-harness-research.md`
 
-## 🎬 YouTube → `memory/youtube-analysis-executive-summary.md` (14 use cases, transcript analysis)
+## 🎬 YouTube → `memory/youtube-analysis-executive-summary.md`
 
 ## 🐙 GitHub — lolaopenclaw | `lola-toolkit` public | Policy: code ✅ secrets/keys/IPs ❌
 
