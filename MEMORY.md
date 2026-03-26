@@ -21,7 +21,7 @@ PARA | weekly decay | vector+FTS via Ollama (reindex 4:30AM)
 
 ## 🔬 Autoresearch — Karpathy → `memory/autoresearch-karpathy.md` (iterate→test→keep/discard)
 
-## 🚗 Driving Mode → `memory/driving-mode-protocol.md` | `memory/driving-mode-improvements.md`
+## 🚗 Driving Mode → `memory/driving-mode-{protocol,improvements}.md`
 
 ## 🤖 Multi-Agent → `memory/multi-agent-architecture.md` | HITL: `memory/hitl-protocol.md`
 
