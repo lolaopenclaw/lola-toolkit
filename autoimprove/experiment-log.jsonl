@@ -167,3 +167,4 @@
 {"ts":"2026-03-26T14:22:13Z","target":"backup-speed","change":"Consolidated parallel blocks and removed verbose echo statements","before":324,"after":24,"kept":true,"delta":300}
 {"ts":"2026-03-26T14:22:57Z","target":"backup-speed","change":"Inlined helper functions and consolidated to single-line blocks","before":24,"after":22,"kept":true,"delta":2}
 {"ts":"2026-03-26T14:23:16Z","target":"backup-speed","change":"Consolidated multi-line pipe to single line","before":22,"after":21,"kept":true,"delta":1}
+{"ts":"2026-03-26T14:23:48Z","target":"backup-speed","change":"Consolidated exports and variables to single lines","before":21,"after":19,"kept":true,"delta":2}

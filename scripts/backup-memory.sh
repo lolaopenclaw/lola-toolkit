@@ -3,16 +3,8 @@
 # Includes: workspace, openclaw.json, .env, cron-db, GOG keyring, rclone config
 
 set -euo pipefail
-
-export GOG_KEYRING_BACKEND=file
-export GOG_KEYRING_PASSWORD='ilJvN1bAcLhbuDbM3BnxABElpmVDHyA5eiV8UonEQCc='
-export GOG_ACCOUNT=lolaopenclaw@gmail.com
-
-WORKSPACE="/home/mleon/.openclaw/workspace"
-OPENCLAW_DIR="/home/mleon/.openclaw"
-DRIVE_FOLDER="1G-OLpZKJ2zQXac0qaKxvaeglbRUuRxfD"
-BACKUP_DATE=$(date -u +%Y-%m-%d)
-BACKUP_DIR="/tmp/openclaw-backup-${BACKUP_DATE}"
+export GOG_KEYRING_BACKEND=file GOG_KEYRING_PASSWORD='ilJvN1bAcLhbuDbM3BnxABElpmVDHyA5eiV8UonEQCc=' GOG_ACCOUNT=lolaopenclaw@gmail.com
+WORKSPACE="/home/mleon/.openclaw/workspace" OPENCLAW_DIR="/home/mleon/.openclaw" DRIVE_FOLDER="1G-OLpZKJ2zQXac0qaKxvaeglbRUuRxfD" BACKUP_DATE=$(date -u +%Y-%m-%d) BACKUP_DIR="/tmp/openclaw-backup-${BACKUP_DATE}"
 
 echo "=== OpenClaw Memory Backup - ${BACKUP_DATE} ==="
 mkdir -p "$BACKUP_DIR"/{gnupg,keyrings,gog-config,system-snapshot} 2>/dev/null || true
