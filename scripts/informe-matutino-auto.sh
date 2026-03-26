@@ -1,6 +1,6 @@
 #!/bin/bash
 # informe-matutino-auto.sh
-# Genera y envía informe matutino automático a Discord (NUNCA Telegram)
+# Genera informe matutino y envía a Telegram topic 24 (Reportes Diarios)
 
 set -e
 source ~/.openclaw/.env

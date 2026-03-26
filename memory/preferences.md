@@ -96,7 +96,7 @@
 | Channel | Purpose | Note |
 |---------|---------|------|
 | **Telegram** | ALL communication + reports (via topics) | ✅ PRIMARY |
-| **Discord** | Legacy (no longer used for reports) | ⚠️ Deprecated for reports |
+| **Discord** | ❌ ELIMINADO (2026-03-26) | Bot + servidor borrados |
 | **Email** | Administrative, formal | (via gog) |
 
 ### Telegram Topics (Group: Lola y Manu, -1003768820594)
