@@ -17,7 +17,7 @@
 ## 🐙 GitHub — lolaopenclaw | `lola-toolkit` public | Policy: code ✅ secrets/keys/IPs ❌
 
 ## 🧠 Knowledge Graph → `memory/entities/` (auto | SKIP autoimprove)
-PARA | weekly decay | vector+FTS via Ollama (reindex 4:30AM)
+PARA | weekly decay | vector+FTS via Ollama
 
 ## 🔬 Autoresearch — Karpathy → `memory/autoresearch-karpathy.md`
 
