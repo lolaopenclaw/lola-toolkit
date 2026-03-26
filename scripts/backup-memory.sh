@@ -27,6 +27,23 @@ BACKUP_SIZE=$(du -h "$BACKUP_FILE" | cut -f1)
 # Delete duplicates and upload
 gog drive list --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>/dev/null | grep "openclaw-backup-${BACKUP_DATE}" | awk '{print $1}' | xargs -r -I {} gog drive delete {} --account "$GOG_ACCOUNT" --no-input 2>/dev/null || true
 
-gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1
+UPLOAD_OUTPUT=$(gog drive upload "$BACKUP_FILE" --parent "$DRIVE_FOLDER" --account "$GOG_ACCOUNT" --no-input 2>&1)
+UPLOAD_EXIT=$?
+
+if [ $UPLOAD_EXIT -ne 0 ]; then
+  ERROR_MSG="OAuth/upload failed: $UPLOAD_OUTPUT"
+  echo "ERROR: $ERROR_MSG" >&2
+  mkdir -p "$WORKSPACE/memory"
+  jq -n --arg date "$BACKUP_DATE" --arg error "$ERROR_MSG" --arg files "$FILE_COUNT" --arg size "$BACKUP_SIZE" \
+    '{date: $date, status: "error", error: $error, files: $files, size: $size}' \
+    > "$WORKSPACE/memory/last-backup.json"
+  rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
+  exit 1
+fi
+
 rm -rf "$BACKUP_DIR" "$BACKUP_FILE"
+mkdir -p "$WORKSPACE/memory"
+jq -n --arg date "$BACKUP_DATE" --arg files "$FILE_COUNT" --arg size "$BACKUP_SIZE" \
+  '{date: $date, status: "ok", files: $files, size: $size}' \
+  > "$WORKSPACE/memory/last-backup.json"
 echo "=== RESULT === date: ${BACKUP_DATE} | files: ${FILE_COUNT} | size: ${BACKUP_SIZE} | status: ok"

@@ -159,7 +159,7 @@ openclaw backup verify ~/YYYY-MM-DD*-openclaw-backup.tar.gz
 
 ## Known Redundancy
 
-**Honest assessment:** Git and Custom backup are **redundant by design for safety** on ~80% of content.
+**Honest assessment:** Git and Custom backup **overlap on ~80% of content** (memory/, scripts/, skills/). This is intentional redundancy for safety, not a design flaw.
 
 **Overlap (both back up):**
 - `memory/*.md` (daily logs, protocols, entities)
@@ -188,7 +188,9 @@ openclaw backup verify ~/YYYY-MM-DD*-openclaw-backup.tar.gz
 ## Recovery Procedures
 
 ### Scenario 1: Workspace corruption (code/docs)
-**RTO:** < 5 minutes
+**RTO:** 1-2 hours (estimated, NOT tested)
+
+**NOTE:** This RTO has not been verified with a real restore drill.
 
 ```bash
 # From Git
@@ -198,7 +200,9 @@ git pull
 ```
 
 ### Scenario 2: Lost secrets/config/auth
-**RTO:** ~15 minutes
+**RTO:** 1-2 hours (estimated, NOT tested)
+
+**NOTE:** This RTO has not been verified with a real restore drill.
 
 ```bash
 # Download latest backup
@@ -212,9 +216,9 @@ bash ~/.openclaw/workspace/scripts/restore.sh /tmp/openclaw-backup-YYYY-MM-DD.ta
 ```
 
 ### Scenario 3: Complete system loss (new machine)
-**RTO:** 1-2 hours (untested estimate)
+**RTO:** 1-2 hours (estimated, NOT tested)
 
-⚠️ **Important:** This RTO has NOT been verified with a real restore test.
+**NOTE:** This RTO has not been verified with a real restore drill.
 
 ```bash
 # 1. Install OpenClaw
