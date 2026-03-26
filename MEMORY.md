@@ -6,7 +6,7 @@
 
 ## 🔐 SECURITY & AUDITS → `memory/security.md` | 0 CRITICAL | HARDENED | Q2 2026 rotation
 
-## 💰 Finanzas & 🖥️ Dashboards → `memory/finanzas.md` | `memory/dashboards.md` | `memory/calendar.md`
+## 💰 Finanzas & 🖥️ Dashboards → `memory/{finanzas,dashboards,calendar}.md`
 
 ## 🏃 Garmin & Health → `memory/garmin-integration.md` | `memory/garmin/` + `memory/health/` subdirs
 
