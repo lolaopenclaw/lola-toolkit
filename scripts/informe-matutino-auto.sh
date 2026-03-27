@@ -17,18 +17,18 @@ echo "🔄 Generando informe matutino..."
 echo "🌤️ Obteniendo clima..."
 WEATHER=$(curl -s "wttr.in/Logroño?format=3" 2>/dev/null || echo "❓ No disponible")
 
-# 2. Get Calendar events for today
-echo "📅 Obteniendo eventos del día..."
-CALENDAR_EVENTS=$(gog calendar list --from today --to tomorrow 2>/dev/null | grep -v "^$" || echo "")
-if [ -z "$CALENDAR_EVENTS" ] || [ "$CALENDAR_EVENTS" = "No events found" ]; then
-    CALENDAR_SECTION="📅 CALENDARIO
-• Sin eventos programados para hoy"
-else
-    # Format events nicely - extract summary and time if available
-    CALENDAR_FORMATTED=$(echo "$CALENDAR_EVENTS" | head -10)
-    CALENDAR_SECTION="📅 CALENDARIO
-$CALENDAR_FORMATTED"
-fi
+# 2. Calendar section REMOVED (not used by Manu)
+# echo "📅 Obteniendo eventos del día..."
+# CALENDAR_EVENTS=$(gog calendar list --from today --to tomorrow 2>/dev/null | grep -v "^$" || echo "")
+# if [ -z "$CALENDAR_EVENTS" ] || [ "$CALENDAR_EVENTS" = "No events found" ]; then
+#     CALENDAR_SECTION="📅 CALENDARIO
+# • Sin eventos programados para hoy"
+# else
+#     # Format events nicely - extract summary and time if available
+#     CALENDAR_FORMATTED=$(echo "$CALENDAR_EVENTS" | head -10)
+#     CALENDAR_SECTION="📅 CALENDARIO
+# $CALENDAR_FORMATTED"
+# fi
 
 # 3. Get Pending Actions
 echo "📌 Verificando pending actions..."
@@ -266,9 +266,6 @@ INFORME="📋 INFORME MATUTINO • $TODAY $HOUR
 🌤️ CLIMA LOGROÑO
 $WEATHER
 
-$CALENDAR_SECTION
-
-$PENDING_SECTION
 
 $LOG_REVIEW_SECTION
 
