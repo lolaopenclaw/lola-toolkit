@@ -35,15 +35,25 @@ echo "📌 Verificando pending actions..."
 PENDING_FILE="$MEMORY_DIR/pending-actions.md"
 PENDING_ACTIONS=""
 if [ -f "$PENDING_FILE" ]; then
-    # Extract unchecked items (- [ ]) and get first 5
-    PENDING_ACTIONS=$(grep "^- \[ \]" "$PENDING_FILE" | head -5 || echo "")
-    if [ -n "$PENDING_ACTIONS" ]; then
-        PENDING_COUNT=$(echo "$PENDING_ACTIONS" | wc -l)
-        PENDING_SECTION="📌 PENDING ACTIONS ($PENDING_COUNT abiertas)
+    # Extract tasks from active phase (🔴 Phase:) — format: ### N. Title
+    # Get section between "## 🔴 Phase:" and next "##" (or EOF)
+    ACTIVE_PHASE=$(awk '/^## 🔴 Phase:/{flag=1; next} /^## /{flag=0} flag' "$PENDING_FILE")
+    
+    if [ -n "$ACTIVE_PHASE" ]; then
+        # Extract task titles (### N. Title), strip ✅, get first 5
+        PENDING_ACTIONS=$(echo "$ACTIVE_PHASE" | grep "^### " | grep -v "✅" | sed 's/^### /• /' | head -5)
+        PENDING_COUNT=$(echo "$ACTIVE_PHASE" | grep "^### " | grep -v "✅" | wc -l)
+        
+        if [ -n "$PENDING_ACTIONS" ] && [ "$PENDING_COUNT" -gt 0 ]; then
+            PENDING_SECTION="📌 PENDING ACTIONS ($PENDING_COUNT abiertas)
 $PENDING_ACTIONS"
+        else
+            PENDING_SECTION="📌 PENDING ACTIONS
+• Sin acciones pendientes en fase activa"
+        fi
     else
         PENDING_SECTION="📌 PENDING ACTIONS
-• Sin acciones pendientes"
+• No hay fase activa marcada (🔴 Phase:)"
     fi
 else
     PENDING_SECTION="📌 PENDING ACTIONS
