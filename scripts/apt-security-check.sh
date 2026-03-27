@@ -21,14 +21,18 @@ log_section() {
     echo "System: $(hostname) | OS: $(lsb_release -d | cut -f2)"
     echo ""
 
+    # Parallelize independent checks
+    { broken=$(apt-get check 2>&1 | grep -i "broken" || echo "✓ None"); } &
+    { apt-get update >/dev/null 2>&1; } &
+    { held=$(apt-mark showhold | wc -l); } &
+    wait
+    
     # Broken packages
     log_section "Broken Packages"
-    broken=$(apt-get check 2>&1 | grep -i "broken" || echo "✓ None")
     echo "$broken" && echo "$broken" >> "$REPORT_FILE"
     
-    # Updates
+    # Updates (depends on apt-get update)
     log_section "Available Updates"
-    apt-get update >/dev/null 2>&1
     update_count=$(apt-get upgrade -s | grep "^Inst" | wc -l)
     echo "Total: $update_count" && echo "Total: $update_count" >> "$REPORT_FILE"
     
@@ -40,7 +44,6 @@ log_section() {
     
     # Held packages
     log_section "Held Packages"
-    held=$(apt-mark showhold | wc -l)
     msg=$([ "$held" -eq 0 ] && echo "✓ None" || echo "⚠️  $held held")
     echo "$msg" && echo "$msg" >> "$REPORT_FILE"
     
