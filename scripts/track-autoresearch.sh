@@ -16,10 +16,20 @@ REPORT=""
 echo "🔬 Autoresearch Tracker — $(date '+%Y-%m-%d')"
 echo ""
 
-# --- 1. Commits recientes ---------------------------------------------------
 SINCE=$(date -d "-${DAYS_BACK} days" -u +%Y-%m-%dT%H:%M:%SZ)
-COMMITS=$(gh api "repos/${REPO}/commits?since=${SINCE}&per_page=10" --jq '.[].commit.message' 2>/dev/null || echo "")
 
+# Parallelize all GitHub API calls
+{ COMMITS=$(gh api "repos/${REPO}/commits?since=${SINCE}&per_page=10" --jq '.[].commit.message' 2>/dev/null || echo ""); } &
+{ RELEASES=$(gh api "repos/${REPO}/releases?per_page=3" --jq '.[0].tag_name // "none"' 2>/dev/null || echo "none"); } &
+{ REPO_INFO=$(gh api "repos/${REPO}" --jq '.stargazers_count,.forks_count' 2>/dev/null || echo "?\n?"); } &
+{ ISSUES=$(gh api "repos/${REPO}/issues?since=${SINCE}&per_page=5&state=all" --jq '.[].title' 2>/dev/null || echo ""); } &
+wait
+
+# Parse repo info
+STARS=$(echo "$REPO_INFO" | sed -n '1p')
+FORKS=$(echo "$REPO_INFO" | sed -n '2p')
+
+# --- 1. Commits recientes ---------------------------------------------------
 if [ -n "$COMMITS" ]; then
     COMMIT_COUNT=$(echo "$COMMITS" | wc -l)
     REPORT+="📝 ${COMMIT_COUNT} commits nuevos:\n"
@@ -30,19 +40,15 @@ else
 fi
 
 # --- 2. Releases nuevas -----------------------------------------------------
-RELEASES=$(gh api "repos/${REPO}/releases?per_page=3" --jq '.[0].tag_name // "none"' 2>/dev/null || echo "none")
 if [ "$RELEASES" != "none" ] && [ "$RELEASES" != "null" ]; then
     REPORT+="🏷️ Última release: ${RELEASES}\n"
     CHANGES_FOUND=true
 fi
 
 # --- 3. Stars (indicador de tracción) ----------------------------------------
-STARS=$(gh api "repos/${REPO}" --jq '.stargazers_count' 2>/dev/null || echo "?")
-FORKS=$(gh api "repos/${REPO}" --jq '.forks_count' 2>/dev/null || echo "?")
 REPORT+="⭐ Stars: ${STARS} | 🍴 Forks: ${FORKS}\n"
 
 # --- 4. Issues/Discussions recientes -----------------------------------------
-ISSUES=$(gh api "repos/${REPO}/issues?since=${SINCE}&per_page=5&state=all" --jq '.[].title' 2>/dev/null || echo "")
 if [ -n "$ISSUES" ]; then
     ISSUE_COUNT=$(echo "$ISSUES" | wc -l)
     REPORT+="💬 ${ISSUE_COUNT} issues/discussions recientes:\n"
