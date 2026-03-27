@@ -24,21 +24,20 @@ CUTOFF_DATE=$(date -d "30 days ago" +%Y-%m-%d)
 
 echo "=== Memory Maintenance - $TODAY ==="
 
-# 1. Stats
+# 1. Stats (parallelize)
 echo
 echo "📊 STATS:"
-TOTAL_FILES=$(find "$MEMORY_DIR" -maxdepth 1 -name "*.md" -type f | wc -l)
-TOTAL_SIZE=$(du -sh "$MEMORY_DIR" | awk '{print $1}')
+{ TOTAL_FILES=$(find "$MEMORY_DIR" -maxdepth 1 -name "*.md" -type f | wc -l); } &
+{ TOTAL_SIZE=$(du -sh "$MEMORY_DIR" | awk '{print $1}'); } &
+wait
 echo "  Files: $TOTAL_FILES"
 echo "  Size: $TOTAL_SIZE"
 
-# 2. Find old files (>30 days, not core files)
+# 2. Find old files (>30 days, not core files) - optimized with single find
 echo
 echo "🗂️ FILES OLDER THAN 30 DAYS (candidates for archive):"
-CORE_FILES="core.md|technical.md|protocols.md|entities.md|preferences.md|daily-structure.md|manu-profile.md|model-selection-protocol.md|openclaw-issues-tracker.md"
 OLD_COUNT=0
-for f in "$MEMORY_DIR"/2026-*.md; do
-    [ -f "$f" ] || continue
+while IFS= read -r f; do
     BASENAME=$(basename "$f")
     FILE_DATE=$(echo "$BASENAME" | grep -oP '^\d{4}-\d{2}-\d{2}')
     [ -z "$FILE_DATE" ] && continue
@@ -46,7 +45,7 @@ for f in "$MEMORY_DIR"/2026-*.md; do
         echo "  📁 $BASENAME (from $FILE_DATE)"
         OLD_COUNT=$((OLD_COUNT + 1))
     fi
-done
+done < <(find "$MEMORY_DIR" -maxdepth 1 -name "2026-*.md" -type f)
 echo "  Total: $OLD_COUNT files eligible for archival"
 
 # 3. Duplicate detection (files with very similar names on same day)
