@@ -130,3 +130,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-27 11:23:09** | fix: evaluator timeouts — 10min timeout + simplified prompts + pre-validation | `4331d4e` | [`backup-4331d4e`](backups-by-commit/backup-4331d4e*.tar.gz)
 
+- **2026-03-27 11:25:47** | docs: message delivery issue documented + evaluator fix complete | `bec2f1e` | [`backup-bec2f1e`](backups-by-commit/backup-bec2f1e*.tar.gz)
+
