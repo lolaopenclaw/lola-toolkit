@@ -1,150 +1,80 @@
-# TOOLS.md - Local Notes
+# TOOLS.md
 
-Skills define _how_ tools work. This file is for _your_ specifics — the stuff that's unique to your setup.
-
-## What Goes Here
-
-Things like:
-
-- Camera names and locations
-- SSH hosts and aliases
-- Preferred voices for TTS
-- Speaker/room names
-- Device nicknames
-- Anything environment-specific
-
-## Examples
-
-```markdown
-### Cameras
-
-- living-room → Main area, 180° wide angle
-- front-door → Entrance, motion-triggered
-
-### SSH
-
-- home-server → 192.168.1.100, user: admin
-
-### TTS
-
-- Preferred voice: "Nova" (warm, slightly British)
-- Default speaker: Kitchen HomePod
-```
-
-## Why Separate?
-
-Skills are shared. Your setup is yours. Keeping them apart means you can update skills without losing your notes, and share skills without leaking your infrastructure.
-
----
+Environment-specific config: cameras, SSH hosts, TTS prefs, speakers, device names.
 
 ---
 
 ## 🔧 Scripts Custom (~/workspace/scripts/)
 
 ### Arneses & Monitoring
-- **api-health-checker.py** — Health checks + failover automático (Anthropic→Google)
-- **rate-limit-monitor.py** — Monitor de rate limits (6 APIs)
-- **rate-limit-status** — Dashboard ASCII de rate limits
-- **config-drift** — Detector de drift en configuración
-- **subagents-dashboard** — TUI dashboard de subagentes (tiempo real)
-- **subagent-validator.py** — Validador de outputs de subagentes
-- **validate-subagent-output** — Wrapper del validador
-- **gateway-health-check.sh** — Health check del gateway
-- **pre-restart-validator.sh** — Pre-flight antes de restart
-- **security-scanner.py** — Scanner de seguridad
-- **runtime-governance.sh** — Sistema de gobernanza (loop detection, spending caps, rate limits)
-- **emergency-cost-stop.sh** — Botón de pánico para detener gasto runaway
+- **api-health-checker.py** — Health + failover (Anthropic→Google)
+- **rate-limit-monitor.py** — 6 APIs monitor
+- **rate-limit-status** — ASCII dashboard
+- **config-drift** — Drift detector
+- **subagents-dashboard** — TUI dashboard
+- **subagent-validator.py** — Output validator
+- **validate-subagent-output** — Validator wrapper
+- **gateway-health-check.sh** — Gateway health
+- **pre-restart-validator.sh** — Pre-flight
+- **security-scanner.py** — Security scan
+- **runtime-governance.sh** — Loop/caps/limits
+- **emergency-cost-stop.sh** — Emergency stop
 
 ### Garmin & Health
-- **garmin-health-report.sh** — Reporte diario de salud
-- **garmin-activities-to-sheets.py** — Sync Garmin → Google Sheets ⚠️ DEPRECADO (migrado a Markdown)
-- **garmin-activities-historical.py** — Exportación histórica
-- **garmin-json-export.sh** — Exportación a JSON
-- **health-alerts.sh** — Alertas de métricas de salud
+- **garmin-health-report.sh** — Daily report
+- **garmin-activities-to-sheets.py** — ⚠️ DEPRECATED
+- **garmin-activities-historical.py** — Historical export
+- **garmin-json-export.sh** — JSON export
+- **health-alerts.sh** — Metric alerts
 
 ### Finanzas
-- **sheets-populate-v2.py** — Actualización de finanzas en Sheets ⚠️ DEPRECADO (migrado a Markdown)
+- **sheets-populate-v2.py** — ⚠️ DEPRECATED
 
 ### GitHub
-- **pr-reviewer.sh** — Auto-review de PRs
-- **monitor-github-24586-robust.sh** — Monitor de issue específico
+- **pr-reviewer.sh** — Auto-review
+- **monitor-github-24586-robust.sh** — Issue monitor
 
 ### Surf
-- **surf-conditions.sh** — Condiciones de surf Zarautz/Mundaka
+- **surf-conditions.sh** — Zarautz/Mundaka
 
 ### Backups & Validation
-- **backup-validator.sh** — Validador de backups
-- **post-commit-backup.sh** — Backup post-commit
-- **restore.sh** — Restore de backups
-- **verify.sh** — Verificación general
+- **backup-validator.sh**, **post-commit-backup.sh**, **restore.sh**, **verify.sh**
 
 ### Autoresearch
-- **autoimprove-trigger.sh** — Trigger de autoimprove
-- **track-autoresearch.sh** — Tracking de autoresearch
+- **autoimprove-trigger.sh**, **track-autoresearch.sh**
 
 ### System
-- **apt-security-check.sh** — Security check de paquetes
-- **bootstrap.sh** — Bootstrap del sistema
-- **usage-report.sh** — Reporte de uso
-- **calendar-tasks.sh** — Tareas de calendario
-- **dashboard-api-server.js** — API server para dashboards
+- **apt-security-check.sh**, **bootstrap.sh**, **usage-report.sh**, **calendar-tasks.sh**, **dashboard-api-server.js**
 
 ### TTS & Audio
-- **google-tts.sh** — TTS con Google
-- **tts-venv/** — Venv de Python para TTS (edge-tts, gtts-cli)
+- **google-tts.sh** — Google TTS
+- **tts-venv/** — edge-tts, gtts-cli
 
 ### OpenSpec
-- **openspec-helpers.sh** — CLI para validar/listar/crear specs TypeScript
+- **openspec-helpers.sh** — TypeScript spec CLI
 
 ### Knowledge Base
-- **knowledge-base/ingest.sh** — Ingest content (articles, YouTube, PDFs) + auto-generate embeddings
-- **knowledge-base/search.sh** — Search with `--semantic` (embeddings), `--hybrid` (both), or FTS5 (default)
-- **knowledge-base/embed.py** — Generate/backfill vector embeddings (Gemini API)
-- **knowledge-base/semantic-search.py** — Core semantic search engine (cosine similarity)
-- **Docs:** `memory/knowledge-base.md`
-- **Database:** `data/knowledge-base.db` (132 chunks, all embedded)
+- **ingest.sh**, **search.sh**, **embed.py**, **semantic-search.py**
+- Doc: `memory/knowledge-base.md` | DB: `data/knowledge-base.db` (132 chunks)
 
 ### API Cost Tracking
-- **usage-report.sh** — Aggregate API costs from session logs
-- **cost-alert.sh** — Alert on high daily spend (>$10 warn, >$25 critical)
-- **Docs:** `memory/api-cost-tracking.md`
-- **Usage:**
-  - `bash scripts/usage-report.sh --today --by-model` → Today's costs by model
-  - `bash scripts/usage-report.sh --week` → Last 7 days
-  - `bash scripts/cost-alert.sh` → Check thresholds, exit 1 if critical
-- **Session logs:** `~/.openclaw/agents/main/sessions/*.jsonl`
+- **usage-report.sh** — Session log cost aggregation
+- **cost-alert.sh** — Thresholds: >$10 warn, >$25 critical
+- Doc: `memory/api-cost-tracking.md`
 
 ### Notification Batching
-- **notification-batcher.sh** — Batch notifications by priority to reduce Telegram noise
-- **Queue:** `data/notification-queue.jsonl` (JSONL format, flock-protected)
-- **Docs:** `memory/notification-batching.md`
-- **Priorities:** critical (instant) | high (1h) | medium (3h) | low (morning)
-- **Usage:**
-  - `bash scripts/notification-batcher.sh add <priority> <source> <message>` → Add to queue
-  - `bash scripts/notification-batcher.sh flush <priority>` → Send digest for priority level and below
-- **Status:** ✅ Script ready, ⏳ Cron integration pending
+- **notification-batcher.sh** — Priority queue (critical|high|medium|low)
+- Queue: `data/notification-queue.jsonl`
+- Doc: `memory/notification-batching.md` | Status: ✅|⏳cron
 
 ### Performance Tracking
-- **performance-tracker.sh** — Analyze response latency, model usage, and degradation from session logs
-- **performance-alert.sh** — Quick health check for cron (exit codes: 0=OK, 1=WARNING, 2=CRITICAL)
-- **Docs:** `memory/performance-tracking.md`
-- **Data source:** `~/.openclaw/agents/main/sessions/*.jsonl` + `*.jsonl.gz`
-- **Usage:**
-  - `bash scripts/performance-tracker.sh --today --summary` → Today's performance report
-  - `bash scripts/performance-tracker.sh --week --degradation` → Degradation analysis
-  - `bash scripts/performance-tracker.sh --slow 60` → Messages taking >60s
-  - `bash scripts/performance-alert.sh` → Quick health check (for cron)
-- **Metrics:** latency (avg/p50/p90/p99), by model, by hour, context size correlation, slow messages
+- **performance-tracker.sh**, **performance-alert.sh**
+- Metrics: latency (p50/p90/p99), by model, degradation
+- Doc: `memory/performance-tracking.md`
 
 ### Session Log Rotation
-- **session-log-rotation.sh** — Compress logs >7 days, delete >30 days to save disk space
-- **Docs:** `memory/session-log-rotation.md`
-- **Behavior:** Compress .jsonl → .jsonl.gz (gzip -9), delete old .jsonl.gz, skip today/yesterday
-- **Usage:**
-  - `bash scripts/session-log-rotation.sh --dry-run` → Preview what would be done
-  - `bash scripts/session-log-rotation.sh` → Execute rotation
-- **Integration:** usage-report.sh and performance-tracker.sh support reading .jsonl.gz files
-- **Status:** ✅ Ready for cron (recommended: daily 04:00)
+- **session-log-rotation.sh** — Compress >7d, delete >30d
+- Doc: `memory/session-log-rotation.md` | Status: ✅
 
 **Ver lista completa:** `ls -1 scripts/` (30+ scripts)
 
@@ -152,110 +82,62 @@ Skills are shared. Your setup is yours. Keeping them apart means you can update 
 
 ## 🎯 Skills Locales (~/workspace/skills/)
 
-### Arneses de Sistema
-- **api-health** — Pre-flight checks de APIs
-- **rate-limit** — Monitor de rate limits
-- **config-drift** — Detector de drift
-- **cron-validator** — Validador de cron jobs
-- **subagent-validator** — Validador de outputs de subagentes
+### System Harnesses
+- **api-health**, **rate-limit**, **config-drift**, **cron-validator**, **subagent-validator**
 
-### Autoresearch & Mejora
-- **autoimprove** — Karpathy autoresearch loop (nightly)
-- **proactive-agent** — Hal Stack, WAL protocol, autonomous crons
+### Autoresearch
+- **autoimprove** — Nightly loop (Karpathy)
+- **proactive-agent** — Hal Stack, WAL
 
 ### Security & Ops
-- **clawdbot-security-check** — Self-audit de seguridad
-- **openclaw-checkpoint** — Backup/restore de workspace
-- **verification-before-completion** — Verificación pre-completar tasks
+- **clawdbot-security-check**, **openclaw-checkpoint**, **verification-before-completion**
 
 ### Content & Media
-- **video-frames** — Extracción de frames de vídeo (ffmpeg)
-- **youtube-smart-transcript** — Transcripción inteligente de YouTube
-- **truthcheck** — Fact-checking y verificación de claims
+- **video-frames**, **youtube-smart-transcript**, **truthcheck**
 
 ### Music & Home
-- **sonoscli** — Control de Sonos
+- **sonoscli**
 
 ### GitHub
-- **pr-review** — Auto-review de PRs
+- **pr-review**
 
-**Skills globales npm:** `openclaw skills list` (38+ más: 1password, blogwatcher, blucli, camsnap, clawhub, coding-agent, eightctl, gemini, gh-issues, gifgrep, github, gog, healthcheck, himalaya, mcporter, nano-pdf, node-connect, obsidian, openai-whisper, openhue, oracle, ordercli, sag, session-logs, skill-creator, songsee, spotify-player, tmux, wacli, weather)
+**Global skills:** `openclaw skills list` (40+)
 
 ---
 
 ## 📐 OpenSpec
 
-- **Config:** `openspec.config.ts`
-- **Specs:** `specs/` (TypeScript)
-- **Helper:** `bash scripts/openspec-helpers.sh [validate|list|add]`
-- **Docs:** `memory/openspec-integration.md`
-- **Purpose:** Spec-Driven Development para scripts/skills (práctica para el curro)
+Config: `openspec.config.ts` | Specs: `specs/` | Helper: `openspec-helpers.sh` | Doc: `memory/openspec-integration.md`
 
 ---
 
-## 🔐 Accesos & Cuentas
+## 🔐 Accesos
 
-### Google Workspace (gog)
-- **Account:** lolaopenclaw@gmail.com
-- **Services:** Gmail, Calendar, Drive, Contacts, Docs, Sheets
-- **Env vars:** GOG_KEYRING_BACKEND=file, GOG_KEYRING_PASSWORD, GOG_ACCOUNT
-- **Set in:** ~/.openclaw/.env y ~/.bashrc
+### Google (gog)
+- lolaopenclaw@gmail.com
+- Env: GOG_KEYRING_BACKEND=file, GOG_KEYRING_PASSWORD, GOG_ACCOUNT
+- ~/.openclaw/.env + ~/.bashrc
 
 ### Garmin
-- **Device:** Instinct 2S Solar Surf
-- **OAuth:** Manu_Lazarus
-- **Integration:** memory/garmin-integration.md
+- Instinct 2S Solar Surf | OAuth: Manu_Lazarus | Doc: memory/garmin-integration.md
 
 ### GitHub
-- **Main:** lolaopenclaw
-- **Public repo:** lola-toolkit (scripts/skills/protocols)
-- **Policy:** código ✅ | secrets/keys/IPs ❌
+- lolaopenclaw | Repo: lola-toolkit | Policy: code ✅ | secrets ❌
 
 ### Finanzas
-- **Repo:** github.com/lolaopenclaw/finanzas-personal (privado)
-- **Formato:** Markdown (migrado desde Google Sheets 2026-03-24)
-- **Cadencia:** Cada 15 días (Manu pasa extractos bancarios)
-- **Google Sheets:** ❌ DEPRECADO (cron deshabilitado 2026-03-25)
+- github.com/lolaopenclaw/finanzas-personal (privado) | Markdown | Cada 15d | Sheets DEPRECATED
 
 ---
 
-## 🌐 Infraestructura
+## 🌐 Infra
 
-### SSH
-- **Laptop:** SSH ✅ (horario de trabajo — ver memory/work-schedule.md)
-- **VPS:** lola-openclaw-vps.taild8eaf6.ts.net
+- **SSH:** Laptop ✅ (work hours) | VPS: lola-openclaw-vps.taild8eaf6.ts.net
+- **Ports:** 18790 (Gateway), 8080 (UI), 3333 (Canvas), 5001 (API)
+- **TTS:** Google 1.25x | scripts/tts-venv/ | Driving auto-reset 22:00
+- **Telegram:** 6884477 | Quiet 00:00-07:00 | Reactions: MINIMAL
 
-### Ports
-- **18790:** OpenClaw Gateway
-- **8080:** Dashboard / Control UI
-- **3333:** Canvas
-- **5001:** API
+## 📅 Crons
 
-### TTS
-- **Provider:** Google TTS (PRIMARY, 1.25x speed)
-- **Venv:** scripts/tts-venv/
-- **Driving mode:** auto-reset 22:00 (state: memory/driving-mode-state.json)
+Backup 4:00 | Reindex 4:30 | Security Lun 9:00 | Autoimprove 2:00 | API Health 30min/2h/daily | Rate Limit hourly
 
-### Telegram
-- **Chat ID:** 6884477
-- **Quiet hours:** 00:00-07:00 Madrid
-- **Reactions:** MINIMAL (1 cada 5-10 mensajes)
-
----
-
-## 📅 Crons Importantes
-
-| Task | ID | Schedule | Status |
-|------|------|----------|--------|
-| Backup | - | 4:00 AM | ✅ |
-| Reindex | - | 4:30 AM | ✅ |
-| Security Audit | fdf38b8f | Lun 9:00 | ✅ |
-| Autoimprove | 08325b21 | 2:00 AM | ✅ |
-| API Health | - | 30min/2h/daily | ✅ |
-| Rate Limit | - | Hourly | ✅ |
-
-**Ver todos:** `openclaw cron list`
-
----
-
-Add whatever helps you do your job. This is your cheat sheet.
+`openclaw cron list`
