@@ -92,6 +92,12 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - Real implementation of localhost:3333 dashboard
 - Widgets: costs, crons, memory, health
 
+### Context Optimization Audit
+- **Phase 1:** ✅ COMPLETE (8.6% reduction, 1,370 tokens saved)
+- **Phase 2:** Weekly session reset (Mon 4AM, sessions >1000 msgs archived)
+  - Would recover remaining ~9% + eliminate session bloat (3674 lines current)
+  - **Status:** Backlog (idea anotada, valorar más adelante)
+
 ---
 
 ## 🔄 Scheduled Reviews

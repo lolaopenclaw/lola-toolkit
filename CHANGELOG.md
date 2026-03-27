@@ -120,3 +120,13 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-26 16:10:25** | fix: healthcheck — counter bugs, visible failures | `6b676ca` | [`backup-6b676ca`](backups-by-commit/backup-6b676ca*.tar.gz)
 
+- **2026-03-27 10:21:13** | fix: extract pending actions from active phase (### N. format) instead of checkboxes | `e3b2e47` | [`backup-e3b2e47`](backups-by-commit/backup-e3b2e47*.tar.gz)
+
+- **2026-03-27 10:48:39** | fix(informe-matutino): arreglar actividad/tokens/autoimprove reporting | `a47be9f` | [`backup-a47be9f`](backups-by-commit/backup-a47be9f*.tar.gz)
+
+- **2026-03-27 10:53:39** | fix(informe-matutino): Eliminar sección calendario innecesaria | `2cecd21` | [`backup-2cecd21`](backups-by-commit/backup-2cecd21*.tar.gz)
+
+- **2026-03-27 11:03:57** | fix: Security Review fecha + Crons activos en informe matutino | `232a96b` | [`backup-232a96b`](backups-by-commit/backup-232a96b*.tar.gz)
+
+- **2026-03-27 11:23:09** | fix: evaluator timeouts — 10min timeout + simplified prompts + pre-validation | `4331d4e` | [`backup-4331d4e`](backups-by-commit/backup-4331d4e*.tar.gz)
+

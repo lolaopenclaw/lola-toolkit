@@ -1,0 +1,1886 @@
+{
+  "transcript": [
+    {
+      "text": "I'm going to show you four incredible",
+      "start": 0.08,
+      "duration": 4.08
+    },
+    {
+      "text": "open source projects that show you where",
+      "start": 1.92,
+      "duration": 4.64
+    },
+    {
+      "text": "the world is headed with agents. These",
+      "start": 4.16,
+      "duration": 4.08
+    },
+    {
+      "text": "four projects show the future of how",
+      "start": 6.56,
+      "duration": 4.32
+    },
+    {
+      "text": "humans are going to interact and use and",
+      "start": 8.24,
+      "duration": 4.88
+    },
+    {
+      "text": "leverage artificial intelligence. The",
+      "start": 10.88,
+      "duration": 5.6
+    },
+    {
+      "text": "first one is called GStack and it is by",
+      "start": 13.12,
+      "duration": 6.96
+    },
+    {
+      "text": "Y Combinator President Gary Tan and I",
+      "start": 16.48,
+      "duration": 5.92
+    },
+    {
+      "text": "just started using it. Let me show you a",
+      "start": 20.08,
+      "duration": 4.88
+    },
+    {
+      "text": "few things. So, just a couple weeks old,",
+      "start": 22.4,
+      "duration": 6.48
+    },
+    {
+      "text": "it is already nearly at 50,000 stars on",
+      "start": 24.96,
+      "duration": 5.76
+    },
+    {
+      "text": "GitHub. And if you don't know who Gary",
+      "start": 28.88,
+      "duration": 3.92
+    },
+    {
+      "text": "Tan is, he is the president of Y",
+      "start": 30.72,
+      "duration": 5.04
+    },
+    {
+      "text": "Combinator, the premier startup",
+      "start": 32.8,
+      "duration": 5.84
+    },
+    {
+      "text": "accelerator in Silicon Valley. Gary has",
+      "start": 35.76,
+      "duration": 6.16
+    },
+    {
+      "text": "invested and overseen thousands of",
+      "start": 38.64,
+      "duration": 5.68
+    },
+    {
+      "text": "startups, including some of the biggest",
+      "start": 41.92,
+      "duration": 4.56
+    },
+    {
+      "text": "ones you've definitely heard of, like",
+      "start": 44.32,
+      "duration": 4.96
+    },
+    {
+      "text": "Airbnb and Door Dash. So what he did was",
+      "start": 46.48,
+      "duration": 5.84
+    },
+    {
+      "text": "he boiled all of his experience, all of",
+      "start": 49.28,
+      "duration": 5.599
+    },
+    {
+      "text": "his expertise and then combined that",
+      "start": 52.32,
+      "duration": 5.44
+    },
+    {
+      "text": "with his desire to give solo developers",
+      "start": 54.879,
+      "duration": 5.68
+    },
+    {
+      "text": "the power of entire development teams",
+      "start": 57.76,
+      "duration": 5.04
+    },
+    {
+      "text": "and put it in a single package that can",
+      "start": 60.559,
+      "duration": 5.041
+    },
+    {
+      "text": "be used on top of cloud code, codeex or",
+      "start": 62.8,
+      "duration": 4.16
+    },
+    {
+      "text": "whatever other coding agent you're",
+      "start": 65.6,
+      "duration": 4.72
+    },
+    {
+      "text": "using. This is GStack. So he quotes",
+      "start": 66.96,
+      "duration": 5.04
+    },
+    {
+      "text": "Carpathy at the beginning of the",
+      "start": 70.32,
+      "duration": 3.52
+    },
+    {
+      "text": "documentation saying, \"I don't think",
+      "start": 72.0,
+      "duration": 4.24
+    },
+    {
+      "text": "I've typed a line of code probably since",
+      "start": 73.84,
+      "duration": 4.08
+    },
+    {
+      "text": "December basically, which is an",
+      "start": 76.24,
+      "duration": 4.4
+    },
+    {
+      "text": "extremely large change.\" He says, \"When",
+      "start": 77.92,
+      "duration": 4.72
+    },
+    {
+      "text": "I heard Karpathy say this, I wanted to",
+      "start": 80.64,
+      "duration": 3.76
+    },
+    {
+      "text": "find out how. How does one person ship",
+      "start": 82.64,
+      "duration": 4.0
+    },
+    {
+      "text": "like a team of 20?\" And that is what",
+      "start": 84.4,
+      "duration": 4.24
+    },
+    {
+      "text": "he's attempting to do here. So",
+      "start": 86.64,
+      "duration": 5.119
+    },
+    {
+      "text": "installing it is very easy. Down here,",
+      "start": 88.64,
+      "duration": 5.36
+    },
+    {
+      "text": "he gives you this little prompt that you",
+      "start": 91.759,
+      "duration": 5.441
+    },
+    {
+      "text": "simply copy paste into Claude Code. So",
+      "start": 94.0,
+      "duration": 5.04
+    },
+    {
+      "text": "here's Claude Code for me. And as you",
+      "start": 97.2,
+      "duration": 4.08
+    },
+    {
+      "text": "can see, I simply copy pasted it. It",
+      "start": 99.04,
+      "duration": 4.32
+    },
+    {
+      "text": "asked me a few questions, asked me for",
+      "start": 101.28,
+      "duration": 4.08
+    },
+    {
+      "text": "some permissions and then it was done.",
+      "start": 103.36,
+      "duration": 4.32
+    },
+    {
+      "text": "And then in a new session, you can type",
+      "start": 105.36,
+      "duration": 4.48
+    },
+    {
+      "text": "things like slashgstack",
+      "start": 107.68,
+      "duration": 4.96
+    },
+    {
+      "text": "and then you have a bunch of subtools",
+      "start": 109.84,
+      "duration": 6.559
+    },
+    {
+      "text": "that you can use with it like slashoff-",
+      "start": 112.64,
+      "duration": 6.56
+    },
+    {
+      "text": "hours. And he goes over what each of",
+      "start": 116.399,
+      "duration": 5.76
+    },
+    {
+      "text": "these do in the documentation. So he",
+      "start": 119.2,
+      "duration": 6.32
+    },
+    {
+      "text": "describes GStack as a process, not a",
+      "start": 122.159,
+      "duration": 5.441
+    },
+    {
+      "text": "collection of individual tools. The",
+      "start": 125.52,
+      "duration": 5.2
+    },
+    {
+      "text": "purpose is to go through this process to",
+      "start": 127.6,
+      "duration": 5.6
+    },
+    {
+      "text": "fine-tune your idea, fine-tune your",
+      "start": 130.72,
+      "duration": 5.84
+    },
+    {
+      "text": "market opportunity, and then of course",
+      "start": 133.2,
+      "duration": 5.119
+    },
+    {
+      "text": "build it out. And again, all of this is",
+      "start": 136.56,
+      "duration": 4.56
+    },
+    {
+      "text": "based on Gary's incredible amount of",
+      "start": 138.319,
+      "duration": 5.361
+    },
+    {
+      "text": "experience and expertise building",
+      "start": 141.12,
+      "duration": 5.04
+    },
+    {
+      "text": "startups. So, for example, he has office",
+      "start": 143.68,
+      "duration": 4.4
+    },
+    {
+      "text": "hours, one of the most well-known parts",
+      "start": 146.16,
+      "duration": 4.799
+    },
+    {
+      "text": "of the Y Combinator program. You go meet",
+      "start": 148.08,
+      "duration": 5.12
+    },
+    {
+      "text": "with the partners of YC. You ask them",
+      "start": 150.959,
+      "duration": 4.081
+    },
+    {
+      "text": "questions, they give you advice. But for",
+      "start": 153.2,
+      "duration": 4.8
+    },
+    {
+      "text": "SLO office hours, there are six forcing",
+      "start": 155.04,
+      "duration": 4.64
+    },
+    {
+      "text": "questions that reframe your product",
+      "start": 158.0,
+      "duration": 4.08
+    },
+    {
+      "text": "before you write any code. Again, trying",
+      "start": 159.68,
+      "duration": 4.8
+    },
+    {
+      "text": "to hone in on that idea. Hone in on the",
+      "start": 162.08,
+      "duration": 4.48
+    },
+    {
+      "text": "right path forward before writing any of",
+      "start": 164.48,
+      "duration": 5.6
+    },
+    {
+      "text": "that code. Here we have plan CEO review,",
+      "start": 166.56,
+      "duration": 5.44
+    },
+    {
+      "text": "which rethink the problem, find the",
+      "start": 170.08,
+      "duration": 5.12
+    },
+    {
+      "text": "10-star product, which is a reference to",
+      "start": 172.0,
+      "duration": 6.239
+    },
+    {
+      "text": "Airbnb's Brian Chesy, who said five",
+      "start": 175.2,
+      "duration": 5.119
+    },
+    {
+      "text": "stars not enough. How do we actually",
+      "start": 178.239,
+      "duration": 4.801
+    },
+    {
+      "text": "give a 10-star experience as part of the",
+      "start": 180.319,
+      "duration": 4.881
+    },
+    {
+      "text": "Airbnb experience? So that's kind of",
+      "start": 183.04,
+      "duration": 4.0
+    },
+    {
+      "text": "what he's trying to recreate here. We",
+      "start": 185.2,
+      "duration": 3.84
+    },
+    {
+      "text": "have an engineering manager, a senior",
+      "start": 187.04,
+      "duration": 3.6
+    },
+    {
+      "text": "designer, design partner, staff",
+      "start": 189.04,
+      "duration": 4.16
+    },
+    {
+      "text": "engineer, debugger. So basically what he",
+      "start": 190.64,
+      "duration": 4.4
+    },
+    {
+      "text": "has done is broken out all of these",
+      "start": 193.2,
+      "duration": 4.72
+    },
+    {
+      "text": "roles into individual prompts or",
+      "start": 195.04,
+      "duration": 5.68
+    },
+    {
+      "text": "individual markdown files that help",
+      "start": 197.92,
+      "duration": 4.8
+    },
+    {
+      "text": "claude code understand how to look at",
+      "start": 200.72,
+      "duration": 4.56
+    },
+    {
+      "text": "your codebase. No longer are you using a",
+      "start": 202.72,
+      "duration": 4.799
+    },
+    {
+      "text": "single agent for all of these different",
+      "start": 205.28,
+      "duration": 5.2
+    },
+    {
+      "text": "tasks. Instead, the agent is given much",
+      "start": 207.519,
+      "duration": 5.201
+    },
+    {
+      "text": "more specific direction in how to look",
+      "start": 210.48,
+      "duration": 4.64
+    },
+    {
+      "text": "at the codebase through the lens of each",
+      "start": 212.72,
+      "duration": 4.32
+    },
+    {
+      "text": "of these roles. And this is prompt",
+      "start": 215.12,
+      "duration": 4.32
+    },
+    {
+      "text": "engineering at its finest. And the cool",
+      "start": 217.04,
+      "duration": 5.279
+    },
+    {
+      "text": "thing is it's all open source. So you",
+      "start": 219.44,
+      "duration": 4.96
+    },
+    {
+      "text": "can actually go in and you're",
+      "start": 222.319,
+      "duration": 4.321
+    },
+    {
+      "text": "essentially able to see how Gary Tan",
+      "start": 224.4,
+      "duration": 4.24
+    },
+    {
+      "text": "thinks about startups. And it's really",
+      "start": 226.64,
+      "duration": 4.239
+    },
+    {
+      "text": "cool that he open sourced all of it. So",
+      "start": 228.64,
+      "duration": 4.4
+    },
+    {
+      "text": "go in there, read all the documentation.",
+      "start": 230.879,
+      "duration": 4.401
+    },
+    {
+      "text": "So this is literally how he thinks about",
+      "start": 233.04,
+      "duration": 5.199
+    },
+    {
+      "text": "office hours for YC. Lots of cool",
+      "start": 235.28,
+      "duration": 4.879
+    },
+    {
+      "text": "features being updated seemingly every",
+      "start": 238.239,
+      "duration": 4.801
+    },
+    {
+      "text": "day. And it's weird because Gary also",
+      "start": 240.159,
+      "duration": 4.8
+    },
+    {
+      "text": "runs Y Cominator full-time, does this",
+      "start": 243.04,
+      "duration": 3.68
+    },
+    {
+      "text": "part-time. He's starting to bring on",
+      "start": 244.959,
+      "duration": 3.521
+    },
+    {
+      "text": "contributors. So, if you have some",
+      "start": 246.72,
+      "duration": 3.76
+    },
+    {
+      "text": "ideas, let them know. Go check this out.",
+      "start": 248.48,
+      "duration": 3.759
+    },
+    {
+      "text": "I'll drop the link in the description",
+      "start": 250.48,
+      "duration": 3.839
+    },
+    {
+      "text": "below. And quick disclosure, this",
+      "start": 252.239,
+      "duration": 4.24
+    },
+    {
+      "text": "segment is sponsored by Microsoft. And",
+      "start": 254.319,
+      "duration": 3.521
+    },
+    {
+      "text": "by the way, let me just pause for a",
+      "start": 256.479,
+      "duration": 3.44
+    },
+    {
+      "text": "second and say, nobody actually believes",
+      "start": 257.84,
+      "duration": 4.56
+    },
+    {
+      "text": "me that this is a full-time job or that",
+      "start": 259.919,
+      "duration": 5.121
+    },
+    {
+      "text": "this channel is a very successful small",
+      "start": 262.4,
+      "duration": 4.64
+    },
+    {
+      "text": "business. And not only that, that I can",
+      "start": 265.04,
+      "duration": 3.68
+    },
+    {
+      "text": "hire people and produce hundreds of",
+      "start": 267.04,
+      "duration": 3.68
+    },
+    {
+      "text": "videos per year. Literally, I get asked",
+      "start": 268.72,
+      "duration": 4.08
+    },
+    {
+      "text": "all the time, okay, but what's your real",
+      "start": 270.72,
+      "duration": 4.0
+    },
+    {
+      "text": "job? The job of running a small business",
+      "start": 272.8,
+      "duration": 4.16
+    },
+    {
+      "text": "requires many of the typical tasks,",
+      "start": 274.72,
+      "duration": 4.56
+    },
+    {
+      "text": "digging through docs, spreadsheets, and",
+      "start": 276.96,
+      "duration": 4.64
+    },
+    {
+      "text": "notes. Tasks that I used to do manually,",
+      "start": 279.28,
+      "duration": 5.12
+    },
+    {
+      "text": "but now can be sped up significantly by",
+      "start": 281.6,
+      "duration": 5.039
+    },
+    {
+      "text": "using AI. I went over this in detail",
+      "start": 284.4,
+      "duration": 3.84
+    },
+    {
+      "text": "recently in a short I did with",
+      "start": 286.639,
+      "duration": 3.921
+    },
+    {
+      "text": "Microsoft. I talk about my journey of",
+      "start": 288.24,
+      "duration": 4.56
+    },
+    {
+      "text": "becoming a content creator and also how",
+      "start": 290.56,
+      "duration": 5.44
+    },
+    {
+      "text": "I use Microsoft 365 co-pilot business to",
+      "start": 292.8,
+      "duration": 5.36
+    },
+    {
+      "text": "help with a lot of the automation so my",
+      "start": 296.0,
+      "duration": 4.24
+    },
+    {
+      "text": "small team can punch above its weight.",
+      "start": 298.16,
+      "duration": 3.759
+    },
+    {
+      "text": "And so if you want to know how I produce",
+      "start": 300.24,
+      "duration": 3.679
+    },
+    {
+      "text": "hundreds of videos per year, have a",
+      "start": 301.919,
+      "duration": 4.161
+    },
+    {
+      "text": "number of full-time employees and went",
+      "start": 303.919,
+      "duration": 5.041
+    },
+    {
+      "text": "from zero to over 500,000 subscribers in",
+      "start": 306.08,
+      "duration": 5.2
+    },
+    {
+      "text": "about 2 years. This is how it's a big",
+      "start": 308.96,
+      "duration": 4.959
+    },
+    {
+      "text": "part of how my small team can operate as",
+      "start": 311.28,
+      "duration": 5.359
+    },
+    {
+      "text": "if it were a massive team. Copilot",
+      "start": 313.919,
+      "duration": 4.56
+    },
+    {
+      "text": "easily plugs into a lot of the apps that",
+      "start": 316.639,
+      "duration": 4.4
+    },
+    {
+      "text": "I already use today like Word and Excel.",
+      "start": 318.479,
+      "duration": 4.081
+    },
+    {
+      "text": "It can help me search through all of",
+      "start": 321.039,
+      "duration": 2.961
+    },
+    {
+      "text": "those documents. It can help me do",
+      "start": 322.56,
+      "duration": 3.359
+    },
+    {
+      "text": "research for videos. It could review",
+      "start": 324.0,
+      "duration": 4.08
+    },
+    {
+      "text": "legal documents. So many different",
+      "start": 325.919,
+      "duration": 4.321
+    },
+    {
+      "text": "things that add up to real productivity",
+      "start": 328.08,
+      "duration": 4.88
+    },
+    {
+      "text": "gains and business. I outlined it all in",
+      "start": 330.24,
+      "duration": 4.56
+    },
+    {
+      "text": "that short. Go check it out. Link in the",
+      "start": 332.96,
+      "duration": 3.92
+    },
+    {
+      "text": "description. Now, back to the video. All",
+      "start": 334.8,
+      "duration": 4.72
+    },
+    {
+      "text": "right. Next, Hermes Agent by Nouse",
+      "start": 336.88,
+      "duration": 5.599
+    },
+    {
+      "text": "Research. This thing has gone mega viral",
+      "start": 339.52,
+      "duration": 6.32
+    },
+    {
+      "text": "over the last few days. already at 13",
+      "start": 342.479,
+      "duration": 6.641
+    },
+    {
+      "text": "12,000 stars again only having come out",
+      "start": 345.84,
+      "duration": 6.0
+    },
+    {
+      "text": "a few days ago. Hermes agent is like",
+      "start": 349.12,
+      "duration": 6.079
+    },
+    {
+      "text": "OpenClaw but apparently it is really",
+      "start": 351.84,
+      "duration": 6.0
+    },
+    {
+      "text": "good at self-improving. This isn't just",
+      "start": 355.199,
+      "duration": 4.801
+    },
+    {
+      "text": "a coding agent. This isn't just an",
+      "start": 357.84,
+      "duration": 4.4
+    },
+    {
+      "text": "assistant. It is much more akin to",
+      "start": 360.0,
+      "duration": 5.199
+    },
+    {
+      "text": "OpenClaw. It is an entire framework, an",
+      "start": 362.24,
+      "duration": 5.84
+    },
+    {
+      "text": "entire operating system that you can use",
+      "start": 365.199,
+      "duration": 6.961
+    },
+    {
+      "text": "as your personal AI agent. So if you're",
+      "start": 368.08,
+      "duration": 7.04
+    },
+    {
+      "text": "deep in openclaw and you want to explore",
+      "start": 372.16,
+      "duration": 6.159
+    },
+    {
+      "text": "a great alternative, Hermes agent might",
+      "start": 375.12,
+      "duration": 5.359
+    },
+    {
+      "text": "be really cool for you to check out. So",
+      "start": 378.319,
+      "duration": 3.681
+    },
+    {
+      "text": "let's look at some of the features. It",
+      "start": 380.479,
+      "duration": 4.641
+    },
+    {
+      "text": "comes with a terminal interface, a tui",
+      "start": 382.0,
+      "duration": 4.96
+    },
+    {
+      "text": "with multi-line editing/comand",
+      "start": 385.12,
+      "duration": 3.919
+    },
+    {
+      "text": "autocomplete, conversation history,",
+      "start": 386.96,
+      "duration": 3.84
+    },
+    {
+      "text": "interrupt and redirect, and streaming",
+      "start": 389.039,
+      "duration": 5.041
+    },
+    {
+      "text": "tool output. And of course, what",
+      "start": 390.8,
+      "duration": 6.239
+    },
+    {
+      "text": "OpenClaw did and showed the world is go",
+      "start": 394.08,
+      "duration": 5.44
+    },
+    {
+      "text": "ahead give us the chat apps. So it",
+      "start": 397.039,
+      "duration": 4.321
+    },
+    {
+      "text": "supports Telegram, Discord, Slack,",
+      "start": 399.52,
+      "duration": 4.399
+    },
+    {
+      "text": "WhatsApp Signal and CLI all from a",
+      "start": 401.36,
+      "duration": 5.6
+    },
+    {
+      "text": "single gateway very similar to OpenClaw.",
+      "start": 403.919,
+      "duration": 6.4
+    },
+    {
+      "text": "Now here is where it is different and",
+      "start": 406.96,
+      "duration": 5.679
+    },
+    {
+      "text": "I've seen a lot of projects like this",
+      "start": 410.319,
+      "duration": 5.761
+    },
+    {
+      "text": "come out since Andre Carpathy's auto",
+      "start": 412.639,
+      "duration": 5.601
+    },
+    {
+      "text": "research project which really gave me so",
+      "start": 416.08,
+      "duration": 4.399
+    },
+    {
+      "text": "much inspiration to build some of my own",
+      "start": 418.24,
+      "duration": 4.48
+    },
+    {
+      "text": "self-improving loops. But this is a",
+      "start": 420.479,
+      "duration": 4.56
+    },
+    {
+      "text": "self-improving loop within Hermes agent.",
+      "start": 422.72,
+      "duration": 5.12
+    },
+    {
+      "text": "So a closed learning loop, agent curated",
+      "start": 425.039,
+      "duration": 5.361
+    },
+    {
+      "text": "memory with periodic nudges, autonomous",
+      "start": 427.84,
+      "duration": 5.12
+    },
+    {
+      "text": "skill creation after complex tasks,",
+      "start": 430.4,
+      "duration": 6.88
+    },
+    {
+      "text": "skills self-improve during use. So they",
+      "start": 432.96,
+      "duration": 6.639
+    },
+    {
+      "text": "describe it as the only agent with a",
+      "start": 437.28,
+      "duration": 3.84
+    },
+    {
+      "text": "built-in learning loop. It creates",
+      "start": 439.599,
+      "duration": 3.201
+    },
+    {
+      "text": "skills from experience, improves them",
+      "start": 441.12,
+      "duration": 3.76
+    },
+    {
+      "text": "during use, nudges itself to persist",
+      "start": 442.8,
+      "duration": 4.239
+    },
+    {
+      "text": "knowledge, searches its own past",
+      "start": 444.88,
+      "duration": 4.56
+    },
+    {
+      "text": "conversations, and builds a deepening",
+      "start": 447.039,
+      "duration": 5.201
+    },
+    {
+      "text": "model of who you are across sessions.",
+      "start": 449.44,
+      "duration": 4.64
+    },
+    {
+      "text": "And of course, it has all of the lovely",
+      "start": 452.24,
+      "duration": 4.239
+    },
+    {
+      "text": "features that OpenClaw comes with like",
+      "start": 454.08,
+      "duration": 4.0
+    },
+    {
+      "text": "scheduler/cron.",
+      "start": 456.479,
+      "duration": 4.401
+    },
+    {
+      "text": "It can delegate to sub aents and it does",
+      "start": 458.08,
+      "duration": 4.88
+    },
+    {
+      "text": "that in parallel. You can run it",
+      "start": 460.88,
+      "duration": 4.64
+    },
+    {
+      "text": "anywhere locally in the cloud or",
+      "start": 462.96,
+      "duration": 4.799
+    },
+    {
+      "text": "anywhere in between. It also comes with",
+      "start": 465.52,
+      "duration": 5.44
+    },
+    {
+      "text": "a nice migration from OpenClaw if you",
+      "start": 467.759,
+      "duration": 5.44
+    },
+    {
+      "text": "don't want to have to start up and",
+      "start": 470.96,
+      "duration": 4.4
+    },
+    {
+      "text": "rebuild all of your different workflows,",
+      "start": 473.199,
+      "duration": 4.161
+    },
+    {
+      "text": "all of your memories from scratch, which",
+      "start": 475.36,
+      "duration": 3.76
+    },
+    {
+      "text": "is actually a really nice feature and",
+      "start": 477.36,
+      "duration": 3.839
+    },
+    {
+      "text": "something probably the industry is going",
+      "start": 479.12,
+      "duration": 3.519
+    },
+    {
+      "text": "to have to think about. How do you test",
+      "start": 481.199,
+      "duration": 3.44
+    },
+    {
+      "text": "out different agents without starting",
+      "start": 482.639,
+      "duration": 3.921
+    },
+    {
+      "text": "completely from scratch? There probably",
+      "start": 484.639,
+      "duration": 4.56
+    },
+    {
+      "text": "needs to be a standard created soon. All",
+      "start": 486.56,
+      "duration": 5.68
+    },
+    {
+      "text": "right, next is a project, the most",
+      "start": 489.199,
+      "duration": 6.56
+    },
+    {
+      "text": "popular one by far, called Superpowers,",
+      "start": 492.24,
+      "duration": 7.04
+    },
+    {
+      "text": "and it is already at 115,000",
+      "start": 495.759,
+      "duration": 6.88
+    },
+    {
+      "text": "stars on GitHub. It is by author Ora,",
+      "start": 499.28,
+      "duration": 5.68
+    },
+    {
+      "text": "and it basically gives Claude Code",
+      "start": 502.639,
+      "duration": 5.761
+    },
+    {
+      "text": "superpowers. Now, this is in some ways",
+      "start": 504.96,
+      "duration": 6.639
+    },
+    {
+      "text": "similar to GStack by Gary Tan, but it is",
+      "start": 508.4,
+      "duration": 5.999
+    },
+    {
+      "text": "much more focused on the development",
+      "start": 511.599,
+      "duration": 4.721
+    },
+    {
+      "text": "side of things. And in one of the",
+      "start": 514.399,
+      "duration": 4.801
+    },
+    {
+      "text": "funniest descriptions of itself, well,",
+      "start": 516.32,
+      "duration": 5.199
+    },
+    {
+      "text": "listen to this. Your agent puts together",
+      "start": 519.2,
+      "duration": 4.16
+    },
+    {
+      "text": "an implementation plan that's clear",
+      "start": 521.519,
+      "duration": 4.401
+    },
+    {
+      "text": "enough for an enthusiastic junior",
+      "start": 523.36,
+      "duration": 5.28
+    },
+    {
+      "text": "engineer with poor taste, no judgment,",
+      "start": 525.92,
+      "duration": 5.359
+    },
+    {
+      "text": "no project context, and an aversion to",
+      "start": 528.64,
+      "duration": 5.36
+    },
+    {
+      "text": "testing to follow. That made me chuckle.",
+      "start": 531.279,
+      "duration": 5.68
+    },
+    {
+      "text": "So, it emphasizes true TDD, which is",
+      "start": 534.0,
+      "duration": 6.16
+    },
+    {
+      "text": "testdriven development. Yagy, you aren't",
+      "start": 536.959,
+      "duration": 6.161
+    },
+    {
+      "text": "going to need it, and dry. These are",
+      "start": 540.16,
+      "duration": 5.119
+    },
+    {
+      "text": "kind of best practices coding patterns.",
+      "start": 543.12,
+      "duration": 4.64
+    },
+    {
+      "text": "So here's the basic workflow. First, you",
+      "start": 545.279,
+      "duration": 4.481
+    },
+    {
+      "text": "brainstorm, activates before writing",
+      "start": 547.76,
+      "duration": 5.6
+    },
+    {
+      "text": "code, refinds your rough ideas. So very",
+      "start": 549.76,
+      "duration": 6.56
+    },
+    {
+      "text": "similar to GStack in that way in the YC",
+      "start": 553.36,
+      "duration": 5.039
+    },
+    {
+      "text": "office hours, but now this is kind of",
+      "start": 556.32,
+      "duration": 4.4
+    },
+    {
+      "text": "just a different flavor of it. Explores",
+      "start": 558.399,
+      "duration": 4.241
+    },
+    {
+      "text": "alternatives, presents design in",
+      "start": 560.72,
+      "duration": 3.76
+    },
+    {
+      "text": "sections for validation, saves a design",
+      "start": 562.64,
+      "duration": 4.4
+    },
+    {
+      "text": "document, then by default it uses work",
+      "start": 564.48,
+      "duration": 4.56
+    },
+    {
+      "text": "trees, which is really nice for",
+      "start": 567.04,
+      "duration": 4.72
+    },
+    {
+      "text": "parallelization of coding agents. Then",
+      "start": 569.04,
+      "duration": 5.2
+    },
+    {
+      "text": "it writes the plans. Then it actually",
+      "start": 571.76,
+      "duration": 4.639
+    },
+    {
+      "text": "executes the plans. Makes sure it's",
+      "start": 574.24,
+      "duration": 4.56
+    },
+    {
+      "text": "doing TDD and actually does that code",
+      "start": 576.399,
+      "duration": 5.44
+    },
+    {
+      "text": "reviews and then finishes the branch.",
+      "start": 578.8,
+      "duration": 4.96
+    },
+    {
+      "text": "Now this is a little different in that",
+      "start": 581.839,
+      "duration": 4.721
+    },
+    {
+      "text": "it comes in the form of a plugin. So",
+      "start": 583.76,
+      "duration": 4.88
+    },
+    {
+      "text": "it's a little bit easier to install than",
+      "start": 586.56,
+      "duration": 4.88
+    },
+    {
+      "text": "GStack. So to install it, you simply",
+      "start": 588.64,
+      "duration": 5.759
+    },
+    {
+      "text": "type claude plugin install superpowers",
+      "start": 591.44,
+      "duration": 5.839
+    },
+    {
+      "text": "at claude plugins official. Hit enter",
+      "start": 594.399,
+      "duration": 4.88
+    },
+    {
+      "text": "and that's it. It's done. And then as",
+      "start": 597.279,
+      "duration": 3.921
+    },
+    {
+      "text": "soon as you hit /s superpowers, you can",
+      "start": 599.279,
+      "duration": 3.921
+    },
+    {
+      "text": "start to see all of the different tools",
+      "start": 601.2,
+      "duration": 3.759
+    },
+    {
+      "text": "available to you. So we're going to",
+      "start": 603.2,
+      "duration": 4.56
+    },
+    {
+      "text": "select /s superpowers brainstorm and it",
+      "start": 604.959,
+      "duration": 6.56
+    },
+    {
+      "text": "is just going immediately. So it has an",
+      "start": 607.76,
+      "duration": 5.36
+    },
+    {
+      "text": "entire workflow that it's going to go",
+      "start": 611.519,
+      "duration": 4.641
+    },
+    {
+      "text": "through with me one by one. Just super",
+      "start": 613.12,
+      "duration": 5.279
+    },
+    {
+      "text": "useful if you need help thinking through",
+      "start": 616.16,
+      "duration": 4.16
+    },
+    {
+      "text": "how to start these projects, how to",
+      "start": 618.399,
+      "duration": 3.68
+    },
+    {
+      "text": "actually execute them. So in a lot of",
+      "start": 620.32,
+      "duration": 4.16
+    },
+    {
+      "text": "ways, similar to GStack, just a very",
+      "start": 622.079,
+      "duration": 5.121
+    },
+    {
+      "text": "different approach. All right. And last,",
+      "start": 624.48,
+      "duration": 4.799
+    },
+    {
+      "text": "maybe the most interesting project of",
+      "start": 627.2,
+      "duration": 6.16
+    },
+    {
+      "text": "the four, paperclip. This is intended to",
+      "start": 629.279,
+      "duration": 8.081
+    },
+    {
+      "text": "be an entire company run by AI, a",
+      "start": 633.36,
+      "duration": 7.36
+    },
+    {
+      "text": "zerohuman company already at 33,000",
+      "start": 637.36,
+      "duration": 4.88
+    },
+    {
+      "text": "stars. Now, I'm going to give a slight",
+      "start": 640.72,
+      "duration": 4.4
+    },
+    {
+      "text": "caveat before I get into this. I have",
+      "start": 642.24,
+      "duration": 6.08
+    },
+    {
+      "text": "seen so many different projects claiming",
+      "start": 645.12,
+      "duration": 5.6
+    },
+    {
+      "text": "to be able to make you money, and that",
+      "start": 648.32,
+      "duration": 4.88
+    },
+    {
+      "text": "is not something I cover often on this",
+      "start": 650.72,
+      "duration": 4.4
+    },
+    {
+      "text": "channel, really ever. I need you to know",
+      "start": 653.2,
+      "duration": 4.4
+    },
+    {
+      "text": "the likelihood of you actually making",
+      "start": 655.12,
+      "duration": 6.08
+    },
+    {
+      "text": "money from this type of project is low",
+      "start": 657.6,
+      "duration": 6.239
+    },
+    {
+      "text": "unless you put in the effort. And I",
+      "start": 661.2,
+      "duration": 4.16
+    },
+    {
+      "text": "really want to be transparent about",
+      "start": 663.839,
+      "duration": 3.44
+    },
+    {
+      "text": "that. This is not something where you're",
+      "start": 665.36,
+      "duration": 4.0
+    },
+    {
+      "text": "just going to click a button, say go,",
+      "start": 667.279,
+      "duration": 3.441
+    },
+    {
+      "text": "and all of a sudden you're going to wake",
+      "start": 669.36,
+      "duration": 3.36
+    },
+    {
+      "text": "up with $1,000 in your bank account. It",
+      "start": 670.72,
+      "duration": 3.84
+    },
+    {
+      "text": "is just never going to happen like that.",
+      "start": 672.72,
+      "duration": 4.88
+    },
+    {
+      "text": "But nonetheless, Paperclip is very",
+      "start": 674.56,
+      "duration": 4.8
+    },
+    {
+      "text": "interesting and I'm seeing more and more",
+      "start": 677.6,
+      "duration": 4.4
+    },
+    {
+      "text": "of these projects in which a team of",
+      "start": 679.36,
+      "duration": 5.84
+    },
+    {
+      "text": "agents is supposedly able to run an",
+      "start": 682.0,
+      "duration": 5.839
+    },
+    {
+      "text": "entire company for you. Probably the",
+      "start": 685.2,
+      "duration": 4.879
+    },
+    {
+      "text": "most popular of these, which is closed",
+      "start": 687.839,
+      "duration": 5.201
+    },
+    {
+      "text": "source, is a company called Pulsia.",
+      "start": 690.079,
+      "duration": 5.841
+    },
+    {
+      "text": "Slight detour, Pulsia is created by this",
+      "start": 693.04,
+      "duration": 5.76
+    },
+    {
+      "text": "guy, Ben Sarah, AI that runs your",
+      "start": 695.92,
+      "duration": 4.64
+    },
+    {
+      "text": "company while you sleep. So basically,",
+      "start": 698.8,
+      "duration": 4.0
+    },
+    {
+      "text": "you plug it in to your company and it",
+      "start": 700.56,
+      "duration": 5.68
+    },
+    {
+      "text": "just runs everything for you. Again, not",
+      "start": 702.8,
+      "duration": 5.84
+    },
+    {
+      "text": "only am I going to give you the warning",
+      "start": 706.24,
+      "duration": 4.88
+    },
+    {
+      "text": "that most likely you are not going to",
+      "start": 708.64,
+      "duration": 4.24
+    },
+    {
+      "text": "wake up with money in your bank account",
+      "start": 711.12,
+      "duration": 4.24
+    },
+    {
+      "text": "just because you submitted a prompt, but",
+      "start": 712.88,
+      "duration": 6.88
+    },
+    {
+      "text": "also I find it difficult to believe that",
+      "start": 715.36,
+      "duration": 6.64
+    },
+    {
+      "text": "these types of zero human company",
+      "start": 719.76,
+      "duration": 4.96
+    },
+    {
+      "text": "projects don't have the rough edges and",
+      "start": 722.0,
+      "duration": 4.88
+    },
+    {
+      "text": "limitations that I truly believe they",
+      "start": 724.72,
+      "duration": 4.239
+    },
+    {
+      "text": "do. So take all of this with a grain of",
+      "start": 726.88,
+      "duration": 4.48
+    },
+    {
+      "text": "salt. All right. So, what is Paperclip?",
+      "start": 728.959,
+      "duration": 4.56
+    },
+    {
+      "text": "Open source orchestration for zero human",
+      "start": 731.36,
+      "duration": 4.24
+    },
+    {
+      "text": "companies. If OpenClaw is an employee,",
+      "start": 733.519,
+      "duration": 4.56
+    },
+    {
+      "text": "Paperclip is the company. So, Paperclip",
+      "start": 735.6,
+      "duration": 4.64
+    },
+    {
+      "text": "is a Node.js server and React UI that",
+      "start": 738.079,
+      "duration": 4.481
+    },
+    {
+      "text": "orchestrates a team of AI agents to run",
+      "start": 740.24,
+      "duration": 4.0
+    },
+    {
+      "text": "a business. Bring your own agents,",
+      "start": 742.56,
+      "duration": 3.519
+    },
+    {
+      "text": "assign goals, and track your agents work",
+      "start": 744.24,
+      "duration": 3.76
+    },
+    {
+      "text": "and cost from one dashboard. Let me show",
+      "start": 746.079,
+      "duration": 4.0
+    },
+    {
+      "text": "you that dashboard now. So, this is",
+      "start": 748.0,
+      "duration": 4.48
+    },
+    {
+      "text": "their demo video. Let's take a look. So,",
+      "start": 750.079,
+      "duration": 5.521
+    },
+    {
+      "text": "design-wise, very nice. You can see",
+      "start": 752.48,
+      "duration": 5.919
+    },
+    {
+      "text": "there are issues. The engineering team",
+      "start": 755.6,
+      "duration": 4.56
+    },
+    {
+      "text": "automatically takes those issues, starts",
+      "start": 758.399,
+      "duration": 3.521
+    },
+    {
+      "text": "to build things. You can see an org",
+      "start": 760.16,
+      "duration": 5.119
+    },
+    {
+      "text": "chart right here. These are all AI",
+      "start": 761.92,
+      "duration": 5.76
+    },
+    {
+      "text": "agents. Your CEO is an agent, Claude.",
+      "start": 765.279,
+      "duration": 4.961
+    },
+    {
+      "text": "Your CMO is an agent, Claude. Your CTO",
+      "start": 767.68,
+      "duration": 4.159
+    },
+    {
+      "text": "has two engineers, one of which is",
+      "start": 770.24,
+      "duration": 3.44
+    },
+    {
+      "text": "Claude, the other is Codeex. You can",
+      "start": 771.839,
+      "duration": 4.081
+    },
+    {
+      "text": "have different projects that your teams",
+      "start": 773.68,
+      "duration": 4.64
+    },
+    {
+      "text": "are working on. And Paperclip has a lot",
+      "start": 775.92,
+      "duration": 4.8
+    },
+    {
+      "text": "of really cool features. All work is",
+      "start": 778.32,
+      "duration": 4.4
+    },
+    {
+      "text": "atomic. You can track how many tokens",
+      "start": 780.72,
+      "duration": 3.76
+    },
+    {
+      "text": "you're spending because yes, this can",
+      "start": 782.72,
+      "duration": 4.64
+    },
+    {
+      "text": "get extremely expensive. It uses a",
+      "start": 784.48,
+      "duration": 5.76
+    },
+    {
+      "text": "ticketing system. So very similar to if",
+      "start": 787.36,
+      "duration": 5.279
+    },
+    {
+      "text": "you were on an actual engineering team",
+      "start": 790.24,
+      "duration": 4.399
+    },
+    {
+      "text": "with humans, you would use a ticketing",
+      "start": 792.639,
+      "duration": 4.241
+    },
+    {
+      "text": "system. You would submit issues. Those",
+      "start": 794.639,
+      "duration": 4.401
+    },
+    {
+      "text": "issues would get addressed, built out,",
+      "start": 796.88,
+      "duration": 4.48
+    },
+    {
+      "text": "and then deployed. It does all of that",
+      "start": 799.04,
+      "duration": 5.039
+    },
+    {
+      "text": "for you. And it's all tied to the goals",
+      "start": 801.36,
+      "duration": 5.12
+    },
+    {
+      "text": "that you set. So the agents are always",
+      "start": 804.079,
+      "duration": 4.641
+    },
+    {
+      "text": "referencing your highlevel goal for the",
+      "start": 806.48,
+      "duration": 3.76
+    },
+    {
+      "text": "company. So if you want to get started,",
+      "start": 808.72,
+      "duration": 3.2
+    },
+    {
+      "text": "it is very easy. Here's the command",
+      "start": 810.24,
+      "duration": 4.64
+    },
+    {
+      "text": "paperclipip AI onboard-y.",
+      "start": 811.92,
+      "duration": 4.719
+    },
+    {
+      "text": "and a little bit about their upcoming",
+      "start": 814.88,
+      "duration": 3.519
+    },
+    {
+      "text": "roadmap. They're coming out with a",
+      "start": 816.639,
+      "duration": 3.521
+    },
+    {
+      "text": "plug-in system like adding a knowledge",
+      "start": 818.399,
+      "duration": 4.24
+    },
+    {
+      "text": "base, custom tracing cues, etc. You can",
+      "start": 820.16,
+      "duration": 4.72
+    },
+    {
+      "text": "get openclaw style agents which will",
+      "start": 822.639,
+      "duration": 3.841
+    },
+    {
+      "text": "just make them more capable and you can",
+      "start": 824.88,
+      "duration": 3.12
+    },
+    {
+      "text": "chat with them directly through",
+      "start": 826.48,
+      "duration": 3.599
+    },
+    {
+      "text": "obviously things like telegram. You can",
+      "start": 828.0,
+      "duration": 4.0
+    },
+    {
+      "text": "actually fully encapsulate your company",
+      "start": 830.079,
+      "duration": 4.481
+    },
+    {
+      "text": "into companies.sh which allows you to",
+      "start": 832.0,
+      "duration": 5.519
+    },
+    {
+      "text": "export or import an entire organization.",
+      "start": 834.56,
+      "duration": 4.959
+    },
+    {
+      "text": "So there might be a way where you can",
+      "start": 837.519,
+      "duration": 3.521
+    },
+    {
+      "text": "share your organization with other",
+      "start": 839.519,
+      "duration": 3.12
+    },
+    {
+      "text": "people although if you're making money",
+      "start": 841.04,
+      "duration": 3.76
+    },
+    {
+      "text": "why would you do that? a skills manager,",
+      "start": 842.639,
+      "duration": 4.64
+    },
+    {
+      "text": "scheduling routines, better budgeting,",
+      "start": 844.8,
+      "duration": 5.599
+    },
+    {
+      "text": "and more. So, very cool project. I have",
+      "start": 847.279,
+      "duration": 4.881
+    },
+    {
+      "text": "not tested this myself yet, but I've",
+      "start": 850.399,
+      "duration": 3.521
+    },
+    {
+      "text": "seen a lot of other people try it and",
+      "start": 852.16,
+      "duration": 4.08
+    },
+    {
+      "text": "say it's really cool. It's just very",
+      "start": 853.92,
+      "duration": 5.12
+    },
+    {
+      "text": "experimental. Again, don't expect to",
+      "start": 856.24,
+      "duration": 4.88
+    },
+    {
+      "text": "wake up and make a bunch of money. It's",
+      "start": 859.04,
+      "duration": 5.12
+    },
+    {
+      "text": "just not going to happen. But it is a",
+      "start": 861.12,
+      "duration": 5.6
+    },
+    {
+      "text": "vision into what's coming. These agents",
+      "start": 864.16,
+      "duration": 4.72
+    },
+    {
+      "text": "are getting more capable. The harnesses,",
+      "start": 866.72,
+      "duration": 4.0
+    },
+    {
+      "text": "the projects around them are getting",
+      "start": 868.88,
+      "duration": 4.079
+    },
+    {
+      "text": "more capable. And so with that, if",
+      "start": 870.72,
+      "duration": 3.919
+    },
+    {
+      "text": "you're early and you're seeing these",
+      "start": 872.959,
+      "duration": 3.761
+    },
+    {
+      "text": "things, you're experimenting with them,",
+      "start": 874.639,
+      "duration": 5.841
+    },
+    {
+      "text": "you have a huge advantage versus",
+      "start": 876.72,
+      "duration": 6.0
+    },
+    {
+      "text": "everybody else who are still maybe just",
+      "start": 880.48,
+      "duration": 5.359
+    },
+    {
+      "text": "using chat GPT for Q&A, for example.",
+      "start": 882.72,
+      "duration": 5.359
+    },
+    {
+      "text": "This is the cutting edge of what's",
+      "start": 885.839,
+      "duration": 4.321
+    },
+    {
+      "text": "happening in artificial intelligence,",
+      "start": 888.079,
+      "duration": 4.161
+    },
+    {
+      "text": "all four of these projects. Hopefully,",
+      "start": 890.16,
+      "duration": 4.479
+    },
+    {
+      "text": "you enjoyed. If you enjoyed this video,",
+      "start": 892.24,
+      "duration": 3.76
+    },
+    {
+      "text": "please consider giving a like and",
+      "start": 894.639,
+      "duration": 3.76
+    },
+    {
+      "text": "subscribe.",
+      "start": 896.0,
+      "duration": 2.399
+    }
+  ],
+  "metadata": {
+    "video_id": "sXVbWkoCVaA",
+    "method": "native_captions",
+    "detected_language": "en",
+    "available_languages": [
+      "en"
+    ],
+    "is_generated": true,
+    "timestamp": "2026-03-27T09:44:08.529008",
+    "cost": 0.0,
+    "duration_seconds": 1794.798
+  }
+}

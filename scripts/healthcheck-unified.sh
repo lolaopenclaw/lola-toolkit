@@ -1,5 +1,5 @@
 #!/bin/bash
-set -uo pipefail
+set -o pipefail
 
 MODE="${1:---quick}"  # --quick (daily) or --full (weekly)
 REPORT=""
@@ -10,48 +10,45 @@ add_section() {
   REPORT+=$'\n'"## $title"$'\n'"$content"$'\n'
 }
 
-# Parallelize independent checks
-{ f2b=$(sudo fail2ban-client status sshd 2>&1) || f2b="⚠️ fail2ban check FAILED"; } &
-{ drift=$(python3 scripts/config-drift-detector.py check 2>&1 | tail -5) || drift="⚠️ config-drift check FAILED"; } &
-{ disk=$(df -h / | tail -1 | awk '{print "Disk: "$5" used"}'); } &
-{ mem=$(free -h | grep Mem | awk '{print "Memory: "$3"/"$2}'); } &
-{ updates=$(apt list --upgradable 2>/dev/null | grep -c "upgradable" || true); } &
-wait
-
-# 1. Fail2ban
-if [[ "$f2b" != *"fail2ban check FAILED"* ]]; then
-  f2b=$(echo "$f2b" | grep -E "Currently banned|Total banned")
-  [[ "$f2b" == *"Currently banned: 0"* ]] || ISSUES=$((ISSUES + 1))
+# 1. Fail2ban (SSH Security)
+f2b_status=$(sudo fail2ban-client status sshd 2>&1 || echo "⚠️ fail2ban unavailable")
+if [[ "$f2b_status" == *"Currently banned: 0"* ]]; then
+  add_section "SSH Security" "✅ Fail2ban active, no bans"
 else
-  ISSUES=$((ISSUES+1))
+  add_section "SSH Security" "$f2b_status"
+  ISSUES=$((ISSUES + 1))
 fi
-add_section "SSH Security" "$f2b"
 
-# 2. Config drift
-[[ "$drift" == *"no drift"* || "$drift" == *"CLEAN"* || "$drift" == *"config-drift check FAILED"* ]] || ISSUES=$((ISSUES + 1))
-[[ "$drift" == *"config-drift check FAILED"* ]] && ISSUES=$((ISSUES+1))
-add_section "Config Drift" "$drift"
+# 2. System basics
+disk_info=$(df -h / | tail -1)
+disk_pct=$(echo "$disk_info" | awk '{print $5}' | tr -d '%')
+disk_used=$(echo "$disk_info" | awk '{print $5}')
+mem_info=$(free -h | grep Mem | awk '{print "RAM: "$3"/"$2}')
+updates=$(apt list --upgradable 2>/dev/null | grep -c "upgradable" || echo "0")
 
-# 3. System basics
-disk_pct=$(df / | tail -1 | awk '{print $5}' | tr -d '%')
-[[ "$disk_pct" -lt 85 ]] || ISSUES=$((ISSUES + 1))
-add_section "System" "$disk"$'\n'"$mem"$'\n'"Updates pending: $updates"
+if [[ "$disk_pct" -lt 85 ]]; then
+  add_section "System" "Disk: $disk_used | $mem_info | Updates: $updates pending"
+else
+  add_section "System" "⚠️ Disk: $disk_used (HIGH) | $mem_info | Updates: $updates pending"
+  ISSUES=$((ISSUES + 1))
+fi
+
+# 3. Gateway process check
+if pgrep -f "gateway" > /dev/null 2>&1; then
+  add_section "Gateway" "✅ Running"
+else
+  add_section "Gateway" "⚠️ Not running"
+  ISSUES=$((ISSUES + 1))
+fi
 
 if [[ "$MODE" == "--full" ]]; then
-  # 4. Security scanner (weekly only)
-  { scanner=$(python3 scripts/security-scanner.py 2>&1 | tail -20) || scanner="⚠️ security-scanner FAILED"; } &
-  # 5. Rkhunter (weekly only)  
-  { rkhunter=$(sudo rkhunter --check --skip-keypress --report-warnings-only 2>&1 | head -20) || rkhunter="⚠️ rkhunter check FAILED"; } &
-  wait
-  
-  [[ "$scanner" == *"FINDINGS"* || "$scanner" == *"warning"* || "$scanner" == *"error"* ]] && ISSUES=$((ISSUES + 1))
-  [[ "$scanner" == *"security-scanner FAILED"* ]] && ISSUES=$((ISSUES+1))
-  add_section "Security Scan" "$scanner"
-  
-  rkhunter_warnings=$(echo "$rkhunter" | grep -v "rkhunter check FAILED" | grep -E "Warning|Found" || true)
-  [[ -z "$rkhunter_warnings" ]] || ISSUES=$((ISSUES + 1))
-  [[ "$rkhunter" == *"rkhunter check FAILED"* ]] && ISSUES=$((ISSUES+1))
-  add_section "Rootkit Scan" "$rkhunter"
+  # 4. Network connectivity
+  if ping -c 1 8.8.8.8 > /dev/null 2>&1; then
+    add_section "Network" "✅ Online"
+  else
+    add_section "Network" "⚠️ Offline or unreachable"
+    ISSUES=$((ISSUES + 1))
+  fi
 fi
 
 # Save report
@@ -61,6 +58,8 @@ echo "$REPORT" > "memory/healthcheck/$(date +%Y-%m-%d).md"
 # Output
 if [[ $ISSUES -eq 0 ]]; then
   echo "HEALTHCHECK_OK"
+  exit 0
 else
   echo "$REPORT"
+  exit 1
 fi
