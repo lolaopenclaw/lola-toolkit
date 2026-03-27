@@ -32,14 +32,11 @@ if [[ ! -f "$ALERT_FILE" ]]; then
     exit 0
 fi
 
-# Read alert
+# Read alert (single jq call for all fields)
 ALERT_DATA=$(cat "$ALERT_FILE")
-MESSAGE=$(echo "$ALERT_DATA" | jq -r '.message')
-TIMESTAMP=$(echo "$ALERT_DATA" | jq -r '.timestamp')
-API=$(echo "$ALERT_DATA" | jq -r '.api')
+read -r MESSAGE TIMESTAMP API <<< "$(echo "$ALERT_DATA" | jq -r '.message, .timestamp, .api' | tr '\n' ' ')"
 
 # Send via openclaw CLI
-# Using echo to pipe message to openclaw message tool
 echo "Sending rate limit alert for $API..."
 
 # Create a temp script for openclaw to execute
