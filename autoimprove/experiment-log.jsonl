@@ -168,3 +168,14 @@
 {"ts":"2026-03-26T14:22:57Z","target":"backup-speed","change":"Inlined helper functions and consolidated to single-line blocks","before":24,"after":22,"kept":true,"delta":2}
 {"ts":"2026-03-26T14:23:16Z","target":"backup-speed","change":"Consolidated multi-line pipe to single line","before":22,"after":21,"kept":true,"delta":1}
 {"ts":"2026-03-26T14:23:48Z","target":"backup-speed","change":"Consolidated exports and variables to single lines","before":21,"after":19,"kept":true,"delta":2}
+{"ts":"2026-03-27T02:01:19Z","target":"backup-memory.sh","change":"Added functions for modularity and better parallelization","before":21,"after":85,"kept":false,"delta":-64}
+{"ts":"2026-03-27T02:01:59Z","target":"backup-memory.sh","change":"Replaced for-loop with cp -t for workspace files","before":21,"after":21,"kept":false,"delta":0}
+{"ts":"2026-03-27T02:05:11Z","target":"memory-maintenance.sh","change":"Parallelize stats (find+du), replace for-loop with while+process substitution","before":357,"after":308,"kept":true,"delta":49}
+{"ts":"2026-03-27T02:06:25Z","target":"rate-limit-alert-sender.sh","change":"Reduce jq calls from 4 to 2 with multi-value extraction","before":163,"after":63,"kept":true,"delta":100}
+{"ts":"2026-03-27T02:07:48Z","target":"pr-reviewer.sh","change":"Replace bash for-loop with pure jq filtering","before":286,"after":147,"kept":true,"delta":139}
+{"ts":"2026-03-27T02:09:10Z","target":"session-log-rotation.sh","change":"Parallelize compression with xargs -P 4, use process substitution","before":134,"after":6,"kept":true,"delta":128}
+{"ts":"2026-03-27T02:10:22Z","target":"apt-security-check.sh","change":"Parallelize independent apt checks (check, update, showhold)","before":111,"after":82,"kept":true,"delta":29}
+{"ts":"2026-03-27T02:11:45Z","target":"healthcheck-unified.sh","change":"Parallelize all independent checks (fail2ban, drift, disk, mem, apt, scanner, rkhunter)","before":131,"after":52,"kept":true,"delta":79}
+{"ts":"2026-03-27T02:13:30Z","target":"track-autoresearch.sh","change":"Parallelize all GitHub API calls (commits, releases, repo info, issues)","before":139,"after":54,"kept":true,"delta":85}
+{"ts":"2026-03-27T02:15:54Z","target":"HEARTBEAT.md","change":"Removed redundant Rules section, compressed verbose instructions","before":1113,"after":845,"kept":true,"delta":268}
+{"ts":"2026-03-27T02:15:54Z","target":"AGENTS.md","change":"Removed intro fluff, compressed bullet points, preserved all critical refs","before":1121,"after":998,"kept":true,"delta":123}
