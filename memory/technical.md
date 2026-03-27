@@ -110,3 +110,26 @@
 9. Memoria modular previene overflow: Dividir memory/YYYY-MM-DD.md cuando pase de ~4KB
 10. Timezone VPS en UTC causaba confusiones → cambiar a Europe/Madrid
 11. WAL/snapshots son overkill para workspace pequeño (~1MB markdown) → rclone+git suficiente
+
+## 📋 Cron Audit — Latest (2026-03-25)
+
+**Total:** 29 crons activos  
+**Estado:** Consolidación pendiente (ver `memory/pending-actions.md`)
+
+### Duplicados detectados y resueltos:
+- ✅ Cron delivery fix scripts (archived 2026-03-26)
+- ✅ Morning report (no duplicate confirmed)
+
+### Issues pendientes:
+- ⚠️ Autoimprove timeouts (3 crons @ 600s cada uno) → aumentar a 900s
+- ⚠️ Healthcheck sprawl (6 crons separados) → consolidar en 1 dashboard
+- ⚠️ Night notifications still firing (8 crons sin delivery.mode check)
+
+### Cost breakdown (current):
+- Mantenimiento diario: ~$2.40/mes
+- Informes: ~$4.35/mes  
+- Seguridad: ~$1.65/mes
+- Autoimprove: ~$4.50/mes
+- **Total:** ~$12.90/mes (crons solamente, no incluye sesiones principales)
+
+Detalles completos: `memory/crons-inventory-2026-03-24.md`

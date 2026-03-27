@@ -26,3 +26,20 @@
 - Protocol A+B before SSH/firewall/service changes
 - Details: `memory/security-change-protocol.md`
 - Last weekly audit: `memory/2026-03-16-security-audit-weekly.md`
+
+## Nightly Reviews (Last 7 Days)
+
+### 2026-03-26 (Latest)
+- ✅ File permissions: All critical files 600
+- ❌ **89 secrets** in tracked files (documentation/archived scripts)
+- ❌ **2 modules tampered** (scanner.py, openclaw.json — expected: hash update after legit changes)
+- ✅ Exec approvals clean
+- ✅ Scanner self-test passing
+
+### 2026-03-25
+- Similar findings, ongoing secret rotation cleanup
+- Quarterly rotation executed (Telegram, Discord, Brave)
+
+### 2026-03-24
+- Security hardening consolidation week
+- Weekly lynis + rkhunter scans clean

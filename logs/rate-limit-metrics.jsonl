@@ -382,3 +382,51 @@
 {"timestamp": "2026-03-26T18:00:02.296237+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
 {"timestamp": "2026-03-26T18:00:02.296237+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
 {"timestamp": "2026-03-26T18:00:02.296237+00:00", "api": "anthropic", "used": 79, "limit": 10, "pct": 790.0, "unit": "429s"}
+{"timestamp": "2026-03-26T19:00:02.128824+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-26T19:00:02.128824+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T19:00:02.128824+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-26T19:00:02.128824+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T19:00:02.128824+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-26T19:00:02.128824+00:00", "api": "anthropic", "used": 83, "limit": 10, "pct": 830.0, "unit": "429s"}
+{"timestamp": "2026-03-26T20:00:01.844014+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-26T20:00:01.844014+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T20:00:01.844014+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-26T20:00:01.844014+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T20:00:01.844014+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-26T20:00:01.844014+00:00", "api": "anthropic", "used": 82, "limit": 10, "pct": 820.0, "unit": "429s"}
+{"timestamp": "2026-03-26T21:00:01.584218+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-26T21:00:01.584218+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T21:00:01.584218+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-26T21:00:01.584218+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T21:00:01.584218+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-26T21:00:01.584218+00:00", "api": "anthropic", "used": 78, "limit": 10, "pct": 780.0, "unit": "429s"}
+{"timestamp": "2026-03-26T22:00:01.785712+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-26T22:00:01.785712+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T22:00:01.785712+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-26T22:00:01.785712+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T22:00:01.785712+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-26T22:00:01.785712+00:00", "api": "anthropic", "used": 77, "limit": 10, "pct": 770.0, "unit": "429s"}
+{"timestamp": "2026-03-26T23:00:01.975398+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-26T23:00:01.975398+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T23:00:01.975398+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-26T23:00:01.975398+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-26T23:00:01.975398+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-26T23:00:01.975398+00:00", "api": "anthropic", "used": 77, "limit": 10, "pct": 770.0, "unit": "429s"}
+{"timestamp": "2026-03-27T00:00:02.169615+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-27T00:00:02.169615+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-27T00:00:02.169615+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-27T00:00:02.169615+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-27T00:00:02.169615+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-27T00:00:02.169615+00:00", "api": "anthropic", "used": 77, "limit": 10, "pct": 770.0, "unit": "429s"}
+{"timestamp": "2026-03-27T01:00:01.149344+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-27T01:00:01.149344+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-27T01:00:01.149344+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-27T01:00:01.149344+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-27T01:00:01.149344+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-27T01:00:01.149344+00:00", "api": "anthropic", "used": 77, "limit": 10, "pct": 770.0, "unit": "429s"}
+{"timestamp": "2026-03-27T02:00:01.089536+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-27T02:00:01.089536+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-27T02:00:01.089536+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-27T02:00:01.089536+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-27T02:00:01.089536+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-27T02:00:01.089536+00:00", "api": "anthropic", "used": 77, "limit": 10, "pct": 770.0, "unit": "429s"}

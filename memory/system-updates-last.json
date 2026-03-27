@@ -1,12 +1,10 @@
 {
-  "timestamp": "2026-03-26T01:30:00Z",
-  "status": "error",
-  "cron_id": "ed1d9b11-5ba1-44ed-8f8b-0b359ddcd45e",
-  "error_type": "syntax_error",
-  "error_details": [
-    "line 59: syntax error in expression (error token is \"0\")",
-    "line 85: UPDATED: unbound variable"
-  ],
-  "message": "El script tiene errores de sintaxis en bash. Revisar líneas 59 y 85.",
-  "action_required": true
+  "date": "2026-03-27",
+  "time": "01:30",
+  "status": "ok",
+  "packages_available": 0,
+  "packages_updated": 0,
+  "packages": [],
+  "reboot_required": false,
+  "note": "No updates available"
 }
