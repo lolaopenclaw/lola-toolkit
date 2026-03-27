@@ -1,11 +1,8 @@
 # PROTOCOLS.md — Backup, Security & Critical Changes
 
 ## 🔄 Backup & Recovery
-- **Policy:** Máximo 30 días de backups en Drive
-- **Automático:** Cron 4:00 AM (`backup-memory.sh`)
-- **Validación:** Lunes 5:30 AM (`backup-validator.sh` - checksums + restore test)
-- **Retention:** Limpiar automáticamente backups >30 días
-- **Drive folder:** `openclaw_backups` (ID: `1G-OLpZKJ2zQXac0qaKxvaeglbRUuRxfD`)
+**Full details:** `memory/backup-strategy.md`
+- **Quick:** Cron 4:00 AM → Google Drive → Validator Lunes 5:30 AM
 - **Recovery docs:** `RECOVERY.md`, `BOOTSTRAP.md`
 
 ## 🔐 Cambios Críticos de Seguridad

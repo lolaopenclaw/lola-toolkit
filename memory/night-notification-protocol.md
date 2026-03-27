@@ -93,16 +93,10 @@ This protocol defines how OpenClaw handles notifications during quiet hours to r
 
 All notifications MUST use topic routing (never personal chat `6884477` directly).
 
-| Notification Type | Topic ID | Topic Name | Example |
-|-------------------|----------|------------|---------|
-| Security findings | 29 | 🛡️ Seguridad & Audits | Secret found in git |
-| System updates/errors | 25 | 🔧 Sistema & Logs | Cron failed, Gateway restart |
-| Backup status | 25 | 🔧 Sistema & Logs | Backup completed |
-| Health/Garmin | 28 | 🏃 Salud & Garmin | Workout summary, anomaly |
-| Finance | 26 | 💰 Finanzas | Sheets update |
-| Daily reports | 24 | 📊 Reportes Diarios | Morning briefing |
-| GitHub/PRs | 27 | 🐙 GitHub & PRs | PR review, CI status |
-| Calendar/Tasks | 30 | 📅 Calendario & Tareas | Upcoming event |
+**Topic routing:** See `memory/telegram-topics.md` for full table.
+
+**Common mappings:**
+- Security → 29 | System/errors → 25 | Daily reports → 24 | Health → 28 | Finance → 26 | GitHub → 27
 
 **Command format:**
 ```bash

@@ -5,69 +5,27 @@
 
 ---
 
-## Quick Start: Haiku by Default
+## Default: Haiku (80-85% of tasks)
 
-Haiku is the default (80-85% of tasks). Escalate to Sonnet/Opus only after **2 failures** with Haiku.
+**Haiku for:** Chat, crons, files, simple queries, summaries, translations
 
-| Scenario | Model | Action |
-|----------|-------|--------|
-| **Routine**: chats, crons, files, simple queries | 🟢 Haiku | Go ahead |
-| **First failure**: tried once, hit a wall | 🟢 Haiku | Try again, read docs more carefully |
-| **Second failure**: tried twice, still stuck | 🟡 Sonnet | Escalate: "Manu, should I try Sonnet to rethink this?" |
-| **With Sonnet**: new approach, reread docs | 🟡 Sonnet | Execute with fresh perspective |
-| **Third strike**: model superior also fails | 📊 Report | "Here's what I tried. This needs your input." |
+## Escalation Protocol (2026-03-07)
 
----
+1. **Try with Haiku** (routine approach)
+2. **First failure** → Retry with Haiku (read docs carefully)
+3. **Second failure** → **Suggest Sonnet**: "Manu, should I try Sonnet to rethink this?"
+4. **With Sonnet** → **Rethink completely** (read full docs, fresh approach)
+5. **Third failure** → Report: "Here's what I tried. This needs your input."
 
-## Modelo por defecto: Haiku
+**Key lesson:** Problem often = approach, not model. Read FULL docs before acting.
 
-Haiku es el modelo base para el 80-85% de las interacciones.
+## Model Use Cases
 
-**Haiku funciona bien para:**
-- Chat, consultas, respuestas rápidas
-- Tareas rutinarias (crons, archivos, memoria)
-- Comandos que ya conozco bien
-- Resúmenes, traducciones, formato
-
----
-
-## Protocolo de escalado (decisión 2026-03-07)
-
-### Paso 1-2: Dos fallos con Haiku
-- Intenta normalmente
-- Si fallo 2 veces → **SUGERIR cambio de modelo** (no rendirse)
-
-### Paso 3: Con modelo superior → REPLANTEAR
-- Leer documentación completa
-- Analizar desde cero
-- No repetir los mismos errores
-
-### Paso 4: Tercera derrota
-- Solo después de modelo superior
-- Sin drama: "Manu, necesito tu input."
-
----
-
-## Cuándo recomendar cada modelo (Referencia)
-
-| Modelo | Cuándo | Ejemplos |
-|--------|--------|----------|
-| 🟢 **Haiku** | Tareas rutinarias, chat, consultas simples | Crons, archivos, resúmenes, traducciones |
-| 🟡 **Sonnet** | Herramientas nuevas, debugging, tareas multi-paso | Integrar APIs, resolver errores, configurar servicios |
-| 🔴 **Opus** | Análisis profundo, decisiones importantes, reflexiones | Arquitectura, estrategia, problemas complejos |
-
----
-
-## Lección clave (2026-03-07)
-
-El problema no siempre es el modelo. A veces es el enfoque:
-- **Leer documentación COMPLETA antes de actuar**
-- **Si fallo 2 veces → parar y replantear**, no escalar complejidad a lo loco
-- **No sugerir "hazlo tú" sin antes intentar con modelo superior**
-
-Ejemplo del día: `gog calendar create --help` tenía todo lo necesario.
-Con Haiku no lo vi, con Opus lo encontré al primer intento.
-La diferencia: paciencia para leer la documentación completa.
+| Model | When |
+|-------|------|
+| 🟢 **Haiku** | Routine tasks, chat, simple queries |
+| 🟡 **Sonnet** | New tools, debugging, multi-step tasks |
+| 🔴 **Opus** | Deep analysis, architecture, complex problems |
 
 ---
 

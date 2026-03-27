@@ -11,8 +11,8 @@
 - +20 años trayectoria musical riojana
 
 ## Communication
-- **Default:** Text. **Driving mode:** TTS (triggers: "estoy en el coche" / "ya estoy en casa"). Auto-reset 22:00.
-- **Quiet hours:** 00:00-07:00 Madrid — NO messages except critical emergencies.
+- **Default:** Text. **Driving mode:** See SOUL.md (TTS triggers, auto-reset 22:00)
+- **Quiet hours:** See AGENTS.md (`memory/night-notification-protocol.md`)
 - **State:** `memory/driving-mode-state.json`
 
 ## Devices

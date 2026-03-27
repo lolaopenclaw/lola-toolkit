@@ -6,77 +6,29 @@ Environment-specific config: cameras, SSH hosts, TTS prefs, speakers, device nam
 
 ## 🔧 Scripts Custom (~/workspace/scripts/)
 
-### Arneses & Monitoring
+### High-Frequency (Top 15)
 - **api-health-checker.py** — Health + failover (Anthropic→Google)
-- **rate-limit-monitor.py** — 6 APIs monitor
-- **rate-limit-status** — ASCII dashboard
-- **config-drift** — Drift detector
+- **rate-limit-monitor.py** / **rate-limit-status** — 6 APIs monitor + dashboard
 - **subagents-dashboard** — TUI dashboard
-- **subagent-validator.py** — Output validator
-- **validate-subagent-output** — Validator wrapper
-- **gateway-health-check.sh** — Gateway health
-- **pre-restart-validator.sh** — Pre-flight
 - **security-scanner.py** — Security scan
-- **runtime-governance.sh** — Loop/caps/limits
-- **emergency-cost-stop.sh** — Emergency stop
-
-### Garmin & Health
 - **garmin-health-report.sh** — Daily report
-- **garmin-activities-to-sheets.py** — ⚠️ DEPRECATED
-- **garmin-activities-historical.py** — Historical export
-- **garmin-json-export.sh** — JSON export
-- **health-alerts.sh** — Metric alerts
-
-### Finanzas
-- **sheets-populate-v2.py** — ⚠️ DEPRECATED
-
-### GitHub
-- **pr-reviewer.sh** — Auto-review
-- **monitor-github-24586-robust.sh** — Issue monitor
-
-### Surf
 - **surf-conditions.sh** — Zarautz/Mundaka
-
-### Backups & Validation
-- **backup-validator.sh**, **post-commit-backup.sh**, **restore.sh**, **verify.sh**
-
-### Autoresearch
-- **autoimprove-trigger.sh**, **track-autoresearch.sh**
-
-### System
-- **apt-security-check.sh**, **bootstrap.sh**, **usage-report.sh**, **calendar-tasks.sh**, **dashboard-api-server.js**
-
-### TTS & Audio
-- **google-tts.sh** — Google TTS
-- **tts-venv/** — edge-tts, gtts-cli
-
-### OpenSpec
-- **openspec-helpers.sh** — TypeScript spec CLI
-
-### Knowledge Base
-- **ingest.sh**, **search.sh**, **embed.py**, **semantic-search.py**
-- Doc: `memory/knowledge-base.md` | DB: `data/knowledge-base.db` (132 chunks)
-
-### API Cost Tracking
-- **usage-report.sh** — Session log cost aggregation
-- **cost-alert.sh** — Thresholds: >$10 warn, >$25 critical
-- Doc: `memory/api-cost-tracking.md`
-
-### Notification Batching
+- **backup-validator.sh** / **restore.sh** — Backup validation
+- **usage-report.sh** / **cost-alert.sh** — API cost tracking
 - **notification-batcher.sh** — Priority queue (critical|high|medium|low)
-- Queue: `data/notification-queue.jsonl`
-- Doc: `memory/notification-batching.md` | Status: ✅|⏳cron
+- **performance-tracker.sh** — Latency metrics (p50/p90/p99)
+- **google-tts.sh** — Google TTS (scripts/tts-venv/)
 
-### Performance Tracking
-- **performance-tracker.sh**, **performance-alert.sh**
-- Metrics: latency (p50/p90/p99), by model, degradation
-- Doc: `memory/performance-tracking.md`
+### By Category (40+ scripts)
+- **Monitoring** (8): config-drift, gateway-health-check, pre-restart-validator, runtime-governance, etc.
+- **Garmin/Health** (5): activities export, alerts, historical data
+- **GitHub** (2): pr-reviewer, issue monitor
+- **Backups** (4): post-commit, verify, validator
+- **Knowledge Base** (4): ingest, search, embed, semantic-search → `memory/knowledge-base.md`
+- **System** (6): apt-security-check, bootstrap, usage-report, calendar-tasks
+- **Autoresearch** (2): autoimprove-trigger, track-autoresearch
 
-### Session Log Rotation
-- **session-log-rotation.sh** — Compress >7d, delete >30d
-- Doc: `memory/session-log-rotation.md` | Status: ✅
-
-**Ver lista completa:** `ls -1 scripts/` (30+ scripts)
+**Full list:** `ls -1 scripts/` | **Docs:** See script headers or `memory/technical.md`
 
 ---
 
@@ -111,33 +63,17 @@ Config: `openspec.config.ts` | Specs: `specs/` | Helper: `openspec-helpers.sh` |
 
 ---
 
-## 🔐 Accesos
+## 🔐 Access & Infrastructure
 
-### Google (gog)
-- lolaopenclaw@gmail.com
-- Env: GOG_KEYRING_BACKEND=file, GOG_KEYRING_PASSWORD, GOG_ACCOUNT
-- ~/.openclaw/.env + ~/.bashrc
+**Full details:** `memory/access-credentials.md`
 
-### Garmin
-- Instinct 2S Solar Surf | OAuth: Manu_Lazarus | Doc: memory/garmin-integration.md
-
-### GitHub
-- lolaopenclaw | Repo: lola-toolkit | Policy: code ✅ | secrets ❌
-
-### Finanzas
-- github.com/lolaopenclaw/finanzas-personal (privado) | Markdown | Cada 15d | Sheets DEPRECATED
-
----
-
-## 🌐 Infra
-
-- **SSH:** Laptop ✅ (work hours) | VPS: lola-openclaw-vps.taild8eaf6.ts.net
-- **Ports:** 18790 (Gateway), 8080 (UI), 3333 (Canvas), 5001 (API)
-- **TTS:** Google 1.25x | scripts/tts-venv/ | Driving auto-reset 22:00
-- **Telegram:** 6884477 | Quiet 00:00-07:00 | Reactions: MINIMAL
+**Quick reference:**
+- **Google:** lolaopenclaw@gmail.com
+- **GitHub:** lolaopenclaw | Policy: code ✅ secrets ❌
+- **Garmin:** Instinct 2S Solar Surf (OAuth: Manu_Lazarus)
+- **SSH:** Laptop (work hours) | VPS: lola-openclaw-vps.taild8eaf6.ts.net
+- **Telegram:** 6884477 | Group: -1003768820594
 
 ## 📅 Crons
 
-Backup 4:00 | Reindex 4:30 | Security Lun 9:00 | Autoimprove 2:00 | API Health 30min/2h/daily | Rate Limit hourly
-
-`openclaw cron list`
+**Full schedule:** `memory/technical.md` | **Live status:** `openclaw cron list`

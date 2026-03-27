@@ -1,7 +1,6 @@
 # Telegram Forum Topics — Lola y Manu
 
 Chat ID: -1003768820594
-Created: 2026-03-24
 
 | Topic | ID | Uso |
 |---|---|---|

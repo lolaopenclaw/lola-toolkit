@@ -1,12 +1,9 @@
 # TECHNICAL.md — Systems & Implementation
 
 ## 💾 Backup Strategy
-- **Método:** Backup diario a Google Drive via rclone (`backup-memory.sh`)
-- **Frecuencia:** 4:00 AM diario (cron)
-- **Retención:** 30 días en Drive
-- **Contenido:** Workspace completo (~768KB)
-- **Recuperación:** `restore.sh` desde backup descargado
-- **Nota:** WAL/snapshots se probaron (21-23 feb) pero se descartaron — overkill para ~1MB de markdown. Backups via rclone+git son suficientes.
+**Full details:** `memory/backup-strategy.md`
+- **Quick:** 4:00 AM daily → Google Drive → rclone → 30d retention
+- **Note:** WAL/snapshots tested (feb) but discarded — backups via rclone+git sufficient for ~1MB markdown
 
 ## 🧠 Memory Management (Tiered Architecture)
 - **HOT:** Últimos 7 días (memory/DAILY/HOT/)
@@ -68,35 +65,9 @@
 - **Disponibles (no activados):** FIPS-updates, Landscape, USG, realtime-kernel
 - **Impacto:** Actualizaciones automáticas de seguridad + estabilidad crítica
 
-## 🔐 Security Status (Último Check: 2026-03-09)
-
-**Estado del sistema: ✅ SEGURO**
-- Vulnerabilidades críticas: 0
-- Vulnerabilidades sin parchear: 0
-- Puertos expuestos: 0 (todo localhost + Tailscale)
-- SSH hardened: ✅ (root disabled, key-only, X11 off)
-- Firewall (UFW): ✅ Active, deny-by-default
-- Fail2Ban: ✅ (3 jails: sshd, openclaw, recidive)
-  - Currently banned: 0 IPs (1 historical: 2.57.122.208 — 36 brute-force attempts blocked)
-  - SSH clean: 0 failed attempts, 0 bans
-- Unattended-upgrades: ✅ (automático)
-- System updates: 0 pending ✅
-- OpenClaw: 2 warnings (no críticos, intencionales)
-  - `models.weak_tier` — Haiku model (cost optimization, accepted)
-  - `security.trust_model.multi_user_heuristic` — False positive (single-user setup)
-
-**Acciones completadas (2026-03-09):**
-- Auditoría profunda: `openclaw security audit --deep` → 0 critical
-- Firewall & fail2ban verification → operational
-- SSH logs clean → no intrusions
-- System patches current → up to date
-- Ports verified → all expected
-
-**Recomendaciones pendientes (baja prioridad):**
-- Actualizar OpenClaw 2026.3.8 (cuando sea convenient, no-critical)
-- Monitor port 5001 (API, intentional, firewall-protected)
-
-**Detalles:** → `memory/2026-03-09-security-audit-weekly.md`
+## 🔐 Security Status
+**Current status:** See `memory/security.md` (0 critical, 4 warnings non-critical)
+**Last weekly audit:** `memory/2026-03-16-security-audit-weekly.md`
 
 ## 🔐 Lecciones Técnicas Aprendidas
 1. D-Bus SecretService no funciona en VPS headless → usar keyring file-based

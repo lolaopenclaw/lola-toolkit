@@ -101,17 +101,8 @@
 
 ### Telegram Topics (Group: Lola y Manu, -1003768820594)
 
-| Topic ID | Name | Use |
-|----------|------|-----|
-| 1 | General | Conversación y temas sueltos |
-| 24 | 📊 Reportes Diarios | Informe matutino |
-| 25 | 🔧 Sistema & Logs | Crons, errores, system updates |
-| 26 | 💰 Finanzas | Sheets, movimientos |
-| 27 | 🐙 GitHub & PRs | Repos, issues, PRs |
-| 28 | 🏃 Salud & Garmin | Datos de actividad |
-| 29 | 🛡️ Seguridad & Audits | Auditorías, fail2ban |
-| 30 | 📅 Calendario & Tareas | Eventos, pending actions |
-| 76 | 🏄 Surf Coach | Proyecto surf |
+**Full table:** `memory/telegram-topics.md`
+**Common:** General (1) | Reportes (24) | Sistema (25) | Finanzas (26) | GitHub (27) | Salud (28) | Seguridad (29) | Tareas (30) | Surf (76)
 
 ## System Updates
 
