@@ -88,7 +88,7 @@ SECURITY_REVIEW_SECTION=""
 
 if [ -n "$SECURITY_REVIEW_FILES" ]; then
     LATEST_SECURITY=$(echo "$SECURITY_REVIEW_FILES" | head -1)
-    SEC_DATE=$(basename "$LATEST_SECURITY" | grep -oE "[0-9]{4}-[0-9]{2}-[0-9]{2}" || echo "fecha desconocida")
+    SEC_DATE=$(basename "$LATEST_SECURITY" | grep -oE "[0-9]{8}" | sed 's/\(....\)\(..\)\(..\)/\1-\2-\3/' || echo "fecha desconocida")
     SEC_SUMMARY=$(head -30 "$LATEST_SECURITY" | grep -E "^###|^\*\*|^- |^✅|^❌|^⚠️" | head -10 || echo "Ver archivo completo")
     
     SECURITY_REVIEW_SECTION="🔐 SECURITY REVIEW NOCTURNO ($SEC_DATE)
@@ -113,7 +113,7 @@ GATEWAY_PID=$(pgrep -f "openclaw-gateway" | head -1)
 GATEWAY_STATUS="✅ Activo" && [ -z "$GATEWAY_PID" ] && GATEWAY_STATUS="❌ Inactivo"
 
 # Count active crons
-CRONS_ACTIVE=$(openclaw cron list 2>/dev/null | grep -c "enabled" || echo "?")
+CRONS_ACTIVE=$(openclaw cron list 2>/dev/null | tail -n +2 | wc -l || echo "?")
 
 # 8. Get Fail2Ban status
 echo "🛡️ Verificando Fail2Ban..."
