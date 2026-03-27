@@ -56,32 +56,32 @@ if [ "$PR_COUNT" -eq 0 ]; then
     exit 0
 fi
 
-# Filter: only PRs we haven't reviewed (or that have new commits since our last review)
-PENDING="[]"
-for i in $(seq 0 $((PR_COUNT - 1))); do
-    PR_NUM=$(echo "$PRS" | jq -r ".[$i].number")
-    PR_SHA=$(echo "$PRS" | jq -r ".[$i].head.sha")
-    PR_TITLE=$(echo "$PRS" | jq -r ".[$i].title")
-    PR_DRAFT=$(echo "$PRS" | jq -r ".[$i].draft")
-    
-    # Skip drafts
-    if [ "$PR_DRAFT" = "true" ]; then
-        echo "  #$PR_NUM — draft, skipping"
-        continue
-    fi
-    
-    # Check if already reviewed at this SHA
-    REVIEWED_SHA=$(jq -r --arg pr "$PR_NUM" '.[$pr] // ""' "$REVIEWED_FILE")
-    if [ "$REVIEWED_SHA" = "$PR_SHA" ]; then
-        echo "  #$PR_NUM — already reviewed at $PR_SHA, skipping"
-        continue
-    fi
-    
-    echo "  #$PR_NUM — $PR_TITLE (needs review)"
-    PENDING=$(echo "$PENDING" | jq --argjson pr "$(echo "$PRS" | jq ".[$i]")" '. + [$pr]')
-done
+# Filter using jq (replaces bash loop)
+REVIEWED_DATA=$(cat "$REVIEWED_FILE")
+PENDING=$(echo "$PRS" | jq --argjson reviewed "$REVIEWED_DATA" '
+  map(
+    select(.draft == false) |
+    select($reviewed[.number | tostring] != .head.sha)
+  )
+')
 
 PENDING_COUNT=$(echo "$PENDING" | jq 'length')
+
+# Log results
+echo "$PRS" | jq -r '.[] | "\(.number) \(.draft) \(.title)"' | while read -r num draft title; do
+    if [ "$draft" = "true" ]; then
+        echo "  #$num — draft, skipping"
+    else
+        REVIEWED_SHA=$(echo "$REVIEWED_DATA" | jq -r --arg pr "$num" '.[$pr] // ""')
+        PR_SHA=$(echo "$PRS" | jq -r ".[] | select(.number == $num) | .head.sha")
+        if [ "$REVIEWED_SHA" = "$PR_SHA" ]; then
+            echo "  #$num — already reviewed at $PR_SHA, skipping"
+        else
+            echo "  #$num — $title (needs review)"
+        fi
+    fi
+done
+
 echo ""
 echo "$PENDING_COUNT PRs pending review."
 
