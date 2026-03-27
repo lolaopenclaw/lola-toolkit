@@ -100,7 +100,9 @@ fi
 
 # 6. Get Garmin data for yesterday
 echo "📊 Obteniendo datos de Garmin..."
-GARMIN_DATA=$(bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --daily "$YESTERDAY" 2>&1 || echo "Error en Garmin")
+# NOTE: Call without date argument so script uses its own "yesterday" logic
+# (activity from full day yesterday, sleep from today - keyed to wake-up date)
+GARMIN_DATA=$(bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --daily 2>&1 || echo "Error en Garmin")
 
 # 7. Get system stats
 echo "💻 Obteniendo estadísticas del sistema..."
@@ -130,8 +132,8 @@ fi
 
 # 10. Autoimprove Nightly summary
 echo "🔬 Leyendo resumen de Autoimprove..."
-EXPERIMENT_LOG="$WORKSPACE/autoimprove/experiment-log.jsonl"
-AUTOIMPROVE_FILE="$MEMORY_DIR/$TODAY-autoimprove.md"
+EXPERIMENT_LOG="/home/mleon/.openclaw/workspace/autoimprove/experiment-log.jsonl"
+AUTOIMPROVE_FILE="$MEMORY_DIR/autoimprove-log-$TODAY.md"
 AUTOIMPROVE_SECTION=""
 
 # First check experiment-log.jsonl (new format: 3 separate agents)
@@ -177,11 +179,19 @@ print(total)
         AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
 • No hubo cambios anoche"
     fi
-# Fallback: check old format (single agent markdown)
+# Fallback: check markdown log format (current format)
 elif [ -f "$AUTOIMPROVE_FILE" ]; then
-    IMPROVEMENTS=$(sed -n '/## Improvements Kept/,/## Attempted/p' "$AUTOIMPROVE_FILE" | grep "^\*\*\|^[0-9]" | head -5 || true)
-    AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
-$IMPROVEMENTS"
+    # Extract key info from autoimprove-log-*.md
+    DURATION=$(grep "^\*\*Duration:\*\*" "$AUTOIMPROVE_FILE" | sed 's/^\*\*Duration:\*\* //' || echo "?")
+    STATUS=$(grep "^\*\*Status:\*\*" "$AUTOIMPROVE_FILE" | sed 's/^\*\*Status:\*\* //' | tr -d '\n' || echo "?")
+    SUMMARY=$(sed -n '/## Summary/,/^---/p' "$AUTOIMPROVE_FILE" | grep -v "^#\|^---\|^$" | head -1 || echo "Sin resumen")
+    
+    # Extract optimizations count (#### headers under ### Optimizations section)
+    OPT_COUNT=$(grep "^#### [0-9]" "$AUTOIMPROVE_FILE" | wc -l)
+    
+    AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY ($DURATION) $STATUS
+$SUMMARY
+• $OPT_COUNT optimizaciones aplicadas"
 else
     AUTOIMPROVE_SECTION="🔬 AUTOIMPROVE NIGHTLY
 • No se ejecutó anoche"
@@ -223,7 +233,7 @@ fi
 
 # 12. Token usage report
 echo "💰 Calculando consumo de tokens..."
-SCRIPTS_DIR="$WORKSPACE/scripts"
+SCRIPTS_DIR="/home/mleon/.openclaw/workspace/scripts"
 
 MONTH_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --month 2>/dev/null || echo "{}")
 YESTERDAY_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --yesterday 2>/dev/null || echo "{}")
