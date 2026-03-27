@@ -1,94 +1,50 @@
-# PROJECTS.md — Proyectos Activos
-
-**Léeme cada sesión junto con AGENTS.md, SOUL.md, USER.md**
-
----
+# PROJECTS.md
 
 ## 🔴 Activos
 
 ### Finanzas
-- **Repo:** github.com/lolaopenclaw/finanzas-personal (privado)
-- **Local:** ~/finanzas/
+- **Repo:** lolaopenclaw/finanzas-personal | **Local:** ~/finanzas/
 - **Sheet:** [1otxo5V79XaY4GKCubCTrq19SaXdngcW59dGzZSUo8VA](https://docs.google.com/spreadsheets/d/1otxo5V79XaY4GKCubCTrq19SaXdngcW59dGzZSUo8VA/edit)
-- **Actualización:** Cada 15 días (Manu me pasa extractos bancarios)
-- **Última actualización:** 2026-03-18 (63 movimientos nuevos, 42 de marzo)
-- **Estado:** ✅ Al día
-- **Notas:**
-  - Parsear Norma 43 (CaixaBank) + XLSX (Bankinter)
-  - Deduplicar automáticamente
-  - Correlacionar PayPal con movimientos de CaixaBank
-  - Script: `~/finanzas/update_from_raw.py`
+- **Update:** Cada 15d | **Última:** 2026-03-18 (63 mov, 42 marzo) | **Estado:** ✅
+- **Notas:** Norma 43 + XLSX, dedup auto, PayPal↔CaixaBank | `update_from_raw.py`
 
 ### Surf Coach AI
-- **Repo:** github.com/lolaopenclaw/surf-coach-ai (privado, compartido con RagnarBlackmade)
-- **Local:** ~/projects/surf-coach/
-- **Descripción:** AI coach para análisis de movimientos de surf usando MediaPipe pose estimation
-- **Estado:** 🚧 MVP en desarrollo
-- **Última actividad:** 2026-03-18 (análisis de 9 vídeos completos en curso)
-- **Sub-agente activo:** surf-coach-full-analysis-v2 (Haiku, timeout 1h)
-- **Notas:**
-  - 5 vídeos corregidos (Rafa, Surf Labs — técnica) como ground truth
-  - Coach técnica: Rafa (Surf Labs) | Coach físico: Jorge
-  - 4 vídeos brutos para comparación
-  - Objetivo: feedback técnico automatizado (pop-ups, turns, compresión/extensión)
-  - Stack: Python, MediaPipe, OpenCV, optical flow
+- **Repo:** lolaopenclaw/surf-coach-ai | **Local:** ~/projects/surf-coach/
+- **Desc:** AI coach análisis pose (MediaPipe) | **Estado:** 🚧 MVP
+- **Última:** 2026-03-18 (9 vídeos) | **Subagent:** surf-coach-full-analysis-v2 (Haiku, 1h)
+- **Notas:** 5 corrected (Rafa), 4 raw | Coaches: Rafa (técnica), Jorge (físico) | Python/MediaPipe/OpenCV/optical flow
 
 ### Memory Architecture
-- **Local:** ~/.openclaw/workspace/memory/entities/
-- **Descripción:** Knowledge graph estructurado con PARA + atomic facts + memory decay
-- **Estado:** ✅ Pasos 1-3 completados (2026-03-18)
-- **Entities:** memory/entities/ — `areas/people/`, `areas/companies/`, `projects/`, `resources/`
-- **Decay:** `scripts/memory-decay.sh` — Cron semanal dom 23:00 (Hot/Warm/Cold tiering)
-- **Notas:**
-  - 13 entities, 62 atomic facts
-  - memory_search → provider: openai (funcional)
-  - `.autoimprove-skip` protege entities/ de autoimprove
-  - Fuente de verdad: JSON (.json) → auto-genera summaries (.md)
+- **Local:** memory/entities/ | **Desc:** PARA + atomic facts + decay
+- **Estado:** ✅ Pasos 1-3 (2026-03-18) | **Entities:** 13, 62 facts
+- **Decay:** `memory-decay.sh` dom 23:00 (Hot/Warm/Cold)
+- **Notas:** memory_search→openai | `.autoimprove-skip` protege | JSON→MD auto
 
 ### QMD Local Search
-- **Estado:** 🗑️ Archivado (2026-03-20)
-- **Motivo:** Resuelto por stack actual — Ollama/nomic-embed-text + SQLite + sqlite-vec + FTS5 cubre exactamente lo que QMD ofrecía (búsqueda híbrida local, gratis, offline)
-- **Mejora futura:** Subir calidad embeddings con Gemini API (gratis) si nomic se queda corto
+- 🗑️ Archivado 2026-03-20 | Resuelto: Ollama/nomic-embed + SQLite-vec + FTS5 | Mejora: Gemini embeddings si nomic insuficiente
 
 ### Lola Toolkit
-- **Repo:** github.com/lolaopenclaw/lola-toolkit (público)
-- **Descripción:** Scripts, skills y protocolos para gestión de agentes IA
-- **Estado:** ✅ Activo (publicar todo lo útil, NUNCA tokens/keys/IPs)
+- **Repo:** lolaopenclaw/lola-toolkit (público) | Scripts/skills/protocols | ✅ Activo (NO tokens/keys/IPs)
 
 ---
 
-## 🟡 En pausa / Mantenimiento
+## 🟡 Pausa / Mantenimiento
 
 ### Autoimprove Nightly
-- **Local:** ~/.openclaw/workspace/skills/autoimprove/
-- **Cron ID:** 08325b21-cd9c-490e-904c-e668e38418af
-- **Horario:** 2:00 AM Madrid (diario)
-- **Estado:** ⚠️ Error (último: 2026-03-18 02:00)
-- **Investigar:** Circuit breaker activado, posible conflicto con OpenClaw v2026.3.13
+- skills/autoimprove/ | 08325b21 | 2:00 AM diario | ⚠️ Error 2026-03-18 | Circuit breaker/OpenClaw v2026.3.13
 
 ### Security Audits
-- **Cron IDs:**
-  - healthcheck:security-weekly (fdf38b8f) — Lunes 9:00 AM
-  - 🔬 Seguimiento Autoresearch (4de42cb2) — Lunes 10:00 AM
-- **Estado:** ⚠️ Ambos en error desde hace 2 días
-- **Última auditoría exitosa:** 2026-03-16
-
----
+- fdf38b8f (Lun 9:00), 4de42cb2 (Lun 10:00) | ⚠️ Error 2d | Última OK: 2026-03-16
 
 ## 📋 Pendientes
 
-- [x] ~~Investigar errores de cron (autoimprove + security audits)~~ — Arreglado 2026-03-20 (delivery channel)
-- [x] ~~QMD Local Search~~ — Archivado 2026-03-20 (resuelto por stack actual)
-- [ ] Completar análisis completo de vídeos (Surf Coach)
-- [ ] Añadir alertas de presupuesto a finanzas (cron/heartbeat)
-- [ ] Automatizar detección de CSVs nuevos en finanzas
-
----
+- [x] Cron errors → Fixed 2026-03-20
+- [x] QMD → Archivado 2026-03-20
+- [ ] Surf: análisis completo
+- [ ] Finanzas: presupuesto alerts + CSV auto-detect
 
 ## 🗑️ Archivados
 
-- **QMD Local Search** (2026-03-20) — Resuelto por Ollama + SQLite-vec + FTS5 nativo
+- QMD Local Search (2026-03-20)
 
----
-
-**Última actualización:** 2026-03-20 11:30 CET
+**Última:** 2026-03-20 11:30
