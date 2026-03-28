@@ -100,10 +100,14 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - Proyecto a medias, migración Markdown completa
 - Seguir mejorando categorización, informes mensuales
 
-### Investigar Hermes Agent
-- Self-improving loop, closed learning, nudges periódicos
-- Del vídeo Berman (https://youtu.be/sXVbWkoCVaA)
-- Evaluar si hay ideas aplicables a nuestro autoimprove
+### Hermes Agent — Implementar Ideas (investigación COMPLETA)
+- ✅ Investigación completada 2026-03-28
+- **Fase 1:** Memory Nudges (⭐⭐⭐⭐⭐, LOW effort) ← EN CURSO
+- **Fase 2:** Progressive Skill Disclosure (⭐⭐⭐⭐, LOW effort) ← PRIORIZADO (reduce carga antes de añadir skills)
+- **Fase 3:** Autonomous Skill Creation (⭐⭐⭐⭐⭐, MEDIUM effort, umbral alto: 3+ repeticiones)
+- **Fase 4:** Skills Self-Improvement (⭐⭐⭐⭐, MEDIUM effort, needs safety)
+- Source: https://github.com/NousResearch/hermes-agent
+- Report: memory/hermes-agent-investigation-2026-03-28.md
 
 ### Evaluar Lobster Board + Dashboard existente
 - ¿Quitar? ¿Mantener? Evaluar si aportan valor o son ruido
@@ -151,4 +155,26 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 **Acción:** Investigar y resolver. Relacionado con sesión de rendimiento programada en General.
 
 **Set:** 2026-03-26 (Manu's explicit feedback)
+
+
+---
+
+### 🧹 Eliminar Telegram Outbound Watchdog cuando se arregle el bug — 2026-03-28
+
+**Cron:** `🔧 Telegram Outbound Watchdog` (b97f6cea, cada 15 min)
+**Workaround para:** Bug "Outbound not configured for channel: telegram" — mensajes se quedan atascados, watchdog reinicia gateway.
+**Issues relacionados:** GitHub openclaw/openclaw #54931 y similares (WebSocket/outbound bugs)
+
+**Acción cuando OpenClaw publique fix:**
+1. Verificar que la nueva versión soluciona el problema (monitorizar 24-48h tras update)
+2. Si no hay más mensajes atascados → eliminar watchdog:
+   ```
+   openclaw cron rm b97f6cea-0a6a-450a-9d74-d8d1683f5dae
+   ```
+3. Eliminar script asociado si existe
+4. Actualizar memory/technical.md
+
+**Trigger:** Revisar en cada auto-update de OpenClaw si el changelog menciona fix para outbound/telegram/WebSocket
+
+**Set:** 2026-03-28 (Manu's explicit request — no dejar workarounds pululando)
 
