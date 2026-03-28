@@ -16,6 +16,14 @@
 - **Focus:** Decisions, preferences, facts, corrections, new information
 - **Origin:** Hermes Agent pattern (Phase 1 implementation)
 
+## Skill Creation
+
+- **Status:** ✅ Autonomous candidates tracking (2026-03-28)
+- **Threshold:** 3+ repetitions before suggesting skill creation
+- **Tracking:** `memory/skill-candidates.md` — log complex patterns (5+ tool calls)
+- **Approval:** Always ask Manu before creating — NO auto-creation
+- **Origin:** Hermes Agent pattern (Phase 3 implementation)
+
 ## Communication
 
 ### Revisión Nocturna de Sistemas
