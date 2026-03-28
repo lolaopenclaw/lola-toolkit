@@ -182,7 +182,7 @@ done
 ##############################################################################
 
 echo ""
-echo -e "${BLUE}📅 Part 2: Cron Jobs Schedule Analysis${NC}"
+print_section "📅 Part 2: Cron Jobs Schedule Analysis"
 echo ""
 
 cat >> "$REPORT_FILE" << 'CRONHEAD'
@@ -196,7 +196,7 @@ CRONHEAD
 CRON_OUTPUT=$(openclaw cron list 2>/dev/null || echo "")
 
 if [ -z "$CRON_OUTPUT" ]; then
-    echo -e "${RED}❌ Could not fetch cron list${NC}"
+    print_issue "Could not fetch cron list"
     echo "**Error:** Could not fetch cron list from \`openclaw cron list\`" >> "$REPORT_FILE"
 else
     echo "$CRON_OUTPUT" | tail -n +2 | while IFS= read -r line; do
@@ -237,7 +237,7 @@ fi
 ##############################################################################
 
 echo ""
-echo -e "${BLUE}🎯 Part 3: High-Risk Scripts Deep Dive${NC}"
+print_section "🎯 Part 3: High-Risk Scripts Deep Dive"
 echo ""
 
 cat >> "$REPORT_FILE" << 'HIGHRISK'
@@ -268,8 +268,8 @@ for script_name in "${HIGH_RISK_SCRIPTS[@]}"; do
         continue
     fi
     
-    echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "🔍 ${BLUE}$script_name${NC}"
+    print_header ""
+    print_file "🔍 $script_name"
     
     cat >> "$REPORT_FILE" << SCRIPTDEEP
 
@@ -326,9 +326,7 @@ done
 ##############################################################################
 
 echo ""
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${BLUE}📊 AUDIT SUMMARY${NC}"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+print_header "📊 AUDIT SUMMARY"
 echo ""
 echo "Total scripts scanned: $TOTAL_SCRIPTS"
 echo "Total issues: $ISSUES"
