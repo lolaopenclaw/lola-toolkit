@@ -31,23 +31,28 @@ COLOR_REMINDER=5    # Banana - reminders
 COLOR_IMPORTANT=11  # Tomato - important/urgent
 COLOR_RECURRING=10  # Basil - recurring tasks
 
+# Helper functions
+get_events() { gog calendar events "$CALENDAR_ID" --from "$1" --to "$2" --json 2>/dev/null; }
+count_events() { echo "$1" | python3 -c "import sys,json; print(len(json.load(sys.stdin).get('events',[])))" 2>/dev/null || echo "0"; }
+get_date_offset() { date -d "$1" +%Y-%m-%d; }
+
 cmd="${1:-help}"
 
 case "$cmd" in
   check)
     # Check today + tomorrow for heartbeat integration
-    TODAY=$(date +%Y-%m-%d)
-    TOMORROW=$(date -d "+1 day" +%Y-%m-%d)
-    DAY_AFTER=$(date -d "+2 days" +%Y-%m-%d)
+    TODAY=$(get_date_offset "today")
+    TOMORROW=$(get_date_offset "+1 day")
+    DAY_AFTER=$(get_date_offset "+2 days")
     
     echo "📅 Checking calendar..."
     
     # Today's events
-    TODAY_EVENTS=$(gog calendar events "$CALENDAR_ID" --from "$TODAY" --to "$TOMORROW" --json 2>/dev/null)
-    TODAY_COUNT=$(echo "$TODAY_EVENTS" | python3 -c "import sys,json; print(len(json.load(sys.stdin).get('events',[])))" 2>/dev/null || echo "0")
+    TODAY_EVENTS=$(get_events "$TODAY" "$TOMORROW")
+    TODAY_COUNT=$(count_events "$TODAY_EVENTS")
     
     # Tomorrow's events  
-    TOMORROW_EVENTS=$(gog calendar events "$CALENDAR_ID" --from "$TOMORROW" --to "$DAY_AFTER" --json 2>/dev/null)
+    TOMORROW_EVENTS=$(get_events "$TOMORROW" "$DAY_AFTER")
     TOMORROW_COUNT=$(echo "$TOMORROW_EVENTS" | python3 -c "import sys,json; print(len(json.load(sys.stdin).get('events',[])))" 2>/dev/null || echo "0")
     
     if [ "$TODAY_COUNT" = "0" ] && [ "$TOMORROW_COUNT" = "0" ]; then
