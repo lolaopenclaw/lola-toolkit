@@ -85,17 +85,29 @@ else
 • Sin incidentes nocturnos registrados"
 fi
 
-# 5. Nightly Security Review
+# 5. Nightly Security/Healthcheck Review
 fetch_data "🔐 Verificando security review nocturno"
-SECURITY_REVIEW_FILES=$(ls -t "$MEMORY_DIR"/*security*review*.md "$MEMORY_DIR"/*nightly*security*.md 2>/dev/null | head -1)
-SECURITY_REVIEW_SECTION=""
+# Check healthcheck dir first (current format), then legacy security review files
+LATEST_SECURITY=""
+if [ -f "$MEMORY_DIR/healthcheck/$TODAY.md" ]; then
+    LATEST_SECURITY="$MEMORY_DIR/healthcheck/$TODAY.md"
+    SEC_DATE="$TODAY"
+elif [ -f "$MEMORY_DIR/healthcheck/$YESTERDAY.md" ]; then
+    LATEST_SECURITY="$MEMORY_DIR/healthcheck/$YESTERDAY.md"
+    SEC_DATE="$YESTERDAY"
+else
+    # Legacy: security-review-YYYYMMDD.md or *security*review*.md
+    LEGACY_FILE=$(ls -t "$MEMORY_DIR"/*security*review*.md "$MEMORY_DIR"/*nightly*security*.md 2>/dev/null | head -1)
+    if [ -n "$LEGACY_FILE" ]; then
+        LATEST_SECURITY="$LEGACY_FILE"
+        SEC_DATE=$(basename "$LEGACY_FILE" | grep -oE "[0-9]{8}" | sed 's/\(....\)\(..\)\(..\)/\1-\2-\3/' || echo "fecha desconocida")
+    fi
+fi
 
-if [ -n "$SECURITY_REVIEW_FILES" ]; then
-    LATEST_SECURITY=$(echo "$SECURITY_REVIEW_FILES" | head -1)
-    SEC_DATE=$(basename "$LATEST_SECURITY" | grep -oE "[0-9]{8}" | sed 's/\(....\)\(..\)\(..\)/\1-\2-\3/' || echo "fecha desconocida")
-    SEC_SUMMARY=$(head -30 "$LATEST_SECURITY" | grep -E "^###|^\*\*|^- |^✅|^❌|^⚠️" | head -10 || echo "Ver archivo completo")
-    
-    SECURITY_REVIEW_SECTION="🔐 SECURITY REVIEW NOCTURNO ($SEC_DATE)
+SECURITY_REVIEW_SECTION=""
+if [ -n "$LATEST_SECURITY" ]; then
+    SEC_SUMMARY=$(head -30 "$LATEST_SECURITY" | grep -E "^##|^\*\*|^- |^✅|^❌|^⚠️|Status|banned|Disk|RAM|Gateway" | head -10 || echo "Ver archivo completo")
+    SECURITY_REVIEW_SECTION="🔐 SECURITY/HEALTHCHECK ($SEC_DATE)
 $SEC_SUMMARY"
 else
     SECURITY_REVIEW_SECTION="🔐 SECURITY REVIEW NOCTURNO
