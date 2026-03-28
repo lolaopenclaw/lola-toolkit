@@ -7,6 +7,15 @@
 - **Proxies:** Try `old.reddit.com` for Reddit, `nitter.net` for X (if available)
 - **Never ask Manu** "this site is blocked, what do I do?" → just try browser fallback silently
 
+## Memory Nudges
+
+- **Status:** ✅ Enabled (2026-03-28)
+- **Behavior:** In-session memory saves — don't wait for end of session
+- **Frequency:** Every ~5 exchanges, silently check: learned something new?
+- **Target:** `memory/YYYY-MM-DD.md` (today's daily log)
+- **Focus:** Decisions, preferences, facts, corrections, new information
+- **Origin:** Hermes Agent pattern (Phase 1 implementation)
+
 ## Communication
 
 ### Revisión Nocturna de Sistemas
