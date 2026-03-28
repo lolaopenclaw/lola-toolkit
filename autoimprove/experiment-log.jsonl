@@ -191,3 +191,4 @@
 {"ts":"2026-03-28T02:10:40Z","target":"informe-matutino-auto.sh","change":"Add helper functions for logging","before":701,"after":81,"kept":true,"delta":620}
 {"ts":"2026-03-28T02:11:58Z","target":"health-dashboard.sh","change":"Extract data fetching logic into helper functions","before":597,"after":97,"kept":true,"delta":500}
 {"ts":"2026-03-28T02:13:09Z","target":"calendar-tasks.sh","change":"Extract calendar operations into helper functions","before":781,"after":282,"kept":true,"delta":499}
+{"ts":"2026-03-28T02:14:34Z","target":"emergency-cost-stop.sh","change":"Add helper functions for colored logging","before":1054,"after":485,"kept":true,"delta":569}

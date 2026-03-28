@@ -13,9 +13,14 @@ RED='\033[0;31m'
 YELLOW='\033[1;33m'
 NC='\033[0m' # No Color
 
+# Helper functions
+log_error() { echo -e "${RED}$1${NC}"; }
+log_warn() { echo -e "${YELLOW}$1${NC}"; }
+log_step() { echo -e "${YELLOW}$1...${NC}"; }
+
 # Validate reason provided
 if [[ $# -eq 0 ]]; then
-  echo -e "${RED}❌ ERROR: Must provide reason for emergency stop${NC}"
+  log_error "❌ ERROR: Must provide reason for emergency stop"
   echo "Usage: $0 \"Reason for emergency stop\""
   exit 1
 fi
@@ -23,7 +28,7 @@ fi
 REASON="$1"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 
-echo -e "${RED}🚨 EMERGENCY COST STOP INITIATED${NC}"
+log_error "🚨 EMERGENCY COST STOP INITIATED"
 echo "Reason: $REASON"
 echo "Time: $TIMESTAMP"
 echo ""
@@ -40,7 +45,7 @@ LOG_FILE="$DATA_DIR/emergency-stop.log"
 } >> "$LOG_FILE"
 
 # 1. List running subagent sessions
-echo -e "${YELLOW}📋 Listing running subagent sessions...${NC}"
+log_step "📋 Listing running subagent sessions"
 SESSIONS=$(openclaw sessions list --json 2>/dev/null || echo "[]")
 ACTIVE_SESSIONS=$(echo "$SESSIONS" | jq -r '.[] | select(.status == "active") | .id' 2>/dev/null || echo "")
 
@@ -50,7 +55,7 @@ if [[ -n "$ACTIVE_SESSIONS" ]]; then
   echo ""
   
   # 2. Kill all subagent sessions
-  echo -e "${YELLOW}💀 Terminating all active sessions...${NC}"
+  log_step "💀 Terminating all active sessions"
   while IFS= read -r session_id; do
     if [[ -n "$session_id" ]]; then
       echo "  Killing session: $session_id"
@@ -66,7 +71,7 @@ else
 fi
 
 # 3. Disable non-essential crons
-echo -e "${YELLOW}⏸️  Disabling non-essential cron jobs...${NC}"
+log_step "⏸️ Disabling non-essential cron jobs"
 ESSENTIAL_CRONS=("backup" "driving-mode-reset")
 ALL_CRONS=$(openclaw cron list --json 2>/dev/null || echo "[]")
 
@@ -93,7 +98,7 @@ else
 fi
 
 # 4. Send Telegram alert
-echo -e "${YELLOW}📱 Sending Telegram alert...${NC}"
+log_step "📱 Sending Telegram alert"
 ALERT_MESSAGE="🚨 EMERGENCY COST STOP
 
 Reason: $REASON
@@ -134,7 +139,7 @@ echo ""
   echo ""
 } | tee -a "$LOG_FILE"
 
-echo -e "${RED}🚨 EMERGENCY STOP COMPLETE${NC}"
+log_error "🚨 EMERGENCY STOP COMPLETE"
 echo ""
 echo "Next steps:"
 echo "  1. Review log: cat $LOG_FILE"
