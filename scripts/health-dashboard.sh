@@ -19,19 +19,23 @@ REPORT_FILE="${WORKSPACE}/reports/health-dashboard-$(date +%Y-%m-%d).html"
 
 mkdir -p "$CACHE_DIR" "${WORKSPACE}/reports"
 
+# Helper functions
+fetch_garmin() { bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null || echo "{}"; }
+fetch_weather() { curl -s "https://wttr.in/Logroño,Spain?format=j1" | jq '.current_condition[0] // {}' 2>/dev/null || echo "{}"; }
+get_uptime() { uptime | awk -F'up' '{print $2}' | cut -d',' -f1 | xargs; }
+get_load() { uptime | awk -F'load average:' '{print $2}'; }
+get_memory() { free -h | grep Mem | awk '{print $3 " / " $2}'; }
+get_disk() { df -h / | tail -1 | awk '{print $3 " / " $2 " (" $5 ")"}'; }
+
 echo "📊 Building Health Dashboard..."
 
-# === FETCH GARMIN DATA ===
-GARMIN_DATA=$(bash "$WORKSPACE/scripts/garmin-health-report.sh" --current 2>/dev/null || echo "{}")
-
-# === FETCH WEATHER ===
-WEATHER=$(curl -s "https://wttr.in/Logroño,Spain?format=j1" | jq '.current_condition[0] // {}' 2>/dev/null || echo "{}")
-
-# === SYSTEM STATS ===
-UPTIME=$(uptime | awk -F'up' '{print $2}' | cut -d',' -f1 | xargs)
-LOAD=$(uptime | awk -F'load average:' '{print $2}')
-MEMORY=$(free -h | grep Mem | awk '{print $3 " / " $2}')
-DISK=$(df -h / | tail -1 | awk '{print $3 " / " $2 " (" $5 ")"}')
+# === FETCH DATA ===
+GARMIN_DATA=$(fetch_garmin)
+WEATHER=$(fetch_weather)
+UPTIME=$(get_uptime)
+LOAD=$(get_load)
+MEMORY=$(get_memory)
+DISK=$(get_disk)
 
 # === BUILD HTML DASHBOARD ===
 cat > "$REPORT_FILE" << 'EOF'
