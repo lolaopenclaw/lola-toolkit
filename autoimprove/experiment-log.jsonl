@@ -192,3 +192,6 @@
 {"ts":"2026-03-28T02:11:58Z","target":"health-dashboard.sh","change":"Extract data fetching logic into helper functions","before":597,"after":97,"kept":true,"delta":500}
 {"ts":"2026-03-28T02:13:09Z","target":"calendar-tasks.sh","change":"Extract calendar operations into helper functions","before":781,"after":282,"kept":true,"delta":499}
 {"ts":"2026-03-28T02:14:34Z","target":"emergency-cost-stop.sh","change":"Add helper functions for colored logging","before":1054,"after":485,"kept":true,"delta":569}
+{"ts":"2026-03-28T02:16:12Z","target":"heartbeat-efficiency","change":"Micro-optimizations: removed verbose phrases","before":845,"after":809,"kept":true,"delta":36}
+{"ts":"2026-03-28T02:16:12Z","target":"agents-tokens","change":"Removed redundant words (daily, before)","before":998,"after":986,"kept":true,"delta":12}
+{"ts":"2026-03-28T02:21:38Z","target":"memory-consolidation-2026-03-28","change":"Memory consolidation: 108→13 orphans (88% reduction), 24→39 refs in MEMORY.md, +80 files archived to mar-2026/, added critical refs (access-credentials, knowledge-base, preferences, openspec, protocols)","before":108,"after":13,"kept":true,"delta":95}

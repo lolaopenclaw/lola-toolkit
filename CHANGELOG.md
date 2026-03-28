@@ -132,3 +132,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-27 11:25:47** | docs: message delivery issue documented + evaluator fix complete | `bec2f1e` | [`backup-bec2f1e`](backups-by-commit/backup-bec2f1e*.tar.gz)
 
+- **2026-03-27 13:32:41** | fix: message delivery restored — gateway restart cleared outbound handlers | `70e00e9` | [`backup-70e00e9`](backups-by-commit/backup-70e00e9*.tar.gz)
+

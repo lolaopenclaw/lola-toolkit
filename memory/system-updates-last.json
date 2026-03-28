@@ -1,10 +1,12 @@
 {
-  "date": "2026-03-27",
-  "time": "01:30",
-  "status": "ok",
-  "packages_available": 0,
-  "packages_updated": 0,
-  "packages": [],
-  "reboot_required": false,
-  "note": "No updates available"
+  "timestamp": "2026-03-28T01:30:00Z",
+  "cron_id": "ed1d9b11-5ba1-44ed-8f8b-0b359ddcd45e",
+  "status": "error",
+  "exit_code": 1,
+  "errors": [
+    "line 59: syntax error in expression (error token is \"0\")",
+    "line 85: UPDATED: unbound variable"
+  ],
+  "attempted_packages": 1,
+  "summary": "Script has syntax errors in conditional logic and unbound variable references. Needs debugging."
 }

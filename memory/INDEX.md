@@ -1,6 +1,6 @@
 # 📚 Memory INDEX — Organized Knowledge
 
-Last updated: 2026-03-21 (Active: Skills, Scripts, Daily logs, Autoimprove nightly)
+Last updated: 2026-03-28 (Consolidation: 108 orphans → archive, MEMORY.md expanded)
 
 ---
 
