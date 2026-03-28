@@ -183,3 +183,7 @@
 {"ts":"2026-03-27T02:20:50Z","target":"PROJECTS.md","change":"Compressed verbose descriptions, consolidated sections, preserved all key info","before":647,"after":331,"kept":true,"delta":316}
 {"ts":"2026-03-27T02:21:59Z","target":"SOUL.md","change":"Compressed verbose explanations, preserved all tone/personality/rules","before":446,"after":277,"kept":true,"delta":169}
 {"ts":"2026-03-27T02:26:54Z","target":"memory-index","change":"MEMORY.md consolidation: +22 refs, audited 417 files, 0 broken refs, consolidated reviews","before":1500,"after":2441,"kept":true,"delta":-941}
+{"ts":"2026-03-28T02:01:31Z","target":"backup-memory.sh","change":"Refactor into functions","before":20,"after":86,"kept":false,"delta":-66}
+{"ts":"2026-03-28T02:02:18Z","target":"backup-memory.sh","change":"Consolidate cp commands","before":20,"after":22,"kept":false,"delta":-2}
+{"ts":"2026-03-28T02:02:58Z","target":"backup-memory.sh","change":"Consolidate error handling","before":20,"after":21,"kept":false,"delta":-1}
+{"ts":"2026-03-28T02:06:29Z","target":"audit-cron-notifications.sh","change":"Add helper functions to reduce repetitive echo calls","before":1113,"after":1054,"kept":true,"delta":59}

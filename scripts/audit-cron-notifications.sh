@@ -16,10 +16,16 @@ BLUE='\033[0;34m'
 CYAN='\033[0;36m'
 NC='\033[0m' # No Color
 
+# Helper functions
+print_header() { echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"; echo -e "${CYAN}$1${NC}"; echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"; }
+print_section() { echo -e "${BLUE}$1${NC}"; }
+print_file() { echo -e "📄 ${BLUE}$1${NC}"; }
+print_issue() { echo -e "${RED}⚠️  $1${NC}"; }
+print_warn() { echo -e "${YELLOW}⚠️  $1${NC}"; }
+print_ok() { echo -e "${GREEN}✅ $1${NC}"; }
+
 echo ""
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-echo -e "${CYAN}🔍 CRON NOTIFICATIONS AUDIT${NC}"
-echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
+print_header "🔍 CRON NOTIFICATIONS AUDIT"
 echo ""
 
 # Generate report header
@@ -55,7 +61,7 @@ CRITICAL_ISSUES=0
 # PART 1: SCAN ALL SCRIPTS FOR NOTIFICATION PATTERNS
 ##############################################################################
 
-echo -e "${BLUE}📂 Part 1: Scanning Scripts${NC}"
+print_section "📂 Part 1: Scanning Scripts"
 echo ""
 
 cat >> "$REPORT_FILE" << 'SCRIPTHEADER'
@@ -68,8 +74,8 @@ find "$WORKSPACE/scripts" -name "*.sh" -type f 2>/dev/null | sort | while IFS= r
     BASENAME=$(basename "$script")
     TOTAL_SCRIPTS=$((TOTAL_SCRIPTS + 1))
     
-    echo -e "${CYAN}━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━${NC}"
-    echo -e "📄 ${BLUE}$BASENAME${NC}"
+    print_header ""
+    print_file "$BASENAME"
     
     # Write to report
     cat >> "$REPORT_FILE" << SCRIPTHEAD
