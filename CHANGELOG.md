@@ -134,3 +134,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-27 13:32:41** | fix: message delivery restored — gateway restart cleared outbound handlers | `70e00e9` | [`backup-70e00e9`](backups-by-commit/backup-70e00e9*.tar.gz)
 
+- **2026-03-28 10:10:29** | fix(informe-matutino): buscar healthcheck diario además de legacy security review | `56c2590` | [`backup-56c2590`](backups-by-commit/backup-56c2590*.tar.gz)
+

@@ -1,5 +1,12 @@
 # 📋 Preferences — Lola & Manu
 
+## Web Research
+
+- **Fallback strategy:** When `web_fetch` fails (403, empty, JS-required), automatically retry with `browser` tool (navigate + snapshot)
+- **Blocked sites:** X/Twitter, Reddit, LinkedIn often block bots → always use browser fallback
+- **Proxies:** Try `old.reddit.com` for Reddit, `nitter.net` for X (if available)
+- **Never ask Manu** "this site is blocked, what do I do?" → just try browser fallback silently
+
 ## Communication
 
 ### Revisión Nocturna de Sistemas

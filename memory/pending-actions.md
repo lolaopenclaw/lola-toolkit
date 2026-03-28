@@ -75,8 +75,10 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - Semantic search (not just FTS5 keyword)
 - Estimated: Q2 2026
 
-### OpenSpec — Revisit for Work
-- Manu will revisit when clearer on how team uses it
+### OpenSpec — ⚠️ POSIBLE CANCELACIÓN
+- Manu usando Claude Code directamente en el curro, avanzando bien
+- Dudas sobre si tiene sentido integrar OpenSpec en el sistema de Lola
+- **Status:** En evaluación — puede que se cancele y se limpie todo lo hecho
 - Reference: Gentleman AI SDD pipeline (video in KB)
 
 ### Disaster Recovery Test
@@ -88,9 +90,23 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - A/B test Haiku vs Sonnet for routine cron tasks
 - Implement daily budget hard cap ($20/day)
 
-### Visual Dashboard
-- Real implementation of localhost:3333 dashboard
-- Widgets: costs, crons, memory, health
+
+
+### Surf Coach — Seguir avanzando
+- Proyecto a medias, seguir desarrollando cuando podamos
+- Condiciones, coaching, tracking de sesiones
+
+### Finanzas — Seguir avanzando
+- Proyecto a medias, migración Markdown completa
+- Seguir mejorando categorización, informes mensuales
+
+### Investigar Hermes Agent
+- Self-improving loop, closed learning, nudges periódicos
+- Del vídeo Berman (https://youtu.be/sXVbWkoCVaA)
+- Evaluar si hay ideas aplicables a nuestro autoimprove
+
+### Evaluar Lobster Board + Dashboard existente
+- ¿Quitar? ¿Mantener? Evaluar si aportan valor o son ruido
 
 ### Context Optimization Audit
 - **Phase 1:** ✅ COMPLETE (8.6% reduction, 1,370 tokens saved)
@@ -116,6 +132,8 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 - Food Journal
 - Video/Content Pipeline
 - X/Twitter management
+- Visual Dashboard (localhost:3333) — Descartado 2026-03-28, "otro dashboard más, no le veo utilidad"
+- Lobster Board — En evaluación para descarte
 
 ---
 
