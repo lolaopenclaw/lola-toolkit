@@ -11,10 +11,14 @@ TODAY=$(date +%Y-%m-%d)
 HOUR=$(date +%H:%M)
 MEMORY_DIR="/home/mleon/.openclaw/workspace/memory"
 
-echo "🔄 Generando informe matutino..."
+# Helper functions
+log_step() { echo "$1..."; }
+fetch_data() { echo "🔄 $1"; }
+
+log_step "🔄 Generando informe matutino"
 
 # 1. Get Weather for Logroño
-echo "🌤️ Obteniendo clima..."
+fetch_data "🌤️ Obteniendo clima"
 WEATHER=$(curl -s "wttr.in/Logroño?format=3" 2>/dev/null || echo "❓ No disponible")
 
 # 2. Calendar section REMOVED (not used by Manu)
@@ -31,7 +35,7 @@ WEATHER=$(curl -s "wttr.in/Logroño?format=3" 2>/dev/null || echo "❓ No dispon
 # fi
 
 # 3. Get Pending Actions
-echo "📌 Verificando pending actions..."
+fetch_data "📌 Verificando pending actions"
 PENDING_FILE="$MEMORY_DIR/pending-actions.md"
 PENDING_ACTIONS=""
 if [ -f "$PENDING_FILE" ]; then
@@ -61,7 +65,7 @@ else
 fi
 
 # 4. Log Review Nocturno
-echo "📋 Verificando log review nocturno..."
+fetch_data "📋 Verificando log review nocturno"
 LOG_REVIEW_FILE="$MEMORY_DIR/log-review-$TODAY.md"
 LOG_REVIEW_YESTERDAY="$MEMORY_DIR/log-review-$YESTERDAY.md"
 LOG_REVIEW_SECTION=""
@@ -82,7 +86,7 @@ else
 fi
 
 # 5. Nightly Security Review
-echo "🔐 Verificando security review nocturno..."
+fetch_data "🔐 Verificando security review nocturno"
 SECURITY_REVIEW_FILES=$(ls -t "$MEMORY_DIR"/*security*review*.md "$MEMORY_DIR"/*nightly*security*.md 2>/dev/null | head -1)
 SECURITY_REVIEW_SECTION=""
 
@@ -99,13 +103,13 @@ else
 fi
 
 # 6. Get Garmin data for yesterday
-echo "📊 Obteniendo datos de Garmin..."
+fetch_data "📊 Obteniendo datos de Garmin"
 # NOTE: Call without date argument so script uses its own "yesterday" logic
 # (activity from full day yesterday, sleep from today - keyed to wake-up date)
 GARMIN_DATA=$(bash ~/.openclaw/workspace/scripts/garmin-health-report.sh --daily 2>&1 || echo "Error en Garmin")
 
 # 7. Get system stats
-echo "💻 Obteniendo estadísticas del sistema..."
+fetch_data "💻 Obteniendo estadísticas del sistema"
 UPTIME=$(uptime -p 2>/dev/null | sed 's/up //')
 RAM=$(free -h | awk '/^Mem:/ {print $3 " / " $2}')
 DISK=$(df -h / | awk 'NR==2 {print $3 " / " $2}')
@@ -116,11 +120,11 @@ GATEWAY_STATUS="✅ Activo" && [ -z "$GATEWAY_PID" ] && GATEWAY_STATUS="❌ Inac
 CRONS_ACTIVE=$(openclaw cron list 2>/dev/null | tail -n +2 | wc -l || echo "?")
 
 # 8. Get Fail2Ban status
-echo "🛡️ Verificando Fail2Ban..."
+fetch_data "🛡️ Verificando Fail2Ban"
 FAIL2BAN=$(sudo fail2ban-client status sshd 2>/dev/null | grep "Currently banned" | awk '{print $NF}' || echo "?")
 
 # 9. Get backup info
-echo "💾 Verificando backups..."
+fetch_data "💾 Verificando backups"
 LAST_BACKUP_JSON="$MEMORY_DIR/last-backup.json"
 if [ -f "$LAST_BACKUP_JSON" ]; then
     BACKUP_DATE=$(python3 -c "import json; d=json.load(open('$LAST_BACKUP_JSON')); print(d.get('date','?'))" 2>/dev/null || echo "?")
@@ -131,7 +135,7 @@ else
 fi
 
 # 10. Autoimprove Nightly summary
-echo "🔬 Leyendo resumen de Autoimprove..."
+fetch_data "🔬 Leyendo resumen de Autoimprove"
 EXPERIMENT_LOG="/home/mleon/.openclaw/workspace/autoimprove/experiment-log.jsonl"
 AUTOIMPROVE_FILE="$MEMORY_DIR/autoimprove-log-$TODAY.md"
 AUTOIMPROVE_SECTION=""
@@ -198,7 +202,7 @@ else
 fi
 
 # 11. System updates status
-echo "🔄 Leyendo estado de actualizaciones..."
+fetch_data "🔄 Leyendo estado de actualizaciones"
 UPDATES_JSON="$MEMORY_DIR/system-updates-last.json"
 UPDATES_SECTION=""
 if [ -f "$UPDATES_JSON" ]; then
@@ -232,7 +236,7 @@ else
 fi
 
 # 12. Token usage report
-echo "💰 Calculando consumo de tokens..."
+fetch_data "💰 Calculando consumo de tokens"
 SCRIPTS_DIR="/home/mleon/.openclaw/workspace/scripts"
 
 MONTH_JSON=$(bash "$SCRIPTS_DIR/usage-report.sh" --month 2>/dev/null || echo "{}")

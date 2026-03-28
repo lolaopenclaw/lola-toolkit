@@ -188,3 +188,4 @@
 {"ts":"2026-03-28T02:02:58Z","target":"backup-memory.sh","change":"Consolidate error handling","before":20,"after":21,"kept":false,"delta":-1}
 {"ts":"2026-03-28T02:06:29Z","target":"audit-cron-notifications.sh","change":"Add helper functions to reduce repetitive echo calls","before":1113,"after":1054,"kept":true,"delta":59}
 {"ts":"2026-03-28T02:07:59Z","target":"audit-cron-notifications.sh","change":"Replace more echo calls with helper functions","before":1054,"after":974,"kept":true,"delta":80}
+{"ts":"2026-03-28T02:10:40Z","target":"informe-matutino-auto.sh","change":"Add helper functions for logging","before":701,"after":81,"kept":true,"delta":620}
