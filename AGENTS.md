@@ -9,10 +9,10 @@
 
 ## Memory & Safety
 
-- **Memory:** Read/write daily; distill to `MEMORY.md` (`memory/preferences.md`)
-- **Privacy:** Never exfiltrate; `trash` > `rm`. GitHub: NEVER commit secrets/tokens/IPs/.env; rotate q3m
+- **Memory:** Daily R/W; distill to `MEMORY.md` (`memory/preferences.md`)
+- **Privacy:** No exfiltrate; `trash`>`rm`. GitHub: NEVER commit secrets/tokens/IPs/.env; rotate q3m
 - **Verification:** Evidence > assertions. Check before/after
-- **Comms:** 3+ errors → correct constructively. Restarts → notify BEFORE
+- **Comms:** 3+ errors → correct constructively. Restarts → notify before
 - **Changes:** Backup → notify → verify (`memory/security-change-protocol.md`)
 - **Night:** 00:00-07:00 Madrid quiet. CRITICAL only (`memory/night-notification-protocol.md`)
 
