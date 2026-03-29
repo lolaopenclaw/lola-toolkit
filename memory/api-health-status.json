@@ -2,47 +2,47 @@
   "apis": {
     "anthropic": {
       "status": "up",
-      "latency": 193,
+      "latency": 314,
       "error": null,
-      "timestamp": "2026-03-28T11:30:02.021386+00:00",
+      "timestamp": "2026-03-29T01:00:02.141969+00:00",
       "api": "anthropic"
     },
     "google": {
       "status": "up",
-      "latency": 170,
+      "latency": 421,
       "error": null,
-      "timestamp": "2026-03-28T11:30:02.194653+00:00",
+      "timestamp": "2026-03-29T01:00:02.567170+00:00",
       "api": "google"
     },
     "telegram": {
       "status": "up",
-      "latency": 244,
+      "latency": 397,
       "error": null,
-      "timestamp": "2026-03-28T11:30:02.443195+00:00",
+      "timestamp": "2026-03-29T01:00:02.967089+00:00",
       "api": "telegram"
     },
     "github": {
       "status": "up",
-      "latency": 172,
+      "latency": 211,
       "error": null,
-      "timestamp": "2026-03-28T11:30:02.617697+00:00",
+      "timestamp": "2026-03-29T01:00:03.181539+00:00",
       "api": "github"
     },
     "garmin": {
       "status": "up",
-      "latency": 217,
+      "latency": 634,
       "error": null,
-      "timestamp": "2026-03-28T11:30:02.837616+00:00",
+      "timestamp": "2026-03-29T01:00:03.832694+00:00",
       "api": "garmin"
     },
     "brave": {
       "status": "up",
-      "latency": 643,
+      "latency": 780,
       "error": null,
-      "timestamp": "2026-03-28T11:30:03.482444+00:00",
+      "timestamp": "2026-03-29T01:00:04.617343+00:00",
       "api": "brave"
     }
   },
-  "last_check": "2026-03-28T11:30:03.482936+00:00",
+  "last_check": "2026-03-29T01:00:04.618367+00:00",
   "failover_active": false
 }

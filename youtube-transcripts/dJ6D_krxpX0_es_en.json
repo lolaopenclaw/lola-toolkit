@@ -1,0 +1,1577 @@
+{
+  "transcript": [
+    {
+      "text": "Hoy vamos a construir algo increíble. Si",
+      "start": 0.599,
+      "duration": 5.24
+    },
+    {
+      "text": "has estado desarrollando e integrando",
+      "start": 3.52,
+      "duration": 5.28
+    },
+    {
+      "text": "con inteligencia artificial últimamente,",
+      "start": 5.839,
+      "duration": 6.88
+    },
+    {
+      "text": "seguro que has montado algún sistema RA.",
+      "start": 8.8,
+      "duration": 6.759
+    },
+    {
+      "text": "Le pasas un PDF a la IA y te responde",
+      "start": 12.719,
+      "duration": 6.121
+    },
+    {
+      "text": "preguntas sobre el PDF y te contesta,",
+      "start": 15.559,
+      "duration": 6.681
+    },
+    {
+      "text": "\"Es magia, ¿hasta que deja de serlo.\" Si",
+      "start": 18.84,
+      "duration": 5.88
+    },
+    {
+      "text": "le pides a un rag tradicional que",
+      "start": 22.24,
+      "duration": 5.879
+    },
+    {
+      "text": "analice un documento gigante y conecte",
+      "start": 24.72,
+      "duration": 7.0
+    },
+    {
+      "text": "pistas dispersas, se rompe, falla,",
+      "start": 28.119,
+      "duration": 6.76
+    },
+    {
+      "text": "alucina y te da respuestas mediocres o",
+      "start": 31.72,
+      "duration": 6.04
+    },
+    {
+      "text": "incongruentes. ¿Por qué? Porque el rag",
+      "start": 34.879,
+      "duration": 6.121
+    },
+    {
+      "text": "normal es ciego a las relaciones.",
+      "start": 37.76,
+      "duration": 5.44
+    },
+    {
+      "text": "Espera, ¿no sabes qué es un rag? Bueno,",
+      "start": 41.0,
+      "duration": 4.76
+    },
+    {
+      "text": "mira primero este vídeo. Hoy vamos a",
+      "start": 43.2,
+      "duration": 7.039
+    },
+    {
+      "text": "solucionar eso sin montar un RA 2.0 del",
+      "start": 45.76,
+      "duration": 7.24
+    },
+    {
+      "text": "que hablo en este otro vídeo. Hoy vamos",
+      "start": 50.239,
+      "duration": 6.081
+    },
+    {
+      "text": "a construir un graf rag, una solución",
+      "start": 53.0,
+      "duration": 6.0
+    },
+    {
+      "text": "mucho más ligera. Vamos a darle a",
+      "start": 56.32,
+      "duration": 4.84
+    },
+    {
+      "text": "nuestra IA un cerebro estructurado",
+      "start": 59.0,
+      "duration": 4.92
+    },
+    {
+      "text": "mediante un grafo de conocimiento y lo",
+      "start": 61.16,
+      "duration": 6.48
+    },
+    {
+      "text": "vamos a hacer 100% en local. gratis y en",
+      "start": 63.92,
+      "duration": 6.8
+    },
+    {
+      "text": "tu propia CPU. Nada de gastar cientos de",
+      "start": 67.64,
+      "duration": 5.32
+    },
+    {
+      "text": "dólares en APIs ni comprar tarjetas",
+      "start": 70.72,
+      "duration": 4.68
+    },
+    {
+      "text": "gráficas carísimas. Prepárate un buen",
+      "start": 72.96,
+      "duration": 6.839
+    },
+    {
+      "text": "café porque vamos a ello.",
+      "start": 75.4,
+      "duration": 4.399
+    },
+    {
+      "text": "Para entender Graph Rag, primero hay que",
+      "start": 82.2,
+      "duration": 6.08
+    },
+    {
+      "text": "entender cómo funciona el RA normal.",
+      "start": 84.92,
+      "duration": 6.76
+    },
+    {
+      "text": "Cuando subes un PDF a un RA clásico, el",
+      "start": 88.28,
+      "duration": 6.0
+    },
+    {
+      "text": "sistema corta el texto en trozos y los",
+      "start": 91.68,
+      "duration": 5.0
+    },
+    {
+      "text": "convierte en números. los famosos",
+      "start": 94.28,
+      "duration": 5.799
+    },
+    {
+      "text": "vectores. Luego guarda esos trozos en",
+      "start": 96.68,
+      "duration": 6.04
+    },
+    {
+      "text": "una bolsa gigante.",
+      "start": 100.079,
+      "duration": 5.161
+    },
+    {
+      "text": "Si haces una pregunta simple, como se",
+      "start": 102.72,
+      "duration": 5.2
+    },
+    {
+      "text": "llama el paciente, el sistema busca en",
+      "start": 105.24,
+      "duration": 5.0
+    },
+    {
+      "text": "la bolsa el trozo de texto con las",
+      "start": 107.92,
+      "duration": 5.68
+    },
+    {
+      "text": "palabras más similares matemáticamente.",
+      "start": 110.24,
+      "duration": 6.559
+    },
+    {
+      "text": "Funciona genial, ¿eh? Pero, ¿qué pasa si",
+      "start": 113.6,
+      "duration": 6.559
+    },
+    {
+      "text": "el conocimiento está fragmentado?",
+      "start": 116.799,
+      "duration": 5.92
+    },
+    {
+      "text": "¿Qué pasa si el párrafo A dice Carlos",
+      "start": 120.159,
+      "duration": 5.28
+    },
+    {
+      "text": "tiene problemas? El párrafo B dice,",
+      "start": 122.719,
+      "duration": 4.921
+    },
+    {
+      "text": "\"Carlos, trabaja en la fábrica",
+      "start": 125.439,
+      "duration": 6.081
+    },
+    {
+      "text": "Electrocorp y el párrafo C dice, \"¿Hubo",
+      "start": 127.64,
+      "duration": 5.76
+    },
+    {
+      "text": "una fugoda de gas tóxico en",
+      "start": 131.52,
+      "duration": 3.4
+    },
+    {
+      "text": "Electrocorp?\"",
+      "start": 133.4,
+      "duration": 3.24
+    },
+    {
+      "text": "Si le preguntas al Rag porque está",
+      "start": 134.92,
+      "duration": 4.319
+    },
+    {
+      "text": "enfermo Carlos, el sistema buscará",
+      "start": 136.64,
+      "duration": 5.76
+    },
+    {
+      "text": "Carlos y enfermo, pero no recuperará el",
+      "start": 139.239,
+      "duration": 5.441
+    },
+    {
+      "text": "texto de la fuga de gas porque puede",
+      "start": 142.4,
+      "duration": 4.44
+    },
+    {
+      "text": "estar en otro chunk, porque en ese",
+      "start": 144.68,
+      "duration": 4.839
+    },
+    {
+      "text": "párrafo no se menciona la palabra Carlos",
+      "start": 146.84,
+      "duration": 5.84
+    },
+    {
+      "text": "ni la palabra enfermo. Por lo tanto, si",
+      "start": 149.519,
+      "duration": 4.681
+    },
+    {
+      "text": "no son los chuns suficientemente",
+      "start": 152.68,
+      "duration": 4.04
+    },
+    {
+      "text": "grandes, no va a saber la información,",
+      "start": 154.2,
+      "duration": 5.72
+    },
+    {
+      "text": "no sabe conectar los puntos. Graf RAG",
+      "start": 156.72,
+      "duration": 5.36
+    },
+    {
+      "text": "soluciona esto usando grafos de",
+      "start": 159.92,
+      "duration": 5.08
+    },
+    {
+      "text": "conocimiento. En lugar de una bolsa de",
+      "start": 162.08,
+      "duration": 5.159
+    },
+    {
+      "text": "trozos sueltos, usa un modelo de",
+      "start": 165.0,
+      "duration": 4.92
+    },
+    {
+      "text": "lenguaje para leer tu texto y extraer",
+      "start": 167.239,
+      "duration": 5.121
+    },
+    {
+      "text": "nodos, que serían entidades, y aristas,",
+      "start": 169.92,
+      "duration": 5.36
+    },
+    {
+      "text": "que serían las relaciones, y crea un",
+      "start": 172.36,
+      "duration": 4.44
+    },
+    {
+      "text": "mapa.",
+      "start": 175.28,
+      "duration": 3.959
+    },
+    {
+      "text": "De modo que Carlos se conecta a la",
+      "start": 176.8,
+      "duration": 5.6
+    },
+    {
+      "text": "fábrica y la fábrica se conecta al gas.",
+      "start": 179.239,
+      "duration": 5.881
+    },
+    {
+      "text": "La de esa forma puede navegar por este",
+      "start": 182.4,
+      "duration": 5.72
+    },
+    {
+      "text": "mapa como un detective saltando de pista",
+      "start": 185.12,
+      "duration": 7.039
+    },
+    {
+      "text": "en pista. Vamos a ensuciarnos las manos.",
+      "start": 188.12,
+      "duration": 6.24
+    },
+    {
+      "text": "Lo primero es preparar nuestro entorno",
+      "start": 192.159,
+      "duration": 5.921
+    },
+    {
+      "text": "de Python. Lo voy a hacer usando UV. UV",
+      "start": 194.36,
+      "duration": 5.439
+    },
+    {
+      "text": "es un gestor de paquetes escrito en",
+      "start": 198.08,
+      "duration": 4.76
+    },
+    {
+      "text": "Rust, que es absurdamente rápido.",
+      "start": 199.799,
+      "duration": 6.201
+    },
+    {
+      "text": "Resuelve dependencias en milisegundos.",
+      "start": 202.84,
+      "duration": 5.759
+    },
+    {
+      "text": "Vamos a crear nuestro entorno virtual y",
+      "start": 206.0,
+      "duration": 6.36
+    },
+    {
+      "text": "activarlo. Escribimos VVMV. Y ahora",
+      "start": 208.599,
+      "duration": 6.161
+    },
+    {
+      "text": "instalamos nuestras librerías. Usaremos",
+      "start": 212.36,
+      "duration": 4.879
+    },
+    {
+      "text": "LChain para orquestar todo y la librería",
+      "start": 214.76,
+      "duration": 5.52
+    },
+    {
+      "text": "de Neo 4J para conectar a la base de",
+      "start": 217.239,
+      "duration": 5.64
+    },
+    {
+      "text": "datos. Por lo tanto, pondremos UVP,",
+      "start": 220.28,
+      "duration": 5.08
+    },
+    {
+      "text": "install, Lchain, Lchain Community,",
+      "start": 222.879,
+      "duration": 6.28
+    },
+    {
+      "text": "Linecha Experimental, Neo 4J, Linechain",
+      "start": 225.36,
+      "duration": 5.84
+    },
+    {
+      "text": "Hin Face.",
+      "start": 229.159,
+      "duration": 5.92
+    },
+    {
+      "text": "Intro, esperamos y ya tenemos el motor",
+      "start": 231.2,
+      "duration": 6.759
+    },
+    {
+      "text": "de Python listo. Para guardar un grafo,",
+      "start": 235.079,
+      "duration": 6.44
+    },
+    {
+      "text": "necesitamos una base de datos de grafos.",
+      "start": 237.959,
+      "duration": 6.601
+    },
+    {
+      "text": "Neo 4J es mi preferido. Podríamos usar",
+      "start": 241.519,
+      "duration": 5.201
+    },
+    {
+      "text": "su versión en la nube, pero os he",
+      "start": 244.56,
+      "duration": 4.879
+    },
+    {
+      "text": "prometido que esto es 100% local, así",
+      "start": 246.72,
+      "duration": 6.04
+    },
+    {
+      "text": "que vamos a usar Docker. Docker nos va a",
+      "start": 249.439,
+      "duration": 6.201
+    },
+    {
+      "text": "permitir correr una instancia de Neo 4J",
+      "start": 252.76,
+      "duration": 4.96
+    },
+    {
+      "text": "empaquetada y limpia en nuestro",
+      "start": 255.64,
+      "duration": 4.119
+    },
+    {
+      "text": "ordenador sin ensuciar el sistema",
+      "start": 257.72,
+      "duration": 5.32
+    },
+    {
+      "text": "operativo. Así que pegamos este comando",
+      "start": 259.759,
+      "duration": 7.281
+    },
+    {
+      "text": "en la terminal. Ponemos docker run - P",
+      "start": 263.04,
+      "duration": 13.2
+    },
+    {
+      "text": "74 74 74 74 - P 76 87 76 87 - V PWD data",
+      "start": 267.04,
+      "duration": 10.96
+    },
+    {
+      "text": "dosta",
+      "start": 276.24,
+      "duration": 7.32
+    },
+    {
+      "text": "name Neo4 local Neo4J out ponemos Neo4J",
+      "start": 278.0,
+      "duration": 8.12
+    },
+    {
+      "text": "password y luego ponemos que tenga el",
+      "start": 283.56,
+      "duration": 6.359
+    },
+    {
+      "text": "plugin apoc y lo llamamos y sacamos la",
+      "start": 286.12,
+      "duration": 7.24
+    },
+    {
+      "text": "imagen de NO4J test. ¿Qué estamos",
+      "start": 289.919,
+      "duration": 5.56
+    },
+    {
+      "text": "haciendo aquí? Estamos abriendo dos",
+      "start": 293.36,
+      "duration": 4.36
+    },
+    {
+      "text": "puertos, el 7474",
+      "start": 295.479,
+      "duration": 5.081
+    },
+    {
+      "text": "para poder ver la interfaz gráfica en el",
+      "start": 297.72,
+      "duration": 5.64
+    },
+    {
+      "text": "navegador y el 7687,",
+      "start": 300.56,
+      "duration": 5.24
+    },
+    {
+      "text": "que es el puerto Bolt por donde nuestro",
+      "start": 303.36,
+      "duration": 4.76
+    },
+    {
+      "text": "código Python se va a comunicar con la",
+      "start": 305.8,
+      "duration": 5.0
+    },
+    {
+      "text": "base de datos de forma ultra rápida, ya",
+      "start": 308.12,
+      "duration": 5.68
+    },
+    {
+      "text": "veréis. Y aquí lo tenemos. Podemos",
+      "start": 310.8,
+      "duration": 5.959
+    },
+    {
+      "text": "acceder a local 7474",
+      "start": 313.8,
+      "duration": 6.16
+    },
+    {
+      "text": "y ver la interfaz de Neo 4J. La primera",
+      "start": 316.759,
+      "duration": 5.121
+    },
+    {
+      "text": "vez que entras, el usuario pues va a ser",
+      "start": 319.96,
+      "duration": 4.84
+    },
+    {
+      "text": "Neo 4J y la contraseña password tal como",
+      "start": 321.88,
+      "duration": 5.879
+    },
+    {
+      "text": "hemos configurado en el Docker. Una vez",
+      "start": 324.8,
+      "duration": 5.2
+    },
+    {
+      "text": "dentro vemos que el panel está",
+      "start": 327.759,
+      "duration": 4.041
+    },
+    {
+      "text": "completamente vacío, lo podéis ver, ni",
+      "start": 330.0,
+      "duration": 5.08
+    },
+    {
+      "text": "un solo nodo, ninguna relación. Vamos a",
+      "start": 331.8,
+      "duration": 5.92
+    },
+    {
+      "text": "cambiar esto pronto. Tenemos la base de",
+      "start": 335.08,
+      "duration": 4.88
+    },
+    {
+      "text": "datos y tenemos Python. Ahora",
+      "start": 337.72,
+      "duration": 5.039
+    },
+    {
+      "text": "necesitamos a la IA. Para esto usaremos",
+      "start": 339.96,
+      "duration": 6.28
+    },
+    {
+      "text": "un modelo con Oyama. Eyama esami",
+      "start": 342.759,
+      "duration": 5.801
+    },
+    {
+      "text": "maravillosa que nos permite ejecutar",
+      "start": 346.24,
+      "duration": 4.6
+    },
+    {
+      "text": "modelos open source en nuestra máquina",
+      "start": 348.56,
+      "duration": 6.199
+    },
+    {
+      "text": "local. La magia la magia de Oyama es la",
+      "start": 350.84,
+      "duration": 6.12
+    },
+    {
+      "text": "cuantización o los modelos pequeñitos,",
+      "start": 354.759,
+      "duration": 3.88
+    },
+    {
+      "text": "ya que podemos comprimir modelos",
+      "start": 356.96,
+      "duration": 4.04
+    },
+    {
+      "text": "gigantescos para que puedan correr en la",
+      "start": 358.639,
+      "duration": 4.4
+    },
+    {
+      "text": "RAM de nuestro ordenador y en nuestra",
+      "start": 361.0,
+      "duration": 5.08
+    },
+    {
+      "text": "CPU sin necesidad un una tarjeta gráfica",
+      "start": 363.039,
+      "duration": 5.72
+    },
+    {
+      "text": "muy cara. Escribimos por lo tanto en la",
+      "start": 366.08,
+      "duration": 8.16
+    },
+    {
+      "text": "terminal Oyama Pool de Yama 3.18B.",
+      "start": 368.759,
+      "duration": 8.761
+    },
+    {
+      "text": "y estaremos descargando y ejecutando",
+      "start": 374.24,
+      "duration": 6.64
+    },
+    {
+      "text": "llama 3.1.",
+      "start": 377.52,
+      "duration": 5.84
+    },
+    {
+      "text": "Este será el cerebro que vamos a",
+      "start": 380.88,
+      "duration": 5.039
+    },
+    {
+      "text": "utilizar, que va a leer nuestro texto y",
+      "start": 383.36,
+      "duration": 6.239
+    },
+    {
+      "text": "extraerá el mapa mental. Vamos a crear",
+      "start": 385.919,
+      "duration": 5.4
+    },
+    {
+      "text": "nuestro texto de prueba, tal como os",
+      "start": 389.599,
+      "duration": 3.681
+    },
+    {
+      "text": "hemos dicho antes, si metemos una",
+      "start": 391.319,
+      "duration": 4.041
+    },
+    {
+      "text": "biografía de Wikipedia de alguien, no",
+      "start": 393.28,
+      "duration": 3.84
+    },
+    {
+      "text": "vamos a ver el verdadero poder de",
+      "start": 395.36,
+      "duration": 3.92
+    },
+    {
+      "text": "Grafrag. Así que vamos a meter un",
+      "start": 397.12,
+      "duration": 5.24
+    },
+    {
+      "text": "pequeño misterio estilo novela negra",
+      "start": 399.28,
+      "duration": 6.08
+    },
+    {
+      "text": "diseñado específicamente para hacer",
+      "start": 402.36,
+      "duration": 5.959
+    },
+    {
+      "text": "fallar a un rag tradicional.",
+      "start": 405.36,
+      "duration": 5.48
+    },
+    {
+      "text": "Atentos a esta historia. Informe médico",
+      "start": 408.319,
+      "duration": 6.241
+    },
+    {
+      "text": "014. El paciente Carlos Gómez ingresó",
+      "start": 410.84,
+      "duration": 6.68
+    },
+    {
+      "text": "presentando una erupción cutánea severa",
+      "start": 414.56,
+      "duration": 5.319
+    },
+    {
+      "text": "y problemas respiratorios.",
+      "start": 417.52,
+      "duration": 5.079
+    },
+    {
+      "text": "El perfil La Dora Elena Ramírez es",
+      "start": 419.879,
+      "duration": 5.04
+    },
+    {
+      "text": "especialista. Su investigación detallan",
+      "start": 422.599,
+      "duration": 5.921
+    },
+    {
+      "text": "que la exposición alquímico Neotox 88",
+      "start": 424.919,
+      "duration": 6.28
+    },
+    {
+      "text": "causa exactamente erupciones y fallos",
+      "start": 428.52,
+      "duration": 5.16
+    },
+    {
+      "text": "respiratorios. Y ponemos aquí reporte de",
+      "start": 431.199,
+      "duration": 5.241
+    },
+    {
+      "text": "incidencias. La fábrica Electrocorp tuvo",
+      "start": 433.68,
+      "duration": 6.4
+    },
+    {
+      "text": "una filtración del químico Neotox 88.",
+      "start": 436.44,
+      "duration": 6.039
+    },
+    {
+      "text": "Registro. Carlos Gómez trabaja en la en",
+      "start": 440.08,
+      "duration": 4.399
+    },
+    {
+      "text": "el mantenimiento en la fábrica",
+      "start": 442.479,
+      "duration": 4.201
+    },
+    {
+      "text": "Electrocorp. Fijaros en la pregunta",
+      "start": 444.479,
+      "duration": 4.201
+    },
+    {
+      "text": "trampa. Si pregunto qué causó la",
+      "start": 446.68,
+      "duration": 4.32
+    },
+    {
+      "text": "enfermedad de Carlos, la respuesta está",
+      "start": 448.68,
+      "duration": 4.28
+    },
+    {
+      "text": "dividida en cuatro documentos",
+      "start": 451.0,
+      "duration": 4.319
+    },
+    {
+      "text": "diferentes. Por lo tanto, un vector",
+      "start": 452.96,
+      "duration": 4.4
+    },
+    {
+      "text": "tradicional jamás podrá conectar a",
+      "start": 455.319,
+      "duration": 5.641
+    },
+    {
+      "text": "Carlos con el Neotos 88. Vamos a ver",
+      "start": 457.36,
+      "duration": 7.239
+    },
+    {
+      "text": "como el grafo lo hace. Y ahora vamos a",
+      "start": 460.96,
+      "duration": 7.239
+    },
+    {
+      "text": "picar el código de un graf rag real 100%",
+      "start": 464.599,
+      "duration": 6.56
+    },
+    {
+      "text": "en local. Vamos a hacer que nuestra IA",
+      "start": 468.199,
+      "duration": 5.641
+    },
+    {
+      "text": "lea nuestro misterio médico, construya",
+      "start": 471.159,
+      "duration": 5.0
+    },
+    {
+      "text": "un mapa mental por sí sola y luego",
+      "start": 473.84,
+      "duration": 5.319
+    },
+    {
+      "text": "traduzca nuestra pregunta a código de",
+      "start": 476.159,
+      "duration": 5.921
+    },
+    {
+      "text": "base de datos para resolver el caso.",
+      "start": 479.159,
+      "duration": 5.121
+    },
+    {
+      "text": "Primero vamos a empezar con los imports.",
+      "start": 482.08,
+      "duration": 4.2
+    },
+    {
+      "text": "Fijaros muy bien en estas dos",
+      "start": 484.28,
+      "duration": 5.28
+    },
+    {
+      "text": "herramientas clave del LCin, LLM Graph",
+      "start": 486.28,
+      "duration": 6.599
+    },
+    {
+      "text": "Transformer y Graph Zifer QA Chain.",
+      "start": 489.56,
+      "duration": 5.919
+    },
+    {
+      "text": "Ellas van a ser el corazón de nuestro",
+      "start": 492.879,
+      "duration": 4.481
+    },
+    {
+      "text": "sistema.",
+      "start": 495.479,
+      "duration": 5.28
+    },
+    {
+      "text": "Cargamos el documento y lo partimos en",
+      "start": 497.36,
+      "duration": 6.279
+    },
+    {
+      "text": "trozos de 500 caracteres para no",
+      "start": 500.759,
+      "duration": 5.801
+    },
+    {
+      "text": "asficiar a nuestro procesador. Además,",
+      "start": 503.639,
+      "duration": 6.96
+    },
+    {
+      "text": "nos conectamos a Neo 4J y lanzamos una",
+      "start": 506.56,
+      "duration": 6.32
+    },
+    {
+      "text": "pequeña query para borrar todo lo que",
+      "start": 510.599,
+      "duration": 5.081
+    },
+    {
+      "text": "hubiera antes y empezar con el lienzo en",
+      "start": 512.88,
+      "duration": 5.92
+    },
+    {
+      "text": "blanco para que veáis que no hay trampa.",
+      "start": 515.68,
+      "duration": 6.0
+    },
+    {
+      "text": "Y aquí viene la magia absoluta.",
+      "start": 518.8,
+      "duration": 6.039
+    },
+    {
+      "text": "Inicializamos llama 3.1 uno mediante",
+      "start": 521.68,
+      "duration": 6.0
+    },
+    {
+      "text": "oama con temperatura cero para que sea",
+      "start": 524.839,
+      "duration": 6.56
+    },
+    {
+      "text": "un detective implacable y determinista.",
+      "start": 527.68,
+      "duration": 5.599
+    },
+    {
+      "text": "Cero alucinaciones.",
+      "start": 531.399,
+      "duration": 6.281
+    },
+    {
+      "text": "Luego usamos el LLM Graph Transformer.",
+      "start": 533.279,
+      "duration": 6.721
+    },
+    {
+      "text": "¿Qué hace esta maravilla? Los modelos de",
+      "start": 537.68,
+      "duration": 4.8
+    },
+    {
+      "text": "lenguaje modernos tienen la increíble",
+      "start": 540.0,
+      "duration": 5.56
+    },
+    {
+      "text": "capacidad de automatizar la creación de",
+      "start": 542.48,
+      "duration": 6.039
+    },
+    {
+      "text": "grafos leyendo el texto plano,",
+      "start": 545.56,
+      "duration": 5.92
+    },
+    {
+      "text": "identificando a los sujetos y deduciendo",
+      "start": 548.519,
+      "duration": 5.56
+    },
+    {
+      "text": "cómo se relacionan entre ellos.",
+      "start": 551.48,
+      "duration": 5.28
+    },
+    {
+      "text": "convierte nuestro texto en nodos y",
+      "start": 554.079,
+      "duration": 5.161
+    },
+    {
+      "text": "conexiones puras. Para la frase de",
+      "start": 556.76,
+      "duration": 5.28
+    },
+    {
+      "text": "consultas vamos a crear un prompt",
+      "start": 559.24,
+      "duration": 6.08
+    },
+    {
+      "text": "inteligente. Primero extraemos de la",
+      "start": 562.04,
+      "duration": 5.64
+    },
+    {
+      "text": "base de datos la lista de nodos que",
+      "start": 565.32,
+      "duration": 4.32
+    },
+    {
+      "text": "existen realmente.",
+      "start": 567.68,
+      "duration": 5.2
+    },
+    {
+      "text": "Luego le pasamos esa lista a Yama y le",
+      "start": 569.64,
+      "duration": 6.12
+    },
+    {
+      "text": "damos unas reglas hiperestrictas.",
+      "start": 572.88,
+      "duration": 5.04
+    },
+    {
+      "text": "Eres un experto en bases de datos.",
+      "start": 575.76,
+      "duration": 6.079
+    },
+    {
+      "text": "genera código zifer usando solo estos",
+      "start": 577.92,
+      "duration": 7.88
+    },
+    {
+      "text": "nodos y dime la causa del problema.",
+      "start": 581.839,
+      "duration": 7.801
+    },
+    {
+      "text": "Y cerramos el círculo con graph cirf",
+      "start": 585.8,
+      "duration": 7.279
+    },
+    {
+      "text": "chain. Esta clase está diseñada para",
+      "start": 589.64,
+      "duration": 6.16
+    },
+    {
+      "text": " nuestra pregunta natural,",
+      "start": 593.079,
+      "duration": 6.961
+    },
+    {
+      "text": "traducirla a código cyher de Neo 4J,",
+      "start": 595.8,
+      "duration": 7.4
+    },
+    {
+      "text": "ejecutarla en nuestra base de datos y",
+      "start": 600.04,
+      "duration": 6.52
+    },
+    {
+      "text": "darnos la respuesta final basada en el",
+      "start": 603.2,
+      "duration": 5.639
+    },
+    {
+      "text": "resultado.",
+      "start": 606.56,
+      "duration": 4.48
+    },
+    {
+      "text": "Esto es lo que marca la diferencia",
+      "start": 608.839,
+      "duration": 5.24
+    },
+    {
+      "text": "brutal con el rag tradicional.",
+      "start": 611.04,
+      "duration": 6.479
+    },
+    {
+      "text": "permite que el modelo acceda no solo a",
+      "start": 614.079,
+      "duration": 6.361
+    },
+    {
+      "text": "hechos aislados, sino que navegue por",
+      "start": 617.519,
+      "duration": 5.841
+    },
+    {
+      "text": "las relaciones exactas para lograr un",
+      "start": 620.44,
+      "duration": 5.839
+    },
+    {
+      "text": "razonamiento de múltiples saltos. Le",
+      "start": 623.36,
+      "duration": 6.159
+    },
+    {
+      "text": "preguntamos ahora sí, finalmente, ¿qué",
+      "start": 626.279,
+      "duration": 7.281
+    },
+    {
+      "text": "causó la enfermedad de Carlos Gómez?",
+      "start": 629.519,
+      "duration": 6.281
+    },
+    {
+      "text": "Así que venga, finalmente vamos a",
+      "start": 633.56,
+      "duration": 5.399
+    },
+    {
+      "text": "ejecutarlo Python",
+      "start": 635.8,
+      "duration": 6.64
+    },
+    {
+      "text": "y vamos a ver qué nos sale.",
+      "start": 638.959,
+      "duration": 5.68
+    },
+    {
+      "text": "Mientras se ejecuta, quiero responder a",
+      "start": 642.44,
+      "duration": 4.88
+    },
+    {
+      "text": "una duda que seguro que me hacéis. Si",
+      "start": 644.639,
+      "duration": 5.161
+    },
+    {
+      "text": "estamos haciendo cosas avanzadas, ¿por",
+      "start": 647.32,
+      "duration": 5.88
+    },
+    {
+      "text": "qué estás usando LChain y no la nueva",
+      "start": 649.8,
+      "duration": 7.76
+    },
+    {
+      "text": "librería Langraft? Bueno, es esta es una",
+      "start": 653.2,
+      "duration": 6.72
+    },
+    {
+      "text": "pregunta fantástica, pero antes de",
+      "start": 657.56,
+      "duration": 4.76
+    },
+    {
+      "text": "contestar te voy a contar una cosa.",
+      "start": 659.92,
+      "duration": 4.159
+    },
+    {
+      "text": "Mucha gente quiere aprender cómo",
+      "start": 662.32,
+      "duration": 3.88
+    },
+    {
+      "text": "funciona la inteligencia artificial y",
+      "start": 664.079,
+      "duration": 4.841
+    },
+    {
+      "text": "solo encuentra vídeos y libros que te",
+      "start": 666.2,
+      "duration": 5.079
+    },
+    {
+      "text": "enseñan a usar herramientas y a pagar",
+      "start": 668.92,
+      "duration": 5.0
+    },
+    {
+      "text": "por modelos que venden humo más que otra",
+      "start": 671.279,
+      "duration": 5.321
+    },
+    {
+      "text": "cosa. Si quieres entender las bases",
+      "start": 673.92,
+      "duration": 4.68
+    },
+    {
+      "text": "reales, tienes que echarle un ojo a mis",
+      "start": 676.6,
+      "duration": 4.2
+    },
+    {
+      "text": "libros,",
+      "start": 678.6,
+      "duration": 6.56
+    },
+    {
+      "text": "sobre todo a este mi último lanzamiento,",
+      "start": 680.8,
+      "duration": 6.719
+    },
+    {
+      "text": "el motor de la inteligencia artificial,",
+      "start": 685.16,
+      "duration": 5.2
+    },
+    {
+      "text": "que está siendo un éxito. Con este libro",
+      "start": 687.519,
+      "duration": 5.401
+    },
+    {
+      "text": "aprenderás a construir tus propias redes",
+      "start": 690.36,
+      "duration": 5.44
+    },
+    {
+      "text": "de este cero y entenderás la tecnología",
+      "start": 692.92,
+      "duration": 5.4
+    },
+    {
+      "text": "que está cambiando el mundo. Tienes",
+      "start": 695.8,
+      "duration": 4.4
+    },
+    {
+      "text": "todos los enlaces aquí abajo en la",
+      "start": 698.32,
+      "duration": 5.48
+    },
+    {
+      "text": "descripción. Seguimos. Volvamos al",
+      "start": 700.2,
+      "duration": 6.24
+    },
+    {
+      "text": "debate de Langchain.",
+      "start": 703.8,
+      "duration": 6.36
+    },
+    {
+      "text": "Langchain es una arquitectura de tubería",
+      "start": 706.44,
+      "duration": 7.12
+    },
+    {
+      "text": "o pipeline. Vas del paso A al paso B y",
+      "start": 710.16,
+      "duration": 6.2
+    },
+    {
+      "text": "al paso C. Extraes, guardas, buscas,",
+      "start": 713.56,
+      "duration": 5.56
+    },
+    {
+      "text": "respondes. Langraf, sin embargo, sirve",
+      "start": 716.36,
+      "duration": 5.599
+    },
+    {
+      "text": "para crear más agentes autónomos, ya que",
+      "start": 719.12,
+      "duration": 5.12
+    },
+    {
+      "text": "te permite crear ciclos. Un agente de",
+      "start": 721.959,
+      "duration": 4.68
+    },
+    {
+      "text": "Langraft podría buscar en la base de",
+      "start": 724.24,
+      "duration": 4.399
+    },
+    {
+      "text": "datos, leer la respuesta, decir, \"Esto",
+      "start": 726.639,
+      "duration": 3.961
+    },
+    {
+      "text": "no me convence\". hacer una búsqueda de",
+      "start": 728.639,
+      "duration": 4.44
+    },
+    {
+      "text": "un Google y volver a evaluarse a sí",
+      "start": 730.6,
+      "duration": 4.76
+    },
+    {
+      "text": "mismo. ¿Por qué no lo estamos usando",
+      "start": 733.079,
+      "duration": 5.0
+    },
+    {
+      "text": "hoy? Simplemente por la latencia.",
+      "start": 735.36,
+      "duration": 4.56
+    },
+    {
+      "text": "Recordad que estamos corriendo esto en",
+      "start": 738.079,
+      "duration": 4.681
+    },
+    {
+      "text": "una CPU casera. Cada vez que le pedimos",
+      "start": 739.92,
+      "duration": 5.279
+    },
+    {
+      "text": "a nuestro modelo local que piense, tarda",
+      "start": 742.76,
+      "duration": 4.24
+    },
+    {
+      "text": "unos segundos. Bueno, y basta de",
+      "start": 745.199,
+      "duration": 3.841
+    },
+    {
+      "text": "chácchara y volvamos al terminal. Llama",
+      "start": 747.0,
+      "duration": 3.88
+    },
+    {
+      "text": "ya ha terminado, ha terminado de leer",
+      "start": 749.04,
+      "duration": 5.32
+    },
+    {
+      "text": "nuestro texto y parece que se ha creado",
+      "start": 750.88,
+      "duration": 6.199
+    },
+    {
+      "text": "el grafo de forma correcta porque aparte",
+      "start": 754.36,
+      "duration": 5.52
+    },
+    {
+      "text": "de que vemos que se han hecho queries de",
+      "start": 757.079,
+      "duration": 6.601
+    },
+    {
+      "text": "Carlos Gómez, Chemical Sustance y tal,",
+      "start": 759.88,
+      "duration": 6.079
+    },
+    {
+      "text": "nos contesta que la enfermedad de Carlos",
+      "start": 763.68,
+      "duration": 6.608
+    },
+    {
+      "text": "Gómez fue causada por Neox 88. Así que",
+      "start": 765.959,
+      "duration": 6.601
+    },
+    {
+      "text": "[resoplido] vamos a verlo. Nos vamos al",
+      "start": 770.288,
+      "duration": 5.072
+    },
+    {
+      "text": "navegador, a la interfaz de Neo 4J y",
+      "start": 772.56,
+      "duration": 6.36
+    },
+    {
+      "text": "mirad esto. Podemos ver los nodos que se",
+      "start": 775.36,
+      "duration": 5.76
+    },
+    {
+      "text": "han creado. Se ha creado un mapa",
+      "start": 778.92,
+      "duration": 5.32
+    },
+    {
+      "text": "neuronal de nuestros datos. Pero vamos a",
+      "start": 781.12,
+      "duration": 5.12
+    },
+    {
+      "text": "lo interesante. Si hago clic aquí en las",
+      "start": 784.24,
+      "duration": 5.68
+    },
+    {
+      "text": "relaciones, fijaros, es Carlos Gómez.",
+      "start": 786.24,
+      "duration": 6.12
+    },
+    {
+      "text": "Hay una flecha que dice trabaja en que",
+      "start": 789.92,
+      "duration": 5.479
+    },
+    {
+      "text": "lo conecta directamente con Electrocorp.",
+      "start": 792.36,
+      "duration": 6.479
+    },
+    {
+      "text": "Electrocob a su vez está conectado con",
+      "start": 795.399,
+      "duration": 7.0
+    },
+    {
+      "text": "por contiene a Neotox 88.",
+      "start": 798.839,
+      "duration": 5.841
+    },
+    {
+      "text": "Así que fijaros, la IA acaba de",
+      "start": 802.399,
+      "duration": 5.68
+    },
+    {
+      "text": "comprender la trama entera por sí sola y",
+      "start": 804.68,
+      "duration": 6.12
+    },
+    {
+      "text": "ha trazado el camino exacto que resuelve",
+      "start": 808.079,
+      "duration": 6.56
+    },
+    {
+      "text": "el misterio. Esto es el poder brutal de",
+      "start": 810.8,
+      "duration": 6.64
+    },
+    {
+      "text": "la estructuración de la información.",
+      "start": 814.639,
+      "duration": 5.361
+    },
+    {
+      "text": "Esto es lo que un vector suelto no",
+      "start": 817.44,
+      "duration": 5.28
+    },
+    {
+      "text": "podría hacer. Al transformar vuestros",
+      "start": 820.0,
+      "duration": 5.519
+    },
+    {
+      "text": "documentos en grafos de conocimiento,",
+      "start": 822.72,
+      "duration": 6.08
+    },
+    {
+      "text": "acabáis de darle a la IA la capacidad de",
+      "start": 825.519,
+      "duration": 5.841
+    },
+    {
+      "text": "hacer lo que se llama multihope",
+      "start": 828.8,
+      "duration": 5.76
+    },
+    {
+      "text": "reasoning o razonamiento de múltiples",
+      "start": 831.36,
+      "duration": 5.96
+    },
+    {
+      "text": "saltos. Cuando el usuario pregunte por",
+      "start": 834.56,
+      "duration": 5.68
+    },
+    {
+      "text": "la enfermedad, el sistema ya no tirará",
+      "start": 837.32,
+      "duration": 6.079
+    },
+    {
+      "text": "de similitud de palabras, literalmente",
+      "start": 840.24,
+      "duration": 5.56
+    },
+    {
+      "text": "caminará por esa ruta de flechas que",
+      "start": 843.399,
+      "duration": 3.841
+    },
+    {
+      "text": "acabáis de ver.",
+      "start": 845.8,
+      "duration": 4.0
+    },
+    {
+      "text": "en pantalla para sacar conclusiones",
+      "start": 847.24,
+      "duration": 4.64
+    },
+    {
+      "text": "fundamentadas.",
+      "start": 849.8,
+      "duration": 4.2
+    },
+    {
+      "text": "Si este tutorial te ha explotado la",
+      "start": 851.88,
+      "duration": 5.519
+    },
+    {
+      "text": "cabeza tanto como a mí la primera vez",
+      "start": 854.0,
+      "duration": 5.92
+    },
+    {
+      "text": "que vi un grafo conectarse solo,",
+      "start": 857.399,
+      "duration": 5.44
+    },
+    {
+      "text": "revienta ese botón de like, comparte el",
+      "start": 859.92,
+      "duration": 5.56
+    },
+    {
+      "text": "vídeo para que más gente lo pueda ver y",
+      "start": 862.839,
+      "duration": 5.24
+    },
+    {
+      "text": "suscríbete para no perderte ninguno de",
+      "start": 865.48,
+      "duration": 5.719
+    },
+    {
+      "text": "mis vídeos. Tienes todo el código y los",
+      "start": 868.079,
+      "duration": 6.521
+    },
+    {
+      "text": "enlaces a mis libros aquí abajo en la",
+      "start": 871.199,
+      "duration": 4.88
+    },
+    {
+      "text": "descripción.",
+      "start": 874.6,
+      "duration": 5.28
+    },
+    {
+      "text": "Y recuerda, el futuro no se espera, se",
+      "start": 876.079,
+      "duration": 5.44
+    },
+    {
+      "text": "construye.",
+      "start": 879.88,
+      "duration": 4.6
+    },
+    {
+      "text": "Que la A te acompañe.",
+      "start": 881.519,
+      "duration": 2.961
+    }
+  ],
+  "metadata": {
+    "video_id": "dJ6D_krxpX0",
+    "method": "native_captions",
+    "detected_language": "es",
+    "available_languages": [
+      "es-ES",
+      "es"
+    ],
+    "is_generated": true,
+    "timestamp": "2026-03-28T21:36:20.452701",
+    "cost": 0.0,
+    "duration_seconds": 1757.319
+  }
+}

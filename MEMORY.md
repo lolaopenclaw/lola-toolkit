@@ -56,10 +56,10 @@
 - Daily reports, weekly summaries, health profile
 
 ## 🎵 MUSIC → `memory/music/`
-Bass in a Voice profile, gear, repertoire, YouTube plan
+- `memory/music/README.md` — Bass in a Voice profile, gear, repertoire, YouTube plan
 
 ## 🏄 SURF → `memory/surf/`
-Conditions tracking, coaching knowledge, session templates
+- `memory/surf/agent-instructions.md` — Conditions tracking, coaching knowledge, session templates
 
 ## 🔬 AUTOIMPROVE
 - `memory/autoresearch-karpathy.md` — Karpathy autoresearch pattern

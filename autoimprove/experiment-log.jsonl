@@ -195,3 +195,7 @@
 {"ts":"2026-03-28T02:16:12Z","target":"heartbeat-efficiency","change":"Micro-optimizations: removed verbose phrases","before":845,"after":809,"kept":true,"delta":36}
 {"ts":"2026-03-28T02:16:12Z","target":"agents-tokens","change":"Removed redundant words (daily, before)","before":998,"after":986,"kept":true,"delta":12}
 {"ts":"2026-03-28T02:21:38Z","target":"memory-consolidation-2026-03-28","change":"Memory consolidation: 108→13 orphans (88% reduction), 24→39 refs in MEMORY.md, +80 files archived to mar-2026/, added critical refs (access-credentials, knowledge-base, preferences, openspec, protocols)","before":108,"after":13,"kept":true,"delta":95}
+{"ts":"2026-03-29T01:04:52Z","target":"backup-memory.sh-assessment","change":"Evaluated optimization potential: eval metrics are static complexity (line count + command count), not runtime-based","before":21,"after":21,"kept":false,"delta":0}
+{"ts":"2026-03-29T01:04:58Z","target":"garmin-health-report.sh-assessment","change":"High eval score (558) is mostly from static line count penalty (412 LOC), not optimization opportunity","before":558,"after":558,"kept":false,"delta":0}
+{"ts":"2026-03-29T01:05:04Z","target":"memory-guardian.sh-assessment","change":"Has 26 find/grep/awk operations, but consolidation is high-risk given complexity of stateful logic","before":69,"after":69,"kept":false,"delta":0}
+{"ts":"2026-03-29T01:06:58Z","target":"heartbeat-agents-compression","change":"Token compression: removed redundancies, consolidated instructions","before":2094,"after":1736,"kept":true,"delta":358}

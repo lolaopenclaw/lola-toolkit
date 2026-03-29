@@ -1,12 +1,9 @@
 {
-  "timestamp": "2026-03-28T01:30:00Z",
-  "cron_id": "ed1d9b11-5ba1-44ed-8f8b-0b359ddcd45e",
-  "status": "error",
-  "exit_code": 1,
-  "errors": [
-    "line 59: syntax error in expression (error token is \"0\")",
-    "line 85: UPDATED: unbound variable"
-  ],
-  "attempted_packages": 1,
-  "summary": "Script has syntax errors in conditional logic and unbound variable references. Needs debugging."
+  "timestamp": "2026-03-29T01:30:00Z",
+  "status": "success",
+  "updates_available": 0,
+  "updates_installed": 0,
+  "openclaw_updated": false,
+  "error": null,
+  "notes": "Actualizaciones completadas. No hay paquetes pendientes de actualizar."
 }
