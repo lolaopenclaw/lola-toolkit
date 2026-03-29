@@ -1,3 +1,15 @@
+# OpenClaw Update: v2026.3.28
+
+**Date:** 2026-03-29 21:30:22
+**Previous version:** 2026.3.24
+**New version:** 2026.3.28
+
+## Changelog
+
+No changelog available for this version.
+
+---
+
 # OpenClaw Update: v2026.3.24
 
 **Date:** 2026-03-25 21:30:13

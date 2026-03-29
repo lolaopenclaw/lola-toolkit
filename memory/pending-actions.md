@@ -186,3 +186,23 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 
 **Set:** 2026-03-28 (Manu's explicit request — no dejar workarounds pululando)
 
+
+---
+
+### 🔴 Auto-update necesita rollback automático — 2026-03-29
+
+**Incidente:** Auto-update 21:30 actualizó a v2026.3.28, nueva versión rechazó config TTS → crash loop ~30 min hasta que Manu intervino manualmente con `openclaw doctor --fix`.
+
+**Causa:** Breaking change en schema TTS (keys `elevenlabs`, `openai`, `edge` eliminadas de `messages.tts`).
+
+**Acción:** Mejorar cron de auto-update para:
+1. Backup config ANTES de actualizar
+2. Tras update, verificar que gateway arranca (health check 30s)
+3. Si no arranca → rollback automático (restaurar config + versión anterior)
+4. Si arranca → verificar que Telegram responde
+5. Notificar resultado
+
+**Prioridad:** ALTA (evitar que Manu tenga que intervenir manualmente otra vez)
+
+**Set:** 2026-03-29 (incidente real)
+
