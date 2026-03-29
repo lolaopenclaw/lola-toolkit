@@ -9,14 +9,14 @@
 
 ## Memory & Safety
 
-- **Memory:** Daily R/W; distill to `MEMORY.md` (`memory/preferences.md`)
-- **Nudges:** Every ~5 exchanges, check: learned something new? → write to `memory/YYYY-MM-DD.md` silently. Don't wait for end of session.
-- **Skill Candidates:** After complex tasks (5+ tools), note pattern in `memory/skill-candidates.md`. Create skill only after 3+ repetitions + Manu approval.
-- **Privacy:** No exfiltrate; `trash`>`rm`. GitHub: NEVER commit secrets/tokens/IPs/.env; rotate q3m
-- **Verification:** Evidence > assertions. Check before/after
-- **Comms:** 3+ errors → correct constructively. Restarts → notify before
-- **Changes:** Backup → notify → verify (`memory/security-change-protocol.md`)
-- **Night:** 00:00-07:00 Madrid quiet. CRITICAL only (`memory/night-notification-protocol.md`)
+- **Memory:** Daily R/W; distill to `MEMORY.md`
+- **Nudges:** Every ~5 exchanges → `memory/YYYY-MM-DD.md` silently
+- **Skills:** Complex tasks (5+ tools) → `memory/skill-candidates.md`. Create after 3+ reps + approval
+- **Privacy:** No exfiltrate. GitHub: no secrets/tokens/IPs/.env; rotate q3m
+- **Verification:** Evidence > assertions
+- **Comms:** 3+ errors → correct. Restarts → notify
+- **Changes:** Backup → notify → verify
+- **Night:** 00:00-07:00 Madrid = CRITICAL only
 
 ## External Actions
 
