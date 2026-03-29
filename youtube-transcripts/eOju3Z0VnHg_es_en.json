@@ -1,0 +1,3281 @@
+{
+  "transcript": [
+    {
+      "text": "Scrun es cosa del pasado. Okay. ¿Y ahora",
+      "start": 0.16,
+      "duration": 3.32
+    },
+    {
+      "text": "qué? Porque ya hay equipos trabajando",
+      "start": 1.959,
+      "duration": 3.001
+    },
+    {
+      "text": "con métodos completamente nuevos,",
+      "start": 3.48,
+      "duration": 3.16
+    },
+    {
+      "text": "nativos de la IA, diseñados para un",
+      "start": 4.96,
+      "duration": 3.04
+    },
+    {
+      "text": "mundo donde la IA ya es parte del",
+      "start": 6.64,
+      "duration": 3.039
+    },
+    {
+      "text": "equipo. Métodos que tienen nombre y",
+      "start": 8.0,
+      "duration": 3.519
+    },
+    {
+      "text": "apellidos. Y lo más fuerte es que estos",
+      "start": 9.679,
+      "duration": 3.92
+    },
+    {
+      "text": "métodos están cambiando radicalmente el",
+      "start": 11.519,
+      "duration": 3.681
+    },
+    {
+      "text": "tamaño y la composición de los equipos.",
+      "start": 13.599,
+      "duration": 3.801
+    },
+    {
+      "text": "En 20 años he acompañado a cientos de",
+      "start": 15.2,
+      "duration": 4.2
+    },
+    {
+      "text": "equipos y profesionales en cada cambio y",
+      "start": 17.4,
+      "duration": 3.56
+    },
+    {
+      "text": "paradigma y siempre pasa lo mismo.",
+      "start": 19.4,
+      "duration": 3.24
+    },
+    {
+      "text": "Muchos se aferraron al pasado y unos",
+      "start": 20.96,
+      "duration": 3.44
+    },
+    {
+      "text": "pocos se adelantarán al resto. Si eres",
+      "start": 22.64,
+      "duration": 3.639
+    },
+    {
+      "text": "los segundos, quédate. Hoy veremos los",
+      "start": 24.4,
+      "duration": 3.959
+    },
+    {
+      "text": "nuevos métodos, los que ya usan los",
+      "start": 26.279,
+      "duration": 3.881
+    },
+    {
+      "text": "equipos que dejaron atrás. Scrun y",
+      "start": 28.359,
+      "duration": 3.16
+    },
+    {
+      "text": "Operan con IA como herramienta",
+      "start": 30.16,
+      "duration": 3.399
+    },
+    {
+      "text": "principal. Y aviso, lo que viene no es",
+      "start": 31.519,
+      "duration": 4.281
+    },
+    {
+      "text": "cómodo porque afecta directamente al",
+      "start": 33.559,
+      "duration": 4.0
+    },
+    {
+      "text": "futuro de nuestra profesión, pero mejor",
+      "start": 35.8,
+      "duration": 3.919
+    },
+    {
+      "text": "hablarlo cuanto antes que ser el último",
+      "start": 37.559,
+      "duration": 4.201
+    },
+    {
+      "text": "en enterarte. Este punto necesito que",
+      "start": 39.719,
+      "duration": 3.201
+    },
+    {
+      "text": "nos pongamos en situación, que nos",
+      "start": 41.76,
+      "duration": 2.68
+    },
+    {
+      "text": "pongamos en contexto. Tienes que",
+      "start": 42.92,
+      "duration": 3.4
+    },
+    {
+      "text": "entender y recordar que siempre en lo",
+      "start": 44.44,
+      "duration": 3.4
+    },
+    {
+      "text": "que es la creación de un producto de",
+      "start": 46.32,
+      "duration": 3.48
+    },
+    {
+      "text": "base tecnológica ha habido dos grandes",
+      "start": 47.84,
+      "duration": 4.0
+    },
+    {
+      "text": "áreas, dos grandes responsabilidades.",
+      "start": 49.8,
+      "duration": 3.919
+    },
+    {
+      "text": "Por un lado estaba el llamado Discovery,",
+      "start": 51.84,
+      "duration": 3.719
+    },
+    {
+      "text": "el descubrimiento, y por otro lado",
+      "start": 53.719,
+      "duration": 4.36
+    },
+    {
+      "text": "estaba el delivery o la entrega. El",
+      "start": 55.559,
+      "duration": 5.68
+    },
+    {
+      "text": "Discovery eh trabaja todo lo relacionado",
+      "start": 58.079,
+      "duration": 4.881
+    },
+    {
+      "text": "con descubrir qué es lo que se quita ahí",
+      "start": 61.239,
+      "duration": 3.361
+    },
+    {
+      "text": "fuera, qué necesidades tienen nuestros",
+      "start": 62.96,
+      "duration": 4.0
+    },
+    {
+      "text": "usuarios, qué problemas tienen y luego",
+      "start": 64.6,
+      "duration": 4.68
+    },
+    {
+      "text": "eh incorporarlas mediante el delivery a",
+      "start": 66.96,
+      "duration": 4.24
+    },
+    {
+      "text": "nuestro producto y posteriormente",
+      "start": 69.28,
+      "duration": 4.159
+    },
+    {
+      "text": "validar si hemos acertado y ajustar si",
+      "start": 71.2,
+      "duration": 4.52
+    },
+    {
+      "text": "hay alguna desviación. El delivery, por",
+      "start": 73.439,
+      "duration": 4.161
+    },
+    {
+      "text": "su parte, se ha centrado mucho en",
+      "start": 75.72,
+      "duration": 3.6
+    },
+    {
+      "text": "optimizar lo que es el tiempo, el",
+      "start": 77.6,
+      "duration": 4.28
+    },
+    {
+      "text": "proceso, la eficiencia, en enseñarnos a",
+      "start": 79.32,
+      "duration": 4.68
+    },
+    {
+      "text": "cómo trabajar, en enseñarnos a cómo",
+      "start": 81.88,
+      "duration": 3.919
+    },
+    {
+      "text": "coordinarnos, cómo hacer releases, cómo",
+      "start": 84.0,
+      "duration": 3.84
+    },
+    {
+      "text": "hacer incrementos. dos grandes mundos",
+      "start": 85.799,
+      "duration": 4.201
+    },
+    {
+      "text": "que siempre han existido y probablemente",
+      "start": 87.84,
+      "duration": 3.279
+    },
+    {
+      "text": "incluso en los tiempos en los que",
+      "start": 90.0,
+      "duration": 3.28
+    },
+    {
+      "text": "estamos, en tiempos de seguirán",
+      "start": 91.119,
+      "duration": 4.601
+    },
+    {
+      "text": "existiendo. Discovery, descubrimiento,",
+      "start": 93.28,
+      "duration": 4.839
+    },
+    {
+      "text": "delivery, entrega. ¿Qué ha sucedido",
+      "start": 95.72,
+      "duration": 3.8
+    },
+    {
+      "text": "siempre? que según ha cambiado el",
+      "start": 98.119,
+      "duration": 4.521
+    },
+    {
+      "text": "paradigma de tecnología, creación,",
+      "start": 99.52,
+      "duration": 6.12
+    },
+    {
+      "text": "paradigma de cómo creamos esas fases, se",
+      "start": 102.64,
+      "duration": 4.72
+    },
+    {
+      "text": "han ido modificando o se han ido",
+      "start": 105.64,
+      "duration": 4.0
+    },
+    {
+      "text": "adaptando. Ha habido muchos framework,",
+      "start": 107.36,
+      "duration": 4.24
+    },
+    {
+      "text": "muchas metodologías que nos han dado",
+      "start": 109.64,
+      "duration": 4.119
+    },
+    {
+      "text": "detalles de cómo hacerlo, siempre acorde",
+      "start": 111.6,
+      "duration": 4.0
+    },
+    {
+      "text": "a aquellos tiempos, a los tiempos en que",
+      "start": 113.759,
+      "duration": 4.28
+    },
+    {
+      "text": "vivíamos o en los que viven esas fases.",
+      "start": 115.6,
+      "duration": 4.28
+    },
+    {
+      "text": "Hoy en día, en tiempos de IA, ¿cómo han",
+      "start": 118.039,
+      "duration": 3.801
+    },
+    {
+      "text": "evolucionado estas dos? ¿Cómo ha ido el",
+      "start": 119.88,
+      "duration": 3.72
+    },
+    {
+      "text": "delivery? ¿Cómo ha ido el Discovery?",
+      "start": 121.84,
+      "duration": 3.4
+    },
+    {
+      "text": "Vamos a empezar con el delivery. ¿Cómo",
+      "start": 123.6,
+      "duration": 5.159
+    },
+    {
+      "text": "ha cambiado el delivery hoy de IA? Scrun",
+      "start": 125.24,
+      "duration": 5.999
+    },
+    {
+      "text": "y otros framework o metodologías o como",
+      "start": 128.759,
+      "duration": 4.12
+    },
+    {
+      "text": "quiera llamarle ágiles ayudaron",
+      "start": 131.239,
+      "duration": 3.561
+    },
+    {
+      "text": "enormemente en el pasado a lo que es",
+      "start": 132.879,
+      "duration": 4.08
+    },
+    {
+      "text": "principalmente la fase de entrega, lo",
+      "start": 134.8,
+      "duration": 3.76
+    },
+    {
+      "text": "que es el delivery, que no tanto al",
+      "start": 136.959,
+      "duration": 3.321
+    },
+    {
+      "text": "Discovery, que luego hablaremos de ello,",
+      "start": 138.56,
+      "duration": 4.12
+    },
+    {
+      "text": "pero principalmente fue un gran avance",
+      "start": 140.28,
+      "duration": 4.36
+    },
+    {
+      "text": "para lo que es el delivery, o sea, la",
+      "start": 142.68,
+      "duration": 4.639
+    },
+    {
+      "text": "entrega y aportaron mucha frescura en su",
+      "start": 144.64,
+      "duration": 5.08
+    },
+    {
+      "text": "momento y aportaron estructura y",
+      "start": 147.319,
+      "duration": 5.041
+    },
+    {
+      "text": "aportaron eficiencia y ordenaron lo que",
+      "start": 149.72,
+      "duration": 4.599
+    },
+    {
+      "text": "era el proceso de creación y",
+      "start": 152.36,
+      "duration": 4.36
+    },
+    {
+      "text": "especialmente fueron muy útiles en los",
+      "start": 154.319,
+      "duration": 4.361
+    },
+    {
+      "text": "tiempos en los cuales el software se",
+      "start": 156.72,
+      "duration": 3.439
+    },
+    {
+      "text": "entregaba o empezó a entregarse como",
+      "start": 158.68,
+      "duration": 2.88
+    },
+    {
+      "text": "servicio, no exclusivamente por ahí",
+      "start": 160.159,
+      "duration": 4.36
+    },
+    {
+      "text": "fueron especialmente útiles. Pero estos",
+      "start": 161.56,
+      "duration": 5.399
+    },
+    {
+      "text": "clásicos, estas metodologías clásicas o",
+      "start": 164.519,
+      "duration": 4.681
+    },
+    {
+      "text": "esos framework clásicos se pensaron para",
+      "start": 166.959,
+      "duration": 3.841
+    },
+    {
+      "text": "el trabajo principalmente entre",
+      "start": 169.2,
+      "duration": 4.2
+    },
+    {
+      "text": "personas, para el trabajo en equipo,",
+      "start": 170.8,
+      "duration": 4.439
+    },
+    {
+      "text": "para el trabajo y la coordinación entre",
+      "start": 173.4,
+      "duration": 5.28
+    },
+    {
+      "text": "humanos y además con iteraciones mucho",
+      "start": 175.239,
+      "duration": 6.401
+    },
+    {
+      "text": "más lentas que las actuales. Pero hoy,",
+      "start": 178.68,
+      "duration": 5.839
+    },
+    {
+      "text": "gracias a la IA desconocíamos la",
+      "start": 181.64,
+      "duration": 5.04
+    },
+    {
+      "text": "velocidad que podíamos tomar a la hora",
+      "start": 184.519,
+      "duration": 4.681
+    },
+    {
+      "text": "de liberar. La producidad del delivery",
+      "start": 186.68,
+      "duration": 4.4
+    },
+    {
+      "text": "se ha disparado, se ha multiplicado",
+      "start": 189.2,
+      "duration": 3.52
+    },
+    {
+      "text": "drásticamente y tiene pinta de hacerlo",
+      "start": 191.08,
+      "duration": 3.519
+    },
+    {
+      "text": "más. La capacidad de desplegar",
+      "start": 192.72,
+      "duration": 4.12
+    },
+    {
+      "text": "soluciones de calidad y de testear a",
+      "start": 194.599,
+      "duration": 4.601
+    },
+    {
+      "text": "velocidades desconocidas hasta la fecha",
+      "start": 196.84,
+      "duration": 5.039
+    },
+    {
+      "text": "era es es inimaginable tiempo atrás. Y",
+      "start": 199.2,
+      "duration": 5.2
+    },
+    {
+      "text": "en este escenario antes, Scun era uno de",
+      "start": 201.879,
+      "duration": 4.801
+    },
+    {
+      "text": "los reyes, el rey de lo que eran los",
+      "start": 204.4,
+      "duration": 5.039
+    },
+    {
+      "text": "framework metodológicos y nos enseñaron",
+      "start": 206.68,
+      "duration": 4.88
+    },
+    {
+      "text": "a coordinarnos, a tener un objetivo",
+      "start": 209.439,
+      "duration": 4.641
+    },
+    {
+      "text": "común, a entregar, a tener spins, a",
+      "start": 211.56,
+      "duration": 4.56
+    },
+    {
+      "text": "tener iteraciones, a tener objetivos,",
+      "start": 214.08,
+      "duration": 3.6
+    },
+    {
+      "text": "etcétera. Pero hoy, volviendo al",
+      "start": 216.12,
+      "duration": 3.92
+    },
+    {
+      "text": "presente futuro, en equipos que conviven",
+      "start": 217.68,
+      "duration": 3.8
+    },
+    {
+      "text": "con inteligencia artificial como una",
+      "start": 220.04,
+      "duration": 4.0
+    },
+    {
+      "text": "gran herramienta que potencia lo que es",
+      "start": 221.48,
+      "duration": 5.08
+    },
+    {
+      "text": "la rapidez en la creación, ¿qué",
+      "start": 224.04,
+      "duration": 4.759
+    },
+    {
+      "text": "frameworks, qué maneras de trabajar",
+      "start": 226.56,
+      "duration": 4.72
+    },
+    {
+      "text": "encontramos novedosas en este presente",
+      "start": 228.799,
+      "duration": 4.44
+    },
+    {
+      "text": "futuro en lo que refiere al delivery?",
+      "start": 231.28,
+      "duration": 4.4
+    },
+    {
+      "text": "Bueno, pues diferentes eh empresas,",
+      "start": 233.239,
+      "duration": 4.681
+    },
+    {
+      "text": "colectivos, grupos han ido poco a poco",
+      "start": 235.68,
+      "duration": 5.16
+    },
+    {
+      "text": "en estos años eh liberando maneras de",
+      "start": 237.92,
+      "duration": 5.039
+    },
+    {
+      "text": "trabajar, metodologías entre comillas,",
+      "start": 240.84,
+      "duration": 4.599
+    },
+    {
+      "text": "flujos de trabajo principalmente para lo",
+      "start": 242.959,
+      "duration": 4.12
+    },
+    {
+      "text": "que es la convivencia de equipos humanos",
+      "start": 245.439,
+      "duration": 3.761
+    },
+    {
+      "text": "con ides y herramientas que hacen uso",
+      "start": 247.079,
+      "duration": 4.8
+    },
+    {
+      "text": "masivo de inteligencia artificial. Entre",
+      "start": 249.2,
+      "duration": 4.36
+    },
+    {
+      "text": "las muchas que hay, te dejo tres que",
+      "start": 251.879,
+      "duration": 3.241
+    },
+    {
+      "text": "para mí son las más destacadas, las",
+      "start": 253.56,
+      "duration": 3.919
+    },
+    {
+      "text": "principales. Por un lado tenemos Ghub",
+      "start": 255.12,
+      "duration": 4.72
+    },
+    {
+      "text": "kit, obviamente que detrás de de esta",
+      "start": 257.479,
+      "duration": 3.961
+    },
+    {
+      "text": "herramienta o de este flujo y este",
+      "start": 259.84,
+      "duration": 3.88
+    },
+    {
+      "text": "herramienta barra flujo está Ghub y",
+      "start": 261.44,
+      "duration": 5.199
+    },
+    {
+      "text": "Microsoft. Otro es el flujo, vamos, voy",
+      "start": 263.72,
+      "duration": 5.319
+    },
+    {
+      "text": "a llevar al el flujo de Cloud Code. Eh,",
+      "start": 266.639,
+      "duration": 4.56
+    },
+    {
+      "text": "Cloud Code es bastante popular, es una",
+      "start": 269.039,
+      "duration": 4.521
+    },
+    {
+      "text": "de las herramientas a día de hoy más",
+      "start": 271.199,
+      "duration": 4.201
+    },
+    {
+      "text": "punteras en lo que es la creación de",
+      "start": 273.56,
+      "duration": 3.919
+    },
+    {
+      "text": "productos, algorítmica, etcétera, con",
+      "start": 275.4,
+      "duration": 4.4
+    },
+    {
+      "text": "inteligencia artificial. Y destaco aquí",
+      "start": 277.479,
+      "duration": 4.681
+    },
+    {
+      "text": "el flujo de trabajo que propone, casi un",
+      "start": 279.8,
+      "duration": 4.92
+    },
+    {
+      "text": "flujo metodológico la empresa Antropic,",
+      "start": 282.16,
+      "duration": 3.96
+    },
+    {
+      "text": "que es la que está detrás de todo esto,",
+      "start": 284.72,
+      "duration": 3.72
+    },
+    {
+      "text": "para trabajar con Cloud Code. Y por otro",
+      "start": 286.12,
+      "duration": 4.72
+    },
+    {
+      "text": "lado, digamos que en ese top tres que",
+      "start": 288.44,
+      "duration": 4.84
+    },
+    {
+      "text": "quería destacarte, tenemos Amazon Web",
+      "start": 290.84,
+      "duration": 5.04
+    },
+    {
+      "text": "Service Kiro, de Amazon, obviamente Web",
+      "start": 293.28,
+      "duration": 4.96
+    },
+    {
+      "text": "Services, que también destaca porque",
+      "start": 295.88,
+      "duration": 4.12
+    },
+    {
+      "text": "hace uso de una herramienta o propone un",
+      "start": 298.24,
+      "duration": 4.6
+    },
+    {
+      "text": "flujo para el uso de su herramienta con",
+      "start": 300.0,
+      "duration": 4.72
+    },
+    {
+      "text": "el uso de inteligencia artificial, con",
+      "start": 302.84,
+      "duration": 3.799
+    },
+    {
+      "text": "el objetivo de crear productos y",
+      "start": 304.72,
+      "duration": 4.16
+    },
+    {
+      "text": "servicios. No es la única opción. Te",
+      "start": 306.639,
+      "duration": 4.601
+    },
+    {
+      "text": "puedo te dejo unas cuantas más aquí en",
+      "start": 308.88,
+      "duration": 4.159
+    },
+    {
+      "text": "imagen que puedes echar un vistazo. Si",
+      "start": 311.24,
+      "duration": 3.519
+    },
+    {
+      "text": "tenéis mucho interés en que comentemos",
+      "start": 313.039,
+      "duration": 2.88
+    },
+    {
+      "text": "más específicamente este tipo de",
+      "start": 314.759,
+      "duration": 2.72
+    },
+    {
+      "text": "herramientas, me lo dejáis en los",
+      "start": 315.919,
+      "duration": 2.761
+    },
+    {
+      "text": "comentarios del vídeo y podemos",
+      "start": 317.479,
+      "duration": 3.28
+    },
+    {
+      "text": "dedicarle un vídeo a alguna de ellas, a",
+      "start": 318.68,
+      "duration": 3.84
+    },
+    {
+      "text": "las más destacadas. Pero sí que en",
+      "start": 320.759,
+      "duration": 4.601
+    },
+    {
+      "text": "cualquier caso vemos como este tipo de",
+      "start": 322.52,
+      "duration": 4.679
+    },
+    {
+      "text": "herramientas que casi determinan un",
+      "start": 325.36,
+      "duration": 4.64
+    },
+    {
+      "text": "flujo están posicionando maneras,",
+      "start": 327.199,
+      "duration": 5.44
+    },
+    {
+      "text": "acordes de trabajo a los tiempos en los",
+      "start": 330.0,
+      "duration": 4.12
+    },
+    {
+      "text": "que los equipos conviven con",
+      "start": 332.639,
+      "duration": 3.041
+    },
+    {
+      "text": "inteligencia artificial. Y no solo",
+      "start": 334.12,
+      "duration": 3.079
+    },
+    {
+      "text": "tenemos eh flujos de trabajo",
+      "start": 335.68,
+      "duration": 3.4
+    },
+    {
+      "text": "determinados por grandes organizaciones",
+      "start": 337.199,
+      "duration": 3.361
+    },
+    {
+      "text": "derivados muchas veces de herramientas",
+      "start": 339.08,
+      "duration": 2.839
+    },
+    {
+      "text": "de inteligencia artificial para la",
+      "start": 340.56,
+      "duration": 3.04
+    },
+    {
+      "text": "generación de productos y servicios,",
+      "start": 341.919,
+      "duration": 3.161
+    },
+    {
+      "text": "sino que como puedes ver en el libro que",
+      "start": 343.6,
+      "duration": 2.68
+    },
+    {
+      "text": "te muestro en esta imagen, que te",
+      "start": 345.08,
+      "duration": 3.679
+    },
+    {
+      "text": "recomiendo, autores de renombre de época",
+      "start": 346.28,
+      "duration": 4.96
+    },
+    {
+      "text": "preía también han ido proponiendo sus",
+      "start": 348.759,
+      "duration": 4.361
+    },
+    {
+      "text": "flujos independientes de una herramienta",
+      "start": 351.24,
+      "duration": 3.959
+    },
+    {
+      "text": "concreta para lo que es el trabajo y lo",
+      "start": 353.12,
+      "duration": 3.88
+    },
+    {
+      "text": "que es la creación de productos y",
+      "start": 355.199,
+      "duration": 3.881
+    },
+    {
+      "text": "servicios en los cuales conviven humanos",
+      "start": 357.0,
+      "duration": 4.0
+    },
+    {
+      "text": "y que hacen uso de la inteligencia",
+      "start": 359.08,
+      "duration": 4.2
+    },
+    {
+      "text": "artificial. sacarte un mínimo común",
+      "start": 361.0,
+      "duration": 4.88
+    },
+    {
+      "text": "denominador de de qué flujo eh suelen",
+      "start": 363.28,
+      "duration": 4.16
+    },
+    {
+      "text": "utilizar todas estas propuestas, cada",
+      "start": 365.88,
+      "duration": 3.719
+    },
+    {
+      "text": "una con sus matizaciones. Básicamente se",
+      "start": 367.44,
+      "duration": 4.599
+    },
+    {
+      "text": "basa en dejar a la IA a crear que cree",
+      "start": 369.599,
+      "duration": 4.241
+    },
+    {
+      "text": "que cree la IA que cree las cosas que",
+      "start": 372.039,
+      "duration": 4.88
+    },
+    {
+      "text": "desarrolle, pero acotándola, acotando",
+      "start": 373.84,
+      "duration": 4.759
+    },
+    {
+      "text": "tanto las decisiones de qué tiene que",
+      "start": 376.919,
+      "duration": 4.28
+    },
+    {
+      "text": "crear como las decisiones de cómo debe",
+      "start": 378.599,
+      "duration": 4.361
+    },
+    {
+      "text": "crearlo, las decisiones más técnicas,",
+      "start": 381.199,
+      "duration": 3.681
+    },
+    {
+      "text": "por un lado, decisiones técnicas, por",
+      "start": 382.96,
+      "duration": 3.48
+    },
+    {
+      "text": "otro lado, el qué es lo que tiene que",
+      "start": 384.88,
+      "duration": 4.2
+    },
+    {
+      "text": "crear. Típicamente todas estas ramas,",
+      "start": 386.44,
+      "duration": 3.96
+    },
+    {
+      "text": "todas estas diferentes propuestas que",
+      "start": 389.08,
+      "duration": 3.92
+    },
+    {
+      "text": "hemos estado viendo, eh, se agrupan bajo",
+      "start": 390.4,
+      "duration": 6.04
+    },
+    {
+      "text": "lo que se suele llamar SDD o spec",
+      "start": 393.0,
+      "duration": 6.12
+    },
+    {
+      "text": "driving development, donde spec viene de",
+      "start": 396.44,
+      "duration": 5.24
+    },
+    {
+      "text": "especificación porque todas ellas",
+      "start": 399.12,
+      "duration": 5.4
+    },
+    {
+      "text": "prácticamente lo que se se basan",
+      "start": 401.68,
+      "duration": 4.88
+    },
+    {
+      "text": "principalmente en acotar la entrada, lo",
+      "start": 404.52,
+      "duration": 3.959
+    },
+    {
+      "text": "que es la especificación, típicamente en",
+      "start": 406.56,
+      "duration": 4.6
+    },
+    {
+      "text": "un fichero, típicamente en marnow para",
+      "start": 408.479,
+      "duration": 5.641
+    },
+    {
+      "text": "que la IA sepa muy claramente qué es lo",
+      "start": 411.16,
+      "duration": 5.599
+    },
+    {
+      "text": "que tiene que crear y lo que hacen es",
+      "start": 414.12,
+      "duration": 6.24
+    },
+    {
+      "text": "que conviven o generan o crean un flujo",
+      "start": 416.759,
+      "duration": 6.0
+    },
+    {
+      "text": "en el cual participan humanos en ciertos",
+      "start": 420.36,
+      "duration": 5.48
+    },
+    {
+      "text": "puntos y se deja trabajar a la en otros.",
+      "start": 422.759,
+      "duration": 5.16
+    },
+    {
+      "text": "Por un lado, tendremos los arquitectos",
+      "start": 425.84,
+      "duration": 4.96
+    },
+    {
+      "text": "técnicos que acotarán a la en la parte",
+      "start": 427.919,
+      "duration": 5.321
+    },
+    {
+      "text": "obviamente técnica y por otro lado",
+      "start": 430.8,
+      "duration": 4.88
+    },
+    {
+      "text": "tendremos a la gente más de negocio que",
+      "start": 433.24,
+      "duration": 5.32
+    },
+    {
+      "text": "van a acotar a la IA sobre qué es lo que",
+      "start": 435.68,
+      "duration": 4.4
+    },
+    {
+      "text": "tiene que crear. Si lo bajamos un",
+      "start": 438.56,
+      "duration": 3.199
+    },
+    {
+      "text": "poquito más a la Tierra, salvando los",
+      "start": 440.08,
+      "duration": 4.239
+    },
+    {
+      "text": "detalles, el flujo típico de trabajo es",
+      "start": 441.759,
+      "duration": 4.56
+    },
+    {
+      "text": "que por un lado los humanos, paso número",
+      "start": 444.319,
+      "duration": 3.801
+    },
+    {
+      "text": "uno, por ejemplo, por ponerlo en pasos,",
+      "start": 446.319,
+      "duration": 3.401
+    },
+    {
+      "text": "definen las specs o lo que son las",
+      "start": 448.12,
+      "duration": 3.479
+    },
+    {
+      "text": "especificaciones claras, típicamente en",
+      "start": 449.72,
+      "duration": 3.8
+    },
+    {
+      "text": "ficheros. De aquí podríamos hablar mucho",
+      "start": 451.599,
+      "duration": 3.641
+    },
+    {
+      "text": "más del tamaño de una SP para no irnos",
+      "start": 453.52,
+      "duration": 4.079
+    },
+    {
+      "text": "al lado oscuro de las SPC cascada. No",
+      "start": 455.24,
+      "duration": 4.04
+    },
+    {
+      "text": "voy a entrar ahí, pero lo típico es que",
+      "start": 457.599,
+      "duration": 3.921
+    },
+    {
+      "text": "se define unas spec ficheros punto",
+      "start": 459.28,
+      "duration": 5.12
+    },
+    {
+      "text": "marnow. Típicamente luego eso puede",
+      "start": 461.52,
+      "duration": 4.56
+    },
+    {
+      "text": "agrupar historias de usuario, con lo",
+      "start": 464.4,
+      "duration": 3.759
+    },
+    {
+      "text": "cual hay cierto tipo de cosas del pasado",
+      "start": 466.08,
+      "duration": 3.88
+    },
+    {
+      "text": "que no se eliminan, sino que se reciclan",
+      "start": 468.159,
+      "duration": 3.48
+    },
+    {
+      "text": "y se toma lo mejor que se puede adaptar",
+      "start": 469.96,
+      "duration": 5.44
+    },
+    {
+      "text": "a nuestro mundo actual. Esas claras,",
+      "start": 471.639,
+      "duration": 6.441
+    },
+    {
+      "text": "detalladas, acompañadas muchas veces de",
+      "start": 475.4,
+      "duration": 4.68
+    },
+    {
+      "text": "lo que son las pruebas de aceptación,",
+      "start": 478.08,
+      "duration": 3.88
+    },
+    {
+      "text": "métricas del éxito de esas",
+      "start": 480.08,
+      "duration": 4.079
+    },
+    {
+      "text": "implementaciones y ese tipo de cosas. Lo",
+      "start": 481.96,
+      "duration": 5.0
+    },
+    {
+      "text": "dejamos aquí, se especifican y una vez",
+      "start": 484.159,
+      "duration": 4.561
+    },
+    {
+      "text": "que está terminada, que se ha hecho esa",
+      "start": 486.96,
+      "duration": 4.12
+    },
+    {
+      "text": "especificación típicamente funcional o",
+      "start": 488.72,
+      "duration": 3.8
+    },
+    {
+      "text": "no funcional algunas veces, ¿no? Como",
+      "start": 491.08,
+      "duration": 2.72
+    },
+    {
+      "text": "requisitos no funcionales de toda la",
+      "start": 492.52,
+      "duration": 3.16
+    },
+    {
+      "text": "vida, lo que se hace es que la IA",
+      "start": 493.8,
+      "duration": 3.6
+    },
+    {
+      "text": "propone un plan técnico y una",
+      "start": 495.68,
+      "duration": 3.519
+    },
+    {
+      "text": "arquitectura basada en specs que los",
+      "start": 497.4,
+      "duration": 5.239
+    },
+    {
+      "text": "humanos revisan, acotan, condicionan,",
+      "start": 499.199,
+      "duration": 6.601
+    },
+    {
+      "text": "que más diz y similar. Una vez que ha",
+      "start": 502.639,
+      "duration": 5.321
+    },
+    {
+      "text": "pasado esto, pues se aprueba el plan,",
+      "start": 505.8,
+      "duration": 4.56
+    },
+    {
+      "text": "con lo cual después de esto la IA vuelve",
+      "start": 507.96,
+      "duration": 5.24
+    },
+    {
+      "text": "de nuevo a implementar el producto e",
+      "start": 510.36,
+      "duration": 4.88
+    },
+    {
+      "text": "iterativamente vamos dando vueltas",
+      "start": 513.2,
+      "duration": 3.88
+    },
+    {
+      "text": "finalizando este ciclo con lo que es la",
+      "start": 515.24,
+      "duration": 3.4
+    },
+    {
+      "text": "validación y el testeo por parte de los",
+      "start": 517.08,
+      "duration": 2.879
+    },
+    {
+      "text": "humanos. Entonces, estamos en un ciclo",
+      "start": 518.64,
+      "duration": 3.72
+    },
+    {
+      "text": "que, como ves, pasa de I a humano, I a",
+      "start": 519.959,
+      "duration": 5.121
+    },
+    {
+      "text": "humano, a humano de manera iterativa.",
+      "start": 522.36,
+      "duration": 4.76
+    },
+    {
+      "text": "Aquí podríamos matizar el tamaño de esas",
+      "start": 525.08,
+      "duration": 4.4
+    },
+    {
+      "text": "iteraciones que son diferentes a las",
+      "start": 527.12,
+      "duration": 3.88
+    },
+    {
+      "text": "clásicas que traíamos de aquellos",
+      "start": 529.48,
+      "duration": 3.08
+    },
+    {
+      "text": "framework antiguos como Scrun y los",
+      "start": 531.0,
+      "duration": 3.88
+    },
+    {
+      "text": "clásicos ágiles. También tendríamos que",
+      "start": 532.56,
+      "duration": 4.04
+    },
+    {
+      "text": "ver cómo es la convivencia entre las",
+      "start": 534.88,
+      "duration": 3.48
+    },
+    {
+      "text": "SPEPECs y lo que son las tradicionales",
+      "start": 536.6,
+      "duration": 3.2
+    },
+    {
+      "text": "historias de usuario e incluso los",
+      "start": 538.36,
+      "duration": 2.96
+    },
+    {
+      "text": "repositorios tradicionales que ya tienen",
+      "start": 539.8,
+      "duration": 3.08
+    },
+    {
+      "text": "las organizaciones que prácticamente",
+      "start": 541.32,
+      "duration": 3.6
+    },
+    {
+      "text": "tendrán que mantener como son aquellos",
+      "start": 542.88,
+      "duration": 4.199
+    },
+    {
+      "text": "giras no similar, pero en cualquiera de",
+      "start": 544.92,
+      "duration": 4.4
+    },
+    {
+      "text": "los casos el flujo típicamente es de",
+      "start": 547.079,
+      "duration": 4.401
+    },
+    {
+      "text": "este modo, ¿no? IA humano, bueno, más",
+      "start": 549.32,
+      "duration": 4.72
+    },
+    {
+      "text": "bien humano humano IA, etcétera. Van",
+      "start": 551.48,
+      "duration": 5.64
+    },
+    {
+      "text": "pasando pimpone eh, humanos condicionan",
+      "start": 554.04,
+      "duration": 5.08
+    },
+    {
+      "text": "y a crea. lo mismo por si te sirve.",
+      "start": 557.12,
+      "duration": 3.6
+    },
+    {
+      "text": "Nosotros mismos en nuestro equipo",
+      "start": 559.12,
+      "duration": 3.48
+    },
+    {
+      "text": "utilizamos este tipo de aproximación",
+      "start": 560.72,
+      "duration": 4.04
+    },
+    {
+      "text": "para lo que es el desarrollos internos",
+      "start": 562.6,
+      "duration": 4.44
+    },
+    {
+      "text": "que utiliz que usamos y utilizamos lo",
+      "start": 564.76,
+      "duration": 3.6
+    },
+    {
+      "text": "que es SDD de manera mucho más",
+      "start": 567.04,
+      "duration": 2.84
+    },
+    {
+      "text": "simplificada para algo mucho más",
+      "start": 568.36,
+      "duration": 4.08
+    },
+    {
+      "text": "moderado, pero creamos especificaciones",
+      "start": 569.88,
+      "duration": 6.44
+    },
+    {
+      "text": "specs.m donde detallamos pocas historias",
+      "start": 572.44,
+      "duration": 5.28
+    },
+    {
+      "text": "de usuario. Recuerda pocas, no te ves al",
+      "start": 576.32,
+      "duration": 3.24
+    },
+    {
+      "text": "lado oscuro, pocas, que el cascada",
+      "start": 577.72,
+      "duration": 4.04
+    },
+    {
+      "text": "siempre aparece en cualquier lado. Eh,",
+      "start": 579.56,
+      "duration": 4.24
+    },
+    {
+      "text": "historia de usuario con su jerking, que",
+      "start": 581.76,
+      "duration": 3.6
+    },
+    {
+      "text": "para que si no te suena jerking es una",
+      "start": 583.8,
+      "duration": 2.88
+    },
+    {
+      "text": "manera de hacer pruebas, de escribir",
+      "start": 585.36,
+      "duration": 2.8
+    },
+    {
+      "text": "pruebas de aceptación.",
+      "start": 586.68,
+      "duration": 2.96
+    },
+    {
+      "text": "Y de ahí tenemos esos ficheros",
+      "start": 588.16,
+      "duration": 3.64
+    },
+    {
+      "text": "guardados, los versionamos y generamos",
+      "start": 589.64,
+      "duration": 4.439
+    },
+    {
+      "text": "pequeñas aplicaciones de uso cotidiano",
+      "start": 591.8,
+      "duration": 4.12
+    },
+    {
+      "text": "que nos ahorran bastante tiempo. La",
+      "start": 594.079,
+      "duration": 3.521
+    },
+    {
+      "text": "pregunta sería, ¿Desaparece entonces la",
+      "start": 595.92,
+      "duration": 3.599
+    },
+    {
+      "text": "necesidad humana según evolucionan esta",
+      "start": 597.6,
+      "duration": 3.52
+    },
+    {
+      "text": "manera de trabajar? Según evoluciona la",
+      "start": 599.519,
+      "duration": 3.76
+    },
+    {
+      "text": "incorporación de inteligencia artificial",
+      "start": 601.12,
+      "duration": 3.88
+    },
+    {
+      "text": "a lo que son los equipos. Pues te diría,",
+      "start": 603.279,
+      "duration": 3.321
+    },
+    {
+      "text": "te lo voy a dejar en un sí y no. Vale,",
+      "start": 605.0,
+      "duration": 4.2
+    },
+    {
+      "text": "ahora te cuento. Por supuesto, no puede,",
+      "start": 606.6,
+      "duration": 4.6
+    },
+    {
+      "text": "a día de hoy es imposible que no haya",
+      "start": 609.2,
+      "duration": 4.0
+    },
+    {
+      "text": "supervisión humana. Debe haber pues",
+      "start": 611.2,
+      "duration": 4.319
+    },
+    {
+      "text": "técnicos que condicionen los planes",
+      "start": 613.2,
+      "duration": 5.04
+    },
+    {
+      "text": "técnicos, que que acotan a la IA, que",
+      "start": 615.519,
+      "duration": 3.961
+    },
+    {
+      "text": "supervisen la arquitectura, los",
+      "start": 618.24,
+      "duration": 4.039
+    },
+    {
+      "text": "despliegues, que acoten si se está yendo",
+      "start": 619.48,
+      "duration": 4.64
+    },
+    {
+      "text": "por un lado, no seguro, por un lado",
+      "start": 622.279,
+      "duration": 3.961
+    },
+    {
+      "text": "oscuro. Igualmente necesitamos",
+      "start": 624.12,
+      "duration": 4.44
+    },
+    {
+      "text": "especialistas que de lo que es la parte",
+      "start": 626.24,
+      "duration": 3.839
+    },
+    {
+      "text": "más de negocio, ¿no?, que estén viendo",
+      "start": 628.56,
+      "duration": 2.88
+    },
+    {
+      "text": "hacia allá, hacia dónde va esa",
+      "start": 630.079,
+      "duration": 3.961
+    },
+    {
+      "text": "aplicación, ese servicio, si está dando,",
+      "start": 631.44,
+      "duration": 4.079
+    },
+    {
+      "text": "satisfaciendo las necesidades de los",
+      "start": 634.04,
+      "duration": 3.76
+    },
+    {
+      "text": "usuarios y así sucesivamente.",
+      "start": 635.519,
+      "duration": 5.161
+    },
+    {
+      "text": "Pero ahora bien, la parte negativa, la",
+      "start": 637.8,
+      "duration": 4.479
+    },
+    {
+      "text": "parte positiva es que si seguimos",
+      "start": 640.68,
+      "duration": 3.719
+    },
+    {
+      "text": "necesitando humanos, obviamente nos",
+      "start": 642.279,
+      "duration": 5.041
+    },
+    {
+      "text": "necesitan aún, pero la parte negativa es",
+      "start": 644.399,
+      "duration": 5.601
+    },
+    {
+      "text": "que las personas necesarias para lo que",
+      "start": 647.32,
+      "duration": 3.959
+    },
+    {
+      "text": "es el delivery en la fase en la que",
+      "start": 650.0,
+      "duration": 4.0
+    },
+    {
+      "text": "estamos ahora actual son bastante menos.",
+      "start": 651.279,
+      "duration": 4.521
+    },
+    {
+      "text": "Más adelante veremos cómo implica esto",
+      "start": 654.0,
+      "duration": 4.16
+    },
+    {
+      "text": "en todo lo que es un en el todo de un",
+      "start": 655.8,
+      "duration": 5.039
+    },
+    {
+      "text": "equipo de producto, pero la realidad nos",
+      "start": 658.16,
+      "duration": 5.4
+    },
+    {
+      "text": "guste o no, a mí no me gusta. A mí no me",
+      "start": 660.839,
+      "duration": 5.281
+    },
+    {
+      "text": "gusta, confieso, pero la realidad",
+      "start": 663.56,
+      "duration": 4.959
+    },
+    {
+      "text": "ineludible. el presente y más aún en el",
+      "start": 666.12,
+      "duration": 4.839
+    },
+    {
+      "text": "futuro, queramos verlo o no, es que este",
+      "start": 668.519,
+      "duration": 5.401
+    },
+    {
+      "text": "tipo de herramientas están no eliminando",
+      "start": 670.959,
+      "duration": 5.161
+    },
+    {
+      "text": "la necesidad humanos, pero sí haciendo",
+      "start": 673.92,
+      "duration": 4.32
+    },
+    {
+      "text": "que se necesiten menos humanos. Y si",
+      "start": 676.12,
+      "duration": 4.04
+    },
+    {
+      "text": "vamos dejando atrás el delivery, nos",
+      "start": 678.24,
+      "duration": 3.24
+    },
+    {
+      "text": "movemos hacia qué sucede en el",
+      "start": 680.16,
+      "duration": 3.6
+    },
+    {
+      "text": "Discovery, pues como comentan autores de",
+      "start": 681.48,
+      "duration": 3.64
+    },
+    {
+      "text": "renombre, echar un vistazo a este",
+      "start": 683.76,
+      "duration": 2.96
+    },
+    {
+      "text": "artículo, a este pantallazo de un autor",
+      "start": 685.12,
+      "duration": 3.36
+    },
+    {
+      "text": "bastante famoso en el área. Como",
+      "start": 686.72,
+      "duration": 3.919
+    },
+    {
+      "text": "resultado de los cambios en el delivery",
+      "start": 688.48,
+      "duration": 3.96
+    },
+    {
+      "text": "propiciados por la IA, se está",
+      "start": 690.639,
+      "duration": 4.121
+    },
+    {
+      "text": "desplazando el foco creativo hacia el",
+      "start": 692.44,
+      "duration": 4.68
+    },
+    {
+      "text": "Discovery. Los equipos dedican cada vez",
+      "start": 694.76,
+      "duration": 5.079
+    },
+    {
+      "text": "más tiempo al descubrimiento, a saber",
+      "start": 697.12,
+      "duration": 4.839
+    },
+    {
+      "text": "qué se necesita ahí fuera, si lo que",
+      "start": 699.839,
+      "duration": 3.68
+    },
+    {
+      "text": "estamos liberando resuelve los problemas",
+      "start": 701.959,
+      "duration": 2.56
+    },
+    {
+      "text": "de la gente que está ahí fuera,",
+      "start": 703.519,
+      "duration": 2.161
+    },
+    {
+      "text": "descubrir qué es lo que seguir ahí",
+      "start": 704.519,
+      "duration": 3.641
+    },
+    {
+      "text": "fuera, mientras que la IA cada vez más",
+      "start": 705.68,
+      "duration": 4.08
+    },
+    {
+      "text": "automatiza lo que es la entrega, lo que",
+      "start": 708.16,
+      "duration": 4.08
+    },
+    {
+      "text": "es el delivery, de nuevo, sin a día de",
+      "start": 709.76,
+      "duration": 4.759
+    },
+    {
+      "text": "hoy poder hacerlo de manera autónoma",
+      "start": 712.24,
+      "duration": 4.68
+    },
+    {
+      "text": "para cosas serias, sin la necesidad de",
+      "start": 714.519,
+      "duration": 5.161
+    },
+    {
+      "text": "humanos. La buena noticia, el Discovery",
+      "start": 716.92,
+      "duration": 5.479
+    },
+    {
+      "text": "se está convirtiendo en el nuevo espacio",
+      "start": 719.68,
+      "duration": 4.52
+    },
+    {
+      "text": "diferenciador. Bueno, digamos",
+      "start": 722.399,
+      "duration": 4.44
+    },
+    {
+      "text": "diferenciador. la mala. La mayoría de",
+      "start": 724.2,
+      "duration": 4.28
+    },
+    {
+      "text": "equipos a día de hoy ni siquiera sabe lo",
+      "start": 726.839,
+      "duration": 3.12
+    },
+    {
+      "text": "que es el Discovery, pero eso no tiene",
+      "start": 728.48,
+      "duration": 3.799
+    },
+    {
+      "text": "nada que ver con la IA y hacen Discovery",
+      "start": 729.959,
+      "duration": 4.721
+    },
+    {
+      "text": "de aquella manera y solo gestionan",
+      "start": 732.279,
+      "duration": 4.521
+    },
+    {
+      "text": "producto y historias de usuario y",
+      "start": 734.68,
+      "duration": 3.8
+    },
+    {
+      "text": "priorizaciones y poco más, porque",
+      "start": 736.8,
+      "duration": 4.479
+    },
+    {
+      "text": "recordemos que esto es una pequeña,",
+      "start": 738.48,
+      "duration": 4.76
+    },
+    {
+      "text": "digamos, el producto tradicional que",
+      "start": 741.279,
+      "duration": 4.281
+    },
+    {
+      "text": "conocemos, ese que nos derivó y que nos",
+      "start": 743.24,
+      "duration": 3.959
+    },
+    {
+      "text": "dejó aquel screw en aquella lista de",
+      "start": 745.56,
+      "duration": 3.04
+    },
+    {
+      "text": "cosas que hay que hacer, aquellas tareas",
+      "start": 747.199,
+      "duration": 5.0
+    },
+    {
+      "text": "o item, es simplemente la fusión o la",
+      "start": 748.6,
+      "duration": 6.359
+    },
+    {
+      "text": "salida entrada entre el mundo discovery",
+      "start": 752.199,
+      "duration": 4.401
+    },
+    {
+      "text": "y la entrada al mundo delivery. El",
+      "start": 754.959,
+      "duration": 3.281
+    },
+    {
+      "text": "Discovery tiene muchas más cosas, muchas",
+      "start": 756.6,
+      "duration": 4.479
+    },
+    {
+      "text": "más técnicas, mucha más profundidad en",
+      "start": 758.24,
+      "duration": 5.08
+    },
+    {
+      "text": "lo que es el cómo llegar a ese producto",
+      "start": 761.079,
+      "duration": 3.961
+    },
+    {
+      "text": "o a esas historias de usuario. Y",
+      "start": 763.32,
+      "duration": 3.44
+    },
+    {
+      "text": "precisamente ahí es donde comienza el",
+      "start": 765.04,
+      "duration": 4.28
+    },
+    {
+      "text": "siguiente gran cambio, el renacer del",
+      "start": 766.76,
+      "duration": 5.24
+    },
+    {
+      "text": "Discovery de producto como el nuevo gran",
+      "start": 769.32,
+      "duration": 4.68
+    },
+    {
+      "text": "espacio de valor. ¿Cómo ha potenciado",
+      "start": 772.0,
+      "duration": 3.959
+    },
+    {
+      "text": "las técnicas clásicas de Discovery que",
+      "start": 774.0,
+      "duration": 3.8
+    },
+    {
+      "text": "ya existían hace muchísimos años? Lo que",
+      "start": 775.959,
+      "duration": 3.161
+    },
+    {
+      "text": "es la inteligencia artificial, como las",
+      "start": 777.8,
+      "duration": 3.0
+    },
+    {
+      "text": "técnicas que te muestro de la",
+      "start": 779.12,
+      "duration": 3.159
+    },
+    {
+      "text": "principales, muchas que hay, pero estas",
+      "start": 780.8,
+      "duration": 3.32
+    },
+    {
+      "text": "son bastante famosas en el mundo",
+      "start": 782.279,
+      "duration": 3.8
+    },
+    {
+      "text": "Discovery. ¿Cómo las ha potenciado? Pues",
+      "start": 784.12,
+      "duration": 3.6
+    },
+    {
+      "text": "aquí debemos decir que la IA ha",
+      "start": 786.079,
+      "duration": 3.44
+    },
+    {
+      "text": "potenciado, que no ha sustituido los",
+      "start": 787.72,
+      "duration": 3.679
+    },
+    {
+      "text": "métodos de siempre, como yo que sé, uno",
+      "start": 789.519,
+      "duration": 3.44
+    },
+    {
+      "text": "que he utilizado yo y utilizo millones",
+      "start": 791.399,
+      "duration": 3.081
+    },
+    {
+      "text": "de veces, que es el value proposition",
+      "start": 792.959,
+      "duration": 3.281
+    },
+    {
+      "text": "Canva y similares. Te dejo unas cuantas",
+      "start": 794.48,
+      "duration": 4.719
+    },
+    {
+      "text": "más en la imagen. Ciertamente están",
+      "start": 796.24,
+      "duration": 5.039
+    },
+    {
+      "text": "apareciendo herramientas que disparan",
+      "start": 799.199,
+      "duration": 4.841
+    },
+    {
+      "text": "también este área, siendo totalmente",
+      "start": 801.279,
+      "duration": 5.081
+    },
+    {
+      "text": "creativa, pero acelerando sus",
+      "start": 804.04,
+      "duration": 4.56
+    },
+    {
+      "text": "resultados. permiten realizar, por",
+      "start": 806.36,
+      "duration": 4.039
+    },
+    {
+      "text": "ejemplo, o se permite la IA realizar",
+      "start": 808.6,
+      "duration": 3.28
+    },
+    {
+      "text": "búsquedas profundas, algo que antes no",
+      "start": 810.399,
+      "duration": 4.321
+    },
+    {
+      "text": "era era impensable, ¿no? esa deep resort",
+      "start": 811.88,
+      "duration": 7.68
+    },
+    {
+      "text": "que nos ayuda a en poco tiempo y no no",
+      "start": 814.72,
+      "duration": 7.04
+    },
+    {
+      "text": "es comparable como se hacía antes,",
+      "start": 819.56,
+      "duration": 4.519
+    },
+    {
+      "text": "descubrir tendencias, analizar estudios,",
+      "start": 821.76,
+      "duration": 4.079
+    },
+    {
+      "text": "artículos, descubrir estudios que hay",
+      "start": 824.079,
+      "duration": 3.681
+    },
+    {
+      "text": "por ahí que no sabíamos que existían,",
+      "start": 825.839,
+      "duration": 4.721
+    },
+    {
+      "text": "hacer scrapping, o sea, eh chequear o",
+      "start": 827.76,
+      "duration": 6.079
+    },
+    {
+      "text": "revisar webs de la competencia, webs de,",
+      "start": 830.56,
+      "duration": 5.959
+    },
+    {
+      "text": "o sea, de observatorios, de tendencias",
+      "start": 833.839,
+      "duration": 4.881
+    },
+    {
+      "text": "análisis de mercado, ayudan también a",
+      "start": 836.519,
+      "duration": 3.721
+    },
+    {
+      "text": "comprender mejor a los clientes y a los",
+      "start": 838.72,
+      "duration": 3.2
+    },
+    {
+      "text": "usuarios de una manera mucho más rápida,",
+      "start": 840.24,
+      "duration": 3.32
+    },
+    {
+      "text": "más profunda, como una herramienta como",
+      "start": 841.92,
+      "duration": 3.44
+    },
+    {
+      "text": "un copiloto, explorando datos a una",
+      "start": 843.56,
+      "duration": 4.24
+    },
+    {
+      "text": "velocidad impresionante, impresionante,",
+      "start": 845.36,
+      "duration": 5.08
+    },
+    {
+      "text": "comportamientos, oportunidades, mención",
+      "start": 847.8,
+      "duration": 5.479
+    },
+    {
+      "text": "especiales, el prototipado ultra rápido,",
+      "start": 850.44,
+      "duration": 5.12
+    },
+    {
+      "text": "el B coding, aquí en este punto separo",
+      "start": 853.279,
+      "duration": 4.881
+    },
+    {
+      "text": "by coding como master canal prototipado",
+      "start": 855.56,
+      "duration": 4.839
+    },
+    {
+      "text": "frente al el VIPE engineering, ¿no?, que",
+      "start": 858.16,
+      "duration": 3.679
+    },
+    {
+      "text": "es el hacer un producto más robusto,",
+      "start": 860.399,
+      "duration": 2.68
+    },
+    {
+      "text": "¿no? Pero bueno, en lo que es",
+      "start": 861.839,
+      "duration": 3.92
+    },
+    {
+      "text": "prototipado, o sea, byte coding, se",
+      "start": 863.079,
+      "duration": 5.041
+    },
+    {
+      "text": "tenemos una manera ultra rápida de",
+      "start": 865.759,
+      "duration": 4.281
+    },
+    {
+      "text": "hacerlo, lo cual posibilita a perfiles",
+      "start": 868.12,
+      "duration": 4.839
+    },
+    {
+      "text": "no técnicos que puedan rápidamente",
+      "start": 870.04,
+      "duration": 4.76
+    },
+    {
+      "text": "detectar necesidad de usuario lanzando",
+      "start": 872.959,
+      "duration": 4.721
+    },
+    {
+      "text": "prototipo que su único objetivo es",
+      "start": 874.8,
+      "duration": 4.68
+    },
+    {
+      "text": "efectivamente eso, descubrir, ¿vale?",
+      "start": 877.68,
+      "duration": 4.719
+    },
+    {
+      "text": "Hacer discovery con IA. Ya sabes que eh",
+      "start": 879.48,
+      "duration": 5.719
+    },
+    {
+      "text": "además este tipo de técnicas eh por",
+      "start": 882.399,
+      "duration": 5.24
+    },
+    {
+      "text": "ahora hasta la fecha, como te comentaba",
+      "start": 885.199,
+      "duration": 4.801
+    },
+    {
+      "text": "en este área que es el Discovery, la se",
+      "start": 887.639,
+      "duration": 4.281
+    },
+    {
+      "text": "mantienen. Lo que pasa es que se",
+      "start": 890.0,
+      "duration": 4.279
+    },
+    {
+      "text": "potencian, ¿no? Un caso diferente al que",
+      "start": 891.92,
+      "duration": 3.919
+    },
+    {
+      "text": "nos estamos encontrando lo que es el",
+      "start": 894.279,
+      "duration": 4.081
+    },
+    {
+      "text": "delivery. Las técnicas clásicas que",
+      "start": 895.839,
+      "duration": 4.281
+    },
+    {
+      "text": "antes se tardaba mucho más tiempo en",
+      "start": 898.36,
+      "duration": 3.56
+    },
+    {
+      "text": "hacer, también requerían de más",
+      "start": 900.12,
+      "duration": 4.12
+    },
+    {
+      "text": "perfiles, llevaban más tiempo y alguna",
+      "start": 901.92,
+      "duration": 4.0
+    },
+    {
+      "text": "veces no tenían tanto resultados o no",
+      "start": 904.24,
+      "duration": 3.719
+    },
+    {
+      "text": "los mismos resultados, pero que se han",
+      "start": 905.92,
+      "duration": 6.359
+    },
+    {
+      "text": "disparado en multitud de de dimensiones",
+      "start": 907.959,
+      "duration": 6.68
+    },
+    {
+      "text": "con lo que es la potencia que le ha dado",
+      "start": 912.279,
+      "duration": 4.081
+    },
+    {
+      "text": "a todas estas técnicas que, como te",
+      "start": 914.639,
+      "duration": 4.041
+    },
+    {
+      "text": "decía son clásicas muy antiguas, el uso",
+      "start": 916.36,
+      "duration": 4.279
+    },
+    {
+      "text": "de inteligencia artificial. Aquí al",
+      "start": 918.68,
+      "duration": 3.92
+    },
+    {
+      "text": "papel humano pues le pasa algo pues muy",
+      "start": 920.639,
+      "duration": 3.44
+    },
+    {
+      "text": "similar a lo que comentamos en el",
+      "start": 922.6,
+      "duration": 2.96
+    },
+    {
+      "text": "delivery, que todavía los humanos son",
+      "start": 924.079,
+      "duration": 3.32
+    },
+    {
+      "text": "muy somos somos necesarios, jugamos",
+      "start": 925.56,
+      "duration": 4.079
+    },
+    {
+      "text": "todavía una baja muy muy importante",
+      "start": 927.399,
+      "duration": 5.0
+    },
+    {
+      "text": "porque las herramientas efectivamente",
+      "start": 929.639,
+      "duration": 5.12
+    },
+    {
+      "text": "pueden escribir escribir lo que son",
+      "start": 932.399,
+      "duration": 4.401
+    },
+    {
+      "text": "requisitos, pero aún no pueden decir o",
+      "start": 934.759,
+      "duration": 3.401
+    },
+    {
+      "text": "pensar cuáles son esos requisitos,",
+      "start": 936.8,
+      "duration": 3.8
+    },
+    {
+      "text": "cuáles deberían ser casi, pero todavía",
+      "start": 938.16,
+      "duration": 3.919
+    },
+    {
+      "text": "del todo o por lo menos hay que",
+      "start": 940.6,
+      "duration": 3.84
+    },
+    {
+      "text": "supervisarlos. pueden ayudar mucho con",
+      "start": 942.079,
+      "duration": 3.641
+    },
+    {
+      "text": "lo que es la experiencia de usuario, con",
+      "start": 944.44,
+      "duration": 2.8
+    },
+    {
+      "text": "lo que es la creación de prototipos que",
+      "start": 945.72,
+      "duration": 3.16
+    },
+    {
+      "text": "antes requerían de un montón de tiempo y",
+      "start": 947.24,
+      "duration": 3.399
+    },
+    {
+      "text": "un montón de perfiles. Pueden,",
+      "start": 948.88,
+      "duration": 3.48
+    },
+    {
+      "text": "obviamente escribir código, pero eso no",
+      "start": 950.639,
+      "duration": 4.56
+    },
+    {
+      "text": "significa que cualquiera eh con una idea",
+      "start": 952.36,
+      "duration": 4.599
+    },
+    {
+      "text": "pueda crear un producto con éxito y",
+      "start": 955.199,
+      "duration": 3.32
+    },
+    {
+      "text": "nuestro objetivo final es tener",
+      "start": 956.959,
+      "duration": 4.12
+    },
+    {
+      "text": "productos o servicios exitosos. Las",
+      "start": 958.519,
+      "duration": 4.961
+    },
+    {
+      "text": "herramientas obviamente",
+      "start": 961.079,
+      "duration": 3.721
+    },
+    {
+      "text": "amplifican todo este tipo de",
+      "start": 963.48,
+      "duration": 3.2
+    },
+    {
+      "text": "capacidades, pero no sustituyen las",
+      "start": 964.8,
+      "duration": 3.56
+    },
+    {
+      "text": "competencias humanas esenciales. El",
+      "start": 966.68,
+      "duration": 4.599
+    },
+    {
+      "text": "juicio estratégico de un product manager",
+      "start": 968.36,
+      "duration": 5.12
+    },
+    {
+      "text": "eh para alinear negocio y usuarios es",
+      "start": 971.279,
+      "duration": 4.8
+    },
+    {
+      "text": "totalmente imprescindible. Hoy en día la",
+      "start": 973.48,
+      "duration": 4.799
+    },
+    {
+      "text": "empatía que tiene que tener un diseñador",
+      "start": 976.079,
+      "duration": 3.88
+    },
+    {
+      "text": "para crear experiencias es",
+      "start": 978.279,
+      "duration": 4.161
+    },
+    {
+      "text": "imprescindible hoy en día. La necesidad",
+      "start": 979.959,
+      "duration": 5.921
+    },
+    {
+      "text": "de integración en temas técnicos que que",
+      "start": 982.44,
+      "duration": 5.68
+    },
+    {
+      "text": "nos dan los ingenieros de software para",
+      "start": 985.88,
+      "duration": 4.079
+    },
+    {
+      "text": "hacer realidad esas ideas y que sean",
+      "start": 988.12,
+      "duration": 4.12
+    },
+    {
+      "text": "viables es imprescindible hoy en día.",
+      "start": 989.959,
+      "duration": 3.841
+    },
+    {
+      "text": "Pero ya este punto tenemos que entrar en",
+      "start": 992.24,
+      "duration": 3.039
+    },
+    {
+      "text": "una pregunta profunda porque hemos",
+      "start": 993.8,
+      "duration": 3.479
+    },
+    {
+      "text": "hablado un poco de si los humanos",
+      "start": 995.279,
+      "duration": 4.441
+    },
+    {
+      "text": "desaparecen, si se quedan, si se van, se",
+      "start": 997.279,
+      "duration": 4.961
+    },
+    {
+      "text": "quedan, pero ahora vamos a plantearnos",
+      "start": 999.72,
+      "duration": 5.52
+    },
+    {
+      "text": "una cuestión más profunda, llamémosle",
+      "start": 1002.24,
+      "duration": 5.68
+    },
+    {
+      "text": "profunda, y es que sucede con el equipo,",
+      "start": 1005.24,
+      "duration": 4.719
+    },
+    {
+      "text": "con el todo, con la unión de los",
+      "start": 1007.92,
+      "duration": 5.039
+    },
+    {
+      "text": "humanos. Necesitamos tantos, más menos.",
+      "start": 1009.959,
+      "duration": 6.281
+    },
+    {
+      "text": "¿Cómo se configuran hoy en día estos",
+      "start": 1012.959,
+      "duration": 5.36
+    },
+    {
+      "text": "equipos de producto? ¿Qué influencia ha",
+      "start": 1016.24,
+      "duration": 3.279
+    },
+    {
+      "text": "tenido la inteligencia artificial aquí?",
+      "start": 1018.319,
+      "duration": 2.96
+    },
+    {
+      "text": "Okay.Okay. Si nos vamos al todo a un",
+      "start": 1019.519,
+      "duration": 3.56
+    },
+    {
+      "text": "equipo, pues sabemos que los roles se",
+      "start": 1021.279,
+      "duration": 4.241
+    },
+    {
+      "text": "mantienen. Las grandes fases del ciclo",
+      "start": 1023.079,
+      "duration": 4.441
+    },
+    {
+      "text": "de vida, lo que es el delivery",
+      "start": 1025.52,
+      "duration": 4.319
+    },
+    {
+      "text": "Discovery, pues también van a seguir por",
+      "start": 1027.52,
+      "duration": 4.399
+    },
+    {
+      "text": "ahora existiendo. Las competencias",
+      "start": 1029.839,
+      "duration": 4.321
+    },
+    {
+      "text": "claves seguirán siendo suficientemente",
+      "start": 1031.919,
+      "duration": 4.4
+    },
+    {
+      "text": "profundas como para requerir hoy en día",
+      "start": 1034.16,
+      "duration": 3.96
+    },
+    {
+      "text": "ya lo que sería un IA Product Manager,",
+      "start": 1036.319,
+      "duration": 3.041
+    },
+    {
+      "text": "¿no? Para resolver todas esas",
+      "start": 1038.12,
+      "duration": 3.36
+    },
+    {
+      "text": "restricciones de negocio, hacia dónde",
+      "start": 1039.36,
+      "duration": 3.599
+    },
+    {
+      "text": "vamos, si lo que hacemos tiene sentido,",
+      "start": 1041.48,
+      "duration": 4.0
+    },
+    {
+      "text": "si no lo tiene y similar. Necesitaríamos",
+      "start": 1042.959,
+      "duration": 4.88
+    },
+    {
+      "text": "probablemente lo que es un product",
+      "start": 1045.48,
+      "duration": 3.68
+    },
+    {
+      "text": "designer, por decirlo de alguna manera.",
+      "start": 1047.839,
+      "duration": 2.321
+    },
+    {
+      "text": "cada uno que le ponga el nombre que",
+      "start": 1049.16,
+      "duration": 2.28
+    },
+    {
+      "text": "quiera para orientar lo que es la",
+      "start": 1050.16,
+      "duration": 3.759
+    },
+    {
+      "text": "experiencia de usuario. Probablemente en",
+      "start": 1051.44,
+      "duration": 5.8
+    },
+    {
+      "text": "algunos casos necesitemos un IA tester",
+      "start": 1053.919,
+      "duration": 5.961
+    },
+    {
+      "text": "validador QA o como queráis llamarlo,",
+      "start": 1057.24,
+      "duration": 5.72
+    },
+    {
+      "text": "que ayude al product manager a validar",
+      "start": 1059.88,
+      "duration": 5.12
+    },
+    {
+      "text": "si lo que estamos liberando está",
+      "start": 1062.96,
+      "duration": 3.52
+    },
+    {
+      "text": "haciendo lo que debe hacer. Y por",
+      "start": 1065.0,
+      "duration": 3.32
+    },
+    {
+      "text": "supuesto, necesitaremos a un ingeniero",
+      "start": 1066.48,
+      "duration": 5.4
+    },
+    {
+      "text": "de software para garantizar lo que es la",
+      "start": 1068.32,
+      "duration": 6.2
+    },
+    {
+      "text": "viabilidad técnica. Eso en esencia",
+      "start": 1071.88,
+      "duration": 4.159
+    },
+    {
+      "text": "porque probablemente los anteriores",
+      "start": 1074.52,
+      "duration": 3.44
+    },
+    {
+      "text": "cambien de nombre y aparezcan otros,",
+      "start": 1076.039,
+      "duration": 3.561
+    },
+    {
+      "text": "como es el caso, sin entrar mucho en",
+      "start": 1077.96,
+      "duration": 3.64
+    },
+    {
+      "text": "esto, de el de ese rol que ahora se",
+      "start": 1079.6,
+      "duration": 3.64
+    },
+    {
+      "text": "habla mucho de él, que es el del",
+      "start": 1081.6,
+      "duration": 3.72
+    },
+    {
+      "text": "product. Y ahora viene lo que es",
+      "start": 1083.24,
+      "duration": 3.72
+    },
+    {
+      "text": "realmente importante para nuestro",
+      "start": 1085.32,
+      "duration": 2.76
+    },
+    {
+      "text": "futuro, para el futuro de nuestra",
+      "start": 1086.96,
+      "duration": 2.839
+    },
+    {
+      "text": "profesión, para ver dónde nos vamos a",
+      "start": 1088.08,
+      "duration": 3.599
+    },
+    {
+      "text": "situar en estos próximos años. todo lo",
+      "start": 1089.799,
+      "duration": 3.601
+    },
+    {
+      "text": "que hemos visto, yo que sé, el speed",
+      "start": 1091.679,
+      "duration": 3.641
+    },
+    {
+      "text": "drive and development, el discovery",
+      "start": 1093.4,
+      "duration": 4.519
+    },
+    {
+      "text": "potenciado agonía, los nuevos flujos que",
+      "start": 1095.32,
+      "duration": 4.359
+    },
+    {
+      "text": "nos proponen las herramientas y similar,",
+      "start": 1097.919,
+      "duration": 3.76
+    },
+    {
+      "text": "pues lleva una consecuencia que es",
+      "start": 1099.679,
+      "duration": 4.24
+    },
+    {
+      "text": "inevitable, aunque no nos gusta, es",
+      "start": 1101.679,
+      "duration": 4.48
+    },
+    {
+      "text": "inevitable. En lo que es la composición",
+      "start": 1103.919,
+      "duration": 3.601
+    },
+    {
+      "text": "de los equipos, los roles no",
+      "start": 1106.159,
+      "duration": 3.52
+    },
+    {
+      "text": "desaparecen, se transforman, cambian de",
+      "start": 1107.52,
+      "duration": 4.6
+    },
+    {
+      "text": "nombre, se potencian, pero también se",
+      "start": 1109.679,
+      "duration": 4.921
+    },
+    {
+      "text": "reducen en número y se concentran en lo",
+      "start": 1112.12,
+      "duration": 5.0
+    },
+    {
+      "text": "que la IA no puede replicar. menos",
+      "start": 1114.6,
+      "duration": 4.92
+    },
+    {
+      "text": "personas, pero con mayor impacto. Y esto",
+      "start": 1117.12,
+      "duration": 6.439
+    },
+    {
+      "text": "nos lleva durante los próximos tr 2 5",
+      "start": 1119.52,
+      "duration": 6.24
+    },
+    {
+      "text": "años a que los equipos de producto de",
+      "start": 1123.559,
+      "duration": 4.281
+    },
+    {
+      "text": "promedio están pasando de tener",
+      "start": 1125.76,
+      "duration": 4.24
+    },
+    {
+      "text": "aproximadamente ese número que siempre",
+      "start": 1127.84,
+      "duration": 4.56
+    },
+    {
+      "text": "manejábamos de ocho aproximadamente, son",
+      "start": 1130.0,
+      "duration": 4.72
+    },
+    {
+      "text": "números aproximados a lo que eran, yo",
+      "start": 1132.4,
+      "duration": 3.92
+    },
+    {
+      "text": "que sé, unos cuantos ingenieros, un",
+      "start": 1134.72,
+      "duration": 4.199
+    },
+    {
+      "text": "gerente de producto, manager similar y",
+      "start": 1136.32,
+      "duration": 4.96
+    },
+    {
+      "text": "un diseñador barra tester a lo que son",
+      "start": 1138.919,
+      "duration": 4.041
+    },
+    {
+      "text": "prácticamente equipos que estamos viendo",
+      "start": 1141.28,
+      "duration": 3.399
+    },
+    {
+      "text": "hoy en día y te lo cuento yo que me",
+      "start": 1142.96,
+      "duration": 3.52
+    },
+    {
+      "text": "recorro un montón de sitios del mundo",
+      "start": 1144.679,
+      "duration": 3.841
+    },
+    {
+      "text": "real, equipos que tienen entre tres",
+      "start": 1146.48,
+      "duration": 4.52
+    },
+    {
+      "text": "cuatro personas no es ahora mismo eh",
+      "start": 1148.52,
+      "duration": 5.039
+    },
+    {
+      "text": "mayoritario. Nos seguimos encontos la",
+      "start": 1151.0,
+      "duration": 4.559
+    },
+    {
+      "text": "mayoría de la gente vive en el modelo",
+      "start": 1153.559,
+      "duration": 4.12
+    },
+    {
+      "text": "más antiguo, pero la tendencia y esto va",
+      "start": 1155.559,
+      "duration": 4.921
+    },
+    {
+      "text": "demasiado rápido, por desgracia, es que",
+      "start": 1157.679,
+      "duration": 5.081
+    },
+    {
+      "text": "nos vamos moviendo, se está moviendo",
+      "start": 1160.48,
+      "duration": 6.04
+    },
+    {
+      "text": "todo a que la potencia que da la reduce",
+      "start": 1162.76,
+      "duration": 5.48
+    },
+    {
+      "text": "el número de personas que integran los",
+      "start": 1166.52,
+      "duration": 4.2
+    },
+    {
+      "text": "equipos. números aproximados tampoco.",
+      "start": 1168.24,
+      "duration": 4.799
+    },
+    {
+      "text": "Esto esto no es matemáticas, pero sí que",
+      "start": 1170.72,
+      "duration": 4.64
+    },
+    {
+      "text": "entre tres, cuatro personas, donde antes",
+      "start": 1173.039,
+      "duration": 5.0
+    },
+    {
+      "text": "se necesitaban unas 7 8 nu por cierto de",
+      "start": 1175.36,
+      "duration": 4.24
+    },
+    {
+      "text": "continuar si esto te está removiendo un",
+      "start": 1178.039,
+      "duration": 3.401
+    },
+    {
+      "text": "poco porque ves que yo que sé tu rol",
+      "start": 1179.6,
+      "duration": 3.88
+    },
+    {
+      "text": "como el mío puede verse afectado, pues",
+      "start": 1181.44,
+      "duration": 4.119
+    },
+    {
+      "text": "yo hago lo que puedo. puesto un cable,",
+      "start": 1183.48,
+      "duration": 3.48
+    },
+    {
+      "text": "por lo menos para compartir lo que voy",
+      "start": 1185.559,
+      "duration": 3.0
+    },
+    {
+      "text": "viendo por ahí. Y te dejo en la",
+      "start": 1186.96,
+      "duration": 3.64
+    },
+    {
+      "text": "descripción de este vídeo un enlace a mi",
+      "start": 1188.559,
+      "duration": 4.48
+    },
+    {
+      "text": "grupo de WhatsApp en abierto gratis, en",
+      "start": 1190.6,
+      "duration": 4.12
+    },
+    {
+      "text": "el que de manera más dinámica y",
+      "start": 1193.039,
+      "duration": 4.201
+    },
+    {
+      "text": "frecuente te comparto lo que me voy",
+      "start": 1194.72,
+      "duration": 3.48
+    },
+    {
+      "text": "encontrando por ahí, lo que voy",
+      "start": 1197.24,
+      "duration": 2.439
+    },
+    {
+      "text": "aprendiendo y lo que voy leyendo. Ya te",
+      "start": 1198.2,
+      "duration": 3.56
+    },
+    {
+      "text": "digo, apúntate gratis y encuentras el",
+      "start": 1199.679,
+      "duration": 3.961
+    },
+    {
+      "text": "link en la descripción de este vídeo en",
+      "start": 1201.76,
+      "duration": 4.68
+    },
+    {
+      "text": "YouTube. Como ves, nos guste o no, es la",
+      "start": 1203.64,
+      "duration": 4.12
+    },
+    {
+      "text": "doble cara de una moneda, ¿no? Por un",
+      "start": 1206.44,
+      "duration": 3.32
+    },
+    {
+      "text": "lado, pues ves que hay ahorros",
+      "start": 1207.76,
+      "duration": 4.039
+    },
+    {
+      "text": "significativos de coste, de tiempo para",
+      "start": 1209.76,
+      "duration": 4.24
+    },
+    {
+      "text": "las empresas. Ya te digo, nos guste o",
+      "start": 1211.799,
+      "duration": 3.88
+    },
+    {
+      "text": "no, pero yo te cuento la realidad porque",
+      "start": 1214.0,
+      "duration": 3.08
+    },
+    {
+      "text": "mirando para otro lado pues no la vamos",
+      "start": 1215.679,
+      "duration": 4.041
+    },
+    {
+      "text": "a evitar. Es, pero eso nos está llevando",
+      "start": 1217.08,
+      "duration": 4.8
+    },
+    {
+      "text": "a que haya menos gente por equipo. Pero",
+      "start": 1219.72,
+      "duration": 3.72
+    },
+    {
+      "text": "por otro también es cierto que hay que",
+      "start": 1221.88,
+      "duration": 3.96
+    },
+    {
+      "text": "decir que eso está haciendo que cada vez",
+      "start": 1223.44,
+      "duration": 4.719
+    },
+    {
+      "text": "haya más startups, más empresas que",
+      "start": 1225.84,
+      "duration": 4.44
+    },
+    {
+      "text": "antes tenían unan un muro en lo que era",
+      "start": 1228.159,
+      "duration": 3.561
+    },
+    {
+      "text": "la creación de un producto de base",
+      "start": 1230.28,
+      "duration": 3.84
+    },
+    {
+      "text": "tecnológica. Y eso sí que es la parte",
+      "start": 1231.72,
+      "duration": 3.839
+    },
+    {
+      "text": "positiva, ¿no?, que podemos encontrar",
+      "start": 1234.12,
+      "duration": 4.2
+    },
+    {
+      "text": "que nuevas empresas aparecen, que surgen",
+      "start": 1235.559,
+      "duration": 4.641
+    },
+    {
+      "text": "nuevas empresas rápidamente gracias a lo",
+      "start": 1238.32,
+      "duration": 3.2
+    },
+    {
+      "text": "que es la facilidad de crear. O sea, por",
+      "start": 1240.2,
+      "duration": 3.959
+    },
+    {
+      "text": "un lado, una cosa negativa, por otra",
+      "start": 1241.52,
+      "duration": 5.84
+    },
+    {
+      "text": "podemos encontrar una cosa positiva. Eh,",
+      "start": 1244.159,
+      "duration": 5.52
+    },
+    {
+      "text": "eso puede generar además más demanda de",
+      "start": 1247.36,
+      "duration": 3.6
+    },
+    {
+      "text": "talento, o sea, que equipos más",
+      "start": 1249.679,
+      "duration": 2.801
+    },
+    {
+      "text": "pequeños, pero a lo mejor nos",
+      "start": 1250.96,
+      "duration": 3.36
+    },
+    {
+      "text": "encontramos, el futuro es difícil de",
+      "start": 1252.48,
+      "duration": 3.8
+    },
+    {
+      "text": "predecir, pero nos podemos encontrar con",
+      "start": 1254.32,
+      "duration": 3.56
+    },
+    {
+      "text": "muchas más empresas que en suma requiera",
+      "start": 1256.28,
+      "duration": 3.44
+    },
+    {
+      "text": "más gente, no lo sabemos. el resultado",
+      "start": 1257.88,
+      "duration": 3.84
+    },
+    {
+      "text": "puede ser que sea neto, ¿no? Y también",
+      "start": 1259.72,
+      "duration": 3.6
+    },
+    {
+      "text": "por otro lado, también el escenario que",
+      "start": 1261.72,
+      "duration": 5.439
+    },
+    {
+      "text": "podemos imaginar es que empresas que no",
+      "start": 1263.32,
+      "duration": 5.479
+    },
+    {
+      "text": "lo imaginaban van a encontrar",
+      "start": 1267.159,
+      "duration": 4.441
+    },
+    {
+      "text": "competidores donde antes era impensable",
+      "start": 1268.799,
+      "duration": 5.201
+    },
+    {
+      "text": "porque esos competidores no eran",
+      "start": 1271.6,
+      "duration": 4.079
+    },
+    {
+      "text": "impensables porque se suponía que no",
+      "start": 1274.0,
+      "duration": 2.84
+    },
+    {
+      "text": "podían llegar a tener ese tipo de",
+      "start": 1275.679,
+      "duration": 3.761
+    },
+    {
+      "text": "tecnología que antes era una barrera,",
+      "start": 1276.84,
+      "duration": 4.839
+    },
+    {
+      "text": "pero también va a haber, por tanto,",
+      "start": 1279.44,
+      "duration": 3.96
+    },
+    {
+      "text": "entonces va a haber muchas oportunidades",
+      "start": 1281.679,
+      "duration": 4.081
+    },
+    {
+      "text": "para todos aquellos que se adapten, pero",
+      "start": 1283.4,
+      "duration": 3.879
+    },
+    {
+      "text": "también habrá impactos reales y",
+      "start": 1285.76,
+      "duration": 3.36
+    },
+    {
+      "text": "dolorosos para muchos profesionales que",
+      "start": 1287.279,
+      "duration": 3.88
+    },
+    {
+      "text": "no se preparen, que no se adapten.",
+      "start": 1289.12,
+      "duration": 4.36
+    },
+    {
+      "text": "Porque eso es ineludible. Las empresas",
+      "start": 1291.159,
+      "duration": 4.441
+    },
+    {
+      "text": "podrán lograr más con menos personas,",
+      "start": 1293.48,
+      "duration": 5.439
+    },
+    {
+      "text": "pero muchos roles centrados en procesos",
+      "start": 1295.6,
+      "duration": 6.4
+    },
+    {
+      "text": "tradicionales van a tener que adaptarse,",
+      "start": 1298.919,
+      "duration": 5.161
+    },
+    {
+      "text": "reciclarse o acelerar en lo que es su",
+      "start": 1302.0,
+      "duration": 4.039
+    },
+    {
+      "text": "formación, transformación o adecuación",
+      "start": 1304.08,
+      "duration": 4.479
+    },
+    {
+      "text": "al nuevo panorama laboral que tenemos en",
+      "start": 1306.039,
+      "duration": 4.281
+    },
+    {
+      "text": "este sector. En cualquiera de los casos,",
+      "start": 1308.559,
+      "duration": 4.441
+    },
+    {
+      "text": "eh mi consejo, prepárate, fórmate. Si",
+      "start": 1310.32,
+      "duration": 4.52
+    },
+    {
+      "text": "bien siempre ha sido necesario formarse,",
+      "start": 1313.0,
+      "duration": 4.88
+    },
+    {
+      "text": "ahora todavía es ineludible. Eh, fórmate",
+      "start": 1314.84,
+      "duration": 6.56
+    },
+    {
+      "text": "rápido, escucha vídeo, lee libros si es",
+      "start": 1317.88,
+      "duration": 5.2
+    },
+    {
+      "text": "que se puede porque va muy lento. Mira",
+      "start": 1321.4,
+      "duration": 4.04
+    },
+    {
+      "text": "paper, ve tendencias, mira redes",
+      "start": 1323.08,
+      "duration": 4.32
+    },
+    {
+      "text": "sociales, filtra lo que es paja de lo",
+      "start": 1325.44,
+      "duration": 3.56
+    },
+    {
+      "text": "que es realidad, que eso yo sé que es",
+      "start": 1327.4,
+      "duration": 4.32
+    },
+    {
+      "text": "complicado, pero parece evidente y creo",
+      "start": 1329.0,
+      "duration": 4.32
+    },
+    {
+      "text": "que aunque no nos guste y a mí no me",
+      "start": 1331.72,
+      "duration": 4.199
+    },
+    {
+      "text": "gusta, no me gusta, nos movemos hacia",
+      "start": 1333.32,
+      "duration": 6.08
+    },
+    {
+      "text": "equipos con muchas menos personas que",
+      "start": 1335.919,
+      "duration": 6.24
+    },
+    {
+      "text": "aún así se necesitan personas, pero que",
+      "start": 1339.4,
+      "duration": 4.879
+    },
+    {
+      "text": "probablemente por otro lado nos",
+      "start": 1342.159,
+      "duration": 3.52
+    },
+    {
+      "text": "encontremos con que hay muchos, muchos",
+      "start": 1344.279,
+      "duration": 3.361
+    },
+    {
+      "text": "más equipos, porque aparecen muchas",
+      "start": 1345.679,
+      "duration": 3.561
+    },
+    {
+      "text": "empresas diferentes, muchas empresas que",
+      "start": 1347.64,
+      "duration": 3.56
+    },
+    {
+      "text": "antes era impensable porque como te",
+      "start": 1349.24,
+      "duration": 4.039
+    },
+    {
+      "text": "decía eh tenían una gran barrera en lo",
+      "start": 1351.2,
+      "duration": 3.4
+    },
+    {
+      "text": "que era creación de productos de base",
+      "start": 1353.279,
+      "duration": 3.161
+    },
+    {
+      "text": "tecnológica que requerían de personas,",
+      "start": 1354.6,
+      "duration": 4.36
+    },
+    {
+      "text": "costes, etcétera, que eran impensables",
+      "start": 1356.44,
+      "duration": 4.719
+    },
+    {
+      "text": "para ellos. En cualquiera de los casos,",
+      "start": 1358.96,
+      "duration": 5.079
+    },
+    {
+      "text": "eh si quieres tienes abierta la parte de",
+      "start": 1361.159,
+      "duration": 5.241
+    },
+    {
+      "text": "los comentarios del vídeo en YouTube",
+      "start": 1364.039,
+      "duration": 4.64
+    },
+    {
+      "text": "para que intercambiemos experiencias,",
+      "start": 1366.4,
+      "duration": 4.08
+    },
+    {
+      "text": "comentarios, sugerencias, preguntas y",
+      "start": 1368.679,
+      "duration": 4.161
+    },
+    {
+      "text": "demás. Y recuerda que además tienes el",
+      "start": 1370.48,
+      "duration": 4.24
+    },
+    {
+      "text": "acceso a mi grupo de WhatsApp que es",
+      "start": 1372.84,
+      "duration": 4.0
+    },
+    {
+      "text": "gratis por si quieres que también ahí de",
+      "start": 1374.72,
+      "duration": 3.36
+    },
+    {
+      "text": "una manera un poquito más rápida,",
+      "start": 1376.84,
+      "duration": 3.319
+    },
+    {
+      "text": "dinámica, te comparta lo que yo me voy",
+      "start": 1378.08,
+      "duration": 6.16
+    },
+    {
+      "text": "encontrando. Que la yegida te acompañe.",
+      "start": 1380.159,
+      "duration": 4.081
+    }
+  ],
+  "metadata": {
+    "video_id": "eOju3Z0VnHg",
+    "method": "native_captions",
+    "detected_language": "es",
+    "available_languages": [
+      "es"
+    ],
+    "is_generated": true,
+    "timestamp": "2026-03-29T21:14:29.215113",
+    "cost": 0.0,
+    "duration_seconds": 2766.361
+  }
+}
