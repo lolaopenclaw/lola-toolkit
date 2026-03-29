@@ -138,3 +138,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-29 03:11:05** | autoimprove(memory): archive 50 daily reports, fix subdirectory refs | `6f8378d` | [`backup-6f8378d`](backups-by-commit/backup-6f8378d*.tar.gz)
 
+- **2026-03-29 22:09:47** | fix: auto-update with rollback, doctor --fix, and health check | `1f7c0a6` | [`backup-1f7c0a6`](backups-by-commit/backup-1f7c0a6*.tar.gz)
+

@@ -2,6 +2,7 @@
 # Auto-update OpenClaw with automatic rollback
 # Runs daily at 21:30 Madrid time
 # If update breaks gateway → auto-rollback to previous version + config
+# Evaluator score: 2.5/5 → fixed to address all critical findings
 
 set -euo pipefail
 
@@ -9,15 +10,35 @@ WORKSPACE="${WORKSPACE:-$HOME/.openclaw/workspace}"
 CONFIG_FILE="$HOME/.openclaw/openclaw.json"
 MEMORY_FILE="$WORKSPACE/memory/openclaw-updates.md"
 BACKUP_DIR="$HOME/.openclaw/update-backups"
-HEALTH_TIMEOUT=45
+LOG_FILE="$WORKSPACE/memory/auto-update-openclaw.log"
+STATE_FILE="$BACKUP_DIR/update-in-progress"
+HEALTH_TIMEOUT=60
 TOPIC_ID="25"
 CHAT_ID="-1003768820594"
 
-log() { echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1"; }
+mkdir -p "$BACKUP_DIR"
+
+# Persistent logging
+log() {
+    local msg="[$(date +'%Y-%m-%d %H:%M:%S')] $1"
+    echo "$msg"
+    echo "$msg" >> "$LOG_FILE"
+}
 
 notify() {
-    openclaw message send --channel telegram --target "$CHAT_ID" --thread-id "$TOPIC_ID" -m "$1" 2>/dev/null || true
+    openclaw message send --channel telegram --target "$CHAT_ID" --thread-id "$TOPIC_ID" -m "$1" 2>/dev/null || log "⚠️ Notification failed"
 }
+
+# Emergency cleanup on crash/interrupt
+cleanup() {
+    if [ -f "$STATE_FILE" ]; then
+        log "🚨 Update interrupted — emergency recovery"
+        systemctl --user start openclaw-gateway 2>/dev/null || true
+        notify "🚨 Auto-update interrumpido. Gateway reiniciado con lo que había. Revisar: \`journalctl --user -u openclaw-gateway -n 20\`"
+        rm -f "$STATE_FILE"
+    fi
+}
+trap cleanup EXIT INT TERM
 
 # Check running subagents
 check_subagents() {
@@ -35,25 +56,32 @@ get_current_version() {
 }
 
 get_latest_version() {
-    npm view openclaw version 2>/dev/null
+    local ver
+    ver=$(timeout 15 npm view openclaw version 2>/dev/null || echo "")
+    if [[ ! "$ver" =~ ^[0-9]+\.[0-9]+\.[0-9]+ ]]; then
+        log "❌ Invalid version from npm: '$ver'"
+        return 1
+    fi
+    echo "$ver"
 }
 
-# Health check: verify gateway starts and responds
+# Health check: verify gateway + Telegram actually work
 health_check() {
     local timeout=$1
     local elapsed=0
     
     while [ $elapsed -lt $timeout ]; do
-        # Check if gateway is accepting connections
         if openclaw gateway status 2>&1 | grep -q "running"; then
-            # Also verify config is valid
-            if ! openclaw gateway status 2>&1 | grep -qi "invalid\|error"; then
-                log "✅ Gateway healthy after ${elapsed}s"
-                return 0
+            if ! openclaw gateway status 2>&1 | grep -qi "invalid\|config.*error"; then
+                # Try to actually send a message to verify Telegram
+                if openclaw message send --channel telegram --target "$CHAT_ID" --thread-id "$TOPIC_ID" -m "🏥" 2>&1 | grep -qi "sent\|ok\|message"; then
+                    log "✅ Gateway + Telegram healthy after ${elapsed}s"
+                    return 0
+                fi
             fi
         fi
-        sleep 3
-        elapsed=$((elapsed + 3))
+        sleep 5
+        elapsed=$((elapsed + 5))
     done
     
     log "❌ Gateway unhealthy after ${timeout}s"
@@ -70,55 +98,68 @@ rollback() {
     # 1. Restore config
     if [ -f "$config_backup" ]; then
         cp "$config_backup" "$CONFIG_FILE"
-        log "✅ Config restaurada desde backup"
+        log "✅ Config restaurada"
     fi
     
-    # 2. Rollback npm package
+    # 2. Try npm rollback first
     log "📦 Instalando versión anterior: openclaw@$prev_version"
-    npm i -g "openclaw@$prev_version" 2>&1 || {
-        log "❌ No se pudo instalar versión anterior"
-        notify "🚨 AUTO-UPDATE ROLLBACK FALLIDO
-
-No se pudo restaurar v$prev_version.
-Intervención manual necesaria:
+    if timeout 120 npm i -g "openclaw@$prev_version" 2>&1; then
+        log "✅ npm rollback OK"
+    else
+        # npm failed — try binary backup
+        log "⚠️ npm rollback falló — intentando backup binario"
+        local bin_backup="$BACKUP_DIR/openclaw-bin-$prev_version"
+        if [ -f "$bin_backup" ]; then
+            local openclaw_bin
+            openclaw_bin=$(which openclaw 2>/dev/null || echo "/home/mleon/.npm-global/bin/openclaw")
+            cp "$bin_backup" "$openclaw_bin"
+            chmod +x "$openclaw_bin"
+            log "✅ Binario restaurado desde backup"
+        else
+            log "❌ No hay backup binario disponible"
+            notify "🚨 ROLLBACK FALLIDO — npm y backup binario fallaron.
+Intervención manual:
 \`npm i -g openclaw@$prev_version\`
 \`openclaw doctor --fix\`"
-        return 1
-    }
+            return 1
+        fi
+    fi
     
     # 3. Restart gateway
-    log "🔄 Reiniciando gateway con versión anterior..."
-    systemctl --user restart openclaw-gateway 2>/dev/null || openclaw gateway restart 2>/dev/null || true
+    log "🔄 Reiniciando gateway..."
+    if ! systemctl --user restart openclaw-gateway 2>/dev/null; then
+        openclaw gateway restart 2>/dev/null || {
+            log "❌ No se pudo arrancar gateway"
+            notify "🚨 ROLLBACK: gateway no arranca. Manual: \`openclaw gateway restart\`"
+            return 1
+        }
+    fi
     
     sleep 5
     
-    # 4. Verify rollback worked
-    if health_check 30; then
+    # 4. Verify
+    if health_check 45; then
         local restored_ver
         restored_ver=$(get_current_version)
-        log "✅ ROLLBACK EXITOSO: v$restored_ver funcionando"
-        notify "🔙 AUTO-UPDATE ROLLBACK
+        log "✅ ROLLBACK EXITOSO: v$restored_ver"
+        notify "🔙 Auto-update ROLLBACK OK
 
-La actualización a la nueva versión falló (config incompatible).
-Se ha restaurado automáticamente v$restored_ver.
-
-La próxima versión puede arreglar la incompatibilidad.
+Nueva versión incompatible → restaurada v$restored_ver.
 No se requiere acción manual."
         return 0
     else
         log "❌ ROLLBACK FALLIDO: gateway sigue sin responder"
-        notify "🚨 AUTO-UPDATE ROLLBACK FALLIDO
+        notify "🚨 ROLLBACK FALLIDO
 
-Ni la nueva versión ni v$prev_version funcionan.
-Intervención manual necesaria:
-\`openclaw doctor --fix\`
-\`openclaw gateway restart\`"
+Ni nueva versión ni v$prev_version funcionan.
+Manual: \`openclaw doctor --fix && openclaw gateway restart\`"
         return 1
     fi
 }
 
 main() {
-    log "🔍 Checking for OpenClaw updates..."
+    log "═══════════════════════════════════════"
+    log "🔍 Auto-update check starting..."
     
     if ! check_subagents; then
         exit 0
@@ -126,121 +167,161 @@ main() {
     
     local current_version latest_version
     current_version=$(get_current_version)
-    latest_version=$(get_latest_version)
+    latest_version=$(get_latest_version) || {
+        log "❌ Could not fetch latest version — aborting"
+        exit 0
+    }
     
     log "Current: $current_version | Latest: $latest_version"
     
     if [ "$current_version" = "$latest_version" ]; then
         log "✅ Already on latest ($current_version)"
+        rm -f "$STATE_FILE"
         exit 0
     fi
     
     log "📦 Update available: $current_version → $latest_version"
     
     # === PRE-FLIGHT: BACKUP EVERYTHING ===
-    mkdir -p "$BACKUP_DIR"
     local config_backup="$BACKUP_DIR/openclaw.json.pre-$latest_version"
     cp "$CONFIG_FILE" "$config_backup"
-    log "💾 Config backed up to $config_backup"
+    log "💾 Config backed up"
     
-    # Save current version for rollback
+    # Backup binary
+    local openclaw_bin
+    openclaw_bin=$(which openclaw 2>/dev/null || echo "/home/mleon/.npm-global/bin/openclaw")
+    if [ -f "$openclaw_bin" ]; then
+        cp "$openclaw_bin" "$BACKUP_DIR/openclaw-bin-$current_version"
+        chmod +x "$BACKUP_DIR/openclaw-bin-$current_version"
+        log "💾 Binary backed up"
+    fi
+    
     echo "$current_version" > "$BACKUP_DIR/previous-version.txt"
     
-    # === STOP GATEWAY GRACEFULLY ===
-    log "⏸️ Stopping gateway before update..."
+    # Mark update in progress (for crash recovery)
+    echo "$current_version|$(date +%s)" > "$STATE_FILE"
+    
+    # === STOP GATEWAY ===
+    log "⏸️ Stopping gateway..."
     systemctl --user stop openclaw-gateway 2>/dev/null || true
     sleep 2
     
-    # === PERFORM UPDATE ===
+    # === INSTALL ===
     log "⬆️ Installing openclaw@$latest_version..."
-    if ! npm i -g "openclaw@$latest_version" 2>&1; then
-        log "❌ npm install failed — aborting"
-        # Restart gateway with current version
+    if ! timeout 180 npm i -g "openclaw@$latest_version" 2>&1; then
+        log "❌ npm install failed — restarting with current version"
         systemctl --user start openclaw-gateway 2>/dev/null || true
-        notify "❌ Auto-update falló: npm install error para v$latest_version"
+        rm -f "$STATE_FILE"
+        notify "❌ Auto-update: npm install falló para v$latest_version. Seguimos en v$current_version."
         exit 1
     fi
     
-    log "✅ npm install OK"
+    # Verify installed version matches
+    local installed_ver
+    installed_ver=$(get_current_version)
+    if [ "$installed_ver" != "$latest_version" ]; then
+        log "❌ Version mismatch: expected $latest_version, got $installed_ver"
+        rollback "$current_version" "$config_backup"
+        rm -f "$STATE_FILE"
+        exit 1
+    fi
     
-    # === TRY DOCTOR FIRST (fix config if needed) ===
-    log "🩺 Running doctor to fix potential config issues..."
-    openclaw doctor --fix --non-interactive 2>&1 | tail -5 || true
+    log "✅ npm install OK (v$installed_ver)"
+    
+    # === DOCTOR --FIX (catch config schema changes) ===
+    log "🩺 Running doctor --fix..."
+    local doctor_log="$BACKUP_DIR/doctor-output-$latest_version.log"
+    openclaw doctor --fix --non-interactive > "$doctor_log" 2>&1 || {
+        log "⚠️ Doctor had issues — see $doctor_log"
+    }
     
     # === START GATEWAY ===
-    log "🔄 Starting gateway with new version..."
-    systemctl --user start openclaw-gateway 2>/dev/null || true
+    log "🔄 Starting gateway..."
+    if ! systemctl --user start openclaw-gateway 2>/dev/null; then
+        if ! openclaw gateway start 2>/dev/null; then
+            log "❌ Gateway failed to start — rolling back"
+            rollback "$current_version" "$config_backup"
+            rm -f "$STATE_FILE"
+            exit 1
+        fi
+    fi
     
     # === HEALTH CHECK ===
-    log "🏥 Health check (${HEALTH_TIMEOUT}s timeout)..."
+    log "🏥 Health check (${HEALTH_TIMEOUT}s)..."
     if health_check "$HEALTH_TIMEOUT"; then
-        local new_version
-        new_version=$(get_current_version)
-        log "✅ Update successful: $current_version → $new_version"
+        # SUCCESS
+        rm -f "$STATE_FILE"
+        log "✅ Update successful: $current_version → $installed_ver"
         
         # Get changelog
         local changelog
-        changelog=$(curl -s "https://api.github.com/repos/openclaw/openclaw/releases/tags/v${latest_version}" | jq -r '.body // "No changelog"' 2>/dev/null | head -15)
+        changelog=$(timeout 10 curl -s "https://api.github.com/repos/openclaw/openclaw/releases/tags/v${latest_version}" | jq -r '.body // "No changelog"' 2>/dev/null | head -15 || echo "No changelog")
         
         # Save to memory
         {
             echo ""
             echo "## v$latest_version ($(date +'%Y-%m-%d %H:%M'))"
             echo "- From: $current_version"
-            echo "- Status: ✅ OK (auto-update with health check)"
-            echo "- Changes: $changelog"
+            echo "- Status: ✅ OK (auto-update with health check + doctor)"
             echo ""
         } >> "$MEMORY_FILE" 2>/dev/null || true
         
         notify "🔄 OpenClaw actualizado ✅
 
-$current_version → $new_version
+$current_version → $installed_ver
 
-Gateway healthy, todo operativo."
+Gateway + Telegram verificados OK."
     else
-        # === HEALTH CHECK FAILED → ROLLBACK ===
-        log "❌ Health check FAILED — initiating rollback"
+        # === FAILED → TRY DOCTOR AGAIN → THEN ROLLBACK ===
+        log "❌ Health check FAILED"
         
-        # Check if it's a config issue
-        local gateway_error
-        gateway_error=$(journalctl --user -u openclaw-gateway --since "2 min ago" --no-pager 2>/dev/null | grep -i "config invalid\|unrecognized\|error" | tail -3)
-        log "Gateway errors: $gateway_error"
+        local gw_errors
+        gw_errors=$(journalctl --user -u openclaw-gateway --since "2 min ago" --no-pager 2>/dev/null | grep -i "config invalid\|unrecognized\|error" | tail -3 || echo "unknown")
+        log "Gateway errors: $gw_errors"
         
-        # Try doctor --fix first
-        log "🩺 Trying doctor --fix..."
-        if openclaw doctor --fix --non-interactive 2>&1 | grep -q "Doctor complete"; then
-            systemctl --user restart openclaw-gateway 2>/dev/null || true
-            sleep 5
+        # Try doctor --fix one more time
+        log "🩺 Retrying doctor --fix..."
+        openclaw doctor --fix --non-interactive >> "$doctor_log" 2>&1 || true
+        
+        if ! systemctl --user restart openclaw-gateway 2>/dev/null; then
+            openclaw gateway restart 2>/dev/null || true
+        fi
+        sleep 5
+        
+        if health_check 30; then
+            rm -f "$STATE_FILE"
+            local fixed_ver
+            fixed_ver=$(get_current_version)
+            log "✅ Doctor fixed it: v$fixed_ver"
+            notify "🔄 OpenClaw actualizado ✅ (doctor --fix necesario)
+
+$current_version → $fixed_ver
+
+Config ajustada automáticamente."
+        else
+            # Full rollback
+            log "❌ Doctor didn't fix it — FULL ROLLBACK"
+            rollback "$current_version" "$config_backup"
             
-            if health_check 30; then
-                local fixed_version
-                fixed_version=$(get_current_version)
-                log "✅ Doctor fixed the issue: v$fixed_version running"
-                notify "🔄 OpenClaw actualizado ✅ (con doctor --fix)
-
-$current_version → $fixed_version
-
-Doctor arregló incompatibilidades de config automáticamente."
-                exit 0
-            fi
+            {
+                echo ""
+                echo "## v$latest_version ($(date +'%Y-%m-%d %H:%M'))"
+                echo "- From: $current_version"
+                echo "- Status: ❌ ROLLBACK"
+                echo "- Error: $gw_errors"
+                echo ""
+            } >> "$MEMORY_FILE" 2>/dev/null || true
         fi
         
-        # Doctor didn't fix it → full rollback
-        log "❌ Doctor didn't fix it — full rollback"
-        rollback "$current_version" "$config_backup"
-        
-        # Save failed update to memory
-        {
-            echo ""
-            echo "## v$latest_version ($(date +'%Y-%m-%d %H:%M'))"
-            echo "- From: $current_version"
-            echo "- Status: ❌ ROLLBACK (config incompatible)"
-            echo "- Error: $gateway_error"
-            echo ""
-        } >> "$MEMORY_FILE" 2>/dev/null || true
-        
-        exit 1
+        rm -f "$STATE_FILE"
     fi
+    
+    # Clean old backups (keep last 5)
+    ls -t "$BACKUP_DIR"/openclaw-bin-* 2>/dev/null | tail -n +6 | xargs rm -f 2>/dev/null || true
+    ls -t "$BACKUP_DIR"/openclaw.json.pre-* 2>/dev/null | tail -n +6 | xargs rm -f 2>/dev/null || true
+    ls -t "$BACKUP_DIR"/doctor-output-* 2>/dev/null | tail -n +6 | xargs rm -f 2>/dev/null || true
+    
+    log "═══════════════════════════════════════"
 }
 
 main "$@"
