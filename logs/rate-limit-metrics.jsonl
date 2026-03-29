@@ -796,3 +796,21 @@
 {"timestamp": "2026-03-29T15:00:01.133128+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
 {"timestamp": "2026-03-29T15:00:01.133128+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
 {"timestamp": "2026-03-29T15:00:01.133128+00:00", "api": "anthropic", "used": 19, "limit": 10, "pct": 190.0, "unit": "429s"}
+{"timestamp": "2026-03-29T16:00:01.456848+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-29T16:00:01.456848+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-29T16:00:01.456848+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-29T16:00:01.456848+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-29T16:00:01.456848+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-29T16:00:01.456848+00:00", "api": "anthropic", "used": 19, "limit": 10, "pct": 190.0, "unit": "429s"}
+{"timestamp": "2026-03-29T17:00:01.065482+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-29T17:00:01.065482+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-29T17:00:01.065482+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-29T17:00:01.065482+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-29T17:00:01.065482+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-29T17:00:01.065482+00:00", "api": "anthropic", "used": 19, "limit": 10, "pct": 190.0, "unit": "429s"}
+{"timestamp": "2026-03-29T18:00:02.176405+00:00", "api": "brave_search", "used": 0, "limit": 2000, "pct": 0.0}
+{"timestamp": "2026-03-29T18:00:02.176405+00:00", "api": "google_gemini", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-29T18:00:02.176405+00:00", "api": "google_sheets", "used": 0, "limit": 100, "pct": 0.0}
+{"timestamp": "2026-03-29T18:00:02.176405+00:00", "api": "google_drive", "used": 0, "limit": 1000, "pct": 0.0}
+{"timestamp": "2026-03-29T18:00:02.176405+00:00", "api": "openai_whisper", "used": 0, "limit": 50.0, "pct": 0.0, "unit": "usd"}
+{"timestamp": "2026-03-29T18:00:02.176405+00:00", "api": "anthropic", "used": 19, "limit": 10, "pct": 190.0, "unit": "429s"}

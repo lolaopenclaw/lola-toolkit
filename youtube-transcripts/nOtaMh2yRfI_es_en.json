@@ -1,0 +1,3481 @@
+{
+  "transcript": [
+    {
+      "text": "Mientras tú planificas sprint de",
+      "start": 0.12,
+      "duration": 3.279
+    },
+    {
+      "text": "semanas, la IA ya crea minutos, pero la",
+      "start": 1.52,
+      "duration": 3.44
+    },
+    {
+      "text": "mayoría de equipos sigue usando el",
+      "start": 3.399,
+      "duration": 3.121
+    },
+    {
+      "text": "sprint de hace 30 años sin",
+      "start": 4.96,
+      "duration": 3.4
+    },
+    {
+      "text": "cuestionárselo, mientras otros lo están",
+      "start": 6.52,
+      "duration": 3.72
+    },
+    {
+      "text": "adaptando a esos tiempos y están",
+      "start": 8.36,
+      "duration": 3.68
+    },
+    {
+      "text": "multiplicando su productividad por 10.",
+      "start": 10.24,
+      "duration": 3.72
+    },
+    {
+      "text": "Soy Javier Garzas. He transformado más",
+      "start": 12.04,
+      "duration": 4.319
+    },
+    {
+      "text": "de 800 equipos en estos más de 20 años y",
+      "start": 13.96,
+      "duration": 4.399
+    },
+    {
+      "text": "en este vídeo descubrirás exactamente",
+      "start": 16.359,
+      "duration": 3.881
+    },
+    {
+      "text": "cómo estamos adaptando los sprints para",
+      "start": 18.359,
+      "duration": 3.881
+    },
+    {
+      "text": "trabajar a velocidad de la IA y no en su",
+      "start": 20.24,
+      "duration": 3.359
+    },
+    {
+      "text": "contra.",
+      "start": 22.24,
+      "duration": 3.359
+    },
+    {
+      "text": "Si lees sobre los orígenes de Scrom,",
+      "start": 23.599,
+      "duration": 3.881
+    },
+    {
+      "text": "verás que los Sprints se crearon bajo",
+      "start": 25.599,
+      "duration": 4.08
+    },
+    {
+      "text": "tres supuestos y hoy en día esos",
+      "start": 27.48,
+      "duration": 4.08
+    },
+    {
+      "text": "supuestos se los ha cargado, los ha",
+      "start": 29.679,
+      "duration": 3.521
+    },
+    {
+      "text": "destruido, los ha hecho volar por los",
+      "start": 31.56,
+      "duration": 3.08
+    },
+    {
+      "text": "aires lo que es la IA. El primer",
+      "start": 33.2,
+      "duration": 3.48
+    },
+    {
+      "text": "supuesto es que crear productos era un",
+      "start": 34.64,
+      "duration": 4.4
+    },
+    {
+      "text": "proceso mucho, mucho más lento que ahora",
+      "start": 36.68,
+      "duration": 3.96
+    },
+    {
+      "text": "en aquellos tiempos, los años 80,",
+      "start": 39.04,
+      "duration": 3.039
+    },
+    {
+      "text": "¿cuánto tiempo hace de aquello? No había",
+      "start": 40.64,
+      "duration": 3.399
+    },
+    {
+      "text": "ni smartphone cuando se crea Scrom. El",
+      "start": 42.079,
+      "duration": 4.12
+    },
+    {
+      "text": "segundo supuesto es que solo los",
+      "start": 44.039,
+      "duration": 3.921
+    },
+    {
+      "text": "técnicos creaban, solo los",
+      "start": 46.199,
+      "duration": 4.321
+    },
+    {
+      "text": "desarrolladores, no había perfiles no",
+      "start": 47.96,
+      "duration": 4.96
+    },
+    {
+      "text": "técnicos creando productos. Y el tercer",
+      "start": 50.52,
+      "duration": 4.199
+    },
+    {
+      "text": "supuesto es que los equipos estaban",
+      "start": 52.92,
+      "duration": 4.76
+    },
+    {
+      "text": "formados exclusivamente por personas y",
+      "start": 54.719,
+      "duration": 4.881
+    },
+    {
+      "text": "no por asas. Hoy en día lo que es la",
+      "start": 57.68,
+      "duration": 3.359
+    },
+    {
+      "text": "inteligencia artificial te puedes",
+      "start": 59.6,
+      "duration": 3.24
+    },
+    {
+      "text": "imaginar que ha destruido estos",
+      "start": 61.039,
+      "duration": 3.52
+    },
+    {
+      "text": "supuestos. Con la llegada de la IA la",
+      "start": 62.84,
+      "duration": 3.56
+    },
+    {
+      "text": "velocidad de creación pues ha cambiado",
+      "start": 64.559,
+      "duration": 4.081
+    },
+    {
+      "text": "radicalmente a la velocidad de la luz.",
+      "start": 66.4,
+      "duration": 4.56
+    },
+    {
+      "text": "Eso hace necesario pensar en ciclos de",
+      "start": 68.64,
+      "duration": 4.519
+    },
+    {
+      "text": "vida donde convivan humanos e",
+      "start": 70.96,
+      "duration": 4.159
+    },
+    {
+      "text": "inteligencias artificiales y que, por",
+      "start": 73.159,
+      "duration": 3.6
+    },
+    {
+      "text": "supuesto, como no podía ser de otra",
+      "start": 75.119,
+      "duration": 4.121
+    },
+    {
+      "text": "manera, evolucionen el viejuno scrom.",
+      "start": 76.759,
+      "duration": 4.32
+    },
+    {
+      "text": "Tenemos la necesidad entonces de definir",
+      "start": 79.24,
+      "duration": 3.8
+    },
+    {
+      "text": "ciclo de vida que integren de forma",
+      "start": 81.079,
+      "duration": 4.08
+    },
+    {
+      "text": "explícita el trabajo de los humanos y de",
+      "start": 83.04,
+      "duration": 3.96
+    },
+    {
+      "text": "las IAs dentro de procesos de creación",
+      "start": 85.159,
+      "duration": 3.92
+    },
+    {
+      "text": "mucho más rápidos y continuos que los",
+      "start": 87.0,
+      "duration": 3.84
+    },
+    {
+      "text": "que había antes hace muchísimo tiempo.",
+      "start": 89.079,
+      "duration": 3.161
+    },
+    {
+      "text": "Ya te digo que Scrun es muy muy muy",
+      "start": 90.84,
+      "duration": 2.84
+    },
+    {
+      "text": "antiguo. Ya no basta con organizar",
+      "start": 92.24,
+      "duration": 3.48
+    },
+    {
+      "text": "tareas en un backlock de los de toda la",
+      "start": 93.68,
+      "duration": 3.92
+    },
+    {
+      "text": "vida sin más y pensar que eso me va a",
+      "start": 95.72,
+      "duration": 3.399
+    },
+    {
+      "text": "valer para los tiempos actuales que han",
+      "start": 97.6,
+      "duration": 3.72
+    },
+    {
+      "text": "cambiado tan drásticamente. Necesitamos",
+      "start": 99.119,
+      "duration": 4.401
+    },
+    {
+      "text": "modelos que expliquen cómo colaboran las",
+      "start": 101.32,
+      "duration": 3.52
+    },
+    {
+      "text": "personas y las inteligencias",
+      "start": 103.52,
+      "duration": 3.08
+    },
+    {
+      "text": "artificiales en lo que es la creación. y",
+      "start": 104.84,
+      "duration": 3.879
+    },
+    {
+      "text": "que además importante esto no fuer la",
+      "start": 106.6,
+      "duration": 3.96
+    },
+    {
+      "text": "velocidad y además también muy",
+      "start": 108.719,
+      "duration": 4.68
+    },
+    {
+      "text": "importante sin correr riesgos liberando",
+      "start": 110.56,
+      "duration": 4.68
+    },
+    {
+      "text": "versiones de cosas que acaban explotando",
+      "start": 113.399,
+      "duration": 4.32
+    },
+    {
+      "text": "y hay muchas propuestas al respecto. Hay",
+      "start": 115.24,
+      "duration": 4.04
+    },
+    {
+      "text": "algunas como las que se cuentan aquí,",
+      "start": 117.719,
+      "duration": 3.161
+    },
+    {
+      "text": "bueno, no te voy a citar miles de cosas",
+      "start": 119.28,
+      "duration": 3.199
+    },
+    {
+      "text": "si quieres me digas en los comentarios y",
+      "start": 120.88,
+      "duration": 3.4
+    },
+    {
+      "text": "te dejo más referencias, pero una de las",
+      "start": 122.479,
+      "duration": 4.201
+    },
+    {
+      "text": "más útiles que estamos viendo en lo que",
+      "start": 124.28,
+      "duration": 4.759
+    },
+    {
+      "text": "es la comunidad es organizar las tareas",
+      "start": 126.68,
+      "duration": 4.52
+    },
+    {
+      "text": "por carriles de velocidad. Los item que",
+      "start": 129.039,
+      "duration": 4.001
+    },
+    {
+      "text": "tienes en tus backlocks van a ir pasando",
+      "start": 131.2,
+      "duration": 3.92
+    },
+    {
+      "text": "por diferentes llamados carriles de",
+      "start": 133.04,
+      "duration": 3.76
+    },
+    {
+      "text": "velocidad. Y antes de entrar en estos",
+      "start": 135.12,
+      "duration": 4.68
+    },
+    {
+      "text": "carriles conviene comentar y explicar el",
+      "start": 136.8,
+      "duration": 4.64
+    },
+    {
+      "text": "llamado, se habla mucho de ello, en lo",
+      "start": 139.8,
+      "duration": 3.88
+    },
+    {
+      "text": "que es el IA human loop, o sea, la",
+      "start": 141.44,
+      "duration": 4.0
+    },
+    {
+      "text": "participación de lo que son los humanos",
+      "start": 143.68,
+      "duration": 3.639
+    },
+    {
+      "text": "con las IA, porque actualmente un ciclo",
+      "start": 145.44,
+      "duration": 3.68
+    },
+    {
+      "text": "de vida y creación serio tenemos que",
+      "start": 147.319,
+      "duration": 3.361
+    },
+    {
+      "text": "integrar lo que es la participación de",
+      "start": 149.12,
+      "duration": 4.44
+    },
+    {
+      "text": "de personas y lo que son IA, no se puede",
+      "start": 150.68,
+      "duration": 5.04
+    },
+    {
+      "text": "excluir uno u otro, pero tenemos que",
+      "start": 153.56,
+      "duration": 3.679
+    },
+    {
+      "text": "detallar antes de pasar a lo que son los",
+      "start": 155.72,
+      "duration": 3.32
+    },
+    {
+      "text": "carriles que hay tres tipos de maneras",
+      "start": 157.239,
+      "duration": 3.36
+    },
+    {
+      "text": "de participar. Uno, lo que es la",
+      "start": 159.04,
+      "duration": 3.8
+    },
+    {
+      "text": "autonomía total de la IA, prácticamente",
+      "start": 160.599,
+      "duration": 4.0
+    },
+    {
+      "text": "supervisión muy baja por parte de los",
+      "start": 162.84,
+      "duration": 3.44
+    },
+    {
+      "text": "humanos. Tenemos un siguiente nivel que",
+      "start": 164.599,
+      "duration": 4.081
+    },
+    {
+      "text": "es supervisión parcial del humano a lo",
+      "start": 166.28,
+      "duration": 4.48
+    },
+    {
+      "text": "que hace la IA y un tercer nivel que es",
+      "start": 168.68,
+      "duration": 5.76
+    },
+    {
+      "text": "supervisión total máxima del humano con",
+      "start": 170.76,
+      "duration": 5.52
+    },
+    {
+      "text": "la IA. Y ahora vamos a llevar estas",
+      "start": 174.44,
+      "duration": 3.68
+    },
+    {
+      "text": "ideas, las de los carriles y estos",
+      "start": 176.28,
+      "duration": 3.64
+    },
+    {
+      "text": "niveles de supervisión, a lo que sería",
+      "start": 178.12,
+      "duration": 3.72
+    },
+    {
+      "text": "la organización de un sprint o",
+      "start": 179.92,
+      "duration": 3.76
+    },
+    {
+      "text": "adaptación de un sprint o evolución de",
+      "start": 181.84,
+      "duration": 3.92
+    },
+    {
+      "text": "un sprint a lo que son carriles y a lo",
+      "start": 183.68,
+      "duration": 4.16
+    },
+    {
+      "text": "que es la generación moderna, no",
+      "start": 185.76,
+      "duration": 4.0
+    },
+    {
+      "text": "viejuna, actual con lo que es",
+      "start": 187.84,
+      "duration": 3.84
+    },
+    {
+      "text": "inteligencia artificial y bitec coding.",
+      "start": 189.76,
+      "duration": 3.64
+    },
+    {
+      "text": "Imagínate una carretera, carretera, una",
+      "start": 191.68,
+      "duration": 3.279
+    },
+    {
+      "text": "autovía, cualquier carretera, por lo",
+      "start": 193.4,
+      "duration": 3.119
+    },
+    {
+      "text": "menos al menos en mi pueblo, las",
+      "start": 194.959,
+      "duration": 3.36
+    },
+    {
+      "text": "carreteras tienen varios carriles y cada",
+      "start": 196.519,
+      "duration": 3.561
+    },
+    {
+      "text": "carril se destina a un tipo de",
+      "start": 198.319,
+      "duration": 3.48
+    },
+    {
+      "text": "velocidad, a un tipo de vehículo. Hay",
+      "start": 200.08,
+      "duration": 3.32
+    },
+    {
+      "text": "carriles específicos donde van los",
+      "start": 201.799,
+      "duration": 4.121
+    },
+    {
+      "text": "coches a toda velocidad y otros carriles",
+      "start": 203.4,
+      "duration": 4.199
+    },
+    {
+      "text": "destinados típicamente, ya te digo, en",
+      "start": 205.92,
+      "duration": 3.2
+    },
+    {
+      "text": "los sueles seres el de la derecha, el de",
+      "start": 207.599,
+      "duration": 3.2
+    },
+    {
+      "text": "la derecha del todo para vehículos mucho",
+      "start": 209.12,
+      "duration": 3.28
+    },
+    {
+      "text": "más lentos, lo que son camiones,",
+      "start": 210.799,
+      "duration": 3.921
+    },
+    {
+      "text": "tractores y ese tipo de cosas. Así unos",
+      "start": 212.4,
+      "duration": 4.16
+    },
+    {
+      "text": "pues no frenan a los otros, ¿no? Y los",
+      "start": 214.72,
+      "duration": 3.56
+    },
+    {
+      "text": "camiones van por la derecha y no frenan",
+      "start": 216.56,
+      "duration": 3.12
+    },
+    {
+      "text": "a los vehículos que van a toda velocidad",
+      "start": 218.28,
+      "duration": 2.92
+    },
+    {
+      "text": "por la izquierda y se adelanta por la",
+      "start": 219.68,
+      "duration": 3.199
+    },
+    {
+      "text": "izquierda y sin mirar. Debes imaginar",
+      "start": 221.2,
+      "duration": 4.239
+    },
+    {
+      "text": "entonces que el trabajo de un sprint hoy",
+      "start": 222.879,
+      "duration": 4.28
+    },
+    {
+      "text": "en día, dado que hay diferentes",
+      "start": 225.439,
+      "duration": 3.481
+    },
+    {
+      "text": "velocidades, dado que hay",
+      "start": 227.159,
+      "duration": 4.08
+    },
+    {
+      "text": "participaciones diferentes, donde hayas",
+      "start": 228.92,
+      "duration": 4.039
+    },
+    {
+      "text": "que entran más, donde hay supervisiones",
+      "start": 231.239,
+      "duration": 3.881
+    },
+    {
+      "text": "mayores o menores por humanos, se va a",
+      "start": 232.959,
+      "duration": 4.761
+    },
+    {
+      "text": "asimilar o se va a parecer mucho a este",
+      "start": 235.12,
+      "duration": 4.52
+    },
+    {
+      "text": "a esta a este símil que te comentaba, al",
+      "start": 237.72,
+      "duration": 3.439
+    },
+    {
+      "text": "de los carriles, ¿no? Tendremos carriles",
+      "start": 239.64,
+      "duration": 3.64
+    },
+    {
+      "text": "más rápidos y tendremos carriles más",
+      "start": 241.159,
+      "duration": 4.681
+    },
+    {
+      "text": "lentos. Debes imaginar el trabajo dentro",
+      "start": 243.28,
+      "duration": 4.959
+    },
+    {
+      "text": "de un sprint que al final ya veremos de",
+      "start": 245.84,
+      "duration": 3.84
+    },
+    {
+      "text": "este vídeo y le acabamos llamando",
+      "start": 248.239,
+      "duration": 2.92
+    },
+    {
+      "text": "sprint, si es sprint de toda la vida o",
+      "start": 249.68,
+      "duration": 2.68
+    },
+    {
+      "text": "cómo queda. Luego lo dejamos para el",
+      "start": 251.159,
+      "duration": 3.561
+    },
+    {
+      "text": "final de una manera similar a esta a",
+      "start": 252.36,
+      "duration": 4.04
+    },
+    {
+      "text": "esta metáfora que te ponía de los",
+      "start": 254.72,
+      "duration": 4.359
+    },
+    {
+      "text": "carriles de velocidad. La idea es que",
+      "start": 256.4,
+      "duration": 4.359
+    },
+    {
+      "text": "definamos o que definas o a lo que tú",
+      "start": 259.079,
+      "duration": 2.56
+    },
+    {
+      "text": "quieras, como lo estamos haciendo",
+      "start": 260.759,
+      "duration": 2.401
+    },
+    {
+      "text": "nosotros, con lo que como lo estoy yo",
+      "start": 261.639,
+      "duration": 2.721
+    },
+    {
+      "text": "haciendo con la gente ahí fuera con la",
+      "start": 263.16,
+      "duration": 2.8
+    },
+    {
+      "text": "que colaboro, con la que ayudo y",
+      "start": 264.36,
+      "duration": 4.08
+    },
+    {
+      "text": "asesoro, pues es que definas diferentes",
+      "start": 265.96,
+      "duration": 5.28
+    },
+    {
+      "text": "ciclos de trabajo o diferentes según",
+      "start": 268.44,
+      "duration": 4.599
+    },
+    {
+      "text": "tres cosas principales. Una, la",
+      "start": 271.24,
+      "duration": 3.48
+    },
+    {
+      "text": "velocidad a lo que va a la que va a ir",
+      "start": 273.039,
+      "duration": 4.801
+    },
+    {
+      "text": "esa tarea. otro, el tipo de tarea y otra",
+      "start": 274.72,
+      "duration": 5.28
+    },
+    {
+      "text": "es la intervención humana, si es una",
+      "start": 277.84,
+      "duration": 4.4
+    },
+    {
+      "text": "supervisión mayor o es una supervisión",
+      "start": 280.0,
+      "duration": 4.199
+    },
+    {
+      "text": "menor por parte, que es lo que está",
+      "start": 282.24,
+      "duration": 4.56
+    },
+    {
+      "text": "haciendo la idea de los carriles o los",
+      "start": 284.199,
+      "duration": 4.0
+    },
+    {
+      "text": "loops también lo vas a escuchar en",
+      "start": 286.8,
+      "duration": 3.04
+    },
+    {
+      "text": "inglés, pues no es nada nuevo, es un",
+      "start": 288.199,
+      "duration": 4.321
+    },
+    {
+      "text": "algo muy muy antiguo, no no está claro",
+      "start": 289.84,
+      "duration": 5.079
+    },
+    {
+      "text": "el origen, pero la primera mención, al",
+      "start": 292.52,
+      "duration": 4.239
+    },
+    {
+      "text": "menos que tenemos como referencia, es de",
+      "start": 294.919,
+      "duration": 4.321
+    },
+    {
+      "text": "Microsoft, que a finales de los años",
+      "start": 296.759,
+      "duration": 5.16
+    },
+    {
+      "text": "2010 empieza a trabajar la idea de",
+      "start": 299.24,
+      "duration": 5.04
+    },
+    {
+      "text": "organizarse por carriles de mayor o",
+      "start": 301.919,
+      "duration": 5.0
+    },
+    {
+      "text": "menor velocidad de impacto más interno e",
+      "start": 304.28,
+      "duration": 5.16
+    },
+    {
+      "text": "impacto más externo, cuando empieza a",
+      "start": 306.919,
+      "duration": 4.361
+    },
+    {
+      "text": "hacer migraciones a lo que es la nube,",
+      "start": 309.44,
+      "duration": 3.759
+    },
+    {
+      "text": "empieza a pasar al cloud y similar.",
+      "start": 311.28,
+      "duration": 3.52
+    },
+    {
+      "text": "Desde hace muchos años hemos estado",
+      "start": 313.199,
+      "duration": 3.0
+    },
+    {
+      "text": "trabajando con estos dos carriles. Ya te",
+      "start": 314.8,
+      "duration": 3.119
+    },
+    {
+      "text": "digo que no es algo novedoso, o sea, dos",
+      "start": 316.199,
+      "duration": 3.641
+    },
+    {
+      "text": "velocidades que hoy la IA ha acelerado",
+      "start": 317.919,
+      "duration": 4.481
+    },
+    {
+      "text": "muchísimo, pero es que además la IA nos",
+      "start": 319.84,
+      "duration": 4.52
+    },
+    {
+      "text": "ha llevado a tener un tercer carril, que",
+      "start": 322.4,
+      "duration": 3.519
+    },
+    {
+      "text": "esto es muy novedoso, del que se está",
+      "start": 324.36,
+      "duration": 3.48
+    },
+    {
+      "text": "hablando ahora mismo mucho en los foros,",
+      "start": 325.919,
+      "duration": 3.84
+    },
+    {
+      "text": "comunidades, diferentes ámbitos en los",
+      "start": 327.84,
+      "duration": 3.639
+    },
+    {
+      "text": "que se está planteando como deben ser",
+      "start": 329.759,
+      "duration": 3.88
+    },
+    {
+      "text": "los nuevos modelos de trabajo para este",
+      "start": 331.479,
+      "duration": 3.84
+    },
+    {
+      "text": "tipo de casuísticas en las cuales las",
+      "start": 333.639,
+      "duration": 3.12
+    },
+    {
+      "text": "velocidades son más grandes, la IA",
+      "start": 335.319,
+      "duration": 3.16
+    },
+    {
+      "text": "participa, eh hay que controlar los",
+      "start": 336.759,
+      "duration": 3.56
+    },
+    {
+      "text": "riesgos, personas no técnicas también",
+      "start": 338.479,
+      "duration": 3.601
+    },
+    {
+      "text": "participan en la creación, etcétera,",
+      "start": 340.319,
+      "duration": 3.72
+    },
+    {
+      "text": "¿no? Ya te digo que está apareciendo y",
+      "start": 342.08,
+      "duration": 3.959
+    },
+    {
+      "text": "sobre la mesa ahora mismo tenemos te lo",
+      "start": 344.039,
+      "duration": 5.081
+    },
+    {
+      "text": "comento, un tercer carril nuevo frente a",
+      "start": 346.039,
+      "duration": 4.921
+    },
+    {
+      "text": "los dos que ya se habían trabajado de",
+      "start": 349.12,
+      "duration": 3.04
+    },
+    {
+      "text": "siempre, ya te digo desde hace",
+      "start": 350.96,
+      "duration": 2.88
+    },
+    {
+      "text": "muchísimos años que eso ya lo hablaba",
+      "start": 352.16,
+      "duration": 3.599
+    },
+    {
+      "text": "Microsoft hace muchísimo tiempo, ¿no? En",
+      "start": 353.84,
+      "duration": 3.479
+    },
+    {
+      "text": "los foros está hablando, ya te decía,",
+      "start": 355.759,
+      "duration": 3.201
+    },
+    {
+      "text": "sobre estos dos carriles de trabajo con",
+      "start": 357.319,
+      "duration": 3.361
+    },
+    {
+      "text": "IA. Hay uno que es el carril que más",
+      "start": 358.96,
+      "duration": 3.6
+    },
+    {
+      "text": "conocido, muy popular, que es el carril",
+      "start": 360.68,
+      "duration": 3.359
+    },
+    {
+      "text": "interno, que vamos a mantenerlo también",
+      "start": 362.56,
+      "duration": 2.759
+    },
+    {
+      "text": "en la actualidad, pero lo vamos a",
+      "start": 364.039,
+      "duration": 3.201
+    },
+    {
+      "text": "modificar. ese carril interno o de",
+      "start": 365.319,
+      "duration": 4.361
+    },
+    {
+      "text": "velocidad alta, en inglés es el inner",
+      "start": 367.24,
+      "duration": 5.0
+    },
+    {
+      "text": "loop, es el velocidad muy rápida, ya",
+      "start": 369.68,
+      "duration": 5.4
+    },
+    {
+      "text": "existía y es el típico de desarrollo, de",
+      "start": 372.24,
+      "duration": 5.079
+    },
+    {
+      "text": "creación, de construcción y estás",
+      "start": 375.08,
+      "duration": 3.6
+    },
+    {
+      "text": "haciendo desarrollo software, es el de",
+      "start": 377.319,
+      "duration": 3.44
+    },
+    {
+      "text": "desarrollador y todas las facetas que lo",
+      "start": 378.68,
+      "duration": 3.76
+    },
+    {
+      "text": "rodean. Si no desarrolláis software, es",
+      "start": 380.759,
+      "duration": 2.961
+    },
+    {
+      "text": "el de la creación de lo que estéis",
+      "start": 382.44,
+      "duration": 4.159
+    },
+    {
+      "text": "creando, ¿vale? Es uno que hoy en día ha",
+      "start": 383.72,
+      "duration": 5.56
+    },
+    {
+      "text": "disparado a la mortalmente la velocidad",
+      "start": 386.599,
+      "duration": 5.241
+    },
+    {
+      "text": "la IA, ¿no? Ya es imposible que digamos",
+      "start": 389.28,
+      "duration": 4.72
+    },
+    {
+      "text": "en un ciclo de vida actual trabajemos en",
+      "start": 391.84,
+      "duration": 4.12
+    },
+    {
+      "text": "ese carril sin la IA. lo ha acelerado",
+      "start": 394.0,
+      "duration": 3.96
+    },
+    {
+      "text": "muchísimo. Y aquí es donde nos vamos a",
+      "start": 395.96,
+      "duration": 3.359
+    },
+    {
+      "text": "encontrar en este carril, el primer",
+      "start": 397.96,
+      "duration": 3.12
+    },
+    {
+      "text": "carril que te cuento, el carril llamado",
+      "start": 399.319,
+      "duration": 4.081
+    },
+    {
+      "text": "interno o el carril de alta velocidad en",
+      "start": 401.08,
+      "duration": 4.92
+    },
+    {
+      "text": "el que van tareas a toda toda velocidad,",
+      "start": 403.4,
+      "duration": 3.76
+    },
+    {
+      "text": "velocidad de la luz, no lo puedes",
+      "start": 406.0,
+      "duration": 2.8
+    },
+    {
+      "text": "frenar, no debes frenarlas, no las",
+      "start": 407.16,
+      "duration": 3.4
+    },
+    {
+      "text": "frenes. Bueno, pues ahí aquí vamos a",
+      "start": 408.8,
+      "duration": 3.519
+    },
+    {
+      "text": "situar lo que típicamente se llama B",
+      "start": 410.56,
+      "duration": 3.199
+    },
+    {
+      "text": "coding, ¿vale? el B coding de toda la",
+      "start": 412.319,
+      "duration": 2.401
+    },
+    {
+      "text": "vida, este que hemos hablado muchas",
+      "start": 413.759,
+      "duration": 2.201
+    },
+    {
+      "text": "veces, bueno, ya que tenía aquí que el",
+      "start": 414.72,
+      "duration": 3.24
+    },
+    {
+      "text": "libro este el B coding. Entonces, la I",
+      "start": 415.96,
+      "duration": 4.0
+    },
+    {
+      "text": "aquí trabaja muy rápido, muy rápido, muy",
+      "start": 417.96,
+      "duration": 4.239
+    },
+    {
+      "text": "rápido. Hace algoritmica, hace creación,",
+      "start": 419.96,
+      "duration": 4.76
+    },
+    {
+      "text": "hace todo a una velocidad mortal, genera",
+      "start": 422.199,
+      "duration": 3.961
+    },
+    {
+      "text": "un desde una idea en minutos",
+      "start": 424.72,
+      "duration": 3.879
+    },
+    {
+      "text": "prácticamente lo que es un prototipo y",
+      "start": 426.16,
+      "duration": 4.4
+    },
+    {
+      "text": "lo que circula por este carril, ¿vale?",
+      "start": 428.599,
+      "duration": 3.401
+    },
+    {
+      "text": "Tenéis que mantener este carril, tenéis",
+      "start": 430.56,
+      "duration": 3.72
+    },
+    {
+      "text": "que definir este carril, va a tener",
+      "start": 432.0,
+      "duration": 4.36
+    },
+    {
+      "text": "mucha autonomía la IA. Aquí la IA va a",
+      "start": 434.28,
+      "duration": 3.56
+    },
+    {
+      "text": "ser superautónoma, va a ser una",
+      "start": 436.36,
+      "duration": 3.239
+    },
+    {
+      "text": "supervisión muy baja por parte del",
+      "start": 437.84,
+      "duration": 3.72
+    },
+    {
+      "text": "humano. Y este ciclo ocurre muy rápido,",
+      "start": 439.599,
+      "duration": 4.04
+    },
+    {
+      "text": "ocurre en minutos. Este ciclo participan",
+      "start": 441.56,
+      "duration": 4.12
+    },
+    {
+      "text": "también personas, importantísimo,",
+      "start": 443.639,
+      "duration": 4.68
+    },
+    {
+      "text": "personas no técnicas. Este carril es de",
+      "start": 445.68,
+      "duration": 4.56
+    },
+    {
+      "text": "personas técnicas y de personas no",
+      "start": 448.319,
+      "duration": 3.841
+    },
+    {
+      "text": "técnicas y cada vez va a ser un carril",
+      "start": 450.24,
+      "duration": 3.959
+    },
+    {
+      "text": "más de personas no técnicas de un",
+      "start": 452.16,
+      "duration": 4.0
+    },
+    {
+      "text": "product manager que de repente crea un",
+      "start": 454.199,
+      "duration": 4.56
+    },
+    {
+      "text": "prototipo algo impensable tiempo atrás",
+      "start": 456.16,
+      "duration": 4.439
+    },
+    {
+      "text": "sin pasar por lo que era un equipo de",
+      "start": 458.759,
+      "duration": 3.28
+    },
+    {
+      "text": "personas técnicas. Pero hoy en día lo va",
+      "start": 460.599,
+      "duration": 3.04
+    },
+    {
+      "text": "a hacer, lo va a hacer en minutos y hay",
+      "start": 462.039,
+      "duration": 3.481
+    },
+    {
+      "text": "que dejar además que esto sea así. Y",
+      "start": 463.639,
+      "duration": 4.28
+    },
+    {
+      "text": "sirve este carril, ¿vale? y lo que lo",
+      "start": 465.52,
+      "duration": 4.0
+    },
+    {
+      "text": "que etiquetéis que va a ir a este",
+      "start": 467.919,
+      "duration": 3.72
+    },
+    {
+      "text": "carril, sobre todo para explorar, para",
+      "start": 469.52,
+      "duration": 4.239
+    },
+    {
+      "text": "probar alternativas, para validar lo más",
+      "start": 471.639,
+      "duration": 4.601
+    },
+    {
+      "text": "rápido posible, para que en vez de estar",
+      "start": 473.759,
+      "duration": 4.641
+    },
+    {
+      "text": "eh con pantallazos, con PowerPoint,",
+      "start": 476.24,
+      "duration": 3.44
+    },
+    {
+      "text": "pensando lo que van a querer vuestros",
+      "start": 478.4,
+      "duration": 3.12
+    },
+    {
+      "text": "usuarios, clientes o similar, se lo",
+      "start": 479.68,
+      "duration": 4.359
+    },
+    {
+      "text": "enseñéis a usuarios cercanos, a usuarios",
+      "start": 481.52,
+      "duration": 4.76
+    },
+    {
+      "text": "beta, a Friends and Family para que",
+      "start": 484.039,
+      "duration": 3.56
+    },
+    {
+      "text": "exploréis soluciones, probéis",
+      "start": 486.28,
+      "duration": 3.08
+    },
+    {
+      "text": "alternativas lo más rápido posible, la",
+      "start": 487.599,
+      "duration": 3.841
+    },
+    {
+      "text": "validéis. No es un carril, y lo tenéis",
+      "start": 489.36,
+      "duration": 3.72
+    },
+    {
+      "text": "que entender así, este que es el carril",
+      "start": 491.44,
+      "duration": 3.36
+    },
+    {
+      "text": "interno, el carril de alta velocidad",
+      "start": 493.08,
+      "duration": 3.44
+    },
+    {
+      "text": "para que salgan las cosas a producción.",
+      "start": 494.8,
+      "duration": 3.48
+    },
+    {
+      "text": "No, no lo es. No, no lo es. No tiene que",
+      "start": 496.52,
+      "duration": 2.92
+    },
+    {
+      "text": "ser para salir a producción. Es un",
+      "start": 498.28,
+      "duration": 2.639
+    },
+    {
+      "text": "carril para validar lo más rápido",
+      "start": 499.44,
+      "duration": 3.56
+    },
+    {
+      "text": "posible. Y un consejo que os doy es que",
+      "start": 500.919,
+      "duration": 3.921
+    },
+    {
+      "text": "defináis este carril en vuestro ciclo",
+      "start": 503.0,
+      "duration": 4.08
+    },
+    {
+      "text": "vida de trabajo y que además etiquetéis",
+      "start": 504.84,
+      "duration": 4.639
+    },
+    {
+      "text": "los íems o los items o los elementos o",
+      "start": 507.08,
+      "duration": 4.28
+    },
+    {
+      "text": "las tareas o como queráis llamarlo de",
+      "start": 509.479,
+      "duration": 4.401
+    },
+    {
+      "text": "trabajo, vuestro backlock para que quede",
+      "start": 511.36,
+      "duration": 5.08
+    },
+    {
+      "text": "claro que ese item va a ir por este",
+      "start": 513.88,
+      "duration": 4.76
+    },
+    {
+      "text": "carril de alta velocidad, va a ir a toda",
+      "start": 516.44,
+      "duration": 3.8
+    },
+    {
+      "text": "velocidad por ahí. Importante este",
+      "start": 518.64,
+      "duration": 4.12
+    },
+    {
+      "text": "carril, además no puede verse frenado",
+      "start": 520.24,
+      "duration": 5.159
+    },
+    {
+      "text": "por un planning, por una review al final",
+      "start": 522.76,
+      "duration": 4.88
+    },
+    {
+      "text": "de un sprint. Eso es muy antiguo, muy",
+      "start": 525.399,
+      "duration": 3.601
+    },
+    {
+      "text": "viejuno. No, no, no, por favor, no lo",
+      "start": 527.64,
+      "duration": 2.759
+    },
+    {
+      "text": "hagáis así, ¿vale? Podéis meter en este",
+      "start": 529.0,
+      "duration": 3.04
+    },
+    {
+      "text": "carril que las cosas que pasan a toda",
+      "start": 530.399,
+      "duration": 3.041
+    },
+    {
+      "text": "velocidad, esa moto que va a toda",
+      "start": 532.04,
+      "duration": 3.359
+    },
+    {
+      "text": "velocidad, ese Ferrari, ese porche que",
+      "start": 533.44,
+      "duration": 3.36
+    },
+    {
+      "text": "va por el carril de la izquierda a toda",
+      "start": 535.399,
+      "duration": 3.081
+    },
+    {
+      "text": "velocidad, no puede, yo que sé, pararse",
+      "start": 536.8,
+      "duration": 3.2
+    },
+    {
+      "text": "cada 10 minutos a hablar con 30",
+      "start": 538.48,
+      "duration": 3.359
+    },
+    {
+      "text": "personas. Aquí las cosas deben ir a su",
+      "start": 540.0,
+      "duration": 3.839
+    },
+    {
+      "text": "ritmo. No lo pueden frenar ni perfiles,",
+      "start": 541.839,
+      "duration": 4.401
+    },
+    {
+      "text": "ni ceremonias, ni personas, ni similar.",
+      "start": 543.839,
+      "duration": 4.481
+    },
+    {
+      "text": "Debe ir a toda velocidad. Luego vamos a",
+      "start": 546.24,
+      "duration": 4.56
+    },
+    {
+      "text": "ver, ¿vale? si esto lo aguanta un Scrom",
+      "start": 548.32,
+      "duration": 4.48
+    },
+    {
+      "text": "o o no te lo dejo para el final, luego",
+      "start": 550.8,
+      "duration": 3.599
+    },
+    {
+      "text": "lo hablamos, pero aquí quédate con la",
+      "start": 552.8,
+      "duration": 3.76
+    },
+    {
+      "text": "idea de que esto va a toda velocidad",
+      "start": 554.399,
+      "duration": 4.161
+    },
+    {
+      "text": "hasta el punto de que ya esto es cierto",
+      "start": 556.56,
+      "duration": 4.04
+    },
+    {
+      "text": "que ya no es muy novedoso hoy en día, no",
+      "start": 558.56,
+      "duration": 3.76
+    },
+    {
+      "text": "había mucha gente que ya lo utilizaba y",
+      "start": 560.6,
+      "duration": 3.28
+    },
+    {
+      "text": "para utilizar para acelerar este tipo de",
+      "start": 562.32,
+      "duration": 3.8
+    },
+    {
+      "text": "tareas utilizaban el llamado B coding.",
+      "start": 563.88,
+      "duration": 4.079
+    },
+    {
+      "text": "Pero también te tengo que que contar",
+      "start": 566.12,
+      "duration": 3.48
+    },
+    {
+      "text": "aquí y esto es muy importante también",
+      "start": 567.959,
+      "duration": 3.041
+    },
+    {
+      "text": "aparte de que lo aceleres y lo",
+      "start": 569.6,
+      "duration": 4.08
+    },
+    {
+      "text": "mantengas, lo fomentes. Una cosa muy",
+      "start": 571.0,
+      "duration": 4.519
+    },
+    {
+      "text": "importante, muy importante, quédate esto",
+      "start": 573.68,
+      "duration": 3.68
+    },
+    {
+      "text": "muy importante porque mucha gente se me",
+      "start": 575.519,
+      "duration": 4.041
+    },
+    {
+      "text": "ha venido arriba, se ha puesto a solo",
+      "start": 577.36,
+      "duration": 3.919
+    },
+    {
+      "text": "pasar cosas por el carril de toda",
+      "start": 579.56,
+      "duration": 3.24
+    },
+    {
+      "text": "velocidad y aquí, claro, los accidentes",
+      "start": 581.279,
+      "duration": 2.921
+    },
+    {
+      "text": "cuando vas a toda velocidad pues son",
+      "start": 582.8,
+      "duration": 2.76
+    },
+    {
+      "text": "fuertes, no hay que tener cuidado.",
+      "start": 584.2,
+      "duration": 2.48
+    },
+    {
+      "text": "Entonces, se ha venido muy arriba, se ha",
+      "start": 585.56,
+      "duration": 2.48
+    },
+    {
+      "text": "quedado solo en este carril de alta",
+      "start": 586.68,
+      "duration": 3.279
+    },
+    {
+      "text": "velocidad, el carril llamado interno, y",
+      "start": 588.04,
+      "duration": 3.44
+    },
+    {
+      "text": "eso te puede llevar a un lado",
+      "start": 589.959,
+      "duration": 3.801
+    },
+    {
+      "text": "tremendamente oscuro y peligroso.",
+      "start": 591.48,
+      "duration": 4.359
+    },
+    {
+      "text": "Fíjate, sin ir más lejos, que hace unos",
+      "start": 593.76,
+      "duration": 4.68
+    },
+    {
+      "text": "meses, tiempecito, e incluso una empresa",
+      "start": 595.839,
+      "duration": 5.24
+    },
+    {
+      "text": "del tamaño como es la mismísima Amazon,",
+      "start": 598.44,
+      "duration": 5.6
+    },
+    {
+      "text": "dejó demasiadas cosas sin control en el",
+      "start": 601.079,
+      "duration": 5.481
+    },
+    {
+      "text": "carril rápido, demasiada autonomía a la",
+      "start": 604.04,
+      "duration": 5.64
+    },
+    {
+      "text": "IA, sin supervisión y la lomparda, ¿no?",
+      "start": 606.56,
+      "duration": 5.12
+    },
+    {
+      "text": "Llegaron a reportarse hasta cuatro",
+      "start": 609.68,
+      "duration": 4.04
+    },
+    {
+      "text": "fallos críticos, muy críticos, ¿no? Y",
+      "start": 611.68,
+      "duration": 4.12
+    },
+    {
+      "text": "llegaron a estar hasta 6 horas, eh, con",
+      "start": 613.72,
+      "duration": 3.84
+    },
+    {
+      "text": "millones de pedidos afectados. Por",
+      "start": 615.8,
+      "duration": 4.12
+    },
+    {
+      "text": "tanto, carril rápido hay que fomentarlo,",
+      "start": 617.56,
+      "duration": 4.279
+    },
+    {
+      "text": "hay que tolerarlo, hay que hacerlo",
+      "start": 619.92,
+      "duration": 3.72
+    },
+    {
+      "text": "plural a cualquier tipo de perfil. Aún",
+      "start": 621.839,
+      "duration": 4.12
+    },
+    {
+      "text": "no siendo técnico, pero dado que ya",
+      "start": 623.64,
+      "duration": 4.24
+    },
+    {
+      "text": "tenemos este carril, nos hace falta un",
+      "start": 625.959,
+      "duration": 4.801
+    },
+    {
+      "text": "segundo carril que lo que hace es poner",
+      "start": 627.88,
+      "duration": 5.399
+    },
+    {
+      "text": "una capa humana de supervisión, una capa",
+      "start": 630.76,
+      "duration": 5.079
+    },
+    {
+      "text": "de control y corrección en la que la IA",
+      "start": 633.279,
+      "duration": 5.321
+    },
+    {
+      "text": "avance rápido por un lado, pero cuando",
+      "start": 635.839,
+      "duration": 5.521
+    },
+    {
+      "text": "vamos a liberar, pongamos una",
+      "start": 638.6,
+      "duration": 5.4
+    },
+    {
+      "text": "supervisión humana con matices. Y ahora",
+      "start": 641.36,
+      "duration": 4.68
+    },
+    {
+      "text": "te cuento, en los últimos tiempos, por",
+      "start": 644.0,
+      "duration": 4.48
+    },
+    {
+      "text": "todo esto ha aparecido en muchos foros,",
+      "start": 646.04,
+      "duration": 4.4
+    },
+    {
+      "text": "en comunidades, gente que está un poco",
+      "start": 648.48,
+      "duration": 3.599
+    },
+    {
+      "text": "debatiendo hacia dónde vamos y cómo son",
+      "start": 650.44,
+      "duration": 3.16
+    },
+    {
+      "text": "los nuevos ciclos de vida, los nuevos",
+      "start": 652.079,
+      "duration": 3.121
+    },
+    {
+      "text": "ciclos de trabajo, los nuevos modelos,",
+      "start": 653.6,
+      "duration": 3.039
+    },
+    {
+      "text": "framework, metodologías o como quieras",
+      "start": 655.2,
+      "duration": 4.36
+    },
+    {
+      "text": "llamarlos. ¿Vale? Estamos viendo como ha",
+      "start": 656.639,
+      "duration": 4.88
+    },
+    {
+      "text": "aparecido un carril nuevo, ¿no? Antes",
+      "start": 659.56,
+      "duration": 3.32
+    },
+    {
+      "text": "trabajábamos con dos, el primero ya te",
+      "start": 661.519,
+      "duration": 2.801
+    },
+    {
+      "text": "lo he contado que es el rápido, ponemos",
+      "start": 662.88,
+      "duration": 3.36
+    },
+    {
+      "text": "el tercero, pero se ha generado un",
+      "start": 664.32,
+      "duration": 3.88
+    },
+    {
+      "text": "carril intermedio, ¿no? Que es el carril",
+      "start": 666.24,
+      "duration": 3.719
+    },
+    {
+      "text": "medio que le llaman el middle loop.",
+      "start": 668.2,
+      "duration": 3.04
+    },
+    {
+      "text": "También lo puedes escuchar por ahí en",
+      "start": 669.959,
+      "duration": 3.361
+    },
+    {
+      "text": "inglés. Precisamente por eso existe,",
+      "start": 671.24,
+      "duration": 4.839
+    },
+    {
+      "text": "porque es un carril que aún siendo de",
+      "start": 673.32,
+      "duration": 5.04
+    },
+    {
+      "text": "velocidad también alta, pero no tanto",
+      "start": 676.079,
+      "duration": 4.0
+    },
+    {
+      "text": "como el anterior, como el carril más",
+      "start": 678.36,
+      "duration": 4.64
+    },
+    {
+      "text": "interno, es un carril que lo que hace es",
+      "start": 680.079,
+      "duration": 5.721
+    },
+    {
+      "text": "supervisar, ¿vale? Controlar, echar un",
+      "start": 683.0,
+      "duration": 5.56
+    },
+    {
+      "text": "vistazo, gestionar qué es lo que ha",
+      "start": 685.8,
+      "duration": 5.08
+    },
+    {
+      "text": "hecho la IA, no está por encima de ese B",
+      "start": 688.56,
+      "duration": 3.92
+    },
+    {
+      "text": "coding, lo que está buscando es que no",
+      "start": 690.88,
+      "duration": 3.88
+    },
+    {
+      "text": "haya solo algo que funciona, sino que",
+      "start": 692.48,
+      "duration": 4.599
+    },
+    {
+      "text": "además lo que funcione no la líe, no se",
+      "start": 694.76,
+      "duration": 3.84
+    },
+    {
+      "text": "nos pase como lo que te contaba de",
+      "start": 697.079,
+      "duration": 3.601
+    },
+    {
+      "text": "Amazon. Pero ojo, porque la supervisión",
+      "start": 698.6,
+      "duration": 4.12
+    },
+    {
+      "text": "que va a hacer este carril intermedio,",
+      "start": 700.68,
+      "duration": 4.36
+    },
+    {
+      "text": "este middle loop sobre lo que generamos",
+      "start": 702.72,
+      "duration": 4.119
+    },
+    {
+      "text": "superrápido con By coding, no lo podemos",
+      "start": 705.04,
+      "duration": 3.2
+    },
+    {
+      "text": "hacer de cualquier manera. Ojo,",
+      "start": 706.839,
+      "duration": 2.841
+    },
+    {
+      "text": "importante, hay que hacerlo, pero no lo",
+      "start": 708.24,
+      "duration": 2.68
+    },
+    {
+      "text": "puedes hacer a lo tradicional, no lo",
+      "start": 709.68,
+      "duration": 2.92
+    },
+    {
+      "text": "puedes hacer a lo viejuno. Y antes de",
+      "start": 710.92,
+      "duration": 3.44
+    },
+    {
+      "text": "continuar, déjame que te diga que tengo",
+      "start": 712.6,
+      "duration": 3.56
+    },
+    {
+      "text": "un grupo de WhatsApp gratuito al que te",
+      "start": 714.36,
+      "duration": 3.44
+    },
+    {
+      "text": "puedes apuntar. Te dejo el link en la",
+      "start": 716.16,
+      "duration": 3.799
+    },
+    {
+      "text": "descripción. en ese grupo de WhatsApp lo",
+      "start": 717.8,
+      "duration": 3.279
+    },
+    {
+      "text": "que hago es que te comento este tipo de",
+      "start": 719.959,
+      "duration": 2.961
+    },
+    {
+      "text": "cosas de una manera más dinámica, más",
+      "start": 721.079,
+      "duration": 4.481
+    },
+    {
+      "text": "rápida son mis anotaciones como a mis",
+      "start": 722.92,
+      "duration": 4.24
+    },
+    {
+      "text": "colegas, a mis amigos y te puedes",
+      "start": 725.56,
+      "duration": 3.12
+    },
+    {
+      "text": "suscribir ahí de abajo te dejo en la",
+      "start": 727.16,
+      "duration": 3.16
+    },
+    {
+      "text": "descripción el enlace. Bueno, te",
+      "start": 728.68,
+      "duration": 3.279
+    },
+    {
+      "text": "comentaba que no se puede hacer de",
+      "start": 730.32,
+      "duration": 2.959
+    },
+    {
+      "text": "cualquier manera. Es cierto que tenemos",
+      "start": 731.959,
+      "duration": 2.841
+    },
+    {
+      "text": "que meter ese carril intermedio de",
+      "start": 733.279,
+      "duration": 4.12
+    },
+    {
+      "text": "supervisión, pero no puedes retorcer el",
+      "start": 734.8,
+      "duration": 4.96
+    },
+    {
+      "text": "modelo, hacerlo a la antigua y generar",
+      "start": 737.399,
+      "duration": 4.961
+    },
+    {
+      "text": "un chequeo humano a lo viejuno. En este",
+      "start": 739.76,
+      "duration": 4.28
+    },
+    {
+      "text": "punto, mucha gente ha caído en la",
+      "start": 742.36,
+      "duration": 3.159
+    },
+    {
+      "text": "tentación de llevarse lo que son las",
+      "start": 744.04,
+      "duration": 4.039
+    },
+    {
+      "text": "revisiones de producto, de si estáis más",
+      "start": 745.519,
+      "duration": 4.0
+    },
+    {
+      "text": "en el mundo del desarrollo, zonas de",
+      "start": 748.079,
+      "duration": 2.641
+    },
+    {
+      "text": "turno, si no estáis en el mundo del",
+      "start": 749.519,
+      "duration": 2.841
+    },
+    {
+      "text": "desarrollo, en que haya una persona que",
+      "start": 750.72,
+      "duration": 3.32
+    },
+    {
+      "text": "allí a mano vaya revisando qué es lo que",
+      "start": 752.36,
+      "duration": 3.32
+    },
+    {
+      "text": "ha generado la IA. Entonces, si hacemos",
+      "start": 754.04,
+      "duration": 3.56
+    },
+    {
+      "text": "eso, el problema si nos llevamos a un",
+      "start": 755.68,
+      "duration": 4.32
+    },
+    {
+      "text": "testing cua humano antiguo y lo ponemos",
+      "start": 757.6,
+      "duration": 4.039
+    },
+    {
+      "text": "en este ciclo, pues lo que va a pasar es",
+      "start": 760.0,
+      "duration": 3.6
+    },
+    {
+      "text": "que los Ferraris y Porsches que van a",
+      "start": 761.639,
+      "duration": 3.921
+    },
+    {
+      "text": "toda velocidad por el carril número uno",
+      "start": 763.6,
+      "duration": 4.039
+    },
+    {
+      "text": "o interno se van a frenado porque llega",
+      "start": 765.56,
+      "duration": 3.959
+    },
+    {
+      "text": "una persona de manera manual a revisar",
+      "start": 767.639,
+      "duration": 3.521
+    },
+    {
+      "text": "lo que se ha hecho. Por tanto, esto es",
+      "start": 769.519,
+      "duration": 3.32
+    },
+    {
+      "text": "lo que eso lo tenéis que evitar. Tenéis",
+      "start": 771.16,
+      "duration": 2.799
+    },
+    {
+      "text": "que evitar que las personas se",
+      "start": 772.839,
+      "duration": 2.761
+    },
+    {
+      "text": "conviertan en el cuello de botella. Ese",
+      "start": 773.959,
+      "duration": 4.12
+    },
+    {
+      "text": "carril medio es de supervisión",
+      "start": 775.6,
+      "duration": 4.76
+    },
+    {
+      "text": "importante, supervisión parcial del",
+      "start": 778.079,
+      "duration": 4.681
+    },
+    {
+      "text": "humano a la IA, no de total autonomía a",
+      "start": 780.36,
+      "duration": 4.96
+    },
+    {
+      "text": "la IA, pero tampoco de hacerlo manual.",
+      "start": 782.76,
+      "duration": 4.04
+    },
+    {
+      "text": "No tenéis que hacerlo manual porque si",
+      "start": 785.32,
+      "duration": 3.639
+    },
+    {
+      "text": "no la persona que eso veo yo que estoy",
+      "start": 786.8,
+      "duration": 4.0
+    },
+    {
+      "text": "ahí fuera viendo un montón de equipos y",
+      "start": 788.959,
+      "duration": 4.041
+    },
+    {
+      "text": "me lo encuentro, damos el carril uno,",
+      "start": 790.8,
+      "duration": 4.039
+    },
+    {
+      "text": "muy bien, no montamos el intermedio mal",
+      "start": 793.0,
+      "duration": 3.16
+    },
+    {
+      "text": "porque puede explotar, pero si lo",
+      "start": 794.839,
+      "duration": 3.321
+    },
+    {
+      "text": "montamos a mano, pues se frena a todo.",
+      "start": 796.16,
+      "duration": 3.84
+    },
+    {
+      "text": "Entonces no podéis dejar que la haga sin",
+      "start": 798.16,
+      "duration": 3.88
+    },
+    {
+      "text": "control y tampoco podéis haceros cuello",
+      "start": 800.0,
+      "duration": 3.399
+    },
+    {
+      "text": "de botella. Entonces, lo que vamos a",
+      "start": 802.04,
+      "duration": 2.72
+    },
+    {
+      "text": "hacer va a ser crear un carril",
+      "start": 803.399,
+      "duration": 3.481
+    },
+    {
+      "text": "intermedio que utilice agentes de",
+      "start": 804.76,
+      "duration": 4.519
+    },
+    {
+      "text": "inteligencia artificial y técnicas de IA",
+      "start": 806.88,
+      "duration": 4.399
+    },
+    {
+      "text": "para controlar a la IA, no métodos",
+      "start": 809.279,
+      "duration": 4.441
+    },
+    {
+      "text": "humanos de antes para hacerlo a la",
+      "start": 811.279,
+      "duration": 4.321
+    },
+    {
+      "text": "antigua. Y esto es muy importante porque",
+      "start": 813.72,
+      "duration": 3.2
+    },
+    {
+      "text": "este carril intermedia, ya te digo que",
+      "start": 815.6,
+      "duration": 2.88
+    },
+    {
+      "text": "el primero que ya te he comentado y el",
+      "start": 816.92,
+      "duration": 3.2
+    },
+    {
+      "text": "tercero que te comentaré después estaban",
+      "start": 818.48,
+      "duration": 3.52
+    },
+    {
+      "text": "de siempre, han cambiado hoy en día,",
+      "start": 820.12,
+      "duration": 3.519
+    },
+    {
+      "text": "obviamente porque se hacen con técnicas",
+      "start": 822.0,
+      "duration": 3.44
+    },
+    {
+      "text": "diferentes, porque participan perfiles",
+      "start": 823.639,
+      "duration": 3.121
+    },
+    {
+      "text": "diferentes, porque se hace a velocidades",
+      "start": 825.44,
+      "duration": 2.68
+    },
+    {
+      "text": "diferentes, pero este intermedio que",
+      "start": 826.76,
+      "duration": 2.84
+    },
+    {
+      "text": "estamos hablando ahora está naciendo",
+      "start": 828.12,
+      "duration": 3.159
+    },
+    {
+      "text": "ahora. De hecho, si te dedicas a este",
+      "start": 829.6,
+      "duration": 3.2
+    },
+    {
+      "text": "tipo de cosas, mejorar equipos o",
+      "start": 831.279,
+      "duration": 3.321
+    },
+    {
+      "text": "similar, es una grandísima oportunidad",
+      "start": 832.8,
+      "duration": 4.2
+    },
+    {
+      "text": "porque este middle está surgiendo, está",
+      "start": 834.6,
+      "duration": 4.479
+    },
+    {
+      "text": "naciendo en estos momentos. Y en este",
+      "start": 837.0,
+      "duration": 4.279
+    },
+    {
+      "text": "middle aparecen varias disciplinas,",
+      "start": 839.079,
+      "duration": 3.921
+    },
+    {
+      "text": "varias disciplinas que ya tienen nombre,",
+      "start": 841.279,
+      "duration": 3.401
+    },
+    {
+      "text": "no sé en qué nombre finalmente se el",
+      "start": 843.0,
+      "duration": 3.48
+    },
+    {
+      "text": "quedá, pero hay uno que se llama",
+      "start": 844.68,
+      "duration": 3.839
+    },
+    {
+      "text": "ingeniería del arnés, o sea, que para",
+      "start": 846.48,
+      "duration": 4.32
+    },
+    {
+      "text": "gestionar el carriel intermedio que",
+      "start": 848.519,
+      "duration": 3.601
+    },
+    {
+      "text": "intenta controlar lo que se ha hecho",
+      "start": 850.8,
+      "duration": 3.32
+    },
+    {
+      "text": "rápido en el primero, para no hacerlo a",
+      "start": 852.12,
+      "duration": 3.88
+    },
+    {
+      "text": "mano, pues aparecen disciplinas. Una de",
+      "start": 854.12,
+      "duration": 3.959
+    },
+    {
+      "text": "ellas se llama ingeniería del arnés. el",
+      "start": 856.0,
+      "duration": 3.56
+    },
+    {
+      "text": "símiles, pues yo que sé, como si estás",
+      "start": 858.079,
+      "duration": 3.0
+    },
+    {
+      "text": "haciendo escalada, pues tienes un arnés",
+      "start": 859.56,
+      "duration": 3.6
+    },
+    {
+      "text": "que lo que te ayuda es es una medida de",
+      "start": 861.079,
+      "duration": 3.601
+    },
+    {
+      "text": "seguridad para pues no te pegues un",
+      "start": 863.16,
+      "duration": 3.119
+    },
+    {
+      "text": "susto y no te mates, ¿no? Entonces, por",
+      "start": 864.68,
+      "duration": 3.599
+    },
+    {
+      "text": "ejemplo, la gente de Open es el nombre",
+      "start": 866.279,
+      "duration": 4.201
+    },
+    {
+      "text": "que le dio, le llaman ingeniería de la",
+      "start": 868.279,
+      "duration": 4.281
+    },
+    {
+      "text": "Arnés, que es todo lo que rodea la IA",
+      "start": 870.48,
+      "duration": 3.96
+    },
+    {
+      "text": "para que trabaje dentro de unos límites",
+      "start": 872.56,
+      "duration": 4.519
+    },
+    {
+      "text": "seguros, fiables y controlados. ¿Vale?",
+      "start": 874.44,
+      "duration": 4.24
+    },
+    {
+      "text": "Si queréis más información sobre este",
+      "start": 877.079,
+      "duration": 2.841
+    },
+    {
+      "text": "tipo de cosas, dejámelo en los",
+      "start": 878.68,
+      "duration": 2.64
+    },
+    {
+      "text": "comentarios en la descripción de este",
+      "start": 879.92,
+      "duration": 3.359
+    },
+    {
+      "text": "vídeo en YouTube. También hay otro",
+      "start": 881.32,
+      "duration": 3.92
+    },
+    {
+      "text": "nombre que se le está dando a esta",
+      "start": 883.279,
+      "duration": 4.201
+    },
+    {
+      "text": "disciplina emergente que es el Vipe",
+      "start": 885.24,
+      "duration": 4.159
+    },
+    {
+      "text": "Engineering, ¿no? Para diferenciarlo de",
+      "start": 887.48,
+      "duration": 4.2
+    },
+    {
+      "text": "lo que son los Viping, ¿no? Que se",
+      "start": 889.399,
+      "duration": 4.0
+    },
+    {
+      "text": "entiende que son mucho más rápidos, que",
+      "start": 891.68,
+      "duration": 3.159
+    },
+    {
+      "text": "van a asistir, que cada vez van a ir a",
+      "start": 893.399,
+      "duration": 2.68
+    },
+    {
+      "text": "más y cuyo objetivo es más la",
+      "start": 894.839,
+      "duration": 3.401
+    },
+    {
+      "text": "validación. El Vip Engineering es hacer",
+      "start": 896.079,
+      "duration": 3.921
+    },
+    {
+      "text": "robusto lo que ha pasado por el primer",
+      "start": 898.24,
+      "duration": 3.519
+    },
+    {
+      "text": "carril. El primer carril te permite",
+      "start": 900.0,
+      "duration": 3.839
+    },
+    {
+      "text": "explorar, prototipar a toda velocidad.",
+      "start": 901.759,
+      "duration": 3.841
+    },
+    {
+      "text": "Hay que permitirlo, hay que tolerarlo y",
+      "start": 903.839,
+      "duration": 3.68
+    },
+    {
+      "text": "no hay que frenarlo. Y el segundo te",
+      "start": 905.6,
+      "duration": 3.919
+    },
+    {
+      "text": "permite consolidar, endurecer lo que ha",
+      "start": 907.519,
+      "duration": 3.68
+    },
+    {
+      "text": "pasado, controlar lo que salió de esa",
+      "start": 909.519,
+      "duration": 3.521
+    },
+    {
+      "text": "exploración y similar, ¿no? Es la que",
+      "start": 911.199,
+      "duration": 3.08
+    },
+    {
+      "text": "también lo escucharéis muchas veces por",
+      "start": 913.04,
+      "duration": 2.88
+    },
+    {
+      "text": "ahí como los dos carriles, ¿no? El",
+      "start": 914.279,
+      "duration": 3.48
+    },
+    {
+      "text": "carril rápido y el carril de a ver qué",
+      "start": 915.92,
+      "duration": 3.76
+    },
+    {
+      "text": "ha pasado. Vamos a controlar lo que sí",
+      "start": 917.759,
+      "duration": 3.601
+    },
+    {
+      "text": "hemos demostrado que hay que pasar, hay",
+      "start": 919.68,
+      "duration": 3.48
+    },
+    {
+      "text": "que llevar a los dos usuarios, ¿vale?",
+      "start": 921.36,
+      "duration": 3.12
+    },
+    {
+      "text": "Como resumen de este carril medio no",
+      "start": 923.16,
+      "duration": 2.96
+    },
+    {
+      "text": "sirve para poner calidad, sirve para",
+      "start": 924.48,
+      "duration": 3.68
+    },
+    {
+      "text": "poner control, robustez, la",
+      "start": 926.12,
+      "duration": 4.519
+    },
+    {
+      "text": "participación aquí humana es mucho más",
+      "start": 928.16,
+      "duration": 4.2
+    },
+    {
+      "text": "activa y supervisora, o sea, no no lo",
+      "start": 930.639,
+      "duration": 3.481
+    },
+    {
+      "text": "llevamos a los manual viejales de toda",
+      "start": 932.36,
+      "duration": 4.12
+    },
+    {
+      "text": "la vida, pero tampoco nos vamos a la",
+      "start": 934.12,
+      "duration": 4.159
+    },
+    {
+      "text": "oscuridad de no hacerlo, pero tampoco lo",
+      "start": 936.48,
+      "duration": 3.52
+    },
+    {
+      "text": "vamos a hacer a la antigua y hacerlo",
+      "start": 938.279,
+      "duration": 3.68
+    },
+    {
+      "text": "lento, ¿no? Aquí la nos va a ayudar",
+      "start": 940.0,
+      "duration": 3.48
+    },
+    {
+      "text": "mucho, ¿vale? Pero no va a trabajar",
+      "start": 941.959,
+      "duration": 2.601
+    },
+    {
+      "text": "sola, lo tenemos que supervisar",
+      "start": 943.48,
+      "duration": 2.56
+    },
+    {
+      "text": "muchísimo más que en el carril número",
+      "start": 944.56,
+      "duration": 3.32
+    },
+    {
+      "text": "uno. Y el objetivo, obviamente, es",
+      "start": 946.04,
+      "duration": 3.76
+    },
+    {
+      "text": "evitar errores, que nos pase lo que pasó",
+      "start": 947.88,
+      "duration": 3.759
+    },
+    {
+      "text": "en Amazon y en muchos casos más,",
+      "start": 949.8,
+      "duration": 3.8
+    },
+    {
+      "text": "muchísimos casos más. Y mi consejo de",
+      "start": 951.639,
+      "duration": 4.12
+    },
+    {
+      "text": "nuevo aquí es que en los nuevos ciclos",
+      "start": 953.6,
+      "duration": 4.44
+    },
+    {
+      "text": "que ciclos que estéis creando de trabajo",
+      "start": 955.759,
+      "duration": 4.401
+    },
+    {
+      "text": "para lo que es convivir humanos con",
+      "start": 958.04,
+      "duration": 3.96
+    },
+    {
+      "text": "inteligencias artificiales, la",
+      "start": 960.16,
+      "duration": 4.159
+    },
+    {
+      "text": "generación con IA, la convivencia con",
+      "start": 962.0,
+      "duration": 5.04
+    },
+    {
+      "text": "perfiles que hace tiempo no no se le",
+      "start": 964.319,
+      "duration": 4.281
+    },
+    {
+      "text": "pasaba por la cabeza que fuesen a crear,",
+      "start": 967.04,
+      "duration": 3.719
+    },
+    {
+      "text": "gente no técnica y similar es que las",
+      "start": 968.6,
+      "duration": 3.919
+    },
+    {
+      "text": "item, los elementos, las tareas y",
+      "start": 970.759,
+      "duration": 3.161
+    },
+    {
+      "text": "similar que vayan a pasar por este",
+      "start": 972.519,
+      "duration": 3.721
+    },
+    {
+      "text": "segundo carril los etiquetéis. etiqueta",
+      "start": 973.92,
+      "duration": 3.919
+    },
+    {
+      "text": "de los items de tu backlock o similar",
+      "start": 976.24,
+      "duration": 2.92
+    },
+    {
+      "text": "que van a pasar por este carril, porque",
+      "start": 977.839,
+      "duration": 2.961
+    },
+    {
+      "text": "eso te va a condicionar y va a dejar",
+      "start": 979.16,
+      "duration": 4.0
+    },
+    {
+      "text": "claro qué subtareas debes de poner para",
+      "start": 980.8,
+      "duration": 4.279
+    },
+    {
+      "text": "crear esos item que están en el carril,",
+      "start": 983.16,
+      "duration": 4.2
+    },
+    {
+      "text": "en este caso intermedio, e incluso que",
+      "start": 985.079,
+      "duration": 4.521
+    },
+    {
+      "text": "de recordemos definition of plan, ¿no?",
+      "start": 987.36,
+      "duration": 4.839
+    },
+    {
+      "text": "¿Qué condiciones de terminado o de",
+      "start": 989.6,
+      "duration": 4.719
+    },
+    {
+      "text": "ponemos a una tarea necesitamos para",
+      "start": 992.199,
+      "duration": 3.64
+    },
+    {
+      "text": "este segundo carril? Y por último",
+      "start": 994.319,
+      "duration": 3.361
+    },
+    {
+      "text": "tenemos un tercer carril, ¿vale? Este",
+      "start": 995.839,
+      "duration": 3.401
+    },
+    {
+      "text": "también existía de siempre, se llamaba",
+      "start": 997.68,
+      "duration": 3.24
+    },
+    {
+      "text": "el Outer Loop. Nosotros le vamos a",
+      "start": 999.24,
+      "duration": 3.48
+    },
+    {
+      "text": "llamar ciclo externo, carril externo,",
+      "start": 1000.92,
+      "duration": 3.839
+    },
+    {
+      "text": "quizá es el más lento, probablemente es",
+      "start": 1002.72,
+      "duration": 3.76
+    },
+    {
+      "text": "para liberarlo ya cuando estamos ya de",
+      "start": 1004.759,
+      "duration": 3.56
+    },
+    {
+      "text": "cara hacia la gente que está ahí fuera,",
+      "start": 1006.48,
+      "duration": 2.96
+    },
+    {
+      "text": "nuestros usuarios. Si tengo un",
+      "start": 1008.319,
+      "duration": 2.52
+    },
+    {
+      "text": "e-commerce, pues la gente que compra mis",
+      "start": 1009.44,
+      "duration": 3.28
+    },
+    {
+      "text": "productos. Si tengo un e-learning, pues",
+      "start": 1010.839,
+      "duration": 3.48
+    },
+    {
+      "text": "la gente que disfruta de mis",
+      "start": 1012.72,
+      "duration": 3.84
+    },
+    {
+      "text": "formaciones. Este carril van las cosas",
+      "start": 1014.319,
+      "duration": 4.161
+    },
+    {
+      "text": "que ya van hacia fuera, ¿no? Es para",
+      "start": 1016.56,
+      "duration": 5.279
+    },
+    {
+      "text": "liberar, ¿no? En el inner pues se me ha",
+      "start": 1018.48,
+      "duration": 5.64
+    },
+    {
+      "text": "ocurrido que podemos hacer un banner",
+      "start": 1021.839,
+      "duration": 3.561
+    },
+    {
+      "text": "super maravilloso que nos va a hacer",
+      "start": 1024.12,
+      "duration": 2.959
+    },
+    {
+      "text": "vender más cremas en mi e-commerce de",
+      "start": 1025.4,
+      "duration": 3.639
+    },
+    {
+      "text": "farmacia. En el carril número uno, el",
+      "start": 1027.079,
+      "duration": 3.681
+    },
+    {
+      "text": "product manager dice, \"Buah, se me ha",
+      "start": 1029.039,
+      "duration": 3.601
+    },
+    {
+      "text": "ocurrido que en la formación voy a poner",
+      "start": 1030.76,
+      "duration": 3.48
+    },
+    {
+      "text": "no sé qué locura y voy a intentar",
+      "start": 1032.64,
+      "duration": 3.0
+    },
+    {
+      "text": "validarlo, pero no lo voy a llevar los",
+      "start": 1034.24,
+      "duration": 2.64
+    },
+    {
+      "text": "usuarios reales. Lo voy a llevar, lo voy",
+      "start": 1035.64,
+      "duration": 2.72
+    },
+    {
+      "text": "a hacer superrápido yo, sin contar con",
+      "start": 1036.88,
+      "duration": 2.959
+    },
+    {
+      "text": "nadie porque soy el product manager y",
+      "start": 1038.36,
+      "duration": 4.12
+    },
+    {
+      "text": "esto es simplemente para validar con mis",
+      "start": 1039.839,
+      "duration": 4.761
+    },
+    {
+      "text": "amigos, mis friends and family, mis beta",
+      "start": 1042.48,
+      "duration": 4.88
+    },
+    {
+      "text": "y eso es así. Yo como pro Manager a toda",
+      "start": 1044.6,
+      "duration": 4.76
+    },
+    {
+      "text": "pastilla sin parar al con milenario",
+      "start": 1047.36,
+      "duration": 3.52
+    },
+    {
+      "text": "máximo velocidad de la luz, consigo",
+      "start": 1049.36,
+      "duration": 3.12
+    },
+    {
+      "text": "saber que el banner de esa manera es el",
+      "start": 1050.88,
+      "duration": 2.84
+    },
+    {
+      "text": "que necesitamos. nos va a hacer una",
+      "start": 1052.48,
+      "duration": 2.559
+    },
+    {
+      "text": "disrupción en el negocio, lo vamos a",
+      "start": 1053.72,
+      "duration": 3.0
+    },
+    {
+      "text": "pasar al medio, ¿no? Al medio va a ser",
+      "start": 1055.039,
+      "duration": 3.561
+    },
+    {
+      "text": "una chequeo ya por humanos supervisando",
+      "start": 1056.72,
+      "duration": 3.12
+    },
+    {
+      "text": "más, pero no a los viejales, ya te",
+      "start": 1058.6,
+      "duration": 2.6
+    },
+    {
+      "text": "acuérdate, no a lo viej uno, sino que",
+      "start": 1059.84,
+      "duration": 3.4
+    },
+    {
+      "text": "vamos a utilizar técnicas de IA como los",
+      "start": 1061.2,
+      "duration": 3.96
+    },
+    {
+      "text": "arnés o lo que te hablaba de la de",
+      "start": 1063.24,
+      "duration": 3.6
+    },
+    {
+      "text": "disciplimina del Vipe Engenering, ¿vale?",
+      "start": 1065.16,
+      "duration": 3.48
+    },
+    {
+      "text": "Hay mucho sobre eso, puedes buscar, pues",
+      "start": 1066.84,
+      "duration": 3.6
+    },
+    {
+      "text": "leeres 200,000 millones de cosas, ¿vale?",
+      "start": 1068.64,
+      "duration": 3.039
+    },
+    {
+      "text": "Y una vez que hemos llegado hasta este",
+      "start": 1070.44,
+      "duration": 2.88
+    },
+    {
+      "text": "punto, si lo vamos a llevar fuera, pues",
+      "start": 1071.679,
+      "duration": 3.601
+    },
+    {
+      "text": "ya entramos en ese carril externo, ¿no?",
+      "start": 1073.32,
+      "duration": 3.839
+    },
+    {
+      "text": "El outer loop que se le llama, el más",
+      "start": 1075.28,
+      "duration": 3.92
+    },
+    {
+      "text": "lento, el que vale para liberar. Aquí ya",
+      "start": 1077.159,
+      "duration": 4.201
+    },
+    {
+      "text": "no hablamos de crear rápido, sino de ver",
+      "start": 1079.2,
+      "duration": 4.8
+    },
+    {
+      "text": "cómo se comporta lo construido. Nos vale",
+      "start": 1081.36,
+      "duration": 5.16
+    },
+    {
+      "text": "para liberar y para después de liberar.",
+      "start": 1084.0,
+      "duration": 4.039
+    },
+    {
+      "text": "Buo, ¿qué qué está sucediendo en el",
+      "start": 1086.52,
+      "duration": 3.84
+    },
+    {
+      "text": "mundo cuando mi banner maravilloso o mi",
+      "start": 1088.039,
+      "duration": 4.12
+    },
+    {
+      "text": "genial idea para mejorar mis cursos de",
+      "start": 1090.36,
+      "duration": 3.24
+    },
+    {
+      "text": "formación, ahora sí ya está a",
+      "start": 1092.159,
+      "duration": 2.681
+    },
+    {
+      "text": "disposición de los usuarios que están",
+      "start": 1093.6,
+      "duration": 2.439
+    },
+    {
+      "text": "ahí fuera? en la fase en el que el",
+      "start": 1094.84,
+      "duration": 2.959
+    },
+    {
+      "text": "producto se prueba con usuarios reales,",
+      "start": 1096.039,
+      "duration": 3.52
+    },
+    {
+      "text": "si observa si aporta valor, si resuelve",
+      "start": 1097.799,
+      "duration": 3.481
+    },
+    {
+      "text": "el problema correcto, si encaja en el",
+      "start": 1099.559,
+      "duration": 4.24
+    },
+    {
+      "text": "negocio, si merece la pena seguir",
+      "start": 1101.28,
+      "duration": 4.48
+    },
+    {
+      "text": "evolucionándolo. Y aquí la participación",
+      "start": 1103.799,
+      "duration": 4.12
+    },
+    {
+      "text": "humana es mucho más estratégica, por",
+      "start": 1105.76,
+      "duration": 3.44
+    },
+    {
+      "text": "supuesto, ¿no? Hay que decidir qué",
+      "start": 1107.919,
+      "duration": 2.601
+    },
+    {
+      "text": "validar, interpretar el feedback,",
+      "start": 1109.2,
+      "duration": 2.92
+    },
+    {
+      "text": "priorizar, determinar si el producto",
+      "start": 1110.52,
+      "duration": 3.76
+    },
+    {
+      "text": "debe seguir, si debe pivotar, si dear,",
+      "start": 1112.12,
+      "duration": 3.439
+    },
+    {
+      "text": "lo de toda la vida, ¿no? Aquí el",
+      "start": 1114.28,
+      "duration": 3.08
+    },
+    {
+      "text": "discovery está muy presente. Aquí",
+      "start": 1115.559,
+      "duration": 3.761
+    },
+    {
+      "text": "importa el resultado, el impacto, la",
+      "start": 1117.36,
+      "duration": 4.6
+    },
+    {
+      "text": "adopción, la validación real, ¿vale? El",
+      "start": 1119.32,
+      "duration": 4.12
+    },
+    {
+      "text": "Discovery, como te comentaba, es",
+      "start": 1121.96,
+      "duration": 3.24
+    },
+    {
+      "text": "determinante, ¿no? Esa fase tan",
+      "start": 1123.44,
+      "duration": 4.2
+    },
+    {
+      "text": "transcendental hoy en día de cualquier",
+      "start": 1125.2,
+      "duration": 4.16
+    },
+    {
+      "text": "product manager que lo que busca es",
+      "start": 1127.64,
+      "duration": 3.159
+    },
+    {
+      "text": "descubrir qué problemas hay que",
+      "start": 1129.36,
+      "duration": 2.84
+    },
+    {
+      "text": "solucionar ahí fuera y si los he",
+      "start": 1130.799,
+      "duration": 2.961
+    },
+    {
+      "text": "solucionado y si no los he solucionado,",
+      "start": 1132.2,
+      "duration": 3.04
+    },
+    {
+      "text": "pues por es que tengo que cambiar la",
+      "start": 1133.76,
+      "duration": 2.56
+    },
+    {
+      "text": "manera, ¿no? Entonces, aquí la",
+      "start": 1135.24,
+      "duration": 3.319
+    },
+    {
+      "text": "supervisión es prácticamente total del",
+      "start": 1136.32,
+      "duration": 3.96
+    },
+    {
+      "text": "humano a la IA. A la IA, quiero decir,",
+      "start": 1138.559,
+      "duration": 2.961
+    },
+    {
+      "text": "porque lo vamos a seguir haciendo con",
+      "start": 1140.28,
+      "duration": 3.36
+    },
+    {
+      "text": "IA. Y de nuevo, como te comentaba,",
+      "start": 1141.52,
+      "duration": 4.12
+    },
+    {
+      "text": "etiqueta los items o tareas que van a",
+      "start": 1143.64,
+      "duration": 3.96
+    },
+    {
+      "text": "estar el carril de tu backlock o lo que",
+      "start": 1145.64,
+      "duration": 4.88
+    },
+    {
+      "text": "tú tengas en tu note 101 gira o lo que",
+      "start": 1147.6,
+      "duration": 4.559
+    },
+    {
+      "text": "sea, porque además este carril es el más",
+      "start": 1150.52,
+      "duration": 4.12
+    },
+    {
+      "text": "lento y es el más supervisado y es el de",
+      "start": 1152.159,
+      "duration": 4.281
+    },
+    {
+      "text": "mayor control por parte del humano, o",
+      "start": 1154.64,
+      "duration": 3.68
+    },
+    {
+      "text": "sea, que etiquétalos, ¿vale? Recuerda,",
+      "start": 1156.44,
+      "duration": 4.2
+    },
+    {
+      "text": "tres carriles que debes marcar, dos",
+      "start": 1158.32,
+      "duration": 4.479
+    },
+    {
+      "text": "tradicionales, el uno y tres, segundo te",
+      "start": 1160.64,
+      "duration": 4.399
+    },
+    {
+      "text": "lo he contado yo ahora toda la vida,",
+      "start": 1162.799,
+      "duration": 4.201
+    },
+    {
+      "text": "pero uno nuevo que es el dos que",
+      "start": 1165.039,
+      "duration": 4.0
+    },
+    {
+      "text": "aparece, ¿no? Tres carriles, un item",
+      "start": 1167.0,
+      "duration": 3.88
+    },
+    {
+      "text": "puede nacer en cualquier carril, puede",
+      "start": 1169.039,
+      "duration": 4.081
+    },
+    {
+      "text": "saltar de un carril a otro según el",
+      "start": 1170.88,
+      "duration": 4.76
+    },
+    {
+      "text": "momento. Los tres carriles en dentro de",
+      "start": 1173.12,
+      "duration": 4.0
+    },
+    {
+      "text": "lo que era el antiguo sprint, ahora",
+      "start": 1175.64,
+      "duration": 2.919
+    },
+    {
+      "text": "hablamos un poquito de esto, esos tres",
+      "start": 1177.12,
+      "duration": 3.36
+    },
+    {
+      "text": "carriles dentro de ese sprint pueden",
+      "start": 1178.559,
+      "duration": 3.841
+    },
+    {
+      "text": "ocurrir en paralelo. Hay ideas que se",
+      "start": 1180.48,
+      "duration": 4.48
+    },
+    {
+      "text": "mueren en el carril interno. Eso está",
+      "start": 1182.4,
+      "duration": 4.04
+    },
+    {
+      "text": "bien, tiene que ser así. Y hay",
+      "start": 1184.96,
+      "duration": 3.28
+    },
+    {
+      "text": "validaciones del carril externo que te",
+      "start": 1186.44,
+      "duration": 3.96
+    },
+    {
+      "text": "devuelven al interno rápido para que",
+      "start": 1188.24,
+      "duration": 4.24
+    },
+    {
+      "text": "explores de nuevo a la velocidad más",
+      "start": 1190.4,
+      "duration": 4.32
+    },
+    {
+      "text": "rápida posible. Y entonces, ¿qué pasa",
+      "start": 1192.48,
+      "duration": 3.84
+    },
+    {
+      "text": "con los sprints? En la práctica, pues",
+      "start": 1194.72,
+      "duration": 3.52
+    },
+    {
+      "text": "los sprints de hoy en día, los sprint de",
+      "start": 1196.32,
+      "duration": 4.2
+    },
+    {
+      "text": "estos que nacieron hace la no sé ni",
+      "start": 1198.24,
+      "duration": 4.28
+    },
+    {
+      "text": "cuánto tiempo, pues se relajan mucho. La",
+      "start": 1200.52,
+      "duration": 4.96
+    },
+    {
+      "text": "terminología se mantiene, pero ya como",
+      "start": 1202.52,
+      "duration": 4.6
+    },
+    {
+      "text": "algo que está en nuestra cultura, ¿no?",
+      "start": 1205.48,
+      "duration": 3.72
+    },
+    {
+      "text": "Ya, pero claro, hasta un punto en el que",
+      "start": 1207.12,
+      "duration": 4.0
+    },
+    {
+      "text": "si te fueses a la guía de Scrom, ¿no?",
+      "start": 1209.2,
+      "duration": 4.12
+    },
+    {
+      "text": "Ahí el papelito este, el PDF, ¿no? Y",
+      "start": 1211.12,
+      "duration": 3.799
+    },
+    {
+      "text": "contrastás los los sprints que te",
+      "start": 1213.32,
+      "duration": 3.16
+    },
+    {
+      "text": "encuentras ahí fuera. Hoy en día con lo",
+      "start": 1214.919,
+      "duration": 3.481
+    },
+    {
+      "text": "que dice la guía, pues es un poco",
+      "start": 1216.48,
+      "duration": 3.76
+    },
+    {
+      "text": "dudoso, incluso si deberíamos llamarlos",
+      "start": 1218.4,
+      "duration": 3.32
+    },
+    {
+      "text": "sprints, aunque la terminología, ya te",
+      "start": 1220.24,
+      "duration": 2.679
+    },
+    {
+      "text": "digo que se va a seguir manteniendo",
+      "start": 1221.72,
+      "duration": 2.68
+    },
+    {
+      "text": "porque está ya en nuestra cultura.",
+      "start": 1222.919,
+      "duration": 3.401
+    },
+    {
+      "text": "Especialmente hay que destacar en este",
+      "start": 1224.4,
+      "duration": 4.519
+    },
+    {
+      "text": "punto el caso del carril interno, que",
+      "start": 1226.32,
+      "duration": 4.839
+    },
+    {
+      "text": "debe ser, como te comentaba, muy rápido",
+      "start": 1228.919,
+      "duration": 4.361
+    },
+    {
+      "text": "y que vive en un ciclo de vida muy muy",
+      "start": 1231.159,
+      "duration": 5.0
+    },
+    {
+      "text": "rápido, que no puede verse frenado por",
+      "start": 1233.28,
+      "duration": 5.639
+    },
+    {
+      "text": "planificaciones, por reviews, por daily,",
+      "start": 1236.159,
+      "duration": 4.561
+    },
+    {
+      "text": "por multitud de perfiles y similar. no",
+      "start": 1238.919,
+      "duration": 3.88
+    },
+    {
+      "text": "podéis hacer eso y que por tanto va a",
+      "start": 1240.72,
+      "duration": 4.0
+    },
+    {
+      "text": "vivir más cercano a lo que es un ciclo",
+      "start": 1242.799,
+      "duration": 4.201
+    },
+    {
+      "text": "de trabajo tipo Canban con ciclo",
+      "start": 1244.72,
+      "duration": 4.839
+    },
+    {
+      "text": "continuo. Podemos medio tener una unos",
+      "start": 1247.0,
+      "duration": 4.48
+    },
+    {
+      "text": "pseudosprints si queréis mantenerlo,",
+      "start": 1249.559,
+      "duration": 3.201
+    },
+    {
+      "text": "pero este carril no puede ir por",
+      "start": 1251.48,
+      "duration": 2.84
+    },
+    {
+      "text": "plannings, ¿vale? No puede ir por",
+      "start": 1252.76,
+      "duration": 3.36
+    },
+    {
+      "text": "reviews, no puede ir por dailies",
+      "start": 1254.32,
+      "duration": 3.8
+    },
+    {
+      "text": "eternos, no puede ir por 50 personas",
+      "start": 1256.12,
+      "duration": 4.24
+    },
+    {
+      "text": "opinando. Tiene un tipo canban para lo",
+      "start": 1258.12,
+      "duration": 3.72
+    },
+    {
+      "text": "que es el carril interno de alta",
+      "start": 1260.36,
+      "duration": 3.199
+    },
+    {
+      "text": "velocidad, ese más cercano a lo que es",
+      "start": 1261.84,
+      "duration": 3.92
+    },
+    {
+      "text": "el by coding prototipado, probablemente",
+      "start": 1263.559,
+      "duration": 4.521
+    },
+    {
+      "text": "liderado muchas veces o generado o",
+      "start": 1265.76,
+      "duration": 5.6
+    },
+    {
+      "text": "creado por personal, ¿no?, de profesión",
+      "start": 1268.08,
+      "duration": 4.88
+    },
+    {
+      "text": "técnica. Aquí van a aparecer ideas que",
+      "start": 1271.36,
+      "duration": 3.319
+    },
+    {
+      "text": "se van a prototipar y se van a probar en",
+      "start": 1272.96,
+      "duration": 4.44
+    },
+    {
+      "text": "cuestión de horas sin esperar 8 minutos",
+      "start": 1274.679,
+      "duration": 4.24
+    },
+    {
+      "text": "hoy en día, ¿no? Al siguiente sprint,",
+      "start": 1277.4,
+      "duration": 3.56
+    },
+    {
+      "text": "sin pasar por un planning ni por",
+      "start": 1278.919,
+      "duration": 4.0
+    },
+    {
+      "text": "reviews. Entonces, típicamente lo vais a",
+      "start": 1280.96,
+      "duration": 3.68
+    },
+    {
+      "text": "encontrar mucho conviviendo en una",
+      "start": 1282.919,
+      "duration": 3.481
+    },
+    {
+      "text": "especie de híbrido en un ciclo más",
+      "start": 1284.64,
+      "duration": 3.68
+    },
+    {
+      "text": "cercanos a lo que es tipo Canban,",
+      "start": 1286.4,
+      "duration": 3.519
+    },
+    {
+      "text": "adaptado a nuestro. En cambio, los",
+      "start": 1288.32,
+      "duration": 3.959
+    },
+    {
+      "text": "carriles medios y externos, esos loops",
+      "start": 1289.919,
+      "duration": 4.76
+    },
+    {
+      "text": "sí que pueden estar en algo más cercano",
+      "start": 1292.279,
+      "duration": 4.561
+    },
+    {
+      "text": "al scromun que conocíamos hace unos",
+      "start": 1294.679,
+      "duration": 4.12
+    },
+    {
+      "text": "cuantos años porque son algo más lentos,",
+      "start": 1296.84,
+      "duration": 3.52
+    },
+    {
+      "text": "¿no? Y puede ser que estén mucho más",
+      "start": 1298.799,
+      "duration": 3.161
+    },
+    {
+      "text": "planificados. Pero ya te digo que el",
+      "start": 1300.36,
+      "duration": 3.439
+    },
+    {
+      "text": "interno se va a parecer mucho más a un",
+      "start": 1301.96,
+      "duration": 3.88
+    },
+    {
+      "text": "canban de alta velocidad. Técnicamente",
+      "start": 1303.799,
+      "duration": 3.88
+    },
+    {
+      "text": "todo esto ha modificado los ciclos de",
+      "start": 1305.84,
+      "duration": 3.839
+    },
+    {
+      "text": "vida tradicionales drásticamente. Si",
+      "start": 1307.679,
+      "duration": 3.561
+    },
+    {
+      "text": "quieres ver algo más en este vídeo que",
+      "start": 1309.679,
+      "duration": 3.721
+    },
+    {
+      "text": "te dejo, puedes echar un vistazo porque",
+      "start": 1311.24,
+      "duration": 4.679
+    },
+    {
+      "text": "te centraba en eso. Y además si quieres",
+      "start": 1313.4,
+      "duration": 3.68
+    },
+    {
+      "text": "en el grupo de WhatsApp que te",
+      "start": 1315.919,
+      "duration": 2.36
+    },
+    {
+      "text": "recomendaba, en la descripción de este",
+      "start": 1317.08,
+      "duration": 2.839
+    },
+    {
+      "text": "vídeo, podemos seguir comentando de este",
+      "start": 1318.279,
+      "duration": 3.681
+    },
+    {
+      "text": "tipo de de aspectos estas cosas que me",
+      "start": 1319.919,
+      "duration": 3.36
+    },
+    {
+      "text": "voy aprendiendo y que te voy",
+      "start": 1321.96,
+      "duration": 2.92
+    },
+    {
+      "text": "compartiendo en un formato mucho más",
+      "start": 1323.279,
+      "duration": 5.361
+    },
+    {
+      "text": "rápido. que la agilidad te acompañe.",
+      "start": 1324.88,
+      "duration": 3.76
+    }
+  ],
+  "metadata": {
+    "video_id": "nOtaMh2yRfI",
+    "method": "native_captions",
+    "detected_language": "es",
+    "available_languages": [
+      "es"
+    ],
+    "is_generated": true,
+    "timestamp": "2026-03-29T20:43:50.598593",
+    "cost": 0.0,
+    "duration_seconds": 2655.64
+  }
+}
