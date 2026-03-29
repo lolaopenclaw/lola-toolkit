@@ -1,10 +1,10 @@
 # QMD Local Search — Summary
 
 **Type:** project  
-**Last synthesized:** 2026-03-22  
-**Tiers:** 4 hot, 0 warm, 0 cold
+**Last synthesized:** 2026-03-29  
+**Tiers:** 0 hot, 4 warm, 0 cold
 
-## 🔥 Hot (recent / frequent)
+## 🌡️ Warm (8-30 days)
 
 - **[context]** Goal: Install QMD (github.com/tobi/qmd) as local search engine for memory files. SQLite + BM25 + vector similarity. Zero-cost, no API dependency.
 - **[context]** Why: Backup/replacement for memory_search (OpenAI embeddings). Local = faster, free, works offline. Scales better with 200+ files.

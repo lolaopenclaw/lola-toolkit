@@ -1,10 +1,10 @@
 # Memory Architecture — Summary
 
 **Type:** project  
-**Last synthesized:** 2026-03-22  
-**Tiers:** 6 hot, 0 warm, 0 cold
+**Last synthesized:** 2026-03-29  
+**Tiers:** 0 hot, 6 warm, 0 cold
 
-## 🔥 Hot (recent / frequent)
+## 🌡️ Warm (8-30 days)
 
 - **[context]** Goal: Build structured, decaying knowledge graph for Lola's memory. Inspired by Nate Eliason article on PARA + QMD + atomic facts.
 - **[milestone]** Paso 1 DONE: memory_search working with Ollama/nomic-embed-text (local, free). Previously tried openai (no key), gemini (key invalid). 221 files, 685 chunks indexed. Daily reindex cron at 4:30AM.

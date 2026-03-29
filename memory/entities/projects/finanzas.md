@@ -1,10 +1,10 @@
 # Finanzas Personal — Summary
 
 **Type:** project  
-**Last synthesized:** 2026-03-22  
-**Tiers:** 10 hot, 0 warm, 0 cold
+**Last synthesized:** 2026-03-29  
+**Tiers:** 0 hot, 10 warm, 0 cold
 
-## 🔥 Hot (recent / frequent)
+## 🌡️ Warm (8-30 days)
 
 - **[context]** Goal: Track personal expenses, auto-categorize, create visualizations. Repo: github.com/lolaopenclaw/finanzas-personal (private). Local: ~/finanzas/
 - **[context]** Categories tracked: 15+ including Supermercado, Transporte, Bares y restaurantes, Ocio y cultura, Mantenimiento hogar, Ropa, etc.

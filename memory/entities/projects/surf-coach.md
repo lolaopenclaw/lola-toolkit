@@ -1,10 +1,10 @@
 # Surf Coach AI — Summary
 
 **Type:** project  
-**Last synthesized:** 2026-03-22  
-**Tiers:** 6 hot, 0 warm, 0 cold
+**Last synthesized:** 2026-03-29  
+**Tiers:** 0 hot, 6 warm, 0 cold
 
-## 🔥 Hot (recent / frequent)
+## 🌡️ Warm (8-30 days)
 
 - **[context]** Goal: AI coach for surf technique analysis using video + pose estimation. Provide automated feedback on pop-ups, turns, compression/extension.
 - **[context]** Repo: github.com/lolaopenclaw/surf-coach-ai (private, shared with RagnarBlackmade). Local: ~/projects/surf-coach/

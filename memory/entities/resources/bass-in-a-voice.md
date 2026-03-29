@@ -1,10 +1,10 @@
 # Bass in a Voice — Summary
 
 **Type:** music_project  
-**Last synthesized:** 2026-03-22  
-**Tiers:** 3 hot, 0 warm, 0 cold
+**Last synthesized:** 2026-03-29  
+**Tiers:** 0 hot, 3 warm, 0 cold
 
-## 🔥 Hot (recent / frequent)
+## 🌡️ Warm (8-30 days)
 
 - **[context]** Manu's music project. Trio format: voice (Manu), bass (Quique Alcalde), percussion (Javi Alcalde since 2023). Active since 2014.
 - **[context]** YouTube: https://www.youtube.com/@bassinavoice. Style: original arrangements and covers.

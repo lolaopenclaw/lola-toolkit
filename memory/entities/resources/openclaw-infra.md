@@ -1,10 +1,10 @@
 # OpenClaw Infrastructure — Summary
 
 **Type:** resource  
-**Last synthesized:** 2026-03-22  
-**Tiers:** 7 hot, 0 warm, 0 cold
+**Last synthesized:** 2026-03-29  
+**Tiers:** 0 hot, 7 warm, 0 cold
 
-## 🔥 Hot (recent / frequent)
+## 🌡️ Warm (8-30 days)
 
 - **[context]** VPS: Ubuntu 24.04 LTS, 16GB RAM, 8 cores. Provider: IONOS Cloud. Hostname: [redacted].ts.net (Tailscale).
 - **[status]** OpenClaw v2026.3.13. Default model: claude-haiku-4-5. Fallbacks: claude-sonnet-4-5, gemini-3-flash-preview.
