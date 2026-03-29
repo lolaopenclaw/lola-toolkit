@@ -1,191 +1,244 @@
 #!/bin/bash
-# Auto-update OpenClaw - Checks for new stable version and updates if available
+# Auto-update OpenClaw with automatic rollback
 # Runs daily at 21:30 Madrid time
+# If update breaks gateway → auto-rollback to previous version + config
 
 set -euo pipefail
 
-# Paths
 WORKSPACE="${WORKSPACE:-$HOME/.openclaw/workspace}"
+CONFIG_FILE="$HOME/.openclaw/openclaw.json"
 MEMORY_FILE="$WORKSPACE/memory/openclaw-updates.md"
-TELEGRAM_CHAT_ID="-1002381931352"  # Manu's default Telegram channel
+BACKUP_DIR="$HOME/.openclaw/update-backups"
+HEALTH_TIMEOUT=45
+TOPIC_ID="25"
+CHAT_ID="-1003768820594"
 
-# Colors for logging
-RED='\033[0;31m'
-GREEN='\033[0;32m'
-YELLOW='\033[1;33m'
-NC='\033[0m' # No Color
+log() { echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1"; }
 
-log() {
-    echo "[$(date +'%Y-%m-%d %H:%M:%S')] $1"
+notify() {
+    openclaw message send --channel telegram --target "$CHAT_ID" --thread-id "$TOPIC_ID" -m "$1" 2>/dev/null || true
 }
 
-# Check if there are running subagents (safety check)
+# Check running subagents
 check_subagents() {
-    local subagents
-    subagents=$(openclaw sessions list --format json 2>/dev/null | jq -r '.[] | select(.type == "subagent") | .id' | wc -l)
-    if [ "$subagents" -gt 0 ]; then
-        log "${YELLOW}⚠️  Hay $subagents subagents activos. Cancelando update por seguridad.${NC}"
+    local count
+    count=$(openclaw sessions list --format json 2>/dev/null | jq -r '[.[] | select(.type == "subagent")] | length' 2>/dev/null || echo "0")
+    if [ "$count" -gt 0 ]; then
+        log "⚠️ $count subagents activos — cancelando update"
         return 1
     fi
     return 0
 }
 
-# Get current version
 get_current_version() {
-    /home/mleon/.npm-global/bin/openclaw --version 2>&1 | grep -oP '\d+\.\d+\.\d+' | head -1
+    openclaw --version 2>&1 | grep -oP '\d+\.\d+\.\d+(-\d+)?' | head -1
 }
 
-# Get latest stable version from npm
 get_latest_version() {
     npm view openclaw version 2>/dev/null
 }
 
-# Get changelog from GitHub releases
-get_changelog() {
-    local version="$1"
-    local changelog
+# Health check: verify gateway starts and responds
+health_check() {
+    local timeout=$1
+    local elapsed=0
     
-    # Try to fetch from GitHub releases
-    changelog=$(curl -s "https://api.github.com/repos/cxllax/openclaw/releases/tags/v${version}" | \
-        jq -r '.body // empty' 2>/dev/null)
+    while [ $elapsed -lt $timeout ]; do
+        # Check if gateway is accepting connections
+        if openclaw gateway status 2>&1 | grep -q "running"; then
+            # Also verify config is valid
+            if ! openclaw gateway status 2>&1 | grep -qi "invalid\|error"; then
+                log "✅ Gateway healthy after ${elapsed}s"
+                return 0
+            fi
+        fi
+        sleep 3
+        elapsed=$((elapsed + 3))
+    done
     
-    if [ -z "$changelog" ]; then
-        # Fallback: try without 'v' prefix
-        changelog=$(curl -s "https://api.github.com/repos/cxllax/openclaw/releases/tags/${version}" | \
-            jq -r '.body // empty' 2>/dev/null)
-    fi
-    
-    if [ -z "$changelog" ]; then
-        changelog="No changelog available for this version."
-    fi
-    
-    echo "$changelog"
+    log "❌ Gateway unhealthy after ${timeout}s"
+    return 1
 }
 
-# Send Telegram notification (silent)
-notify_telegram() {
-    local message="$1"
+# Rollback to previous version + config
+rollback() {
+    local prev_version="$1"
+    local config_backup="$2"
     
-    # Use openclaw message tool to send notification
-    /home/mleon/.npm-global/bin/openclaw message send \
-        --channel telegram \
-        --target "$TELEGRAM_CHAT_ID" \
-        --message "$message" \
-        --silent \
-        >/dev/null 2>&1 || log "${YELLOW}⚠️  No se pudo enviar notificación a Telegram${NC}"
+    log "🔙 ROLLBACK: Restaurando v$prev_version..."
+    
+    # 1. Restore config
+    if [ -f "$config_backup" ]; then
+        cp "$config_backup" "$CONFIG_FILE"
+        log "✅ Config restaurada desde backup"
+    fi
+    
+    # 2. Rollback npm package
+    log "📦 Instalando versión anterior: openclaw@$prev_version"
+    npm i -g "openclaw@$prev_version" 2>&1 || {
+        log "❌ No se pudo instalar versión anterior"
+        notify "🚨 AUTO-UPDATE ROLLBACK FALLIDO
+
+No se pudo restaurar v$prev_version.
+Intervención manual necesaria:
+\`npm i -g openclaw@$prev_version\`
+\`openclaw doctor --fix\`"
+        return 1
+    }
+    
+    # 3. Restart gateway
+    log "🔄 Reiniciando gateway con versión anterior..."
+    systemctl --user restart openclaw-gateway 2>/dev/null || openclaw gateway restart 2>/dev/null || true
+    
+    sleep 5
+    
+    # 4. Verify rollback worked
+    if health_check 30; then
+        local restored_ver
+        restored_ver=$(get_current_version)
+        log "✅ ROLLBACK EXITOSO: v$restored_ver funcionando"
+        notify "🔙 AUTO-UPDATE ROLLBACK
+
+La actualización a la nueva versión falló (config incompatible).
+Se ha restaurado automáticamente v$restored_ver.
+
+La próxima versión puede arreglar la incompatibilidad.
+No se requiere acción manual."
+        return 0
+    else
+        log "❌ ROLLBACK FALLIDO: gateway sigue sin responder"
+        notify "🚨 AUTO-UPDATE ROLLBACK FALLIDO
+
+Ni la nueva versión ni v$prev_version funcionan.
+Intervención manual necesaria:
+\`openclaw doctor --fix\`
+\`openclaw gateway restart\`"
+        return 1
+    fi
 }
 
-# Main update logic
 main() {
     log "🔍 Checking for OpenClaw updates..."
     
-    # Safety check: no subagents running
     if ! check_subagents; then
         exit 0
     fi
     
-    # Get versions
-    local current_version
-    local latest_version
-    
+    local current_version latest_version
     current_version=$(get_current_version)
     latest_version=$(get_latest_version)
     
-    log "Current version: $current_version"
-    log "Latest version:  $latest_version"
+    log "Current: $current_version | Latest: $latest_version"
     
-    # Compare versions
     if [ "$current_version" = "$latest_version" ]; then
-        log "${GREEN}✅ Already on latest version ($current_version)${NC}"
+        log "✅ Already on latest ($current_version)"
         exit 0
     fi
     
-    log "${YELLOW}📦 New version available: $current_version → $latest_version${NC}"
+    log "📦 Update available: $current_version → $latest_version"
     
-    # Get changelog
-    local changelog
-    changelog=$(get_changelog "$latest_version")
+    # === PRE-FLIGHT: BACKUP EVERYTHING ===
+    mkdir -p "$BACKUP_DIR"
+    local config_backup="$BACKUP_DIR/openclaw.json.pre-$latest_version"
+    cp "$CONFIG_FILE" "$config_backup"
+    log "💾 Config backed up to $config_backup"
     
-    # Save to memory file
-    {
-        echo "# OpenClaw Update: v$latest_version"
-        echo ""
-        echo "**Date:** $(date +'%Y-%m-%d %H:%M:%S')"
-        echo "**Previous version:** $current_version"
-        echo "**New version:** $latest_version"
-        echo ""
-        echo "## Changelog"
-        echo ""
-        echo "$changelog"
-        echo ""
-        echo "---"
-        echo ""
-    } | cat - "$MEMORY_FILE" > "$MEMORY_FILE.tmp" 2>/dev/null || {
-        # Create new file if it doesn't exist
-        {
-            echo "# OpenClaw Updates Log"
-            echo ""
-            echo "---"
-            echo ""
-            echo "# OpenClaw Update: v$latest_version"
-            echo ""
-            echo "**Date:** $(date +'%Y-%m-%d %H:%M:%S')"
-            echo "**Previous version:** $current_version"
-            echo "**New version:** $latest_version"
-            echo ""
-            echo "## Changelog"
-            echo ""
-            echo "$changelog"
-            echo ""
-            echo "---"
-            echo ""
-        } > "$MEMORY_FILE.tmp"
-    }
-    mv "$MEMORY_FILE.tmp" "$MEMORY_FILE"
+    # Save current version for rollback
+    echo "$current_version" > "$BACKUP_DIR/previous-version.txt"
     
-    log "${GREEN}💾 Changelog guardado en $MEMORY_FILE${NC}"
+    # === STOP GATEWAY GRACEFULLY ===
+    log "⏸️ Stopping gateway before update..."
+    systemctl --user stop openclaw-gateway 2>/dev/null || true
+    sleep 2
     
-    # Perform update
-    log "${YELLOW}⬆️  Actualizando OpenClaw...${NC}"
+    # === PERFORM UPDATE ===
+    log "⬆️ Installing openclaw@$latest_version..."
+    if ! npm i -g "openclaw@$latest_version" 2>&1; then
+        log "❌ npm install failed — aborting"
+        # Restart gateway with current version
+        systemctl --user start openclaw-gateway 2>/dev/null || true
+        notify "❌ Auto-update falló: npm install error para v$latest_version"
+        exit 1
+    fi
     
-    if npm i -g openclaw@latest; then
-        log "${GREEN}✅ Update completado exitosamente${NC}"
+    log "✅ npm install OK"
+    
+    # === TRY DOCTOR FIRST (fix config if needed) ===
+    log "🩺 Running doctor to fix potential config issues..."
+    openclaw doctor --fix --non-interactive 2>&1 | tail -5 || true
+    
+    # === START GATEWAY ===
+    log "🔄 Starting gateway with new version..."
+    systemctl --user start openclaw-gateway 2>/dev/null || true
+    
+    # === HEALTH CHECK ===
+    log "🏥 Health check (${HEALTH_TIMEOUT}s timeout)..."
+    if health_check "$HEALTH_TIMEOUT"; then
+        local new_version
+        new_version=$(get_current_version)
+        log "✅ Update successful: $current_version → $new_version"
         
-        # Check if changelog mentions new models
-        if echo "$changelog" | grep -iE "(model|gemini|claude|gpt|opus|sonnet|haiku)" >/dev/null; then
-            log "🤖 Changelog menciona modelos - ejecutando model-release-checker..."
-            if [ -x "$WORKSPACE/scripts/model-release-checker.sh" ]; then
-                bash "$WORKSPACE/scripts/model-release-checker.sh" || log "${YELLOW}⚠️  Model release checker falló${NC}"
-            else
-                log "${YELLOW}⚠️  model-release-checker.sh no encontrado${NC}"
+        # Get changelog
+        local changelog
+        changelog=$(curl -s "https://api.github.com/repos/openclaw/openclaw/releases/tags/v${latest_version}" | jq -r '.body // "No changelog"' 2>/dev/null | head -15)
+        
+        # Save to memory
+        {
+            echo ""
+            echo "## v$latest_version ($(date +'%Y-%m-%d %H:%M'))"
+            echo "- From: $current_version"
+            echo "- Status: ✅ OK (auto-update with health check)"
+            echo "- Changes: $changelog"
+            echo ""
+        } >> "$MEMORY_FILE" 2>/dev/null || true
+        
+        notify "🔄 OpenClaw actualizado ✅
+
+$current_version → $new_version
+
+Gateway healthy, todo operativo."
+    else
+        # === HEALTH CHECK FAILED → ROLLBACK ===
+        log "❌ Health check FAILED — initiating rollback"
+        
+        # Check if it's a config issue
+        local gateway_error
+        gateway_error=$(journalctl --user -u openclaw-gateway --since "2 min ago" --no-pager 2>/dev/null | grep -i "config invalid\|unrecognized\|error" | tail -3)
+        log "Gateway errors: $gateway_error"
+        
+        # Try doctor --fix first
+        log "🩺 Trying doctor --fix..."
+        if openclaw doctor --fix --non-interactive 2>&1 | grep -q "Doctor complete"; then
+            systemctl --user restart openclaw-gateway 2>/dev/null || true
+            sleep 5
+            
+            if health_check 30; then
+                local fixed_version
+                fixed_version=$(get_current_version)
+                log "✅ Doctor fixed the issue: v$fixed_version running"
+                notify "🔄 OpenClaw actualizado ✅ (con doctor --fix)
+
+$current_version → $fixed_version
+
+Doctor arregló incompatibilidades de config automáticamente."
+                exit 0
             fi
         fi
         
-        # Restart gateway (will auto-restart via systemd or similar)
-        log "🔄 Reiniciando gateway..."
-        pkill -SIGUSR1 -f "openclaw gateway" || log "${YELLOW}⚠️  No se pudo enviar SIGUSR1 al gateway${NC}"
+        # Doctor didn't fix it → full rollback
+        log "❌ Doctor didn't fix it — full rollback"
+        rollback "$current_version" "$config_backup"
         
-        # Prepare summary for notification
-        local summary
-        summary=$(echo "$changelog" | head -n 10 | sed 's/^/  /')
+        # Save failed update to memory
+        {
+            echo ""
+            echo "## v$latest_version ($(date +'%Y-%m-%d %H:%M'))"
+            echo "- From: $current_version"
+            echo "- Status: ❌ ROLLBACK (config incompatible)"
+            echo "- Error: $gateway_error"
+            echo ""
+        } >> "$MEMORY_FILE" 2>/dev/null || true
         
-        # Notify
-        notify_telegram "🔄 *OpenClaw actualizado*
-
-📦 $current_version → $latest_version
-
-*Cambios principales:*
-$summary
-
-🔗 [Ver changelog completo](https://github.com/cxllax/openclaw/releases/tag/v${latest_version})"
-        
-        log "${GREEN}✅ Proceso completado${NC}"
-    else
-        log "${RED}❌ Error durante el update${NC}"
-        notify_telegram "❌ *Error al actualizar OpenClaw*
-
-Versión objetivo: $latest_version
-Revisa los logs para más detalles."
         exit 1
     fi
 }
