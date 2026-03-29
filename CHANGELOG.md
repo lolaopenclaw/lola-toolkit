@@ -136,3 +136,5 @@ Este CHANGELOG se actualiza automáticamente con cada commit importante.
 
 - **2026-03-28 10:10:29** | fix(informe-matutino): buscar healthcheck diario además de legacy security review | `56c2590` | [`backup-56c2590`](backups-by-commit/backup-56c2590*.tar.gz)
 
+- **2026-03-29 03:11:05** | autoimprove(memory): archive 50 daily reports, fix subdirectory refs | `6f8378d` | [`backup-6f8378d`](backups-by-commit/backup-6f8378d*.tar.gz)
+

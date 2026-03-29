@@ -112,6 +112,14 @@ Goal: Simplify, deduplicate, and harden what we have. No new features.
 ### Evaluar Lobster Board + Dashboard existente
 - ¿Quitar? ¿Mantener? Evaluar si aportan valor o son ruido
 
+### ClawFlows + Lobster — Investigación COMPLETA
+- **Report:** memory/clawflows-deep-research-2026-03-29.md (884 líneas)
+- **HIGH:** Install ClawFlows + enable calendar, bills, repos workflows (1.5h)
+- **HIGH:** Contribute surf workflow to community (2h)
+- **MEDIUM:** Migrate 3 deterministic crons to Lobster (healthcheck, backup, surf) — 0 tokens (6-8h)
+- **MEDIUM:** Add approval gates to destructive ops (3h)
+- **LOW:** Build custom workflows for community (API health, backup integrity) (4-6h)
+
 ### Context Optimization Audit
 - **Phase 1:** ✅ COMPLETE (8.6% reduction, 1,370 tokens saved)
 - **Phase 2:** Weekly session reset (Mon 4AM, sessions >1000 msgs archived)

@@ -12,7 +12,7 @@ add_section() {
 
 # 1. Fail2ban (SSH Security)
 f2b_status=$(sudo fail2ban-client status sshd 2>&1 || echo "⚠️ fail2ban unavailable")
-if [[ "$f2b_status" == *"Currently banned: 0"* ]]; then
+if echo "$f2b_status" | grep -q "Currently banned:.*0"; then
   add_section "SSH Security" "✅ Fail2ban active, no bans"
 else
   add_section "SSH Security" "$f2b_status"
